@@ -3,6 +3,7 @@
 # session (fresh code re-uploaded first). If the session is gone, allocate a new L4 and bootstrap it.
 # Usage: COLAB_BIN=... COLAB_CONFIG=... HF_TOKEN_FILE=... scripts/chain_next_job.sh <session> <next_jobs.json>
 set -u
+set -o pipefail
 SESS=$1; NEXT=$2
 cd "$(dirname "$0")/.."
 CB=${COLAB_BIN:-$HOME/.local/bin/colab}

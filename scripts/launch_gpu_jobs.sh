@@ -18,4 +18,7 @@ C upload -s "$SESS" data/meta/androidcontrol_test_gt.manifest.json /content/work
 echo "launching blocking jobs cell on $SESS at $(date +%T)"
 nohup "${COLAB_BIN:-$HOME/.local/bin/colab}" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" --timeout 200000 -f scripts/vm_blocking_jobs.py \
   > "logs/${SESS}_jobs_cell.log" 2>&1 &
-echo "cell client pid $!"
+PID=$!
+sleep 90
+if grep -q heartbeat "logs/${SESS}_jobs_cell.log" && kill -0 $PID 2>/dev/null; then echo "cell client pid $PID — heartbeat confirmed"
+else echo "LAUNCH NOT CONFIRMED: $(tail -c 300 logs/${SESS}_jobs_cell.log)"; exit 1; fi

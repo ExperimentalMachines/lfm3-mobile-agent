@@ -147,7 +147,7 @@ def main():
         problems.append("no generation manifest")
     elif row_models != [manifest["model"]]:
         problems.append(f"row models {row_models} != manifest model {manifest['model']}")
-    elif manifest.get("config_hash") and {r.get("config_hash") for r in preds} != {manifest["config_hash"]}:
+    elif not manifest.get("config_hash") or {r.get("config_hash") for r in preds} != {manifest["config_hash"]}:
         problems.append("row config_hash differs from manifest config_hash")
     integrity = {"n_pred_rows": len(preds), "n_gt_rows": len(gt), "duplicate_keys": dups, "missing": len(missing),
                  "extra": len(extra), "row_models": row_models, "manifest": manifest, "gt_file": a.gt,
