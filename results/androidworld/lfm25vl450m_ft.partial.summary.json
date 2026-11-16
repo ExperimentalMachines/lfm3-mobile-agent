@@ -1,0 +1,223 @@
+{
+ "summary": {
+  "run_dir": "results/androidworld/lfm25vl450m_ft/run_20261117T022926194002",
+  "n_episodes": 14,
+  "expected_episodes": 116,
+  "missing_episodes_counted_as_fail": 102,
+  "success_rate": 0.0,
+  "success_rate_over_completed": 0.0,
+  "n_teardown_exceptions": 0,
+  "success_rate_by_difficulty": {
+   "easy": {
+    "n": 10,
+    "sr": 0.0
+   },
+   "hard": {
+    "n": 2,
+    "sr": 0.0
+   },
+   "medium": {
+    "n": 2,
+    "sr": 0.0
+   }
+  },
+  "n_exceptions_counted_as_fail": 0,
+  "frac_episodes_self_terminated": 0.0,
+  "mean_steps": 20.571428571428573,
+  "model_latency_s": {
+   "mean": 1.9861415682567491,
+   "p50": 1.397080659866333,
+   "p90": 3.4995107650756836
+  },
+  "prompt_tokens_mean": 1192.8680555555557,
+  "parse_failure_rate": 0.0,
+  "n_steps_total": 288,
+  "first_attempt_strict_valid_rate": 1.0,
+  "first_attempt_lenient_valid_rate": 1.0,
+  "n_model_calls_incl_retries": 288
+ },
+ "episodes": [
+  {
+   "task": "AudioRecorderRecordAudioWithFileName",
+   "file": "AudioRecorderRecordAudioWithFileName_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 109.5,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "AudioRecorderRecordAudio",
+   "file": "AudioRecorderRecordAudio_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 12,
+   "runtime_s": 107.5,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "BrowserDraw",
+   "file": "BrowserDraw_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 131.0,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "BrowserMaze",
+   "file": "BrowserMaze_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 114.7,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "BrowserMultiply",
+   "file": "BrowserMultiply_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 22,
+   "runtime_s": 131.8,
+   "difficulty": "hard",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "CameraTakePhoto",
+   "file": "CameraTakePhoto_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 113.0,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "CameraTakeVideo",
+   "file": "CameraTakeVideo_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 76.0,
+   "difficulty": "medium",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ClockStopWatchPausedVerify",
+   "file": "ClockStopWatchPausedVerify_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 67.9,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ClockStopWatchRunning",
+   "file": "ClockStopWatchRunning_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 69.0,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ClockTimerEntry",
+   "file": "ClockTimerEntry_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 64.9,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ContactsAddContact",
+   "file": "ContactsAddContact_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 12,
+   "runtime_s": 99.1,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ContactsNewContactDraft",
+   "file": "ContactsNewContactDraft_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 12,
+   "runtime_s": 84.7,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ExpenseAddMultipleFromGallery",
+   "file": "ExpenseAddMultipleFromGallery_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 60,
+   "runtime_s": 350.4,
+   "difficulty": "hard",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ExpenseAddMultiple",
+   "file": "ExpenseAddMultiple_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 60,
+   "runtime_s": 341.6,
+   "difficulty": "medium",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  }
+ ]
+}

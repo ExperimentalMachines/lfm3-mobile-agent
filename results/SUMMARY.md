@@ -3,13 +3,14 @@
 AndroidControl: official test, frozen GT (`data/meta/androidcontrol_test_gt.jsonl`), step success rate (episode success).
 AndroidWorld: 116 tasks, Q4_K_M GGUF via llama.cpp on an Apple M5, exceptions/missing count as failures.
 Latency: mean model time per step on the M5 (proxy for on-device cost) / mean prompt tokens.
+General knowledge: forced-choice next-token scoring (format-independent); Δ = paired change after fine-tuning with exact McNemar p.
 
 | Model | AC high-level | AC low-level | 'complete' acc | AndroidWorld | latency / prompt | General knowledge |
 |---|---|---|---|---|---|---|
-| LFM3-VL-2B base | 0.315 (ep 0.027) | 0.634 (ep 0.172) | 0.000 | 0.9% (1/116) | 2.3s / 1121 tok | — |
-| LFM3-VL-2B fine-tuned | — | — | — | — | — | — |
-| LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | — | — | MMStar 41.6%, MMLU 39.4% |
-| LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | — | — | MMStar 40.9%, MMLU 38.3% (Δ mmstar -0.7pp p=0.40, mmlu -1.1pp p=0.21) |
+| LFM3-VL-2B base | 0.315 (ep 0.027) | 0.634 (ep 0.172) | 0.000 | 0.9% (1/116) | 2.3s / 1121 tok | MMStar 52.1%, MMLU 48.9% |
+| LFM3-VL-2B fine-tuned | — | — | — | — | — | MMStar 57.1%, MMLU 49.5% (Δ mmstar +5.0pp p=0.00, mmlu +0.6pp p=0.68) |
+| LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | — | — | MMStar 38.5%, MMLU 39.9% |
+| LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | — | — | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
 | Qwen3.5-2B fine-tuned | — | — | — | — | — | — |
 | Qwen3.5-0.8B fine-tuned | — | — | — | — | — | — |
 | GUI-Owl-1.5-2B (compute-matched, 1 img) | — | — | — | — | — | — |
