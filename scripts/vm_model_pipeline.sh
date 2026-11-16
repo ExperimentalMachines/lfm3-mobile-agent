@@ -59,6 +59,24 @@ if os.path.isdir("$OUT/logs"):
 PY
 }
 
+if [ -n "${EXTRA_PIP:-}" ]; then  # e.g. flash-linear-attention: Qwen3.5 Gated-DeltaNet fast kernels (math-identical)
+  TV=$(python -c "import torch;print(torch.__version__)")
+  log "pip install $EXTRA_PIP (torch pinned at $TV)"
+  pip install -q $EXTRA_PIP "torch==${TV%%+*}" || fail "extra pip"
+  python -c "import torch,sys; sys.exit(0 if torch.__version__=='$TV' else 1)" || { fail "torch changed by EXTRA_PIP"; exit 1; }
+  python - <<'PY'
+import importlib.metadata as md
+for p in ("flash-linear-attention", "fla-core", "causal-conv1d", "triton"):
+    try: print("extra-pip version", p, md.version(p), flush=True)
+    except Exception: pass
+try:
+    from transformers.utils import import_utils as iu
+    print("transformers sees fla:", [f() for n, f in vars(iu).items() if n.startswith("is_flash_linear") and callable(f)], flush=True)
+except Exception as e:
+    print("fla check skipped:", e, flush=True)
+PY
+fi
+
 for spec in ${PRE_GENERAL_MODELS:-}; do  # e.g. "LiquidAI/LFM3-VL-2B=lfm3vl2b_base /content/runs/x/merged=lfm3vl2b_ft"
   m=${spec%%=*}; n=${spec##*=}
   general_ok /content/eval/${n}_general.summary.json || { log "general eval $n"; python eval_general.py --model $m --out /content/eval/${n}_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general $n"; }
