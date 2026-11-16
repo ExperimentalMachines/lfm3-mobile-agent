@@ -53,7 +53,25 @@ model = AutoModelForImageTextToText.from_pretrained(
 manifest = {"model": args.model, "data": args.data, "n_rows": len(ds), "enable_thinking": args.enable_thinking,
             "max_pixels": args.max_pixels, "filter_mode": args.filter_mode, "subsample_episodes": args.subsample_episodes,
             "limit": args.limit, "max_new_tokens": args.max_new_tokens, "do_sample": False, "min_pixels": args.min_pixels}
-import hashlib
+import hashlib, glob as _glob
+
+
+def _fingerprint(model):
+    """Distinguish different weights behind the same local path (e.g. after retraining)."""
+    if not os.path.isdir(model):
+        return "hub:" + model
+    h = hashlib.sha256()
+    rec = os.path.join(os.path.dirname(model.rstrip("/")), "train_receipt.json")
+    if os.path.exists(rec):
+        h.update(open(rec, "rb").read())
+    for f in sorted(_glob.glob(os.path.join(model, "*.safetensors"))):
+        h.update(f"{os.path.basename(f)}:{os.path.getsize(f)}".encode())
+        with open(f, "rb") as fh:
+            h.update(fh.read(4 << 20))
+    return h.hexdigest()[:16]
+
+
+manifest["model_fingerprint"] = _fingerprint(args.model)
 cfg_hash = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16]
 manifest["config_hash"] = cfg_hash
 mpath = args.out + ".manifest.json"

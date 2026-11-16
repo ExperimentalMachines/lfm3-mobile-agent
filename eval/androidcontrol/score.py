@@ -113,6 +113,7 @@ def main():
     _cands = [os.environ.get("AC_TEST_GT", ""), str(_here.parents[2] / "data/meta/androidcontrol_test_gt.jsonl") if len(_here.parents) > 2 else "",
               str(_here.parent / "meta/androidcontrol_test_gt.jsonl")]
     ap.add_argument("--gt", default=next((c for c in _cands if c and os.path.exists(c)), _cands[-1]))
+    ap.add_argument("--expect", default="", help="comma list key=value that the generation manifest must match")
     ap.add_argument("--modes", default="high,low", help="expected modes, e.g. 'high' for a high-only certified subset")
     ap.add_argument("--allow_incomplete", action="store_true")
     a = ap.parse_args()
@@ -149,6 +150,10 @@ def main():
         problems.append(f"row models {row_models} != manifest model {manifest['model']}")
     elif not manifest.get("config_hash") or {r.get("config_hash") for r in preds} != {manifest["config_hash"]}:
         problems.append("row config_hash differs from manifest config_hash")
+    for kv in filter(None, a.expect.split(",")):
+        k, _, v = kv.partition("=")
+        if manifest is not None and str(manifest.get(k)) != v:
+            problems.append(f"manifest {k}={manifest.get(k)!r} != expected {v!r}")
     integrity = {"n_pred_rows": len(preds), "n_gt_rows": len(gt), "duplicate_keys": dups, "missing": len(missing),
                  "extra": len(extra), "row_models": row_models, "manifest": manifest, "gt_file": a.gt,
                  "complete": not missing and not extra and not dups, "problems": problems}
