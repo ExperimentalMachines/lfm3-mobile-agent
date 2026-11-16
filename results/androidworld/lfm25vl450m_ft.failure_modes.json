@@ -1,0 +1,676 @@
+{
+ "n": 64,
+ "labels": {
+  "loop_until_step_limit": 35,
+  "stuck_after_unknown_app": 23,
+  "exception": 3,
+  "premature_or_wrong_complete": 3
+ },
+ "flags_among_failures": {
+  "repeated_action_loop": 39,
+  "unknown_app_name": 24,
+  "wait_loop": 24
+ },
+ "unknown_app_names": {
+  "File Manager": 3,
+  "Expense": 3,
+  "Note": 3,
+  "Stopwatch": 2,
+  "Notes": 2,
+  "Calendar": 1,
+  "Contact": 1,
+  "Streaming Services": 1,
+  "Notifications": 1,
+  "SDKs": 1,
+  "Folders": 1,
+  "StudyGuides": 1,
+  "Recipes": 1,
+  "Music": 1,
+  "Download": 1,
+  "Calendar Pro": 1
+ },
+ "episodes": [
+  {
+   "task": "AudioRecorderRecordAudioWithFileName",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "AudioRecorderRecordAudio",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "BrowserDraw",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "File Manager"
+   ],
+   "steps": 20
+  },
+  {
+   "task": "BrowserMaze",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "File Manager"
+   ],
+   "steps": 20
+  },
+  {
+   "task": "BrowserMultiply",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "File Manager"
+   ],
+   "steps": 22
+  },
+  {
+   "task": "CameraTakePhoto",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "CameraTakeVideo",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "ClockStopWatchPausedVerify",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Stopwatch"
+   ],
+   "steps": 10
+  },
+  {
+   "task": "ClockStopWatchRunning",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Stopwatch"
+   ],
+   "steps": 10
+  },
+  {
+   "task": "ClockTimerEntry",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Calendar"
+   ],
+   "steps": 10
+  },
+  {
+   "task": "ContactsAddContact",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "ContactsNewContactDraft",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Contact"
+   ],
+   "steps": 12
+  },
+  {
+   "task": "ExpenseAddMultipleFromGallery",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop",
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "ExpenseAddMultipleFromMarkor",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "ExpenseAddMultiple",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "ExpenseAddSingle",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Expense"
+   ],
+   "steps": 12
+  },
+  {
+   "task": "ExpenseDeleteDuplicates2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 18
+  },
+  {
+   "task": "ExpenseDeleteDuplicates",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "ExpenseDeleteMultiple2",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Streaming Services"
+   ],
+   "steps": 34
+  },
+  {
+   "task": "ExpenseDeleteMultiple",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Expense"
+   ],
+   "steps": 20
+  },
+  {
+   "task": "ExpenseDeleteSingle",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Expense"
+   ],
+   "steps": 10
+  },
+  {
+   "task": "FilesDeleteFile",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Notifications"
+   ],
+   "steps": 22
+  },
+  {
+   "task": "FilesMoveFile",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "SDKs"
+   ],
+   "steps": 20
+  },
+  {
+   "task": "MarkorAddNoteHeader",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "MarkorChangeNoteContent",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "MarkorCreateFolder",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Folders"
+   ],
+   "steps": 10
+  },
+  {
+   "task": "MarkorCreateNoteAndSms",
+   "label": "exception",
+   "flags": [],
+   "unknown_apps": [],
+   "steps": NaN
+  },
+  {
+   "task": "MarkorCreateNoteFromClipboard",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Note"
+   ],
+   "steps": 14
+  },
+  {
+   "task": "MarkorCreateNote",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 16
+  },
+  {
+   "task": "MarkorDeleteAllNotes",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Notes"
+   ],
+   "steps": 14
+  },
+  {
+   "task": "MarkorDeleteNewestNote",
+   "label": "premature_or_wrong_complete",
+   "flags": [
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Notes"
+   ],
+   "steps": 6
+  },
+  {
+   "task": "MarkorDeleteNote",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Note"
+   ],
+   "steps": 10
+  },
+  {
+   "task": "MarkorEditNote",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "repeated_action_loop",
+    "unknown_app_name"
+   ],
+   "unknown_apps": [
+    "Note"
+   ],
+   "steps": 12
+  },
+  {
+   "task": "MarkorMergeNotes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 78
+  },
+  {
+   "task": "MarkorMoveNote",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "StudyGuides"
+   ],
+   "steps": 14
+  },
+  {
+   "task": "MarkorTranscribeReceipt",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 18
+  },
+  {
+   "task": "MarkorTranscribeVideo",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "NotesIsTodo",
+   "label": "premature_or_wrong_complete",
+   "flags": [],
+   "unknown_apps": [],
+   "steps": 6
+  },
+  {
+   "task": "NotesMeetingAttendeeCount",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "NotesRecipeIngredientCount",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "NotesTodoItemCount",
+   "label": "premature_or_wrong_complete",
+   "flags": [],
+   "unknown_apps": [],
+   "steps": 6
+  },
+  {
+   "task": "OpenAppTaskEval",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "OsmAndFavorite",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 13
+  },
+  {
+   "task": "OsmAndMarker",
+   "label": "exception",
+   "flags": [],
+   "unknown_apps": [],
+   "steps": NaN
+  },
+  {
+   "task": "OsmAndTrack",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 120
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromImage",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop",
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromMarkor2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop",
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromMarkor",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Recipes"
+   ],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddMultipleRecipes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop",
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddSingleRecipe",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes3",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 34
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipesWithConstraint",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 40
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipesWithNoise",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 34
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RecipeDeleteSingleRecipe",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "RecipeDeleteSingleWithRecipeWithNoise",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "RetroCreatePlaylist",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RetroPlayingQueue",
+   "label": "exception",
+   "flags": [],
+   "unknown_apps": [],
+   "steps": NaN
+  },
+  {
+   "task": "RetroPlaylistDuration",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "wait_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 30
+  },
+  {
+   "task": "RetroSavePlaylist",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Music"
+   ],
+   "steps": 50
+  },
+  {
+   "task": "SaveCopyOfReceiptTaskEval",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Download"
+   ],
+   "steps": 16
+  },
+  {
+   "task": "SimpleCalendarAddOneEvent",
+   "label": "stuck_after_unknown_app",
+   "flags": [
+    "unknown_app_name",
+    "wait_loop"
+   ],
+   "unknown_apps": [
+    "Calendar Pro"
+   ],
+   "steps": 34
+  }
+ ]
+}

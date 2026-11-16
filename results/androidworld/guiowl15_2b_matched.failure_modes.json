@@ -1,0 +1,552 @@
+{
+ "n": 60,
+ "labels": {
+  "loop_until_step_limit": 50,
+  "success": 9,
+  "exception": 1
+ },
+ "flags_among_failures": {
+  "repeated_action_loop": 50
+ },
+ "unknown_app_names": {},
+ "episodes": [
+  {
+   "task": "AudioRecorderRecordAudioWithFileName",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "AudioRecorderRecordAudio",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 11
+  },
+  {
+   "task": "BrowserDraw",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "BrowserMaze",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "BrowserMultiply",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 22
+  },
+  {
+   "task": "CameraTakePhoto",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "CameraTakeVideo",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "ClockStopWatchPausedVerify",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "ClockStopWatchRunning",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "ClockTimerEntry",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "ContactsAddContact",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "ContactsNewContactDraft",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "ExpenseAddMultipleFromGallery",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "ExpenseAddMultipleFromMarkor",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "ExpenseAddMultiple",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "ExpenseAddSingle",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "ExpenseDeleteDuplicates2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 18
+  },
+  {
+   "task": "ExpenseDeleteDuplicates",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "ExpenseDeleteMultiple2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 34
+  },
+  {
+   "task": "ExpenseDeleteMultiple",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 16
+  },
+  {
+   "task": "ExpenseDeleteSingle",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 9
+  },
+  {
+   "task": "FilesDeleteFile",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 22
+  },
+  {
+   "task": "FilesMoveFile",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "MarkorAddNoteHeader",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "MarkorChangeNoteContent",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "MarkorCreateFolder",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "MarkorCreateNoteAndSms",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 18
+  },
+  {
+   "task": "MarkorCreateNoteFromClipboard",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 14
+  },
+  {
+   "task": "MarkorCreateNote",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 16
+  },
+  {
+   "task": "MarkorDeleteAllNotes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 14
+  },
+  {
+   "task": "MarkorDeleteNewestNote",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "MarkorDeleteNote",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "MarkorEditNote",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 12
+  },
+  {
+   "task": "MarkorMergeNotes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 78
+  },
+  {
+   "task": "MarkorMoveNote",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 14
+  },
+  {
+   "task": "MarkorTranscribeReceipt",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 18
+  },
+  {
+   "task": "MarkorTranscribeVideo",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "NotesIsTodo",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "NotesMeetingAttendeeCount",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 6
+  },
+  {
+   "task": "NotesRecipeIngredientCount",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 8
+  },
+  {
+   "task": "NotesTodoItemCount",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 5
+  },
+  {
+   "task": "OpenAppTaskEval",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "OsmAndFavorite",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 13
+  },
+  {
+   "task": "OsmAndMarker",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "OsmAndTrack",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 120
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromImage",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromMarkor2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromMarkor",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddMultipleRecipes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 60
+  },
+  {
+   "task": "RecipeAddSingleRecipe",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes2",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes3",
+   "label": "exception",
+   "flags": [],
+   "unknown_apps": [],
+   "steps": NaN
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipesWithConstraint",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 11
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipesWithNoise",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 34
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipes",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RecipeDeleteSingleRecipe",
+   "label": "success",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 10
+  },
+  {
+   "task": "RecipeDeleteSingleWithRecipeWithNoise",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 20
+  },
+  {
+   "task": "RetroCreatePlaylist",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 24
+  },
+  {
+   "task": "RetroPlayingQueue",
+   "label": "loop_until_step_limit",
+   "flags": [
+    "repeated_action_loop"
+   ],
+   "unknown_apps": [],
+   "steps": 32
+  }
+ ]
+}
