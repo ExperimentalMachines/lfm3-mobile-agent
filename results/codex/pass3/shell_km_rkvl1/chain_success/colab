@@ -1,0 +1,29 @@
+#!/usr/local/bin/python3
+
+import json,os,sys
+from pathlib import Path
+a=sys.argv[1:]
+if a and a[0]=='--config':a=a[2:]
+op=a[0];mode=os.environ['CHAIN_MODE'];trace=Path(os.environ['TRACE'])
+event={'argv':a}
+if op=='exec' and '-f' not in a:
+    event['stdin']=sys.stdin.read()
+with trace.open('a') as f:f.write(json.dumps(event)+'\n')
+if op=='download':
+    if mode.startswith('gone'):
+        print('404 not found');sys.exit(1)
+    Path(a[-1]).write_text(json.dumps({'elapsed_s':12,'status':{'unrelated-or-stale-job':'exit 7' if mode=='failed_predecessor' else 'exit 0'}}))
+    print('downloaded');sys.exit(0)
+if op=='upload':
+    if mode=='upload_failure' or (mode=='meta_parent_missing' and '/meta/' in a[-1]):
+        print('synthetic upload failed: missing remote directory or network');sys.exit(17)
+    print('uploaded');sys.exit(0)
+if op=='new':print('created L4 stub');sys.exit(0)
+if op=='exec':
+    if '-f' in a and a[a.index('-f')+1].endswith('colab_bootstrap.py'):
+        if mode=='gone_bootstrap_failure':
+            print('pip rc 17; bootstrap failed');sys.exit(17)
+        print('versions 2.14.1 5.20.2 1.16.0 0.21.2');sys.exit(0)
+    if '-f' in a and a[a.index('-f')+1].endswith('vm_blocking_jobs.py') and mode=='background_start_failure':sys.exit(23)
+    print('exec stub');sys.exit(0)
+raise SystemExit('unknown '+str(a))

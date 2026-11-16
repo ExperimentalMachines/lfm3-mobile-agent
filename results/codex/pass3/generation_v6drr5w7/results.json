@@ -1,0 +1,6662 @@
+{
+  "artifact_dir": "/Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7",
+  "scope": "Complete scripts, synthetic model/datasets/Hub; no network/GPU",
+  "restored_stale_rows_score": {
+    "exit": 0,
+    "metrics": {
+      "high": {
+        "overall": {
+          "n_steps": 2,
+          "n_episodes": 2,
+          "parse_rate": 1.0,
+          "type_match": 1.0,
+          "step_sr": 1.0,
+          "episode_sr": 1.0,
+          "per_type": {
+            "wait": {
+              "n": 2,
+              "type_match": 1.0,
+              "step_sr": 1.0
+            }
+          }
+        },
+        "overall_strict_parse": {
+          "n_steps": 2,
+          "n_episodes": 2,
+          "parse_rate": 1.0,
+          "type_match": 1.0,
+          "step_sr": 1.0,
+          "episode_sr": 1.0,
+          "per_type": {
+            "wait": {
+              "n": 2,
+              "type_match": 1.0,
+              "step_sr": 1.0
+            }
+          }
+        },
+        "by_subsplit": {
+          "IDD": {
+            "n_steps": 2,
+            "n_episodes": 2,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 2,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          }
+        },
+        "click_bbox_hit_strict": {
+          "n": 0,
+          "acc": 0.0
+        }
+      },
+      "integrity": {
+        "n_pred_rows": 2,
+        "n_gt_rows": 2,
+        "duplicate_keys": 0,
+        "missing": 0,
+        "extra": 0,
+        "row_models": [
+          "synthetic-model"
+        ],
+        "manifest": {
+          "model": "synthetic-model",
+          "data": "synthetic/data@test",
+          "n_rows": 2,
+          "enable_thinking": 1,
+          "max_pixels": 774400,
+          "filter_mode": null,
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256,
+          "do_sample": false,
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/partial_restore_missing_manifest/gt.jsonl",
+        "complete": true,
+        "problems": []
+      }
+    }
+  },
+  "generation": {
+    "fresh": {
+      "exit": 0,
+      "stdout": "no hub partial to restore: FileNotFoundError\nto generate: 2 / 2\n2/2 0s avg_prompt_tok=4\nDONE 0.0014269351959228516\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "download": "eval/preds.jsonl",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 2
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "matching_resume": {
+      "exit": 0,
+      "stdout": "to generate: 0 / 2\nDONE 0.0010228157043457031\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_model": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_model/preds.jsonl: manifest differs\nold={'model': 'different', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "different",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_data": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_data/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'different', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "different",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_enable_thinking": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_enable_thinking/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 'different', 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": "different",
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_max_pixels": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_max_pixels/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 'different', 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": "different",
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_filter_mode": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_filter_mode/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': 'different', 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": "different",
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_limit": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_limit/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 'different', 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": "different",
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_max_new_tokens": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_max_new_tokens/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 'different', 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": "different",
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "manifest_diff_config_hash": {
+      "exit": 1,
+      "error": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass3/generation_v6drr5w7/manifest_diff_config_hash/preds.jsonl: manifest differs\nold={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': 'different'}\nnew={'model': 'synthetic-model', 'data': 'synthetic/data@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256, 'do_sample': False, 'config_hash': '2e72084dcbb1c5e6'}",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "different"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "wrong_row_hash": {
+      "exit": 0,
+      "stdout": "to generate: 0 / 2\nDONE 0.0005428791046142578\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "old-thinking-policy"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "missing_manifest_existing_rows": {
+      "exit": 0,
+      "stdout": "to generate: 0 / 2\nDONE 0.0013513565063476562\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "old-thinking-policy"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "min_pixels_changed": {
+      "exit": 0,
+      "stdout": "to generate: 0 / 2\nDONE 0.0006301403045654297\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 262144,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "partial_restore_missing_manifest": {
+      "exit": 0,
+      "stdout": "no hub partial to restore: FileNotFoundError\nto generate: 0 / 2\nDONE 0.0007688999176025391\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "download": "eval/preds.jsonl",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "download": "eval/preds.jsonl.manifest.json",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "old-thinking-policy"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "upload_failure_ignored": {
+      "exit": 0,
+      "stdout": "no hub partial to restore: FileNotFoundError\nto generate: 2 / 2\n2/2 0s avg_prompt_tok=4\npartial push failed: synthetic upload failure\nDONE 0.000804901123046875\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "download": "eval/preds.jsonl",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 2
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 2
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "2e72084dcbb1c5e6"
+        }
+      ]
+    },
+    "forty_batch_checkpoint": {
+      "exit": 0,
+      "stdout": "no hub partial to restore: FileNotFoundError\nto generate: 41 / 41\n1/41 0s avg_prompt_tok=4\n2/41 0s avg_prompt_tok=4\n3/41 0s avg_prompt_tok=4\n4/41 0s avg_prompt_tok=4\n5/41 0s avg_prompt_tok=4\n6/41 0s avg_prompt_tok=4\n7/41 0s avg_prompt_tok=4\n8/41 0s avg_prompt_tok=4\n9/41 0s avg_prompt_tok=4\n10/41 0s avg_prompt_tok=4\n11/41 0s avg_prompt_tok=4\n12/41 0s avg_prompt_tok=4\n13/41 0s avg_prompt_tok=4\n14/41 0s avg_prompt_tok=4\n15/41 0s avg_prompt_tok=4\n16/41 0s avg_prompt_tok=4\n17/41 0s avg_prompt_tok=4\n18/41 0s avg_prompt_tok=4\n19/41 0s avg_prompt_tok=4\n20/41 0s avg_prompt_tok=4\n21/41 0s avg_prompt_tok=4\n22/41 0s avg_prompt_tok=4\n23/41 0s avg_prompt_tok=4\n24/41 0s avg_prompt_tok=4\n25/41 0s avg_prompt_tok=4\n26/41 0s avg_prompt_tok=4\n27/41 0s avg_prompt_tok=4\n28/41 0s avg_prompt_tok=4\n29/41 0s avg_prompt_tok=4\n30/41 0s avg_prompt_tok=4\n31/41 0s avg_prompt_tok=4\n32/41 0s avg_prompt_tok=4\n33/41 0s avg_prompt_tok=4\n34/41 0s avg_prompt_tok=4\n35/41 0s avg_prompt_tok=4\n36/41 0s avg_prompt_tok=4\n37/41 0s avg_prompt_tok=4\n38/41 0s avg_prompt_tok=4\n39/41 0s avg_prompt_tok=4\n40/41 0s avg_prompt_tok=4\n41/41 0s avg_prompt_tok=4\nDONE 0.003468751907348633\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "download": "eval/preds.jsonl",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 40
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": true
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 256,
+            "do_sample": false,
+            "repetition_penalty": 1.0
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": false
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 41
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 41,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "0ec5fb685ad0da79"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 2,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 3,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 4,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 5,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 6,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 7,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 8,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 9,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 10,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 11,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 12,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 13,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 14,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 15,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 16,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 17,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 18,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 19,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 20,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 21,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 22,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 23,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 24,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 25,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 26,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 27,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 28,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 29,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 30,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 31,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 32,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 33,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 34,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 35,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 36,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 37,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 38,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 39,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 40,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        }
+      ]
+    },
+    "fresh_vm_restore": {
+      "exit": 0,
+      "stdout": "restored partial predictions from hub\nto generate: 0 / 41\nDONE 0.0008499622344970703\n",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "download": "eval/preds.jsonl",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "download": "eval/preds.jsonl.manifest.json",
+          "kwargs": {
+            "local_dir": "/tmp/_restore"
+          }
+        },
+        {
+          "upload": "eval/preds.jsonl",
+          "rows_at_upload": 41
+        },
+        {
+          "upload": "eval/preds.jsonl.manifest.json",
+          "rows_at_upload": null
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 41,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "0ec5fb685ad0da79"
+      },
+      "rows": [
+        {
+          "episode_id": 0,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 1,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 2,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 3,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 4,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 5,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 6,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 7,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 8,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 9,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 10,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 11,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 12,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 13,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 14,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 15,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 16,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 17,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 18,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 19,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 20,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 21,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 22,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 23,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 24,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 25,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 26,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 27,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 28,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 29,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 30,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 31,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 32,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 33,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 34,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 35,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 36,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 37,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 38,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 39,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        },
+        {
+          "episode_id": 40,
+          "step_idx": 0,
+          "mode": "high",
+          "gt_action": "{\"action_type\":\"wait\"}",
+          "gt_bbox": null,
+          "is_terminal": false,
+          "subsplits": [
+            "IDD"
+          ],
+          "output": "{\"action_type\":\"wait\"}",
+          "model": "synthetic-model",
+          "config_hash": "0ec5fb685ad0da79"
+        }
+      ]
+    },
+    "torn_jsonl": {
+      "exit": 1,
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 15 (char 14)",
+      "stdout": "",
+      "events": [
+        {
+          "processor_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "synthetic-model"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        }
+      ],
+      "manifest": {
+        "model": "synthetic-model",
+        "data": "synthetic/data@test",
+        "n_rows": 2,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "config_hash": "2e72084dcbb1c5e6"
+      },
+      "rows": "torn JSONL"
+    }
+  },
+  "general": {
+    "base": {
+      "exit": 0,
+      "stdout": "mmstar 1 / 1\nmmlu 64 / 1000\nmmlu 128 / 1000\nmmlu 192 / 1000\nmmlu 256 / 1000\nmmlu 320 / 1000\nmmlu 384 / 1000\nmmlu 448 / 1000\nmmlu 512 / 1000\nmmlu 576 / 1000\nmmlu 640 / 1000\nmmlu 704 / 1000\nmmlu 768 / 1000\nmmlu 832 / 1000\nmmlu 896 / 1000\nmmlu 960 / 1000\nmmlu 1000 / 1000\nGENERAL {\"mmstar\": {\"n\": 1, \"acc\": 1.0, \"unparsed\": 0.0}, \"mmlu\": {\"n\": 1000, \"acc\": 1.0, \"unparsed\": 0.0}, \"model\": \"base\", \"max_pixels\": 774400, \"max_new_tokens\": 64}\n",
+      "events": [
+        {
+          "processor_load": [
+            "base"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "base"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 40
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        }
+      ],
+      "jsonl_exists": true,
+      "summary": {
+        "mmstar": {
+          "n": 1,
+          "acc": 1.0,
+          "unparsed": 0.0
+        },
+        "mmlu": {
+          "n": 1000,
+          "acc": 1.0,
+          "unparsed": 0.0
+        },
+        "model": "base",
+        "max_pixels": 774400,
+        "max_new_tokens": 64
+      },
+      "ids": [
+        788,
+        861,
+        82,
+        530,
+        1047,
+        995,
+        829,
+        621,
+        976,
+        733,
+        447,
+        1033,
+        285,
+        577,
+        286,
+        194,
+        513,
+        300,
+        635,
+        202,
+        151,
+        676,
+        966,
+        206,
+        724,
+        889,
+        647,
+        418,
+        1091,
+        906,
+        1067,
+        533,
+        127,
+        28,
+        191,
+        816,
+        2,
+        1010,
+        682,
+        499,
+        666,
+        128,
+        391,
+        454,
+        488,
+        291,
+        917,
+        186,
+        164,
+        655,
+        1040,
+        1002,
+        223,
+        617,
+        596,
+        255,
+        681,
+        416,
+        589,
+        911,
+        187,
+        1099,
+        649,
+        495,
+        594,
+        376,
+        387,
+        382,
+        67,
+        532,
+        975,
+        141,
+        183,
+        266,
+        306,
+        79,
+        1051,
+        919,
+        716,
+        945,
+        849,
+        553,
+        699,
+        400,
+        857,
+        722,
+        537,
+        282,
+        534,
+        831,
+        241,
+        869,
+        220,
+        916,
+        695,
+        603,
+        845,
+        972,
+        429,
+        593,
+        281,
+        461,
+        504,
+        1078,
+        656,
+        717,
+        938,
+        812,
+        365,
+        84,
+        332,
+        627,
+        118,
+        498,
+        601,
+        645,
+        343,
+        865,
+        1084,
+        248,
+        16,
+        749,
+        277,
+        119,
+        1014,
+        225,
+        380,
+        813,
+        174,
+        340,
+        436,
+        835,
+        63,
+        103,
+        801,
+        149,
+        875,
+        714,
+        224,
+        46,
+        836,
+        587,
+        1037,
+        931,
+        547,
+        616,
+        696,
+        75,
+        27,
+        1069,
+        650,
+        193,
+        620,
+        850,
+        1041,
+        122,
+        1016,
+        93,
+        379,
+        853,
+        987,
+        37,
+        947,
+        22,
+        199,
+        189,
+        735,
+        126,
+        490,
+        215,
+        744,
+        819,
+        62,
+        1005,
+        23,
+        557,
+        435,
+        1081,
+        1077,
+        855,
+        1026,
+        71,
+        226,
+        73,
+        662,
+        308,
+        358,
+        446,
+        184,
+        927,
+        515,
+        478,
+        40,
+        610,
+        921,
+        1021,
+        943,
+        204,
+        1022,
+        367,
+        978,
+        481,
+        858,
+        583,
+        173,
+        962,
+        688,
+        208,
+        785,
+        59,
+        807,
+        692,
+        162,
+        982,
+        165,
+        350,
+        542,
+        256,
+        120,
+        611,
+        452,
+        1043,
+        179,
+        13,
+        482,
+        697,
+        419,
+        582,
+        520,
+        318,
+        664,
+        991,
+        397,
+        1015,
+        673,
+        882,
+        157,
+        574,
+        707,
+        12,
+        468,
+        759,
+        80,
+        983,
+        756,
+        960,
+        924,
+        287,
+        138,
+        245,
+        780,
+        493,
+        360,
+        624,
+        294,
+        689,
+        900,
+        604,
+        648,
+        922,
+        135,
+        732,
+        317,
+        867,
+        766,
+        424,
+        1059,
+        1097,
+        1,
+        608,
+        196,
+        715,
+        342,
+        163,
+        946,
+        228,
+        652,
+        458,
+        1088,
+        727,
+        844,
+        581,
+        834,
+        32,
+        411,
+        718,
+        818,
+        428,
+        790,
+        678,
+        726,
+        47,
+        169,
+        456,
+        65,
+        265,
+        814,
+        161,
+        457,
+        540,
+        986,
+        862,
+        618,
+        773,
+        0,
+        39,
+        506,
+        333,
+        319,
+        908,
+        51,
+        425,
+        192,
+        561,
+        841,
+        85,
+        742,
+        133,
+        15,
+        815,
+        694,
+        427,
+        323,
+        3,
+        218,
+        14,
+        734,
+        772,
+        1063,
+        691,
+        541,
+        626,
+        100,
+        195,
+        121,
+        622,
+        1008,
+        203,
+        309,
+        1085,
+        705,
+        1052,
+        102,
+        487,
+        406,
+        642,
+        83,
+        936,
+        999,
+        463,
+        939,
+        262,
+        136,
+        669,
+        1068,
+        833,
+        660,
+        355,
+        117,
+        158,
+        1087,
+        19,
+        43,
+        41,
+        210,
+        874,
+        804,
+        571,
+        322,
+        375,
+        1048,
+        737,
+        803,
+        764,
+        671,
+        793,
+        659,
+        469,
+        1050,
+        445,
+        381,
+        550,
+        182,
+        212,
+        384,
+        985,
+        298,
+        9,
+        1028,
+        154,
+        977,
+        341,
+        345,
+        1034,
+        95,
+        346,
+        840,
+        36,
+        42,
+        276,
+        167,
+        153,
+        597,
+        296,
+        369,
+        404,
+        786,
+        132,
+        1082,
+        741,
+        489,
+        825,
+        49,
+        315,
+        1027,
+        535,
+        72,
+        761,
+        412,
+        336,
+        1025,
+        817,
+        111,
+        101,
+        798,
+        492,
+        485,
+        1098,
+        351,
+        950,
+        956,
+        899,
+        509,
+        969,
+        38,
+        1061,
+        856,
+        159,
+        170,
+        641,
+        578,
+        828,
+        654,
+        89,
+        1031,
+        86,
+        1080,
+        1053,
+        910,
+        394,
+        8,
+        767,
+        403,
+        569,
+        531,
+        953,
+        459,
+        500,
+        598,
+        222,
+        433,
+        784,
+        377,
+        974,
+        267,
+        599,
+        661,
+        441,
+        1093,
+        843,
+        690,
+        805,
+        1066,
+        538,
+        462,
+        1076,
+        765,
+        667,
+        407,
+        748,
+        904,
+        728,
+        221,
+        964,
+        107,
+        653,
+        1029,
+        821,
+        370,
+        559,
+        710,
+        615,
+        1060,
+        1079,
+        1086,
+        415,
+        639,
+        745,
+        507,
+        330,
+        510,
+        634,
+        846,
+        555,
+        961,
+        712,
+        348,
+        325,
+        329,
+        702,
+        1013,
+        606,
+        263,
+        915,
+        388,
+        301,
+        898,
+        721,
+        657,
+        528,
+        907,
+        872,
+        230,
+        782,
+        736,
+        307,
+        781,
+        643,
+        338,
+        1023,
+        152,
+        471,
+        973,
+        517,
+        1057,
+        883,
+        514,
+        34,
+        92,
+        1096,
+        78,
+        929,
+        211,
+        644,
+        548,
+        778,
+        848,
+        959,
+        239,
+        20,
+        795,
+        758,
+        763,
+        519,
+        260,
+        970,
+        723,
+        505,
+        268,
+        310,
+        417,
+        393,
+        392,
+        967,
+        1017,
+        130,
+        244,
+        293,
+        827,
+        56,
+        590,
+        674,
+        554,
+        144,
+        503,
+        753,
+        155,
+        361,
+        421,
+        529,
+        477,
+        395,
+        613,
+        48,
+        905,
+        963,
+        523,
+        820,
+        33,
+        679,
+        316,
+        543,
+        731,
+        885,
+        53,
+        913,
+        751,
+        989,
+        177,
+        99,
+        631,
+        401,
+        552,
+        398,
+        251,
+        560,
+        451,
+        30,
+        312,
+        997,
+        551,
+        314,
+        777,
+        811,
+        172,
+        792,
+        536,
+        349,
+        868,
+        870,
+        588,
+        1073,
+        434,
+        628,
+        466,
+        198,
+        409,
+        150,
+        566,
+        719,
+        912,
+        1000,
+        414,
+        651,
+        1090,
+        440,
+        402,
+        96,
+        738,
+        903,
+        200,
+        227,
+        190,
+        612,
+        97,
+        233,
+        994,
+        779,
+        920,
+        665,
+        752,
+        512,
+        980,
+        1011,
+        876,
+        901,
+        708,
+        1054,
+        292,
+        110,
+        629,
+        808,
+        497,
+        873,
+        321,
+        399,
+        257,
+        357,
+        769,
+        930,
+        259,
+        156,
+        58,
+        74,
+        775,
+        289,
+        216,
+        797,
+        564,
+        619,
+        1064,
+        50,
+        420,
+        396,
+        1024,
+        730,
+        573,
+        405,
+        824,
+        1007,
+        725,
+        213,
+        413,
+        254,
+        166,
+        926,
+        129,
+        579,
+        180,
+        871,
+        475,
+        685,
+        354,
+        1092,
+        176,
+        178,
+        91,
+        5,
+        668,
+        1039,
+        460,
+        305,
+        1006,
+        106,
+        1062,
+        104,
+        337,
+        344,
+        374,
+        483,
+        776,
+        472,
+        188,
+        353,
+        860,
+        955,
+        1071,
+        683,
+        897,
+        232,
+        57,
+        602,
+        518,
+        362,
+        888,
+        66,
+        774,
+        386,
+        185,
+        171,
+        242,
+        954,
+        479,
+        283,
+        592,
+        684,
+        94,
+        303,
+        575,
+        52,
+        273,
+        297,
+        863,
+        866,
+        787,
+        952,
+        64,
+        114,
+        802,
+        545,
+        124,
+        623,
+        706,
+        746,
+        965,
+        214,
+        925,
+        508,
+        675,
+        10,
+        201,
+        794,
+        993,
+        502,
+        430,
+        698,
+        525,
+        408,
+        372,
+        302,
+        423,
+        646,
+        181,
+        422,
+        670,
+        822,
+        934,
+        270,
+        29,
+        672,
+        209,
+        4,
+        894,
+        570,
+        636,
+        658,
+        335,
+        378,
+        1009,
+        854,
+        383,
+        55,
+        711,
+        879,
+        739,
+        1070,
+        1019,
+        902,
+        299,
+        783,
+        1046,
+        1094,
+        932,
+        880,
+        971,
+        703,
+        923,
+        837,
+        236,
+        44,
+        247,
+        304,
+        320,
+        549,
+        229,
+        1018,
+        941,
+        677,
+        480,
+        527,
+        609,
+        842,
+        217,
+        584,
+        438,
+        755,
+        565,
+        207,
+        143,
+        11,
+        61,
+        851,
+        448,
+        700,
+        131,
+        996,
+        134,
+        1055,
+        148,
+        1012,
+        264,
+        113,
+        26,
+        1065,
+        663,
+        90,
+        356,
+        1095,
+        948,
+        886,
+        760,
+        1072,
+        271,
+        21,
+        1035,
+        18,
+        614,
+        326,
+        1003,
+        747,
+        87,
+        580,
+        839,
+        410,
+        567,
+        968,
+        473,
+        17,
+        366,
+        823,
+        426,
+        243,
+        576,
+        562,
+        146,
+        284,
+        160,
+        521,
+        605,
+        279,
+        105,
+        887,
+        139,
+        909,
+        313,
+        935,
+        591,
+        918,
+        219,
+        1089,
+        371,
+        145,
+        331,
+        35,
+        750,
+        31,
+        949,
+        1030,
+        455,
+        757,
+        432,
+        373,
+        607,
+        261,
+        847,
+        76,
+        368,
+        443,
+        838,
+        810,
+        713,
+        944,
+        125,
+        1058,
+        81,
+        852,
+        878,
+        1042,
+        572,
+        1049,
+        389,
+        295,
+        720,
+        586,
+        877,
+        6,
+        496,
+        881,
+        891,
+        771,
+        253,
+        640,
+        1004,
+        249,
+        385,
+        693,
+        600,
+        311,
+        864,
+        69,
+        762,
+        491,
+        1074,
+        290,
+        806,
+        516,
+        933,
+        272,
+        439,
+        990,
+        98,
+        809,
+        140,
+        830,
+        142,
+        327,
+        984,
+        895,
+        704,
+        511,
+        539,
+        465,
+        522,
+        280,
+        992,
+        687,
+        54,
+        796,
+        546,
+        339,
+        942,
+        988,
+        501,
+        25,
+        494,
+        1045,
+        1032,
+        826,
+        743,
+        892,
+        914,
+        237,
+        175,
+        324,
+        484,
+        770,
+        7,
+        632,
+        940,
+        729
+      ],
+      "full_raw_preserved": true
+    },
+    "ft": {
+      "exit": 0,
+      "stdout": "mmstar 1 / 1\nmmlu 64 / 1000\nmmlu 128 / 1000\nmmlu 192 / 1000\nmmlu 256 / 1000\nmmlu 320 / 1000\nmmlu 384 / 1000\nmmlu 448 / 1000\nmmlu 512 / 1000\nmmlu 576 / 1000\nmmlu 640 / 1000\nmmlu 704 / 1000\nmmlu 768 / 1000\nmmlu 832 / 1000\nmmlu 896 / 1000\nmmlu 960 / 1000\nmmlu 1000 / 1000\nGENERAL {\"mmstar\": {\"n\": 1, \"acc\": 1.0, \"unparsed\": 0.0}, \"mmlu\": {\"n\": 1000, \"acc\": 1.0, \"unparsed\": 0.0}, \"model\": \"ft\", \"max_pixels\": 774400, \"max_new_tokens\": 64}\n",
+      "events": [
+        {
+          "processor_load": [
+            "ft"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "ft"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 64
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 40
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        }
+      ],
+      "jsonl_exists": true,
+      "summary": {
+        "mmstar": {
+          "n": 1,
+          "acc": 1.0,
+          "unparsed": 0.0
+        },
+        "mmlu": {
+          "n": 1000,
+          "acc": 1.0,
+          "unparsed": 0.0
+        },
+        "model": "ft",
+        "max_pixels": 774400,
+        "max_new_tokens": 64
+      },
+      "ids": [
+        788,
+        861,
+        82,
+        530,
+        1047,
+        995,
+        829,
+        621,
+        976,
+        733,
+        447,
+        1033,
+        285,
+        577,
+        286,
+        194,
+        513,
+        300,
+        635,
+        202,
+        151,
+        676,
+        966,
+        206,
+        724,
+        889,
+        647,
+        418,
+        1091,
+        906,
+        1067,
+        533,
+        127,
+        28,
+        191,
+        816,
+        2,
+        1010,
+        682,
+        499,
+        666,
+        128,
+        391,
+        454,
+        488,
+        291,
+        917,
+        186,
+        164,
+        655,
+        1040,
+        1002,
+        223,
+        617,
+        596,
+        255,
+        681,
+        416,
+        589,
+        911,
+        187,
+        1099,
+        649,
+        495,
+        594,
+        376,
+        387,
+        382,
+        67,
+        532,
+        975,
+        141,
+        183,
+        266,
+        306,
+        79,
+        1051,
+        919,
+        716,
+        945,
+        849,
+        553,
+        699,
+        400,
+        857,
+        722,
+        537,
+        282,
+        534,
+        831,
+        241,
+        869,
+        220,
+        916,
+        695,
+        603,
+        845,
+        972,
+        429,
+        593,
+        281,
+        461,
+        504,
+        1078,
+        656,
+        717,
+        938,
+        812,
+        365,
+        84,
+        332,
+        627,
+        118,
+        498,
+        601,
+        645,
+        343,
+        865,
+        1084,
+        248,
+        16,
+        749,
+        277,
+        119,
+        1014,
+        225,
+        380,
+        813,
+        174,
+        340,
+        436,
+        835,
+        63,
+        103,
+        801,
+        149,
+        875,
+        714,
+        224,
+        46,
+        836,
+        587,
+        1037,
+        931,
+        547,
+        616,
+        696,
+        75,
+        27,
+        1069,
+        650,
+        193,
+        620,
+        850,
+        1041,
+        122,
+        1016,
+        93,
+        379,
+        853,
+        987,
+        37,
+        947,
+        22,
+        199,
+        189,
+        735,
+        126,
+        490,
+        215,
+        744,
+        819,
+        62,
+        1005,
+        23,
+        557,
+        435,
+        1081,
+        1077,
+        855,
+        1026,
+        71,
+        226,
+        73,
+        662,
+        308,
+        358,
+        446,
+        184,
+        927,
+        515,
+        478,
+        40,
+        610,
+        921,
+        1021,
+        943,
+        204,
+        1022,
+        367,
+        978,
+        481,
+        858,
+        583,
+        173,
+        962,
+        688,
+        208,
+        785,
+        59,
+        807,
+        692,
+        162,
+        982,
+        165,
+        350,
+        542,
+        256,
+        120,
+        611,
+        452,
+        1043,
+        179,
+        13,
+        482,
+        697,
+        419,
+        582,
+        520,
+        318,
+        664,
+        991,
+        397,
+        1015,
+        673,
+        882,
+        157,
+        574,
+        707,
+        12,
+        468,
+        759,
+        80,
+        983,
+        756,
+        960,
+        924,
+        287,
+        138,
+        245,
+        780,
+        493,
+        360,
+        624,
+        294,
+        689,
+        900,
+        604,
+        648,
+        922,
+        135,
+        732,
+        317,
+        867,
+        766,
+        424,
+        1059,
+        1097,
+        1,
+        608,
+        196,
+        715,
+        342,
+        163,
+        946,
+        228,
+        652,
+        458,
+        1088,
+        727,
+        844,
+        581,
+        834,
+        32,
+        411,
+        718,
+        818,
+        428,
+        790,
+        678,
+        726,
+        47,
+        169,
+        456,
+        65,
+        265,
+        814,
+        161,
+        457,
+        540,
+        986,
+        862,
+        618,
+        773,
+        0,
+        39,
+        506,
+        333,
+        319,
+        908,
+        51,
+        425,
+        192,
+        561,
+        841,
+        85,
+        742,
+        133,
+        15,
+        815,
+        694,
+        427,
+        323,
+        3,
+        218,
+        14,
+        734,
+        772,
+        1063,
+        691,
+        541,
+        626,
+        100,
+        195,
+        121,
+        622,
+        1008,
+        203,
+        309,
+        1085,
+        705,
+        1052,
+        102,
+        487,
+        406,
+        642,
+        83,
+        936,
+        999,
+        463,
+        939,
+        262,
+        136,
+        669,
+        1068,
+        833,
+        660,
+        355,
+        117,
+        158,
+        1087,
+        19,
+        43,
+        41,
+        210,
+        874,
+        804,
+        571,
+        322,
+        375,
+        1048,
+        737,
+        803,
+        764,
+        671,
+        793,
+        659,
+        469,
+        1050,
+        445,
+        381,
+        550,
+        182,
+        212,
+        384,
+        985,
+        298,
+        9,
+        1028,
+        154,
+        977,
+        341,
+        345,
+        1034,
+        95,
+        346,
+        840,
+        36,
+        42,
+        276,
+        167,
+        153,
+        597,
+        296,
+        369,
+        404,
+        786,
+        132,
+        1082,
+        741,
+        489,
+        825,
+        49,
+        315,
+        1027,
+        535,
+        72,
+        761,
+        412,
+        336,
+        1025,
+        817,
+        111,
+        101,
+        798,
+        492,
+        485,
+        1098,
+        351,
+        950,
+        956,
+        899,
+        509,
+        969,
+        38,
+        1061,
+        856,
+        159,
+        170,
+        641,
+        578,
+        828,
+        654,
+        89,
+        1031,
+        86,
+        1080,
+        1053,
+        910,
+        394,
+        8,
+        767,
+        403,
+        569,
+        531,
+        953,
+        459,
+        500,
+        598,
+        222,
+        433,
+        784,
+        377,
+        974,
+        267,
+        599,
+        661,
+        441,
+        1093,
+        843,
+        690,
+        805,
+        1066,
+        538,
+        462,
+        1076,
+        765,
+        667,
+        407,
+        748,
+        904,
+        728,
+        221,
+        964,
+        107,
+        653,
+        1029,
+        821,
+        370,
+        559,
+        710,
+        615,
+        1060,
+        1079,
+        1086,
+        415,
+        639,
+        745,
+        507,
+        330,
+        510,
+        634,
+        846,
+        555,
+        961,
+        712,
+        348,
+        325,
+        329,
+        702,
+        1013,
+        606,
+        263,
+        915,
+        388,
+        301,
+        898,
+        721,
+        657,
+        528,
+        907,
+        872,
+        230,
+        782,
+        736,
+        307,
+        781,
+        643,
+        338,
+        1023,
+        152,
+        471,
+        973,
+        517,
+        1057,
+        883,
+        514,
+        34,
+        92,
+        1096,
+        78,
+        929,
+        211,
+        644,
+        548,
+        778,
+        848,
+        959,
+        239,
+        20,
+        795,
+        758,
+        763,
+        519,
+        260,
+        970,
+        723,
+        505,
+        268,
+        310,
+        417,
+        393,
+        392,
+        967,
+        1017,
+        130,
+        244,
+        293,
+        827,
+        56,
+        590,
+        674,
+        554,
+        144,
+        503,
+        753,
+        155,
+        361,
+        421,
+        529,
+        477,
+        395,
+        613,
+        48,
+        905,
+        963,
+        523,
+        820,
+        33,
+        679,
+        316,
+        543,
+        731,
+        885,
+        53,
+        913,
+        751,
+        989,
+        177,
+        99,
+        631,
+        401,
+        552,
+        398,
+        251,
+        560,
+        451,
+        30,
+        312,
+        997,
+        551,
+        314,
+        777,
+        811,
+        172,
+        792,
+        536,
+        349,
+        868,
+        870,
+        588,
+        1073,
+        434,
+        628,
+        466,
+        198,
+        409,
+        150,
+        566,
+        719,
+        912,
+        1000,
+        414,
+        651,
+        1090,
+        440,
+        402,
+        96,
+        738,
+        903,
+        200,
+        227,
+        190,
+        612,
+        97,
+        233,
+        994,
+        779,
+        920,
+        665,
+        752,
+        512,
+        980,
+        1011,
+        876,
+        901,
+        708,
+        1054,
+        292,
+        110,
+        629,
+        808,
+        497,
+        873,
+        321,
+        399,
+        257,
+        357,
+        769,
+        930,
+        259,
+        156,
+        58,
+        74,
+        775,
+        289,
+        216,
+        797,
+        564,
+        619,
+        1064,
+        50,
+        420,
+        396,
+        1024,
+        730,
+        573,
+        405,
+        824,
+        1007,
+        725,
+        213,
+        413,
+        254,
+        166,
+        926,
+        129,
+        579,
+        180,
+        871,
+        475,
+        685,
+        354,
+        1092,
+        176,
+        178,
+        91,
+        5,
+        668,
+        1039,
+        460,
+        305,
+        1006,
+        106,
+        1062,
+        104,
+        337,
+        344,
+        374,
+        483,
+        776,
+        472,
+        188,
+        353,
+        860,
+        955,
+        1071,
+        683,
+        897,
+        232,
+        57,
+        602,
+        518,
+        362,
+        888,
+        66,
+        774,
+        386,
+        185,
+        171,
+        242,
+        954,
+        479,
+        283,
+        592,
+        684,
+        94,
+        303,
+        575,
+        52,
+        273,
+        297,
+        863,
+        866,
+        787,
+        952,
+        64,
+        114,
+        802,
+        545,
+        124,
+        623,
+        706,
+        746,
+        965,
+        214,
+        925,
+        508,
+        675,
+        10,
+        201,
+        794,
+        993,
+        502,
+        430,
+        698,
+        525,
+        408,
+        372,
+        302,
+        423,
+        646,
+        181,
+        422,
+        670,
+        822,
+        934,
+        270,
+        29,
+        672,
+        209,
+        4,
+        894,
+        570,
+        636,
+        658,
+        335,
+        378,
+        1009,
+        854,
+        383,
+        55,
+        711,
+        879,
+        739,
+        1070,
+        1019,
+        902,
+        299,
+        783,
+        1046,
+        1094,
+        932,
+        880,
+        971,
+        703,
+        923,
+        837,
+        236,
+        44,
+        247,
+        304,
+        320,
+        549,
+        229,
+        1018,
+        941,
+        677,
+        480,
+        527,
+        609,
+        842,
+        217,
+        584,
+        438,
+        755,
+        565,
+        207,
+        143,
+        11,
+        61,
+        851,
+        448,
+        700,
+        131,
+        996,
+        134,
+        1055,
+        148,
+        1012,
+        264,
+        113,
+        26,
+        1065,
+        663,
+        90,
+        356,
+        1095,
+        948,
+        886,
+        760,
+        1072,
+        271,
+        21,
+        1035,
+        18,
+        614,
+        326,
+        1003,
+        747,
+        87,
+        580,
+        839,
+        410,
+        567,
+        968,
+        473,
+        17,
+        366,
+        823,
+        426,
+        243,
+        576,
+        562,
+        146,
+        284,
+        160,
+        521,
+        605,
+        279,
+        105,
+        887,
+        139,
+        909,
+        313,
+        935,
+        591,
+        918,
+        219,
+        1089,
+        371,
+        145,
+        331,
+        35,
+        750,
+        31,
+        949,
+        1030,
+        455,
+        757,
+        432,
+        373,
+        607,
+        261,
+        847,
+        76,
+        368,
+        443,
+        838,
+        810,
+        713,
+        944,
+        125,
+        1058,
+        81,
+        852,
+        878,
+        1042,
+        572,
+        1049,
+        389,
+        295,
+        720,
+        586,
+        877,
+        6,
+        496,
+        881,
+        891,
+        771,
+        253,
+        640,
+        1004,
+        249,
+        385,
+        693,
+        600,
+        311,
+        864,
+        69,
+        762,
+        491,
+        1074,
+        290,
+        806,
+        516,
+        933,
+        272,
+        439,
+        990,
+        98,
+        809,
+        140,
+        830,
+        142,
+        327,
+        984,
+        895,
+        704,
+        511,
+        539,
+        465,
+        522,
+        280,
+        992,
+        687,
+        54,
+        796,
+        546,
+        339,
+        942,
+        988,
+        501,
+        25,
+        494,
+        1045,
+        1032,
+        826,
+        743,
+        892,
+        914,
+        237,
+        175,
+        324,
+        484,
+        770,
+        7,
+        632,
+        940,
+        729
+      ],
+      "full_raw_preserved": true
+    },
+    "crash_after_mmstar": {
+      "exit": 1,
+      "error_type": "OSError",
+      "error": "synthetic MMLU unavailable after MMStar",
+      "stdout": "mmstar 1 / 1\n",
+      "events": [
+        {
+          "processor_load": [
+            "crash_after_mmstar"
+          ],
+          "kwargs": {
+            "trust_remote_code": true,
+            "size": {
+              "shortest_edge": 65536,
+              "longest_edge": 774400
+            }
+          }
+        },
+        {
+          "model_load": [
+            "crash_after_mmstar"
+          ],
+          "kwargs": {
+            "dtype": "stub_bfloat16",
+            "trust_remote_code": true
+          }
+        },
+        {
+          "processor_call": {
+            "add_generation_prompt": true,
+            "tokenize": true,
+            "return_dict": true,
+            "return_tensors": "pt",
+            "padding": true,
+            "processor_kwargs": {
+              "padding": true
+            },
+            "enable_thinking": false
+          },
+          "batch": 1
+        },
+        {
+          "generate": {
+            "max_new_tokens": 64,
+            "do_sample": false
+          }
+        },
+        {
+          "decode": {
+            "skip_special_tokens": true
+          }
+        }
+      ],
+      "jsonl_exists": false
+    }
+  },
+  "mmlu_wilson_500_of_1000": [
+    0.4690696003681042,
+    0.5309303996318958
+  ]
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/eval/androidcontrol/score.py", line 180, in <module>
+    main()
+    ~~~~^^
+  File "/Users/alpha/lfm3-android/eval/androidcontrol/score.py", line 153, in main
+    block = {"overall": score_rows(mrows), "overall_strict_parse": score_rows(mrows, strict=True)}
+                        ~~~~~~~~~~^^^^^^^
+  File "/Users/alpha/lfm3-android/eval/androidcontrol/score.py", line 84, in score_rows
+    pred = af.parse_action(r["output"], strict=strict)
+  File "/Users/alpha/lfm3-android/train/agent_format.py", line 164, in parse_action
+    if a.get("direction") not in _DIRECTIONS:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot use 'list' as a set element (unhashable type: 'list')

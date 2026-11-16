@@ -1,0 +1,604 @@
+{
+  "artifact_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0",
+  "scope": "CPU local stubs and existing pinned-source references; no network",
+  "templates": {
+    "cases": [
+      {
+        "template": "lfm3",
+        "kind": "agent",
+        "thinking": null,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": "\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "agent",
+        "thinking": false,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": "at is the next action?<|im_end|>\n<|im_start|>assistant\n<think></think>",
+        "training_starts_with_prompt": false
+      },
+      {
+        "template": "lfm3",
+        "kind": "agent",
+        "thinking": true,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": "\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "replay_no_system",
+        "thinking": null,
+        "generation_span": "<think></think>Blue.<|im_end|>\n",
+        "prompt_suffix": "end|>What color is the object?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "replay_no_system",
+        "thinking": false,
+        "generation_span": "<think></think>Blue.<|im_end|>\n",
+        "prompt_suffix": "t color is the object?<|im_end|>\n<|im_start|>assistant\n<think></think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "replay_no_system",
+        "thinking": true,
+        "generation_span": "<think></think>Blue.<|im_end|>\n",
+        "prompt_suffix": "end|>What color is the object?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "agent",
+        "thinking": null,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "agent",
+        "thinking": false,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "agent",
+        "thinking": true,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "replay_no_system",
+        "thinking": null,
+        "generation_span": "Blue.<|im_end|>\n",
+        "prompt_suffix": "user\n<image>What color is the object?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "replay_no_system",
+        "thinking": false,
+        "generation_span": "Blue.<|im_end|>\n",
+        "prompt_suffix": "user\n<image>What color is the object?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "replay_no_system",
+        "thinking": true,
+        "generation_span": "Blue.<|im_end|>\n",
+        "prompt_suffix": "user\n<image>What color is the object?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "agent",
+        "thinking": null,
+        "generation_span": "<think>\nTap Settings.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>",
+        "prompt_suffix": "s the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": false
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "agent",
+        "thinking": false,
+        "generation_span": "<think>\nTap Settings.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>",
+        "prompt_suffix": "s the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": false
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "agent",
+        "thinking": true,
+        "generation_span": "<think>\nTap Settings.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>",
+        "prompt_suffix": "None\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "replay_no_system",
+        "thinking": null,
+        "generation_span": "<think>\n\n</think>\n\nBlue.<|im_end|>",
+        "prompt_suffix": "lor is the object?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "replay_no_system",
+        "thinking": false,
+        "generation_span": "<think>\n\n</think>\n\nBlue.<|im_end|>",
+        "prompt_suffix": "lor is the object?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "replay_no_system",
+        "thinking": true,
+        "generation_span": "<think>\n\n</think>\n\nBlue.<|im_end|>",
+        "prompt_suffix": "nd|>What color is the object?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+        "training_starts_with_prompt": true
+      }
+    ],
+    "patch_roundtrip": true,
+    "lfm3_matches_prior_served_template_ignoring_indentation": true
+  },
+  "lora": {
+    "classes_from_pinned_source": {
+      "Qwen3_5GatedDeltaNet": [
+        "out_proj",
+        "in_proj_qkv",
+        "in_proj_z",
+        "in_proj_b",
+        "in_proj_a"
+      ],
+      "Qwen3_5Attention": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ],
+      "Qwen3_5MLP": [
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "Qwen3_5VisionMLP": [
+        "linear_fc1",
+        "linear_fc2"
+      ],
+      "Qwen3_5VisionPatchMerger": [
+        "linear_fc1",
+        "linear_fc2"
+      ],
+      "Qwen3_5VisionAttention": [
+        "qkv",
+        "proj"
+      ],
+      "Qwen3_5ForCausalLM": [
+        "lm_head"
+      ],
+      "Qwen3_5ForConditionalGeneration": [
+        "lm_head"
+      ]
+    },
+    "jobs": {
+      "qwen35_2b_l4": {
+        "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+        "matched": 186,
+        "total_lm_linear": 186,
+        "missing": [],
+        "vision_matches": []
+      },
+      "qwen35_08b_l4": {
+        "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+        "matched": 186,
+        "total_lm_linear": 186,
+        "missing": [],
+        "vision_matches": []
+      }
+    }
+  },
+  "resize": [
+    {
+      "input_hw": [
+        2400,
+        1080
+      ],
+      "ac_both_and_ft_general_hw": [
+        1280,
+        576
+      ],
+      "tokens": 720,
+      "qwen_base_general_hw": [
+        2400,
+        1088
+      ],
+      "base_tokens": 2550
+    },
+    {
+      "input_hw": [
+        1280,
+        576
+      ],
+      "ac_both_and_ft_general_hw": [
+        1280,
+        576
+      ],
+      "tokens": 720,
+      "qwen_base_general_hw": [
+        1280,
+        576
+      ],
+      "base_tokens": 720
+    },
+    {
+      "input_hw": [
+        1024,
+        2048
+      ],
+      "ac_both_and_ft_general_hw": [
+        608,
+        1216
+      ],
+      "tokens": 722,
+      "qwen_base_general_hw": [
+        1024,
+        2048
+      ],
+      "base_tokens": 2048
+    },
+    {
+      "input_hw": [
+        512,
+        512
+      ],
+      "ac_both_and_ft_general_hw": [
+        512,
+        512
+      ],
+      "tokens": 256,
+      "qwen_base_general_hw": [
+        512,
+        512
+      ],
+      "base_tokens": 256
+    }
+  ],
+  "replay_schema": {
+    "identical_builder_declarations": true,
+    "schema": {
+      "images": [
+        "Sequence",
+        [
+          [
+            "DImage",
+            [],
+            {}
+          ]
+        ],
+        {}
+      ],
+      "messages": [
+        {
+          "role": [
+            "Value",
+            [
+              "string"
+            ],
+            {}
+          ],
+          "content": [
+            "Value",
+            [
+              "string"
+            ],
+            {}
+          ],
+          "reasoning_content": [
+            "Value",
+            [
+              "string"
+            ],
+            {}
+          ]
+        }
+      ]
+    },
+    "actual_arrow_cast_executed": false
+  },
+  "parser": [
+    {
+      "input": "{\"action_type\":\"click\",\"point_2d\":[true,5.5]}",
+      "lenient": {
+        "action_type": "click",
+        "point_2d": [
+          1.0,
+          5.5
+        ]
+      },
+      "strict": null,
+      "aw_history_serialization": "{\"action_type\":\"click\",\"point_2d\":[1,5]}"
+    },
+    {
+      "input": "{\"action_type\":\"wait\",\"action_type\":\"navigate_back\"}",
+      "lenient": {
+        "action_type": "navigate_back"
+      },
+      "strict": null,
+      "aw_history_serialization": "{\"action_type\":\"navigate_back\"}"
+    },
+    {
+      "input": "{\"action_type\":\"click\",\"point_2d\":[NaN,20]}",
+      "lenient": null,
+      "strict": null,
+      "aw_history_serialization": null
+    },
+    {
+      "input": "{\"action_type\":\"click\",\"point_2d\":[Infinity,20]}",
+      "lenient": null,
+      "strict": null,
+      "aw_history_serialization": null
+    },
+    {
+      "input": "{\"action_type\":\"status\"}",
+      "lenient": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "strict": null,
+      "aw_history_serialization": "{\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+    },
+    {
+      "input": "{\"action_type\":\"status\",\"goal_status\":\"banana\"}",
+      "lenient": null,
+      "strict": null,
+      "aw_history_serialization": null
+    }
+  ],
+  "aw_summaries": {
+    "exception_success": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_exception_success",
+        "n_episodes": 1,
+        "expected_episodes": 116,
+        "missing_episodes_counted_as_fail": 115,
+        "success_rate": 0.008620689655172414,
+        "success_rate_over_completed": 1.0,
+        "n_teardown_exceptions": 0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 1,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "aux_teardown_success": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_aux_teardown_success",
+        "n_episodes": 1,
+        "expected_episodes": 116,
+        "missing_episodes_counted_as_fail": 115,
+        "success_rate": 0.008620689655172414,
+        "success_rate_over_completed": 1.0,
+        "n_teardown_exceptions": 1,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "nan_failure": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_nan_failure",
+        "n_episodes": 1,
+        "expected_episodes": 116,
+        "missing_episodes_counted_as_fail": 115,
+        "success_rate": 0.0,
+        "success_rate_over_completed": 0.0,
+        "n_teardown_exceptions": 0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 0.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 1,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": NaN,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 0,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": true
+    },
+    "list_truncation": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_list_truncation",
+        "n_episodes": 1,
+        "expected_episodes": 116,
+        "missing_episodes_counted_as_fail": 115,
+        "success_rate": 0.008620689655172414,
+        "success_rate_over_completed": 1.0,
+        "n_teardown_exceptions": 0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "legacy_no_attempts": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_legacy_no_attempts",
+        "n_episodes": 1,
+        "expected_episodes": 116,
+        "missing_episodes_counted_as_fail": 115,
+        "success_rate": 0.008620689655172414,
+        "success_rate_over_completed": 1.0,
+        "n_teardown_exceptions": 0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "two_attempts": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_two_attempts",
+        "n_episodes": 1,
+        "expected_episodes": 116,
+        "missing_episodes_counted_as_fail": 115,
+        "success_rate": 0.008620689655172414,
+        "success_rate_over_completed": 1.0,
+        "n_teardown_exceptions": 0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": {
+          "mean": 3.0,
+          "p50": 3.0,
+          "p90": 3.0
+        },
+        "prompt_tokens_mean": 100,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 2
+      },
+      "contains_NaN": false
+    }
+  },
+  "patched_teardown": {
+    "is_successful": 1.0,
+    "exception_info": null,
+    "aux_data": {
+      "teardown_exception": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 289, in _run_task\n    task.tear_down(env)\n    ~~~~~~~~~~~~~~^^^^^\n  File \"/Users/alpha/lfm3-android/results/codex/pass2/reproduce.py\", line 327, in tear_down\n    def tear_down(self, env): raise RuntimeError(\"cannot clean\")\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: cannot clean\n"
+    }
+  },
+  "cleanup_error_status_empty_stdout": {
+    "returned_normally": true,
+    "requests": [
+      [
+        "shell",
+        "ls",
+        "-1",
+        "/synthetic"
+      ],
+      [
+        "shell",
+        "rm",
+        "-rf",
+        "/synthetic/*"
+      ],
+      [
+        "shell",
+        "ls",
+        "-1",
+        "/synthetic"
+      ]
+    ]
+  },
+  "legacy_qwen_generate_cli": {
+    "exit": 2,
+    "error": "2",
+    "stdout": "usage: generate.py [-h] --model MODEL --data DATA --out OUT [--limit LIMIT]\n                   [--bs BS] [--max_new_tokens MAX_NEW_TOKENS]\n                   [--enable_thinking ENABLE_THINKING]\n                   [--max_pixels MAX_PIXELS] [--min_pixels MIN_PIXELS]\n                   [--filter_mode FILTER_MODE]\n                   [--subsample_episodes SUBSAMPLE_EPISODES]\ngenerate.py: error: unrecognized arguments: --chat_template_path /content/work/qwen35_chat_template_gen.jinja --target_regex .*language_model.*.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_projw*|out_proj)\n",
+    "events": [],
+    "manifest": null,
+    "rows": []
+  },
+  "upload_size_boundary": {
+    "file_sizes": {
+      "/content/eval/current.metrics.json": 100,
+      "/content/eval/current.jsonl": 500000000,
+      "/content/eval/unrelated.jsonl": 499999999
+    },
+    "uploads": [
+      {
+        "path_or_fileobj": "/content/eval/current.metrics.json",
+        "path_in_repo": "eval/current.metrics.json",
+        "repo_id": "synthetic/final"
+      },
+      {
+        "path_or_fileobj": "/content/eval/unrelated.jsonl",
+        "path_in_repo": "eval/unrelated.jsonl",
+        "repo_id": "synthetic/final"
+      }
+    ]
+  }
+}

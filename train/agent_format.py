@@ -161,7 +161,7 @@ def parse_action(text: str, strict: bool = False) -> dict[str, Any] | None:
             return None
         a["point_2d"] = [min(max(p[0], 0), 1000), min(max(p[1], 0), 1000)]
     elif t == "scroll":
-        if a.get("direction") not in _DIRECTIONS:
+        if not isinstance(a.get("direction"), str) or a.get("direction") not in _DIRECTIONS:
             return None
     elif t in ("input_text", "answer"):
         if not isinstance(a.get("text"), str):
@@ -174,6 +174,8 @@ def parse_action(text: str, strict: bool = False) -> dict[str, Any] | None:
             a["app_name"] = alt  # lenient: base model sometimes puts the app in "label"
     elif t == "status":
         gs = a.get("goal_status")
+        if gs is not None and not isinstance(gs, str):
+            return None
         if gs is None:
             a["goal_status"] = "complete"  # lenient: omitted status means done
         elif gs not in ("complete", "infeasible"):
@@ -227,9 +229,9 @@ def _validate_strict(a):
     elif t in ("input_text", "answer", "open_app"):
         if not isinstance(a[next(iter(allowed[t]))], str):
             return None
-    elif t == "scroll" and a["direction"] not in _DIRECTIONS:
+    elif t == "scroll" and (not isinstance(a["direction"], str) or a["direction"] not in _DIRECTIONS):
         return None
-    elif t == "status" and a["goal_status"] not in ("complete", "infeasible"):
+    elif t == "status" and (not isinstance(a["goal_status"], str) or a["goal_status"] not in ("complete", "infeasible")):
         return None
     return a
 

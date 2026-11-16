@@ -1,0 +1,42 @@
+{
+ "summary": {
+  "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/regressions_naszv_j0/aw_legacy_no_attempts",
+  "n_episodes": 1,
+  "expected_episodes": 116,
+  "missing_episodes_counted_as_fail": 115,
+  "success_rate": 0.008620689655172414,
+  "success_rate_over_completed": 1.0,
+  "n_teardown_exceptions": 0,
+  "success_rate_by_difficulty": {
+   "easy": {
+    "n": 1,
+    "sr": 1.0
+   }
+  },
+  "n_exceptions_counted_as_fail": 0,
+  "frac_episodes_self_terminated": 0.0,
+  "mean_steps": 1,
+  "model_latency_s": null,
+  "prompt_tokens_mean": null,
+  "parse_failure_rate": 0.0,
+  "n_steps_total": 1,
+  "first_attempt_strict_valid_rate": 0.0,
+  "first_attempt_lenient_valid_rate": 0.0,
+  "n_model_calls_incl_retries": 0
+ },
+ "episodes": [
+  {
+   "task": "BrowserDraw",
+   "file": "BrowserDraw_0.pkl.gz",
+   "success": 1.0,
+   "exception": false,
+   "steps": 1,
+   "runtime_s": 1.0,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  }
+ ]
+}

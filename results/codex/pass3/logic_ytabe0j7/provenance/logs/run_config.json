@@ -1,0 +1,24 @@
+{
+  "out": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/provenance",
+  "model_id": "synthetic/model",
+  "train": [
+    "synthetic/data@train"
+  ],
+  "val": "synthetic/data@val",
+  "replay": [
+    "synthetic/replay"
+  ],
+  "provenance": {
+    "model_sha": "model-A",
+    "dataset_sha:synthetic/data@train": "dataset-A",
+    "dataset_sha:synthetic/data@val": "dataset-A",
+    "versions": {
+      "torch": "stub-1.0",
+      "transformers": "stub-1.0",
+      "trl": "stub-1.0",
+      "peft": "stub-1.0",
+      "datasets": "stub-1.0",
+      "accelerate": "stub-1.0"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+"""Run ON the Colab VM via `colab exec -f` (with a large --timeout).
+
+Colab only keeps a VM alive while its Jupyter kernel is busy, so long jobs must run
+INSIDE a kernel cell: this script launches the job scripts listed in
+/content/work/jobs.json as subprocesses (logs to files) and blocks until all exit,
+printing a heartbeat every 60 s. Monitor from outside with `colab download` of the logs.
+
+jobs.json: [{"name": "train", "script": "/content/work/vm_train.sh", "env": {...}, "log": "/content/runs/x.log"}, ...]
+"""
+import json
+import os
+import subprocess
+import time
+
+jobs = json.load(open("/content/work/jobs.json"))
+procs = []
+for j in jobs:
+    env = dict(os.environ, **{k: str(v) for k, v in j.get("env", {}).items()})
+    os.makedirs(os.path.dirname(j["log"]), exist_ok=True)
+    p = subprocess.Popen(["bash", j["script"]], cwd="/content/work", env=env,
+                         stdout=open(j["log"], "a"), stderr=subprocess.STDOUT)
+    procs.append((j["name"], p))
+    print(f"started {j['name']} pid={p.pid}", flush=True)
+    time.sleep(j.get("stagger_s", 0))
+
+t0 = time.time()
+while True:
+    alive = [(n, p) for n, p in procs if p.poll() is None]
+    status = {n: ("running" if p.poll() is None else f"exit {p.returncode}") for n, p in procs}
+    with open("/content/work/jobs_status.json", "w") as f:
+        json.dump({"elapsed_s": round(time.time() - t0), "status": status}, f)
+    print(f"[heartbeat {time.strftime('%H:%M:%S')}] {status}", flush=True)
+    if not alive:
+        break
+    for _ in range(6):
+        time.sleep(10)
+        print(".", end="", flush=True)  # keep the exec websocket busy (idle drops seen ~30-40s)
+failed = [n for n, p in procs if p.returncode != 0]
+print("ALL JOBS FINISHED", "FAILED: " + ",".join(failed) if failed else "OK", flush=True)
+if failed:
+    raise SystemExit(1)

@@ -1,0 +1,17 @@
+{"argv": ["download", "-s", "synthetic-session", "/content/work/jobs_status.json", "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/chain_gone_bootstrap_failure/tmp/tmp.MOxi64Eq85"]}
+{"argv": ["new", "-s", "synthetic-session", "--gpu", "L4"]}
+{"argv": ["exec", "-s", "synthetic-session"], "stdin": "import os;[os.makedirs(d,exist_ok=True) for d in (\"/content/work\",\"/content/runs\",\"/content/eval\")];print(\"dirs ok\")\n"}
+{"argv": ["upload", "-s", "synthetic-session", "train/sft_vlm.py", "/content/work/sft_vlm.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "train/agent_format.py", "/content/work/agent_format.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "train/qwen35_chat_template_gen.jinja", "/content/work/qwen35_chat_template_gen.jinja"]}
+{"argv": ["upload", "-s", "synthetic-session", "scripts/vm_train_eval_push.sh", "/content/work/vm_train_eval_push.sh"]}
+{"argv": ["upload", "-s", "synthetic-session", "eval/androidcontrol/generate.py", "/content/work/generate.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "eval/androidcontrol/score.py", "/content/work/score.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "eval/general/eval_general.py", "/content/work/eval_general.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "data/build_general_replay.py", "/content/work/build_general_replay.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "scripts/vm_450m_pipeline.sh", "/content/work/vm_450m_pipeline.sh"]}
+{"argv": ["upload", "-s", "synthetic-session", "scripts/vm_model_pipeline.sh", "/content/work/vm_model_pipeline.sh"]}
+{"argv": ["upload", "-s", "synthetic-session", "scripts/vm_train.sh", "/content/work/vm_train.sh"]}
+{"argv": ["upload", "-s", "synthetic-session", "scripts/colab_bootstrap.py", "/content/work/colab_bootstrap.py"]}
+{"argv": ["upload", "-s", "synthetic-session", "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/chain_gone_bootstrap_failure/token", "/content/.hf_token"]}
+{"argv": ["exec", "-s", "synthetic-session", "--timeout", "900", "-f", "scripts/colab_bootstrap.py"]}

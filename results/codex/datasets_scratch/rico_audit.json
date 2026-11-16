@@ -1,0 +1,112 @@
+{
+  "aw_packages": [
+    "com.meihillman.audiorecorder",
+    "com.motivity.hqaudiorecorder.activities",
+    "dje073.android.audiorecorderlite",
+    "net.osmand",
+    "org.videolan.vlc",
+    "org.videolan.vlc.betav7neon"
+  ],
+  "datasets": {
+    "screenqa_train.json": {
+      "rows": 68951,
+      "images": 28378,
+      "joined_rows": 68951,
+      "aw_rows": 88,
+      "aw_packages": {
+        "com.meihillman.audiorecorder": 1,
+        "dje073.android.audiorecorderlite": 28,
+        "org.videolan.vlc.betav7neon": 20,
+        "com.motivity.hqaudiorecorder.activities": 11,
+        "org.videolan.vlc": 7,
+        "net.osmand": 21
+      },
+      "resolutions": {
+        "(1080, 1920)": 53388,
+        "(540, 960)": 15560,
+        "(1920, 1080)": 3
+      }
+    },
+    "screenqa_short_train.json": {
+      "rows": 68951,
+      "images": 28378,
+      "joined_rows": 68951,
+      "aw_rows": 88,
+      "aw_packages": {
+        "com.meihillman.audiorecorder": 1,
+        "dje073.android.audiorecorderlite": 28,
+        "org.videolan.vlc.betav7neon": 20,
+        "com.motivity.hqaudiorecorder.activities": 11,
+        "org.videolan.vlc": 7,
+        "net.osmand": 21
+      }
+    },
+    "atlas_uibert.json": {
+      "rows": 5682,
+      "images": 5682,
+      "joined_rows": 5682,
+      "aw_rows": 4,
+      "aw_packages": {
+        "com.motivity.hqaudiorecorder.activities": 1,
+        "net.osmand": 1,
+        "org.videolan.vlc": 2
+      },
+      "elements": 16660
+    },
+    "atlas_widget.json": {
+      "rows": 101426,
+      "images": 14409,
+      "joined_rows": 101426,
+      "aw_rows": 140,
+      "aw_packages": {
+        "org.videolan.vlc": 31,
+        "dje073.android.audiorecorderlite": 25,
+        "net.osmand": 19,
+        "org.videolan.vlc.betav7neon": 37,
+        "com.meihillman.audiorecorder": 15,
+        "com.motivity.hqaudiorecorder.activities": 13
+      }
+    },
+    "atlas_ricosca.json": {
+      "rows": 173275,
+      "images": 18148,
+      "joined_rows": 173275,
+      "aw_rows": 231,
+      "aw_packages": {
+        "org.videolan.vlc.betav7neon": 47,
+        "com.motivity.hqaudiorecorder.activities": 79,
+        "net.osmand": 85,
+        "org.videolan.vlc": 17,
+        "com.meihillman.audiorecorder": 3
+      }
+    },
+    "screen2words_summaries.csv": {
+      "rows": 112085,
+      "rico_rows": 112085,
+      "rico_images": 22417,
+      "aw_rows": 150,
+      "aw_packages": {
+        "org.videolan.vlc.betav7neon": 15,
+        "dje073.android.audiorecorderlite": 5,
+        "net.osmand": 65,
+        "com.motivity.hqaudiorecorder.activities": 35,
+        "org.videolan.vlc": 25,
+        "com.meihillman.audiorecorder": 5
+      }
+    },
+    "widget_csv.csv": {
+      "rows": 61285,
+      "rico_rows": 48325,
+      "rico_images": 17435,
+      "aw_rows": 54,
+      "aw_packages": {
+        "com.motivity.hqaudiorecorder.activities": 5,
+        "org.videolan.vlc.betav7neon": 15,
+        "org.videolan.vlc": 11,
+        "net.osmand": 8,
+        "com.meihillman.audiorecorder": 6,
+        "dje073.android.audiorecorderlite": 9
+      }
+    }
+  }
+}

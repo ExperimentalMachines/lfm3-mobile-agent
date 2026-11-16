@@ -96,7 +96,9 @@ fi
 if [ "${MATCHED_NOTHINK:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_ft_nothink_high.jsonl.done ]; then
   log "AndroidControl test FT matched no-think (high-level)"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft_nothink_high.jsonl --enable_thinking 0 \
-    --filter_mode high --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && touch /content/eval/${RUN}_ft_nothink_high.jsonl.done || fail "ft nothink eval"
+    --filter_mode high --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
+    && python score.py /content/eval/${RUN}_ft_nothink_high.jsonl --gt $GT --modes high --out /content/eval/${RUN}_ft_nothink_high.metrics.json > /dev/null \
+    && touch /content/eval/${RUN}_ft_nothink_high.jsonl.done || fail "ft nothink eval"
   push_evals
 fi
 if [ "$FAILED" = 1 ]; then log "PIPELINE FINISHED WITH FAILURES"; exit 1; fi

@@ -52,21 +52,29 @@ model = AutoModelForImageTextToText.from_pretrained(
 
 manifest = {"model": args.model, "data": args.data, "n_rows": len(ds), "enable_thinking": args.enable_thinking,
             "max_pixels": args.max_pixels, "filter_mode": args.filter_mode, "subsample_episodes": args.subsample_episodes,
-            "limit": args.limit, "max_new_tokens": args.max_new_tokens, "do_sample": False}
+            "limit": args.limit, "max_new_tokens": args.max_new_tokens, "do_sample": False, "min_pixels": args.min_pixels}
 import hashlib
 cfg_hash = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16]
 manifest["config_hash"] = cfg_hash
 mpath = args.out + ".manifest.json"
 push_repo = os.environ.get("EVAL_PUSH_REPO")
-if push_repo and not os.path.exists(args.out):  # VM was lost? restore partial predictions from the hub
+if push_repo and not os.path.exists(args.out) and not os.path.exists(mpath):
+    # VM was lost? restore the prediction/manifest PAIR from one hub revision; never one without the other
     try:
-        from huggingface_hub import hf_hub_download
-        for f in (os.path.basename(args.out), os.path.basename(mpath)):
-            p_ = hf_hub_download(push_repo, f"eval/{f}", local_dir="/tmp/_restore")
-            os.replace(p_, os.path.join(os.path.dirname(args.out) or ".", f))
-        print("restored partial predictions from hub", flush=True)
+        from huggingface_hub import HfApi, hf_hub_download
+        rev = HfApi().repo_info(push_repo).sha
+        stage = "/tmp/_restore"
+        got = [hf_hub_download(push_repo, f"eval/{os.path.basename(f)}", revision=rev, local_dir=stage) for f in (mpath, args.out)]
+        if json.load(open(got[0])) == manifest:
+            os.replace(got[0], mpath)
+            os.replace(got[1], args.out)
+            print(f"restored partial predictions from hub @ {rev[:8]}", flush=True)
+        else:
+            print("hub partial has a different manifest; starting fresh", flush=True)
     except Exception as e:
-        print("no hub partial to restore:", type(e).__name__, flush=True)
+        print("no complete hub partial to restore:", type(e).__name__, flush=True)
+if os.path.exists(args.out) and not os.path.exists(mpath):
+    raise SystemExit(f"refusing to reuse {args.out}: predictions exist without a manifest (unknown identity)")
 if os.path.exists(mpath):
     old_m = json.load(open(mpath))
     if old_m != manifest:
@@ -91,6 +99,8 @@ done = set()
 if os.path.exists(args.out):
     for line in open(args.out):
         r = json.loads(line)
+        if r.get("config_hash") != cfg_hash:
+            raise SystemExit(f"refusing to resume {args.out}: row config_hash {r.get('config_hash')} != {cfg_hash}")
         done.add((r["episode_id"], r["step_idx"], r.get("mode", "high")))
 fout = open(args.out, "a")
 
@@ -122,6 +132,11 @@ for b in range(0, len(idx), args.bs):
                              repetition_penalty=1.0)
     gen = out[:, inputs["input_ids"].shape[1]:]
     texts = processor.batch_decode(gen, skip_special_tokens=False)
+    # if the prompt itself opened a think block (template prefill), keep it so an unclosed
+    # thought can never be mistaken for a final action by the parser
+    _tail = processor.tokenizer.decode(inputs["input_ids"][0][-4:], skip_special_tokens=False)
+    if _tail.rstrip().endswith("<think>"):
+        texts = ["<think>" + t for t in texts]
     for r, t in zip(rows, texts):
         t = t.replace(processor.tokenizer.pad_token, "")
         for eos in ("<|im_end|>", "<|endoftext|>"):

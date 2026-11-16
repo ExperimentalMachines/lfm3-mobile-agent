@@ -1,0 +1,2792 @@
+{
+  "artifact_dir": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_",
+  "scope": "Actual Bash/control flow, isolated /content mapping, fake Python/Colab; no upload/GPU",
+  "fixture_adaptations": [
+    "/content remapped inside fixture for VM shell runs",
+    "cosmetic stderr process-substitution filters omitted in chain/launcher/bootstrap copies because sandbox denies /dev/fd"
+  ],
+  "pipelines": {
+    "qwen08_success": {
+      "exit": 0,
+      "stdout": "[22:27:51] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:27:51] qwen35-08b-ac-lora: build replay\n[22:27:52] qwen35-08b-ac-lora: train\n[22:27:52] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:27:52] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:27:52] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:27:52] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:27:53] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:27:53] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen08_success",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "qwen2b_success": {
+      "exit": 0,
+      "stdout": "[22:27:53] qwen35-2b-ac-lora: general eval lfm3vl2b_base\n[22:27:53] qwen35-2b-ac-lora: general eval lfm3vl2b_ft\n[22:27:53] qwen35-2b-ac-lora: general eval BASE\nstub upload OK\n[22:27:53] qwen35-2b-ac-lora: train\n[22:27:53] qwen35-2b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:27:53] qwen35-2b-ac-lora: general eval FT\nstub upload OK\n[22:27:53] qwen35-2b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:27:54] qwen35-2b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:27:54] qwen35-2b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:27:54] qwen35-2b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "LiquidAI/LFM3-VL-2B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/lfm3vl2b_base_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/lfm3vl2b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/lfm3vl2b_ft_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-2B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_base_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-2B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora",
+            "--max_steps",
+            "1250",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "8",
+            "--grad_accum",
+            "4",
+            "--lr",
+            "2e-4",
+            "--lora_r",
+            "64",
+            "--lora_alpha",
+            "128",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-2B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_ft_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-2B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_success",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "general_failed": {
+      "exit": 1,
+      "stdout": "[22:27:54] qwen35-08b-ac-lora: general eval BASE\n[22:27:55] qwen35-08b-ac-lora: STAGE FAILED: general base\nstub upload OK\n[22:27:55] qwen35-08b-ac-lora: build replay\n[22:27:55] qwen35-08b-ac-lora: train\n[22:27:56] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:27:56] qwen35-08b-ac-lora: general eval FT\n[22:27:56] qwen35-08b-ac-lora: STAGE FAILED: general ft\nstub upload OK\n[22:27:56] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:27:57] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:27:57] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:27:57] qwen35-08b-ac-lora: PIPELINE FINISHED WITH FAILURES\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_failed",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "score_failed": {
+      "exit": 1,
+      "stdout": "[22:27:57] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:27:58] qwen35-08b-ac-lora: build replay\n[22:27:58] qwen35-08b-ac-lora: train\n[22:27:58] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:27:58] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:27:58] qwen35-08b-ac-lora: AndroidControl test FT\n[22:27:59] qwen35-08b-ac-lora: STAGE FAILED: ft AC eval\nstub upload OK\n[22:27:59] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\n[22:27:59] qwen35-08b-ac-lora: STAGE FAILED: base AC eval\nstub upload OK\n[22:27:59] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:27:59] qwen35-08b-ac-lora: PIPELINE FINISHED WITH FAILURES\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/score_failed",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "generation_failed": {
+      "exit": 1,
+      "stdout": "[22:28:00] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:01] qwen35-08b-ac-lora: build replay\n[22:28:02] qwen35-08b-ac-lora: train\n[22:28:02] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:02] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:28:02] qwen35-08b-ac-lora: AndroidControl test FT\n[22:28:02] qwen35-08b-ac-lora: STAGE FAILED: ft AC eval\nstub upload OK\n[22:28:03] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\n[22:28:03] qwen35-08b-ac-lora: STAGE FAILED: base AC eval\nstub upload OK\n[22:28:03] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\n[22:28:03] qwen35-08b-ac-lora: STAGE FAILED: ft nothink eval\nstub upload OK\n[22:28:03] qwen35-08b-ac-lora: PIPELINE FINISHED WITH FAILURES\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/generation_failed",
+      "matched_done_exists": false,
+      "matched_metrics_exist": false
+    },
+    "training_failed": {
+      "exit": 1,
+      "stdout": "[22:28:03] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:04] qwen35-08b-ac-lora: build replay\n[22:28:04] qwen35-08b-ac-lora: train\n[22:28:04] qwen35-08b-ac-lora: TRAINING FAILED\nstub upload OK\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/training_failed",
+      "matched_done_exists": false,
+      "matched_metrics_exist": false
+    },
+    "upload_failed": {
+      "exit": 0,
+      "stdout": "[22:28:04] qwen35-08b-ac-lora: general eval BASE\n[22:28:04] qwen35-08b-ac-lora: build replay\n[22:28:04] qwen35-08b-ac-lora: train\n[22:28:05] qwen35-08b-ac-lora: push merged + adapter\n[22:28:05] qwen35-08b-ac-lora: general eval FT\n[22:28:05] qwen35-08b-ac-lora: AndroidControl test FT\n[22:28:05] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\n[22:28:06] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\n[22:28:06] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/upload_failed",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "empty_receipt": {
+      "exit": 0,
+      "stdout": "[22:28:06] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:07] qwen35-08b-ac-lora: build replay\n[22:28:07] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:07] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:28:07] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:28:08] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:28:08] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:08] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/empty_receipt",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "mismatched_receipt": {
+      "exit": 0,
+      "stdout": "[22:28:08] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:10] qwen35-08b-ac-lora: build replay\n[22:28:10] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:11] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:28:11] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:28:12] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:28:12] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:13] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/mismatched_receipt",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "invalid_cached_metrics": {
+      "exit": 0,
+      "stdout": "stub upload OK\n[22:28:13] qwen35-08b-ac-lora: build replay\n[22:28:13] qwen35-08b-ac-lora: train\n[22:28:13] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:14] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:14] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/invalid_cached_metrics",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "replay_hash_stale": {
+      "exit": 0,
+      "stdout": "[22:28:14] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:14] qwen35-08b-ac-lora: build replay\n[22:28:15] qwen35-08b-ac-lora: train\n[22:28:15] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:15] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:28:15] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:28:15] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:28:16] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:17] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_stale",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "replay_hash_current_empty": {
+      "exit": 0,
+      "stdout": "[22:28:17] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:19] qwen35-08b-ac-lora: train\n[22:28:19] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:19] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:28:19] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:28:20] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:28:20] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:20] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/replay_hash_current_empty",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "qwen2b_replacement_vm": {
+      "exit": 1,
+      "stdout": "[22:28:20] qwen35-2b-ac-lora: general eval lfm3vl2b_base\n[22:28:20] qwen35-2b-ac-lora: general eval lfm3vl2b_ft\n[22:28:21] qwen35-2b-ac-lora: STAGE FAILED: general lfm3vl2b_ft\n[22:28:21] qwen35-2b-ac-lora: general eval BASE\nstub upload OK\n[22:28:21] qwen35-2b-ac-lora: train\n[22:28:21] qwen35-2b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:21] qwen35-2b-ac-lora: general eval FT\nstub upload OK\n[22:28:21] qwen35-2b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:28:22] qwen35-2b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:28:23] qwen35-2b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:24] qwen35-2b-ac-lora: PIPELINE FINISHED WITH FAILURES\n",
+      "stderr": "synthetic local model missing: /Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/lfm3vl2b-ac-lora/merged\n",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "LiquidAI/LFM3-VL-2B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/lfm3vl2b_base_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/lfm3vl2b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/lfm3vl2b_ft_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-2B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_base_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-2B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora",
+            "--max_steps",
+            "1250",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "8",
+            "--grad_accum",
+            "4",
+            "--lr",
+            "2e-4",
+            "--lora_r",
+            "64",
+            "--lora_alpha",
+            "128",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-2B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_ft_general",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-2B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "24",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-2B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm/content/runs/qwen35-2b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/qwen2b_replacement_vm",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "general_pixel_override": {
+      "exit": 0,
+      "stdout": "[22:28:24] qwen35-08b-ac-lora: general eval BASE\nstub upload OK\n[22:28:24] qwen35-08b-ac-lora: build replay\n[22:28:25] qwen35-08b-ac-lora: train\n[22:28:25] qwen35-08b-ac-lora: push merged + adapter\nstub upload OK\nstub upload OK\n[22:28:25] qwen35-08b-ac-lora: general eval FT\nstub upload OK\n[22:28:25] qwen35-08b-ac-lora: AndroidControl test FT\nstub upload OK\n[22:28:26] qwen35-08b-ac-lora: AndroidControl test BASE (no-think)\nstub upload OK\n[22:28:26] qwen35-08b-ac-lora: AndroidControl test FT matched no-think (high-level)\nstub upload OK\n[22:28:26] qwen35-08b-ac-lora: PIPELINE DONE\n",
+      "stderr": "",
+      "commands": [
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_base_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "345600"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "build_general_replay.py",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/data/replay",
+            "--n",
+            "12000"
+          ]
+        },
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-0.8B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora",
+            "--replay",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/data/replay",
+            "--max_agent_rows",
+            "48000",
+            "--epochs",
+            "1",
+            "--max_pixels",
+            "774400",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+            "--bs",
+            "16",
+            "--grad_accum",
+            "2",
+            "--lr",
+            "1e-4",
+            "--lora_r",
+            "16",
+            "--lora_alpha",
+            "32",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "from huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\napi.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "eval_general.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/merged",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_ft_general",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "345600"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_ft.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "Qwen/Qwen3.5-0.8B",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--enable_thinking",
+            "0",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_base.jsonl",
+            "--gt",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/work/meta/androidcontrol_test_gt.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_base.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl",
+            "--enable_thinking",
+            "0",
+            "--filter_mode",
+            "high",
+            "--bs",
+            "32",
+            "--max_pixels",
+            "774400"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "push_evals",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi(); repo = \"experimentalmachines/Qwen3.5-0.8B-AndroidControl\"\napi.create_repo(repo, private=True, exist_ok=True)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/eval/*\"):\n    if os.path.isfile(f) and os.path.getsize(f) < 500_000_000:\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nif os.path.isdir(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\"):\n    api.upload_folder(folder_path=\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override/content/runs/qwen35-08b-ac-lora/logs\", path_in_repo=\"training_logs\", repo_id=repo)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/general_pixel_override",
+      "matched_done_exists": true,
+      "matched_metrics_exist": false
+    },
+    "legacy_qwen_json": {
+      "exit": 0,
+      "stdout": "TRAIN EXIT 0\nTRAIN DONE rc=0\nFT EVAL DONE rc=1\nstub upload OK\nPIPELINE DONE\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/bin/python\", line 48, in <module>\n    runpy.run_path(str(Path('score.py').resolve()),run_name='__main__');sys.exit(0)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen runpy>\", line 294, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/work/score.py\", line 180, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/work/score.py\", line 115, in main\n    gt_rows = [json.loads(l) for l in open(a.gt)]\n                                      ~~~~^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/data/meta/androidcontrol_test_gt.jsonl'\n",
+      "commands": [
+        {
+          "argv": [
+            "sft_vlm.py",
+            "--model_id",
+            "Qwen/Qwen3.5-2B",
+            "--train",
+            "experimentalmachines/AndroidControl-screen-agent-sft@train",
+            "--val",
+            "experimentalmachines/AndroidControl-screen-agent-sft@val",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/runs/qwen35-2b-ac-lora",
+            "--max_steps",
+            "1250",
+            "--epochs",
+            "1",
+            "--bs",
+            "8",
+            "--grad_accum",
+            "4",
+            "--lr",
+            "2e-4",
+            "--lora_r",
+            "64",
+            "--lora_alpha",
+            "128",
+            "--modules_to_save",
+            "--save_steps",
+            "100",
+            "--eval_steps",
+            "250",
+            "--workers",
+            "10",
+            "--hub_repo",
+            "experimentalmachines/Qwen3.5-2B-AndroidControl-LoRA-ckpt",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)"
+          ],
+          "stale_merged_present_at_train": false,
+          "stale_lora_present_at_train": false
+        },
+        {
+          "argv": [
+            "generate.py",
+            "--model",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/runs/qwen35-2b-ac-lora/merged",
+            "--data",
+            "experimentalmachines/AndroidControl-screen-agent-sft@test",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/eval/qwen35-2b-ac-lora_ft.jsonl",
+            "--enable_thinking",
+            "1",
+            "--bs",
+            "24",
+            "--max_new_tokens",
+            "256",
+            "--chat_template_path",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/work/qwen35_chat_template_gen.jinja",
+            "--target_regex",
+            ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)"
+          ]
+        },
+        {
+          "argv": [
+            "score.py",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/eval/qwen35-2b-ac-lora_ft.jsonl",
+            "--out",
+            "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/eval/qwen35-2b-ac-lora_ft.metrics.json"
+          ]
+        },
+        {
+          "argv": [
+            "-"
+          ],
+          "inline_kind": "export_upload",
+          "inline_source": "import os, glob\nfrom huggingface_hub import HfApi\napi = HfApi()\nrepo = os.environ[\"FINAL_REPO\"]; run = os.environ[\"RUN\"]\napi.create_repo(repo, private=True, exist_ok=True)\nbase = f\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/runs/{run}\"\nif os.path.isdir(f\"{base}/merged\"):\n    api.upload_folder(folder_path=f\"{base}/merged\", repo_id=repo, commit_message=\"merged LoRA -> full weights\")\nif os.path.isdir(f\"{base}/lora\"):\n    api.upload_folder(folder_path=f\"{base}/lora\", path_in_repo=\"lora_adapter\", repo_id=repo)\napi.upload_folder(folder_path=f\"{base}/logs\", path_in_repo=\"training_logs\", repo_id=repo)\nfor f in glob.glob(\"/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json/content/eval/*\"):\n    if os.path.isfile(f):\n        api.upload_file(path_or_fileobj=f, path_in_repo=f\"eval/{os.path.basename(f)}\", repo_id=repo)\nprint(\"PUSHED\", repo, flush=True)\n"
+        }
+      ],
+      "fixture": "/Users/alpha/lfm3-android/results/codex/pass3/shell_argr928_/legacy_qwen_json",
+      "matched_done_exists": false,
+      "matched_metrics_exist": false
+    }
+  },
+  "qwen_argument_checks": {
+    "qwen08_success": {
+      "general_pixels": "774400",
+      "ac_pixels": "774400",
+      "scorer_gt": "explicit existing work/meta/androidcontrol_test_gt.jsonl",
+      "score_calls": 2,
+      "generate_calls": 3,
+      "target_regex_unchanged_by_shell": true,
+      "matched_high_scored": false
+    },
+    "qwen2b_success": {
+      "general_pixels": "774400",
+      "ac_pixels": "774400",
+      "scorer_gt": "explicit existing work/meta/androidcontrol_test_gt.jsonl",
+      "score_calls": 2,
+      "generate_calls": 3,
+      "target_regex_unchanged_by_shell": true,
+      "matched_high_scored": false
+    },
+    "general_pixel_override": {
+      "general_pixels": "345600",
+      "ac_pixels": "774400",
+      "scorer_gt": "explicit existing work/meta/androidcontrol_test_gt.jsonl",
+      "score_calls": 2,
+      "generate_calls": 3,
+      "target_regex_unchanged_by_shell": true,
+      "matched_high_scored": false
+    }
+  }
+}

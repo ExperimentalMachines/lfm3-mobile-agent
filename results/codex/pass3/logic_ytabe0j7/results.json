@@ -1,0 +1,1295 @@
+{
+  "artifact_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7",
+  "scope": "CPU synthetic; no weights, GPU, network, or real Arrow casting",
+  "train_receipt": {
+    "missing_weights": {
+      "exit": 1,
+      "error": "export verification failed: merged/lora incomplete",
+      "stdout": "",
+      "receipt_written": false
+    },
+    "valid_shape": {
+      "exit": 0,
+      "stdout": "saved lora + merged (receipt written)\n",
+      "receipt_written": true
+    },
+    "missing_shard_empty_adapter": {
+      "exit": 0,
+      "stdout": "saved lora + merged (receipt written)\n",
+      "receipt_written": true
+    },
+    "early_step": {
+      "exit": 0,
+      "stdout": "saved lora + merged (receipt written)\n",
+      "receipt_written": true
+    }
+  },
+  "train_resume": {
+    "matching": {
+      "exit": 0,
+      "stdout": "restored /Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/resume_matching/checkpoint-100 from hub\nresuming from latest checkpoint\n",
+      "trainer_train_calls": [
+        {
+          "resume_from_checkpoint": true
+        }
+      ]
+    },
+    "batch_mismatch": {
+      "exit": 1,
+      "error": "incompatible hub checkpoint, refusing to resume: train_batch_size 16 != 8",
+      "stdout": "",
+      "trainer_train_calls": []
+    },
+    "steps_mismatch": {
+      "exit": 1,
+      "error": "incompatible hub checkpoint, refusing to resume: max_steps 1875 != 1250",
+      "stdout": "",
+      "trainer_train_calls": []
+    },
+    "epoch_schedule_changed": {
+      "exit": 0,
+      "stdout": "restored /Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/resume_epoch_schedule_changed/checkpoint-100 from hub\nresuming from latest checkpoint\n",
+      "trainer_train_calls": [
+        {
+          "resume_from_checkpoint": true
+        }
+      ]
+    },
+    "hub_unavailable": {
+      "exit": 0,
+      "stdout": "hub resume failed: synthetic hub unavailable\n",
+      "trainer_train_calls": [
+        {
+          "resume_from_checkpoint": null
+        }
+      ]
+    },
+    "local_mismatch": {
+      "exit": 0,
+      "stdout": "resuming from latest checkpoint\n",
+      "trainer_train_calls": [
+        {
+          "resume_from_checkpoint": true
+        }
+      ]
+    }
+  },
+  "provenance": {
+    "written_config": {
+      "out": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/provenance",
+      "model_id": "synthetic/model",
+      "train": [
+        "synthetic/data@train"
+      ],
+      "val": "synthetic/data@val",
+      "replay": [
+        "synthetic/replay"
+      ],
+      "provenance": {
+        "model_sha": "model-A",
+        "dataset_sha:synthetic/data@train": "dataset-A",
+        "dataset_sha:synthetic/data@val": "dataset-A",
+        "versions": {
+          "torch": "stub-1.0",
+          "transformers": "stub-1.0",
+          "trl": "stub-1.0",
+          "peft": "stub-1.0",
+          "datasets": "stub-1.0",
+          "accelerate": "stub-1.0"
+        }
+      }
+    },
+    "subsequent_loads": [
+      {
+        "args": [
+          "synthetic/data"
+        ],
+        "kwargs": {
+          "data_files": {
+            "train": "data/train/*.parquet"
+          },
+          "split": "train"
+        },
+        "served_sha": "dataset-B"
+      },
+      {
+        "args": [
+          "synthetic/data"
+        ],
+        "kwargs": {
+          "data_files": {
+            "val": "data/val/*.parquet"
+          },
+          "split": "val"
+        },
+        "served_sha": "dataset-B"
+      }
+    ],
+    "previous_config_overwritten": true
+  },
+  "current_frozen_gt": {
+    "sha256": "1926a44e0ffa7940b28866907d28913a5bd4af38f5b67463798cec8b6df25e84",
+    "manifest": {
+      "n_rows": 18415,
+      "sha256": "1926a44e0ffa7940b28866907d28913a5bd4af38f5b67463798cec8b6df25e84",
+      "source": "experimentalmachines/AndroidControl-screen-agent-sft@test (official AndroidControl test ids), extracted 2026-11-16"
+    },
+    "rows": 18415,
+    "unique_keys": 18415,
+    "modes": {
+      "high": 9987,
+      "low": 8428
+    }
+  },
+  "scorer": {
+    "valid": {
+      "exit": 0,
+      "stderr": "",
+      "metrics": {
+        "high": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "low": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "integrity": {
+          "n_pred_rows": 2,
+          "n_gt_rows": 2,
+          "duplicate_keys": 0,
+          "missing": 0,
+          "extra": 0,
+          "row_models": [
+            "synthetic-model"
+          ],
+          "manifest": {
+            "model": "synthetic-model",
+            "n_rows": 2,
+            "config_hash": "good"
+          },
+          "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/score_valid/gt.jsonl",
+          "complete": true,
+          "problems": []
+        }
+      }
+    },
+    "prediction_labels_ignored": {
+      "exit": 0,
+      "stderr": "",
+      "metrics": {
+        "high": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 0.0,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "per_type": {
+              "navigate_back": {
+                "n": 1,
+                "type_match": 0.0,
+                "step_sr": 0.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 0.0,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "per_type": {
+              "navigate_back": {
+                "n": 1,
+                "type_match": 0.0,
+                "step_sr": 0.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 0.0,
+              "step_sr": 0.0,
+              "episode_sr": 0.0,
+              "per_type": {
+                "navigate_back": {
+                  "n": 1,
+                  "type_match": 0.0,
+                  "step_sr": 0.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "low": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "integrity": {
+          "n_pred_rows": 2,
+          "n_gt_rows": 2,
+          "duplicate_keys": 0,
+          "missing": 0,
+          "extra": 0,
+          "row_models": [
+            "synthetic-model"
+          ],
+          "manifest": {
+            "model": "synthetic-model",
+            "n_rows": 2,
+            "config_hash": "good"
+          },
+          "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/score_prediction_labels_ignored/gt.jsonl",
+          "complete": true,
+          "problems": []
+        }
+      }
+    },
+    "no_manifest": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: ['no generation manifest']\n"
+    },
+    "wrong_model": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: [\"row models ['old-model', 'synthetic-model'] != manifest model synthetic-model\"]\n"
+    },
+    "wrong_keys": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: ['1 GT rows missing', '1 prediction keys not in frozen GT']\n"
+    },
+    "duplicates": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: ['1 duplicate keys']\n"
+    },
+    "missing_key": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: ['1 GT rows missing']\n"
+    },
+    "bad_row_hash": {
+      "exit": 0,
+      "stderr": "",
+      "metrics": {
+        "high": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "low": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "integrity": {
+          "n_pred_rows": 2,
+          "n_gt_rows": 2,
+          "duplicate_keys": 0,
+          "missing": 0,
+          "extra": 0,
+          "row_models": [
+            "synthetic-model"
+          ],
+          "manifest": {
+            "model": "synthetic-model",
+            "n_rows": 2,
+            "config_hash": "good"
+          },
+          "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/score_bad_row_hash/gt.jsonl",
+          "complete": true,
+          "problems": []
+        }
+      }
+    },
+    "tampered_gt_sha": {
+      "exit": 0,
+      "stderr": "",
+      "metrics": {
+        "high": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "navigate_back": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "navigate_back": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "navigate_back": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "low": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "integrity": {
+          "n_pred_rows": 2,
+          "n_gt_rows": 2,
+          "duplicate_keys": 0,
+          "missing": 0,
+          "extra": 0,
+          "row_models": [
+            "synthetic-model"
+          ],
+          "manifest": {
+            "model": "synthetic-model",
+            "n_rows": 2,
+            "config_hash": "good"
+          },
+          "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/score_tampered_gt_sha/gt.jsonl",
+          "complete": true,
+          "problems": []
+        }
+      }
+    },
+    "absent_gt_manifest": {
+      "exit": 0,
+      "stderr": "",
+      "metrics": {
+        "high": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "low": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "integrity": {
+          "n_pred_rows": 2,
+          "n_gt_rows": 2,
+          "duplicate_keys": 0,
+          "missing": 0,
+          "extra": 0,
+          "row_models": [
+            "synthetic-model"
+          ],
+          "manifest": {
+            "model": "synthetic-model",
+            "n_rows": 2,
+            "config_hash": "good"
+          },
+          "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/score_absent_gt_manifest/gt.jsonl",
+          "complete": true,
+          "problems": []
+        }
+      }
+    },
+    "matched_high_only": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: ['1 GT rows missing']\n"
+    },
+    "allow_wrong_model": {
+      "exit": 0,
+      "stderr": "INTEGRITY PROBLEM: [\"row models ['old-model', 'synthetic-model'] != manifest model synthetic-model\"]\n",
+      "metrics": {
+        "high": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "low": {
+          "overall": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "overall_strict_parse": {
+            "n_steps": 1,
+            "n_episodes": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "per_type": {
+              "wait": {
+                "n": 1,
+                "type_match": 1.0,
+                "step_sr": 1.0
+              }
+            }
+          },
+          "by_subsplit": {
+            "IDD": {
+              "n_steps": 1,
+              "n_episodes": 1,
+              "parse_rate": 1.0,
+              "type_match": 1.0,
+              "step_sr": 1.0,
+              "episode_sr": 1.0,
+              "per_type": {
+                "wait": {
+                  "n": 1,
+                  "type_match": 1.0,
+                  "step_sr": 1.0
+                }
+              }
+            }
+          },
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "acc": 0.0
+          }
+        },
+        "integrity": {
+          "n_pred_rows": 2,
+          "n_gt_rows": 2,
+          "duplicate_keys": 0,
+          "missing": 0,
+          "extra": 0,
+          "row_models": [
+            "old-model",
+            "synthetic-model"
+          ],
+          "manifest": {
+            "model": "synthetic-model",
+            "n_rows": 2,
+            "config_hash": "good"
+          },
+          "gt_file": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/score_allow_wrong_model/gt.jsonl",
+          "complete": true,
+          "problems": [
+            "row models ['old-model', 'synthetic-model'] != manifest model synthetic-model"
+          ]
+        }
+      }
+    }
+  },
+  "templates_and_parser": {
+    "prompt_suffixes": {
+      "True": "d|>Goal: Wait\nPrevious steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+      "False": "it\nPrevious steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+    },
+    "training_generation_span": "<think>\nWait for app.\n</think>\n\n{\"action_type\":\"wait\"}<|im_end|>",
+    "probes": {
+      "unfinished_explicit": {
+        "input": "<think>{\"action_type\":\"wait\"}",
+        "lenient": null,
+        "strict": null
+      },
+      "closed_final": {
+        "input": "<think>wait</think>{\"action_type\":\"wait\"}",
+        "lenient": {
+          "action_type": "wait"
+        },
+        "strict": {
+          "action_type": "wait"
+        }
+      },
+      "qwen_generated_suffix_unfinished": {
+        "input": "{\"action_type\":\"wait\"}",
+        "lenient": {
+          "action_type": "wait"
+        },
+        "strict": {
+          "action_type": "wait"
+        }
+      },
+      "reopened_think": {
+        "input": "<think>first</think><think>{\"action_type\":\"wait\"}",
+        "lenient": {
+          "action_type": "wait"
+        },
+        "strict": null
+      },
+      "duplicate": {
+        "input": "{\"action_type\":\"wait\",\"action_type\":\"navigate_back\"}",
+        "lenient": {
+          "action_type": "navigate_back"
+        },
+        "strict": null
+      },
+      "nan": {
+        "input": "{\"action_type\":\"click\",\"point_2d\":[NaN,20]}",
+        "lenient": null,
+        "strict": null
+      },
+      "infinity": {
+        "input": "{\"action_type\":\"click\",\"point_2d\":[Infinity,20]}",
+        "lenient": null,
+        "strict": null
+      },
+      "boolean": {
+        "input": "{\"action_type\":\"click\",\"point_2d\":[true,20]}",
+        "lenient": {
+          "action_type": "click",
+          "point_2d": [
+            1.0,
+            20.0
+          ]
+        },
+        "strict": null
+      },
+      "float": {
+        "input": "{\"action_type\":\"click\",\"point_2d\":[1.5,20]}",
+        "lenient": {
+          "action_type": "click",
+          "point_2d": [
+            1.5,
+            20.0
+          ]
+        },
+        "strict": null
+      },
+      "valid_int": {
+        "input": "{\"action_type\":\"click\",\"point_2d\":[1,20]}",
+        "lenient": {
+          "action_type": "click",
+          "point_2d": [
+            1.0,
+            20.0
+          ]
+        },
+        "strict": {
+          "action_type": "click",
+          "point_2d": [
+            1,
+            20
+          ]
+        }
+      }
+    },
+    "general_letters": {
+      "A cat is pictured. The correct answer is C.": "C",
+      "B is wrong. The answer is D.": "D",
+      "<think>Compare A and B.": null,
+      "<think>Compare A.</think>D": "D",
+      "A. This option is wrong. The answer is D.": "A",
+      "The answer is B or C.": "B",
+      "The answer is c": "c",
+      "C": "C"
+    }
+  },
+  "aw_reasoning_only": {
+    "parsed_action": null,
+    "error": "unparseable",
+    "executed_actions": []
+  },
+  "aw_summaries": {
+    "one_success": {
+      "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/aw_one_success",
+      "n_episodes": 1,
+      "expected_episodes": 116,
+      "missing_episodes_counted_as_fail": 115,
+      "success_rate": 0.008620689655172414,
+      "success_rate_over_completed": 1.0,
+      "n_teardown_exceptions": 0,
+      "success_rate_by_difficulty": {
+        "easy": {
+          "n": 1,
+          "sr": 1.0
+        }
+      },
+      "n_exceptions_counted_as_fail": 0,
+      "frac_episodes_self_terminated": 0.0,
+      "mean_steps": 1,
+      "model_latency_s": null,
+      "prompt_tokens_mean": null,
+      "parse_failure_rate": 0.0,
+      "n_steps_total": 1,
+      "first_attempt_strict_valid_rate": 0.0,
+      "first_attempt_lenient_valid_rate": 0.0,
+      "n_model_calls_incl_retries": 0
+    },
+    "teardown_success": {
+      "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/aw_teardown_success",
+      "n_episodes": 1,
+      "expected_episodes": 116,
+      "missing_episodes_counted_as_fail": 115,
+      "success_rate": 0.008620689655172414,
+      "success_rate_over_completed": 1.0,
+      "n_teardown_exceptions": 1,
+      "success_rate_by_difficulty": {
+        "easy": {
+          "n": 1,
+          "sr": 1.0
+        }
+      },
+      "n_exceptions_counted_as_fail": 0,
+      "frac_episodes_self_terminated": 0.0,
+      "mean_steps": 1,
+      "model_latency_s": null,
+      "prompt_tokens_mean": null,
+      "parse_failure_rate": 0.0,
+      "n_steps_total": 1,
+      "first_attempt_strict_valid_rate": 0.0,
+      "first_attempt_lenient_valid_rate": 0.0,
+      "n_model_calls_incl_retries": 0
+    },
+    "exception_success": {
+      "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/aw_exception_success",
+      "n_episodes": 1,
+      "expected_episodes": 116,
+      "missing_episodes_counted_as_fail": 115,
+      "success_rate": 0.008620689655172414,
+      "success_rate_over_completed": 1.0,
+      "n_teardown_exceptions": 0,
+      "success_rate_by_difficulty": {
+        "easy": {
+          "n": 1,
+          "sr": 1.0
+        }
+      },
+      "n_exceptions_counted_as_fail": 1,
+      "frac_episodes_self_terminated": 0.0,
+      "mean_steps": 1,
+      "model_latency_s": null,
+      "prompt_tokens_mean": null,
+      "parse_failure_rate": 0.0,
+      "n_steps_total": 1,
+      "first_attempt_strict_valid_rate": 0.0,
+      "first_attempt_lenient_valid_rate": 0.0,
+      "n_model_calls_incl_retries": 0
+    },
+    "list_two": {
+      "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/aw_list_two",
+      "n_episodes": 1,
+      "expected_episodes": 116,
+      "missing_episodes_counted_as_fail": 115,
+      "success_rate": 0.008620689655172414,
+      "success_rate_over_completed": 1.0,
+      "n_teardown_exceptions": 0,
+      "success_rate_by_difficulty": {
+        "easy": {
+          "n": 1,
+          "sr": 1.0
+        }
+      },
+      "n_exceptions_counted_as_fail": 0,
+      "frac_episodes_self_terminated": 0.0,
+      "mean_steps": 1,
+      "model_latency_s": null,
+      "prompt_tokens_mean": null,
+      "parse_failure_rate": 0.0,
+      "n_steps_total": 1,
+      "first_attempt_strict_valid_rate": 0.0,
+      "first_attempt_lenient_valid_rate": 0.0,
+      "n_model_calls_incl_retries": 0
+    },
+    "nan_length": {
+      "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/aw_nan_length",
+      "n_episodes": 1,
+      "expected_episodes": 116,
+      "missing_episodes_counted_as_fail": 115,
+      "success_rate": 0.008620689655172414,
+      "success_rate_over_completed": 1.0,
+      "n_teardown_exceptions": 0,
+      "success_rate_by_difficulty": {
+        "easy": {
+          "n": 1,
+          "sr": 1.0
+        }
+      },
+      "n_exceptions_counted_as_fail": 0,
+      "frac_episodes_self_terminated": 0.0,
+      "mean_steps": NaN,
+      "model_latency_s": null,
+      "prompt_tokens_mean": null,
+      "parse_failure_rate": 0.0,
+      "n_steps_total": 1,
+      "first_attempt_strict_valid_rate": 0.0,
+      "first_attempt_lenient_valid_rate": 0.0,
+      "n_model_calls_incl_retries": 0
+    },
+    "infinite_success": {
+      "run_dir": "/Users/alpha/lfm3-android/results/codex/pass3/logic_ytabe0j7/aw_infinite_success",
+      "n_episodes": 1,
+      "expected_episodes": 116,
+      "missing_episodes_counted_as_fail": 115,
+      "success_rate": Infinity,
+      "success_rate_over_completed": Infinity,
+      "n_teardown_exceptions": 0,
+      "success_rate_by_difficulty": {
+        "easy": {
+          "n": 1,
+          "sr": Infinity
+        }
+      },
+      "n_exceptions_counted_as_fail": 0,
+      "frac_episodes_self_terminated": 0.0,
+      "mean_steps": 1,
+      "model_latency_s": null,
+      "prompt_tokens_mean": null,
+      "parse_failure_rate": 0.0,
+      "n_steps_total": 1,
+      "first_attempt_strict_valid_rate": 0.0,
+      "first_attempt_lenient_valid_rate": 0.0,
+      "n_model_calls_incl_retries": 0
+    }
+  },
+  "bootstrap": {
+    "pip_failed": {
+      "exit": 1,
+      "error": "pip install failed rc=17",
+      "stdout": "+ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv\n \n+ nproc; free -g | head -2; df -h /content | tail -1; ls -la /dev/kvm 2>&1\n \n+ pip install -q \"torch==2.14.1\" \"torchvision==0.29.1\" \"torchao==0.18.0\" \"trl==1.16.0\" \"transformers==5.20.2\" \"peft==0.21.2\" \"accelerate==1.15.0\" \"datasets==5.1.0\" \"huggingface-hub==2.3.0\" \"tokenizers==0.23.3\" \"safetensors==0.8.0\" \"tensorboard\" \"pillow\" \"pyarrow\"\n \npip rc 17\n"
+    },
+    "version_mismatch": {
+      "exit": 1,
+      "error": "version mismatch after bootstrap: {'transformers': '1.0'}",
+      "stdout": "+ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv\n \n+ nproc; free -g | head -2; df -h /content | tail -1; ls -la /dev/kvm 2>&1\n \n+ pip install -q \"torch==2.14.1\" \"torchvision==0.29.1\" \"torchao==0.18.0\" \"trl==1.16.0\" \"transformers==5.20.2\" \"peft==0.21.2\" \"accelerate==1.15.0\" \"datasets==5.1.0\" \"huggingface-hub==2.3.0\" \"tokenizers==0.23.3\" \"safetensors==0.8.0\" \"tensorboard\" \"pillow\" \"pyarrow\"\n \npip rc 0\n"
+    },
+    "prefix_mismatch": {
+      "exit": 0,
+      "stdout": "+ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv\n \n+ nproc; free -g | head -2; df -h /content | tail -1; ls -la /dev/kvm 2>&1\n \n+ pip install -q \"torch==2.14.1\" \"torchvision==0.29.1\" \"torchao==0.18.0\" \"trl==1.16.0\" \"transformers==5.20.2\" \"peft==0.21.2\" \"accelerate==1.15.0\" \"datasets==5.1.0\" \"huggingface-hub==2.3.0\" \"tokenizers==0.23.3\" \"safetensors==0.8.0\" \"tensorboard\" \"pillow\" \"pyarrow\"\n \npip rc 0\nversions 2.14.1 5.20.20 1.16.0 0.21.2 cuda False None\n"
+    },
+    "unverified_accelerate": {
+      "exit": 0,
+      "stdout": "+ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv\n \n+ nproc; free -g | head -2; df -h /content | tail -1; ls -la /dev/kvm 2>&1\n \n+ pip install -q \"torch==2.14.1\" \"torchvision==0.29.1\" \"torchao==0.18.0\" \"trl==1.16.0\" \"transformers==5.20.2\" \"peft==0.21.2\" \"accelerate==1.15.0\" \"datasets==5.1.0\" \"huggingface-hub==2.3.0\" \"tokenizers==0.23.3\" \"safetensors==0.8.0\" \"tensorboard\" \"pillow\" \"pyarrow\"\n \npip rc 0\nversions 2.14.1 5.20.2 1.16.0 0.21.2 cuda False None\n"
+    },
+    "success": {
+      "exit": 0,
+      "stdout": "+ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv\n \n+ nproc; free -g | head -2; df -h /content | tail -1; ls -la /dev/kvm 2>&1\n \n+ pip install -q \"torch==2.14.1\" \"torchvision==0.29.1\" \"torchao==0.18.0\" \"trl==1.16.0\" \"transformers==5.20.2\" \"peft==0.21.2\" \"accelerate==1.15.0\" \"datasets==5.1.0\" \"huggingface-hub==2.3.0\" \"tokenizers==0.23.3\" \"safetensors==0.8.0\" \"tensorboard\" \"pillow\" \"pyarrow\"\n \npip rc 0\nversions 2.14.1 5.20.2 1.16.0 0.21.2 cuda False None\n"
+    }
+  },
+  "replay_builder": {
+    "receipt": {
+      "builder_sha256": "ab75d08e1d991012fdb0b382ee45b7d1c58c6fd79ebb7fd7e50e7c0894134cd8",
+      "n_requested": 20,
+      "n_rows": 4,
+      "seed": 0,
+      "subsets": {
+        "ai2d": 0.2,
+        "aokvqa": 0.25,
+        "chartqa": 0.25,
+        "localized_narratives": 0.3
+      }
+    },
+    "events": [
+      {
+        "load": [
+          "HuggingFaceM4/the_cauldron"
+        ],
+        "kwargs": {
+          "data_files": "ai2d/*.parquet",
+          "split": "train"
+        }
+      },
+      {
+        "load": [
+          "HuggingFaceM4/the_cauldron"
+        ],
+        "kwargs": {
+          "data_files": "aokvqa/*.parquet",
+          "split": "train"
+        }
+      },
+      {
+        "load": [
+          "HuggingFaceM4/the_cauldron"
+        ],
+        "kwargs": {
+          "data_files": "chartqa/*.parquet",
+          "split": "train"
+        }
+      },
+      {
+        "load": [
+          "HuggingFaceM4/the_cauldron"
+        ],
+        "kwargs": {
+          "data_files": "localized_narratives/train-0000[0-1]-*.parquet",
+          "split": "train"
+        }
+      },
+      {
+        "saved_rows": 4
+      }
+    ],
+    "stdout": "ai2d kept 1\naokvqa kept 1\nchartqa kept 1\nlocalized_narratives kept 1\nreplay rows 4\n"
+  }
+}

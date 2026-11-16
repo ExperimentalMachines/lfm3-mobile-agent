@@ -21,11 +21,13 @@ if [ "$GONE" = 1 ]; then
   for i in 1 2 3 4 5; do C new -s "$SESS" --gpu L4 && break; sleep 60; done
   bash scripts/launch_gpu_jobs.sh "$SESS" "$NEXT"
 else
+  echo 'import os;os.makedirs("/content/work/meta",exist_ok=True);print("meta ok")' | "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" 2>/dev/null | grep -q "meta ok" || { echo "cannot reach $SESS kernel"; exit 1; }
   for f in train/sft_vlm.py train/agent_format.py train/qwen35_chat_template_gen.jinja eval/androidcontrol/generate.py \
            eval/androidcontrol/score.py eval/general/eval_general.py data/build_general_replay.py scripts/vm_model_pipeline.sh \
-           scripts/vm_blocking_jobs.py scripts/vm_eval.sh scripts/vm_train.sh scripts/colab_bootstrap.py data/meta/androidcontrol_test_gt.jsonl; do
+           scripts/vm_blocking_jobs.py scripts/vm_eval.sh scripts/vm_train.sh scripts/colab_bootstrap.py data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json; do
     dst="/content/work/$(basename "$f")"; [[ "$f" == data/meta/* ]] && dst="/content/work/meta/$(basename "$f")"
-    [ -f "$f" ] && C upload -s "$SESS" "$f" "$dst" | tail -1
+    [ -f "$f" ] || { echo "missing $f"; exit 1; }
+    C upload -s "$SESS" "$f" "$dst" | grep -q Uploaded || { echo "upload failed: $f"; exit 1; }
   done
   C upload -s "$SESS" "$NEXT" /content/work/jobs.json | tail -1
   nohup "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" --timeout 200000 -f scripts/vm_blocking_jobs.py \

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MobileForge is an annotation-free adaptation system for mobile GUI agents, turning target-app interaction into executable curricula, hierarchical rollout feedback, and HiFPO policy updates.">
+  <title>MobileForge</title>
+  <link rel="icon" href="images/logo/mobileforge-mark.png">
+  <link rel="stylesheet" href="css/mobileforge.css">
+</head>
+<body>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.67 0 8.2c0 3.62 2.29 6.69 5.47 7.78.4.08.55-.18.55-.4 0-.2-.01-.86-.01-1.56-2.01.38-2.53-.5-2.69-.95-.09-.23-.48-.95-.82-1.14-.28-.15-.68-.52-.01-.53.63-.01 1.08.59 1.23.83.72 1.24 1.87.89 2.33.68.07-.53.28-.89.51-1.09-1.78-.21-3.64-.91-3.64-4.03 0-.89.31-1.62.82-2.19-.08-.21-.36-1.04.08-2.16 0 0 .67-.22 2.2.84A7.42 7.42 0 0 1 8 4.01c.68 0 1.36.09 2 .27 1.53-1.06 2.2-.84 2.2-.84.44 1.12.16 1.95.08 2.16.51.57.82 1.3.82 2.19 0 3.13-1.87 3.82-3.65 4.03.29.26.54.75.54 1.51 0 1.09-.01 1.97-.01 2.24 0 .22.15.48.55.4A8.1 8.1 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z" /></symbol>
+    <symbol id="icon-paper" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6" /></symbol>
+    <symbol id="icon-data" viewBox="0 0 24 24"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Zm0 0v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" /></symbol>
+    <symbol id="icon-model" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3Zm0 0v9m8-4.5-8 4.5m-8-4.5 8 4.5m0 9v-9" /></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 16v-5M13 16V8M18 16v-8" /></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M4 6h16v12H4zM4 7l8 6 8-6" /></symbol>
+  </svg>
+
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <div class="nav-brand-row" aria-label="MobileForge affiliations">
+        <a class="brand" href="#top">
+          <img src="images/brand/mobileforge-horizontal.png" alt="MobileForge">
+        </a>
+        <span class="nav-divider"></span>
+        <img class="nav-unit kuaishou" src="images/brand/kuaishou-logo.png" alt="Kuaishou">
+        <span class="nav-divider"></span>
+        <img class="nav-unit zju" src="images/brand/zju-logo.png" alt="Zhejiang University">
+        <span class="nav-divider"></span>
+        <img class="nav-unit thu" src="images/brand/thu-logo.png" alt="Tsinghua University">
+      </div>
+      <div class="nav-links nav-sections">
+        <a href="#results">Results</a>
+        <a href="#method">Method</a>
+        <a href="#release">Release</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top" class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow">MobileForge</p>
+        <h1>
+          <span class="title-line title-line-1">MobileForge: Annotation-Free Adaptation for Mobile GUI Agents</span>
+          <span class="title-line title-line-2">with Hierarchical Feedback-Guided Policy Optimization</span>
+        </h1>
+        <p class="hero-authors">
+          Guangyi Liu<sup>1,2,*</sup>, Pengxiang Zhao<sup>1,2,*</sup>, Gao Wu<sup>1,2,*</sup>,
+          Yiwen Yin<sup>2,3,*</sup>, Mading Li<sup>2,†</sup>,
+          Liang Liu<sup>1</sup>, Congxiao Liu<sup>1,2</sup>, Zhang Qi<sup>2</sup>,
+          Mengyan Wang<sup>2</sup>, Liang Guo<sup>2</sup>, Jiangning Zhang<sup>1,✉</sup>,
+          Yong Liu<sup>1,✉</sup>
+        </p>
+        <p class="hero-affiliations-text"><sup>1</sup>Zhejiang University &nbsp;&nbsp; <sup>2</sup>Kuaishou Technology &nbsp;&nbsp; <sup>3</sup>Tsinghua University</p>
+        <p class="hero-notes">
+          <span><sup>*</sup>Equal contribution</span>
+          <span><sup>†</sup>Project lead</span>
+          <span><sup>✉</sup>Corresponding author</span>
+        </p>
+        <p class="hero-contact">
+          <svg aria-hidden="true"><use href="#icon-mail"></use></svg>
+          Contact:
+          <a href="mailto:guangyiliu@zju.edu.cn">guangyiliu@zju.edu.cn</a>
+        </p>
+        <p class="hero-copy">MobileForge turns real target-app interaction into executable curricula, hierarchical rollout feedback, and hint-contextualized step-level GRPO updates, enabling mobile GUI agents to adapt without human-written tasks, demonstrations, or reward labels.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="https://github.com/kwai/MobileForge" target="_blank" rel="noopener"><svg><use href="#icon-github"></use></svg> Code Repo</a>
+        <a class="button secondary" href="https://arxiv.org/abs/2606.19930" target="_blank" rel="noopener"><svg><use href="#icon-paper"></use></svg> Paper</a>
+        <a class="button accent" href="https://huggingface.co/collections/lgy0404/mobileforge-models" target="_blank" rel="noopener"><span class="hf-emoji" aria-hidden="true">🤗</span> Models</a>
+        <a class="button accent soft" href="https://huggingface.co/collections/lgy0404/mobileforge-datasets" target="_blank" rel="noopener"><span class="hf-emoji" aria-hidden="true">🤗</span> Datasets</a>
+        <a class="button secondary" href="https://huggingface.co/datasets/lgy0404/mobileforge-benchmark-results" target="_blank" rel="noopener"><span class="hf-emoji" aria-hidden="true">🤗</span> Benchmark Results</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section intro-band">
+      <div class="wrap">
+        <div class="intro-grid">
+          <div>
+            <p class="section-kicker">Core Idea</p>
+            <h2>Annotation-free adaptation from real app interaction.</h2>
+          </div>
+          <p class="lead">MobileForge targets two gaps in mobile GUI learning: generated tasks and feedback are often detached from the target app, while sparse rollout outcomes are hard to turn into reusable step-level policy updates.</p>
+        </div>
+        <figure class="paper-figure teaser-figure">
+          <img src="assets/paper/mobileforge-teaser.png" alt="MobileForge teaser showing annotation-free adaptation for mobile GUI agents">
+          <figcaption>MobileForge grounds generated tasks in target-app interaction and converts hierarchical feedback into reusable policy-improvement signals.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="results" class="section muted">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <p class="section-kicker">Results</p>
+            <h2>Main performance of MobileForge.</h2>
+          </div>
+          <a class="button compact" href="https://arxiv.org/abs/2606.19930" target="_blank" rel="noopener"><svg><use href="#icon-chart"></use></svg> Full paper</a>
+        </div>
+        <figure class="paper-figure results-figure">
+          <img src="assets/paper/main-performance.png" alt="MobileForge main performance table">
+          <figcaption>Main results from the paper: scaling with generated MobileForge tasks, in-domain AndroidWorld adaptation, and out-of-domain MobileWorld GUI-only generalization.</figcaption>
+        </figure>
+        <div class="stats-grid">
+          <article><span>67.24%</span><strong>ForgeOwl-8B Pass@1</strong><p>AndroidWorld in-domain adaptation with the MobileForge-adapted GUI-Owl-1.5-8B model.</p></article>
+          <article><span>77.59%</span><strong>ForgeOwl-8B Pass@3</strong><p>Strong AndroidWorld multi-attempt success after annotation-free adaptation.</p></article>
+          <article><span>41.03%</span><strong>MobileWorld SR</strong><p>Out-of-domain GUI-only success with no MobileWorld rollout used for training.</p></article>
+          <article><span>67.24%</span><strong>ForgeQwen3-8B Pass@3</strong><p>Qwen3-VL-8B after MobileForge adaptation, close to the closed-data GUI-specialized base model.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Method</p>
+          <h2>MobileGym grounds experience; HiFPO turns feedback into updates.</h2>
+        </div>
+        <figure class="paper-figure wide overview-figure">
+          <img src="assets/paper/mobileforge-overview.png" alt="MobileForge overview pipeline">
+          <figcaption>MobileForge links target-app exploration, curriculum mining, rollout execution, hierarchical evaluation, and hint-contextualized policy optimization in one annotation-free adaptation loop.</figcaption>
+        </figure>
+        <div class="feature-grid">
+          <article>
+            <img src="assets/paper/mobilegym.png" alt="MobileGym framework">
+            <h3>MobileGym</h3>
+            <p>A unified mobile substrate that mines executable tasks from app interaction traces and evaluates completed rollouts with outcome labels, process feedback, and corrective hints.</p>
+          </article>
+          <article>
+            <img src="assets/paper/hifpo.png" alt="HiFPO optimization">
+            <h3>HiFPO</h3>
+            <p>A feedback-guided optimization loop that reuses hints across attempts, filters mastered tasks and noisy steps, and trains on hint-contextualized step-level GRPO samples.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="release" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-kicker">Open Release</p>
+          <h2>Artifacts for reproducing annotation-free adaptation.</h2>
+        </div>
+        <div class="release-grid">
+          <a class="release-item" href="https://github.com/kwai/MobileForge" target="_blank" rel="noopener"><svg><use href="#icon-github"></use></svg><strong>Code</strong><span>Exploration, rollout, training, evaluation, and release manifests for the MobileForge pipeline.</span></a>
+          <a class="release-item" href="https://huggingface.co/collections/lgy0404/mobileforge-models" target="_blank" rel="noopener"><span class="release-emoji" aria-hidden="true">🤗</span><strong>Models</strong><span>ForgeQwen3 and ForgeOwl checkpoints adapted from automatically generated MobileForge tasks.</span></a>
+          <a class="release-item" href="https://huggingface.co/collections/lgy0404/mobileforge-datasets" target="_blank" rel="noopener"><span class="release-emoji" aria-hidden="true">🤗</span><strong>Datasets</strong><span>Generated tasks, exploration trajectories, and training data grouped in the MobileForge dataset collection.</span></a>
+          <a class="release-item" href="https://huggingface.co/datasets/lgy0404/mobileforge-benchmark-results" target="_blank" rel="noopener"><span class="release-emoji" aria-hidden="true">🤗</span><strong>Benchmark Results</strong><span>AndroidWorld and MobileWorld evaluation archives with public model-to-result mappings.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section muted">
+      <div class="wrap case-grid">
+        <figure class="paper-figure case-figure">
+          <img src="assets/paper/case-study-hint.png" alt="MobileForge corrective hint case study">
+          <figcaption>Corrective hints from MobileGym-Critic are reused by HiFPO to guide later attempts and training prompts.</figcaption>
+        </figure>
+        <div>
+          <p class="section-kicker">Hierarchical Feedback</p>
+          <h2>Making rollout feedback reusable.</h2>
+          <p class="lead">MobileGym-Critic separates final task outcome, step-level process quality, and corrective hints. HiFPO uses these signals to keep informative experience, discard mastered tasks, and condition GRPO on feedback from earlier attempts.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section citation-section">
+      <div class="wrap">
+        <p class="section-kicker">Citation</p>
+        <h2>Cite MobileForge</h2>
+<pre><code>@article{liu2026mobileforge,
+  title={MobileForge: Annotation-Free Adaptation for Mobile GUI Agents with Hierarchical Feedback-Guided Policy Optimization},
+  author={Liu, Guangyi and Zhao, Pengxiang and Wu, Gao and Yin, Yiwen and Li, Mading and Liu, Liang and Liu, Congxiao and Qi, Zhang and Wang, Mengyan and Guo, Liang and Liu, Yong},
+  journal={arXiv preprint arXiv:2606.19930},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

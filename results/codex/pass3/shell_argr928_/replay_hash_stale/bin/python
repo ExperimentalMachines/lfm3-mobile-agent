@@ -1,0 +1,49 @@
+#!/usr/local/bin/python3
+
+import hashlib,json,os,runpy,sys
+from pathlib import Path
+a=sys.argv[1:]
+trace=Path(os.environ['TRACE'])
+mode=os.environ.get('FAIL_STAGE','')
+def val(flag,default=None): return a[a.index(flag)+1] if flag in a else default
+event={'argv':a}
+if a and a[0]=='-':
+    body=sys.stdin.read()
+    event['inline_kind']='export_upload' if 'merged LoRA' in body else 'push_evals'
+    event['inline_source']=body
+if a and a[0]=='sft_vlm.py':
+    out=Path(val('--out'))
+    event['stale_merged_present_at_train']=(out/'merged/stale').exists()
+    event['stale_lora_present_at_train']=(out/'lora/stale').exists()
+with trace.open('a') as f:f.write(json.dumps(event)+'\n')
+if a and a[0]=='-':
+    if mode=='upload':sys.exit(17)
+    print('stub upload OK');sys.exit(0)
+kind=a[0] if a else ''
+if mode==kind or (mode=='training' and kind=='sft_vlm.py'):sys.exit(17)
+if kind=='eval_general.py':
+    model=val('--model')
+    if model.startswith('/') and not Path(model).exists():
+        print('synthetic local model missing: '+model,file=sys.stderr);sys.exit(19)
+    Path(val('--out')+'.summary.json').write_text('{}');sys.exit(0)
+if kind=='build_general_replay.py':
+    out=Path(val('--out'));out.mkdir(parents=True,exist_ok=True)
+    (out/'dataset_info.json').write_text('{}')
+    (out/'replay_receipt.json').write_text(json.dumps({'builder_sha256':hashlib.sha256(Path('build_general_replay.py').read_bytes()).hexdigest(),'n_requested':int(val('--n')),'n_rows':12000,'seed':0}))
+    sys.exit(0)
+if kind=='sft_vlm.py':
+    for sub in ('merged','lora'):(out/sub).mkdir(parents=True,exist_ok=True)
+    (out/'merged/config.json').write_text('{}')
+    (out/'train_receipt.json').write_text(json.dumps({'args':{'model_id':val('--model_id')},'global_step':1250}))
+    sys.exit(0)
+if kind=='generate.py':
+    rows=[json.loads(l) for l in Path('meta/androidcontrol_test_gt.jsonl').read_text().splitlines()]
+    if val('--filter_mode'):rows=[r for r in rows if r['mode']==val('--filter_mode')]
+    out=Path(val('--out'))
+    out.write_text(''.join(json.dumps({**r,'model':val('--model'),'config_hash':'stub','output':r['gt_action']})+'\n' for r in rows))
+    Path(str(out)+'.manifest.json').write_text(json.dumps({'model':val('--model'),'n_rows':len(rows),'config_hash':'stub'}))
+    sys.exit(0)
+if kind=='score.py':
+    sys.path[0]=os.getcwd();sys.argv=a
+    runpy.run_path(str(Path('score.py').resolve()),run_name='__main__');sys.exit(0)
+raise SystemExit('unhandled stub '+str(a))

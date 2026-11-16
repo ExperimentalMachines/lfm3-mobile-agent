@@ -16,6 +16,8 @@ Usage: python score.py preds.jsonl [--out metrics.json] [--by split_tag]
 """
 
 import argparse
+import hashlib
+import os
 import json
 import math
 import re
@@ -107,13 +109,23 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("preds")
     ap.add_argument("--out")
-    ap.add_argument("--gt", default=str(Path(__file__).resolve().parents[2] / "data/meta/androidcontrol_test_gt.jsonl"))
+    _here = Path(__file__).resolve()
+    _cands = [os.environ.get("AC_TEST_GT", ""), str(_here.parents[2] / "data/meta/androidcontrol_test_gt.jsonl") if len(_here.parents) > 2 else "",
+              str(_here.parent / "meta/androidcontrol_test_gt.jsonl")]
+    ap.add_argument("--gt", default=next((c for c in _cands if c and os.path.exists(c)), _cands[-1]))
+    ap.add_argument("--modes", default="high,low", help="expected modes, e.g. 'high' for a high-only certified subset")
     ap.add_argument("--allow_incomplete", action="store_true")
     a = ap.parse_args()
     preds = [json.loads(l) for l in open(a.preds)]
     # --- integrity: score against the FROZEN ground truth, never the prediction file's own labels ---
-    gt_rows = [json.loads(l) for l in open(a.gt)]
-    gt = {(r["episode_id"], r["step_idx"], r["mode"]): r for r in gt_rows}
+    gt_bytes = open(a.gt, "rb").read()
+    gt_man = Path(a.gt).with_suffix(".manifest.json")
+    if gt_man.exists() and json.load(open(gt_man))["sha256"] != hashlib.sha256(gt_bytes).hexdigest():
+        print("INTEGRITY PROBLEM: frozen GT file does not match its manifest sha256", file=sys.stderr)
+        raise SystemExit(2)
+    modes = set(a.modes.split(","))
+    gt_rows = [json.loads(l) for l in gt_bytes.decode().splitlines() if l.strip()]
+    gt = {(r["episode_id"], r["step_idx"], r["mode"]): r for r in gt_rows if r["mode"] in modes}
     pk = [(r["episode_id"], r["step_idx"], r.get("mode", "high")) for r in preds]
     dups = len(pk) - len(set(pk))
     mpath = a.preds + ".manifest.json"
