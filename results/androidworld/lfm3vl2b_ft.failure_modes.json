@@ -1,21 +1,26 @@
 {
- "n": 61,
+ "n": 116,
  "labels": {
-  "step_budget_exhausted": 30,
-  "complete_but_failed": 23,
-  "success": 7,
-  "exception": 1
+  "step_budget_exhausted": 54,
+  "complete_but_failed": 45,
+  "success": 15,
+  "exception": 2
  },
  "flags_among_failures": {
-  "wait_run3": 15,
-  "unmapped_open_app": 7,
-  "same_action_run3": 3
+  "wait_run3": 28,
+  "unmapped_open_app": 16,
+  "same_action_run3": 5
  },
  "episodes_with_answer_action": 0,
  "unmapped_app_names": {
+  "Music": 25,
   "File Manager": 16,
+  "Tracks": 8,
   "Stopwatch": 6,
   "Marker": 4,
+  "SimpleSMS Messenger": 4,
+  "Notes": 3,
+  "SMS Messenger": 2,
   "Timer": 1
  },
  "note": "labels are outcome descriptions, not causes; flags overlap",
@@ -646,6 +651,592 @@
    "unmapped_apps": [],
    "answer_actions": 0,
    "steps": 30
+  },
+  {
+   "task": "RetroSavePlaylist",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app"
+   ],
+   "unmapped_apps": [
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music",
+    "Music"
+   ],
+   "answer_actions": 0,
+   "steps": 50
+  },
+  {
+   "task": "SaveCopyOfReceiptTaskEval",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 16
+  },
+  {
+   "task": "SimpleCalendarAddOneEventInTwoWeeks",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 27
+  },
+  {
+   "task": "SimpleCalendarAddOneEventRelativeDay",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAddOneEventTomorrow",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAddOneEvent",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 32
+  },
+  {
+   "task": "SimpleCalendarAddRepeatingEvent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAnyEventsOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarDeleteEventsOnRelativeDay",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 8
+  },
+  {
+   "task": "SimpleCalendarDeleteEvents",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SimpleCalendarDeleteOneEvent",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarEventOnDateAtTime",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SimpleCalendarEventsInNextWeek",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarEventsInTimeRange",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SimpleCalendarEventsOnDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SimpleCalendarFirstEventAfterStartTime",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SimpleCalendarLocationOfEvent",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SimpleCalendarNextEvent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarNextMeetingWithPerson",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "SimpleDrawProCreateDrawing",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 18
+  },
+  {
+   "task": "SimpleSmsReplyMostRecent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "SimpleSMS Messenger"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsReply",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "SimpleSMS Messenger",
+    "SimpleSMS Messenger"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsResend",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "SMS Messenger"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsSendClipboardContent",
+   "instance_id": 0,
+   "label": "exception",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": NaN
+  },
+  {
+   "task": "SimpleSmsSendReceivedAddress",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "SMS Messenger"
+   ],
+   "answer_actions": 0,
+   "steps": 18
+  },
+  {
+   "task": "SimpleSmsSend",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "SimpleSMS Messenger"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SportsTrackerActivitiesCountForWeek",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SportsTrackerActivitiesOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Tracks",
+    "Tracks",
+    "Tracks",
+    "Tracks",
+    "Tracks"
+   ],
+   "answer_actions": 0,
+   "steps": 20
+  },
+  {
+   "task": "SportsTrackerActivityDuration",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SportsTrackerLongestDistanceActivity",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 7
+  },
+  {
+   "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Tracks",
+    "Tracks",
+    "Tracks"
+   ],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBluetoothTurnOffVerify",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SystemBluetoothTurnOff",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SystemBluetoothTurnOnVerify",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SystemBluetoothTurnOn",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBrightnessMaxVerify",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBrightnessMax",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBrightnessMinVerify",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SystemBrightnessMin",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SystemCopyToClipboard",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Notes",
+    "Notes",
+    "Notes"
+   ],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemWifiTurnOffVerify",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SystemWifiTurnOff",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SystemWifiTurnOnVerify",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "SystemWifiTurnOn",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "TasksCompletedTasksForDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "TasksDueNextWeek",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksDueOnDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "TasksHighPriorityTasksDueOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksHighPriorityTasks",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "TasksIncompleteTasksOnDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 8
+  },
+  {
+   "task": "TurnOffWifiAndTurnOnBluetooth",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 20
+  },
+  {
+   "task": "TurnOnWifiAndOpenApp",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "VlcCreatePlaylist",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 28
+  },
+  {
+   "task": "VlcCreateTwoPlaylists",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 48
   }
  ]
 }

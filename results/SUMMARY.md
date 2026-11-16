@@ -9,9 +9,9 @@ Non-significant Δ means no decline was detected on these two tests (95% CIs in 
 | Model | AC high-level | AC low-level | 'complete' acc | AndroidWorld | latency / prompt | General knowledge |
 |---|---|---|---|---|---|---|
 | LFM3-VL-2B base | 0.313 (ep 0.027) | 0.634 (ep 0.173) | 0.000 | 0.9% (1/116) | 2.3s / 1121 tok | MMStar 52.1%, MMLU 48.9% |
-| LFM3-VL-2B fine-tuned | 0.715 (ep 0.283) | 0.948 (ep 0.783) | 0.792 | partial: 7/61 done (11.5%) | 2.8s / 1153 tok | MMStar 57.1%, MMLU 49.5% (Δ mmstar +5.0pp p=3.0e-07, mmlu +0.6pp p=0.68) |
+| LFM3-VL-2B fine-tuned | 0.715 (ep 0.283) | 0.948 (ep 0.783) | 0.792 | 12.9% (15/116) | 2.7s / 1145 tok | MMStar 57.1%, MMLU 49.5% (Δ mmstar +5.0pp p=3.0e-07, mmlu +0.6pp p=0.68) |
 | LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | — | — | MMStar 38.5%, MMLU 39.9% |
-| LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | partial: 0/86 done (0.0%) | 1.4s / 1197 tok | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
+| LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | 2.2% (2/116) | 1.4s / 1194 tok | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
 | Qwen3.5-2B fine-tuned | — | — | — | — | — | — |
 | Qwen3.5-0.8B fine-tuned | — | — | — | — | — | — |
 | GUI-Owl-1.5-2B (compute-matched, 1 img) | — | — | — | partial: 9/60 done (15.0%) | 6.2s / 2343 tok | — |

@@ -1,15 +1,16 @@
 {
- "n": 86,
+ "n": 116,
  "labels": {
-  "step_budget_exhausted": 73,
-  "complete_but_failed": 10,
-  "exception": 3
+  "step_budget_exhausted": 91,
+  "complete_but_failed": 18,
+  "exception": 4,
+  "success": 3
  },
  "flags_among_failures": {
-  "same_action_run3": 41,
-  "unmapped_open_app": 32,
-  "wait_run3": 32,
-  "unparseable_step": 6
+  "same_action_run3": 55,
+  "wait_run3": 34,
+  "unmapped_open_app": 33,
+  "unparseable_step": 11
  },
  "episodes_with_answer_action": 0,
  "unmapped_app_names": {
@@ -29,7 +30,8 @@
   "Recipes": 1,
   "Music": 1,
   "Download": 1,
-  "Messaging": 1
+  "Messaging": 1,
+  "Clipboard": 1
  },
  "note": "labels are outcome descriptions, not causes; flags overlap",
  "episodes": [
@@ -1053,6 +1055,15 @@
    "steps": 12
   },
   {
+   "task": "SimpleSmsSendReceivedAddress",
+   "instance_id": 0,
+   "label": "exception",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": NaN
+  },
+  {
    "task": "SimpleSmsSend",
    "instance_id": 0,
    "label": "complete_but_failed",
@@ -1060,6 +1071,307 @@
    "unmapped_apps": [],
    "answer_actions": 0,
    "steps": 5
+  },
+  {
+   "task": "SportsTrackerActivitiesCountForWeek",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SportsTrackerActivitiesOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 20
+  },
+  {
+   "task": "SportsTrackerActivityDuration",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SportsTrackerLongestDistanceActivity",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "SystemBluetoothTurnOffVerify",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBluetoothTurnOff",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBluetoothTurnOnVerify",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBluetoothTurnOn",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemBrightnessMaxVerify",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SystemBrightnessMax",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SystemBrightnessMinVerify",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SystemBrightnessMin",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "SystemCopyToClipboard",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unmapped_open_app"
+   ],
+   "unmapped_apps": [
+    "Clipboard"
+   ],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemWifiTurnOffVerify",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemWifiTurnOff",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemWifiTurnOnVerify",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SystemWifiTurnOn",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksCompletedTasksForDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
+  },
+  {
+   "task": "TasksDueNextWeek",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksDueOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksHighPriorityTasksDueOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksHighPriorityTasks",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TasksIncompleteTasksOnDate",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step",
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "TurnOffWifiAndTurnOnBluetooth",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 20
+  },
+  {
+   "task": "TurnOnWifiAndOpenApp",
+   "instance_id": 0,
+   "label": "success",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 3
+  },
+  {
+   "task": "VlcCreatePlaylist",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 28
+  },
+  {
+   "task": "VlcCreateTwoPlaylists",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 48
   }
  ]
 }
