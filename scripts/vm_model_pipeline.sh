@@ -18,12 +18,17 @@ R=experimentalmachines/AndroidControl-screen-agent-sft
 OUT=/content/runs/$RUN
 mkdir -p /content/eval $OUT/logs /content/data
 log() { echo "[$(date +%T)] $RUN: $*"; }
-receipt_ok() { python - "$1" "$MODEL" "$OUT" <<'PY'
+receipt_ok() { MAX_STEPS=${MAX_STEPS:-} EPOCHS=${EPOCHS:-} MAX_AGENT_ROWS=${MAX_AGENT_ROWS:-} LR=${LR:-} LORA_R=${LORA_R:-} BS=${BS:-} GA=${GA:-} python - "$1" "$MODEL" "$OUT" <<'PY'
 import json, os, sys
 try:
     r = json.load(open(sys.argv[1])); a = r["args"]
     w = r.get("weights") or {}
-    ok = (a.get("model_id") == sys.argv[2] and a.get("out") == sys.argv[3] and w
+    want = {"max_steps": int(os.environ.get("MAX_STEPS") or -1), "epochs": float(os.environ.get("EPOCHS") or 1),
+            "max_agent_rows": int(os.environ.get("MAX_AGENT_ROWS") or 0), "lr": float(os.environ.get("LR") or 2e-4),
+            "lora_r": int(os.environ.get("LORA_R") or 64), "bs": int(os.environ.get("BS") or 8),
+            "grad_accum": int(os.environ.get("GA") or 4)}
+    same_cfg = all(type(v)(a.get(k)) == v for k, v in want.items())
+    ok = (same_cfg and a.get("model_id") == sys.argv[2] and a.get("out") == sys.argv[3] and w
           and all(v > 0 and os.path.getsize(os.path.join(sys.argv[3], "merged", k)) == v for k, v in w.items())
           and r.get("max_steps", 0) > 0 and r.get("global_step", 0) >= r["max_steps"])
 except Exception:
@@ -102,19 +107,19 @@ if [ "${GENERAL_EVAL:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_ft_general.summar
   log "general eval FT"; python eval_general.py --model $OUT/merged --out /content/eval/${RUN}_ft_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general ft"
   push_evals
 fi
-if ! metrics_ok /content/eval/${RUN}_ft.metrics.json /content/eval/${RUN}_ft.jsonl $OUT/merged; then
+if ! python score.py /content/eval/${RUN}_ft.jsonl --gt $GT --out /content/eval/${RUN}_ft.metrics.json > /dev/null 2>&1; then
   log "AndroidControl test FT"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft.jsonl --enable_thinking ${FT_THINK:-1} \
     --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && python score.py /content/eval/${RUN}_ft.jsonl --gt $GT --out /content/eval/${RUN}_ft.metrics.json > /dev/null || fail "ft AC eval"
   push_evals
 fi
-if [ "${BASE_AC_EVAL:-1}" = 1 ] && ! metrics_ok /content/eval/${RUN}_base.metrics.json /content/eval/${RUN}_base.jsonl $MODEL; then
+if [ "${BASE_AC_EVAL:-1}" = 1 ] && ! python score.py /content/eval/${RUN}_base.jsonl --gt $GT --out /content/eval/${RUN}_base.metrics.json > /dev/null 2>&1; then
   log "AndroidControl test BASE (no-think)"
   python generate.py --model $MODEL --data $R@test --out /content/eval/${RUN}_base.jsonl --enable_thinking 0 \
     --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && python score.py /content/eval/${RUN}_base.jsonl --gt $GT --out /content/eval/${RUN}_base.metrics.json > /dev/null || fail "base AC eval"
   push_evals
 fi
-if [ "${MATCHED_NOTHINK:-1}" = 1 ] && ! metrics_ok /content/eval/${RUN}_ft_nothink_high.metrics.json /content/eval/${RUN}_ft_nothink_high.jsonl $OUT/merged; then
+if [ "${MATCHED_NOTHINK:-1}" = 1 ] && ! python score.py /content/eval/${RUN}_ft_nothink_high.jsonl --gt $GT --modes high --out /content/eval/${RUN}_ft_nothink_high.metrics.json > /dev/null 2>&1; then
   log "AndroidControl test FT matched no-think (high-level)"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft_nothink_high.jsonl --enable_thinking 0 \
     --filter_mode high --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
