@@ -1,0 +1,59 @@
+{
+ "summary": {
+  "run_dir": "results/androidworld/_smoke_guiowl_native/run_20261116T225639669685",
+  "n_episodes": 2,
+  "expected_episodes": 2,
+  "missing_episodes_counted_as_fail": 0,
+  "success_rate": 1.0,
+  "success_rate_over_completed": 1.0,
+  "n_teardown_exceptions": 0,
+  "success_rate_by_difficulty": {
+   "easy": {
+    "n": 2,
+    "sr": 1.0
+   }
+  },
+  "n_exceptions_counted_as_fail": 0,
+  "frac_episodes_self_terminated": 0.0,
+  "mean_steps": 8,
+  "model_latency_s": {
+   "mean": 61.135089099407196,
+   "p50": 24.686987042427063,
+   "p90": 133.07385873794556
+  },
+  "prompt_tokens_mean": 10706.6875,
+  "parse_failure_rate": 0.0,
+  "n_steps_total": 16,
+  "first_attempt_strict_valid_rate": 1.0,
+  "first_attempt_lenient_valid_rate": 1.0,
+  "n_model_calls_incl_retries": 0
+ },
+ "episodes": [
+  {
+   "task": "ClockStopWatchRunning",
+   "file": "ClockStopWatchRunning_0.pkl.gz",
+   "success": 1.0,
+   "exception": false,
+   "steps": 5,
+   "runtime_s": 138.4,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ContactsAddContact",
+   "file": "ContactsAddContact_0.pkl.gz",
+   "success": 1.0,
+   "exception": false,
+   "steps": 11,
+   "runtime_s": 901.0,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  }
+ ]
+}

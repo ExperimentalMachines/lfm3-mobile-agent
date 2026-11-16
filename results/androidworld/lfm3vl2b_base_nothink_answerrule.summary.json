@@ -1,0 +1,72 @@
+{
+ "summary": {
+  "run_dir": "results/androidworld/lfm3vl2b_base_nothink_answerrule/run_20261116T225347046222",
+  "n_episodes": 3,
+  "expected_episodes": 3,
+  "missing_episodes_counted_as_fail": 0,
+  "success_rate": 0.0,
+  "success_rate_over_completed": 0.0,
+  "n_teardown_exceptions": 0,
+  "success_rate_by_difficulty": {
+   "easy": {
+    "n": 3,
+    "sr": 0.0
+   }
+  },
+  "n_exceptions_counted_as_fail": 0,
+  "frac_episodes_self_terminated": 0.0,
+  "mean_steps": 10,
+  "model_latency_s": {
+   "mean": 1.5672703425089518,
+   "p50": 1.2171306610107422,
+   "p90": 3.0774221420288086
+  },
+  "prompt_tokens_mean": 1081.3666666666666,
+  "parse_failure_rate": 0.13333333333333333,
+  "n_steps_total": 30,
+  "first_attempt_strict_valid_rate": 0.6,
+  "first_attempt_lenient_valid_rate": 0.8666666666666667,
+  "n_model_calls_incl_retries": 34
+ },
+ "episodes": [
+  {
+   "task": "SimpleCalendarEventsInNextWeek",
+   "file": "SimpleCalendarEventsInNextWeek_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 33.7,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "SimpleCalendarNextEvent",
+   "file": "SimpleCalendarNextEvent_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 46.1,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 1
+  },
+  {
+   "task": "SportsTrackerActivityDuration",
+   "file": "SportsTrackerActivityDuration_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 51.2,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  }
+ ]
+}
