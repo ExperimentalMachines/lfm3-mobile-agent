@@ -1,0 +1,176 @@
+{
+  "snapshot_utc": "2026-11-16T10:51:04.643853+00:00",
+  "n_episodes": 12,
+  "planned_suite_size": 116,
+  "not_yet_observed": 104,
+  "successes": 0,
+  "success_rate_observed_only": 0,
+  "mean_task_reward_observed_only": 0.0,
+  "n_exceptions": 0,
+  "by_difficulty": {
+    "easy": {
+      "n": 10,
+      "successes": 0,
+      "mean_task_reward": 0.0
+    },
+    "hard": {
+      "n": 1,
+      "successes": 0,
+      "mean_task_reward": 0.0
+    },
+    "medium": {
+      "n": 1,
+      "successes": 0,
+      "mean_task_reward": 0.0
+    }
+  },
+  "n_steps": 168,
+  "parse_failures_after_retry": 11,
+  "parse_failure_rate_after_retry": 0.06547619047619048,
+  "strict_format_failures": 21,
+  "execute_failures": 20,
+  "self_terminated": 1,
+  "action_counts": {
+    "long_press": 40,
+    "input_text": 11,
+    "open_app": 45,
+    "navigate_home": 27,
+    "click": 14,
+    "wait": 1,
+    "navigate_back": 17,
+    "scroll": 1,
+    "status": 1
+  },
+  "mean_last_attempt_latency_s": 2.75966705594744,
+  "p50_last_attempt_latency_s": 2.7415651082992554,
+  "mean_last_attempt_prompt_tokens": 1094.4880952380952,
+  "sum_episode_runtime_s": 1180.0375673770905,
+  "limitations": [
+    "Missing tasks are pending, not counted as failures or excluded from an alleged completed-suite score.",
+    "Only final HTTP attempt per step is serialized; first-attempt parse rate and full model latency are unavailable.",
+    "Sparse error lists are not aligned to step indices; do not zip them with actions.",
+    "Stored success already requires upstream agent termination; it is not raw task-state reward."
+  ]
+}
+[
+  {
+    "task": "AudioRecorderRecordAudioWithFileName",
+    "difficulty": "easy",
+    "steps": 20,
+    "parse_failures": 10,
+    "strict_format_failures": 10,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "AudioRecorderRecordAudio",
+    "difficulty": "easy",
+    "steps": 12,
+    "parse_failures": 0,
+    "strict_format_failures": 1,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "BrowserDraw",
+    "difficulty": "easy",
+    "steps": 20,
+    "parse_failures": 0,
+    "strict_format_failures": 1,
+    "execute_failures": 6,
+    "ended_with_status": false,
+    "file_manager_open_actions": 6
+  },
+  {
+    "task": "BrowserMaze",
+    "difficulty": "easy",
+    "steps": 20,
+    "parse_failures": 0,
+    "strict_format_failures": 1,
+    "execute_failures": 7,
+    "ended_with_status": false,
+    "file_manager_open_actions": 7
+  },
+  {
+    "task": "BrowserMultiply",
+    "difficulty": "hard",
+    "steps": 22,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 7,
+    "ended_with_status": false,
+    "file_manager_open_actions": 7
+  },
+  {
+    "task": "CameraTakePhoto",
+    "difficulty": "easy",
+    "steps": 10,
+    "parse_failures": 1,
+    "strict_format_failures": 8,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "CameraTakeVideo",
+    "difficulty": "medium",
+    "steps": 10,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "ClockStopWatchPausedVerify",
+    "difficulty": "easy",
+    "steps": 10,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "ClockStopWatchRunning",
+    "difficulty": "easy",
+    "steps": 10,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 0,
+    "ended_with_status": true,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "ClockTimerEntry",
+    "difficulty": "easy",
+    "steps": 10,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "ContactsAddContact",
+    "difficulty": "easy",
+    "steps": 12,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  },
+  {
+    "task": "ContactsNewContactDraft",
+    "difficulty": "easy",
+    "steps": 12,
+    "parse_failures": 0,
+    "strict_format_failures": 0,
+    "execute_failures": 0,
+    "ended_with_status": false,
+    "file_manager_open_actions": 0
+  }
+]

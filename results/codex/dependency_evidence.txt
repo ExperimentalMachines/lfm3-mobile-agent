@@ -1,0 +1,66 @@
+# Versioned dependency evidence
+
+https://github.com/huggingface/trl/blob/v1.16.0/trl/trainer/sft_trainer.py
+Git blob 08a0e46903ae792d3906384f3915e1253c942f71
+
+370:             for example in examples:
+371:                 example["images"] = [example.pop("image")]
+372:         images = [example["images"] for example in examples]
+373:         # Transformers requires at least one image in the batch, otherwise it throws an error
+374:         if all(img_list == [] for img_list in images):
+375:             images = None
+376: 
+377:         processor_kwargs = {
+378:             "padding": True,
+379:             "padding_side": "right",
+380:             "pad_to_multiple_of": self.pad_to_multiple_of,
+381:             "truncation": self.max_length is not None,
+382:             "max_length": self.max_length,
+383:             "add_special_tokens": False,  # to avoid adding the BOS twice, see https://huggingface.co/blog/qgallouedec/gotchas-in-tokenizer-behavior#7-chat-template-and-tokenization-dont-compose-due-to-special-tokens
+384:         }
+385:         if "messages" in examples[0]:  # conversational case
+386:             messages = [
+387:                 prepare_multimodal_messages(example["messages"], images=example["images"]) for example in examples
+388:             ]
+389:             # transformers 5.4.0 moved processor kwargs to the `processor_kwargs` argument (transformers#44881)
+390:             if Version(transformers.__version__) >= Version("5.4.0"):
+391:                 template_kwargs = {"processor_kwargs": processor_kwargs}
+392:             else:
+393:                 template_kwargs = processor_kwargs
+394:             output = self.processor.apply_chat_template(
+395:                 messages,
+396:                 chat_template=self.chat_template,
+397:                 tokenize=True,
+398:                 return_dict=True,
+399:                 return_tensors=self.return_tensors,
+400:                 return_assistant_tokens_mask=self.assistant_only_loss,
+401:                 **template_kwargs,
+402:             )
+403:         elif self.dataset_text_field in examples[0]:  # standard case
+404:             texts = [example[self.dataset_text_field] for example in examples]
+405:             output = self.processor(images=images, text=texts, return_tensors=self.return_tensors, **processor_kwargs)
+406:         else:
+407:             raise KeyError(
+408:                 "The input examples must contain either 'messages' for conversational data or 'text' for standard "
+409:                 "data."
+410:             )
+411: 
+412:         labels = output["input_ids"].clone()
+413:         labels[output["attention_mask"] == 0] = -100
+414:         if self.assistant_only_loss:
+415:             labels[output.pop("assistant_masks") == 0] = -100
+416:         output["labels"] = labels
+417:         return output
+418: 
+
+https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/training_args.py
+Git blob 6d4596e0179344541687f9bff882ed6ec1238f4a
+
+2118:     def get_warmup_steps(self, num_training_steps: int):
+2119:         """
+2120:         Get number of steps used for a linear warmup.
+2121:         """
+2122:         warmup_steps = (
+2123:             int(self.warmup_steps) if self.warmup_steps >= 1 else math.ceil(num_training_steps * self.warmup_steps)
+2124:         )
+2125:         return warmup_steps

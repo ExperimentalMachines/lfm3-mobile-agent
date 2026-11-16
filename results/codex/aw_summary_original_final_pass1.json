@@ -1,0 +1,166 @@
+{
+ "summary": {
+  "run_dir": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091",
+  "n_episodes": 12,
+  "success_rate": 0.0,
+  "success_rate_by_difficulty": {
+   "easy": {
+    "n": 10,
+    "sr": 0.0
+   },
+   "hard": {
+    "n": 1,
+    "sr": 0.0
+   },
+   "medium": {
+    "n": 1,
+    "sr": 0.0
+   }
+  },
+  "n_exceptions_counted_as_fail": 0,
+  "frac_episodes_self_terminated": 0.08333333333333333,
+  "mean_steps": 14,
+  "model_latency_s": {
+   "mean": 2.75966705594744,
+   "p50": 2.7415651082992554,
+   "p90": 3.31965708732605
+  },
+  "prompt_tokens_mean": 1094.4880952380952,
+  "parse_failure_rate": 0.06547619047619048,
+  "n_steps_total": 168
+ },
+ "episodes": [
+  {
+   "task": "AudioRecorderRecordAudioWithFileName",
+   "file": "AudioRecorderRecordAudioWithFileName_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 162.5,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "AudioRecorderRecordAudio",
+   "file": "AudioRecorderRecordAudio_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 12,
+   "runtime_s": 71.3,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "BrowserDraw",
+   "file": "BrowserDraw_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 138.4,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "BrowserMaze",
+   "file": "BrowserMaze_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 128.3,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "BrowserMultiply",
+   "file": "BrowserMultiply_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 22,
+   "runtime_s": 140.3,
+   "difficulty": "hard",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "CameraTakePhoto",
+   "file": "CameraTakePhoto_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 74.6,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "CameraTakeVideo",
+   "file": "CameraTakeVideo_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 70.0,
+   "difficulty": "medium",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ClockStopWatchPausedVerify",
+   "file": "ClockStopWatchPausedVerify_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 56.0,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ClockStopWatchRunning",
+   "file": "ClockStopWatchRunning_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 68.6,
+   "difficulty": "easy",
+   "ended_with_status": true,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ClockTimerEntry",
+   "file": "ClockTimerEntry_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 77.7,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ContactsAddContact",
+   "file": "ContactsAddContact_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 12,
+   "runtime_s": 85.2,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "ContactsNewContactDraft",
+   "file": "ContactsNewContactDraft_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 12,
+   "runtime_s": 107.2,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  }
+ ]
+}

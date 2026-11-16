@@ -71,7 +71,7 @@ def match(pred, gt, gt_bbox=None):
     return True, True
 
 
-def score_rows(rows):
+def score_rows(rows, strict=False):
     n = len(rows)
     tm = sr = parse_ok = 0
     per_type = defaultdict(lambda: [0, 0, 0])  # n, type_match, sr
@@ -81,7 +81,7 @@ def score_rows(rows):
         bbox = r.get("gt_bbox")
         if isinstance(bbox, str):
             bbox = json.loads(bbox) if bbox else None
-        pred = af.parse_action(r["output"])
+        pred = af.parse_action(r["output"], strict=strict)
         parse_ok += pred is not None
         t_ok, s_ok = match(pred, gt, bbox)
         tm += t_ok
@@ -107,14 +107,28 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("preds")
     ap.add_argument("--out")
+    ap.add_argument("--expected", type=int, default=0)
+    ap.add_argument("--allow_incomplete", action="store_true")
     a = ap.parse_args()
     rows = [json.loads(l) for l in open(a.preds)]
+    # completeness / identity checks (fail loudly instead of silently scoring a partial file)
+    keys = [(r["episode_id"], r["step_idx"], r.get("mode", "high")) for r in rows]
+    dups = len(keys) - len(set(keys))
+    models = sorted({r.get("model", "?") for r in rows})
+    mpath = a.preds + ".manifest.json"
+    expected = a.expected or (json.load(open(mpath))["n_rows"] if Path(mpath).exists() else None)
+    integrity = {"n_rows": len(rows), "expected_rows": expected, "duplicate_keys": dups, "models": models,
+                 "complete": expected is None or len(set(keys)) == expected}
+    if dups or len(models) > 1 or (expected is not None and len(set(keys)) != expected):
+        print("INTEGRITY PROBLEM:", integrity, file=sys.stderr)
+        if not a.allow_incomplete:
+            raise SystemExit(2)
     steps = [r for r in rows if not r.get("is_terminal")]
     term = [r for r in rows if r.get("is_terminal")]
     res = {}
     for mode in sorted({r.get("mode", "high") for r in steps}):
         mrows = [r for r in steps if r.get("mode", "high") == mode]
-        block = {"overall": score_rows(mrows)}
+        block = {"overall": score_rows(mrows), "overall_strict_parse": score_rows(mrows, strict=True)}
         subs = sorted({s for r in mrows for s in (r.get("subsplits") or [])})
         if subs:
             block["by_subsplit"] = {s: score_rows([r for r in mrows if s in (r.get("subsplits") or [])]) for s in subs}
@@ -133,6 +147,7 @@ def main():
         res[mode] = block
     if term:
         res["terminal_complete"] = score_rows(term)
+    res["integrity"] = integrity
     s = json.dumps(res, indent=2)
     print(s)
     if a.out:

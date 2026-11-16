@@ -1,0 +1,34 @@
+{
+  "trl_prepared_prompt_equals_offline_prompt": true,
+  "cases": [
+    {
+      "template": "results/codex/served_gguf_chat_template.jinja",
+      "enable_thinking": true,
+      "training_starts_with_inference_prompt": true,
+      "inference_suffix": "Previous steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>",
+      "generation_span": "<think>Tap the Settings icon.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n"
+    },
+    {
+      "template": "results/codex/served_gguf_chat_template.jinja",
+      "enable_thinking": false,
+      "training_starts_with_inference_prompt": false,
+      "inference_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think></think>",
+      "generation_span": "<think>Tap the Settings icon.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n"
+    },
+    {
+      "template": "train/qwen35_chat_template_gen.jinja",
+      "enable_thinking": true,
+      "training_starts_with_inference_prompt": true,
+      "inference_suffix": "revious steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+      "generation_span": "<think>\nTap the Settings icon.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>"
+    },
+    {
+      "template": "train/qwen35_chat_template_gen.jinja",
+      "enable_thinking": false,
+      "training_starts_with_inference_prompt": false,
+      "inference_suffix": "ps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "generation_span": "<think>\nTap the Settings icon.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>"
+    }
+  ],
+  "scope": "Character spans only. Does not verify tokenizer-level assistant_masks, GPU execution, or the training VM revision."
+}

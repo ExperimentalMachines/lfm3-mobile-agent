@@ -33,6 +33,7 @@ def difficulty(task):
 
 rows = []
 lat, ptok, parse_fail, nsteps_total = [], [], 0, 0
+first_strict = first_lenient = n_attempts = 0
 for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
     # pickles are written locally by our own AndroidWorld runs (trusted input)
     ep = pickle.load(gzip.open(f))
@@ -41,10 +42,15 @@ for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
     exc = ep.get("exception_info")
     if succ is None or (isinstance(succ, float) and math.isnan(succ)):
         succ = 0.0
-    ed = ep.get("episode_data") or {}
+    ed = ep.get("episode_data")
+    if not isinstance(ed, dict):  # upstream failed-result records store NaN here
+        ed = {}
     l = [x for x in (ed.get("latency_s") or []) if isinstance(x, (int, float))]
     u = [x.get("prompt_tokens") for x in (ed.get("usage") or []) if isinstance(x, dict) and x.get("prompt_tokens")]
     pa = ed.get("parsed_action") or []
+    first_strict += sum(1 for x in (ed.get("first_attempt_strict_ok") or []) if x is True)
+    first_lenient += sum(1 for x in (ed.get("first_attempt_lenient_ok") or []) if x is True)
+    n_attempts += sum(len(x) for x in (ed.get("attempts") or []) if isinstance(x, list))
     lat += l
     ptok += u
     parse_fail += sum(1 for x in pa if x is None)
@@ -55,6 +61,7 @@ for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
         "task": task, "file": f.name, "success": float(succ), "exception": bool(exc),
         "steps": ep.get("episode_length"), "runtime_s": round(ep.get("run_time") or 0, 1),
         "difficulty": difficulty(task),
+        "exception_info": (str(exc)[:300] if exc else None),
         "ended_with_status": bool(acts) and acts[-1] == "status",
         "n_answer_actions": acts.count("answer"),
     })
@@ -74,6 +81,9 @@ summary = {
     "prompt_tokens_mean": stats.mean(ptok) if ptok else None,
     "parse_failure_rate": parse_fail / max(1, nsteps_total),
     "n_steps_total": nsteps_total,
+    "first_attempt_strict_valid_rate": first_strict / max(1, nsteps_total),
+    "first_attempt_lenient_valid_rate": first_lenient / max(1, nsteps_total),
+    "n_model_calls_incl_retries": n_attempts,
 }
 Path(a.out).parent.mkdir(parents=True, exist_ok=True)
 Path(a.out).write_text(json.dumps({"summary": summary, "episodes": rows}, indent=1))

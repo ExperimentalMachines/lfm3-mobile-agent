@@ -1,0 +1,601 @@
+{
+  "summary": {
+    "snapshot_utc": "2026-11-16T10:51:04.643853+00:00",
+    "n_episodes": 12,
+    "planned_suite_size": 116,
+    "not_yet_observed": 104,
+    "successes": 0,
+    "success_rate_observed_only": 0,
+    "mean_task_reward_observed_only": 0.0,
+    "n_exceptions": 0,
+    "by_difficulty": {
+      "easy": {
+        "n": 10,
+        "successes": 0,
+        "mean_task_reward": 0.0
+      },
+      "hard": {
+        "n": 1,
+        "successes": 0,
+        "mean_task_reward": 0.0
+      },
+      "medium": {
+        "n": 1,
+        "successes": 0,
+        "mean_task_reward": 0.0
+      }
+    },
+    "n_steps": 168,
+    "parse_failures_after_retry": 11,
+    "parse_failure_rate_after_retry": 0.06547619047619048,
+    "strict_format_failures": 21,
+    "execute_failures": 20,
+    "self_terminated": 1,
+    "action_counts": {
+      "long_press": 40,
+      "input_text": 11,
+      "open_app": 45,
+      "navigate_home": 27,
+      "click": 14,
+      "wait": 1,
+      "navigate_back": 17,
+      "scroll": 1,
+      "status": 1
+    },
+    "mean_last_attempt_latency_s": 2.75966705594744,
+    "p50_last_attempt_latency_s": 2.7415651082992554,
+    "mean_last_attempt_prompt_tokens": 1094.4880952380952,
+    "sum_episode_runtime_s": 1180.0375673770905,
+    "limitations": [
+      "Missing tasks are pending, not counted as failures or excluded from an alleged completed-suite score.",
+      "Only final HTTP attempt per step is serialized; first-attempt parse rate and full model latency are unavailable.",
+      "Sparse error lists are not aligned to step indices; do not zip them with actions.",
+      "Stored success already requires upstream agent termination; it is not raw task-state reward."
+    ]
+  },
+  "episodes": [
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/AudioRecorderRecordAudioWithFileName_0.pkl.gz",
+      "task": "AudioRecorderRecordAudioWithFileName",
+      "goal": "Record an audio clip and save it with name \"presentation_fGwr.m4a\" using Audio Recorder app.",
+      "seed": 170855541,
+      "finish_dtime": "2026-11-16 18:02:03.036829",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 20,
+      "episode_length": 20,
+      "parse_failures": 10,
+      "strict_format_failures": 10,
+      "strict_format_failure_steps_1based": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        10,
+        12,
+        13,
+        16,
+        18
+      ],
+      "execute_failures": 0,
+      "error_counts": {
+        "unparseable": 10
+      },
+      "action_counts": {
+        "long_press": 8,
+        "input_text": 2
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [
+        "{\"action_type\":\"open_app\",\"point_2d\":[500, 1000], \"notes\": \"Audio Recorder app is not visible in the current view. Check if there's a way to access it or if you need to enable location services for recording.\"}",
+        "{\"action_type\":\"open_app\",\"point_2d\":[500, 1000],\"notes\":\"launching Audio Recorder app\"}"
+      ],
+      "first_action": null,
+      "last_action": {
+        "action_type": "long_press",
+        "point_2d": [
+          500.0,
+          1000.0
+        ]
+      },
+      "runtime_s": 162.4597990512848
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/AudioRecorderRecordAudio_0.pkl.gz",
+      "task": "AudioRecorderRecordAudio",
+      "goal": "Record an audio clip using Audio Recorder app and save it.",
+      "seed": 2842804519,
+      "finish_dtime": "2026-11-16 17:59:19.789302",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 12,
+      "episode_length": 12,
+      "parse_failures": 0,
+      "strict_format_failures": 1,
+      "strict_format_failure_steps_1based": [
+        1
+      ],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "open_app": 5,
+        "navigate_home": 4,
+        "click": 2,
+        "wait": 1
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "open_app",
+        "point_2d": [
+          500,
+          1000
+        ],
+        "label": "Audio Recorder app",
+        "app_name": "Audio Recorder app"
+      },
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          499.0,
+          868.0
+        ]
+      },
+      "runtime_s": 71.25355410575867
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/BrowserDraw_0.pkl.gz",
+      "task": "BrowserDraw",
+      "goal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then create a drawing using the three colors shown at the top and hit submit.",
+      "seed": 1466251684,
+      "finish_dtime": "2026-11-16 18:04:26.053982",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 20,
+      "episode_length": 20,
+      "parse_failures": 0,
+      "strict_format_failures": 1,
+      "strict_format_failure_steps_1based": [
+        1
+      ],
+      "execute_failures": 6,
+      "error_counts": {
+        "execute_failed: Error executing adb command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p file manager 1]": 6
+      },
+      "action_counts": {
+        "navigate_back": 6,
+        "open_app": 8,
+        "click": 4,
+        "navigate_home": 2
+      },
+      "file_manager_open_actions": 6,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "navigate_back",
+        "point_2d": [
+          499,
+          999
+        ],
+        "label": "Navigate back to previous screen"
+      },
+      "last_action": {
+        "action_type": "navigate_back",
+        "point_2d": [
+          499,
+          500
+        ]
+      },
+      "runtime_s": 138.37147283554077
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/BrowserMaze_0.pkl.gz",
+      "task": "BrowserMaze",
+      "goal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then navigate the X to the bottom-right cell, by using the direction buttons.",
+      "seed": 3308742614,
+      "finish_dtime": "2026-11-16 18:06:36.353676",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 20,
+      "episode_length": 20,
+      "parse_failures": 0,
+      "strict_format_failures": 1,
+      "strict_format_failure_steps_1based": [
+        12
+      ],
+      "execute_failures": 7,
+      "error_counts": {
+        "execute_failed: Error executing adb command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p file manager 1]": 7
+      },
+      "action_counts": {
+        "open_app": 8,
+        "navigate_back": 5,
+        "long_press": 3,
+        "click": 1,
+        "navigate_home": 2,
+        "scroll": 1
+      },
+      "file_manager_open_actions": 7,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "open_app",
+        "app_name": "file manager"
+      },
+      "last_action": {
+        "action_type": "navigate_home",
+        "point_2d": [
+          500,
+          922
+        ]
+      },
+      "runtime_s": 128.2775821685791
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/BrowserMultiply_0.pkl.gz",
+      "task": "BrowserMultiply",
+      "goal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then click the button 5 times, remember the numbers displayed, and enter their product in the form.",
+      "seed": 1325351943,
+      "finish_dtime": "2026-11-16 18:08:59.627151",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "hard",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 22,
+      "episode_length": 22,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 7,
+      "error_counts": {
+        "execute_failed: Error executing adb command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p file manager 1]": 7
+      },
+      "action_counts": {
+        "open_app": 8,
+        "navigate_back": 5,
+        "click": 4,
+        "input_text": 5
+      },
+      "file_manager_open_actions": 7,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "open_app",
+        "app_name": "file manager"
+      },
+      "last_action": {
+        "action_type": "input_text",
+        "text": "15360"
+      },
+      "runtime_s": 140.3034679889679
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/CameraTakePhoto_0.pkl.gz",
+      "task": "CameraTakePhoto",
+      "goal": "Take one photo.",
+      "seed": 3729977769,
+      "finish_dtime": "2026-11-16 18:37:15.149312",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 10,
+      "episode_length": 10,
+      "parse_failures": 1,
+      "strict_format_failures": 8,
+      "strict_format_failure_steps_1based": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "execute_failures": 0,
+      "error_counts": {
+        "unparseable": 1
+      },
+      "action_counts": {
+        "open_app": 1,
+        "long_press": 8
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [
+        "{\"action_type\":\"long_press\",\"point_2d\":[500, 902],\"duration\":500)}"
+      ],
+      "first_action": {
+        "action_type": "open_app",
+        "app_name": "Camera"
+      },
+      "last_action": {
+        "action_type": "long_press",
+        "point_2d": [
+          500.0,
+          902.0
+        ],
+        "duration": 500
+      },
+      "runtime_s": 74.64421606063843
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/CameraTakeVideo_0.pkl.gz",
+      "task": "CameraTakeVideo",
+      "goal": "Take one video.",
+      "seed": 2841656497,
+      "finish_dtime": "2026-11-16 18:38:27.014094",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "medium",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 10,
+      "episode_length": 10,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "open_app": 5,
+        "navigate_home": 5
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "open_app",
+        "app_name": "YouTube"
+      },
+      "last_action": {
+        "action_type": "navigate_home",
+        "point_2d": [
+          500,
+          29
+        ],
+        "alternative": "press any button on the screen to close the app and return to the previous screen"
+      },
+      "runtime_s": 70.0432231426239
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/ClockStopWatchPausedVerify_0.pkl.gz",
+      "task": "ClockStopWatchPausedVerify",
+      "goal": "Pause the stopwatch.",
+      "seed": 3959502054,
+      "finish_dtime": "2026-11-16 18:39:25.329985",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 10,
+      "episode_length": 10,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "navigate_home": 10
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "navigate_home",
+        "point_2d": [
+          500,
+          93
+        ],
+        "label": "Pause the stopwatch"
+      },
+      "last_action": {
+        "action_type": "navigate_home",
+        "point_2d": [
+          500,
+          999
+        ],
+        "length": 0.5
+      },
+      "runtime_s": 56.02597236633301
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/ClockStopWatchRunning_0.pkl.gz",
+      "task": "ClockStopWatchRunning",
+      "goal": "Run the stopwatch.",
+      "seed": 3429360255,
+      "finish_dtime": "2026-11-16 18:40:34.919578",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 10,
+      "episode_length": 10,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "long_press": 9,
+        "status": 1
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": true,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "long_press",
+        "point_2d": [
+          500.0,
+          32.0
+        ],
+        "description": "Open the stopwatch app from the menu"
+      },
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "infeasible"
+      },
+      "runtime_s": 68.6261477470398
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/ClockTimerEntry_0.pkl.gz",
+      "task": "ClockTimerEntry",
+      "goal": "Create a timer with 0 hours, 16 minutes, and 35 seconds. Do not start the timer.",
+      "seed": 1172248264,
+      "finish_dtime": "2026-11-16 18:41:53.795200",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 10,
+      "episode_length": 10,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "long_press": 9,
+        "open_app": 1
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "long_press",
+        "point_2d": [
+          500.0,
+          900.0
+        ],
+        "reason": "To open the Clock app to set a timer."
+      },
+      "last_action": {
+        "action_type": "long_press",
+        "point_2d": [
+          500.0,
+          900.0
+        ]
+      },
+      "runtime_s": 77.65219116210938
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/ContactsAddContact_0.pkl.gz",
+      "task": "ContactsAddContact",
+      "goal": "Create a new contact for Hugo Pereira. Their number is +13920741751.",
+      "seed": 1155463587,
+      "finish_dtime": "2026-11-16 18:43:21.115251",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 12,
+      "episode_length": 12,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "open_app": 8,
+        "navigate_home": 4
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "open_app",
+        "app_name": "Contacts"
+      },
+      "last_action": {
+        "action_type": "navigate_home",
+        "point_2d": [
+          500,
+          886
+        ],
+        "alternative": "press_keyboard_enter",
+        "length": 1
+      },
+      "runtime_s": 85.17059683799744
+    },
+    {
+      "file": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T175808535091/ContactsNewContactDraft_0.pkl.gz",
+      "task": "ContactsNewContactDraft",
+      "goal": "Go to the new contact screen and enter the following details: First Name: Grace, Last Name: Taylor, Phone: 799-802-1530, Phone Label: Work. Do NOT hit save.",
+      "seed": 3954285476,
+      "finish_dtime": "2026-11-16 18:45:09.328155",
+      "agent_name": "lfm3vl2b_base_nothink_q4km",
+      "difficulty": "easy",
+      "success": false,
+      "reward": 0.0,
+      "exception": false,
+      "steps": 12,
+      "episode_length": 12,
+      "parse_failures": 0,
+      "strict_format_failures": 0,
+      "strict_format_failure_steps_1based": [],
+      "execute_failures": 0,
+      "error_counts": {},
+      "action_counts": {
+        "navigate_back": 1,
+        "open_app": 1,
+        "click": 3,
+        "long_press": 3,
+        "input_text": 4
+      },
+      "file_manager_open_actions": 0,
+      "ended_with_status": false,
+      "reasoning_nonempty_steps": 0,
+      "parse_failure_examples": [],
+      "first_action": {
+        "action_type": "navigate_back",
+        "point_2d": [
+          500,
+          1000
+        ],
+        "explanation": "To go to the new contact screen, I need to navigate back to the previous screen where I can enter the details. The home screen is currently displayed, so navigating back will allow me to proceed with entering the contact information."
+      },
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          499.0,
+          539.0
+        ],
+        "why": "To proceed to entering the last name 'Taylor' after filling first name and phone number."
+      },
+      "runtime_s": 107.20934391021729
+    }
+  ]
+}

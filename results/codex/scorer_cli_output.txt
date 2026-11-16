@@ -1,0 +1,251 @@
+{
+  "protocol": "EVAL_PROTOCOL section 1; independent strict action parser",
+  "coverage": {
+    "expected_reference_supplied": false,
+    "n_predictions": 4,
+    "n_scored_rows": 4,
+    "n_missing_predictions": 0,
+    "episode_sr_basis": "observed_rows_only",
+    "warning": "Completeness is unverified; missing episode tails cannot be inferred from predictions. Use --expected-rows."
+  },
+  "nonterminal": {
+    "overall": {
+      "n_steps": 3,
+      "n_unique_episodes": 2,
+      "n_episode_mode_pairs": 2,
+      "n_parsed": 2,
+      "n_type_match": 2,
+      "n_step_success": 2,
+      "n_episode_success": 1,
+      "parse_rate": 0.6666666666666666,
+      "type_match": 0.6666666666666666,
+      "step_sr": 0.6666666666666666,
+      "episode_sr": 0.5,
+      "click_bbox_hit_strict": {
+        "n": 0,
+        "hits": 0,
+        "acc": null
+      }
+    },
+    "by_mode": {
+      "high": {
+        "n_steps": 2,
+        "n_unique_episodes": 1,
+        "n_episode_mode_pairs": 1,
+        "n_parsed": 1,
+        "n_type_match": 1,
+        "n_step_success": 1,
+        "n_episode_success": 0,
+        "parse_rate": 0.5,
+        "type_match": 0.5,
+        "step_sr": 0.5,
+        "episode_sr": 0.0,
+        "click_bbox_hit_strict": {
+          "n": 0,
+          "hits": 0,
+          "acc": null
+        }
+      },
+      "low": {
+        "n_steps": 1,
+        "n_unique_episodes": 1,
+        "n_episode_mode_pairs": 1,
+        "n_parsed": 1,
+        "n_type_match": 1,
+        "n_step_success": 1,
+        "n_episode_success": 1,
+        "parse_rate": 1.0,
+        "type_match": 1.0,
+        "step_sr": 1.0,
+        "episode_sr": 1.0,
+        "click_bbox_hit_strict": {
+          "n": 0,
+          "hits": 0,
+          "acc": null
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "overall": {
+          "n_steps": 3,
+          "n_unique_episodes": 2,
+          "n_episode_mode_pairs": 2,
+          "n_parsed": 2,
+          "n_type_match": 2,
+          "n_step_success": 2,
+          "n_episode_success": 1,
+          "parse_rate": 0.6666666666666666,
+          "type_match": 0.6666666666666666,
+          "step_sr": 0.6666666666666666,
+          "episode_sr": 0.5,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 2,
+            "n_unique_episodes": 1,
+            "n_episode_mode_pairs": 1,
+            "n_parsed": 1,
+            "n_type_match": 1,
+            "n_step_success": 1,
+            "n_episode_success": 0,
+            "parse_rate": 0.5,
+            "type_match": 0.5,
+            "step_sr": 0.5,
+            "episode_sr": 0.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          },
+          "low": {
+            "n_steps": 1,
+            "n_unique_episodes": 1,
+            "n_episode_mode_pairs": 1,
+            "n_parsed": 1,
+            "n_type_match": 1,
+            "n_step_success": 1,
+            "n_episode_success": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "app_unseen": {
+        "overall": {
+          "n_steps": 1,
+          "n_unique_episodes": 1,
+          "n_episode_mode_pairs": 1,
+          "n_parsed": 1,
+          "n_type_match": 1,
+          "n_step_success": 1,
+          "n_episode_success": 1,
+          "parse_rate": 1.0,
+          "type_match": 1.0,
+          "step_sr": 1.0,
+          "episode_sr": 1.0,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "low": {
+            "n_steps": 1,
+            "n_unique_episodes": 1,
+            "n_episode_mode_pairs": 1,
+            "n_parsed": 1,
+            "n_type_match": 1,
+            "n_step_success": 1,
+            "n_episode_success": 1,
+            "parse_rate": 1.0,
+            "type_match": 1.0,
+            "step_sr": 1.0,
+            "episode_sr": 1.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      }
+    }
+  },
+  "terminal": {
+    "overall": {
+      "n_steps": 1,
+      "n_unique_episodes": 1,
+      "n_episode_mode_pairs": 1,
+      "n_parsed": 0,
+      "n_type_match": 0,
+      "n_step_success": 0,
+      "n_episode_success": 0,
+      "parse_rate": 0.0,
+      "type_match": 0.0,
+      "step_sr": 0.0,
+      "episode_sr": 0.0,
+      "click_bbox_hit_strict": {
+        "n": 0,
+        "hits": 0,
+        "acc": null
+      }
+    },
+    "by_mode": {
+      "high": {
+        "n_steps": 1,
+        "n_unique_episodes": 1,
+        "n_episode_mode_pairs": 1,
+        "n_parsed": 0,
+        "n_type_match": 0,
+        "n_step_success": 0,
+        "n_episode_success": 0,
+        "parse_rate": 0.0,
+        "type_match": 0.0,
+        "step_sr": 0.0,
+        "episode_sr": 0.0,
+        "click_bbox_hit_strict": {
+          "n": 0,
+          "hits": 0,
+          "acc": null
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "overall": {
+          "n_steps": 1,
+          "n_unique_episodes": 1,
+          "n_episode_mode_pairs": 1,
+          "n_parsed": 0,
+          "n_type_match": 0,
+          "n_step_success": 0,
+          "n_episode_success": 0,
+          "parse_rate": 0.0,
+          "type_match": 0.0,
+          "step_sr": 0.0,
+          "episode_sr": 0.0,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 1,
+            "n_unique_episodes": 1,
+            "n_episode_mode_pairs": 1,
+            "n_parsed": 0,
+            "n_type_match": 0,
+            "n_step_success": 0,
+            "n_episode_success": 0,
+            "parse_rate": 0.0,
+            "type_match": 0.0,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      }
+    }
+  }
+}

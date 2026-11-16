@@ -96,13 +96,26 @@ def build_messages(goal, history, image=None, step_instruction=None, for_trl=Fal
 _JSON_RE = re.compile(r"\{.*\}", re.S)
 
 
-def parse_action(text: str) -> dict[str, Any] | None:
+def parse_action(text: str, strict: bool = False) -> dict[str, Any] | None:
     """Parse the model output (content after </think>, or the whole text) into an action dict.
-    Returns None when unparseable/invalid."""
+    Returns None when unparseable/invalid.
+
+    strict=True : the answer must be exactly one JSON object with the documented keys
+                  (no aliases, no trailing junk, no coordinate clamping, explicit goal_status).
+    strict=False: lenient harness parsing used by the agent (first JSON object with an action,
+                  key aliases, clamping). Both are reported so leniency is visible."""
     if text is None:
         return None
     if "</think>" in text:
         text = text.split("</think>", 1)[1]
+    if strict:
+        try:
+            a = json.loads(text.strip())
+        except Exception:
+            return None
+        if not isinstance(a, dict) or not isinstance(a.get("action_type"), str):
+            return None
+        return _validate_strict(a)
     # first valid JSON object; tolerates trailing junk such as an extra "}" (common base-model quirk)
     a = None
     dec = json.JSONDecoder()
@@ -147,8 +160,11 @@ def parse_action(text: str) -> dict[str, Any] | None:
                 return None
             a["app_name"] = alt  # lenient: base model sometimes puts the app in "label"
     elif t == "status":
-        if a.get("goal_status") not in ("complete", "infeasible"):
-            a["goal_status"] = "complete"
+        gs = a.get("goal_status")
+        if gs is None:
+            a["goal_status"] = "complete"  # lenient: omitted status means done
+        elif gs not in ("complete", "infeasible"):
+            return None
     return a
 
 
@@ -182,6 +198,27 @@ def resize_screenshot(img, max_pixels: int = MAX_PIXELS):
     if (w, h) != img.size:
         img = img.resize((w, h), Image.BICUBIC)
     return img
+
+
+def _validate_strict(a):
+    t = a["action_type"]
+    allowed = {"click": {"point_2d"}, "long_press": {"point_2d"}, "input_text": {"text"}, "answer": {"text"},
+               "scroll": {"direction"}, "open_app": {"app_name"}, "status": {"goal_status"},
+               "navigate_back": set(), "navigate_home": set(), "keyboard_enter": set(), "wait": set()}
+    if t not in allowed or set(a) - {"action_type"} != allowed[t]:
+        return None
+    if t in POINT_TYPES:
+        p = a["point_2d"]
+        if not (isinstance(p, list) and len(p) == 2 and all(isinstance(v, (int, float)) and 0 <= v <= 1000 for v in p)):
+            return None
+    elif t in ("input_text", "answer", "open_app"):
+        if not isinstance(a[next(iter(allowed[t]))], str):
+            return None
+    elif t == "scroll" and a["direction"] not in _DIRECTIONS:
+        return None
+    elif t == "status" and a["goal_status"] not in ("complete", "infeasible"):
+        return None
+    return a
 
 
 def norm_to_px(point_2d, width: int, height: int) -> tuple[int, int]:

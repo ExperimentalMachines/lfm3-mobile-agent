@@ -1,0 +1,33 @@
+{
+ "summary": {
+  "run_dir": "/Users/alpha/lfm3-android/results/codex/synthetic_aw/exception_with_success",
+  "n_episodes": 1,
+  "success_rate": 1.0,
+  "success_rate_by_difficulty": {
+   "easy": {
+    "n": 1,
+    "sr": 1.0
+   }
+  },
+  "n_exceptions_counted_as_fail": 1,
+  "frac_episodes_self_terminated": 0.0,
+  "mean_steps": 0,
+  "model_latency_s": null,
+  "prompt_tokens_mean": null,
+  "parse_failure_rate": 0.0,
+  "n_steps_total": 0
+ },
+ "episodes": [
+  {
+   "task": "BrowserDraw",
+   "file": "BrowserDraw_0.pkl.gz",
+   "success": 1.0,
+   "exception": true,
+   "steps": 0,
+   "runtime_s": 1.0,
+   "difficulty": "easy",
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  }
+ ]
+}

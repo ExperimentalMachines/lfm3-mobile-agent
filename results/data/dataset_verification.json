@@ -1,0 +1,82 @@
+{
+ "source": "computed on Colab G4 from experimentalmachines/AndroidControl-screen-agent-sft (2026-11-16 ~16:55); file on VM lost when VM was reclaimed, values copied from the run output",
+ "train": {
+  "rows": 99216,
+  "episodes": 13573,
+  "dup_rows": 0,
+  "terminal": 13573,
+  "low": 11048,
+  "steps_high_nonterminal": 74595,
+  "actions": {
+   "open_app": 5768,
+   "click": 53210,
+   "wait": 5921,
+   "status": 13573,
+   "navigate_back": 3058,
+   "scroll": 11276,
+   "input_text": 6199,
+   "long_press": 177,
+   "navigate_home": 34
+  }
+ },
+ "val": {
+  "rows": 827,
+  "episodes": 137,
+  "dup_rows": 0,
+  "terminal": 137,
+  "low": 0,
+  "steps_high_nonterminal": 690,
+  "actions": {
+   "navigate_back": 29,
+   "click": 420,
+   "wait": 56,
+   "status": 137,
+   "open_app": 45,
+   "scroll": 86,
+   "input_text": 53,
+   "long_press": 1
+  }
+ },
+ "test": {
+  "rows": 18415,
+  "episodes": 1543,
+  "dup_rows": 0,
+  "terminal": 1543,
+  "low": 8428,
+  "steps_high_nonterminal": 8444,
+  "actions": {
+   "open_app": 1208,
+   "click": 10147,
+   "input_text": 1264,
+   "status": 1543,
+   "navigate_back": 686,
+   "wait": 1128,
+   "scroll": 2421,
+   "long_press": 18
+  },
+  "bbox_rows": 10147,
+  "subsplit_eps": {
+   "IDD": 721,
+   "app_unseen": 631,
+   "task_unseen": 803,
+   "category_unseen": 700
+  }
+ },
+ "leakage": {
+  "train&test": 0,
+  "train&val": 0,
+  "val&test": 0,
+  "train_not_official_train": 0,
+  "test_not_official_test": 0,
+  "val_not_official_val": 0,
+  "official_test_missing": 0,
+  "official_val_missing": 0,
+  "official_train_missing(incl AW-filtered)": 30
+ },
+ "builder_stats_partial": {
+  "train_dropped_aw_app(G4 part only)": 15,
+  "malformed": 6,
+  "rowmean_scroll_check_agree": 3379,
+  "rowmean_scroll_check_oppose": 2725
+ }
+}

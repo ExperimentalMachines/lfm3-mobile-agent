@@ -1,0 +1,24 @@
+[
+ {
+  "name": "train_eval_push",
+  "script": "/content/work/vm_train_eval_push.sh",
+  "log": "/content/runs/qwen_train.log",
+  "env": {
+   "RUN": "qwen35-2b-ac-lora",
+   "MODEL": "Qwen/Qwen3.5-2B",
+   "TRAIN": "experimentalmachines/AndroidControl-screen-agent-sft@train",
+   "VAL": "experimentalmachines/AndroidControl-screen-agent-sft@val",
+   "MAX_STEPS": "1250",
+   "BS": "8",
+   "GA": "4",
+   "LR": "2e-4",
+   "SAVE_STEPS": "100",
+   "EVAL_STEPS": "250",
+   "WORKERS": "10",
+   "HUB_REPO": "experimentalmachines/Qwen3.5-2B-AndroidControl-LoRA-ckpt",
+   "FINAL_REPO": "experimentalmachines/Qwen3.5-2B-AndroidControl",
+   "EVAL_BS": "24",
+   "EXTRA": "--chat_template_path /content/work/qwen35_chat_template_gen.jinja --target_regex .*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)"
+  }
+ }
+]

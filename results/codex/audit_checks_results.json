@@ -1,0 +1,162 @@
+{
+  "production_parser_cases": [
+    {
+      "case": "missing_status",
+      "output": "{\"action_type\":\"status\"}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    },
+    {
+      "case": "invalid_status",
+      "output": "{\"action_type\":\"status\",\"goal_status\":\"banana\"}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    },
+    {
+      "case": "off_screen",
+      "output": "{\"action_type\":\"click\",\"point_2d\":[-1000,500]}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    },
+    {
+      "case": "infinite_coordinate",
+      "output": "{\"action_type\":\"click\",\"point_2d\":[Infinity,500]}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    },
+    {
+      "case": "nan_coordinate",
+      "output": "{\"action_type\":\"click\",\"point_2d\":[NaN,500]}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": false,
+      "independent_parsed": false
+    },
+    {
+      "case": "extra_brace",
+      "output": "{\"action_type\":\"wait\"}}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    },
+    {
+      "case": "two_actions",
+      "output": "{\"action_type\":\"wait\"} {\"action_type\":\"navigate_back\"}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    },
+    {
+      "case": "alias",
+      "output": "{\"action\":\"type\",\"text\":\"hello\"}",
+      "production_parsed": true,
+      "production_type_match": true,
+      "production_step_success": true,
+      "independent_parsed": false
+    }
+  ],
+  "online_nan_error": "cannot convert float NaN to integer",
+  "partial_episode_production_metrics": {
+    "n_steps": 1,
+    "n_episodes": 1,
+    "parse_rate": 1.0,
+    "type_match": 1.0,
+    "step_sr": 1.0,
+    "episode_sr": 1.0,
+    "per_type": {
+      "wait": {
+        "n": 1,
+        "type_match": 1.0,
+        "step_sr": 1.0
+      }
+    }
+  },
+  "summarizer_cases": [
+    {
+      "case": "exception_nan",
+      "returncode": 1,
+      "stderr_tail": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/eval/androidworld/summarize_aw.py\", line 45, in <module>\n    l = [x for x in (ed.get(\"latency_s\") or []) if isinstance(x, (int, float))]\n                     ^^^^^^\nAttributeError: 'float' object has no attribute 'get'\n"
+    },
+    {
+      "case": "exception_with_success",
+      "returncode": 0,
+      "stderr_tail": "",
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/synthetic_aw/exception_with_success",
+        "n_episodes": 1,
+        "success_rate": 1.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 1,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 0,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 0
+      }
+    }
+  ],
+  "patched_noun_list": {
+    "upstream_count": 51,
+    "live_count": 53,
+    "changed_first_choice_seeds_of_100": 74,
+    "examples": [
+      {
+        "seed": 0,
+        "upstream": "yacht",
+        "patched": "watch"
+      },
+      {
+        "seed": 3,
+        "upstream": "penguin",
+        "patched": "nest"
+      },
+      {
+        "seed": 4,
+        "upstream": "penguin",
+        "patched": "nest"
+      },
+      {
+        "seed": 5,
+        "upstream": "nurse",
+        "patched": "lamp"
+      },
+      {
+        "seed": 6,
+        "upstream": "zebra",
+        "patched": "wolf"
+      }
+    ]
+  },
+  "cleanup_both_attempts_failed_but_returned_normally": true,
+  "app_filter_examples": {
+    "Tasks": true,
+    "Tasks app": false,
+    "org.tasks": false,
+    "net.osmand.plus": true,
+    "Simple Calendar Pro": true,
+    "com.arduia.expense": false
+  },
+  "curated_repeated_current_hint_in_last8": 1466,
+  "curated_rows": 8435,
+  "curated_max_bbox_rows": 5074,
+  "resize_1080x2400": [
+    576,
+    1280
+  ]
+}

@@ -37,7 +37,8 @@ OS-Genesis `os_genesis_aw_training_data.jsonl`, OS-Atlas `aw_mobile.json` (15.9k
 Additionally, train episodes whose goal / `open_app` mention any of the 14 AndroidWorld-specific apps
 (Simple Calendar Pro, Markor, Pro Expense, Broccoli, Joplin, OsmAnd, Retro Music, VLC, Simple SMS,
 Tasks, Audio Recorder, Simple Draw Pro, OpenTracks, Simple Gallery Pro) are dropped
-(count in `data/stats.json` → `train_dropped_aw_app`). Generic system apps (Settings, Clock, Chrome,
+(count in `data/stats.json` → `train_dropped_aw_app`). This is a heuristic
+name filter, not a certificate of contamination-freedom. Generic system apps (Settings, Clock, Chrome,
 Contacts, Files) are kept — they are also in AndroidWorld but are generic phone skills.
 
 ## Why not more sources (considered, rejected for this budget)
@@ -63,7 +64,8 @@ Contacts, Files) are kept — they are also in AndroidWorld but are generic phon
 * AndroidControl-Curated: 2.4k curated samples + RL ≈ 31k SFT samples.
 * UI-Venus-1.5-2B: online RL is the biggest single AW lever (+14.5) — out of scope for this budget.
 
-So: ~1 epoch of AndroidControl (≈75–100k rows) is the point of diminishing returns for SFT; the next
+So (a judgment from the literature, not demonstrated by our own scaling runs): ~0.4–1 epoch of AndroidControl
+(≈40–100k rows) is a reasonable SFT budget for a 2B model, and returns diminish; the next
 gains come from app diversity (GUI-Odyssey/AMEX), termination/answer behaviour, and on-policy RL in an
 emulator — not from repeating AndroidControl.
 

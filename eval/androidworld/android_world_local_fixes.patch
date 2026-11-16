@@ -1,0 +1,108 @@
+diff --git a/android_world/env/adb_utils.py b/android_world/env/adb_utils.py
+index f59f6c4..c00508d 100644
+--- a/android_world/env/adb_utils.py
++++ b/android_world/env/adb_utils.py
+@@ -701,7 +701,7 @@ def launch_app(
+   if activity is None:
+     #  If the app name is not in the mapping, assume it is a package name.
+     response = issue_generic_request(
+-        ['shell', 'monkey', '-p', app_name, '1'], env, timeout_sec=5
++        ['shell', 'monkey', '--pct-syskeys', '0', '-p', app_name, '1'], env, timeout_sec=5
+     )
+     logging.info('Launching app by package name, response: %r', response)
+     return app_name
+diff --git a/android_world/env/android_world_controller.py b/android_world/env/android_world_controller.py
+index 3ce79c0..0c1db21 100644
+--- a/android_world/env/android_world_controller.py
++++ b/android_world/env/android_world_controller.py
+@@ -323,7 +323,7 @@ def get_controller(
+       ),
+       simulator=config_classes.EmulatorConfig(
+           emulator_launcher=emulator_launcher,
+-          adb_controller=config_classes.AdbControllerConfig(adb_path=adb_path),
++          adb_controller=config_classes.AdbControllerConfig(adb_path=adb_path, adb_server_port=int(os.environ.get('AW_ADB_SERVER_PORT', '5037'))),
+       ),
+   )
+   android_env_instance = loader.load(config)
+diff --git a/android_world/env/setup_device/apps.py b/android_world/env/setup_device/apps.py
+index 6505b4e..763aed0 100644
+--- a/android_world/env/setup_device/apps.py
++++ b/android_world/env/setup_device/apps.py
+@@ -457,7 +457,7 @@ class AudioRecorder(AppSetup):
+     adb_utils.issue_generic_request(
+         [
+             "shell",
+-            "monkey",
++            "monkey", "--pct-syskeys", "0",
+             "-p",
+             "com.dimowner.audiorecorder",
+             "-candroid.intent.category.LAUNCHER",
+@@ -667,7 +667,7 @@ class VlcApp(AppSetup):
+     adb_utils.issue_generic_request(
+         [
+             "shell",
+-            "monkey",
++            "monkey", "--pct-syskeys", "0",
+             "-p",
+             package,
+             "-candroid.intent.category.LAUNCHER",
+@@ -718,7 +718,7 @@ class JoplinApp(AppSetup):
+     adb_utils.issue_generic_request(
+         [
+             "shell",
+-            "monkey",
++            "monkey", "--pct-syskeys", "0",
+             "-p",
+             joplin_package,
+             "-candroid.intent.category.LAUNCHER",
+diff --git a/android_world/suite_utils.py b/android_world/suite_utils.py
+index 2c72a41..b828c5d 100644
+--- a/android_world/suite_utils.py
++++ b/android_world/suite_utils.py
+@@ -285,7 +285,15 @@ def _run_task(
+             constants.EpisodeConstants.SEED
+         ],
+     }
+-    task.tear_down(env)
++    try:
++      task.tear_down(env)
++    except Exception:  # pylint: disable=broad-exception-caught
++      # PATCH (lfm3-android): record teardown failure on the episode instead of crashing
++      # the suite; the next task's initialize() verifies a clean state or fails itself.
++      logging.exception('tear_down failed for %s', task.name)
++      result[constants.EpisodeConstants.AUX_DATA] = {
++          **(result[constants.EpisodeConstants.AUX_DATA] or {}),
++          'teardown_exception': traceback.format_exc()}
+     return result
+ 
+ 
+diff --git a/android_world/utils/file_utils.py b/android_world/utils/file_utils.py
+index bf22803..208f852 100644
+--- a/android_world/utils/file_utils.py
++++ b/android_world/utils/file_utils.py
+@@ -122,13 +122,18 @@ def clear_directory(
+   folder_contents = res.generic.output.decode().replace("\r", "").strip()
+ 
+   if folder_contents:
+-    adb_utils.check_ok(
+-        adb_utils.issue_generic_request(
+-            ["shell", "rm", "-r", f"{directory_path}/*"],
+-            env,
+-        ),
+-        f"Failed to clear directory {directory_path}.",
+-    )
++    # PATCH (lfm3-android): retry with root, then VERIFY the directory is empty; if it is not,
++    # raise so the attempt is recorded as a failure instead of running on a dirty device.
++    for cmd in (["shell", "rm", "-rf", f"{directory_path}/*"],
++                ["shell", "su", "0", "sh", "-c", f"rm -rf {directory_path}/*"]):
++      try:
++        adb_utils.issue_generic_request(cmd, env)
++      except Exception as e:  # pylint: disable=broad-except
++        logging.warning("clear_directory %s: %s failed: %s", directory_path, cmd, e)
++      res = adb_utils.issue_generic_request(["shell", "ls", "-1", directory_path], env)
++      if not res.generic.output.decode().replace("\r", "").strip():
++        return
++    raise RuntimeError(f"Failed to clear directory {directory_path} (verified non-empty).")
+ 
+ 
+ def create_file(

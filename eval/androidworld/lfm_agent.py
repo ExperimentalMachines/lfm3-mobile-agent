@@ -87,10 +87,13 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         H, W = pixels.shape[:2]
         img = af.resize_screenshot(Image.fromarray(pixels), self.max_pixels)
 
-        resp, action = None, None
+        resp, action, attempts = None, None, []
         for _ in range(1 + self.max_parse_retries):
             resp = self._query(goal, img)
             action = af.parse_action(resp["content"]) or af.parse_action(resp["reasoning"] + resp["content"])
+            attempts.append({"content": resp["content"], "reasoning": resp["reasoning"], "latency_s": resp["latency_s"],
+                             "usage": resp["usage"], "lenient_ok": action is not None,
+                             "strict_ok": af.parse_action(resp["content"], strict=True) is not None})
             if action is not None:
                 break
 
@@ -100,7 +103,10 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             "screenshot_thumb_jpg": thumb.getvalue(),  # full-res frames would blow the local disk budget
             "model_content": resp["content"],
             "model_reasoning": resp["reasoning"],
-            "latency_s": resp["latency_s"],
+            "latency_s": sum(x["latency_s"] for x in attempts),  # all attempts, incl. retries
+            "attempts": attempts,
+            "first_attempt_strict_ok": attempts[0]["strict_ok"],
+            "first_attempt_lenient_ok": attempts[0]["lenient_ok"],
             "usage": resp["usage"],
             "timings": resp["timings"],
             "parsed_action": action,

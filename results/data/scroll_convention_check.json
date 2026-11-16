@@ -1,0 +1,18 @@
+{
+ "method": "cv2.phaseCorrelate on central 76% crop of consecutive high-level test screenshots; resp>=0.15 and |shift|>=8px",
+ "counts": {
+  "down:content_down": 76,
+  "down:content_up": 140,
+  "down:no_clear_shift": 731,
+  "left:content_left": 2,
+  "left:content_right": 3,
+  "left:no_clear_shift": 69,
+  "right:content_left": 1,
+  "right:content_right": 4,
+  "right:no_clear_shift": 89,
+  "up:content_down": 14,
+  "up:content_up": 3,
+  "up:no_clear_shift": 79
+ },
+ "conclusion": "AndroidControl 'down' => content moves up (reveal below) = AndroidWorld convention; no remapping"
+}

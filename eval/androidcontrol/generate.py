@@ -51,6 +51,15 @@ processor.tokenizer.padding_side = "left"
 model = AutoModelForImageTextToText.from_pretrained(
     args.model, dtype=torch.bfloat16, trust_remote_code=True).to("cuda").eval()
 
+manifest = {"model": args.model, "data": args.data, "n_rows": len(ds), "enable_thinking": args.enable_thinking,
+            "max_pixels": args.max_pixels, "filter_mode": args.filter_mode, "subsample_episodes": args.subsample_episodes,
+            "limit": args.limit, "max_new_tokens": args.max_new_tokens}
+mpath = args.out + ".manifest.json"
+if os.path.exists(mpath):
+    old_m = json.load(open(mpath))
+    if old_m["model"] != args.model or old_m["n_rows"] != len(ds):
+        raise SystemExit(f"refusing to resume {args.out}: manifest mismatch {old_m} vs {manifest}")
+json.dump(manifest, open(mpath, "w"), indent=1)
 done = set()
 if os.path.exists(args.out):
     for line in open(args.out):
@@ -91,6 +100,7 @@ for b in range(0, len(idx), args.bs):
             t = t.split(eos)[0]
         rec = {k: r[k] for k in r.keys() if k not in ("images", "messages")}
         rec["output"] = t
+        rec["model"] = args.model
         fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
     fout.flush()
     el = time.time() - t0
