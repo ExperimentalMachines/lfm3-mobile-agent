@@ -15,7 +15,10 @@ while true; do
   if echo "$OUTP" | grep -q "lost\|not found\|404"; then
     echo "[$(date +%T)] session $SESS gone"; GONE=1; break
   fi
-  if grep -q '"exit' "$ST" 2>/dev/null && ! grep -q '"running"' "$ST"; then
+  RID=$(python3 -c "import json;print(json.load(open('$ST')).get('run_id','none'))" 2>/dev/null || echo "?")
+  if grep -q '"running"' "$ST" 2>/dev/null; then SEEN_RID=${SEEN_RID:-$RID}; fi
+  # only an exit of the SAME run we saw running counts (stale statuses from earlier runs are ignored)
+  if [ -n "${SEEN_RID:-}" ] && [ "$RID" = "$SEEN_RID" ] && grep -q '"exit' "$ST" 2>/dev/null && ! grep -q '"running"' "$ST"; then
     echo "[$(date +%T)] job finished: $(cat $ST)"
     grep -qE '"exit [1-9]' "$ST" && echo "WARNING: predecessor job FAILED; launching the next (independent) model anyway"
     GONE=0; break
