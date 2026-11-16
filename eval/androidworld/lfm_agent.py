@@ -116,7 +116,10 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             data["error"] = "unparseable"
             return base_agent.AgentInteractionResult(False, data)
 
-        intent = (resp["reasoning"] or "").strip().splitlines()[0][:200] if resp["reasoning"].strip() else ""
+        reasoning = resp["reasoning"] or ""
+        if not reasoning.strip() and "</think>" in resp["content"]:  # inline-think models (LFM2.5): intent lives in content
+            reasoning = resp["content"].split("</think>", 1)[0].replace("<think>", "")
+        intent = reasoning.strip().splitlines()[0][:200] if reasoning.strip() else ""
         self.history.append((intent, af.action_to_str(action)))
 
         t = action["action_type"]
