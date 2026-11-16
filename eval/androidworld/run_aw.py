@@ -43,6 +43,7 @@ flags.DEFINE_boolean("enable_thinking", True, "chat_template enable_thinking")
 flags.DEFINE_integer("max_pixels", 880 * 880, "screenshot pixel budget")
 flags.DEFINE_boolean("fixed_task_seed", False, "identical params across combos")
 flags.DEFINE_string("agent", "lfm", "lfm | guiowl")
+flags.DEFINE_boolean("runtime_feedback", False, "LFM agent: lexical open_app resolution + failure/no-change notes in history (ablation)")
 flags.DEFINE_integer("guiowl_images", 5, "GUI-Owl screenshots kept in context")
 flags.DEFINE_integer("guiowl_max_pixels", 0, "0 = full resolution (native)")
 
@@ -68,7 +69,8 @@ def main(argv):
                             max_pixels=F.guiowl_max_pixels)
     else:
         agent = LFMScreenAgent(env, server_url=F.server_url, name=F.agent_label,
-                               enable_thinking=F.enable_thinking, max_pixels=F.max_pixels)
+                               enable_thinking=F.enable_thinking, max_pixels=F.max_pixels,
+                               runtime_feedback=F.runtime_feedback)
     agent.transition_pause = None
     ckpt = F.checkpoint_dir or checkpointer_lib.create_run_directory(F.output_path)
     print(f"Writing to {ckpt}", flush=True)

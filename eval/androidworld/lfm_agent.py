@@ -19,6 +19,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "train"))
 import agent_format as af  # noqa: E402
+import app_resolver  # noqa: E402
 
 from android_world.agents import base_agent  # noqa: E402
 from android_world.env import interface, json_action  # noqa: E402
@@ -35,7 +36,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  name: str = "lfm_screen_agent", enable_thinking: bool = True,
                  max_pixels: int = af.MAX_PIXELS, max_tokens: int = 512,
                  temperature: float = 0.0, wait_after_action: float = 1.0,
-                 max_parse_retries: int = 1):
+                 max_parse_retries: int = 1, runtime_feedback: bool = False):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -47,11 +48,18 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self.max_parse_retries = max_parse_retries
         self.history: list[tuple[str, str]] = []
         self._screen_size = None
+        # runtime_feedback (opt-in, default off = the reported baseline harness): resolve open_app names against
+        # installed apps lexically and annotate failed / no-visible-change actions in the action history.
+        self.runtime_feedback = runtime_feedback
+        self._labels = None
+        self._prev_small = None
+        self._prev_type = None
 
     def reset(self, go_home_on_reset: bool = False):
         super().reset(go_home_on_reset)
         self.env.hide_automation_ui()
         self.history = []
+        self._prev_small, self._prev_type = None, None
 
     def _query(self, goal: str, img: Image.Image) -> dict:
         text = af.user_text(goal, self.history)
@@ -86,6 +94,14 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         pixels = state.pixels
         H, W = pixels.shape[:2]
         img = af.resize_screenshot(Image.fromarray(pixels), self.max_pixels)
+        small = np.asarray(Image.fromarray(pixels).convert("L").resize((72, 160)), dtype=np.float32)
+        if (self.runtime_feedback and self.history and self._prev_small is not None
+                and self._prev_type not in ("wait", "status", "answer", None)
+                and float(np.abs(small - self._prev_small).mean()) < 1.0):
+            i, a = self.history[-1]
+            if not a.endswith("]"):  # action JSON ends with "}"; a trailing "]" means already annotated
+                self.history[-1] = (i, a + " [no visible change]")
+        self._prev_small = small
 
         resp, action, attempts = None, None, []
         for _ in range(1 + self.max_parse_retries):
@@ -114,6 +130,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         if action is None:
             self.history.append(("(invalid output)", resp["content"][:80]))
             data["error"] = "unparseable"
+            self._prev_type = None
             return base_agent.AgentInteractionResult(False, data)
 
         reasoning = resp["reasoning"] or ""
@@ -136,10 +153,27 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             kw["direction"] = action["direction"]
         elif t == "open_app":
             kw["app_name"] = action["app_name"]
+            if self.runtime_feedback and not app_resolver.resolves_natively(action["app_name"]):
+                if self._labels is None:
+                    self._labels = app_resolver.installed_labels(self.env.controller)
+                label, sc = app_resolver.resolve(action["app_name"], self._labels)
+                data["app_resolution"] = {"asked": action["app_name"], "resolved": label, "score": sc}
+                if label is None:
+                    i, a = self.history[-1]
+                    self.history[-1] = (i, a + " [failed: no installed app with that name]")
+                    data["error"] = "unknown_app"
+                    self._prev_type = t
+                    time.sleep(self.wait_after_action)
+                    return base_agent.AgentInteractionResult(False, data)
+                kw["app_name"] = label
+        self._prev_type = t
         try:
             self.env.execute_action(json_action.JSONAction(**kw))
         except Exception as e:  # keep going; the model sees the unchanged screen
             data["error"] = f"execute_failed: {e}"
+            if self.runtime_feedback:
+                i, a = self.history[-1]
+                self.history[-1] = (i, a + " [failed to execute]")
         time.sleep(self.wait_after_action)
         if t == "answer" and "error" not in data:
             # The answer is stored in env.interaction_cache by execute_action; end the episode here so it is
