@@ -52,13 +52,41 @@ model = AutoModelForImageTextToText.from_pretrained(
 
 manifest = {"model": args.model, "data": args.data, "n_rows": len(ds), "enable_thinking": args.enable_thinking,
             "max_pixels": args.max_pixels, "filter_mode": args.filter_mode, "subsample_episodes": args.subsample_episodes,
-            "limit": args.limit, "max_new_tokens": args.max_new_tokens}
+            "limit": args.limit, "max_new_tokens": args.max_new_tokens, "do_sample": False}
+import hashlib
+cfg_hash = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()[:16]
+manifest["config_hash"] = cfg_hash
 mpath = args.out + ".manifest.json"
+push_repo = os.environ.get("EVAL_PUSH_REPO")
+if push_repo and not os.path.exists(args.out):  # VM was lost? restore partial predictions from the hub
+    try:
+        from huggingface_hub import hf_hub_download
+        for f in (os.path.basename(args.out), os.path.basename(mpath)):
+            p_ = hf_hub_download(push_repo, f"eval/{f}", local_dir="/tmp/_restore")
+            os.replace(p_, os.path.join(os.path.dirname(args.out) or ".", f))
+        print("restored partial predictions from hub", flush=True)
+    except Exception as e:
+        print("no hub partial to restore:", type(e).__name__, flush=True)
 if os.path.exists(mpath):
     old_m = json.load(open(mpath))
-    if old_m["model"] != args.model or old_m["n_rows"] != len(ds):
-        raise SystemExit(f"refusing to resume {args.out}: manifest mismatch {old_m} vs {manifest}")
-json.dump(manifest, open(mpath, "w"), indent=1)
+    if old_m != manifest:
+        raise SystemExit(f"refusing to resume {args.out}: manifest differs\nold={old_m}\nnew={manifest}")
+else:
+    json.dump(manifest, open(mpath, "w"), indent=1)
+
+
+def _push_partial():
+    if not push_repo:
+        return
+    try:
+        from huggingface_hub import HfApi
+        api = HfApi()
+        for f in (args.out, mpath):
+            api.upload_file(path_or_fileobj=f, path_in_repo=f"eval/{os.path.basename(f)}", repo_id=push_repo)
+    except Exception as e:
+        print("partial push failed:", e, flush=True)
+
+
 done = set()
 if os.path.exists(args.out):
     for line in open(args.out):
@@ -101,8 +129,13 @@ for b in range(0, len(idx), args.bs):
         rec = {k: r[k] for k in r.keys() if k not in ("images", "messages")}
         rec["output"] = t
         rec["model"] = args.model
+        rec["config_hash"] = cfg_hash
         fout.write(json.dumps(rec, ensure_ascii=False) + "\n")
     fout.flush()
     el = time.time() - t0
     print(f"{b + len(rows)}/{len(idx)} {el:.0f}s avg_prompt_tok={n_tok_in / (b + len(rows)):.0f}", flush=True)
+    if (b // args.bs) % 40 == 39:
+        _push_partial()
+fout.close()
+_push_partial()
 print("DONE", time.time() - t0, flush=True)

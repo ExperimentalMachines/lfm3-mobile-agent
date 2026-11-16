@@ -1,0 +1,59 @@
+{
+  "note": "Fetched read-only during pass 2; no weights or datasets downloaded. HF templates reconstructed from code-view lines; indentation removed by web rendering, render equivalence checked against local templates.",
+  "github": [
+    {
+      "artifact": "qwen_source_result",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/qwen3_5/modeling_qwen3_5.py",
+      "git_blob": "0ca9603ff697259fd12d765ac9b119feb06d424c"
+    },
+    {
+      "artifact": "trainer_reference.py",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/trainer.py",
+      "git_blob": "6de07a7dc7982d1d332df82101b090d330bae3c2"
+    },
+    {
+      "artifact": "processing_reference.py",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/processing_utils.py",
+      "git_blob": "e5ff6d092edb145afc025881492e27d4d613b79a"
+    },
+    {
+      "artifact": "sft_trainer_reference.py",
+      "url": "https://github.com/huggingface/trl/blob/v1.16.0/trl/trainer/sft_trainer.py",
+      "git_blob": "08a0e46903ae792d3906384f3915e1253c942f71"
+    },
+    {
+      "artifact": "qwen2_vl_image_reference.py",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/qwen2_vl/image_processing_qwen2_vl.py",
+      "git_blob": "5a715517b40c0b2d97f976aa37400f708e307f01"
+    },
+    {
+      "artifact": "lfm2_vl_image_reference.py",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/lfm2_vl/image_processing_lfm2_vl.py",
+      "git_blob": "70cf5c06f02c69eb2733410ecebc6ad6b6932ac0"
+    },
+    {
+      "artifact": "qwen3_vl_processing_reference.py",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/qwen3_vl/processing_qwen3_vl.py",
+      "git_blob": "bbb187a4c9f60e8e9f27a6706004b5b0d6ebe7f6"
+    },
+    {
+      "artifact": "datasets_features_reference.py",
+      "url": "https://github.com/huggingface/datasets/blob/5.1.0/src/datasets/features/features.py",
+      "git_blob": "11fa0c7546047c53a1a420d63218803fe47e9991"
+    }
+  ],
+  "hf_templates": [
+    {
+      "file": "lfm25_native_web.jinja",
+      "url": "https://huggingface.co/LiquidAI/LFM2.5-VL-450M/blob/a8f47c5/chat_template.jinja"
+    },
+    {
+      "file": "lfm3_native_web.jinja",
+      "url": "https://huggingface.co/LiquidAI/LFM3-VL-2B/blob/f83d2b0/chat_template.jinja"
+    },
+    {
+      "file": "qwen35_native_web.jinja",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-2B/blob/eea2971/chat_template.jinja"
+    }
+  ]
+}

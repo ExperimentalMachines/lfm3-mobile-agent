@@ -35,4 +35,7 @@ while True:
     for _ in range(6):
         time.sleep(10)
         print(".", end="", flush=True)  # keep the exec websocket busy (idle drops seen ~30-40s)
-print("ALL JOBS FINISHED", flush=True)
+failed = [n for n, p in procs if p.returncode != 0]
+print("ALL JOBS FINISHED", "FAILED: " + ",".join(failed) if failed else "OK", flush=True)
+if failed:
+    raise SystemExit(1)

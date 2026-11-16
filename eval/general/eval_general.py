@@ -24,21 +24,38 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--model", required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--mmstar_n", type=int, default=1500)
-ap.add_argument("--mmlu_n", type=int, default=500)
+ap.add_argument("--mmlu_n", type=int, default=1000)
+ap.add_argument("--max_pixels", type=int, default=0, help=">0: identical pixel budget for base and FT (Qwen/LFM3 processors)")
+ap.add_argument("--max_new_tokens", type=int, default=64)
 ap.add_argument("--bs", type=int, default=16)
 a = ap.parse_args()
 os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
 
-proc = AutoProcessor.from_pretrained(a.model, trust_remote_code=True)
+_pk = {"size": {"shortest_edge": 256 * 256, "longest_edge": a.max_pixels}} if a.max_pixels > 0 else {}
+proc = AutoProcessor.from_pretrained(a.model, trust_remote_code=True, **_pk)
 proc.tokenizer.padding_side = "left"
 model = AutoModelForImageTextToText.from_pretrained(a.model, dtype=torch.bfloat16, trust_remote_code=True).to("cuda").eval()
 INSTR = "Answer with the option's letter from the given choices directly."
 
 
+_PATTERNS = [
+    re.compile(r"^\s*\(?([A-D])\)?\s*[.):]?\s*$"),                      # whole reply is the letter
+    re.compile(r"^\s*\(?([A-D])\)?\s*[.):]\s"),                         # "B. text" / "(B) text"
+    re.compile(r"(?i)\banswer\s*(?:is|:)?\s*\(?([A-D])\)?(?![A-Za-z])"),  # "... answer is C"
+]
+
+
 def letter(text):
-    text = text.split("</think>")[-1]
-    m = re.search(r"\b([A-D])\b", text.strip())
-    return m.group(1) if m else None
+    """Strict: no answer from unfinished reasoning or incidental capitals (e.g. the article 'A')."""
+    if "</think>" in text:
+        text = text.split("</think>")[-1]
+    elif "<think>" in text:
+        return None
+    for pat in _PATTERNS:
+        m = pat.search(text)
+        if m:
+            return m.group(1)
+    return None
 
 
 def run(items, kind):
@@ -55,11 +72,11 @@ def run(items, kind):
                                           return_tensors="pt", padding=True, processor_kwargs={"padding": True},
                                           **kw).to("cuda")
         with torch.inference_mode():
-            out = model.generate(**inputs, max_new_tokens=24, do_sample=False)
+            out = model.generate(**inputs, max_new_tokens=a.max_new_tokens, do_sample=False)
         texts = proc.batch_decode(out[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)
         for it, t in zip(batch, texts):
             p = letter(t)
-            res.append({"kind": kind, "id": it["id"], "gold": it["gold"], "pred": p, "raw": t[:80], "correct": p == it["gold"],
+            res.append({"kind": kind, "id": it["id"], "gold": it["gold"], "pred": p, "raw": t, "correct": p == it["gold"],
                         "category": it.get("category")})
         print(kind, b + len(batch), "/", len(items), flush=True)
     return res
@@ -99,5 +116,7 @@ for k in ("mmstar", "mmlu"):
     summ[k] = {"n": len(rr), "acc": sum(r["correct"] for r in rr) / max(1, len(rr)),
                "unparsed": sum(r["pred"] is None for r in rr) / max(1, len(rr))}
 summ["model"] = a.model
+summ["max_pixels"] = a.max_pixels
+summ["max_new_tokens"] = a.max_new_tokens
 json.dump(summ, open(a.out + ".summary.json", "w"), indent=1)
 print("GENERAL", json.dumps(summ), flush=True)

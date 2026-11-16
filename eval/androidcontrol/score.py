@@ -107,22 +107,44 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("preds")
     ap.add_argument("--out")
-    ap.add_argument("--expected", type=int, default=0)
+    ap.add_argument("--gt", default=str(Path(__file__).resolve().parents[2] / "data/meta/androidcontrol_test_gt.jsonl"))
     ap.add_argument("--allow_incomplete", action="store_true")
     a = ap.parse_args()
-    rows = [json.loads(l) for l in open(a.preds)]
-    # completeness / identity checks (fail loudly instead of silently scoring a partial file)
-    keys = [(r["episode_id"], r["step_idx"], r.get("mode", "high")) for r in rows]
-    dups = len(keys) - len(set(keys))
-    models = sorted({r.get("model", "?") for r in rows})
+    preds = [json.loads(l) for l in open(a.preds)]
+    # --- integrity: score against the FROZEN ground truth, never the prediction file's own labels ---
+    gt_rows = [json.loads(l) for l in open(a.gt)]
+    gt = {(r["episode_id"], r["step_idx"], r["mode"]): r for r in gt_rows}
+    pk = [(r["episode_id"], r["step_idx"], r.get("mode", "high")) for r in preds]
+    dups = len(pk) - len(set(pk))
     mpath = a.preds + ".manifest.json"
-    expected = a.expected or (json.load(open(mpath))["n_rows"] if Path(mpath).exists() else None)
-    integrity = {"n_rows": len(rows), "expected_rows": expected, "duplicate_keys": dups, "models": models,
-                 "complete": expected is None or len(set(keys)) == expected}
-    if dups or len(models) > 1 or (expected is not None and len(set(keys)) != expected):
-        print("INTEGRITY PROBLEM:", integrity, file=sys.stderr)
+    manifest = json.load(open(mpath)) if Path(mpath).exists() else None
+    row_models = sorted({str(r.get("model")) for r in preds})
+    problems = []
+    if dups:
+        problems.append(f"{dups} duplicate keys")
+    missing = set(gt) - set(pk)
+    extra = set(pk) - set(gt)
+    if missing:
+        problems.append(f"{len(missing)} GT rows missing")
+    if extra:
+        problems.append(f"{len(extra)} prediction keys not in frozen GT")
+    if manifest is None:
+        problems.append("no generation manifest")
+    elif row_models != [manifest["model"]]:
+        problems.append(f"row models {row_models} != manifest model {manifest['model']}")
+    integrity = {"n_pred_rows": len(preds), "n_gt_rows": len(gt), "duplicate_keys": dups, "missing": len(missing),
+                 "extra": len(extra), "row_models": row_models, "manifest": manifest, "gt_file": a.gt,
+                 "complete": not missing and not extra and not dups, "problems": problems}
+    if problems:
+        print("INTEGRITY PROBLEM:", problems, file=sys.stderr)
         if not a.allow_incomplete:
             raise SystemExit(2)
+    rows = []
+    for r in preds:
+        k = (r["episode_id"], r["step_idx"], r.get("mode", "high"))
+        if k in gt:
+            g = gt[k]
+            rows.append({**g, "output": r["output"]})
     steps = [r for r in rows if not r.get("is_terminal")]
     term = [r for r in rows if r.get("is_terminal")]
     res = {}

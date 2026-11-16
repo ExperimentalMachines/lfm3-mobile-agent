@@ -52,7 +52,23 @@ args = p.parse_args()
 
 os.makedirs(f"{args.out}/logs", exist_ok=True)
 os.environ.setdefault("TENSORBOARD_LOGGING_DIR", f"{args.out}/logs/tb")
-json.dump(vars(args), open(f"{args.out}/logs/run_config.json", "w"), indent=2)
+def _provenance():
+    prov = {}
+    try:
+        from huggingface_hub import HfApi
+        api = HfApi()
+        prov["model_sha"] = api.model_info(args.model_id).sha if not os.path.isdir(args.model_id) else "local"
+        for t in args.train + ([args.val] if args.val else []):
+            if not os.path.isdir(t):
+                prov[f"dataset_sha:{t}"] = api.dataset_info(t.partition("@")[0]).sha
+    except Exception as e:
+        prov["error"] = repr(e)
+    import importlib.metadata as md
+    prov["versions"] = {k: md.version(k) for k in ("torch", "transformers", "trl", "peft", "datasets", "accelerate")}
+    return prov
+
+
+json.dump({**vars(args), "provenance": _provenance()}, open(f"{args.out}/logs/run_config.json", "w"), indent=2)
 
 
 def load_any(path):
@@ -183,10 +199,19 @@ if not ckpts and args.hub_repo:
         if "last-checkpoint/trainer_state.json" in files:
             snapshot_download(args.hub_repo, allow_patterns=["last-checkpoint/*"], local_dir=args.out)
             st = json.load(open(f"{args.out}/last-checkpoint/trainer_state.json"))
+            bad = []
+            if st.get("train_batch_size") not in (None, args.bs):
+                bad.append(f"train_batch_size {st.get('train_batch_size')} != {args.bs}")
+            if args.max_steps > 0 and st.get("max_steps") not in (None, args.max_steps):
+                bad.append(f"max_steps {st.get('max_steps')} != {args.max_steps}")
+            if bad:
+                raise SystemExit("incompatible hub checkpoint, refusing to resume: " + "; ".join(bad))
             dst = f"{args.out}/checkpoint-{st['global_step']}"
             os.rename(f"{args.out}/last-checkpoint", dst)
             ckpts = [os.path.basename(dst)]
             print(f"restored {dst} from hub", flush=True)
+    except SystemExit:
+        raise
     except Exception as e:
         print("hub resume failed:", e, flush=True)
 if ckpts:
@@ -208,4 +233,13 @@ processor.save_pretrained(f"{args.out}/lora")
 merged = trainer.model.merge_and_unload()
 merged.save_pretrained(f"{args.out}/merged", safe_serialization=True)
 processor.save_pretrained(f"{args.out}/merged")
-print("saved lora + merged", flush=True)
+import glob as _g
+_w = _g.glob(f"{args.out}/merged/*.safetensors")
+_ok = bool(_w) and all(os.path.getsize(f) > 0 for f in _w) and os.path.exists(f"{args.out}/merged/config.json") \
+    and _g.glob(f"{args.out}/lora/adapter_model*") and (_g.glob(f"{args.out}/merged/*tokenizer*") or _g.glob(f"{args.out}/merged/processor_config.json"))
+if not _ok:
+    raise SystemExit("export verification failed: merged/lora incomplete")
+json.dump({"args": vars(args), "global_step": trainer.state.global_step, "max_steps": trainer.state.max_steps,
+           "weights": {os.path.basename(f): os.path.getsize(f) for f in _w}, "summary": summary},
+          open(f"{args.out}/train_receipt.json", "w"), indent=2)
+print("saved lora + merged (receipt written)", flush=True)

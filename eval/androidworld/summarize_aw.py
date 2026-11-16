@@ -20,6 +20,7 @@ from pathlib import Path
 ap = argparse.ArgumentParser()
 ap.add_argument("run_dir")
 ap.add_argument("--out", required=True)
+ap.add_argument("--expected", type=int, default=116, help="scheduled task instances; missing ones count as failures")
 a = ap.parse_args()
 
 # difficulty labels from AndroidWorld's own task_metadata.json (task_name -> easy/medium/hard)
@@ -62,6 +63,7 @@ for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
         "steps": ep.get("episode_length"), "runtime_s": round(ep.get("run_time") or 0, 1),
         "difficulty": difficulty(task),
         "exception_info": (str(exc)[:300] if exc else None),
+        "teardown_exception": bool(isinstance(ep.get("aux_data"), dict) and ep["aux_data"].get("teardown_exception")),
         "ended_with_status": bool(acts) and acts[-1] == "status",
         "n_answer_actions": acts.count("answer"),
     })
@@ -72,7 +74,11 @@ for r in rows:
 summary = {
     "run_dir": a.run_dir,
     "n_episodes": len(rows),
-    "success_rate": sum(r["success"] for r in rows) / max(1, len(rows)),
+    "expected_episodes": a.expected,
+    "missing_episodes_counted_as_fail": max(0, a.expected - len(rows)),
+    "success_rate": sum(r["success"] for r in rows) / max(1, max(a.expected, len(rows))),
+    "success_rate_over_completed": sum(r["success"] for r in rows) / max(1, len(rows)),
+    "n_teardown_exceptions": sum(1 for r in rows if r.get("teardown_exception")),
     "success_rate_by_difficulty": {k: {"n": len(v), "sr": sum(v) / len(v)} for k, v in sorted(by_diff.items())},
     "n_exceptions_counted_as_fail": sum(r["exception"] for r in rows),
     "frac_episodes_self_terminated": sum(r["ended_with_status"] for r in rows) / max(1, len(rows)),

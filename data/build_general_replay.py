@@ -9,6 +9,7 @@ so the model keeps answering normally outside the agent prompt.
 Usage (on the GPU VM): python build_general_replay.py --out /content/data/replay --n 12000
 """
 import argparse
+import io
 import random
 
 from datasets import Dataset, Features, Image as DImage, Sequence, Value, load_dataset
@@ -41,11 +42,17 @@ for sub, frac in SUBSETS.items():
         t = r["texts"][0]  # first single turn
         if not t.get("user") or not t.get("assistant"):
             continue
-        rows.append({"images": [r["images"][0].convert("RGB")],
+        im = r["images"][0].convert("RGB")
+        im.thumbnail((1024, 1024))  # bound memory/encode cost; general VQA does not need more
+        buf = io.BytesIO(); im.save(buf, format="JPEG", quality=90)
+        rows.append({"images": [{"bytes": buf.getvalue(), "path": None}],
                      "messages": [{"role": "user", "content": t["user"], "reasoning_content": None},
                                   {"role": "assistant", "content": t["assistant"], "reasoning_content": None}]})
         n_ok += 1
     print(sub, "kept", n_ok, flush=True)
 rng.shuffle(rows)
 Dataset.from_list(rows, features=FEATS).save_to_disk(a.out)
+import hashlib, json, os
+json.dump({"builder_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest(), "n_requested": a.n,
+           "n_rows": len(rows), "seed": a.seed, "subsets": SUBSETS}, open(os.path.join(a.out, "replay_receipt.json"), "w"), indent=1)
 print("replay rows", len(rows), flush=True)

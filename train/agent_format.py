@@ -108,9 +108,19 @@ def parse_action(text: str, strict: bool = False) -> dict[str, Any] | None:
         return None
     if "</think>" in text:
         text = text.split("</think>", 1)[1]
+    elif "<think>" in text:
+        return None  # unfinished reasoning: an action inside it is not a final answer
     if strict:
+        def _no_dup(pairs):
+            keys = [k for k, _ in pairs]
+            if len(keys) != len(set(keys)):
+                raise ValueError("duplicate key")
+            return dict(pairs)
+
+        def _no_const(c):
+            raise ValueError("non-finite number")
         try:
-            a = json.loads(text.strip())
+            a = json.loads(text.strip(), object_pairs_hook=_no_dup, parse_constant=_no_const)
         except Exception:
             return None
         if not isinstance(a, dict) or not isinstance(a.get("action_type"), str):
@@ -145,6 +155,9 @@ def parse_action(text: str, strict: bool = False) -> dict[str, Any] | None:
         try:
             p = [float(p[0]), float(p[1])]
         except Exception:
+            return None
+        import math as _m
+        if not all(_m.isfinite(v) for v in p):
             return None
         a["point_2d"] = [min(max(p[0], 0), 1000), min(max(p[1], 0), 1000)]
     elif t == "scroll":
@@ -209,7 +222,7 @@ def _validate_strict(a):
         return None
     if t in POINT_TYPES:
         p = a["point_2d"]
-        if not (isinstance(p, list) and len(p) == 2 and all(isinstance(v, (int, float)) and 0 <= v <= 1000 for v in p)):
+        if not (isinstance(p, list) and len(p) == 2 and all(isinstance(v, int) and not isinstance(v, bool) and 0 <= v <= 1000 for v in p)):
             return None
     elif t in ("input_text", "answer", "open_app"):
         if not isinstance(a[next(iter(allowed[t]))], str):

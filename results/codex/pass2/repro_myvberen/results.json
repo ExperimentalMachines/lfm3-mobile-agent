@@ -1,0 +1,872 @@
+{
+  "scope": "CPU / synthetic, no GPU forward or actual Arrow cast",
+  "output_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen",
+  "templates": {
+    "cases": [
+      {
+        "template": "lfm3",
+        "kind": "agent",
+        "thinking": null,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": "\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "agent",
+        "thinking": false,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": "at is the next action?<|im_end|>\n<|im_start|>assistant\n<think></think>",
+        "training_starts_with_prompt": false
+      },
+      {
+        "template": "lfm3",
+        "kind": "agent",
+        "thinking": true,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": "\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "replay_no_system",
+        "thinking": null,
+        "generation_span": "<think></think>Blue.<|im_end|>\n",
+        "prompt_suffix": "end|>What color is the object?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "replay_no_system",
+        "thinking": false,
+        "generation_span": "<think></think>Blue.<|im_end|>\n",
+        "prompt_suffix": "t color is the object?<|im_end|>\n<|im_start|>assistant\n<think></think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm3",
+        "kind": "replay_no_system",
+        "thinking": true,
+        "generation_span": "<think></think>Blue.<|im_end|>\n",
+        "prompt_suffix": "end|>What color is the object?<|im_end|>\n<|im_start|>assistant\n<think>",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "agent",
+        "thinking": null,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "agent",
+        "thinking": false,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "agent",
+        "thinking": true,
+        "generation_span": "<think>Tap Settings.</think>{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>\n",
+        "prompt_suffix": " steps:\nNone\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "replay_no_system",
+        "thinking": null,
+        "generation_span": "Blue.<|im_end|>\n",
+        "prompt_suffix": "user\n<image>What color is the object?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "replay_no_system",
+        "thinking": false,
+        "generation_span": "Blue.<|im_end|>\n",
+        "prompt_suffix": "user\n<image>What color is the object?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "lfm25_inline",
+        "kind": "replay_no_system",
+        "thinking": true,
+        "generation_span": "Blue.<|im_end|>\n",
+        "prompt_suffix": "user\n<image>What color is the object?<|im_end|>\n<|im_start|>assistant\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "agent",
+        "thinking": null,
+        "generation_span": "<think>\nTap Settings.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>",
+        "prompt_suffix": "s the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": false
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "agent",
+        "thinking": false,
+        "generation_span": "<think>\nTap Settings.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>",
+        "prompt_suffix": "s the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": false
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "agent",
+        "thinking": true,
+        "generation_span": "<think>\nTap Settings.\n</think>\n\n{\"action_type\":\"click\",\"point_2d\":[500,500]}<|im_end|>",
+        "prompt_suffix": "None\nWhat is the next action?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "replay_no_system",
+        "thinking": null,
+        "generation_span": "<think>\n\n</think>\n\nBlue.<|im_end|>",
+        "prompt_suffix": "lor is the object?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "replay_no_system",
+        "thinking": false,
+        "generation_span": "<think>\n\n</think>\n\nBlue.<|im_end|>",
+        "prompt_suffix": "lor is the object?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "training_starts_with_prompt": true
+      },
+      {
+        "template": "qwen35_patched",
+        "kind": "replay_no_system",
+        "thinking": true,
+        "generation_span": "<think>\n\n</think>\n\nBlue.<|im_end|>",
+        "prompt_suffix": "nd|>What color is the object?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+        "training_starts_with_prompt": true
+      }
+    ],
+    "patch_roundtrip": true,
+    "lfm3_matches_prior_served_template_ignoring_indentation": true
+  },
+  "lora": {
+    "classes_from_pinned_source": {
+      "Qwen3_5GatedDeltaNet": [
+        "out_proj",
+        "in_proj_qkv",
+        "in_proj_z",
+        "in_proj_b",
+        "in_proj_a"
+      ],
+      "Qwen3_5Attention": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ],
+      "Qwen3_5MLP": [
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "Qwen3_5VisionMLP": [
+        "linear_fc1",
+        "linear_fc2"
+      ],
+      "Qwen3_5VisionPatchMerger": [
+        "linear_fc1",
+        "linear_fc2"
+      ],
+      "Qwen3_5VisionAttention": [
+        "qkv",
+        "proj"
+      ],
+      "Qwen3_5ForCausalLM": [
+        "lm_head"
+      ],
+      "Qwen3_5ForConditionalGeneration": [
+        "lm_head"
+      ]
+    },
+    "jobs": {
+      "qwen35_2b_l4": {
+        "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+        "matched": 186,
+        "total_lm_linear": 186,
+        "missing": [],
+        "vision_matches": []
+      },
+      "qwen35_08b_l4": {
+        "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+        "matched": 186,
+        "total_lm_linear": 186,
+        "missing": [],
+        "vision_matches": []
+      }
+    }
+  },
+  "resize": [
+    {
+      "input_hw": [
+        2400,
+        1080
+      ],
+      "ac_both_and_ft_general_hw": [
+        1280,
+        576
+      ],
+      "tokens": 720,
+      "qwen_base_general_hw": [
+        2400,
+        1088
+      ],
+      "base_tokens": 2550
+    },
+    {
+      "input_hw": [
+        1280,
+        576
+      ],
+      "ac_both_and_ft_general_hw": [
+        1280,
+        576
+      ],
+      "tokens": 720,
+      "qwen_base_general_hw": [
+        1280,
+        576
+      ],
+      "base_tokens": 720
+    },
+    {
+      "input_hw": [
+        1024,
+        2048
+      ],
+      "ac_both_and_ft_general_hw": [
+        608,
+        1216
+      ],
+      "tokens": 722,
+      "qwen_base_general_hw": [
+        1024,
+        2048
+      ],
+      "base_tokens": 2048
+    },
+    {
+      "input_hw": [
+        512,
+        512
+      ],
+      "ac_both_and_ft_general_hw": [
+        512,
+        512
+      ],
+      "tokens": 256,
+      "qwen_base_general_hw": [
+        512,
+        512
+      ],
+      "base_tokens": 256
+    }
+  ],
+  "replay_schema": {
+    "identical_builder_declarations": true,
+    "schema": {
+      "images": [
+        "Sequence",
+        [
+          [
+            "DImage",
+            [],
+            {}
+          ]
+        ],
+        {}
+      ],
+      "messages": [
+        {
+          "role": [
+            "Value",
+            [
+              "string"
+            ],
+            {}
+          ],
+          "content": [
+            "Value",
+            [
+              "string"
+            ],
+            {}
+          ],
+          "reasoning_content": [
+            "Value",
+            [
+              "string"
+            ],
+            {}
+          ]
+        }
+      ]
+    },
+    "actual_arrow_cast_executed": false
+  },
+  "replay_filter": {
+    "production_stdout": "ai2d kept 4\naokvqa kept 5\nchartqa kept 0\nlocalized_narratives kept 6\nreplay rows 15\n",
+    "requested": 20,
+    "kept": 15,
+    "nominal_agent": 80,
+    "actual_row_fraction": 0.15789473684210525,
+    "nominal_real_run": "12000 / (48000 + 12000) = 20%; only if 12000 survive"
+  },
+  "general_eval": {
+    "letter_probes": [
+      {
+        "text": "C",
+        "parsed": "C"
+      },
+      {
+        "text": "A cat is pictured. The correct answer is C.",
+        "parsed": "A"
+      },
+      {
+        "text": "B is wrong. The answer is D.",
+        "parsed": "B"
+      },
+      {
+        "text": "<think>Compare A and B. I need more time",
+        "parsed": "A"
+      },
+      {
+        "text": "<think>Compare A and B.</think>D",
+        "parsed": "D"
+      },
+      {
+        "text": "c",
+        "parsed": null
+      }
+    ],
+    "wilson_250_of_500": [
+      0.4563412653024843,
+      0.5436587346975157
+    ],
+    "unpaired_difference_worst_95_halfwidth": 0.06197950323045615,
+    "paired_example": {
+      "base_correct_ft_wrong": 60,
+      "base_wrong_ft_correct": 45,
+      "delta": -0.03,
+      "normal_95_ci": [
+        -0.07008114368146551,
+        0.010081143681465517
+      ]
+    }
+  },
+  "generation_resume": {
+    "old": {
+      "model": "local-model",
+      "data": "old@test",
+      "n_rows": 2,
+      "enable_thinking": 0,
+      "max_pixels": 65536,
+      "filter_mode": null,
+      "subsample_episodes": 0,
+      "limit": 0,
+      "max_new_tokens": 32
+    },
+    "overwritten_manifest": {
+      "model": "local-model",
+      "data": "new@test",
+      "n_rows": 2,
+      "enable_thinking": 1,
+      "max_pixels": 774400,
+      "filter_mode": null,
+      "subsample_episodes": 0,
+      "limit": 0,
+      "max_new_tokens": 256
+    },
+    "old_rows_reused": [
+      [
+        1,
+        0,
+        "high"
+      ]
+    ],
+    "path_to_hub_alias": "refusing to resume /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/resume.jsonl: manifest mismatch {'model': 'local-model', 'data': 'new@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256} vs {'model': 'org/the-same-weights', 'data': 'new@test', 'n_rows': 2, 'enable_thinking': 1, 'max_pixels': 774400, 'filter_mode': None, 'subsample_episodes': 0, 'limit': 0, 'max_new_tokens': 256}"
+  },
+  "scorer": {
+    "one_row_no_manifest": {
+      "exit": 0,
+      "stderr": "",
+      "integrity": {
+        "n_rows": 1,
+        "expected_rows": null,
+        "duplicate_keys": 0,
+        "models": [
+          "?"
+        ],
+        "complete": true
+      },
+      "high": {
+        "n_steps": 1,
+        "n_episodes": 1,
+        "parse_rate": 1.0,
+        "type_match": 1.0,
+        "step_sr": 1.0,
+        "episode_sr": 1.0,
+        "per_type": {
+          "wait": {
+            "n": 1,
+            "type_match": 1.0,
+            "step_sr": 1.0
+          }
+        }
+      }
+    },
+    "wrong_key_same_count": {
+      "exit": 0,
+      "stderr": "",
+      "integrity": {
+        "n_rows": 1,
+        "expected_rows": 1,
+        "duplicate_keys": 0,
+        "models": [
+          "local-model"
+        ],
+        "complete": true
+      },
+      "high": {
+        "n_steps": 1,
+        "n_episodes": 1,
+        "parse_rate": 1.0,
+        "type_match": 1.0,
+        "step_sr": 1.0,
+        "episode_sr": 1.0,
+        "per_type": {
+          "wait": {
+            "n": 1,
+            "type_match": 1.0,
+            "step_sr": 1.0
+          }
+        }
+      }
+    },
+    "wrong_model_vs_manifest": {
+      "exit": 0,
+      "stderr": "",
+      "integrity": {
+        "n_rows": 1,
+        "expected_rows": 1,
+        "duplicate_keys": 0,
+        "models": [
+          "old-model"
+        ],
+        "complete": true
+      },
+      "high": {
+        "n_steps": 1,
+        "n_episodes": 1,
+        "parse_rate": 1.0,
+        "type_match": 1.0,
+        "step_sr": 1.0,
+        "episode_sr": 1.0,
+        "per_type": {
+          "wait": {
+            "n": 1,
+            "type_match": 1.0,
+            "step_sr": 1.0
+          }
+        }
+      }
+    },
+    "missing_outputs_rejected": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: {'n_rows': 1, 'expected_rows': 2, 'duplicate_keys': 0, 'models': ['local-model'], 'complete': False}",
+      "integrity": null,
+      "high": null
+    },
+    "duplicates_rejected": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: {'n_rows': 2, 'expected_rows': 2, 'duplicate_keys': 1, 'models': ['local-model'], 'complete': False}",
+      "integrity": null,
+      "high": null
+    },
+    "mixed_models_rejected": {
+      "exit": 2,
+      "stderr": "INTEGRITY PROBLEM: {'n_rows': 2, 'expected_rows': 2, 'duplicate_keys': 0, 'models': ['local-model', 'other'], 'complete': True}",
+      "integrity": null,
+      "high": null
+    },
+    "explicit_partial_subset": {
+      "exit": 0,
+      "stderr": "",
+      "integrity": {
+        "n_rows": 1,
+        "expected_rows": 1,
+        "duplicate_keys": 0,
+        "models": [
+          "local-model"
+        ],
+        "complete": true
+      },
+      "high": {
+        "n_steps": 1,
+        "n_episodes": 1,
+        "parse_rate": 1.0,
+        "type_match": 1.0,
+        "step_sr": 1.0,
+        "episode_sr": 1.0,
+        "per_type": {
+          "wait": {
+            "n": 1,
+            "type_match": 1.0,
+            "step_sr": 1.0
+          }
+        }
+      }
+    }
+  },
+  "parser": [
+    {
+      "input": "{\"action_type\":\"click\",\"point_2d\":[true,5.5]}",
+      "lenient": {
+        "action_type": "click",
+        "point_2d": [
+          1.0,
+          5.5
+        ]
+      },
+      "strict": {
+        "action_type": "click",
+        "point_2d": [
+          true,
+          5.5
+        ]
+      },
+      "aw_history_serialization": "{\"action_type\":\"click\",\"point_2d\":[1,5]}"
+    },
+    {
+      "input": "{\"action_type\":\"wait\",\"action_type\":\"navigate_back\"}",
+      "lenient": {
+        "action_type": "navigate_back"
+      },
+      "strict": {
+        "action_type": "navigate_back"
+      },
+      "aw_history_serialization": "{\"action_type\":\"navigate_back\"}"
+    },
+    {
+      "input": "{\"action_type\":\"click\",\"point_2d\":[NaN,20]}",
+      "lenient": {
+        "action_type": "click",
+        "point_2d": [
+          NaN,
+          20.0
+        ]
+      },
+      "strict": null,
+      "aw_history_serialization": "ValueError: cannot convert float NaN to integer"
+    },
+    {
+      "input": "{\"action_type\":\"click\",\"point_2d\":[Infinity,20]}",
+      "lenient": {
+        "action_type": "click",
+        "point_2d": [
+          1000,
+          20.0
+        ]
+      },
+      "strict": null,
+      "aw_history_serialization": "{\"action_type\":\"click\",\"point_2d\":[1000,20]}"
+    },
+    {
+      "input": "{\"action_type\":\"status\"}",
+      "lenient": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "strict": null,
+      "aw_history_serialization": "{\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+    },
+    {
+      "input": "{\"action_type\":\"status\",\"goal_status\":\"banana\"}",
+      "lenient": null,
+      "strict": null,
+      "aw_history_serialization": null
+    }
+  ],
+  "aw_summaries": {
+    "exception_success": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/aw_exception_success",
+        "n_episodes": 1,
+        "success_rate": 1.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 1,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "aux_teardown_success": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/aw_aux_teardown_success",
+        "n_episodes": 1,
+        "success_rate": 1.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "nan_failure": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/aw_nan_failure",
+        "n_episodes": 1,
+        "success_rate": 0.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 0.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 1,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": NaN,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 0,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": true
+    },
+    "list_truncation": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/aw_list_truncation",
+        "n_episodes": 1,
+        "success_rate": 1.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "legacy_no_attempts": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/aw_legacy_no_attempts",
+        "n_episodes": 1,
+        "success_rate": 1.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": null,
+        "prompt_tokens_mean": null,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 0
+      },
+      "contains_NaN": false
+    },
+    "two_attempts": {
+      "exit": 0,
+      "summary": {
+        "run_dir": "/Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/aw_two_attempts",
+        "n_episodes": 1,
+        "success_rate": 1.0,
+        "success_rate_by_difficulty": {
+          "easy": {
+            "n": 1,
+            "sr": 1.0
+          }
+        },
+        "n_exceptions_counted_as_fail": 0,
+        "frac_episodes_self_terminated": 0.0,
+        "mean_steps": 1,
+        "model_latency_s": {
+          "mean": 3.0,
+          "p50": 3.0,
+          "p90": 3.0
+        },
+        "prompt_tokens_mean": 100,
+        "parse_failure_rate": 0.0,
+        "n_steps_total": 1,
+        "first_attempt_strict_valid_rate": 0.0,
+        "first_attempt_lenient_valid_rate": 0.0,
+        "n_model_calls_incl_retries": 2
+      },
+      "contains_NaN": false
+    }
+  },
+  "patched_teardown": {
+    "is_successful": 1.0,
+    "exception_info": null,
+    "aux_data": {
+      "teardown_exception": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 289, in _run_task\n    task.tear_down(env)\n    ~~~~~~~~~~~~~~^^^^^\n  File \"/Users/alpha/lfm3-android/results/codex/pass2/reproduce.py\", line 322, in tear_down\n    def tear_down(self, env): raise RuntimeError(\"cannot clean\")\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: cannot clean\n"
+    }
+  },
+  "cleanup_error_status_empty_stdout": {
+    "returned_normally": true,
+    "requests": [
+      [
+        "shell",
+        "ls",
+        "-1",
+        "/synthetic"
+      ],
+      [
+        "shell",
+        "rm",
+        "-rf",
+        "/synthetic/*"
+      ],
+      [
+        "shell",
+        "ls",
+        "-1",
+        "/synthetic"
+      ]
+    ]
+  },
+  "vm": {
+    "vm_model_pipeline.sh": {
+      "exit": 0,
+      "stdout": "[21:54:05] audit: general eval BASE\nSTUB python eval_general.py --model synthetic-model --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/audit_base_general --bs 32\nSTUB python -\n[21:54:05] audit: push merged + adapter\nSTUB python -\nSTUB python -\n[21:54:05] audit: general eval FT\nSTUB python eval_general.py --model /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/runs/audit/merged --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/audit_ft_general --bs 32\nSTUB python -\n[21:54:05] audit: AndroidControl test FT\nSTUB python generate.py --model /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/runs/audit/merged --data experimentalmachines/AndroidControl-screen-agent-sft@test --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/audit_ft.jsonl --enable_thinking 1 --bs 32 --max_pixels 774400\nSTUB python -\n[21:54:05] audit: AndroidControl test BASE (no-think)\nSTUB python generate.py --model synthetic-model --data experimentalmachines/AndroidControl-screen-agent-sft@test --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/audit_base.jsonl --enable_thinking 0 --bs 32 --max_pixels 774400\nSTUB python -\n[21:54:05] audit: PIPELINE DONE\n",
+      "stderr": ""
+    },
+    "vm_450m_pipeline.sh": {
+      "exit": 0,
+      "stdout": "[21:54:05] 1) general eval BASE\nSTUB python eval_general.py --model LiquidAI/LFM2.5-VL-450M --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/lfm25vl450m_base_general --bs 32\n[21:54:05] 2) build replay\nSTUB python build_general_replay.py --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/data/replay --n 12000\n[21:54:05] 3) train\n[21:54:05] 4) general eval FT\nSTUB python eval_general.py --model /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/runs/lfm25vl450m-ac-lora/merged --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/lfm25vl450m_ft_general --bs 32\n[21:54:06] 5) AndroidControl test eval (FT, think inline) + BASE (no-think)\nSTUB python generate.py --model /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/runs/lfm25vl450m-ac-lora/merged --data experimentalmachines/AndroidControl-screen-agent-sft@test --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/lfm25vl450m-ac-lora_ft.jsonl --enable_thinking 0 --bs 48 --max_pixels 0\nSTUB python generate.py --model LiquidAI/LFM2.5-VL-450M --data experimentalmachines/AndroidControl-screen-agent-sft@test --out /Users/alpha/lfm3-android/results/codex/pass2/repro_myvberen/vm/eval/lfm25vl450m_base.jsonl --enable_thinking 0 --bs 48 --max_pixels 0\n[21:54:06] 6) push\nSTUB python -\n[21:54:06] PIPELINE DONE\n",
+      "stderr": ""
+    },
+    "vm_train_eval_push.sh": {
+      "exit": 0,
+      "stdout": "TRAIN DONE rc=17\nFT EVAL DONE rc=2\nSTUB python -\nPIPELINE DONE\n",
+      "stderr": ""
+    },
+    "vm_blocking_jobs.py": {
+      "exit": 0,
+      "stdout": "started failing pid=41981\n[heartbeat 21:54:06] {'failing': 'running'}\n......[heartbeat 21:54:06] {'failing': 'exit 7'}\nALL JOBS FINISHED\n",
+      "status": {
+        "elapsed_s": 0,
+        "status": {
+          "failing": "exit 7"
+        }
+      }
+    },
+    "push_evals": {
+      "synthetic_sizes": {
+        "/content/eval/current.jsonl": 500000000,
+        "/content/eval/current.metrics.json": 100,
+        "/content/eval/other_model.jsonl": 499999999
+      },
+      "uploaded": [
+        "eval/current.metrics.json",
+        "eval/other_model.jsonl"
+      ]
+    }
+  },
+  "resume_arithmetic": {
+    "pinned_trainer_restores_batch_only_if_auto_find_batch_size": true,
+    "cases": [
+      {
+        "old_bs_ga": [
+          16,
+          2
+        ],
+        "new_bs_ga": [
+          8,
+          4
+        ],
+        "step": 100,
+        "already_seen_rows": 3200,
+        "new_skip_rows": 3200
+      },
+      {
+        "old_bs_ga": [
+          16,
+          2
+        ],
+        "new_bs_ga": [
+          8,
+          2
+        ],
+        "step": 100,
+        "already_seen_rows": 3200,
+        "new_skip_rows": 1600
+      },
+      {
+        "old_bs_ga": [
+          8,
+          4
+        ],
+        "new_bs_ga": [
+          16,
+          4
+        ],
+        "step": 100,
+        "already_seen_rows": 3200,
+        "new_skip_rows": 6400
+      }
+    ],
+    "1250x32_rows": 40000,
+    "fraction_of_99216": 0.40316078051927107,
+    "60000_rows_bs16_ga2_one_epoch_steps": 1875
+  }
+}

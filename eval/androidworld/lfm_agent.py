@@ -90,7 +90,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         resp, action, attempts = None, None, []
         for _ in range(1 + self.max_parse_retries):
             resp = self._query(goal, img)
-            action = af.parse_action(resp["content"]) or af.parse_action(resp["reasoning"] + resp["content"])
+            action = af.parse_action(resp["content"])  # final answer only; never mine the reasoning
             attempts.append({"content": resp["content"], "reasoning": resp["reasoning"], "latency_s": resp["latency_s"],
                              "usage": resp["usage"], "lenient_ok": action is not None,
                              "strict_ok": af.parse_action(resp["content"], strict=True) is not None})

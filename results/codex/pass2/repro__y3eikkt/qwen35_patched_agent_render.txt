@@ -1,0 +1,27 @@
+<|im_start|>system
+You are a phone-use agent operating an Android phone to complete the user's goal.
+Each turn you see the goal, your previous steps, and the current screenshot. Reply with ONE next action as JSON.
+Coordinates are integers normalized to 0-1000 (x from left, y from top) of the screenshot.
+Actions:
+{"action_type":"click","point_2d":[x,y]}
+{"action_type":"long_press","point_2d":[x,y]}
+{"action_type":"input_text","text":"..."}  (types into the focused field)
+{"action_type":"scroll","direction":"up|down|left|right"}  (down = reveal content below)
+{"action_type":"open_app","app_name":"..."}
+{"action_type":"navigate_back"}
+{"action_type":"navigate_home"}
+{"action_type":"keyboard_enter"}
+{"action_type":"wait"}
+{"action_type":"answer","text":"..."}  (reply to a question about the screen)
+{"action_type":"status","goal_status":"complete|infeasible"}  (finish the task)<|im_end|>
+<|im_start|>user
+<|vision_start|><|image_pad|><|vision_end|>Goal: Open Settings
+Previous steps:
+None
+What is the next action?<|im_end|>
+<|im_start|>assistant
+<think>
+Tap Settings.
+</think>
+
+{"action_type":"click","point_2d":[500,500]}<|im_end|>
