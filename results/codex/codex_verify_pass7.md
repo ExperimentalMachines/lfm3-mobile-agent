@@ -1,0 +1,30 @@
+**Adversarial QA pass 7 — NO-GO for both Qwen3.5-2B and Qwen3.5-0.8B chains.**
+
+Reproduced on 2026-11-16 at `bd1facfcb413351e88c6f7a177fef47c16ef151b`, using production Python/Bash and local dependency/CLI stubs. No GPU, real training, VM, or upload. Shell fixtures remapped `/content`, removed cosmetic stderr filters, and shortened waits. Synthetic weights test control flow, not loadability.
+
+| Check | Fixed / not fixed | Reproduced result |
+|---|---|---|
+| 1. Restore pair and generation identity | **Fixed** | Both downloads use revision A. Missing either member regenerates safely; matching restore generates nothing. Orphan predictions, missing/wrong row hashes, and changed `min_pixels` are refused. Manifest includes `min_pixels`. |
+| 2. Thinking prefill | **Fixed** | Real Jinja prompt plus stubbed token tail saves unfinished output with `<think>`; both parsers reject it. Closed-thought and no-think controls pass. |
+| 3. Scroll/status argument types | **Fixed** | List/dict/bool/number arguments cause no `TypeError` in lenient/strict parsing or AW `step()`. Invalid attempts and valid retries work. Lenient null status still defaults to complete. |
+| 4. Matched no-think certification | **Fixed for fresh evaluation; reuse not fixed** | Both jobs score with `--modes high` and certify complete high-only outputs. Missing rows/scorer failure exits 1; a lone old `.done` does not bypass evaluation. Stale weights/policy remain accepted below. |
+| 5. Frozen GT manifest, SHA, VM default | **Fixed** | Missing manifest or SHA mismatch exits 2; both pipelines fail. Flattened VM scorer finds `work/meta/androidcontrol_test_gt.jsonl`. Repository GT SHA matches. |
+| Row versus manifest `config_hash` | **Fixed** | Wrong row hash and missing/blank manifest hash each exit 2. |
+| Receipt validity | **Fixed for requested binding** | Each mismatch in max_steps/epochs/max_agent_rows/lr/lora_r/bs/GA, model, or output triggers retraining. Empty/torn receipts, unfinished steps, missing/wrong-size weights also retrain; matching receipts reuse. Residual below. |
+| `metrics_ok` / cached AC metrics | **Partially fixed** | Every reuse runs the real scorer against current predictions and frozen GT; bogus cached metrics no longer bypass it. Invalid artifacts trigger regeneration or failure. Scoring still does not bind predictions to the intended current weights/policy. |
+| Mandatory upload failure | **Fixed** | All-upload, merged-only, and evaluation-only exit-17 failures make both pipelines exit 1. Generator checkpoint-upload failures remain warnings; wrapper uploads are enforced. |
+| 6. `meta`, GT/manifest, `jobs.json` uploads | **Fixed when hand-off is reached** | Same-session chain and direct fresh launcher create `meta` and upload the required files. Each tested upload failure prevents launch, including `Uploaded` text with exit 17. |
+| Startup heartbeat | **Fixed** | Immediate exit 23, absent heartbeat, and heartbeat-then-exit are rejected; heartbeat plus live client passes. |
+| Lost-session recovery | **Not fixed** | `404 not found` plus exit 1 produces eight polls before each bounded timeout, no allocation/launch. `pipefail` defeats [error detection](/Users/alpha/lfm3-android/scripts/chain_next_job.sh:14). [Evidence](/private/tmp/codex-pass7-i7vwot1p/chains_db4j6_95/results.json). |
+| 7. 2B prerequisite / legacy job | **Fixed** | With previous local merged weights absent, evaluation receives `experimentalmachines/LFM3-VL-2B-AndroidControl` and the fixture succeeds. `qwen35_train_l4.json` is absent. Hub availability was stubbed. |
+| 8. AW answer / execution semantics | **Fixed** | Actual upstream cache, episode, IR comparison, and suite functions: correct answer scores 1; wrong/empty/malformed answers score 0. Correct cache without `done` scores 0. Execution failure leaves `done=False`; successful retry caches and scores 1. |
+| General-evaluation crash recovery | **Not fixed** | One production summary-write crash leaves an empty file: first run exits 1; retry [skips evaluation](/Users/alpha/lfm3-android/scripts/vm_model_pipeline.sh:66) and exits 0, for both jobs. [Evidence](/private/tmp/codex-pass7-i7vwot1p/general_crash_single_results.json). |
+| Failed predecessor policy | **Acceptable as specified** | Exit 7 logs `WARNING` and launches the next independent model. Unrelated/stale terminal status is also accepted; these checks do not establish predecessor freshness. |
+
+**Stale predictions survive retraining:** a one-step smoke run followed by the current recipe changes weights, runs three scorers, generates zero new predictions, and exits 0 with `complete:true`, in both pipelines. Fresh stubbed inference from the new weights produces different outputs. An earlier 345600-pixel/no-think run also remains accepted under the current 774400-pixel/thinking settings. These used the complete generator/scorer without editing predictions or manifests. [Evidence](/private/tmp/codex-pass7-i7vwot1p/stale_rerun_results.json); [reuse gate](/Users/alpha/lfm3-android/scripts/vm_model_pipeline.sh:110). Together with VM loss and summary-write crashes, these are realistic blockers, not deliberate tampering.
+
+Residuals, not additional launch blockers: deliberate adapter-file deletion still passes the receipt gate. Training exit 17 after writing an otherwise accepted completed receipt also passes; failure before receipt creation exits 1.
+
+Other evidence: [28 generator/scorer checks](/private/tmp/codex-pass7-i7vwot1p/generation_score_o5v3uv_a/results.json), [94 pipeline cases](/private/tmp/codex-pass7-i7vwot1p/shell_93g71yho/results.json), [replacement-VM prerequisite](/private/tmp/codex-pass7-i7vwot1p/replacement_pipeline.json), [AW](/private/tmp/codex-pass7-i7vwot1p/aw_pqe8go5t/results.json). Reproduction scripts: `/private/tmp/codex-pass7-i7vwot1p/verify_*.py`, run with `python3 -B`. AW commit: `55ddaf5edc6f6c25673aed343907d5b9dca66f84`.
+
+Only this report was added to the repository. All **1,994 initially hashed tracked files**, six tested upstream AW files, and HEAD remained unchanged. [Verification](/private/tmp/codex-pass7-i7vwot1p/source_verification.json).

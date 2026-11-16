@@ -16,7 +16,7 @@ while true; do
     echo "[$(date +%T)] session $SESS gone"; GONE=1; break
   fi
   RID=$(python3 -c "import json;print(json.load(open('$ST')).get('run_id','none'))" 2>/dev/null || echo "?")
-  if grep -q '"running"' "$ST" 2>/dev/null; then SEEN_RID=${SEEN_RID:-$RID}; fi
+  if grep -q '"running"' "$ST" 2>/dev/null; then SEEN_RID=$RID; fi  # re-bind to the newest live run (restarted predecessors)
   # only an exit of the SAME run we saw running counts (stale statuses from earlier runs are ignored)
   if [ -n "${SEEN_RID:-}" ] && [ "$RID" = "$SEEN_RID" ] && grep -q '"exit' "$ST" 2>/dev/null && ! grep -q '"running"' "$ST"; then
     echo "[$(date +%T)] job finished: $(cat $ST)"
