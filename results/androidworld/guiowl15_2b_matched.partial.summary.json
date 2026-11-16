@@ -1,37 +1,37 @@
 {
  "summary": {
   "run_dir": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810",
-  "n_episodes": 46,
+  "n_episodes": 60,
   "expected_episodes": 116,
-  "missing_episodes_counted_as_fail": 70,
-  "success_rate": 0.0603448275862069,
-  "success_rate_over_completed": 0.15217391304347827,
+  "missing_episodes_counted_as_fail": 56,
+  "success_rate": 0.07758620689655173,
+  "success_rate_over_completed": 0.15,
   "n_teardown_exceptions": 0,
   "success_rate_by_difficulty": {
    "easy": {
-    "n": 22,
-    "sr": 0.2727272727272727
+    "n": 28,
+    "sr": 0.25
    },
    "hard": {
-    "n": 9,
-    "sr": 0.0
+    "n": 13,
+    "sr": 0.07692307692307693
    },
    "medium": {
-    "n": 15,
-    "sr": 0.06666666666666667
+    "n": 19,
+    "sr": 0.05263157894736842
    }
   },
-  "n_exceptions_counted_as_fail": 0,
+  "n_exceptions_counted_as_fail": 1,
   "frac_episodes_self_terminated": 0.0,
-  "mean_steps": 21.73913043478261,
+  "mean_steps": NaN,
   "model_latency_s": {
-   "mean": 5.8121793427467345,
-   "p50": 5.85569703578949,
-   "p90": 7.3931591510772705
+   "mean": 6.231995078358647,
+   "p50": 6.385669946670532,
+   "p90": 7.844066143035889
   },
-  "prompt_tokens_mean": 2389.194,
+  "prompt_tokens_mean": 2342.8686288585786,
   "parse_failure_rate": 0.0,
-  "n_steps_total": 1000,
+  "n_steps_total": 1393,
   "first_attempt_strict_valid_rate": 1.0,
   "first_attempt_lenient_valid_rate": 1.0,
   "n_model_calls_incl_retries": 0
@@ -623,6 +623,45 @@
    "n_answer_actions": 0
   },
   {
+   "task": "RecipeAddMultipleRecipesFromImage",
+   "file": "RecipeAddMultipleRecipesFromImage_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 60,
+   "runtime_s": 565.5,
+   "difficulty": "hard",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromMarkor2",
+   "file": "RecipeAddMultipleRecipesFromMarkor2_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 60,
+   "runtime_s": 535.5,
+   "difficulty": "hard",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeAddMultipleRecipesFromMarkor",
+   "file": "RecipeAddMultipleRecipesFromMarkor_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 60,
+   "runtime_s": 607.2,
+   "difficulty": "hard",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
    "task": "RecipeAddMultipleRecipes",
    "file": "RecipeAddMultipleRecipes_0.pkl.gz",
    "success": 0.0,
@@ -630,6 +669,149 @@
    "steps": 60,
    "runtime_s": 520.9,
    "difficulty": "medium",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeAddSingleRecipe",
+   "file": "RecipeAddSingleRecipe_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 24,
+   "runtime_s": 280.1,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes2",
+   "file": "RecipeDeleteDuplicateRecipes2_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 24,
+   "runtime_s": 256.1,
+   "difficulty": "medium",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes3",
+   "file": "RecipeDeleteDuplicateRecipes3_0.pkl.gz",
+   "success": 0.0,
+   "exception": true,
+   "steps": NaN,
+   "runtime_s": 10.2,
+   "difficulty": "medium",
+   "exception_info": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 245, in _run_task\n    task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sqlite_validators.py\", line 413, in initia",
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteDuplicateRecipes",
+   "file": "RecipeDeleteDuplicateRecipes_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 115.7,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipesWithConstraint",
+   "file": "RecipeDeleteMultipleRecipesWithConstraint_0.pkl.gz",
+   "success": 1.0,
+   "exception": false,
+   "steps": 11,
+   "runtime_s": 147.4,
+   "difficulty": "hard",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipesWithNoise",
+   "file": "RecipeDeleteMultipleRecipesWithNoise_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 34,
+   "runtime_s": 463.0,
+   "difficulty": "medium",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteMultipleRecipes",
+   "file": "RecipeDeleteMultipleRecipes_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 24,
+   "runtime_s": 310.6,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteSingleRecipe",
+   "file": "RecipeDeleteSingleRecipe_0.pkl.gz",
+   "success": 1.0,
+   "exception": false,
+   "steps": 10,
+   "runtime_s": 132.5,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RecipeDeleteSingleWithRecipeWithNoise",
+   "file": "RecipeDeleteSingleWithRecipeWithNoise_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 20,
+   "runtime_s": 252.9,
+   "difficulty": "easy",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RetroCreatePlaylist",
+   "file": "RetroCreatePlaylist_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 24,
+   "runtime_s": 319.8,
+   "difficulty": "medium",
+   "exception_info": null,
+   "teardown_exception": false,
+   "ended_with_status": false,
+   "n_answer_actions": 0
+  },
+  {
+   "task": "RetroPlayingQueue",
+   "file": "RetroPlayingQueue_0.pkl.gz",
+   "success": 0.0,
+   "exception": false,
+   "steps": 32,
+   "runtime_s": 377.0,
+   "difficulty": "easy",
    "exception_info": null,
    "teardown_exception": false,
    "ended_with_status": false,
