@@ -27,6 +27,8 @@ ap.add_argument("--mmstar_n", type=int, default=1500)
 ap.add_argument("--mmlu_n", type=int, default=1000)
 ap.add_argument("--max_pixels", type=int, default=0, help=">0: identical pixel budget for base and FT (Qwen/LFM3 processors)")
 ap.add_argument("--max_new_tokens", type=int, default=64)
+ap.add_argument("--mode", default="generate", choices=["generate", "logprob"],
+                help="logprob = forced choice over A-D next-token logits (immune to answer-format differences)")
 ap.add_argument("--bs", type=int, default=16)
 a = ap.parse_args()
 os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
@@ -58,7 +60,45 @@ def letter(text):
     return None
 
 
+_LETTER_IDS = None
+
+
+def _letter_ids():
+    global _LETTER_IDS
+    if _LETTER_IDS is None:
+        tok = proc.tokenizer
+        ids = []
+        for L in "ABCD":
+            cands = [tok.encode(L, add_special_tokens=False), tok.encode(" " + L, add_special_tokens=False)]
+            ids.append([c[0] for c in cands if len(c) == 1])
+        _LETTER_IDS = ids
+    return _LETTER_IDS
+
+
+def run_logprob(items, kind):
+    res = []
+    lid = _letter_ids()
+    for b in range(0, len(items), a.bs):
+        batch = items[b:b + a.bs]
+        convs = [[{"role": "user", "content": ([{"type": "image", "image": it["image"]}] if it.get("image") is not None else [])
+                   + [{"type": "text", "text": it["prompt"]}]}] for it in batch]
+        kw = {"enable_thinking": False} if "enable_thinking" in (proc.chat_template or "") else {}
+        inputs = proc.apply_chat_template(convs, add_generation_prompt=True, tokenize=True, return_dict=True,
+                                          return_tensors="pt", padding=True, processor_kwargs={"padding": True}, **kw).to("cuda")
+        with torch.inference_mode():
+            logits = model(**inputs).logits[:, -1, :].float()
+        for it, lg in zip(batch, logits):
+            scores = [max(lg[i].item() for i in ids) if ids else -1e9 for ids in lid]
+            p = "ABCD"[max(range(4), key=lambda j: scores[j])]
+            res.append({"kind": kind, "id": it["id"], "gold": it["gold"], "pred": p, "raw": json.dumps(scores),
+                        "correct": p == it["gold"], "category": it.get("category")})
+        print(kind, b + len(batch), "/", len(items), flush=True)
+    return res
+
+
 def run(items, kind):
+    if a.mode == "logprob":
+        return run_logprob(items, kind)
     res = []
     for b in range(0, len(items), a.bs):
         batch = items[b:b + a.bs]
@@ -118,6 +158,7 @@ for k in ("mmstar", "mmlu"):
 summ["model"] = a.model
 summ["max_pixels"] = a.max_pixels
 summ["max_new_tokens"] = a.max_new_tokens
+summ["mode"] = a.mode
 json.dump(summ, open(a.out + ".summary.json.tmp", "w"), indent=1)
 os.replace(a.out + ".summary.json.tmp", a.out + ".summary.json")  # atomic
 print("GENERAL", json.dumps(summ), flush=True)

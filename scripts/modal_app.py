@@ -59,10 +59,30 @@ def run_pipeline(env: dict) -> int:
     return p.returncode
 
 
+@app.function(gpu="A100-40GB", cpu=6, memory=49152, timeout=3 * 3600, secrets=[SECRET])
+def general_logprob(specs: list) -> dict:
+    """specs: [{"model":..., "name":..., "max_pixels":int, "repo":...}] -> forced-choice general eval, pushed to repo/eval/."""
+    from huggingface_hub import HfApi
+    os.makedirs("/content/eval", exist_ok=True)
+    api, out = HfApi(token=os.environ["HF_TOKEN"]), {}
+    for sp in specs:
+        base = f"/content/eval/{sp['name']}_general_logprob"
+        r = subprocess.run(["python", "/content/work/eval_general.py", "--model", sp["model"], "--out", base, "--mode", "logprob",
+                            "--bs", "16", "--max_pixels", str(sp.get("max_pixels", 0))], cwd="/content/work")
+        out[sp["name"]] = r.returncode
+        for suf in (".jsonl", ".summary.json"):
+            if os.path.exists(base + suf):
+                api.upload_file(path_or_fileobj=base + suf, path_in_repo=f"eval/{os.path.basename(base)}{suf}", repo_id=sp["repo"])
+    return out
+
+
 @app.local_entrypoint()
 def main(job: str = "", probe_only: bool = False):
     if probe_only:
         print(probe.remote())
+        return
+    if job.endswith(".logprob.json"):
+        print(general_logprob.remote(json.load(open(job))))
         return
     env = json.load(open(job))[0]["env"]
     print("exit:", run_pipeline.remote(env))
