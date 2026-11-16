@@ -1,0 +1,23 @@
+#!/bin/bash
+# Stop whatever runs in <session>'s kernel, then launch <jobs.json> there (fresh code), confirm heartbeat.
+# Usage: COLAB_BIN=... COLAB_CONFIG=... scripts/launch_on_session.sh <session> <jobs.json>
+set -u; set -o pipefail
+SESS=$1; NEXT=$2
+cd "$(dirname "$0")/.."
+CB=${COLAB_BIN:-$HOME/.local/bin/colab}
+C() { "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} "$@" < /dev/null 2> >(grep -v "new version\|colab update\|silence this" >&2); }
+C restart-kernel -s "$SESS" | tail -1
+echo 'import subprocess;print(subprocess.run("pkill -f sft_vlm.py; pkill -f vm_train_eval_push; pkill -f vm_model_pipeline; pkill -f generate.py; pkill -f eval_general.py; sleep 3; ps aux | grep -cE \"sft_vlm|generate.py\"; mkdir -p /content/work/meta",shell=True,capture_output=True,text=True).stdout.strip(), "killed; meta ok")' \
+  | "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" 2>/dev/null | grep -q "meta ok" || { echo "kernel unreachable"; exit 1; }
+for f in train/sft_vlm.py train/agent_format.py train/qwen35_chat_template_gen.jinja eval/androidcontrol/generate.py \
+         eval/androidcontrol/score.py eval/general/eval_general.py data/build_general_replay.py scripts/vm_model_pipeline.sh \
+         scripts/vm_blocking_jobs.py data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json; do
+  dst="/content/work/$(basename "$f")"; [[ "$f" == data/meta/* ]] && dst="/content/work/meta/$(basename "$f")"
+  C upload -s "$SESS" "$f" "$dst" | grep -q Uploaded || { echo "upload failed: $f"; exit 1; }
+done
+C upload -s "$SESS" "$NEXT" /content/work/jobs.json | grep -q Uploaded || { echo "upload failed: jobs.json"; exit 1; }
+nohup "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" --timeout 200000 -f scripts/vm_blocking_jobs.py \
+  > "logs/${SESS}_jobs_cell_$(basename "$NEXT" .json).log" 2>&1 < /dev/null &
+PID=$!; sleep 90
+if grep -q heartbeat "logs/${SESS}_jobs_cell_$(basename "$NEXT" .json).log" && kill -0 $PID 2>/dev/null; then echo "[$(date +%T)] launched $NEXT on $SESS — heartbeat confirmed"
+else echo "LAUNCH NOT CONFIRMED"; exit 1; fi

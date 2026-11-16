@@ -1,0 +1,25 @@
+[
+ {
+  "name": "lfm3_modal",
+  "env": {
+   "MODEL": "LiquidAI/LFM3-VL-2B",
+   "RUN": "lfm3vl2b-ac-lora",
+   "FINAL_REPO": "experimentalmachines/LFM3-VL-2B-AndroidControl",
+   "CKPT_REPO": "experimentalmachines/LFM3-VL-2B-AndroidControl-LoRA-ckpt",
+   "MAX_STEPS": "1250",
+   "BS": "8",
+   "GA": "4",
+   "LR": "2e-4",
+   "LORA_R": "64",
+   "LORA_ALPHA": "128",
+   "MAX_PIXELS": "774400",
+   "FT_THINK": "1",
+   "EVAL_BS": "32",
+   "SAVE_STEPS": "100",
+   "GENERAL_EVAL": "1",
+   "BASE_AC_EVAL": "1",
+   "MATCHED_NOTHINK": "1",
+   "WORKERS": "6"
+  }
+ }
+]
