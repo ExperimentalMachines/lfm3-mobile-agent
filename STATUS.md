@@ -15,7 +15,8 @@ Modal cost ≈ $2.8/h per run (A100-40GB $2.10 + 6 cores + 48 GiB); estimated to
 | Model | AndroidControl test step SR (high / low) | AndroidWorld (116) | General knowledge |
 |---|---|---|---|
 | LFM3-VL-2B base (no-think) | 0.315 / 0.634 lenient (Codex independent scorer: 0.291 / 0.584); termination 0% | **1/116 (0.9%)**, 2.25 s/step, 1.1k prompt tokens | — |
-| LFM2.5-VL-450M base | (pending, in pipeline) | — | MMStar 41.1%, MMLU 39.5% (n=1000) |
+| LFM2.5-VL-450M base | (in pipeline) | — | MMStar 41.6%, MMLU 39.4% |
+| **LFM2.5-VL-450M fine-tuned** (Q4_K_M ≈ 330 MB incl. mmproj) | **0.536 / 0.862**; episode 0.128 / 0.521; terminal 0.561; 100% valid format | running | MMStar 40.9% (−0.7pp, p=0.40), MMLU 38.3% (−1.1pp, p=0.22) — no significant forgetting |
 | GUI-Owl-1.5-2B native (5 imgs) | — | 2/2 sample tasks; **61 s/step**, 10.7k prompt tokens | — |
 
 ## Codex (gpt-6-astra, max) reviews
