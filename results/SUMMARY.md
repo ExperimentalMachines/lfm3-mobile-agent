@@ -8,7 +8,7 @@ General knowledge: forced-choice next-token scoring (format-independent); Δ = p
 | Model | AC high-level | AC low-level | 'complete' acc | AndroidWorld | latency / prompt | General knowledge |
 |---|---|---|---|---|---|---|
 | LFM3-VL-2B base | 0.315 (ep 0.027) | 0.634 (ep 0.172) | 0.000 | 0.9% (1/116) | 2.3s / 1121 tok | MMStar 52.1%, MMLU 48.9% |
-| LFM3-VL-2B fine-tuned | — | — | — | — | — | MMStar 57.1%, MMLU 49.5% (Δ mmstar +5.0pp p=0.00, mmlu +0.6pp p=0.68) |
+| LFM3-VL-2B fine-tuned | 0.715 (ep 0.283) | 0.948 (ep 0.783) | 0.792 | — | — | MMStar 57.1%, MMLU 49.5% (Δ mmstar +5.0pp p=0.00, mmlu +0.6pp p=0.68) |
 | LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | — | — | MMStar 38.5%, MMLU 39.9% |
 | LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | — | — | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
 | Qwen3.5-2B fine-tuned | — | — | — | — | — | — |
