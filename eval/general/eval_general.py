@@ -118,5 +118,6 @@ for k in ("mmstar", "mmlu"):
 summ["model"] = a.model
 summ["max_pixels"] = a.max_pixels
 summ["max_new_tokens"] = a.max_new_tokens
-json.dump(summ, open(a.out + ".summary.json", "w"), indent=1)
+json.dump(summ, open(a.out + ".summary.json.tmp", "w"), indent=1)
+os.replace(a.out + ".summary.json.tmp", a.out + ".summary.json")  # atomic
 print("GENERAL", json.dumps(summ), flush=True)

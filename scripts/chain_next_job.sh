@@ -11,7 +11,8 @@ C() { "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} "$@" < /dev/null 2> >(grep
 ST=$(mktemp)
 echo "[$(date +%T)] waiting for current job on $SESS"
 while true; do
-  if C download -s "$SESS" /content/work/jobs_status.json "$ST" 2>&1 | grep -q "lost\|not found\|404"; then
+  OUTP=$(C download -s "$SESS" /content/work/jobs_status.json "$ST" 2>&1 || true)
+  if echo "$OUTP" | grep -q "lost\|not found\|404"; then
     echo "[$(date +%T)] session $SESS gone"; GONE=1; break
   fi
   if grep -q '"exit' "$ST" 2>/dev/null && ! grep -q '"running"' "$ST"; then

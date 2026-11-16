@@ -36,6 +36,7 @@ except Exception:
 sys.exit(0 if ok else 1)
 PY
 }
+general_ok() { python -c "import json,sys;d=json.load(open('$1'));sys.exit(0 if d['mmstar']['n']>0 and d['mmlu']['n']>0 else 1)" 2>/dev/null; }
 metrics_ok() {  # $1 metrics json, $2 predictions jsonl, $3 expected model
   [ -f "$1" ] && [ -f "$2" ] && python - "$1" "$3" <<'PY'
 import json, sys
@@ -60,10 +61,10 @@ PY
 
 for spec in ${PRE_GENERAL_MODELS:-}; do  # e.g. "LiquidAI/LFM3-VL-2B=lfm3vl2b_base /content/runs/x/merged=lfm3vl2b_ft"
   m=${spec%%=*}; n=${spec##*=}
-  [ -f /content/eval/${n}_general.summary.json ] || { log "general eval $n"; python eval_general.py --model $m --out /content/eval/${n}_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general $n"; }
+  general_ok /content/eval/${n}_general.summary.json || { log "general eval $n"; python eval_general.py --model $m --out /content/eval/${n}_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general $n"; }
 done
 
-if [ "${GENERAL_EVAL:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_base_general.summary.json ]; then
+if [ "${GENERAL_EVAL:-1}" = 1 ] && ! general_ok /content/eval/${RUN}_base_general.summary.json; then
   log "general eval BASE"; python eval_general.py --model $MODEL --out /content/eval/${RUN}_base_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general base"
 fi
 push_evals
@@ -85,6 +86,7 @@ INLINE_ARGS=""; [ "${INLINE_THINK:-0}" = 1 ] && INLINE_ARGS="--inline_think"
 
 if ! receipt_ok $OUT/train_receipt.json; then
   rm -rf $OUT/merged $OUT/lora $OUT/train_receipt.json
+  rm -f /content/eval/${RUN}_ft.* /content/eval/${RUN}_ft_nothink_high.* /content/eval/${RUN}_ft_general.*  # new weights => stale FT evals
   log "train"
   python sft_vlm.py --model_id $MODEL --train $R@train --val $R@val --out $OUT $REPLAY_ARGS $ROWS_ARGS $STEP_ARGS \
     --max_pixels ${MAX_PIXELS:-774400} $INLINE_ARGS $TEMPLATE_ARGS $REGEX_ARGS \
@@ -103,7 +105,7 @@ api.upload_folder(folder_path="$OUT/lora", path_in_repo="lora_adapter", repo_id=
 PY
 push_evals
 
-if [ "${GENERAL_EVAL:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_ft_general.summary.json ]; then
+if [ "${GENERAL_EVAL:-1}" = 1 ] && ! general_ok /content/eval/${RUN}_ft_general.summary.json; then
   log "general eval FT"; python eval_general.py --model $OUT/merged --out /content/eval/${RUN}_ft_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general ft"
   push_evals
 fi
