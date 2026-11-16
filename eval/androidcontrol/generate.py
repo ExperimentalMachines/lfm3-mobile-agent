@@ -44,9 +44,8 @@ if args.subsample_episodes:
     ds = ds.filter(lambda e: e in keep, input_columns="episode_id")
 if args.limit:
     ds = ds.select(range(min(args.limit, len(ds))))
-processor = AutoProcessor.from_pretrained(
-    args.model, trust_remote_code=True,
-    size={"shortest_edge": args.min_pixels, "longest_edge": args.max_pixels})
+_pk = {"size": {"shortest_edge": args.min_pixels, "longest_edge": args.max_pixels}} if args.max_pixels > 0 else {}
+processor = AutoProcessor.from_pretrained(args.model, trust_remote_code=True, **_pk)
 processor.tokenizer.padding_side = "left"
 model = AutoModelForImageTextToText.from_pretrained(
     args.model, dtype=torch.bfloat16, trust_remote_code=True).to("cuda").eval()
@@ -84,9 +83,10 @@ n_tok_in = 0
 for b in range(0, len(idx), args.bs):
     rows = [ds[i] for i in idx[b:b + args.bs]]
     convs = [to_mm(r["messages"], r["images"][0]) for r in rows]
+    _kw = {"enable_thinking": bool(args.enable_thinking)} if "enable_thinking" in (processor.chat_template or "") else {}
     inputs = processor.apply_chat_template(
         convs, add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors="pt",
-        processor_kwargs={"padding": True}, enable_thinking=bool(args.enable_thinking),
+        padding=True, processor_kwargs={"padding": True}, **_kw,
     ).to("cuda")
     n_tok_in += int(inputs["attention_mask"].sum())
     with torch.inference_mode():

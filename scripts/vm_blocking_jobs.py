@@ -32,5 +32,7 @@ while True:
     print(f"[heartbeat {time.strftime('%H:%M:%S')}] {status}", flush=True)
     if not alive:
         break
-    time.sleep(60)
+    for _ in range(6):
+        time.sleep(10)
+        print(".", end="", flush=True)  # keep the exec websocket busy (idle drops seen ~30-40s)
 print("ALL JOBS FINISHED", flush=True)

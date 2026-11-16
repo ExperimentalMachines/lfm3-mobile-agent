@@ -44,6 +44,9 @@ p.add_argument("--workers", type=int, default=8)
 p.add_argument("--seed", type=int, default=42)
 p.add_argument("--no_gc", action="store_true", help="disable gradient checkpointing")
 p.add_argument("--chat_template_path", default=None, help="override chat template (e.g. Qwen3.5 + generation markers)")
+p.add_argument("--max_agent_rows", type=int, default=0, help="random subset of the agent data (0 = all)")
+p.add_argument("--replay", nargs="*", default=[], help="general-data replay datasets (save_to_disk dirs) mixed in to limit forgetting")
+p.add_argument("--inline_think", action="store_true", help="put intent as <think>..</think> inside content (templates without reasoning_content)")
 p.add_argument("--trust_remote_code", action="store_true", default=True)
 args = p.parse_args()
 
@@ -62,17 +65,42 @@ def load_any(path):
 
 
 train_ds = concatenate_datasets([load_any(t) for t in args.train]).shuffle(seed=args.seed)
+if args.max_agent_rows:
+    train_ds = train_ds.select(range(min(args.max_agent_rows, len(train_ds))))
+n_agent = len(train_ds)
+if args.replay:
+    rep = concatenate_datasets([load_any(r) for r in args.replay])
+    rep = rep.remove_columns([c for c in rep.column_names if c not in ("images", "messages")])
+    train_ds = train_ds.remove_columns([c for c in train_ds.column_names if c not in ("images", "messages")])
+    rep = rep.cast(train_ds.features)
+    train_ds = concatenate_datasets([train_ds, rep]).shuffle(seed=args.seed)
+    print(f"mixed replay: agent={n_agent} replay={len(rep)} ({len(rep) / len(train_ds):.1%})", flush=True)
+
+
+def _inline(msgs):
+    out = []
+    for m in msgs:
+        m = dict(m)
+        if m["role"] == "assistant" and m.get("reasoning_content"):
+            m["content"] = f"<think>{m['reasoning_content']}</think>{m['content']}"
+        m["reasoning_content"] = None
+        out.append(m)
+    return out
+
+
+if args.inline_think:
+    train_ds = train_ds.map(lambda m: {"messages": _inline(m)}, input_columns="messages")
 val_ds = load_any(args.val) if args.val else None
+if args.inline_think and val_ds is not None:
+    val_ds = val_ds.map(lambda m: {"messages": _inline(m)}, input_columns="messages")
 keep = ["images", "messages"]
 train_ds = train_ds.remove_columns([c for c in train_ds.column_names if c not in keep])
 if val_ds is not None:
     val_ds = val_ds.remove_columns([c for c in val_ds.column_names if c not in keep])
 print(f"train rows={len(train_ds)} val rows={len(val_ds) if val_ds else 0}", flush=True)
 
-processor = AutoProcessor.from_pretrained(
-    args.model_id, trust_remote_code=True,
-    size={"shortest_edge": args.min_pixels, "longest_edge": args.max_pixels},
-)
+_pk = {"size": {"shortest_edge": args.min_pixels, "longest_edge": args.max_pixels}} if args.max_pixels > 0 else {}
+processor = AutoProcessor.from_pretrained(args.model_id, trust_remote_code=True, **_pk)
 processor.tokenizer.padding_side = "right"
 if args.chat_template_path:
     tpl = open(args.chat_template_path).read()
