@@ -1,0 +1,84 @@
+"""Summarize an AndroidWorld run directory (episode .pkl.gz files) into JSON + CSV.
+
+Differences vs upstream's printed table: episodes that raised an exception are counted as
+FAILURES (upstream drops them as NaN, inflating success), and we add on-device-relevant
+stats (per-step model latency, prompt tokens, parse failures).
+
+Usage: python summarize_aw.py <run_dir> --out results/androidworld/<name>.summary.json
+"""
+import argparse
+import csv
+import gzip
+import json
+import math
+import pickle
+import statistics as stats
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+ap = argparse.ArgumentParser()
+ap.add_argument("run_dir")
+ap.add_argument("--out", required=True)
+a = ap.parse_args()
+
+# difficulty labels from AndroidWorld's own task_metadata.json (task_name -> easy/medium/hard)
+_md = Path(__file__).resolve().parents[2] / "android_world" / "android_world" / "task_metadata.json"
+DIFF = {r["task_name"]: r["difficulty"] for r in json.loads(_md.read_text())} if _md.exists() else {}
+
+
+def difficulty(task):
+    return DIFF.get(task, "unknown")
+
+
+rows = []
+lat, ptok, parse_fail, nsteps_total = [], [], 0, 0
+for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
+    # pickles are written locally by our own AndroidWorld runs (trusted input)
+    ep = pickle.load(gzip.open(f))
+    ep = ep[0] if isinstance(ep, list) else ep
+    succ = ep.get("is_successful")
+    exc = ep.get("exception_info")
+    if succ is None or (isinstance(succ, float) and math.isnan(succ)):
+        succ = 0.0
+    ed = ep.get("episode_data") or {}
+    l = [x for x in (ed.get("latency_s") or []) if isinstance(x, (int, float))]
+    u = [x.get("prompt_tokens") for x in (ed.get("usage") or []) if isinstance(x, dict) and x.get("prompt_tokens")]
+    pa = ed.get("parsed_action") or []
+    lat += l
+    ptok += u
+    parse_fail += sum(1 for x in pa if x is None)
+    nsteps_total += len(pa)
+    acts = [x.get("action_type") for x in pa if isinstance(x, dict)]
+    task = ep.get("task_template") or f.name.rsplit("_", 1)[0]
+    rows.append({
+        "task": task, "file": f.name, "success": float(succ), "exception": bool(exc),
+        "steps": ep.get("episode_length"), "runtime_s": round(ep.get("run_time") or 0, 1),
+        "difficulty": difficulty(task),
+        "ended_with_status": bool(acts) and acts[-1] == "status",
+        "n_answer_actions": acts.count("answer"),
+    })
+
+by_diff = defaultdict(list)
+for r in rows:
+    by_diff[r["difficulty"]].append(r["success"])
+summary = {
+    "run_dir": a.run_dir,
+    "n_episodes": len(rows),
+    "success_rate": sum(r["success"] for r in rows) / max(1, len(rows)),
+    "success_rate_by_difficulty": {k: {"n": len(v), "sr": sum(v) / len(v)} for k, v in sorted(by_diff.items())},
+    "n_exceptions_counted_as_fail": sum(r["exception"] for r in rows),
+    "frac_episodes_self_terminated": sum(r["ended_with_status"] for r in rows) / max(1, len(rows)),
+    "mean_steps": stats.mean([r["steps"] or 0 for r in rows]) if rows else None,
+    "model_latency_s": {"mean": stats.mean(lat), "p50": stats.median(lat), "p90": sorted(lat)[int(.9 * len(lat)) - 1]} if lat else None,
+    "prompt_tokens_mean": stats.mean(ptok) if ptok else None,
+    "parse_failure_rate": parse_fail / max(1, nsteps_total),
+    "n_steps_total": nsteps_total,
+}
+Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+Path(a.out).write_text(json.dumps({"summary": summary, "episodes": rows}, indent=1))
+with open(str(a.out).replace(".json", ".csv"), "w", newline="") as fh:
+    w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()) if rows else ["task"])
+    w.writeheader()
+    w.writerows(rows)
+print(json.dumps(summary, indent=1))

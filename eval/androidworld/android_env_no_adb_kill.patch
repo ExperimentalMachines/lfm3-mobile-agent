@@ -1,0 +1,16 @@
+--- /private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/adb_controller.orig.py	2026-11-16 17:09:23
++++ .venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py	2026-11-16 17:09:23
+@@ -79,6 +79,13 @@
+       timeout: A timeout to use for this operation. If not set the default
+         timeout set on the constructor will be used.
+     """
++    # PATCH (lfm3-android): never kill the SHARED adb server (other projects on this machine
++    # use it: other emulators, adb-over-TCP device streaming). Just wait and re-list devices.
++    if os.environ.get('ANDROID_ENV_ALLOW_ADB_KILL') != '1':
++      logging.info('Skipping adb kill-server (shared server); waiting and retrying.')
++      time.sleep(2.0)
++      self.execute_command(['devices'], timeout=timeout, device_specific=False)
++      return
+     logging.info('Restarting adb server.')
+     self.execute_command(
+         ['kill-server'], timeout=timeout, device_specific=False)

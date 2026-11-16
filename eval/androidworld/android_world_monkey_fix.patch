@@ -1,0 +1,57 @@
+diff --git a/android_world/env/adb_utils.py b/android_world/env/adb_utils.py
+index f59f6c4..c00508d 100644
+--- a/android_world/env/adb_utils.py
++++ b/android_world/env/adb_utils.py
+@@ -701,7 +701,7 @@ def launch_app(
+   if activity is None:
+     #  If the app name is not in the mapping, assume it is a package name.
+     response = issue_generic_request(
+-        ['shell', 'monkey', '-p', app_name, '1'], env, timeout_sec=5
++        ['shell', 'monkey', '--pct-syskeys', '0', '-p', app_name, '1'], env, timeout_sec=5
+     )
+     logging.info('Launching app by package name, response: %r', response)
+     return app_name
+diff --git a/android_world/env/setup_device/apps.py b/android_world/env/setup_device/apps.py
+index 6505b4e..763aed0 100644
+--- a/android_world/env/setup_device/apps.py
++++ b/android_world/env/setup_device/apps.py
+@@ -457,7 +457,7 @@ class AudioRecorder(AppSetup):
+     adb_utils.issue_generic_request(
+         [
+             "shell",
+-            "monkey",
++            "monkey", "--pct-syskeys", "0",
+             "-p",
+             "com.dimowner.audiorecorder",
+             "-candroid.intent.category.LAUNCHER",
+@@ -667,7 +667,7 @@ class VlcApp(AppSetup):
+     adb_utils.issue_generic_request(
+         [
+             "shell",
+-            "monkey",
++            "monkey", "--pct-syskeys", "0",
+             "-p",
+             package,
+             "-candroid.intent.category.LAUNCHER",
+@@ -718,7 +718,7 @@ class JoplinApp(AppSetup):
+     adb_utils.issue_generic_request(
+         [
+             "shell",
+-            "monkey",
++            "monkey", "--pct-syskeys", "0",
+             "-p",
+             joplin_package,
+             "-candroid.intent.category.LAUNCHER",
+diff --git a/android_world/task_evals/utils/user_data_generation.py b/android_world/task_evals/utils/user_data_generation.py
+index 2b86ff2..8fbc304 100644
+--- a/android_world/task_evals/utils/user_data_generation.py
++++ b/android_world/task_evals/utils/user_data_generation.py
+@@ -918,7 +918,7 @@ _NOUNS = [
+     "jacket",
+     "king",
+     "lion",
+-    "monkey",
++    "monkey", "--pct-syskeys", "0",
+     "nest",
+     "ocean",
+     "penguin",
