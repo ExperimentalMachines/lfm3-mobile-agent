@@ -19,7 +19,7 @@ Modal (A100-40GB, ≈ $2.8/h per job): **$13.40 metered** so far (LFM3 resume+ev
 | LFM3-VL-2B base (no-think) | 0.313 / 0.634 (Codex independent scorer 0.289 / 0.582); terminal 0% | **1/116 (0.9%)**, 2.25 s/step | MMStar 52.1%, MMLU 48.9% |
 | **LFM3-VL-2B fine-tuned** (Q4_K_M 1.1 GB + 0.2 GB mmproj) | **0.715 / 0.948**; episode 0.283 / 0.783; terminal 0.792; unseen app/task/category 0.671/0.696/0.681; no-think matched 0.664 | **15/116 (12.9%)** [8.0–20.2], 2.7 s/step, 52% self-terminated | MMStar **+5.0 pp** (p=3e-7), MMLU +0.6 pp [−1.7, +3.0] — no decline detected |
 | LFM2.5-VL-450M base | 0.009 / 0.024 (parse rate ~2%) | running | MMStar 38.5%, MMLU 39.9% |
-| **LFM2.5-VL-450M fine-tuned** (Q4_K_M ≈ 330 MB incl. mmproj) | **0.536 / 0.862**; episode 0.128 / 0.521; terminal 0.561; 100% valid format | **3/116 (2.6%)**, 1.4 s/step | MMStar +0.8 pp [−0.8, +2.4], MMLU −0.7 pp [−2.3, +0.8] — no decline detected |
+| **LFM2.5-VL-450M fine-tuned** (Q4_K_M ≈ 330 MB incl. mmproj) | **0.536 / 0.862**; episode 0.128 / 0.521; terminal 0.561; 100% valid format | **2.5/116 (2.2%)** = 2 full + 1 half-credit composite, 1.4 s/step | MMStar +0.8 pp [−0.8, +2.4], MMLU −0.7 pp [−2.3, +0.8] — no decline detected |
 | GUI-Owl-1.5-2B, 1 image (reference) | — | partial 9/60, 6.2 s/step, 2.3k prompt tokens | — |
 | GUI-Owl-1.5-2B native, 5 images | — | 2/2 *selected easy* tasks (not a suite score); 61 s/step, 10.7k tokens | — |
 

@@ -83,8 +83,10 @@ def classify(ep):
     last = acts[-1] if acts else None
     if ep.get("exception_info") or not ed:
         label = "exception"
-    elif (ep["is_successful"] or 0) > 0:
+    elif (ep["is_successful"] or 0) >= 1:
         label = "success"
+    elif (ep["is_successful"] or 0) > 0:
+        label = "partial_credit"  # composite tasks (e.g. TurnOnWifiAndOpenApp) can return 0.5
     elif last and last["type"] == "status":
         label = "infeasible_declared" if last["status"] == "infeasible" else "complete_but_failed"
     elif last and last["type"] == "answer":

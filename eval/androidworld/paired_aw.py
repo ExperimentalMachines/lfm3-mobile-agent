@@ -18,7 +18,7 @@ def load(run_dir):
         ep = pickle.load(gzip.open(f))  # trusted: written by our own local android_world run, never downloaded
         ep = ep[0] if isinstance(ep, list) else ep
         r = ep.get("is_successful")
-        ok = isinstance(r, (int, float)) and not math.isnan(r) and r > 0 and not ep.get("exception_info")
+        ok = isinstance(r, (int, float)) and not math.isnan(r) and r >= 1 and not ep.get("exception_info")  # full success only (composite tasks can give 0.5)
         out[(ep["task_template"], ep.get("instance_id"))] = {"seed": ep.get("seed"), "goal": ep.get("goal"), "ok": bool(ok)}
     return out
 
