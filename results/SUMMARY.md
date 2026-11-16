@@ -8,7 +8,7 @@ Latency: mean model time per step on the M5 (proxy for on-device cost) / mean pr
 |---|---|---|---|---|---|---|
 | LFM3-VL-2B base | 0.315 (ep 0.027) | 0.634 (ep 0.172) | 0.000 | 0.9% (1/116) | 2.3s / 1121 tok | — |
 | LFM3-VL-2B fine-tuned | — | — | — | — | — | — |
-| LFM2.5-VL-450M base | — | — | — | — | — | MMStar 41.6%, MMLU 39.4% |
+| LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | — | — | MMStar 41.6%, MMLU 39.4% |
 | LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | — | — | MMStar 40.9%, MMLU 38.3% (Δ mmstar -0.7pp p=0.40, mmlu -1.1pp p=0.21) |
 | Qwen3.5-2B fine-tuned | — | — | — | — | — | — |
 | Qwen3.5-0.8B fine-tuned | — | — | — | — | — | — |
