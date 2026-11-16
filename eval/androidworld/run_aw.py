@@ -22,6 +22,7 @@ from android_world import registry, suite_utils  # noqa: E402
 from android_world.env import env_launcher  # noqa: E402
 
 from lfm_agent import LFMScreenAgent  # noqa: E402
+from guiowl_agent import GUIOwlAgent  # noqa: E402
 
 os.environ.setdefault("GRPC_VERBOSITY", "ERROR")
 
@@ -41,6 +42,9 @@ flags.DEFINE_string("server_url", "http://127.0.0.1:8080", "OpenAI-compatible se
 flags.DEFINE_boolean("enable_thinking", True, "chat_template enable_thinking")
 flags.DEFINE_integer("max_pixels", 880 * 880, "screenshot pixel budget")
 flags.DEFINE_boolean("fixed_task_seed", False, "identical params across combos")
+flags.DEFINE_string("agent", "lfm", "lfm | guiowl")
+flags.DEFINE_integer("guiowl_images", 5, "GUI-Owl screenshots kept in context")
+flags.DEFINE_integer("guiowl_max_pixels", 0, "0 = full resolution (native)")
 
 
 def main(argv):
@@ -59,8 +63,12 @@ def main(argv):
         tasks=F.tasks, use_identical_params=F.fixed_task_seed,
     )
     suite.suite_family = F.suite_family
-    agent = LFMScreenAgent(env, server_url=F.server_url, name=F.agent_label,
-                           enable_thinking=F.enable_thinking, max_pixels=F.max_pixels)
+    if F.agent == "guiowl":
+        agent = GUIOwlAgent(env, server_url=F.server_url, name=F.agent_label, n_images=F.guiowl_images,
+                            max_pixels=F.guiowl_max_pixels)
+    else:
+        agent = LFMScreenAgent(env, server_url=F.server_url, name=F.agent_label,
+                               enable_thinking=F.enable_thinking, max_pixels=F.max_pixels)
     agent.transition_pause = None
     ckpt = F.checkpoint_dir or checkpointer_lib.create_run_directory(F.output_path)
     print(f"Writing to {ckpt}", flush=True)

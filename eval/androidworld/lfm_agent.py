@@ -138,7 +138,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         except Exception as e:  # keep going; the model sees the unchanged screen
             data["error"] = f"execute_failed: {e}"
         time.sleep(self.wait_after_action)
-        if t == "answer":
+        if t == "answer" and "error" not in data:
             # The answer is stored in env.interaction_cache by execute_action; end the episode here so it is
             # judged (same rule as GUI-Owl's harness, which forces terminate after answer).
             data["ended_by"] = "answer"

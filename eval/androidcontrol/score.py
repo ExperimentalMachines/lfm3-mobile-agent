@@ -120,7 +120,10 @@ def main():
     # --- integrity: score against the FROZEN ground truth, never the prediction file's own labels ---
     gt_bytes = open(a.gt, "rb").read()
     gt_man = Path(a.gt).with_suffix(".manifest.json")
-    if gt_man.exists() and json.load(open(gt_man))["sha256"] != hashlib.sha256(gt_bytes).hexdigest():
+    if not gt_man.exists():
+        print(f"INTEGRITY PROBLEM: frozen GT manifest missing ({gt_man})", file=sys.stderr)
+        raise SystemExit(2)
+    if json.load(open(gt_man))["sha256"] != hashlib.sha256(gt_bytes).hexdigest():
         print("INTEGRITY PROBLEM: frozen GT file does not match its manifest sha256", file=sys.stderr)
         raise SystemExit(2)
     modes = set(a.modes.split(","))
@@ -144,6 +147,8 @@ def main():
         problems.append("no generation manifest")
     elif row_models != [manifest["model"]]:
         problems.append(f"row models {row_models} != manifest model {manifest['model']}")
+    elif manifest.get("config_hash") and {r.get("config_hash") for r in preds} != {manifest["config_hash"]}:
+        problems.append("row config_hash differs from manifest config_hash")
     integrity = {"n_pred_rows": len(preds), "n_gt_rows": len(gt), "duplicate_keys": dups, "missing": len(missing),
                  "extra": len(extra), "row_models": row_models, "manifest": manifest, "gt_file": a.gt,
                  "complete": not missing and not extra and not dups, "problems": problems}

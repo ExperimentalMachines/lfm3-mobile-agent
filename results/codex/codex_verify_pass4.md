@@ -1,0 +1,26 @@
+**Adversarial QA pass 4 — NO-GO for both Qwen3.5-2B and Qwen3.5-0.8B chains.**
+
+Verified `fcb60b04d15cc8fde9d31bcf56f60cc5767f696e`, 2026-11-16. All findings below were reproduced locally: complete generator/scorer scripts, isolated production Bash, and actual agent/upstream AndroidWorld functions with dependency stubs. No GPU, training, live VM, or real upload. Shell fixtures remapped `/content` and removed only cosmetic stderr filters. Thinking tests used the real Jinja template with a stubbed tokenizer tail.
+
+| Requested check | Fixed / not fixed | Reproduced result |
+|---|---|---|
+| 1. Partial restore and generation identity | **Fixed** | Both downloads receive the same pinned revision. Missing either remote member regenerates without reusing stale rows. Local predictions without a manifest, missing/wrong row hashes, and changed `min_pixels` each exit **1**. Matching restore generates zero new rows. |
+| 2. Thinking prefill | **Fixed** | An unfinished completion saves as `<think>{"action_type":"wait"}` and both parsers reject it. Closed-thought and no-think positive controls pass. |
+| 3. Scroll/status types | **Fixed** | List/dict/bool/numeric arguments return invalid actions without `TypeError` in both parsers. Actual AW `step()` records two failed attempts; a valid retry works. Scorer exits **0**, reporting invalid outputs as wrong. Lenient null status still intentionally defaults to complete. |
+| 4. Matched no-think certification | **Not fixed on reuse; fresh path fixed** | Both fresh jobs invoke **three scorers**, including `--modes high`, producing complete matched metrics. Missing high rows or scorer failure prevents `.done` and makes the pipeline exit **1**. However, a pre-existing `.done` with no predictions/metrics skips the entire matched evaluation and exits **0** ([gate](/Users/alpha/lfm3-android/scripts/vm_model_pipeline.sh:96)). |
+| 5. GT SHA and VM default | **Partially fixed** | Wrong SHA exits **2**; a flattened VM copy finds `work/meta/androidcontrol_test_gt.jsonl` without `--gt`. **Removing the GT manifest still exits 0 with `complete:true`** ([check](/Users/alpha/lfm3-android/eval/androidcontrol/score.py:123)). |
+| 6. Chain hand-off | **Partially fixed** | Same-session and replacement-session fixtures create `meta` and upload GT plus manifest. Ordinary GT/manifest upload failures stop the same-session chain. **`jobs.json` upload exit 17 still launches and returns 0**. An upload printing `Uploaded` but exiting 17 also passes the loop ([unchecked upload](/Users/alpha/lfm3-android/scripts/chain_next_job.sh:32)). |
+| 7. 2B prerequisite / legacy entry | **Fixed** | With the prior local merged directory absent, the executed 2B pipeline passes `experimentalmachines/LFM3-VL-2B-AndroidControl` to general evaluation and exits **0**. `qwen35_train_l4.json` is absent. Hub availability was stubbed. |
+| 8. AW answer termination | **Fixed for successful execution** | Executed upstream cache handling, episode runner, IR comparison, and suite scoring: correct answer → **1**, wrong/empty/malformed answer → **0**, all ending after one call. Correct cached answer with `done=False` → **0**. Thus ending after the answer is correct; see [upstream IR evaluator](https://github.com/google-research/android_world/blob/55ddaf5edc6f6c25673aed343907d5b9dca66f84/android_world/task_evals/information_retrieval/information_retrieval.py#L109) and [suite gate](https://github.com/google-research/android_world/blob/55ddaf5edc6f6c25673aed343907d5b9dca66f84/android_world/suite_utils.py#L248). |
+
+**Other pass-3 blockers reproduced, not fixed:**
+
+- Both model pipelines print `PIPELINE DONE`, exit **0**, when **every upload subprocess exits 17**. Empty/mismatched training receipts still skip training; cached `complete:false` metrics still skip base/FT scoring.
+- Both chains launch after an unrelated/stale predecessor reports **`exit 7`**. A background client immediately exiting **23** still yields a successful launch announcement and chain exit **0**.
+- Direct scoring still accepts row `config_hash="stale"` against manifest `config_hash="good"`, reporting `complete:true`.
+
+**Additional error-path regression:** an injected AW `execute_action` exception before caching still returns `done=True, ended_by="answer"`; no retry remains ([lfm_agent.py:136](/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py:136)). This is separate from the verified normal IR semantics.
+
+Evidence: [generation/scoring](/private/tmp/codex-pass4-64ttmhlz/generation_score_xv2ftnlu/results.json), [shell/chain](/private/tmp/codex-pass4-64ttmhlz/shell_om027fpx/results.json), [both-chain failures](/private/tmp/codex-pass4-64ttmhlz/shell_9tlrvs3p/both_chain_failures.json), [AW](/private/tmp/codex-pass4-64ttmhlz/aw_cs7frnau/results.json). Reproduction scripts are in `/private/tmp/codex-pass4-64ttmhlz/` (`verify_generation_score.py`, `verify_shell.py`, `verify_both_chain_failures.py`, `verify_aw.py`); run with `python3 -B`.
+
+Only this report was added to the repository by this audit. All 11 tested source/configuration hashes remained unchanged; `run_aw.py` changed concurrently outside this audit. [Source verification](/private/tmp/codex-pass4-64ttmhlz/source_verification.json).

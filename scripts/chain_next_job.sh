@@ -13,7 +13,11 @@ while true; do
   if C download -s "$SESS" /content/work/jobs_status.json "$ST" 2>&1 | grep -q "lost\|not found\|404"; then
     echo "[$(date +%T)] session $SESS gone"; GONE=1; break
   fi
-  if grep -q '"exit' "$ST" 2>/dev/null && ! grep -q '"running"' "$ST"; then echo "[$(date +%T)] job finished: $(cat $ST)"; GONE=0; break; fi
+  if grep -q '"exit' "$ST" 2>/dev/null && ! grep -q '"running"' "$ST"; then
+    echo "[$(date +%T)] job finished: $(cat $ST)"
+    grep -qE '"exit [1-9]' "$ST" && echo "WARNING: predecessor job FAILED; launching the next (independent) model anyway"
+    GONE=0; break
+  fi
   sleep 120
 done
 if [ "$GONE" = 1 ]; then
@@ -29,8 +33,14 @@ else
     [ -f "$f" ] || { echo "missing $f"; exit 1; }
     C upload -s "$SESS" "$f" "$dst" | grep -q Uploaded || { echo "upload failed: $f"; exit 1; }
   done
-  C upload -s "$SESS" "$NEXT" /content/work/jobs.json | tail -1
+  C upload -s "$SESS" "$NEXT" /content/work/jobs.json | grep -q Uploaded || { echo "upload failed: jobs.json"; exit 1; }
   nohup "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" --timeout 200000 -f scripts/vm_blocking_jobs.py \
     > "logs/${SESS}_jobs_cell_next.log" 2>&1 < /dev/null &
-  echo "[$(date +%T)] launched $NEXT on $SESS (pid $!)"
+  PID=$!
+  sleep 90
+  if grep -q "heartbeat" "logs/${SESS}_jobs_cell_next.log" && kill -0 $PID 2>/dev/null; then
+    echo "[$(date +%T)] launched $NEXT on $SESS (pid $PID) — heartbeat confirmed"
+  else
+    echo "[$(date +%T)] LAUNCH NOT CONFIRMED: $(tail -c 300 logs/${SESS}_jobs_cell_next.log)"; exit 1
+  fi
 fi

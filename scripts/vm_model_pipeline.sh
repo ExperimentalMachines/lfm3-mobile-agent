@@ -18,8 +18,20 @@ R=experimentalmachines/AndroidControl-screen-agent-sft
 OUT=/content/runs/$RUN
 mkdir -p /content/eval $OUT/logs /content/data
 log() { echo "[$(date +%T)] $RUN: $*"; }
+receipt_ok() { python - "$1" <<'PY'
+import json, sys
+try:
+    r = json.load(open(sys.argv[1]))
+    ok = r.get("weights") and all(v > 0 for v in r["weights"].values()) and r.get("global_step", 0) > 0 \
+         and (not r.get("max_steps") or r["global_step"] >= r["max_steps"] or r["args"].get("max_steps", -1) <= 0)
+except Exception:
+    ok = False
+sys.exit(0 if ok else 1)
+PY
+}
+metrics_ok() { [ -f "$1" ] && python -c "import json,sys;sys.exit(0 if json.load(open('$1'))['integrity']['complete'] else 1)"; }
 push_evals() {  # durable copy of every eval artifact after each step ("save frequently")
-python - <<PY
+python - <<PY || fail "upload"
 import os, glob
 from huggingface_hub import HfApi
 api = HfApi(); repo = "$FINAL_REPO"
@@ -57,8 +69,8 @@ STEP_ARGS="--epochs ${EPOCHS:-1}"; [ -n "${MAX_STEPS:-}" ] && STEP_ARGS="--max_s
 ROWS_ARGS=""; [ -n "${MAX_AGENT_ROWS:-}" ] && ROWS_ARGS="--max_agent_rows $MAX_AGENT_ROWS"
 INLINE_ARGS=""; [ "${INLINE_THINK:-0}" = 1 ] && INLINE_ARGS="--inline_think"
 
-if [ ! -f $OUT/train_receipt.json ]; then
-  rm -rf $OUT/merged $OUT/lora
+if ! receipt_ok $OUT/train_receipt.json; then
+  rm -rf $OUT/merged $OUT/lora $OUT/train_receipt.json
   log "train"
   python sft_vlm.py --model_id $MODEL --train $R@train --val $R@val --out $OUT $REPLAY_ARGS $ROWS_ARGS $STEP_ARGS \
     --max_pixels ${MAX_PIXELS:-774400} $INLINE_ARGS $TEMPLATE_ARGS $REGEX_ARGS \
@@ -66,9 +78,9 @@ if [ ! -f $OUT/train_receipt.json ]; then
     --modules_to_save --save_steps ${SAVE_STEPS:-100} --eval_steps ${EVAL_STEPS:-250} --workers ${WORKERS:-10} \
     --hub_repo $CKPT_REPO
 fi
-[ -f $OUT/train_receipt.json ] || { log "TRAINING FAILED"; push_evals; exit 1; }
+receipt_ok $OUT/train_receipt.json || { log "TRAINING FAILED"; push_evals; exit 1; }
 log "push merged + adapter"
-python - <<PY
+python - <<PY || fail "upload merged"
 from huggingface_hub import HfApi
 api = HfApi(); repo = "$FINAL_REPO"
 api.create_repo(repo, private=True, exist_ok=True)
@@ -81,19 +93,19 @@ if [ "${GENERAL_EVAL:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_ft_general.summar
   log "general eval FT"; python eval_general.py --model $OUT/merged --out /content/eval/${RUN}_ft_general --bs ${EVAL_BS:-32} --max_pixels $GPX || fail "general ft"
   push_evals
 fi
-if [ ! -f /content/eval/${RUN}_ft.metrics.json ]; then
+if ! metrics_ok /content/eval/${RUN}_ft.metrics.json; then
   log "AndroidControl test FT"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft.jsonl --enable_thinking ${FT_THINK:-1} \
     --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && python score.py /content/eval/${RUN}_ft.jsonl --gt $GT --out /content/eval/${RUN}_ft.metrics.json > /dev/null || fail "ft AC eval"
   push_evals
 fi
-if [ "${BASE_AC_EVAL:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_base.metrics.json ]; then
+if [ "${BASE_AC_EVAL:-1}" = 1 ] && ! metrics_ok /content/eval/${RUN}_base.metrics.json; then
   log "AndroidControl test BASE (no-think)"
   python generate.py --model $MODEL --data $R@test --out /content/eval/${RUN}_base.jsonl --enable_thinking 0 \
     --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && python score.py /content/eval/${RUN}_base.jsonl --gt $GT --out /content/eval/${RUN}_base.metrics.json > /dev/null || fail "base AC eval"
   push_evals
 fi
-if [ "${MATCHED_NOTHINK:-1}" = 1 ] && [ ! -f /content/eval/${RUN}_ft_nothink_high.jsonl.done ]; then
+if [ "${MATCHED_NOTHINK:-1}" = 1 ] && ! metrics_ok /content/eval/${RUN}_ft_nothink_high.metrics.json; then
   log "AndroidControl test FT matched no-think (high-level)"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft_nothink_high.jsonl --enable_thinking 0 \
     --filter_mode high --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
