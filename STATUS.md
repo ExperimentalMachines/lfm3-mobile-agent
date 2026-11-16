@@ -20,8 +20,10 @@ Every run checkpoints to the Hub every 100 steps (`*-LoRA-ckpt` repos) and resum
 
 ## Codex (gpt-6-astra, max) reviews
 * pass 1 audit → 2 critical AW-patch bugs found and fixed (vocabulary corruption, silent cleanup); invalid base run discarded.
-* passes 2–5 adversarial QA → fixes for receipts, failure propagation, frozen-GT scoring, matched base/FT evals, strict parsing,
-  provenance, chain hand-off; pass 5: core paths verified fixed, remaining edge cases closed; pass 6 running.
+* passes 2–11 adversarial QA (gpt-6-astra, max effort): 3 critical + ~20 major issues found and fixed (stage receipts,
+  failure propagation, frozen-GT scoring with sha256, prediction identity/fingerprints, matched base/FT evals, strict parsing,
+  thinking-prefill, provenance, chain hand-off incl. lost-session + restarted-predecessor handling).
+  **Pass 11 verdict: GO for both Qwen chains**; residuals are deliberate-tampering only (`results/codex/codex_verify_pass11.md`).
 * dataset viability (web search): `docs/DATA_V2_PLAN.md`; GUI-Owl lessons: `docs/GUI_OWL_LESSONS.md`.
 
 ## Next
