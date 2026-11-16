@@ -1,15 +1,15 @@
 # Status — 2026-11-16 23:20 (Asia/Manila)
 
-## Running
-| What | Where | Progress / ETA |
+## Running (updated 01:45 Nov 17)
+| What | Where | Status |
 |---|---|---|
-| LFM3-VL-2B LoRA SFT (1,250 steps × 32 = 40k AC rows) → FT AC-test eval → push `experimentalmachines/LFM3-VL-2B-AndroidControl` | Colab L4 `lfm3l4b`, account <account-A> | ~31 s/step; train ends ~05:55, eval+push ~08:00 |
-| LFM2.5-VL-450M "keep general knowledge" SFT (48k AC + 12k the_cauldron replay = 20%, LoRA r16, lr 1e-4) → general eval FT, AC test base/FT → push `experimentalmachines/LFM2.5-VL-450M-AndroidControl` | Colab L4 `lfm25l4`, account <account-B>, launched from `state-dashboard-v4:~/vl` | ~12.6 s/step × 1,875; train ends ~05:20, evals ~06:45 |
-| chain → Qwen3.5-2B (same recipe as LFM3) | after LFM3 on `lfm3l4b` (`logs/chain_main_qwen2b.log`) | ~20:00–22:00 Nov 17 |
-| chain → Qwen3.5-0.8B (keep-knowledge recipe like 450M) | after 450M on `lfm25l4` (`~/vl/logs/chain_qwen08.log`) | ~13:00–14:00 Nov 17 |
-| GUI-Owl-1.5-2B AndroidWorld, compute-matched (1 image ≤1,024 tokens) | this Mac, emulator 5556, llama-server :8092 | ~2–3 h |
+| LFM3-VL-2B: resume from step 700 → 1,250, then general eval base/FT, AC test FT + base + matched no-think, push | **Modal A100-40GB** (user decision; budget ≤ $26) | started 01:36 |
+| LFM2.5-VL-450M: resume from step 700 → 1,875 (+20% replay), then general eval FT, AC test FT + base, push | **Modal A100-40GB** | step 1,400 at 01:38 (~3.4 s/step) |
+| Qwen3.5-2B (same recipe as LFM3) | Colab L4 `qwen2bl4`, account <account-A> | started 01:40 |
+| Qwen3.5-0.8B (keep-knowledge recipe) | Colab L4 `lfm25l4`, account <account-B> (via `state-dashboard-v4:~/vl`) | started 00:50 |
+| GUI-Owl-1.5-2B AndroidWorld, compute-matched | this Mac | in progress |
 
-Every run checkpoints to the Hub every 100 steps (`*-LoRA-ckpt` repos) and resumes from there; evals push partial predictions.
+Modal cost ≈ $2.8/h per run (A100-40GB $2.10 + 6 cores + 48 GiB); estimated total ≈ $15.
 
 ## Results so far
 | Model | AndroidControl test step SR (high / low) | AndroidWorld (116) | General knowledge |
