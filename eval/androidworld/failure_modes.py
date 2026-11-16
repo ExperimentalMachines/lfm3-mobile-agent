@@ -1,7 +1,15 @@
-"""Classify AndroidWorld episodes into failure modes from the raw episode pickles (written locally by android_world).
+"""Describe AndroidWorld episodes from the raw episode pickles (written locally by our own android_world runs).
 
 usage: python eval/androidworld/failure_modes.py <run_dir> [--out file.json]
-Each episode gets the first matching label (priority order below); every episode also gets a set of flags.
+
+Outcome label per episode (descriptive, NOT a causal diagnosis):
+  success | exception | complete_but_failed (agent signalled completion, judge says failed) | infeasible_declared |
+  answer_but_failed | step_budget_exhausted (no terminal action: android_world only ends a non-terminated episode at the
+  task's step budget, so a non-terminated, non-exception episode necessarily exhausted it).
+Flags (overlapping, observational): unmapped_open_app (android_world's own launch_app would not resolve the name: not a
+_DEFAULT_URIS key, no _PATTERN_TO_ACTIVITY match, not package-like), wait_run3 (>=3 consecutive waits),
+same_action_run3 (>=3 consecutive identical non-wait actions, coordinates on a 25-unit grid; any other action breaks
+the run), unparseable_step. Handles both our JSON schema (action_type/point_2d) and GUI-Owl's (action/coordinate).
 """
 import argparse
 import collections
@@ -13,60 +21,77 @@ import pickle
 
 from android_world.env import adb_utils
 
+_GUIOWL = {"click": "click", "long_press": "long_press", "swipe": "scroll", "type": "input_text", "wait": "wait",
+           "terminate": "status", "answer": "answer", "open": "open_app"}
+_BUTTON = {"back": "navigate_back", "home": "navigate_home", "enter": "keyboard_enter"}
 
-def act_key(a):
+
+def norm(a):
+    """-> dict(type, point, arg, status) or None."""
     if not isinstance(a, dict):
         return None
-    t = a.get("action_type")
-    p = a.get("point_2d")
+    if "action_type" in a:
+        t = a.get("action_type")
+        return {"type": t, "point": a.get("point_2d"), "status": a.get("goal_status"),
+                "arg": a.get("text") or a.get("app_name") or a.get("direction")}
+    if "action" in a:
+        t = a.get("action")
+        t = _BUTTON.get(str(a.get("button", "")).lower(), "system_button") if t == "system_button" else _GUIOWL.get(t, t)
+        st = {"success": "complete", "failure": "infeasible"}.get(a.get("status"), a.get("status"))
+        return {"type": t, "point": a.get("coordinate"), "status": st,
+                "arg": a.get("text") or (tuple(a["coordinate2"]) if a.get("coordinate2") else None)}
+    return None
+
+
+def key(n):
+    if n is None:
+        return None
+    p = n["point"]
     if isinstance(p, (list, tuple)) and len(p) == 2:
-        p = (round(p[0] / 25), round(p[1] / 25))  # 2.5% grid tolerance
-    return (t, p, a.get("text"), a.get("direction"), a.get("app_name"), a.get("goal_status"))
+        p = (round(p[0] / 25), round(p[1] / 25))
+    return (n["type"], p, n["arg"])
 
 
 def max_run(xs):
     best, cur, prev = 0, 0, object()
     for x in xs:
-        cur = cur + 1 if x == prev and x is not None else 1
+        cur = cur + 1 if (x is not None and x == prev) else 1
         best, prev = max(best, cur), x
     return best
 
 
+def app_resolves(name):
+    name = str(name or "")
+    return name in adb_utils._DEFAULT_URIS or adb_utils.get_adb_activity(name) is not None or "." in name
+
+
 def classify(ep):
     ed = ep["episode_data"] if isinstance(ep.get("episode_data"), dict) else {}  # NaN when the episode raised
-    acts = ed.get("parsed_action") or []
-    types = [a.get("action_type") if isinstance(a, dict) else None for a in acts]
+    raw = ed.get("parsed_action") or []
+    acts = [norm(a) for a in raw]
+    types = [n["type"] if n else None for n in acts]
     flags = set()
-    bad_apps = [a.get("app_name") for a in acts if isinstance(a, dict) and a.get("action_type") == "open_app"
-                and adb_utils.get_adb_activity(str(a.get("app_name") or "")) is None]
-    if bad_apps:
-        flags.add("unknown_app_name")
-    if max_run(types) >= 3 and "wait" in [t for t in types]:
-        if max_run([t if t == "wait" else None for t in types]) >= 3:
-            flags.add("wait_loop")
-    if max_run([act_key(a) for a in acts if isinstance(a, dict) and a.get("action_type") != "wait"]) >= 3:
-        flags.add("repeated_action_loop")
-    if any(a is None for a in acts):
+    unmapped = [n["arg"] for n in acts if n and n["type"] == "open_app" and not app_resolves(n["arg"])]
+    if unmapped:
+        flags.add("unmapped_open_app")
+    if max_run(["w" if t == "wait" else None for t in types]) >= 3:
+        flags.add("wait_run3")
+    if max_run([key(n) if n and n["type"] != "wait" else None for n in acts]) >= 3:
+        flags.add("same_action_run3")
+    if any(n is None for n in acts):
         flags.add("unparseable_step")
-    last = types[-1] if types else None
-    terminated = last in ("status", "answer")
+    last = acts[-1] if acts else None
     if ep.get("exception_info") or not ed:
         label = "exception"
     elif (ep["is_successful"] or 0) > 0:
         label = "success"
-    elif last == "status" and (acts[-1] or {}).get("goal_status") == "infeasible":
-        label = "declared_infeasible"
-    elif last == "status":
-        label = "premature_or_wrong_complete"
-    elif last == "answer":
-        label = "wrong_answer"
-    elif "unknown_app_name" in flags and len(acts) and types[0] == "open_app" and bad_apps and bad_apps[0] == acts[0].get("app_name"):
-        label = "stuck_after_unknown_app"
-    elif flags & {"wait_loop", "repeated_action_loop"}:
-        label = "loop_until_step_limit"
+    elif last and last["type"] == "status":
+        label = "infeasible_declared" if last["status"] == "infeasible" else "complete_but_failed"
+    elif last and last["type"] == "answer":
+        label = "answer_but_failed"
     else:
-        label = "step_limit_no_termination" if not terminated else "other"
-    return label, sorted(flags), bad_apps
+        label = "step_budget_exhausted"
+    return label, sorted(flags), unmapped, sum(t == "answer" for t in types)
 
 
 def main():
@@ -76,16 +101,17 @@ def main():
     a = ap.parse_args()
     rows = []
     for f in sorted(glob.glob(os.path.join(a.run_dir, "*.pkl.gz"))):
-        ep = pickle.load(gzip.open(f))  # trusted: written by our own local android_world run
+        ep = pickle.load(gzip.open(f))  # trusted: written by our own local android_world run, never downloaded
         ep = ep[0] if isinstance(ep, list) else ep
-        label, flags, bad_apps = classify(ep)
-        rows.append({"task": ep["task_template"], "label": label, "flags": flags, "unknown_apps": bad_apps,
-                     "steps": ep["episode_length"]})
-    lab = collections.Counter(r["label"] for r in rows)
-    flg = collections.Counter(f for r in rows if r["label"] != "success" for f in r["flags"])
-    apps = collections.Counter(x for r in rows for x in r["unknown_apps"])
-    out = {"n": len(rows), "labels": dict(lab.most_common()), "flags_among_failures": dict(flg.most_common()),
-           "unknown_app_names": dict(apps.most_common(25)), "episodes": rows}
+        label, flags, unmapped, n_answer = classify(ep)
+        rows.append({"task": ep["task_template"], "instance_id": ep.get("instance_id"), "label": label, "flags": flags,
+                     "unmapped_apps": unmapped, "answer_actions": n_answer, "steps": ep["episode_length"]})
+    fails = [r for r in rows if r["label"] != "success"]
+    out = {"n": len(rows), "labels": dict(collections.Counter(r["label"] for r in rows).most_common()),
+           "flags_among_failures": dict(collections.Counter(f for r in fails for f in r["flags"]).most_common()),
+           "episodes_with_answer_action": sum(r["answer_actions"] > 0 for r in rows),
+           "unmapped_app_names": dict(collections.Counter(x for r in rows for x in r["unmapped_apps"]).most_common(25)),
+           "note": "labels are outcome descriptions, not causes; flags overlap", "episodes": rows}
     if a.out:
         json.dump(out, open(a.out, "w"), indent=1)
     print(json.dumps({k: v for k, v in out.items() if k != "episodes"}, indent=1))

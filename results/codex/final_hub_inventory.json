@@ -1,0 +1,517 @@
+[
+  {
+    "repo": "experimentalmachines/LFM3-VL-2B-AndroidControl",
+    "sha": "9df77c802f6a1b690b4738ca4a4288f6f166661b",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size": 1570,
+        "lfs": null
+      },
+      {
+        "path": "README.md",
+        "size": 3675,
+        "lfs": null
+      },
+      {
+        "path": "chat_template.jinja",
+        "size": 12129,
+        "lfs": null
+      },
+      {
+        "path": "config.json",
+        "size": 3660,
+        "lfs": null
+      },
+      {
+        "path": "configuration_lfm3.py",
+        "size": 6105,
+        "lfs": null
+      },
+      {
+        "path": "configuration_lfm3_vl.py",
+        "size": 9138,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base.jsonl",
+        "size": 7600684,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base.jsonl.manifest.json",
+        "size": 382,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base.metrics.json",
+        "size": 15715,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base_general.jsonl",
+        "size": 655637,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base_general.summary.json",
+        "size": 239,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base_general_logprob.jsonl",
+        "size": 372533,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_base_general_logprob.summary.json",
+        "size": 240,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft.jsonl",
+        "size": 8153559,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft.jsonl.manifest.json",
+        "size": 393,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft.metrics.json",
+        "size": 15542,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_general.jsonl",
+        "size": 370674,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_general.summary.json",
+        "size": 241,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_general_logprob.jsonl",
+        "size": 373732,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_general_logprob.summary.json",
+        "size": 267,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_nothink_high.jsonl",
+        "size": 3989728,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_nothink_high.jsonl.done",
+        "size": 0,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_nothink_high.jsonl.manifest.json",
+        "size": 394,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm3vl2b-ac-lora_ft_nothink_high.metrics.json",
+        "size": 8264,
+        "lfs": null
+      },
+      {
+        "path": "generation_config.json",
+        "size": 350,
+        "lfs": null
+      },
+      {
+        "path": "image_processing_lfm3_vl.py",
+        "size": 12036,
+        "lfs": null
+      },
+      {
+        "path": "lfm3_conv.py",
+        "size": 8532,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/README.md",
+        "size": 5204,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/adapter_config.json",
+        "size": 1155,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/adapter_model.safetensors",
+        "size": 263545648,
+        "lfs": {
+          "size": 263545648,
+          "sha256": "e34c334875131cb7cb64ad9900ff30649fbedffc6ac5e669a4ecb762c9473e2d",
+          "pointer_size": 134
+        }
+      },
+      {
+        "path": "lora_adapter/chat_template.jinja",
+        "size": 12129,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/image_processing_lfm3_vl.py",
+        "size": 12036,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/processing_lfm3_vl.py",
+        "size": 12152,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/processor_config.json",
+        "size": 1654,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/tokenizer.json",
+        "size": 17908258,
+        "lfs": {
+          "size": 17908258,
+          "sha256": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7",
+          "pointer_size": 133
+        }
+      },
+      {
+        "path": "lora_adapter/tokenizer_config.json",
+        "size": 1911,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/training_args.bin",
+        "size": 5777,
+        "lfs": {
+          "size": 5777,
+          "sha256": "38b4eb765dafbc19bcb685dcd31d765a895857707a5af492e2950aa7563e151f",
+          "pointer_size": 129
+        }
+      },
+      {
+        "path": "lora_adapter/video_processing_lfm3_vl.py",
+        "size": 17161,
+        "lfs": null
+      },
+      {
+        "path": "model.safetensors",
+        "size": 3836417920,
+        "lfs": {
+          "size": 3836417920,
+          "sha256": "c8a0dd33989bb0ad4a9473c1f1ebb91b70e6100df913b0f4544497a4f0c760c0",
+          "pointer_size": 135
+        }
+      },
+      {
+        "path": "modeling_lfm3.py",
+        "size": 42343,
+        "lfs": null
+      },
+      {
+        "path": "modeling_lfm3_vl.py",
+        "size": 44999,
+        "lfs": null
+      },
+      {
+        "path": "processing_lfm3_vl.py",
+        "size": 12152,
+        "lfs": null
+      },
+      {
+        "path": "processor_config.json",
+        "size": 1654,
+        "lfs": null
+      },
+      {
+        "path": "tokenizer.json",
+        "size": 17908258,
+        "lfs": {
+          "size": 17908258,
+          "sha256": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7",
+          "pointer_size": 133
+        }
+      },
+      {
+        "path": "tokenizer_config.json",
+        "size": 1911,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/log_history.json",
+        "size": 38011,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/run_config.json",
+        "size": 1332,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/tb/events.out.tfevents.1794851191.modal.214.0",
+        "size": 30670,
+        "lfs": {
+          "size": 30670,
+          "sha256": "fa00c3cd5066b4abba42b0daf222bb9127e657f0791d0d6c369355bf49d6501d",
+          "pointer_size": 130
+        }
+      },
+      {
+        "path": "training_logs/tb/events.out.tfevents.1794855254.modal.214.1",
+        "size": 527,
+        "lfs": {
+          "size": 527,
+          "sha256": "8352482a96049401f45955aed6a8fda8aa03db1e860430c430c2c31576257fc1",
+          "pointer_size": 128
+        }
+      },
+      {
+        "path": "training_logs/train_log.jsonl",
+        "size": 17350,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/train_summary.json",
+        "size": 556,
+        "lfs": null
+      },
+      {
+        "path": "video_processing_lfm3_vl.py",
+        "size": 17161,
+        "lfs": null
+      }
+    ]
+  },
+  {
+    "repo": "experimentalmachines/LFM2.5-VL-450M-AndroidControl",
+    "sha": "ae7c9a369fabac59c7257028d9f30a31a4128d80",
+    "files": [
+      {
+        "path": ".gitattributes",
+        "size": 1519,
+        "lfs": null
+      },
+      {
+        "path": "README.md",
+        "size": 3752,
+        "lfs": null
+      },
+      {
+        "path": "chat_template.jinja",
+        "size": 3836,
+        "lfs": null
+      },
+      {
+        "path": "config.json",
+        "size": 2503,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base.jsonl",
+        "size": 7708287,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base.jsonl.manifest.json",
+        "size": 385,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base.metrics.json",
+        "size": 14638,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base_general.jsonl",
+        "size": 309411,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base_general.summary.json",
+        "size": 208,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base_general_logprob.jsonl",
+        "size": 372531,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_base_general_logprob.summary.json",
+        "size": 240,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft.jsonl",
+        "size": 8205799,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft.jsonl.manifest.json",
+        "size": 391,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft.metrics.json",
+        "size": 15414,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft_general.jsonl",
+        "size": 310516,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft_general.summary.json",
+        "size": 238,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft_general_logprob.jsonl",
+        "size": 369840,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m-ac-lora_ft_general_logprob.summary.json",
+        "size": 267,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m_base.jsonl",
+        "size": 631411,
+        "lfs": null
+      },
+      {
+        "path": "eval/lfm25vl450m_base.jsonl.manifest.json",
+        "size": 253,
+        "lfs": null
+      },
+      {
+        "path": "generation_config.json",
+        "size": 132,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/README.md",
+        "size": 5212,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/adapter_config.json",
+        "size": 1158,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/adapter_model.safetensors",
+        "size": 24013320,
+        "lfs": {
+          "size": 24013320,
+          "sha256": "71c3933cc643d089b86161ae9b4b8dc5bc7597ee245044c9a9cdeb7904a75bb0",
+          "pointer_size": 133
+        }
+      },
+      {
+        "path": "lora_adapter/chat_template.jinja",
+        "size": 3836,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/processor_config.json",
+        "size": 824,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/tokenizer.json",
+        "size": 4733040,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/tokenizer_config.json",
+        "size": 859,
+        "lfs": null
+      },
+      {
+        "path": "lora_adapter/training_args.bin",
+        "size": 5777,
+        "lfs": {
+          "size": 5777,
+          "sha256": "ae75c0340790dac6dfd8b39ba7d0977a3cd2049439cef9175ae0c8974cf5fc26",
+          "pointer_size": 129
+        }
+      },
+      {
+        "path": "model.safetensors",
+        "size": 897484568,
+        "lfs": {
+          "size": 897484568,
+          "sha256": "a2bcf2472421b84a4c73fd01623317d5cd8ac067ee4000bcade8711962210f9e",
+          "pointer_size": 134
+        }
+      },
+      {
+        "path": "processor_config.json",
+        "size": 824,
+        "lfs": null
+      },
+      {
+        "path": "tokenizer.json",
+        "size": 4733040,
+        "lfs": null
+      },
+      {
+        "path": "tokenizer_config.json",
+        "size": 859,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/log_history.json",
+        "size": 55643,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/run_config.json",
+        "size": 1369,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/tb/events.out.tfevents.1794848344.modal.491.0",
+        "size": 54521,
+        "lfs": {
+          "size": 54521,
+          "sha256": "d8cbaa7b96942b81b0a6c4f85d434126ae25c954544e3c42a677aace2c4d9266",
+          "pointer_size": 130
+        }
+      },
+      {
+        "path": "training_logs/tb/events.out.tfevents.1794851792.modal.491.1",
+        "size": 527,
+        "lfs": {
+          "size": 527,
+          "sha256": "0c3ec4fb4322bb86faabfcd87d6ba18a10a5c42d17e0ee024304ecf22e3e9593",
+          "pointer_size": 128
+        }
+      },
+      {
+        "path": "training_logs/train_log.jsonl",
+        "size": 35413,
+        "lfs": null
+      },
+      {
+        "path": "training_logs/train_summary.json",
+        "size": 539,
+        "lfs": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,167 @@
+{
+  "LFM3-VL-2B": {
+    "config": {
+      "model_id": "LiquidAI/LFM3-VL-2B",
+      "train": [
+        "experimentalmachines/AndroidControl-screen-agent-sft@train"
+      ],
+      "val": "experimentalmachines/AndroidControl-screen-agent-sft@val",
+      "out": "/content/runs/lfm3vl2b-ac-lora",
+      "max_pixels": 774400,
+      "min_pixels": 65536,
+      "epochs": 1.0,
+      "max_steps": 1250,
+      "lr": 0.0002,
+      "bs": 8,
+      "grad_accum": 4,
+      "lora_r": 64,
+      "lora_alpha": 128,
+      "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+      "modules_to_save": [],
+      "save_steps": 100,
+      "eval_steps": 250,
+      "hub_repo": "experimentalmachines/LFM3-VL-2B-AndroidControl-LoRA-ckpt",
+      "workers": 6,
+      "seed": 42,
+      "no_gc": false,
+      "chat_template_path": null,
+      "max_agent_rows": 0,
+      "replay": [],
+      "inline_think": false,
+      "trust_remote_code": true,
+      "provenance": {
+        "model_sha": "23387beda43c60310348e83e25f78f33c3140d3a",
+        "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@train": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+        "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@val": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+        "versions": {
+          "torch": "2.14.1",
+          "transformers": "5.20.2",
+          "trl": "1.16.0",
+          "peft": "0.21.2",
+          "datasets": "5.1.0",
+          "accelerate": "1.15.0"
+        }
+      }
+    },
+    "summary": {
+      "train_runtime": 4004.7288,
+      "train_samples_per_second": 4.395,
+      "train_steps_per_second": 0.137,
+      "total_flos": 5.060352471572644e+17,
+      "train_loss": 0.2846210614117709,
+      "epoch": 0.40316078051927107,
+      "wall_s": 4015.6791977882385,
+      "peak_gpu_mem_gb": 10.993170944,
+      "train_rows": 99216,
+      "eval_loss": 0.28745952248573303,
+      "eval_runtime": 49.0167,
+      "eval_samples_per_second": 16.872,
+      "eval_steps_per_second": 2.122,
+      "eval_entropy": 0.3033768069715454,
+      "eval_mean_token_accuracy": 0.9270774349570274,
+      "eval_num_tokens": 19589850.0
+    },
+    "last_train_loss": 0.25634214878082273,
+    "last10_loss_mean": 0.2809474086761475,
+    "eval_losses": {
+      "250": 0.35757628083229065,
+      "500": 0.32569795846939087,
+      "750": 0.3084579408168793,
+      "1000": 0.2901821434497833,
+      "1250": 0.28745952248573303
+    },
+    "last_logged_step": 1250,
+    "eval_loss_monotone_nonincreasing": true,
+    "hub_local_equal": {
+      "log_history.json": true,
+      "run_config.json": true,
+      "train_summary.json": true,
+      "train_log.jsonl": true
+    }
+  },
+  "LFM2.5-VL-450M": {
+    "config": {
+      "model_id": "LiquidAI/LFM2.5-VL-450M",
+      "train": [
+        "experimentalmachines/AndroidControl-screen-agent-sft@train"
+      ],
+      "val": "experimentalmachines/AndroidControl-screen-agent-sft@val",
+      "out": "/content/runs/lfm25vl450m-ac-lora",
+      "max_pixels": 0,
+      "min_pixels": 65536,
+      "epochs": 1.0,
+      "max_steps": -1,
+      "lr": 0.0001,
+      "bs": 16,
+      "grad_accum": 2,
+      "lora_r": 16,
+      "lora_alpha": 32,
+      "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+      "modules_to_save": [],
+      "save_steps": 100,
+      "eval_steps": 250,
+      "hub_repo": "experimentalmachines/LFM2.5-VL-450M-AndroidControl-LoRA-ckpt",
+      "workers": 6,
+      "seed": 42,
+      "no_gc": false,
+      "chat_template_path": null,
+      "max_agent_rows": 48000,
+      "replay": [
+        "/content/data/replay"
+      ],
+      "inline_think": true,
+      "trust_remote_code": true,
+      "provenance": {
+        "model_sha": "fc6221ca597f3315e4f82fc2df606783267b34ba",
+        "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@train": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+        "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@val": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+        "versions": {
+          "torch": "2.14.1",
+          "transformers": "5.20.2",
+          "trl": "1.16.0",
+          "peft": "0.21.2",
+          "datasets": "5.1.0",
+          "accelerate": "1.15.0"
+        }
+      }
+    },
+    "summary": {
+      "train_runtime": 3423.0778,
+      "train_samples_per_second": 10.984,
+      "train_steps_per_second": 0.343,
+      "total_flos": 2.3087986134515712e+17,
+      "train_loss": 0.4688945995493138,
+      "epoch": 1.0,
+      "wall_s": 3431.061291217804,
+      "peak_gpu_mem_gb": 8.506087936,
+      "train_rows": 60000,
+      "eval_loss": 0.375008225440979,
+      "eval_runtime": 17.4235,
+      "eval_samples_per_second": 47.465,
+      "eval_steps_per_second": 2.984,
+      "eval_entropy": 0.38114447404558843,
+      "eval_mean_token_accuracy": 0.9152359343492068,
+      "eval_num_tokens": 41179169.0
+    },
+    "last_train_loss": 0.4913513660430908,
+    "last10_loss_mean": 0.46653244972229,
+    "eval_losses": {
+      "250": 0.4526269733905792,
+      "500": 0.4160972535610199,
+      "750": 0.4018113613128662,
+      "1000": 0.38977718353271484,
+      "1250": 0.3842511773109436,
+      "1500": 0.37703970074653625,
+      "1750": 0.3751104176044464,
+      "1875": 0.375008225440979
+    },
+    "last_logged_step": 1875,
+    "eval_loss_monotone_nonincreasing": true,
+    "hub_local_equal": {
+      "log_history.json": true,
+      "run_config.json": true,
+      "train_summary.json": true,
+      "train_log.jsonl": true
+    }
+  }
+}

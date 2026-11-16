@@ -1,0 +1,415 @@
+{
+  "protocol": "EVAL_PROTOCOL section 1; independent strict action parser",
+  "coverage": {
+    "expected_reference_supplied": true,
+    "n_predictions": 9987,
+    "n_scored_rows": 9987,
+    "n_missing_predictions": 0,
+    "episode_sr_basis": "reference_rows",
+    "warning": null
+  },
+  "nonterminal": {
+    "overall": {
+      "n_steps": 8444,
+      "n_unique_episodes": 1543,
+      "n_episode_mode_pairs": 1543,
+      "n_parsed": 8444,
+      "n_type_match": 6654,
+      "n_step_success": 5607,
+      "n_episode_success": 322,
+      "parse_rate": 1.0,
+      "type_match": 0.7880151586925628,
+      "step_sr": 0.664021790620559,
+      "episode_sr": 0.20868438107582632,
+      "click_bbox_hit_strict": {
+        "n": 5074,
+        "hits": 3386,
+        "acc": 0.6673236105636579
+      }
+    },
+    "by_mode": {
+      "high": {
+        "n_steps": 8444,
+        "n_unique_episodes": 1543,
+        "n_episode_mode_pairs": 1543,
+        "n_parsed": 8444,
+        "n_type_match": 6654,
+        "n_step_success": 5607,
+        "n_episode_success": 322,
+        "parse_rate": 1.0,
+        "type_match": 0.7880151586925628,
+        "step_sr": 0.664021790620559,
+        "episode_sr": 0.20868438107582632,
+        "click_bbox_hit_strict": {
+          "n": 5074,
+          "hits": 3386,
+          "acc": 0.6673236105636579
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "overall": {
+          "n_steps": 3897,
+          "n_unique_episodes": 721,
+          "n_episode_mode_pairs": 721,
+          "n_parsed": 3897,
+          "n_type_match": 3148,
+          "n_step_success": 2678,
+          "n_episode_success": 177,
+          "parse_rate": 1.0,
+          "type_match": 0.8078008724659995,
+          "step_sr": 0.6871952784192968,
+          "episode_sr": 0.24549237170596394,
+          "click_bbox_hit_strict": {
+            "n": 2449,
+            "hits": 1662,
+            "acc": 0.6786443446304614
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 3897,
+            "n_unique_episodes": 721,
+            "n_episode_mode_pairs": 721,
+            "n_parsed": 3897,
+            "n_type_match": 3148,
+            "n_step_success": 2678,
+            "n_episode_success": 177,
+            "parse_rate": 1.0,
+            "type_match": 0.8078008724659995,
+            "step_sr": 0.6871952784192968,
+            "episode_sr": 0.24549237170596394,
+            "click_bbox_hit_strict": {
+              "n": 2449,
+              "hits": 1662,
+              "acc": 0.6786443446304614
+            }
+          }
+        }
+      },
+      "app_unseen": {
+        "overall": {
+          "n_steps": 3475,
+          "n_unique_episodes": 631,
+          "n_episode_mode_pairs": 631,
+          "n_parsed": 3475,
+          "n_type_match": 2632,
+          "n_step_success": 2168,
+          "n_episode_success": 100,
+          "parse_rate": 1.0,
+          "type_match": 0.757410071942446,
+          "step_sr": 0.6238848920863309,
+          "episode_sr": 0.15847860538827258,
+          "click_bbox_hit_strict": {
+            "n": 2020,
+            "hits": 1264,
+            "acc": 0.6257425742574257
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 3475,
+            "n_unique_episodes": 631,
+            "n_episode_mode_pairs": 631,
+            "n_parsed": 3475,
+            "n_type_match": 2632,
+            "n_step_success": 2168,
+            "n_episode_success": 100,
+            "parse_rate": 1.0,
+            "type_match": 0.757410071942446,
+            "step_sr": 0.6238848920863309,
+            "episode_sr": 0.15847860538827258,
+            "click_bbox_hit_strict": {
+              "n": 2020,
+              "hits": 1264,
+              "acc": 0.6257425742574257
+            }
+          }
+        }
+      },
+      "category_unseen": {
+        "overall": {
+          "n_steps": 3891,
+          "n_unique_episodes": 700,
+          "n_episode_mode_pairs": 700,
+          "n_parsed": 3891,
+          "n_type_match": 2965,
+          "n_step_success": 2456,
+          "n_episode_success": 118,
+          "parse_rate": 1.0,
+          "type_match": 0.7620149061937805,
+          "step_sr": 0.6312002056026729,
+          "episode_sr": 0.16857142857142857,
+          "click_bbox_hit_strict": {
+            "n": 2237,
+            "hits": 1428,
+            "acc": 0.6383549396513187
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 3891,
+            "n_unique_episodes": 700,
+            "n_episode_mode_pairs": 700,
+            "n_parsed": 3891,
+            "n_type_match": 2965,
+            "n_step_success": 2456,
+            "n_episode_success": 118,
+            "parse_rate": 1.0,
+            "type_match": 0.7620149061937805,
+            "step_sr": 0.6312002056026729,
+            "episode_sr": 0.16857142857142857,
+            "click_bbox_hit_strict": {
+              "n": 2237,
+              "hits": 1428,
+              "acc": 0.6383549396513187
+            }
+          }
+        }
+      },
+      "task_unseen": {
+        "overall": {
+          "n_steps": 4464,
+          "n_unique_episodes": 803,
+          "n_episode_mode_pairs": 803,
+          "n_parsed": 4464,
+          "n_type_match": 3443,
+          "n_step_success": 2880,
+          "n_episode_success": 143,
+          "parse_rate": 1.0,
+          "type_match": 0.7712813620071685,
+          "step_sr": 0.6451612903225806,
+          "episode_sr": 0.1780821917808219,
+          "click_bbox_hit_strict": {
+            "n": 2579,
+            "hits": 1697,
+            "acc": 0.658006979449399
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 4464,
+            "n_unique_episodes": 803,
+            "n_episode_mode_pairs": 803,
+            "n_parsed": 4464,
+            "n_type_match": 3443,
+            "n_step_success": 2880,
+            "n_episode_success": 143,
+            "parse_rate": 1.0,
+            "type_match": 0.7712813620071685,
+            "step_sr": 0.6451612903225806,
+            "episode_sr": 0.1780821917808219,
+            "click_bbox_hit_strict": {
+              "n": 2579,
+              "hits": 1697,
+              "acc": 0.658006979449399
+            }
+          }
+        }
+      }
+    }
+  },
+  "terminal": {
+    "overall": {
+      "n_steps": 1543,
+      "n_unique_episodes": 1543,
+      "n_episode_mode_pairs": 1543,
+      "n_parsed": 1543,
+      "n_type_match": 155,
+      "n_step_success": 155,
+      "n_episode_success": 155,
+      "parse_rate": 1.0,
+      "type_match": 0.10045366169799093,
+      "step_sr": 0.10045366169799093,
+      "episode_sr": 0.10045366169799093,
+      "click_bbox_hit_strict": {
+        "n": 0,
+        "hits": 0,
+        "acc": null
+      }
+    },
+    "by_mode": {
+      "high": {
+        "n_steps": 1543,
+        "n_unique_episodes": 1543,
+        "n_episode_mode_pairs": 1543,
+        "n_parsed": 1543,
+        "n_type_match": 155,
+        "n_step_success": 155,
+        "n_episode_success": 155,
+        "parse_rate": 1.0,
+        "type_match": 0.10045366169799093,
+        "step_sr": 0.10045366169799093,
+        "episode_sr": 0.10045366169799093,
+        "click_bbox_hit_strict": {
+          "n": 0,
+          "hits": 0,
+          "acc": null
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "overall": {
+          "n_steps": 721,
+          "n_unique_episodes": 721,
+          "n_episode_mode_pairs": 721,
+          "n_parsed": 721,
+          "n_type_match": 68,
+          "n_step_success": 68,
+          "n_episode_success": 68,
+          "parse_rate": 1.0,
+          "type_match": 0.09431345353675451,
+          "step_sr": 0.09431345353675451,
+          "episode_sr": 0.09431345353675451,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 721,
+            "n_unique_episodes": 721,
+            "n_episode_mode_pairs": 721,
+            "n_parsed": 721,
+            "n_type_match": 68,
+            "n_step_success": 68,
+            "n_episode_success": 68,
+            "parse_rate": 1.0,
+            "type_match": 0.09431345353675451,
+            "step_sr": 0.09431345353675451,
+            "episode_sr": 0.09431345353675451,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "app_unseen": {
+        "overall": {
+          "n_steps": 631,
+          "n_unique_episodes": 631,
+          "n_episode_mode_pairs": 631,
+          "n_parsed": 631,
+          "n_type_match": 67,
+          "n_step_success": 67,
+          "n_episode_success": 67,
+          "parse_rate": 1.0,
+          "type_match": 0.10618066561014262,
+          "step_sr": 0.10618066561014262,
+          "episode_sr": 0.10618066561014262,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 631,
+            "n_unique_episodes": 631,
+            "n_episode_mode_pairs": 631,
+            "n_parsed": 631,
+            "n_type_match": 67,
+            "n_step_success": 67,
+            "n_episode_success": 67,
+            "parse_rate": 1.0,
+            "type_match": 0.10618066561014262,
+            "step_sr": 0.10618066561014262,
+            "episode_sr": 0.10618066561014262,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "category_unseen": {
+        "overall": {
+          "n_steps": 700,
+          "n_unique_episodes": 700,
+          "n_episode_mode_pairs": 700,
+          "n_parsed": 700,
+          "n_type_match": 71,
+          "n_step_success": 71,
+          "n_episode_success": 71,
+          "parse_rate": 1.0,
+          "type_match": 0.10142857142857142,
+          "step_sr": 0.10142857142857142,
+          "episode_sr": 0.10142857142857142,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 700,
+            "n_unique_episodes": 700,
+            "n_episode_mode_pairs": 700,
+            "n_parsed": 700,
+            "n_type_match": 71,
+            "n_step_success": 71,
+            "n_episode_success": 71,
+            "parse_rate": 1.0,
+            "type_match": 0.10142857142857142,
+            "step_sr": 0.10142857142857142,
+            "episode_sr": 0.10142857142857142,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "task_unseen": {
+        "overall": {
+          "n_steps": 803,
+          "n_unique_episodes": 803,
+          "n_episode_mode_pairs": 803,
+          "n_parsed": 803,
+          "n_type_match": 83,
+          "n_step_success": 83,
+          "n_episode_success": 83,
+          "parse_rate": 1.0,
+          "type_match": 0.10336239103362391,
+          "step_sr": 0.10336239103362391,
+          "episode_sr": 0.10336239103362391,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 803,
+            "n_unique_episodes": 803,
+            "n_episode_mode_pairs": 803,
+            "n_parsed": 803,
+            "n_type_match": 83,
+            "n_step_success": 83,
+            "n_episode_success": 83,
+            "parse_rate": 1.0,
+            "type_match": 0.10336239103362391,
+            "step_sr": 0.10336239103362391,
+            "episode_sr": 0.10336239103362391,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      }
+    }
+  }
+}

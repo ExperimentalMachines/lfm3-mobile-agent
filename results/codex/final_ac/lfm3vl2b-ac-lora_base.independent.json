@@ -1,0 +1,505 @@
+{
+  "protocol": "EVAL_PROTOCOL section 1; independent strict action parser",
+  "coverage": {
+    "expected_reference_supplied": true,
+    "n_predictions": 18415,
+    "n_scored_rows": 18415,
+    "n_missing_predictions": 0,
+    "episode_sr_basis": "reference_rows",
+    "warning": null
+  },
+  "nonterminal": {
+    "overall": {
+      "n_steps": 16872,
+      "n_unique_episodes": 1543,
+      "n_episode_mode_pairs": 3085,
+      "n_parsed": 14759,
+      "n_type_match": 9330,
+      "n_step_success": 7352,
+      "n_episode_success": 233,
+      "parse_rate": 0.8747629208155524,
+      "type_match": 0.5529871977240398,
+      "step_sr": 0.43575154101469893,
+      "episode_sr": 0.07552674230145867,
+      "click_bbox_hit_strict": {
+        "n": 10147,
+        "hits": 4621,
+        "acc": 0.45540553858283234
+      }
+    },
+    "by_mode": {
+      "high": {
+        "n_steps": 8444,
+        "n_unique_episodes": 1543,
+        "n_episode_mode_pairs": 1543,
+        "n_parsed": 7224,
+        "n_type_match": 3537,
+        "n_step_success": 2443,
+        "n_episode_success": 30,
+        "parse_rate": 0.8555187115111321,
+        "type_match": 0.4188773093320701,
+        "step_sr": 0.28931785883467553,
+        "episode_sr": 0.019442644199611146,
+        "click_bbox_hit_strict": {
+          "n": 5074,
+          "hits": 1223,
+          "acc": 0.24103271580607016
+        }
+      },
+      "low": {
+        "n_steps": 8428,
+        "n_unique_episodes": 1542,
+        "n_episode_mode_pairs": 1542,
+        "n_parsed": 7535,
+        "n_type_match": 5793,
+        "n_step_success": 4909,
+        "n_episode_success": 203,
+        "parse_rate": 0.8940436639772188,
+        "type_match": 0.6873516848599905,
+        "step_sr": 0.5824632178452777,
+        "episode_sr": 0.13164721141374838,
+        "click_bbox_hit_strict": {
+          "n": 5073,
+          "hits": 3398,
+          "acc": 0.6698206189631382
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "overall": {
+          "n_steps": 7784,
+          "n_unique_episodes": 721,
+          "n_episode_mode_pairs": 1441,
+          "n_parsed": 6899,
+          "n_type_match": 4543,
+          "n_step_success": 3649,
+          "n_episode_success": 153,
+          "parse_rate": 0.8863052415210688,
+          "type_match": 0.5836330935251799,
+          "step_sr": 0.4687821171634121,
+          "episode_sr": 0.10617626648161,
+          "click_bbox_hit_strict": {
+            "n": 4897,
+            "hits": 2415,
+            "acc": 0.4931590769859097
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 3897,
+            "n_unique_episodes": 721,
+            "n_episode_mode_pairs": 721,
+            "n_parsed": 3387,
+            "n_type_match": 1738,
+            "n_step_success": 1188,
+            "n_episode_success": 26,
+            "parse_rate": 0.8691301000769823,
+            "type_match": 0.4459840903258917,
+            "step_sr": 0.30484988452655887,
+            "episode_sr": 0.036061026352288486,
+            "click_bbox_hit_strict": {
+              "n": 2449,
+              "hits": 646,
+              "acc": 0.263781135157207
+            }
+          },
+          "low": {
+            "n_steps": 3887,
+            "n_unique_episodes": 720,
+            "n_episode_mode_pairs": 720,
+            "n_parsed": 3512,
+            "n_type_match": 2805,
+            "n_step_success": 2461,
+            "n_episode_success": 127,
+            "parse_rate": 0.9035245690764085,
+            "type_match": 0.7216362233084641,
+            "step_sr": 0.6331360946745562,
+            "episode_sr": 0.1763888888888889,
+            "click_bbox_hit_strict": {
+              "n": 2448,
+              "hits": 1769,
+              "acc": 0.7226307189542484
+            }
+          }
+        }
+      },
+      "app_unseen": {
+        "overall": {
+          "n_steps": 6948,
+          "n_unique_episodes": 631,
+          "n_episode_mode_pairs": 1262,
+          "n_parsed": 6086,
+          "n_type_match": 3713,
+          "n_step_success": 2821,
+          "n_episode_success": 61,
+          "parse_rate": 0.8759355210132412,
+          "type_match": 0.534398388025331,
+          "step_sr": 0.4060161197466897,
+          "episode_sr": 0.04833597464342314,
+          "click_bbox_hit_strict": {
+            "n": 4040,
+            "hits": 1696,
+            "acc": 0.4198019801980198
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 3475,
+            "n_unique_episodes": 631,
+            "n_episode_mode_pairs": 631,
+            "n_parsed": 2978,
+            "n_type_match": 1379,
+            "n_step_success": 931,
+            "n_episode_success": 2,
+            "parse_rate": 0.8569784172661871,
+            "type_match": 0.3968345323741007,
+            "step_sr": 0.2679136690647482,
+            "episode_sr": 0.003169572107765452,
+            "click_bbox_hit_strict": {
+              "n": 2020,
+              "hits": 427,
+              "acc": 0.21138613861386138
+            }
+          },
+          "low": {
+            "n_steps": 3473,
+            "n_unique_episodes": 631,
+            "n_episode_mode_pairs": 631,
+            "n_parsed": 3108,
+            "n_type_match": 2334,
+            "n_step_success": 1890,
+            "n_episode_success": 59,
+            "parse_rate": 0.8949035416066801,
+            "type_match": 0.6720414627123524,
+            "step_sr": 0.5441980996256839,
+            "episode_sr": 0.09350237717908082,
+            "click_bbox_hit_strict": {
+              "n": 2020,
+              "hits": 1269,
+              "acc": 0.6282178217821782
+            }
+          }
+        }
+      },
+      "category_unseen": {
+        "overall": {
+          "n_steps": 7779,
+          "n_unique_episodes": 700,
+          "n_episode_mode_pairs": 1400,
+          "n_parsed": 6806,
+          "n_type_match": 4161,
+          "n_step_success": 3162,
+          "n_episode_success": 65,
+          "parse_rate": 0.8749196554827099,
+          "type_match": 0.5349016583108369,
+          "step_sr": 0.4064789818742769,
+          "episode_sr": 0.04642857142857143,
+          "click_bbox_hit_strict": {
+            "n": 4474,
+            "hits": 1873,
+            "acc": 0.4186410371032633
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 3891,
+            "n_unique_episodes": 700,
+            "n_episode_mode_pairs": 700,
+            "n_parsed": 3332,
+            "n_type_match": 1559,
+            "n_step_success": 1063,
+            "n_episode_success": 4,
+            "parse_rate": 0.8563351323567207,
+            "type_match": 0.40066820868671293,
+            "step_sr": 0.2731945515291699,
+            "episode_sr": 0.005714285714285714,
+            "click_bbox_hit_strict": {
+              "n": 2237,
+              "hits": 482,
+              "acc": 0.21546714349575324
+            }
+          },
+          "low": {
+            "n_steps": 3888,
+            "n_unique_episodes": 700,
+            "n_episode_mode_pairs": 700,
+            "n_parsed": 3474,
+            "n_type_match": 2602,
+            "n_step_success": 2099,
+            "n_episode_success": 61,
+            "parse_rate": 0.8935185185185185,
+            "type_match": 0.6692386831275721,
+            "step_sr": 0.539866255144033,
+            "episode_sr": 0.08714285714285715,
+            "click_bbox_hit_strict": {
+              "n": 2237,
+              "hits": 1391,
+              "acc": 0.6218149307107733
+            }
+          }
+        }
+      },
+      "task_unseen": {
+        "overall": {
+          "n_steps": 8922,
+          "n_unique_episodes": 803,
+          "n_episode_mode_pairs": 1606,
+          "n_parsed": 7714,
+          "n_type_match": 4698,
+          "n_step_success": 3631,
+          "n_episode_success": 75,
+          "parse_rate": 0.8646043488007173,
+          "type_match": 0.5265635507733692,
+          "step_sr": 0.40697153104685047,
+          "episode_sr": 0.046699875466998754,
+          "click_bbox_hit_strict": {
+            "n": 5158,
+            "hits": 2163,
+            "acc": 0.41934858472276076
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 4464,
+            "n_unique_episodes": 803,
+            "n_episode_mode_pairs": 803,
+            "n_parsed": 3769,
+            "n_type_match": 1770,
+            "n_step_success": 1236,
+            "n_episode_success": 4,
+            "parse_rate": 0.8443100358422939,
+            "type_match": 0.396505376344086,
+            "step_sr": 0.2768817204301075,
+            "episode_sr": 0.0049813200498132005,
+            "click_bbox_hit_strict": {
+              "n": 2579,
+              "hits": 567,
+              "acc": 0.2198526560682435
+            }
+          },
+          "low": {
+            "n_steps": 4458,
+            "n_unique_episodes": 803,
+            "n_episode_mode_pairs": 803,
+            "n_parsed": 3945,
+            "n_type_match": 2928,
+            "n_step_success": 2395,
+            "n_episode_success": 71,
+            "parse_rate": 0.8849259757738897,
+            "type_match": 0.6567967698519516,
+            "step_sr": 0.5372364288918797,
+            "episode_sr": 0.08841843088418432,
+            "click_bbox_hit_strict": {
+              "n": 2579,
+              "hits": 1596,
+              "acc": 0.618844513377278
+            }
+          }
+        }
+      }
+    }
+  },
+  "terminal": {
+    "overall": {
+      "n_steps": 1543,
+      "n_unique_episodes": 1543,
+      "n_episode_mode_pairs": 1543,
+      "n_parsed": 1464,
+      "n_type_match": 1,
+      "n_step_success": 0,
+      "n_episode_success": 0,
+      "parse_rate": 0.948801036941024,
+      "type_match": 0.0006480881399870382,
+      "step_sr": 0.0,
+      "episode_sr": 0.0,
+      "click_bbox_hit_strict": {
+        "n": 0,
+        "hits": 0,
+        "acc": null
+      }
+    },
+    "by_mode": {
+      "high": {
+        "n_steps": 1543,
+        "n_unique_episodes": 1543,
+        "n_episode_mode_pairs": 1543,
+        "n_parsed": 1464,
+        "n_type_match": 1,
+        "n_step_success": 0,
+        "n_episode_success": 0,
+        "parse_rate": 0.948801036941024,
+        "type_match": 0.0006480881399870382,
+        "step_sr": 0.0,
+        "episode_sr": 0.0,
+        "click_bbox_hit_strict": {
+          "n": 0,
+          "hits": 0,
+          "acc": null
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "overall": {
+          "n_steps": 721,
+          "n_unique_episodes": 721,
+          "n_episode_mode_pairs": 721,
+          "n_parsed": 687,
+          "n_type_match": 0,
+          "n_step_success": 0,
+          "n_episode_success": 0,
+          "parse_rate": 0.9528432732316228,
+          "type_match": 0.0,
+          "step_sr": 0.0,
+          "episode_sr": 0.0,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 721,
+            "n_unique_episodes": 721,
+            "n_episode_mode_pairs": 721,
+            "n_parsed": 687,
+            "n_type_match": 0,
+            "n_step_success": 0,
+            "n_episode_success": 0,
+            "parse_rate": 0.9528432732316228,
+            "type_match": 0.0,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "app_unseen": {
+        "overall": {
+          "n_steps": 631,
+          "n_unique_episodes": 631,
+          "n_episode_mode_pairs": 631,
+          "n_parsed": 601,
+          "n_type_match": 1,
+          "n_step_success": 0,
+          "n_episode_success": 0,
+          "parse_rate": 0.9524564183835182,
+          "type_match": 0.001584786053882726,
+          "step_sr": 0.0,
+          "episode_sr": 0.0,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 631,
+            "n_unique_episodes": 631,
+            "n_episode_mode_pairs": 631,
+            "n_parsed": 601,
+            "n_type_match": 1,
+            "n_step_success": 0,
+            "n_episode_success": 0,
+            "parse_rate": 0.9524564183835182,
+            "type_match": 0.001584786053882726,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "category_unseen": {
+        "overall": {
+          "n_steps": 700,
+          "n_unique_episodes": 700,
+          "n_episode_mode_pairs": 700,
+          "n_parsed": 670,
+          "n_type_match": 1,
+          "n_step_success": 0,
+          "n_episode_success": 0,
+          "parse_rate": 0.9571428571428572,
+          "type_match": 0.0014285714285714286,
+          "step_sr": 0.0,
+          "episode_sr": 0.0,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 700,
+            "n_unique_episodes": 700,
+            "n_episode_mode_pairs": 700,
+            "n_parsed": 670,
+            "n_type_match": 1,
+            "n_step_success": 0,
+            "n_episode_success": 0,
+            "parse_rate": 0.9571428571428572,
+            "type_match": 0.0014285714285714286,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      },
+      "task_unseen": {
+        "overall": {
+          "n_steps": 803,
+          "n_unique_episodes": 803,
+          "n_episode_mode_pairs": 803,
+          "n_parsed": 759,
+          "n_type_match": 1,
+          "n_step_success": 0,
+          "n_episode_success": 0,
+          "parse_rate": 0.9452054794520548,
+          "type_match": 0.0012453300124533001,
+          "step_sr": 0.0,
+          "episode_sr": 0.0,
+          "click_bbox_hit_strict": {
+            "n": 0,
+            "hits": 0,
+            "acc": null
+          }
+        },
+        "by_mode": {
+          "high": {
+            "n_steps": 803,
+            "n_unique_episodes": 803,
+            "n_episode_mode_pairs": 803,
+            "n_parsed": 759,
+            "n_type_match": 1,
+            "n_step_success": 0,
+            "n_episode_success": 0,
+            "parse_rate": 0.9452054794520548,
+            "type_match": 0.0012453300124533001,
+            "step_sr": 0.0,
+            "episode_sr": 0.0,
+            "click_bbox_hit_strict": {
+              "n": 0,
+              "hits": 0,
+              "acc": null
+            }
+          }
+        }
+      }
+    }
+  }
+}

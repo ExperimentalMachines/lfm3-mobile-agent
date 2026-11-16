@@ -1,0 +1,206 @@
+{
+  "logprob": {
+    "lfm3vl2b": {
+      "audit": {
+        "base": {
+          "n_rows": 2500,
+          "pred_or_correct_mismatches": [],
+          "sha256": "c5b515550de07cd91d9059270b3c1ce583e8381bb75751a4393d1ec468d35445"
+        },
+        "ft": {
+          "n_rows": 2500,
+          "pred_or_correct_mismatches": [],
+          "sha256": "bd4b9352e08cd92be5605232a5e6ed3de555bb10aea6d8eeb5077b6c8cc2b001"
+        }
+      },
+      "results": {
+        "mmstar": {
+          "n": 1500,
+          "base_correct": 782,
+          "ft_correct": 857,
+          "both_correct": 713,
+          "both_wrong": 574,
+          "base_only": 69,
+          "ft_only": 144,
+          "delta": 0.05,
+          "mcnemar_exact_p": 3.0280723626020696e-07,
+          "paired_bootstrap_95ci": [
+            0.03133333333333333,
+            0.06933333333333333
+          ],
+          "bootstrap_replicates": 100000,
+          "bootstrap_seed": 20261117
+        },
+        "mmlu": {
+          "n": 1000,
+          "base_correct": 489,
+          "ft_correct": 495,
+          "both_correct": 420,
+          "both_wrong": 436,
+          "base_only": 69,
+          "ft_only": 75,
+          "delta": 0.006,
+          "mcnemar_exact_p": 0.6770697943668329,
+          "paired_bootstrap_95ci": [
+            -0.017,
+            0.03
+          ],
+          "bootstrap_replicates": 100000,
+          "bootstrap_seed": 20261117
+        }
+      }
+    },
+    "lfm25vl450m": {
+      "audit": {
+        "base": {
+          "n_rows": 2500,
+          "pred_or_correct_mismatches": [],
+          "sha256": "d807631f8cb1e651e8b92e6d5f83e9982ebaafa627ae2884277922ee11c6c0e4"
+        },
+        "ft": {
+          "n_rows": 2500,
+          "pred_or_correct_mismatches": [],
+          "sha256": "530b52ab9caf015a04f8ee243f9706ea63b2d7670231c26070b34138147a4f6e"
+        }
+      },
+      "results": {
+        "mmstar": {
+          "n": 1500,
+          "base_correct": 577,
+          "ft_correct": 589,
+          "both_correct": 509,
+          "both_wrong": 843,
+          "base_only": 68,
+          "ft_only": 80,
+          "delta": 0.008,
+          "mcnemar_exact_p": 0.3659440738175881,
+          "paired_bootstrap_95ci": [
+            -0.008,
+            0.024
+          ],
+          "bootstrap_replicates": 100000,
+          "bootstrap_seed": 20261117
+        },
+        "mmlu": {
+          "n": 1000,
+          "base_correct": 399,
+          "ft_correct": 392,
+          "both_correct": 364,
+          "both_wrong": 573,
+          "base_only": 35,
+          "ft_only": 28,
+          "delta": -0.007,
+          "mcnemar_exact_p": 0.4499625362902225,
+          "paired_bootstrap_95ci": [
+            -0.023,
+            0.008
+          ],
+          "bootstrap_replicates": 100000,
+          "bootstrap_seed": 20261117
+        }
+      }
+    }
+  },
+  "generation": {
+    "lfm25vl450m-ac-lora_base_general": {
+      "mmstar": {
+        "n": 1500,
+        "correct": 624,
+        "unparsed": 0,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": []
+      },
+      "mmlu": {
+        "n": 1000,
+        "correct": 394,
+        "unparsed": 19,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": [
+          "To solve the problem, we need to find the sum of all integers \\( k \\) such that \\(\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}\\).\n\nFirst, let's calculate the binomial coefficients:\n\\[\n\\binom{23",
+          "The smallest positive integer with factors of 16, 15, and 12 is 840.\n\nThe prime factorization of 840 is \\(2^3 \\times 3 \\times 5 \\times 7\\).\n\nThe smallest positive integer with these prime factors is \\(2^3 \\times ",
+          "To find the solid angle subtended by an area of 2400 cm\u00b2 on the surface of a sphere of diameter 1.2 m, we can use the formula for solid angle in spherical coordinates:\n\n\\[\n\\Omega = \\frac{\\text{Area}}{\\pi r^2}\n\\]\n\nwhere \\( r",
+          "To find the ones digit of the product $1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdot 5 \\cdot 6 \\cdot 7 \\cdot 8 \\cdot 9$, we need to determine the ones digit of each number in the product and then find the ones digit of the",
+          "The equation of the circle is $x^2 + 12y + 57 = -y^2 - 10x$. To find the center $(a, b)$ and radius $r$, we complete the square for both $x$ and $y$ terms.\n\nFor $x^2 + "
+        ]
+      }
+    },
+    "lfm25vl450m-ac-lora_ft_general": {
+      "mmstar": {
+        "n": 1500,
+        "correct": 613,
+        "unparsed": 0,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": []
+      },
+      "mmlu": {
+        "n": 1000,
+        "correct": 383,
+        "unparsed": 23,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": [
+          "To solve the problem, we need to find the sum of all integers \\( k \\) such that \\(\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}\\).\n\nFirst, let's calculate the values of \\(\\binom{23}{4}\\",
+          "The smallest positive integer with factors of 16, 15, and 12 is 840.\n\nThe prime factorization of 840 is $2^3 \\times 3^1 \\times 5^1 \\times 7^1$.\n\nThe smallest positive integer with factors of 16, ",
+          "The autocorrelation function (acf) and partial autocorrelation function (pacf) are both used to analyze the time series data. They provide information about the correlation between the series and its lagged values.\n\ni) The acf and pacf will always be identical at lag one whatever the model",
+          "The solid angle subtended by an area of 2400 cm\u00b2 on the surface of a sphere of diameter 1.2 m is 2/5.\n\nThe formula for the solid angle subtended by an area is:\n\n\\[ \\Omega = \\frac{\\pi}{2} \\times \\text{A",
+          "To find the ones digit of the product $1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdot 5 \\cdot 6 \\cdot 7 \\cdot 8 \\cdot 9$, we need to determine the ones digit of each number in the product and then find the ones digit of the"
+        ]
+      }
+    },
+    "lfm3vl2b-ac-lora_base_general": {
+      "mmstar": {
+        "n": 1500,
+        "correct": 691,
+        "unparsed": 280,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": [
+          "The user wants me to look at the image, count objects, subtract certain categories, and give the final count.\n\nLet me first identify all objects in the image carefully.\n\nLooking at the image:\n\n- A blue cube (large, matte/rubber)\n- A red cube (small, metallic/shiny)\n- A",
+          "The stem-and-leaf plot shows the number of actors per movie. To find how many movies had at least 30 actors but fewer than 47 actors:\n\n- **Stem 3**: Leaves are 6 and 9 \u2192 values 36, 39 (2 movies)\n- **Stem 4**:",
+          "The user wants me to look at the image and determine the length of the gray line to the nearest centimeter.\n\nLet me look carefully at the image. There's a ruler marked from 0 cm to 10 cm. Above it is a gray horizontal line. I need to figure out where the line starts and ends",
+          "The smallest number of passengers is found by looking at the smallest stem and leaf combination. The smallest stem is 4, and its only leaf is 0, which represents the number 40. Therefore, the smallest number of passengers is 40.\n\nThe correct option is (D). \n\nD",
+          "The user asks to find the missing term in a 3x3 grid of numbers. Let's analyze the pattern.\n\nGrid:\nRow 1: 6, 9, 15\nRow 2: 8, 12, 20\nRow 3: 4, 6, ?\n\nLet"
+        ]
+      },
+      "mmlu": {
+        "n": 1000,
+        "correct": 286,
+        "unparsed": 534,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": [
+          "The patient is 75 years old with fatigue and normal physical activity. Laboratory findings show a leukocytosis (25.0 \u00d7 10^9/L) and a high percentage of mature-appearing lymphocytes (97%). Immunohistochemistry confirms B-cell origin. These features are consistent with chronic lymphocytic leukemia (C",
+          "The question asks which options are spatial clustering algorithms. Let's analyze each choice:\n\n- **A. Partitioning-based clustering**: This is a type of clustering algorithm where data points are divided into distinct groups (clusters). It is not inherently spatial but can be applied to spatial data. However, partitioning methods like k-me",
+          "The correct answer is $\\boxed{B}$. \n\n**Explanation:**\nFor a function that is both increasing and concave up on the interval \\([a, b]\\), the trapezoid sum \\(R\\) (using left endpoints) will be the largest among the four sums because the function values are increasing, leading to overestimation. The",
+          "The correct answer is **B**. \n\n**Explanation:**  \nWalzer's approach to counterterrorism emphasizes minimizing collateral damage and avoiding harm to both terrorists and civilians. This aligns with the principle of proportionality in conflict resolution, where actions must be measured against their potential harm to non-combatants. Option",
+          "The distinction between general and particular jurisprudence is a key concept in legal philosophy, particularly associated with John Austin. Austin distinguished between general rules (which apply to all cases) and particular rules (which address specific situations). Therefore, the correct answer is:\n\nC. Austin\n\n\\boxed{C}"
+        ]
+      }
+    },
+    "lfm3vl2b-ac-lora_ft_general": {
+      "mmstar": {
+        "n": 1500,
+        "correct": 833,
+        "unparsed": 75,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": [
+          "Option B: liquid metallic hydrogen</think>Option B: liquid metallic hydrogen",
+          "To find how much higher the fare for a car on the Mukilteu-Clinton ferry is than on the Southport-Fort Fisher ferry, subtract the fare for a car on the Southport-Fort Fisher ferry from the fare for a car on the Mukilteu-Clinton ferry.\n\nThe fare for a car on",
+          "The answer is B.</think>To solve the problem, we need to find the measure of angle CAB.\n\n1. Since CD is a tangent to the circle O at point C, we know that OC is perpendicular to CD. Therefore, angle OCD = 90\u00b0.\n\n2. Given that angle DCB = 40",
+          "The answer to this problem is C.</think>\\boxed{C}",
+          "The given information tells us that M and N are the midpoints of AC and BC respectively. Therefore, MN is the midsegment of triangle ABC. According to the midsegment theorem, the length of the midsegment is half the length of the third side. Hence, AB = 2 \u00d7 MN = 2 \u00d7 "
+        ]
+      },
+      "mmlu": {
+        "n": 1000,
+        "correct": 458,
+        "unparsed": 131,
+        "stored_pred_mismatch": 0,
+        "unparsed_examples": [
+          "The correct answer is B.</think>\\boxed{B}",
+          "C. illusory correlation</think>{\"answer\":\"C\"}",
+          "The correct answer is D.</think>\\boxed{D}",
+          "The correct answer is B.</think>\\boxed{B}",
+          "B</think>\\boxed{B}"
+        ]
+      }
+    }
+  }
+}

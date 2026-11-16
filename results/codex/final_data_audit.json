@@ -1,0 +1,111 @@
+{
+  "dataset": "experimentalmachines/AndroidControl-screen-agent-sft",
+  "revision": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+  "splits": {
+    "test": {
+      "n_rows": 18415,
+      "n_episodes": 1543,
+      "outside_official_split": [],
+      "missing_official_episodes": [],
+      "duplicate_keys": 0,
+      "modes_terminals": {
+        "high/terminal=False": 8444,
+        "low/terminal=False": 8428,
+        "high/terminal=True": 1543
+      },
+      "action_counts": {
+        "open_app": 1208,
+        "click": 10147,
+        "input_text": 1264,
+        "status": 1543,
+        "navigate_back": 686,
+        "wait": 1128,
+        "scroll": 2421,
+        "long_press": 18
+      }
+    },
+    "train": {
+      "n_rows": 99216,
+      "n_episodes": 13573,
+      "outside_official_split": [],
+      "missing_official_episodes": [
+        1502,
+        1958,
+        3244,
+        3570,
+        3986,
+        4739,
+        4933,
+        5290,
+        5334,
+        5883,
+        6100,
+        6898,
+        8029,
+        8512,
+        8741,
+        9617,
+        9948,
+        11453,
+        12362,
+        13538,
+        14553,
+        14564,
+        14977,
+        15539,
+        15738,
+        15813,
+        17937,
+        18556,
+        19063,
+        19466
+      ],
+      "duplicate_keys": 0,
+      "modes_terminals": {
+        "high/terminal=False": 74595,
+        "low/terminal=False": 11048,
+        "high/terminal=True": 13573
+      },
+      "action_counts": {
+        "open_app": 5768,
+        "click": 53210,
+        "wait": 5921,
+        "status": 13573,
+        "navigate_back": 3058,
+        "scroll": 11276,
+        "input_text": 6199,
+        "long_press": 177,
+        "navigate_home": 34
+      }
+    },
+    "val": {
+      "n_rows": 827,
+      "n_episodes": 137,
+      "outside_official_split": [],
+      "missing_official_episodes": [],
+      "duplicate_keys": 0,
+      "modes_terminals": {
+        "high/terminal=False": 690,
+        "high/terminal=True": 137
+      },
+      "action_counts": {
+        "navigate_back": 29,
+        "click": 420,
+        "wait": 56,
+        "status": 137,
+        "open_app": 45,
+        "scroll": 86,
+        "input_text": 53,
+        "long_press": 1
+      }
+    }
+  },
+  "intersections": {
+    "test/train": 0,
+    "test/val": 0,
+    "train/val": 0
+  },
+  "frozen_gt_missing": 0,
+  "frozen_gt_extra": 0,
+  "frozen_gt_field_mismatches": []
+}

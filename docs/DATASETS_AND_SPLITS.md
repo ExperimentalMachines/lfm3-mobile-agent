@@ -14,7 +14,7 @@ on as many as the GPU budget allows, see `results/`).
 |---|---|---|---|
 | train | AndroidControl official **train** ids (13,603 eps), minus episodes touching AndroidWorld apps | ~74.7k steps → ~99k rows (high-level + 15% low-level copies + 1 terminal "complete" step per episode) | SFT |
 | val | AndroidControl official **validation** ids (137 eps / 690 steps + terminals) | ~830 rows | eval loss / checkpoint sanity |
-| test | AndroidControl official **test** ids (1,543 eps / 8,444 steps), high-level AND low-level modes, + 1,543 terminal steps (scored separately) | 8,444 × 2 + 1,543 | frozen offline benchmark, broken down by IDD / app_unseen / task_unseen / category_unseen |
+| test | AndroidControl official **test** ids (1,543 eps / 8,444 steps), high-level AND low-level modes, + 1,543 terminal steps (scored separately) | 8,444 high + 8,428 low + 1,543 = 18,415 | frozen offline benchmark, broken down by IDD / app_unseen / task_unseen / category_unseen |
 | test (bbox) | AndroidControl-Curated `gt_max_bbox` joined on (episode, step) | 8,435 high-level steps | strict "hit the element" click accuracy |
 | online | AndroidWorld, 116 tasks, `android_world` suite, seed 30 | 116 episodes | headline benchmark |
 
@@ -71,8 +71,9 @@ emulator — not from repeating AndroidControl.
 
 ## Known gaps
 
-* No public dataset has real `answer` actions → AndroidWorld information-retrieval tasks are expected
-  to stay weak.
+* AndroidControl has **zero** `answer`, `keyboard_enter` and `infeasible` labels, so the v1 models never emit
+  `answer` and AndroidWorld information-retrieval tasks fail by construction. Screen-QA style data (e.g. ScreenQA,
+  see `DATA_V2_PLAN.md`) is the planned source of answer supervision for v2.
 * AndroidControl has no explicit termination; we synthesize `status: complete` on each episode's final
   screenshot (assumes demonstrations are successful).
 * AndroidControl has no `keyboard_enter`; AndroidWorld's `input_text` auto-presses Enter, which covers

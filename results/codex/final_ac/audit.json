@@ -1,0 +1,2739 @@
+{
+  "gt": {
+    "sha256": "1926a44e0ffa7940b28866907d28913a5bd4af38f5b67463798cec8b6df25e84",
+    "n": 18415,
+    "mode_terminal_counts": {
+      "high/terminal=False": 8444,
+      "low/terminal=False": 8428,
+      "high/terminal=True": 1543
+    },
+    "episodes": 1543,
+    "official_split_sizes": {
+      "test": 1543,
+      "validation": 137,
+      "train": 13603
+    },
+    "split_intersections": {
+      "test/validation": 0,
+      "test/train": 0,
+      "train/validation": 0
+    },
+    "test_id_diff": []
+  },
+  "predictions": [
+    {
+      "name": "lfm25vl450m-ac-lora_base",
+      "identity": {
+        "model_expected": "LiquidAI/LFM2.5-VL-450M",
+        "model_manifest": "LiquidAI/LFM2.5-VL-450M",
+        "row_models": {
+          "LiquidAI/LFM2.5-VL-450M": 18415
+        },
+        "row_config_hashes": {
+          "1f23dd50f244806f": 18415
+        },
+        "manifest_hash": "1f23dd50f244806f",
+        "recomputed_config_hash": "1f23dd50f244806f",
+        "config_hash_valid": true,
+        "model_identity_consistent": true,
+        "rows": 18415,
+        "expected": 18415,
+        "manifest_n": 18415,
+        "duplicates": 0,
+        "missing": 0,
+        "extra": 0,
+        "manifest": {
+          "model": "LiquidAI/LFM2.5-VL-450M",
+          "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+          "n_rows": 18415,
+          "enable_thinking": 0,
+          "max_pixels": 0,
+          "filter_mode": null,
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256,
+          "do_sample": false,
+          "min_pixels": 65536,
+          "model_fingerprint": "hub:LiquidAI/LFM2.5-VL-450M",
+          "config_hash": "1f23dd50f244806f"
+        }
+      },
+      "independent_exit": 0,
+      "production_exit": 0,
+      "parser_counts_ind_len_strict": {
+        "(False, False, False)": 17753,
+        "(True, True, True)": 531,
+        "(False, True, False)": 131
+      },
+      "score_differences": {
+        "high/terminal=False/parsed=(False, True, False)/success=(False, False, False)": 45,
+        "low/terminal=False/parsed=(False, True, False)/success=(False, False, False)": 38,
+        "high/terminal=True/parsed=(False, True, False)/success=(False, False, False)": 20,
+        "high/terminal=False/parsed=(False, True, False)/success=(False, True, False)": 18,
+        "low/terminal=False/parsed=(False, True, False)/success=(False, True, False)": 10
+      },
+      "examples": {
+        "high/terminal=False/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              1045,
+              14,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                928
+              ]
+            },
+            "raw": "Click on the Milch option -> {\"action_type\":\"click\",\"point_2d\":[381,671]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                381.0,
+                671.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1344,
+              2,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                209,
+                375
+              ]
+            },
+            "raw": "The next action is to click on the podcasts -> {\"action_type\":\"click\",\"point_2d\":[422,505]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                422.0,
+                505.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              2060,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "down"
+            },
+            "raw": "The next action is to click on the podcasts -> {\"action_type\":\"click\",\"point_2d\":[500,875]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                875.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              2582,
+              9,
+              "high"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "down"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[168,130]}\n{\"action_type\":\"scroll\",\"direction\":\"down\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                168.0,
+                130.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              2582,
+              11,
+              "high"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "down"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[572,669]}\n{\"action_type\":\"input_text\",\"text\":\"I love both ways. My favorite traditional medium is watercolor. I also love using gouaches. Switching from traditional media to digital and vice versa is what I do all the time. I also regularly search for ways to achieve a traditional, painterly look in digital painting.\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                572.0,
+                669.0
+              ]
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              1170,
+              4,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                387,
+                268
+              ]
+            },
+            "raw": "The next action is to click on the Israel Hamas news -> {\"action_type\":\"click\",\"point_2d\":[498,590]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                498.0,
+                590.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1194,
+              4,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                798,
+                133
+              ]
+            },
+            "raw": "The next action you should take is to click on the \"Radial Fill\" effect. This will allow you to apply a radial gradient fill to your son's drawing in the Sketchbook app.\n\nHere's the step-by-step process:\n\n1. Click on the tool box. -> {\"action_type\":\"click\",\"point_2d\":[448,87]}\n2. Click on the tool fill. -> {\"action_type\":\"click\",\"point_2d\":[669,167]}\n3. Click on the box at the right side. -> {\"action_type\":\"click\",\"point_2d\":[516,127]}\n4. Click on the box at the right side. -> {\"action_type\":\"wait\"}\n\nAfter completing these steps, you should be able to apply the radial fill effect to your son's drawing in the Sketchbook app.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                448.0,
+                87.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1672,
+              7,
+              "low"
+            ],
+            "gt": {
+              "action_type": "navigate_back"
+            },
+            "raw": "The next action is to click on the three dots icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[924,87]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                924.0,
+                87.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              3000,
+              2,
+              "low"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "down"
+            },
+            "raw": "The next action is to \"click on the Andi Fantom Basketball -> {\"action_type\":\"click\",\"point_2d\":[744,469]}.\"",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                744.0,
+                469.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              3000,
+              5,
+              "low"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "down"
+            },
+            "raw": "The next action is to \"Click on the Andi Fantom Basketball -> {\"action_type\":\"click\",\"point_2d\":[744,469]}\"",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                744.0,
+                469.0
+              ]
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=True/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              1727,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to click on the layers icon to view the public transport filer -> {\"action_type\":\"click\",\"point_2d\":[131,761]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                131.0,
+                761.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1741,
+              9,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to \"Open Khan Academy app -> {\"action_type\":\"click\",\"point_2d\":[557,224]}\"",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                557.0,
+                224.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              2612,
+              11,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to click on the Home button -> {\"action_type\":\"click\",\"point_2d\":[137,634]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                137.0,
+                634.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              3948,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to click on the Add button -> {\"action_type\":\"click\",\"point_2d\":[525,464]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                525.0,
+                464.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              5680,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to \"Click on the Start Workout button at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[499,109]}\"",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                499.0,
+                109.0
+              ]
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=False/parsed=(False, True, False)/success=(False, True, False)": [
+          {
+            "key": [
+              3898,
+              1,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                541,
+                835
+              ]
+            },
+            "raw": "The next action is to click on the form Personal details -> {\"action_type\":\"click\",\"point_2d\":[500,513]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                513.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              5342,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                908,
+                515
+              ]
+            },
+            "raw": "The next action is to click on the Reference Manual -> {\"action_type\":\"click\",\"point_2d\":[499,397]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                499.0,
+                397.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              6046,
+              2,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                209,
+                226
+              ]
+            },
+            "raw": "The next action is to click on the forward icon at the bottom right corner of the art -> {\"action_type\":\"click\",\"point_2d\":[906,368]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                906.0,
+                368.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              6046,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                524,
+                278
+              ]
+            },
+            "raw": "The next action is to click on the forward icon at the bottom right corner of the art -> {\"action_type\":\"click\",\"point_2d\":[906,368]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                906.0,
+                368.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              6418,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "right"
+            },
+            "raw": "The next action is to \"Swipe left to view the MACHINING AND SURFACE FINISHING ARE CONVERGING article -> {\"action_type\":\"scroll\",\"direction\":\"right\"}\".",
+            "independent": null,
+            "lenient": {
+              "action_type": "scroll",
+              "direction": "right"
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(False, True, False)/success=(False, True, False)": [
+          {
+            "key": [
+              6046,
+              2,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                209,
+                226
+              ]
+            },
+            "raw": "The next action is to click on the forward icon at the bottom right corner of the art -> {\"action_type\":\"click\",\"point_2d\":[906,368]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                906.0,
+                368.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              12045,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Daff Moon"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"text\":\"Daff Moon app\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "text": "Daff Moon app",
+              "app_name": "Daff Moon app"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              12434,
+              7,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                624,
+                660
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[265,430]}\n{\"action_type\":\"input_text\",\"text\":\"SHEIN X ENDLESS SUMMER' I PARIS\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                265.0,
+                430.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              14076,
+              1,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                499,
+                383
+              ]
+            },
+            "raw": "The next action is to click on the third icon below the locations. -> {\"action_type\":\"click\",\"point_2d\":[556,197]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                556.0,
+                197.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              16830,
+              2,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                321,
+                240
+              ]
+            },
+            "raw": "The next action is to click on the share button next to save -> {\"action_type\":\"click\",\"point_2d\":[926,775]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                926.0,
+                775.0
+              ]
+            },
+            "strict": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "lfm25vl450m-ac-lora_ft",
+      "identity": {
+        "model_expected": "/content/runs/lfm25vl450m-ac-lora/merged",
+        "model_manifest": "/content/runs/lfm25vl450m-ac-lora/merged",
+        "row_models": {
+          "/content/runs/lfm25vl450m-ac-lora/merged": 18415
+        },
+        "row_config_hashes": {
+          "f467c5682e9aa8fa": 18415
+        },
+        "manifest_hash": "f467c5682e9aa8fa",
+        "recomputed_config_hash": "f467c5682e9aa8fa",
+        "config_hash_valid": true,
+        "model_identity_consistent": true,
+        "rows": 18415,
+        "expected": 18415,
+        "manifest_n": 18415,
+        "duplicates": 0,
+        "missing": 0,
+        "extra": 0,
+        "manifest": {
+          "model": "/content/runs/lfm25vl450m-ac-lora/merged",
+          "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+          "n_rows": 18415,
+          "enable_thinking": 0,
+          "max_pixels": 0,
+          "filter_mode": null,
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256,
+          "do_sample": false,
+          "min_pixels": 65536,
+          "model_fingerprint": "0cc239497a006fcf",
+          "config_hash": "f467c5682e9aa8fa"
+        }
+      },
+      "independent_exit": 0,
+      "production_exit": 0,
+      "parser_counts_ind_len_strict": {
+        "(True, True, True)": 18415
+      },
+      "score_differences": {
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": 3,
+        "low/terminal=False/parsed=(True, True, True)/success=(False, True, True)": 5
+      },
+      "examples": {
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": [
+          {
+            "key": [
+              2121,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Weather&Radar"
+            },
+            "raw": "<think>Open Weather & Radar app</think>{\"action_type\":\"open_app\",\"app_name\":\"Weather & Radar\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            }
+          },
+          {
+            "key": [
+              13733,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Weather&Radar"
+            },
+            "raw": "<think>Open the Weather & Radar app.</think>{\"action_type\":\"open_app\",\"app_name\":\"Weather & Radar\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            }
+          },
+          {
+            "key": [
+              936,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder - URecorder"
+            },
+            "raw": "<think>Open the Voice Recorder-URecorder app.</think>{\"action_type\":\"open_app\",\"app_name\":\"Voice Recorder-URecorder\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            }
+          }
+        ],
+        "low/terminal=False/parsed=(True, True, True)/success=(False, True, True)": [
+          {
+            "key": [
+              2121,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Weather&Radar"
+            },
+            "raw": "<think>Open Weather & Radar app</think>{\"action_type\":\"open_app\",\"app_name\":\"Weather & Radar\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            }
+          },
+          {
+            "key": [
+              13733,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Weather&Radar"
+            },
+            "raw": "<think>Open the Weather & Radar app.</think>{\"action_type\":\"open_app\",\"app_name\":\"Weather & Radar\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            }
+          },
+          {
+            "key": [
+              15658,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Moon+ Reader"
+            },
+            "raw": "<think>Open the Moon+Reader Books app</think>{\"action_type\":\"open_app\",\"app_name\":\"Moon+Reader Books\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Moon+Reader Books"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Moon+Reader Books"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Moon+Reader Books"
+            }
+          },
+          {
+            "key": [
+              936,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder - URecorder"
+            },
+            "raw": "<think>Open the Voice Recorder-URecorder app.</think>{\"action_type\":\"open_app\",\"app_name\":\"Voice Recorder-URecorder\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            }
+          },
+          {
+            "key": [
+              3128,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "To Do List"
+            },
+            "raw": "<think>Open the to-do list app.</think>{\"action_type\":\"open_app\",\"app_name\":\"To-Do List\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "To-Do List"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "To-Do List"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "To-Do List"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "lfm25vl450m_base",
+      "identity": {
+        "model_expected": "LiquidAI/LFM2.5-VL-450M",
+        "model_manifest": "LiquidAI/LFM2.5-VL-450M",
+        "row_models": {
+          "LiquidAI/LFM2.5-VL-450M": 1632
+        },
+        "row_config_hashes": {
+          "<missing>": 1632
+        },
+        "manifest_hash": null,
+        "recomputed_config_hash": "c8265f1962ee5ec9",
+        "config_hash_valid": false,
+        "model_identity_consistent": true,
+        "rows": 1632,
+        "expected": 18415,
+        "manifest_n": 18415,
+        "duplicates": 0,
+        "missing": 16783,
+        "extra": 0,
+        "manifest": {
+          "model": "LiquidAI/LFM2.5-VL-450M",
+          "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+          "n_rows": 18415,
+          "enable_thinking": 0,
+          "max_pixels": 0,
+          "filter_mode": null,
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256
+        }
+      },
+      "independent_exit": 0,
+      "production_exit": 2,
+      "parser_counts_ind_len_strict": {
+        "(False, False, False)": 1575,
+        "(True, True, True)": 50,
+        "(False, True, False)": 7
+      },
+      "score_differences": {
+        "high/terminal=False/parsed=(False, True, False)/success=(False, False, False)": 3,
+        "low/terminal=False/parsed=(False, True, False)/success=(False, False, False)": 2,
+        "high/terminal=True/parsed=(False, True, False)/success=(False, False, False)": 2
+      },
+      "examples": {
+        "high/terminal=False/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              1045,
+              14,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                928
+              ]
+            },
+            "raw": "Click on the Milch option -> {\"action_type\":\"click\",\"point_2d\":[381,671]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                381.0,
+                671.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1344,
+              2,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                209,
+                375
+              ]
+            },
+            "raw": "The next action is to click on the podcasts -> {\"action_type\":\"click\",\"point_2d\":[422,505]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                422.0,
+                505.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              2060,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "scroll",
+              "direction": "down"
+            },
+            "raw": "The next action is to click on the podcasts -> {\"action_type\":\"click\",\"point_2d\":[500,875]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                875.0
+              ]
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              1170,
+              4,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                387,
+                268
+              ]
+            },
+            "raw": "The next action is to click on the Israel Hamas news -> {\"action_type\":\"click\",\"point_2d\":[498,590]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                498.0,
+                590.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1672,
+              7,
+              "low"
+            ],
+            "gt": {
+              "action_type": "navigate_back"
+            },
+            "raw": "The next action is to click on the three dots icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[924,87]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                924.0,
+                87.0
+              ]
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=True/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              1727,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to click on the layers icon to view the public transport filer -> {\"action_type\":\"click\",\"point_2d\":[131,761]}.",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                131.0,
+                761.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1741,
+              9,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "The next action is to \"Open Khan Academy app -> {\"action_type\":\"click\",\"point_2d\":[557,224]}\"",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                557.0,
+                224.0
+              ]
+            },
+            "strict": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "lfm3vl2b-ac-lora_base",
+      "identity": {
+        "model_expected": "LiquidAI/LFM3-VL-2B",
+        "model_manifest": "LiquidAI/LFM3-VL-2B",
+        "row_models": {
+          "LiquidAI/LFM3-VL-2B": 18415
+        },
+        "row_config_hashes": {
+          "eca7926adcdddb20": 18415
+        },
+        "manifest_hash": "eca7926adcdddb20",
+        "recomputed_config_hash": "eca7926adcdddb20",
+        "config_hash_valid": true,
+        "model_identity_consistent": true,
+        "rows": 18415,
+        "expected": 18415,
+        "manifest_n": 18415,
+        "duplicates": 0,
+        "missing": 0,
+        "extra": 0,
+        "manifest": {
+          "model": "LiquidAI/LFM3-VL-2B",
+          "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+          "n_rows": 18415,
+          "enable_thinking": 0,
+          "max_pixels": 774400,
+          "filter_mode": null,
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256,
+          "do_sample": false,
+          "min_pixels": 65536,
+          "model_fingerprint": "hub:LiquidAI/LFM3-VL-2B",
+          "config_hash": "eca7926adcdddb20"
+        }
+      },
+      "independent_exit": 0,
+      "production_exit": 0,
+      "parser_counts_ind_len_strict": {
+        "(True, True, False)": 8896,
+        "(True, True, True)": 7327,
+        "(False, False, False)": 1077,
+        "(False, True, False)": 1115
+      },
+      "score_differences": {
+        "high/terminal=False/parsed=(True, True, False)/success=(False, False, False)": 2619,
+        "low/terminal=False/parsed=(True, True, False)/success=(True, True, False)": 3313,
+        "low/terminal=False/parsed=(True, True, False)/success=(False, False, False)": 1035,
+        "high/terminal=False/parsed=(True, True, False)/success=(True, True, False)": 1243,
+        "high/terminal=False/parsed=(False, True, False)/success=(False, True, False)": 202,
+        "high/terminal=True/parsed=(True, True, False)/success=(False, False, False)": 686,
+        "high/terminal=False/parsed=(False, True, False)/success=(False, False, False)": 285,
+        "low/terminal=False/parsed=(False, True, False)/success=(False, True, False)": 431,
+        "low/terminal=False/parsed=(False, True, False)/success=(False, False, False)": 168,
+        "high/terminal=True/parsed=(False, True, False)/success=(False, False, False)": 29,
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": 1
+      },
+      "examples": {
+        "high/terminal=False/parsed=(True, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              27,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Cx File Explorer"
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\":[66,87],\"description\": \"Go back to the previous screen to access the file explorer and rename the folder.\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                66,
+                87
+              ],
+              "description": "Go back to the previous screen to access the file explorer and rename the folder."
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                66,
+                87
+              ],
+              "description": "Go back to the previous screen to access the file explorer and rename the folder."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              27,
+              1,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                951,
+                256
+              ]
+            },
+            "raw": "{\"action_type\":\"navigate_home\",\"point_2d\":[92,137],\"arguments\":{}}",
+            "independent": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                92,
+                137
+              ],
+              "arguments": {}
+            },
+            "lenient": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                92,
+                137
+              ],
+              "arguments": {}
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              55,
+              1,
+              "high"
+            ],
+            "gt": {
+              "action_type": "wait"
+            },
+            "raw": "{\"action_type\":\"navigate_home\",\"point_2d\":[500, 500]}",
+            "independent": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                500,
+                500
+              ]
+            },
+            "lenient": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                500,
+                500
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              84,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Yalla Toys"
+            },
+            "raw": "{\"action_type\": \"navigate_back\", \"point_2d\": [50, 87], \"label\": \"Go back to the previous screen to start browsing for Jumanji Game in the Games & puzzle section in toys for all categories.\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                50,
+                87
+              ],
+              "label": "Go back to the previous screen to start browsing for Jumanji Game in the Games & puzzle section in toys for all categories."
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                50,
+                87
+              ],
+              "label": "Go back to the previous screen to start browsing for Jumanji Game in the Games & puzzle section in toys for all categories."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              84,
+              4,
+              "high"
+            ],
+            "gt": {
+              "action_type": "wait"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[468, 625],\"direction\":\"left\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                468,
+                625
+              ],
+              "direction": "left"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                468.0,
+                625.0
+              ],
+              "direction": "left"
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(True, True, False)/success=(True, True, False)": [
+          {
+            "key": [
+              27,
+              1,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                951,
+                256
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[950,255],\"label\":\"Click on the square icon next to the Flowers folder\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                950,
+                255
+              ],
+              "label": "Click on the square icon next to the Flowers folder"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                950.0,
+                255.0
+              ],
+              "label": "Click on the square icon next to the Flowers folder"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              27,
+              3,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                920,
+                839
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[875, 940],\"reference_text\":\"Click on the cross icon on the keyboard\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                875,
+                940
+              ],
+              "reference_text": "Click on the cross icon on the keyboard"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                875.0,
+                940.0
+              ],
+              "reference_text": "Click on the cross icon on the keyboard"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              27,
+              5,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                827,
+                396
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[822,395],\"label\":\"Click on the OK button\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                822,
+                395
+              ],
+              "label": "Click on the OK button"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                822.0,
+                395.0
+              ],
+              "label": "Click on the OK button"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              45,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "navigate_back"
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\":[67,85],\"reason\":\"Need to exit the current Display settings screen to access location permissions for the Google app.\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                67,
+                85
+              ],
+              "reason": "Need to exit the current Display settings screen to access location permissions for the Google app."
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                67,
+                85
+              ],
+              "reason": "Need to exit the current Display settings screen to access location permissions for the Google app."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              45,
+              1,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                271,
+                551
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[271, 550],\"label\":\"Click on Location setting\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                271,
+                550
+              ],
+              "label": "Click on Location setting"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                271.0,
+                550.0
+              ],
+              "label": "Click on Location setting"
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(True, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              27,
+              2,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                940
+              ]
+            },
+            "raw": "{\"action_type\":\"navigate_home\",\"point_2d\":[500, 934],\"label\":\"Click on the rename option at the bottom of the screen\"}",
+            "independent": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                500,
+                934
+              ],
+              "label": "Click on the rename option at the bottom of the screen"
+            },
+            "lenient": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                500,
+                934
+              ],
+              "label": "Click on the rename option at the bottom of the screen"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              54,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                502,
+                500
+              ]
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\":[499, 860],\"label\":\"Go back\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                499,
+                860
+              ],
+              "label": "Go back"
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                499,
+                860
+              ],
+              "label": "Go back"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              55,
+              1,
+              "low"
+            ],
+            "gt": {
+              "action_type": "wait"
+            },
+            "raw": "{\"action_type\":\"navigate_home\",\"point_2d\":[500,500]}",
+            "independent": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                500,
+                500
+              ]
+            },
+            "lenient": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                500,
+                500
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              55,
+              2,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                333,
+                952
+              ]
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\":[500, 83],\"reason\":\"To go to the Menu section, I need to navigate back to the main screen of the Zara app.\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                500,
+                83
+              ],
+              "reason": "To go to the Menu section, I need to navigate back to the main screen of the Zara app."
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                500,
+                83
+              ],
+              "reason": "To go to the Menu section, I need to navigate back to the main screen of the Zara app."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              84,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Yalla Toys"
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\": [50, 87], \"reasoning\": \"The user wants to go back to the YallaToys app after opening it, as the current screen shows an Amazon product page, not the YallaToys app.\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                50,
+                87
+              ],
+              "reasoning": "The user wants to go back to the YallaToys app after opening it, as the current screen shows an Amazon product page, not the YallaToys app."
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                50,
+                87
+              ],
+              "reasoning": "The user wants to go back to the YallaToys app after opening it, as the current screen shows an Amazon product page, not the YallaToys app."
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=False/parsed=(True, True, False)/success=(True, True, False)": [
+          {
+            "key": [
+              27,
+              5,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                827,
+                396
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[822,396],\"label\":\"Click on the cross icon on the keyboard\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                822,
+                396
+              ],
+              "label": "Click on the cross icon on the keyboard"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                822.0,
+                396.0
+              ],
+              "label": "Click on the cross icon on the keyboard"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              45,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "navigate_back"
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\":[67,85],\"description\":\"Go back to previous screen to access device location settings\"}",
+            "independent": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                67,
+                85
+              ],
+              "description": "Go back to previous screen to access device location settings"
+            },
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                67,
+                85
+              ],
+              "description": "Go back to previous screen to access device location settings"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              45,
+              1,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                271,
+                551
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[271, 551],\"label\":\"Turn on device location & give the location access to google app\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                271,
+                551
+              ],
+              "label": "Turn on device location & give the location access to google app"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                271.0,
+                551.0
+              ],
+              "label": "Turn on device location & give the location access to google app"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              45,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                257,
+                463
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[257,465],\"text\":\"Select Google app to grant location access\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                257,
+                465
+              ],
+              "text": "Select Google app to grant location access"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                257.0,
+                465.0
+              ],
+              "text": "Select Google app to grant location access"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              54,
+              1,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                502,
+                500
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[500,821],\"label\":\"Open the radio app and browse through the KRRO FM 103.7 radio stations that are available.\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                821
+              ],
+              "label": "Open the radio app and browse through the KRRO FM 103.7 radio stations that are available."
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                821.0
+              ],
+              "label": "Open the radio app and browse through the KRRO FM 103.7 radio stations that are available."
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=False/parsed=(False, True, False)/success=(False, True, False)": [
+          {
+            "key": [
+              45,
+              4,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                509,
+                490
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[383,488],\"label\":\"Allow all the time option\"}]",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                383.0,
+                488.0
+              ],
+              "label": "Allow all the time option"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              127,
+              3,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                691,
+                536
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[692,535],\"action_type\":\"click\",\"point_2d\":[692,535]}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                692.0,
+                535.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              136,
+              4,
+              "high"
+            ],
+            "gt": {
+              "action_type": "wait"
+            },
+            "raw": "{\"action_type\":\"select\",\"point_2d\":[425, 627],\"action_type\":\"wait\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "wait",
+              "point_2d": [
+                425,
+                627
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              136,
+              5,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                560,
+                234
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[278,237],\"label\":\"Click on the first suggestion\"}]",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                278.0,
+                237.0
+              ],
+              "label": "Click on the first suggestion"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              548,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Pinterest"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[848,536],\"label\":\"My particular favorite type of art is sculpture, so look for it on the Pinterest app.\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                848,
+                536
+              ],
+              "label": "My particular favorite type of art is sculpture, so look for it on the Pinterest app.",
+              "app_name": "My particular favorite type of art is sculpture, so look for it on the Pinterest app."
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=True/parsed=(True, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              45,
+              5,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[500, 490],\"label\":\"Select 'Allow all the time' to give location access to Google app'\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                490
+              ],
+              "label": "Select 'Allow all the time' to give location access to Google app'"
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                490.0
+              ],
+              "label": "Select 'Allow all the time' to give location access to Google app'"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              54,
+              2,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[500,819],\"label\":\"Open the radio app and browse through the KRRO FM 103.7 radio stations that are available.\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                819
+              ],
+              "label": "Open the radio app and browse through the KRRO FM 103.7 radio stations that are available."
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                819.0
+              ],
+              "label": "Open the radio app and browse through the KRRO FM 103.7 radio stations that are available."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              84,
+              5,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"wait\",\"point_2d\":[500,  536]}",
+            "independent": {
+              "action_type": "wait",
+              "point_2d": [
+                500,
+                536
+              ]
+            },
+            "lenient": {
+              "action_type": "wait",
+              "point_2d": [
+                500,
+                536
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              104,
+              4,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[500,169],\"reason\":\"The search for 'covid 19' returned relevant news articles, as indicated by the displayed content.\"}",
+            "independent": {
+              "action_type": "click",
+              "point_2d": [
+                500,
+                169
+              ],
+              "reason": "The search for 'covid 19' returned relevant news articles, as indicated by the displayed content."
+            },
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                169.0
+              ],
+              "reason": "The search for 'covid 19' returned relevant news articles, as indicated by the displayed content."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              122,
+              7,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"wait\",\"point_2d\":[500, 455],\"duration\":1000}",
+            "independent": {
+              "action_type": "wait",
+              "point_2d": [
+                500,
+                455
+              ],
+              "duration": 1000
+            },
+            "lenient": {
+              "action_type": "wait",
+              "point_2d": [
+                500,
+                455
+              ],
+              "duration": 1000
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=False/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              55,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "ZARA"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[149,530],\"label\":\"Next action\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                149,
+                530
+              ],
+              "label": "Next action",
+              "app_name": "Next action"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              55,
+              6,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                108,
+                274
+              ]
+            },
+            "raw": "{\"action_type\":\"select\",\"point_2d\":[783,84],\"action_type\":\"click\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                783.0,
+                84.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              127,
+              2,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                761,
+                247
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[772, 248],\"action_type\":\"input_text\",\"text\":\"Delete\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "input_text",
+              "point_2d": [
+                772,
+                248
+              ],
+              "text": "Delete"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              136,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Artsy"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[500, 500], \"label\":\"Next action\"}]",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                500
+              ],
+              "label": "Next action",
+              "app_name": "Next action"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              167,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                745,
+                541
+              ]
+            },
+            "raw": "{\"action_type\": \"open_app\", \"point_2d\": [500, 150], \"label\": \"Open the Aesthetic category to find sunflower artwork\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                150
+              ],
+              "label": "Open the Aesthetic category to find sunflower artwork",
+              "app_name": "Open the Aesthetic category to find sunflower artwork"
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(False, True, False)/success=(False, True, False)": [
+          {
+            "key": [
+              55,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "ZARA"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[149,530],\"label\":\"Open the Zara app\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                149,
+                530
+              ],
+              "label": "Open the Zara app",
+              "app_name": "Open the Zara app"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              104,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "SmartNews"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[500, 921],\"label\":\"Open the SmartNews App\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                921
+              ],
+              "label": "Open the SmartNews App",
+              "app_name": "Open the SmartNews App"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              127,
+              2,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                761,
+                247
+              ]
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[767,247],\"action_type\":\"click\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                767.0,
+                247.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              140,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "PocketBook"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[500, 500],\"label\":\"open the PocketBook app\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                500
+              ],
+              "label": "open the PocketBook app",
+              "app_name": "open the PocketBook app"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              185,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Stellarium"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[500, 800],\"label\":\"Go to the Stellarium app and track the movement of stars and planets.\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                800
+              ],
+              "label": "Go to the Stellarium app and track the movement of stars and planets.",
+              "app_name": "Go to the Stellarium app and track the movement of stars and planets."
+            },
+            "strict": null
+          }
+        ],
+        "low/terminal=False/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              190,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                617,
+                545
+              ]
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[612,525],\"label\":\"Open the Washington post app\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                612,
+                525
+              ],
+              "label": "Open the Washington post app",
+              "app_name": "Open the Washington post app"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              219,
+              6,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                167,
+                386
+              ]
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[180,337],\"label\":\"Open the Solomon Hart artist\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                180,
+                337
+              ],
+              "label": "Open the Solomon Hart artist",
+              "app_name": "Open the Solomon Hart artist"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              227,
+              1,
+              "low"
+            ],
+            "gt": {
+              "action_type": "click",
+              "point_2d": [
+                941,
+                87
+              ]
+            },
+            "raw": "{\"action_type\":\"long_press\",\"point_2d\":[939, 85],\"description\":\"Click on the three dot menu to access options like save article for later\"}]",
+            "independent": null,
+            "lenient": {
+              "action_type": "long_press",
+              "point_2d": [
+                939.0,
+                85.0
+              ],
+              "description": "Click on the three dot menu to access options like save article for later"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              567,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "SkyView Free"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[500, 500], \"label\":\"Goal: I want to know about the nearest bright star in the northeast direction on the SkyView app.\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                500
+              ],
+              "label": "Goal: I want to know about the nearest bright star in the northeast direction on the SkyView app.",
+              "app_name": "Goal: I want to know about the nearest bright star in the northeast direction on the SkyView app."
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              569,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Arts & Culture"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"point_2d\":[500, 1],\"name\":\"Art & Culture app\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "open_app",
+              "point_2d": [
+                500,
+                1
+              ],
+              "name": "Art & Culture app",
+              "app_name": "Art & Culture app"
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=True/parsed=(False, True, False)/success=(False, False, False)": [
+          {
+            "key": [
+              282,
+              6,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[499, 928],\"action_type\":\"navigate_home\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "navigate_home",
+              "point_2d": [
+                499,
+                928
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              300,
+              4,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"navigate_back\",\"point_2d\":[71,88],\"reference\":\"1\"}]",
+            "independent": null,
+            "lenient": {
+              "action_type": "navigate_back",
+              "point_2d": [
+                71,
+                88
+              ],
+              "reference": "1"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1300,
+              6,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[500,561],\"label\":\"click on Don't allow\"}]",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                500.0,
+                561.0
+              ],
+              "label": "click on Don't allow"
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              1895,
+              4,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[743,399],\"label\":\"Click on the Kuwaiti Dinar -> {\"action_type\":\"click\",\"point_2d\":[464,580]}\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "click",
+              "point_2d": [
+                464.0,
+                580.0
+              ]
+            },
+            "strict": null
+          },
+          {
+            "key": [
+              3319,
+              5,
+              "high"
+            ],
+            "gt": {
+              "action_type": "status",
+              "goal_status": "complete"
+            },
+            "raw": "{\"action_type\":\"click\",\"point_2d\":[933, 918],\"action_type\":\"long_press\"}",
+            "independent": null,
+            "lenient": {
+              "action_type": "long_press",
+              "point_2d": [
+                933.0,
+                918.0
+              ]
+            },
+            "strict": null
+          }
+        ],
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": [
+          {
+            "key": [
+              13733,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Weather&Radar"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"app_name\":\"Weather & Radar\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Weather & Radar"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "lfm3vl2b-ac-lora_ft",
+      "identity": {
+        "model_expected": "/content/runs/lfm3vl2b-ac-lora/merged",
+        "model_manifest": "/content/runs/lfm3vl2b-ac-lora/merged",
+        "row_models": {
+          "/content/runs/lfm3vl2b-ac-lora/merged": 18415
+        },
+        "row_config_hashes": {
+          "f6860f20744bd66f": 18415
+        },
+        "manifest_hash": "f6860f20744bd66f",
+        "recomputed_config_hash": "f6860f20744bd66f",
+        "config_hash_valid": true,
+        "model_identity_consistent": true,
+        "rows": 18415,
+        "expected": 18415,
+        "manifest_n": 18415,
+        "duplicates": 0,
+        "missing": 0,
+        "extra": 0,
+        "manifest": {
+          "model": "/content/runs/lfm3vl2b-ac-lora/merged",
+          "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+          "n_rows": 18415,
+          "enable_thinking": 1,
+          "max_pixels": 774400,
+          "filter_mode": null,
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256,
+          "do_sample": false,
+          "min_pixels": 65536,
+          "model_fingerprint": "266f78620fcc8043",
+          "config_hash": "f6860f20744bd66f"
+        }
+      },
+      "independent_exit": 0,
+      "production_exit": 0,
+      "parser_counts_ind_len_strict": {
+        "(True, True, True)": 18412,
+        "(False, False, False)": 3
+      },
+      "score_differences": {
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": 1,
+        "low/terminal=False/parsed=(True, True, True)/success=(False, True, True)": 1
+      },
+      "examples": {
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": [
+          {
+            "key": [
+              936,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder - URecorder"
+            },
+            "raw": "<think>Open the Voice Recorder-URecorder app.</think>{\"action_type\":\"open_app\",\"app_name\":\"Voice Recorder-URecorder\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            }
+          }
+        ],
+        "low/terminal=False/parsed=(True, True, True)/success=(False, True, True)": [
+          {
+            "key": [
+              936,
+              0,
+              "low"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder - URecorder"
+            },
+            "raw": "<think>Open the Voice Recorder-URecorder app.</think>{\"action_type\":\"open_app\",\"app_name\":\"Voice Recorder URecorder\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder URecorder"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder URecorder"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder URecorder"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "lfm3vl2b-ac-lora_ft_nothink_high",
+      "identity": {
+        "model_expected": "/content/runs/lfm3vl2b-ac-lora/merged",
+        "model_manifest": "/content/runs/lfm3vl2b-ac-lora/merged",
+        "row_models": {
+          "/content/runs/lfm3vl2b-ac-lora/merged": 9987
+        },
+        "row_config_hashes": {
+          "9f61abc884e01c51": 9987
+        },
+        "manifest_hash": "9f61abc884e01c51",
+        "recomputed_config_hash": "9f61abc884e01c51",
+        "config_hash_valid": true,
+        "model_identity_consistent": true,
+        "rows": 9987,
+        "expected": 9987,
+        "manifest_n": 9987,
+        "duplicates": 0,
+        "missing": 0,
+        "extra": 0,
+        "manifest": {
+          "model": "/content/runs/lfm3vl2b-ac-lora/merged",
+          "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+          "n_rows": 9987,
+          "enable_thinking": 0,
+          "max_pixels": 774400,
+          "filter_mode": "high",
+          "subsample_episodes": 0,
+          "limit": 0,
+          "max_new_tokens": 256,
+          "do_sample": false,
+          "min_pixels": 65536,
+          "model_fingerprint": "266f78620fcc8043",
+          "config_hash": "9f61abc884e01c51"
+        }
+      },
+      "independent_exit": 0,
+      "production_exit": 0,
+      "parser_counts_ind_len_strict": {
+        "(True, True, True)": 9987
+      },
+      "score_differences": {
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": 2
+      },
+      "examples": {
+        "high/terminal=False/parsed=(True, True, True)/success=(False, True, True)": [
+          {
+            "key": [
+              936,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder - URecorder"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"app_name\":\"Voice Recorder-URecorder\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Voice Recorder-URecorder"
+            }
+          },
+          {
+            "key": [
+              13659,
+              0,
+              "high"
+            ],
+            "gt": {
+              "action_type": "open_app",
+              "app_name": "Crafts DIY"
+            },
+            "raw": "{\"action_type\":\"open_app\",\"app_name\":\"Crafts,DIY\"}",
+            "independent": {
+              "action_type": "open_app",
+              "app_name": "Crafts,DIY"
+            },
+            "lenient": {
+              "action_type": "open_app",
+              "app_name": "Crafts,DIY"
+            },
+            "strict": {
+              "action_type": "open_app",
+              "app_name": "Crafts,DIY"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

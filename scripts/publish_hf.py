@@ -19,14 +19,18 @@ def load(p):
         return None
 
 
-def card(model_name, base, merged_repo, gguf_repo, ac, ret, aw, recipe, mmproj_name, gguf_name, license_note):
+def fmt_p(p):
+    return f"{p:.1e}" if p < 0.001 else f"{p:.2f}"
+
+
+def card(model_name, base, merged_repo, gguf_repo, ac, ret, aw, recipe, mmproj_name, gguf_name, license_note, img_note):
     ac_rows = ""
     if ac:
         for mode in ("high", "low"):
             o = ac[mode]["overall"]
             ac_rows += f"| AndroidControl test, {mode}-level | step SR **{o['step_sr']:.3f}**, episode SR {o['episode_sr']:.3f} |\n"
         ac_rows += f"| 'task complete' (terminal) accuracy | {ac['terminal_complete']['step_sr']:.3f} |\n"
-    ret_rows = "".join(f"| {k.upper()} (forced-choice, paired vs base) | {v['base_acc']:.1%} → {v['ft_acc']:.1%} ({v['delta'] * 100:+.1f} pp, McNemar p={v['mcnemar_p']:.2f}) |\n"
+    ret_rows = "".join(f"| {k.upper()} (forced-choice, paired vs base) | {v['base_acc']:.1%} → {v['ft_acc']:.1%} ({v['delta'] * 100:+.1f} pp, McNemar p={fmt_p(v['mcnemar_p'])}) |\n"
                        for k, v in (ret or {}).items())
     aw_row = ""
     if aw:
@@ -53,11 +57,12 @@ One screenshot (+ goal + short text history) in → one JSON action out. Built t
 | Benchmark | Score |
 |---|---|
 {ac_rows}{ret_rows}{aw_row}
+General knowledge: forced-choice next-token scoring on MMStar (1,500) and a fixed 1,000-item MMLU subset, paired vs the base model.
+A non-significant change means no decline was detected on these two tests, not a guarantee of no forgetting.
 Offline history is teacher-forced (human step instructions), as in AndroidControl-Curated; closed-loop AndroidWorld is harder.
 
 ## Prompt / action format
-System prompt and user text exactly as in `train/agent_format.py`; screenshot resized with Qwen2-VL-style `smart_resize`
-(factor 32, ≤ 774,400 px → ~720 image tokens for a 1080×2400 phone). Output:
+System prompt and user text exactly as in `train/agent_format.py`; {img_note}. Output:
 
 ```
 <think>one-sentence intent</think>{{"action_type":"click","point_2d":[x,y]}}
@@ -91,7 +96,8 @@ MODELS = [
          recipe="LoRA r64/α128 on all language-model linears (vision + projector frozen), lr 2e-4 cosine, 1,250 steps × 32 (40k rows), bf16",
          gguf_local="models/LFM3-VL-2B-AndroidControl-GGUF/LFM3-VL-2B-AndroidControl-Q4_K_M.gguf",
          mmproj_local="models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
-         license_note="LFM Open License v1.0 (inherited from LiquidAI/LFM3-VL-2B). Training data: AndroidControl (see its terms)."),
+         license_note="LFM Open License v1.0 (inherited from LiquidAI/LFM3-VL-2B). Training data: AndroidControl (see its terms).",
+         img_note="screenshot resized with Qwen2-VL-style `smart_resize` (factor 32, ≤ 774,400 px → ~720 image tokens for a 1080×2400 phone)"),
     dict(model_name="LFM2.5-VL-450M-AndroidControl", base="LiquidAI/LFM2.5-VL-450M",
          merged_repo="experimentalmachines/LFM2.5-VL-450M-AndroidControl", gguf_repo="experimentalmachines/LFM2.5-VL-450M-AndroidControl-GGUF",
          ac="androidcontrol/lfm25vl450m-ac-lora_ft.metrics.json", ret="general/lfm25vl450m_retention_logprob.json",
@@ -99,12 +105,13 @@ MODELS = [
          recipe="knowledge-preserving: LoRA r16/α32 (LM only), lr 1e-4, 1 epoch over 48k AndroidControl rows + 12k (20%) the_cauldron general replay",
          gguf_local="models/LFM2.5-VL-450M-AndroidControl-GGUF/LFM2.5-VL-450M-AndroidControl-Q4_K_M.gguf",
          mmproj_local="models/LFM2.5-VL-450M-GGUF/mmproj-LFM2.5-VL-450m-Q8_0.gguf",
-         license_note="LFM Open License v1.0 (inherited from LiquidAI/LFM2.5-VL-450M). Training data: AndroidControl + the_cauldron subsets (see their terms)."),
+         license_note="LFM Open License v1.0 (inherited from LiquidAI/LFM2.5-VL-450M). Training data: AndroidControl + the_cauldron subsets (see their terms).",
+         img_note="screenshot pre-resized with `smart_resize` (≤ 774,400 px), then encoded by the LFM2.5-VL processor's native SigLIP2 NaFlex path (512-px tiles, ≤ 256 tokens per tile; no max_pixels override) — the image-token count follows that processor, not the LFM3 budget"),
 ]
 
 for m in MODELS:
     text = card(m["model_name"], m["base"], m["merged_repo"], m["gguf_repo"], load(m["ac"]), load(m["ret"]), load(m["aw"]),
-                m["recipe"], os.path.basename(m["mmproj_local"]), os.path.basename(m["gguf_local"]), m["license_note"])
+                m["recipe"], os.path.basename(m["mmproj_local"]), os.path.basename(m["gguf_local"]), m["license_note"], m["img_note"])
     api.create_repo(m["gguf_repo"], private=True, exist_ok=True)
     if "--cards-only" not in sys.argv:
         for f in (m["gguf_local"], m["mmproj_local"]):

@@ -1,17 +1,19 @@
 {
- "n": 64,
+ "n": 86,
  "labels": {
-  "loop_until_step_limit": 35,
-  "stuck_after_unknown_app": 23,
-  "exception": 3,
-  "premature_or_wrong_complete": 3
+  "step_budget_exhausted": 73,
+  "complete_but_failed": 10,
+  "exception": 3
  },
  "flags_among_failures": {
-  "repeated_action_loop": 39,
-  "unknown_app_name": 24,
-  "wait_loop": 24
+  "same_action_run3": 41,
+  "unmapped_open_app": 32,
+  "wait_run3": 32,
+  "unparseable_step": 6
  },
- "unknown_app_names": {
+ "episodes_with_answer_action": 0,
+ "unmapped_app_names": {
+  "Calendar Pro": 11,
   "File Manager": 3,
   "Expense": 3,
   "Note": 3,
@@ -27,650 +29,1037 @@
   "Recipes": 1,
   "Music": 1,
   "Download": 1,
-  "Calendar Pro": 1
+  "Messaging": 1
  },
+ "note": "labels are outcome descriptions, not causes; flags overlap",
  "episodes": [
   {
    "task": "AudioRecorderRecordAudioWithFileName",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "AudioRecorderRecordAudio",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "BrowserDraw",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "File Manager"
    ],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "BrowserMaze",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "File Manager"
    ],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "BrowserMultiply",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "File Manager"
    ],
+   "answer_actions": 0,
    "steps": 22
   },
   {
    "task": "CameraTakePhoto",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "CameraTakeVideo",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "ClockStopWatchPausedVerify",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Stopwatch"
    ],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "ClockStopWatchRunning",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Stopwatch"
    ],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "ClockTimerEntry",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Calendar"
    ],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "ContactsAddContact",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "ContactsNewContactDraft",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Contact"
    ],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "ExpenseAddMultipleFromGallery",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "wait_loop"
+    "same_action_run3",
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "ExpenseAddMultipleFromMarkor",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "ExpenseAddMultiple",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "ExpenseAddSingle",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Expense"
    ],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "ExpenseDeleteDuplicates2",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 18
   },
   {
    "task": "ExpenseDeleteDuplicates",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "ExpenseDeleteMultiple2",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Streaming Services"
    ],
+   "answer_actions": 0,
    "steps": 34
   },
   {
    "task": "ExpenseDeleteMultiple",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Expense"
    ],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "ExpenseDeleteSingle",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Expense"
    ],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "FilesDeleteFile",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Notifications"
    ],
+   "answer_actions": 0,
    "steps": 22
   },
   {
    "task": "FilesMoveFile",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "SDKs"
    ],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "MarkorAddNoteHeader",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "MarkorChangeNoteContent",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "MarkorCreateFolder",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Folders"
    ],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "MarkorCreateNoteAndSms",
+   "instance_id": 0,
    "label": "exception",
    "flags": [],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": NaN
   },
   {
    "task": "MarkorCreateNoteFromClipboard",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Note"
    ],
+   "answer_actions": 0,
    "steps": 14
   },
   {
    "task": "MarkorCreateNote",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 16
   },
   {
    "task": "MarkorDeleteAllNotes",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name"
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Notes"
    ],
+   "answer_actions": 0,
    "steps": 14
   },
   {
    "task": "MarkorDeleteNewestNote",
-   "label": "premature_or_wrong_complete",
+   "instance_id": 0,
+   "label": "complete_but_failed",
    "flags": [
-    "unknown_app_name"
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Notes"
    ],
+   "answer_actions": 0,
    "steps": 6
   },
   {
    "task": "MarkorDeleteNote",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Note"
    ],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "MarkorEditNote",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "unknown_app_name"
+    "same_action_run3",
+    "unmapped_open_app"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Note"
    ],
+   "answer_actions": 0,
    "steps": 12
   },
   {
    "task": "MarkorMergeNotes",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 78
   },
   {
    "task": "MarkorMoveNote",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "StudyGuides"
    ],
+   "answer_actions": 0,
    "steps": 14
   },
   {
    "task": "MarkorTranscribeReceipt",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 18
   },
   {
    "task": "MarkorTranscribeVideo",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "NotesIsTodo",
-   "label": "premature_or_wrong_complete",
+   "instance_id": 0,
+   "label": "complete_but_failed",
    "flags": [],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 6
   },
   {
    "task": "NotesMeetingAttendeeCount",
-   "label": "loop_until_step_limit",
-   "flags": [
-    "repeated_action_loop"
-   ],
-   "unknown_apps": [],
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "NotesRecipeIngredientCount",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "NotesTodoItemCount",
-   "label": "premature_or_wrong_complete",
+   "instance_id": 0,
+   "label": "complete_but_failed",
    "flags": [],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 6
   },
   {
    "task": "OpenAppTaskEval",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "OsmAndFavorite",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 13
   },
   {
    "task": "OsmAndMarker",
+   "instance_id": 0,
    "label": "exception",
    "flags": [],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": NaN
   },
   {
    "task": "OsmAndTrack",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 120
   },
   {
    "task": "RecipeAddMultipleRecipesFromImage",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "wait_loop"
+    "same_action_run3",
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "RecipeAddMultipleRecipesFromMarkor2",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "RecipeAddMultipleRecipesFromMarkor",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Recipes"
    ],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "RecipeAddMultipleRecipes",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop",
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 60
   },
   {
    "task": "RecipeAddSingleRecipe",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 24
   },
   {
    "task": "RecipeDeleteDuplicateRecipes2",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 24
   },
   {
    "task": "RecipeDeleteDuplicateRecipes3",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 34
   },
   {
    "task": "RecipeDeleteDuplicateRecipes",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "RecipeDeleteMultipleRecipesWithConstraint",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 40
   },
   {
    "task": "RecipeDeleteMultipleRecipesWithNoise",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 34
   },
   {
    "task": "RecipeDeleteMultipleRecipes",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 24
   },
   {
    "task": "RecipeDeleteSingleRecipe",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 10
   },
   {
    "task": "RecipeDeleteSingleWithRecipeWithNoise",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "repeated_action_loop"
+    "same_action_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 20
   },
   {
    "task": "RetroCreatePlaylist",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 24
   },
   {
    "task": "RetroPlayingQueue",
+   "instance_id": 0,
    "label": "exception",
    "flags": [],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": NaN
   },
   {
    "task": "RetroPlaylistDuration",
-   "label": "loop_until_step_limit",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "wait_loop"
+    "wait_run3"
    ],
-   "unknown_apps": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
    "steps": 30
   },
   {
    "task": "RetroSavePlaylist",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Music"
    ],
+   "answer_actions": 0,
    "steps": 50
   },
   {
    "task": "SaveCopyOfReceiptTaskEval",
-   "label": "stuck_after_unknown_app",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Download"
    ],
+   "answer_actions": 0,
    "steps": 16
   },
   {
-   "task": "SimpleCalendarAddOneEvent",
-   "label": "stuck_after_unknown_app",
+   "task": "SimpleCalendarAddOneEventInTwoWeeks",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
    "flags": [
-    "unknown_app_name",
-    "wait_loop"
+    "unmapped_open_app",
+    "wait_run3"
    ],
-   "unknown_apps": [
+   "unmapped_apps": [
     "Calendar Pro"
    ],
+   "answer_actions": 0,
    "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAddOneEventRelativeDay",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro",
+    "Calendar Pro",
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAddOneEventTomorrow",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro",
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAddOneEvent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAddRepeatingEvent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 34
+  },
+  {
+   "task": "SimpleCalendarAnyEventsOnDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "SimpleCalendarDeleteEventsOnRelativeDay",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleCalendarDeleteEvents",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 14
+  },
+  {
+   "task": "SimpleCalendarDeleteOneEvent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unmapped_open_app"
+   ],
+   "unmapped_apps": [
+    "Calendar Pro"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleCalendarEventOnDateAtTime",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarEventsInNextWeek",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarEventsInTimeRange",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SimpleCalendarEventsOnDate",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "SimpleCalendarFirstEventAfterStartTime",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3",
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 10
+  },
+  {
+   "task": "SimpleCalendarLocationOfEvent",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 4
+  },
+  {
+   "task": "SimpleCalendarNextEvent",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [
+    "unparseable_step"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 6
+  },
+  {
+   "task": "SimpleCalendarNextMeetingWithPerson",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 7
+  },
+  {
+   "task": "SimpleDrawProCreateDrawing",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 18
+  },
+  {
+   "task": "SimpleSmsReplyMostRecent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "unmapped_open_app",
+    "wait_run3"
+   ],
+   "unmapped_apps": [
+    "Messaging"
+   ],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsReply",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "wait_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsResend",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsSendClipboardContent",
+   "instance_id": 0,
+   "label": "step_budget_exhausted",
+   "flags": [
+    "same_action_run3"
+   ],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 12
+  },
+  {
+   "task": "SimpleSmsSend",
+   "instance_id": 0,
+   "label": "complete_but_failed",
+   "flags": [],
+   "unmapped_apps": [],
+   "answer_actions": 0,
+   "steps": 5
   }
  ]
 }

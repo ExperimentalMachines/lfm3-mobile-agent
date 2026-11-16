@@ -8,14 +8,18 @@ output = short intent in `<think>` + one JSON action with `point_2d` in a 0–10
 ## 1. Offline: AndroidControl test (frozen, official split)
 
 * Data: `experimentalmachines/AndroidControl-screen-agent-sft`, split `test` — official test episode ids
-  (1,543 episodes / 8,444 steps). Every step appears in two modes:
+  (1,543 episodes / 8,444 steps). Steps appear in two modes (8,444 high-level rows; 8,428 low-level rows — 16 steps
+  have no step instruction and one episode has no low-level rows):
   * `high`: goal + history → action (the realistic agent setting; headline number)
   * `low`: additionally given the step instruction ("Current step hint") → measures grounding/execution
   * plus 1,543 `is_terminal` rows (final screen → `status: complete`), reported separately.
 * Generation: greedy (`do_sample=False`), max 256 new tokens, HF transformers bf16 on GPU
   (`eval/androidcontrol/generate.py`). Base model evaluated with `enable_thinking=False` (its native
-  thinking is long and not trained for this action format); fine-tuned models with
-  `enable_thinking=True` (they emit a one-line intent then `</think>`).
+  thinking is long and not trained for this action format); fine-tuned LFM3/Qwen models with
+  `enable_thinking=True` (they emit a one-line intent then `</think>`). LFM2.5-VL-450M has no thinking toggle in
+  this setup: it is trained and evaluated with an inline `<think>intent</think>` prefix in plain output
+  (manifest `enable_thinking=0`, `max_pixels=0` = native processor). A matched no-think LFM3 FT run on the
+  high-level split isolates the thinking effect (0.664 vs 0.715; terminal 0.100 vs 0.792).
 * History is **teacher-forced**: previous steps are rendered with the human-written step instructions as
   intents plus the ground-truth actions (same convention as AndroidControl-Curated). This is privileged
   relative to AndroidWorld, where the history holds the model's own intents — so offline high-level numbers
