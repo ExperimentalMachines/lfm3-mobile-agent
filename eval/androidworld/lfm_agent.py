@@ -137,9 +137,10 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             self.env.execute_action(json_action.JSONAction(**kw))
         except Exception as e:  # keep going; the model sees the unchanged screen
             data["error"] = f"execute_failed: {e}"
-        if t == "answer":
-            # answering ends information-retrieval tasks in AndroidWorld's protocol only via status;
-            # the model is expected to emit status complete next.
-            pass
         time.sleep(self.wait_after_action)
+        if t == "answer":
+            # The answer is stored in env.interaction_cache by execute_action; end the episode here so it is
+            # judged (same rule as GUI-Owl's harness, which forces terminate after answer).
+            data["ended_by"] = "answer"
+            return base_agent.AgentInteractionResult(True, data)
         return base_agent.AgentInteractionResult(False, data)
