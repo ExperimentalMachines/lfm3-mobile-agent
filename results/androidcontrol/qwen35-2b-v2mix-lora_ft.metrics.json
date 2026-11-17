@@ -1,0 +1,571 @@
+{
+  "high": {
+    "overall": {
+      "n_steps": 8444,
+      "n_episodes": 1543,
+      "parse_rate": 1.0,
+      "type_match": 0.8282804358124112,
+      "step_sr": 0.7385125532922785,
+      "episode_sr": 0.31821127673363575,
+      "per_type": {
+        "click": {
+          "n": 5074,
+          "type_match": 0.8778084351596374,
+          "step_sr": 0.760149783208514
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.9367088607594937,
+          "step_sr": 0.8560126582278481
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.2222222222222222,
+          "step_sr": 0.2222222222222222
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.5364431486880467,
+          "step_sr": 0.5364431486880467
+        },
+        "open_app": {
+          "n": 608,
+          "type_match": 0.9078947368421053,
+          "step_sr": 0.8141447368421053
+        },
+        "scroll": {
+          "n": 1211,
+          "type_match": 0.7241948802642444,
+          "step_sr": 0.6804293971924029
+        },
+        "wait": {
+          "n": 567,
+          "type_match": 0.5873015873015873,
+          "step_sr": 0.5873015873015873
+        }
+      }
+    },
+    "overall_strict_parse": {
+      "n_steps": 8444,
+      "n_episodes": 1543,
+      "parse_rate": 1.0,
+      "type_match": 0.8282804358124112,
+      "step_sr": 0.7385125532922785,
+      "episode_sr": 0.31821127673363575,
+      "per_type": {
+        "click": {
+          "n": 5074,
+          "type_match": 0.8778084351596374,
+          "step_sr": 0.760149783208514
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.9367088607594937,
+          "step_sr": 0.8560126582278481
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.2222222222222222,
+          "step_sr": 0.2222222222222222
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.5364431486880467,
+          "step_sr": 0.5364431486880467
+        },
+        "open_app": {
+          "n": 608,
+          "type_match": 0.9078947368421053,
+          "step_sr": 0.8141447368421053
+        },
+        "scroll": {
+          "n": 1211,
+          "type_match": 0.7241948802642444,
+          "step_sr": 0.6804293971924029
+        },
+        "wait": {
+          "n": 567,
+          "type_match": 0.5873015873015873,
+          "step_sr": 0.5873015873015873
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "n_steps": 3897,
+        "n_episodes": 721,
+        "parse_rate": 1.0,
+        "type_match": 0.8455221965614576,
+        "step_sr": 0.7564793430844239,
+        "episode_sr": 0.34396671289875175,
+        "per_type": {
+          "click": {
+            "n": 2445,
+            "type_match": 0.8973415132924335,
+            "step_sr": 0.7770961145194274
+          },
+          "input_text": {
+            "n": 287,
+            "type_match": 0.9303135888501742,
+            "step_sr": 0.8432055749128919
+          },
+          "long_press": {
+            "n": 9,
+            "type_match": 0.2222222222222222,
+            "step_sr": 0.2222222222222222
+          },
+          "navigate_back": {
+            "n": 117,
+            "type_match": 0.5897435897435898,
+            "step_sr": 0.5897435897435898
+          },
+          "open_app": {
+            "n": 256,
+            "type_match": 0.89453125,
+            "step_sr": 0.8359375
+          },
+          "scroll": {
+            "n": 510,
+            "type_match": 0.7431372549019608,
+            "step_sr": 0.7176470588235294
+          },
+          "wait": {
+            "n": 273,
+            "type_match": 0.5677655677655677,
+            "step_sr": 0.5677655677655677
+          }
+        }
+      },
+      "app_unseen": {
+        "n_steps": 3475,
+        "n_episodes": 631,
+        "parse_rate": 1.0,
+        "type_match": 0.7968345323741007,
+        "step_sr": 0.7024460431654677,
+        "episode_sr": 0.2757527733755943,
+        "per_type": {
+          "click": {
+            "n": 2024,
+            "type_match": 0.849308300395257,
+            "step_sr": 0.7277667984189723
+          },
+          "input_text": {
+            "n": 243,
+            "type_match": 0.9547325102880658,
+            "step_sr": 0.8724279835390947
+          },
+          "navigate_back": {
+            "n": 211,
+            "type_match": 0.4976303317535545,
+            "step_sr": 0.4976303317535545
+          },
+          "open_app": {
+            "n": 243,
+            "type_match": 0.8930041152263375,
+            "step_sr": 0.7489711934156379
+          },
+          "scroll": {
+            "n": 528,
+            "type_match": 0.6856060606060606,
+            "step_sr": 0.634469696969697
+          },
+          "wait": {
+            "n": 226,
+            "type_match": 0.5929203539823009,
+            "step_sr": 0.5929203539823009
+          }
+        }
+      },
+      "category_unseen": {
+        "n_steps": 3891,
+        "n_episodes": 700,
+        "parse_rate": 1.0,
+        "type_match": 0.8051914674890773,
+        "step_sr": 0.713698278077615,
+        "episode_sr": 0.28714285714285714,
+        "per_type": {
+          "click": {
+            "n": 2241,
+            "type_match": 0.8505131637661758,
+            "step_sr": 0.7318161535029005
+          },
+          "input_text": {
+            "n": 268,
+            "type_match": 0.9626865671641791,
+            "step_sr": 0.8992537313432836
+          },
+          "navigate_back": {
+            "n": 215,
+            "type_match": 0.5069767441860465,
+            "step_sr": 0.5069767441860465
+          },
+          "open_app": {
+            "n": 280,
+            "type_match": 0.9,
+            "step_sr": 0.7642857142857142
+          },
+          "scroll": {
+            "n": 647,
+            "type_match": 0.7187017001545595,
+            "step_sr": 0.6646058732612056
+          },
+          "wait": {
+            "n": 240,
+            "type_match": 0.5958333333333333,
+            "step_sr": 0.5958333333333333
+          }
+        }
+      },
+      "task_unseen": {
+        "n_steps": 4464,
+        "n_episodes": 803,
+        "parse_rate": 1.0,
+        "type_match": 0.8158602150537635,
+        "step_sr": 0.7264784946236559,
+        "episode_sr": 0.298879202988792,
+        "per_type": {
+          "click": {
+            "n": 2583,
+            "type_match": 0.8614014711575687,
+            "step_sr": 0.7464188927603562
+          },
+          "input_text": {
+            "n": 338,
+            "type_match": 0.9437869822485208,
+            "step_sr": 0.8757396449704142
+          },
+          "navigate_back": {
+            "n": 223,
+            "type_match": 0.515695067264574,
+            "step_sr": 0.515695067264574
+          },
+          "open_app": {
+            "n": 347,
+            "type_match": 0.9164265129682997,
+            "step_sr": 0.7953890489913544
+          },
+          "scroll": {
+            "n": 689,
+            "type_match": 0.7155297532656023,
+            "step_sr": 0.6618287373004355
+          },
+          "wait": {
+            "n": 284,
+            "type_match": 0.6056338028169014,
+            "step_sr": 0.6056338028169014
+          }
+        }
+      }
+    },
+    "click_bbox_hit_strict": {
+      "n": 5074,
+      "acc": 0.7471422940480883
+    }
+  },
+  "low": {
+    "overall": {
+      "n_steps": 8428,
+      "n_episodes": 1542,
+      "parse_rate": 0.9991694352159468,
+      "type_match": 0.9366397721879449,
+      "step_sr": 0.9065021357380162,
+      "episode_sr": 0.6511024643320363,
+      "per_type": {
+        "click": {
+          "n": 5073,
+          "type_match": 0.964320914646166,
+          "step_sr": 0.9381036861817466
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.9794303797468354,
+          "step_sr": 0.9746835443037974
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.7777777777777778,
+          "step_sr": 0.7777777777777778
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.892128279883382,
+          "step_sr": 0.892128279883382
+        },
+        "open_app": {
+          "n": 600,
+          "type_match": 0.985,
+          "step_sr": 0.91
+        },
+        "scroll": {
+          "n": 1210,
+          "type_match": 0.9322314049586777,
+          "step_sr": 0.871900826446281
+        },
+        "wait": {
+          "n": 561,
+          "type_match": 0.6256684491978609,
+          "step_sr": 0.6256684491978609
+        }
+      }
+    },
+    "overall_strict_parse": {
+      "n_steps": 8428,
+      "n_episodes": 1542,
+      "parse_rate": 0.9991694352159468,
+      "type_match": 0.9366397721879449,
+      "step_sr": 0.9065021357380162,
+      "episode_sr": 0.6511024643320363,
+      "per_type": {
+        "click": {
+          "n": 5073,
+          "type_match": 0.964320914646166,
+          "step_sr": 0.9381036861817466
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.9794303797468354,
+          "step_sr": 0.9746835443037974
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.7777777777777778,
+          "step_sr": 0.7777777777777778
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.892128279883382,
+          "step_sr": 0.892128279883382
+        },
+        "open_app": {
+          "n": 600,
+          "type_match": 0.985,
+          "step_sr": 0.91
+        },
+        "scroll": {
+          "n": 1210,
+          "type_match": 0.9322314049586777,
+          "step_sr": 0.871900826446281
+        },
+        "wait": {
+          "n": 561,
+          "type_match": 0.6256684491978609,
+          "step_sr": 0.6256684491978609
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "n_steps": 3887,
+        "n_episodes": 720,
+        "parse_rate": 0.9981991252894263,
+        "type_match": 0.9379984563931052,
+        "step_sr": 0.9104708001029072,
+        "episode_sr": 0.6638888888888889,
+        "per_type": {
+          "click": {
+            "n": 2444,
+            "type_match": 0.9689034369885434,
+            "step_sr": 0.936988543371522
+          },
+          "input_text": {
+            "n": 287,
+            "type_match": 0.9895470383275261,
+            "step_sr": 0.9790940766550522
+          },
+          "long_press": {
+            "n": 9,
+            "type_match": 0.7777777777777778,
+            "step_sr": 0.7777777777777778
+          },
+          "navigate_back": {
+            "n": 117,
+            "type_match": 0.8974358974358975,
+            "step_sr": 0.8974358974358975
+          },
+          "open_app": {
+            "n": 253,
+            "type_match": 0.9841897233201581,
+            "step_sr": 0.9525691699604744
+          },
+          "scroll": {
+            "n": 509,
+            "type_match": 0.9194499017681729,
+            "step_sr": 0.8840864440078585
+          },
+          "wait": {
+            "n": 268,
+            "type_match": 0.6156716417910447,
+            "step_sr": 0.6156716417910447
+          }
+        }
+      },
+      "app_unseen": {
+        "n_steps": 3473,
+        "n_episodes": 631,
+        "parse_rate": 1.0,
+        "type_match": 0.9320472214224014,
+        "step_sr": 0.8977828966311546,
+        "episode_sr": 0.618066561014263,
+        "per_type": {
+          "click": {
+            "n": 2024,
+            "type_match": 0.9580039525691699,
+            "step_sr": 0.933300395256917
+          },
+          "input_text": {
+            "n": 243,
+            "type_match": 0.9794238683127572,
+            "step_sr": 0.9794238683127572
+          },
+          "navigate_back": {
+            "n": 211,
+            "type_match": 0.8815165876777251,
+            "step_sr": 0.8815165876777251
+          },
+          "open_app": {
+            "n": 241,
+            "type_match": 0.979253112033195,
+            "step_sr": 0.8464730290456431
+          },
+          "scroll": {
+            "n": 528,
+            "type_match": 0.9412878787878788,
+            "step_sr": 0.8712121212121212
+          },
+          "wait": {
+            "n": 226,
+            "type_match": 0.6238938053097345,
+            "step_sr": 0.6238938053097345
+          }
+        }
+      },
+      "category_unseen": {
+        "n_steps": 3888,
+        "n_episodes": 700,
+        "parse_rate": 1.0,
+        "type_match": 0.934156378600823,
+        "step_sr": 0.8986625514403292,
+        "episode_sr": 0.6271428571428571,
+        "per_type": {
+          "click": {
+            "n": 2241,
+            "type_match": 0.9571619812583668,
+            "step_sr": 0.9335118250780902
+          },
+          "input_text": {
+            "n": 268,
+            "type_match": 0.9813432835820896,
+            "step_sr": 0.9813432835820896
+          },
+          "navigate_back": {
+            "n": 215,
+            "type_match": 0.8837209302325582,
+            "step_sr": 0.8837209302325582
+          },
+          "open_app": {
+            "n": 277,
+            "type_match": 0.9819494584837545,
+            "step_sr": 0.855595667870036
+          },
+          "scroll": {
+            "n": 647,
+            "type_match": 0.9474497681607419,
+            "step_sr": 0.8701700154559505
+          },
+          "wait": {
+            "n": 240,
+            "type_match": 0.6208333333333333,
+            "step_sr": 0.6208333333333333
+          }
+        }
+      },
+      "task_unseen": {
+        "n_steps": 4458,
+        "n_episodes": 803,
+        "parse_rate": 1.0,
+        "type_match": 0.9358456707043518,
+        "step_sr": 0.9033198743831314,
+        "episode_sr": 0.6400996264009963,
+        "per_type": {
+          "click": {
+            "n": 2583,
+            "type_match": 0.9601238869531552,
+            "step_sr": 0.9388308168795974
+          },
+          "input_text": {
+            "n": 338,
+            "type_match": 0.9704142011834319,
+            "step_sr": 0.9704142011834319
+          },
+          "navigate_back": {
+            "n": 223,
+            "type_match": 0.8878923766816144,
+            "step_sr": 0.8878923766816144
+          },
+          "open_app": {
+            "n": 342,
+            "type_match": 0.9853801169590644,
+            "step_sr": 0.8771929824561403
+          },
+          "scroll": {
+            "n": 689,
+            "type_match": 0.9433962264150944,
+            "step_sr": 0.8664731494920174
+          },
+          "wait": {
+            "n": 283,
+            "type_match": 0.6325088339222615,
+            "step_sr": 0.6325088339222615
+          }
+        }
+      }
+    },
+    "click_bbox_hit_strict": {
+      "n": 5073,
+      "acc": 0.9327813916814508
+    }
+  },
+  "terminal_complete": {
+    "n_steps": 1543,
+    "n_episodes": 1543,
+    "parse_rate": 1.0,
+    "type_match": 0.7498379779650033,
+    "step_sr": 0.7498379779650033,
+    "episode_sr": 0.7498379779650033,
+    "per_type": {
+      "status": {
+        "n": 1543,
+        "type_match": 0.7498379779650033,
+        "step_sr": 0.7498379779650033
+      }
+    }
+  },
+  "integrity": {
+    "n_pred_rows": 18415,
+    "n_gt_rows": 18415,
+    "duplicate_keys": 0,
+    "missing": 0,
+    "extra": 0,
+    "row_models": [
+      "/content/runs/qwen35-2b-v2mix-lora/merged"
+    ],
+    "manifest": {
+      "model": "/content/runs/qwen35-2b-v2mix-lora/merged",
+      "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+      "n_rows": 18415,
+      "enable_thinking": 1,
+      "max_pixels": 774400,
+      "filter_mode": null,
+      "subsample_episodes": 0,
+      "limit": 0,
+      "max_new_tokens": 256,
+      "do_sample": false,
+      "min_pixels": 65536,
+      "model_fingerprint": "a769bfcebff57e5d",
+      "config_hash": "0467f5833ae4c773"
+    },
+    "gt_file": "/content/work/meta/androidcontrol_test_gt.jsonl",
+    "complete": true,
+    "problems": []
+  }
+}

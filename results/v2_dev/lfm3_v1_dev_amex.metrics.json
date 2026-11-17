@@ -1,0 +1,42 @@
+{
+ "n_steps": 468,
+ "n_episodes": 121,
+ "parse_rate": 0.967948717948718,
+ "type_match": 0.5790598290598291,
+ "step_sr": 0.3055555555555556,
+ "episode_sr": 0.0,
+ "per_type": {
+  "click": {
+   "n": 332,
+   "type_match": 0.7650602409638554,
+   "step_sr": 0.3795180722891566
+  },
+  "input_text": {
+   "n": 29,
+   "type_match": 0.06896551724137931,
+   "step_sr": 0.06896551724137931
+  },
+  "navigate_back": {
+   "n": 6,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_home": {
+   "n": 1,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "scroll": {
+   "n": 100,
+   "type_match": 0.15,
+   "step_sr": 0.15
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 468,
+  "expected": 468,
+  "model": "experimentalmachines/LFM3-VL-2B-AndroidControl"
+ }
+}

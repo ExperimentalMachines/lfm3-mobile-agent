@@ -1,0 +1,50 @@
+{
+ "A": {
+  "run": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504",
+  "successes": 15,
+  "n_recorded": 116,
+  "rate_over_expected": 0.12931034482758622,
+  "wilson95": [
+   0.07995320598677602,
+   0.20243287697606827
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/lfm3vl2b_ft_runtimefb/run_20261117T112723045785",
+  "successes": 10,
+  "n_recorded": 116,
+  "rate_over_expected": 0.08620689655172414,
+  "wilson95": [
+   0.04749884203823806,
+   0.15144376219935554
+  ]
+ },
+ "paired": {
+  "n_pairs": 106,
+  "both": 9,
+  "A_only": 3,
+  "B_only": 1,
+  "neither": 93,
+  "mcnemar_exact_p": 0.625,
+  "excluded_goal_or_seed_mismatch": [
+   "ExpenseDeleteSingle",
+   "MarkorCreateFolder",
+   "MarkorCreateNoteAndSms",
+   "RetroPlayingQueue",
+   "SimpleCalendarDeleteOneEvent",
+   "SimpleSmsResend",
+   "SimpleSmsSend",
+   "SimpleSmsSendClipboardContent",
+   "SportsTrackerActivitiesOnDate",
+   "SystemBrightnessMinVerify"
+  ],
+  "B_only_tasks": [
+   "SimpleSmsReplyMostRecent"
+  ],
+  "A_only_tasks": [
+   "RecipeDeleteMultipleRecipesWithConstraint",
+   "SystemBluetoothTurnOff",
+   "SystemWifiTurnOff"
+  ]
+ }
+}

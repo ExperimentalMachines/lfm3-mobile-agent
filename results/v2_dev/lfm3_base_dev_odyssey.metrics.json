@@ -1,0 +1,47 @@
+{
+ "n_steps": 1000,
+ "n_episodes": 1000,
+ "parse_rate": 0.896,
+ "type_match": 0.338,
+ "step_sr": 0.105,
+ "episode_sr": 0.105,
+ "per_type": {
+  "click": {
+   "n": 686,
+   "type_match": 0.34402332361516036,
+   "step_sr": 0.07871720116618076
+  },
+  "input_text": {
+   "n": 142,
+   "type_match": 0.6408450704225352,
+   "step_sr": 0.28169014084507044
+  },
+  "long_press": {
+   "n": 6,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 3,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_home": {
+   "n": 92,
+   "type_match": 0.06521739130434782,
+   "step_sr": 0.06521739130434782
+  },
+  "scroll": {
+   "n": 71,
+   "type_match": 0.07042253521126761,
+   "step_sr": 0.07042253521126761
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 1000,
+  "expected": 1000,
+  "model": "LiquidAI/LFM3-VL-2B"
+ }
+}
