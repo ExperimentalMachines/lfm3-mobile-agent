@@ -1,0 +1,51 @@
+{
+ "A": {
+  "run": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504",
+  "successes": 15,
+  "n_recorded": 116,
+  "rate_over_expected": 0.12931034482758622,
+  "wilson95": [
+   0.07995320598677602,
+   0.20243287697606827
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662",
+  "successes": 6,
+  "n_recorded": 116,
+  "rate_over_expected": 0.05172413793103448,
+  "wilson95": [
+   0.02391832740361237,
+   0.10826949385378072
+  ]
+ },
+ "paired": {
+  "n_pairs": 109,
+  "both": 6,
+  "A_only": 9,
+  "B_only": 0,
+  "neither": 94,
+  "mcnemar_exact_p": 0.00390625,
+  "excluded_goal_or_seed_mismatch": [
+   "MarkorCreateFolder",
+   "RetroPlayingQueue",
+   "SimpleSmsReply",
+   "SimpleSmsReplyMostRecent",
+   "SimpleSmsSendClipboardContent",
+   "SimpleSmsSendReceivedAddress",
+   "SportsTrackerActivitiesOnDate"
+  ],
+  "B_only_tasks": [],
+  "A_only_tasks": [
+   "AudioRecorderRecordAudio",
+   "ExpenseDeleteSingle",
+   "RecipeDeleteDuplicateRecipes",
+   "SimpleCalendarDeleteOneEvent",
+   "SystemBluetoothTurnOff",
+   "SystemBrightnessMinVerify",
+   "SystemWifiTurnOff",
+   "SystemWifiTurnOn",
+   "SystemWifiTurnOnVerify"
+  ]
+ }
+}
