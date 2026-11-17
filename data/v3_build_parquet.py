@@ -21,6 +21,7 @@ import argparse
 import json
 import os
 import shutil
+import sys
 import time
 
 import pyarrow as pa
@@ -196,3 +197,7 @@ it = load_dataset(a.out_repo, data_files={"train": pat}, split="train", revision
 r0 = next(iter(it))
 assert r0["images"][0].size[0] > 0 and (r0["messages"][2].get("reasoning_content") or r0["messages"][2]["content"])
 print(f"HUB LOAD OK {a.out_repo}@{sha}: {n_hub} rows in {len(hub_train)} shards ({time.time() - t0:.0f}s)", flush=True)
+# the streaming check leaves a native download thread alive; normal interpreter teardown then aborts (exit -6,
+# "PyGILState_Release ... finalizing") AFTER success. All work is done and verified here, so exit hard with 0.
+sys.stdout.flush(); sys.stderr.flush()
+os._exit(0)
