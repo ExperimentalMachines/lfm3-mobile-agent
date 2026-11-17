@@ -89,6 +89,14 @@ def v4(msgs, eid, gt):
     return af.to_v4_messages(msgs, af.v4_app_list(str(eid), req, pool))
 
 
+def final_answer(key):
+    """The two independent teacher answers agreed (equal or one contains the other); keep the shorter one, which drops
+    trailing unit words such as "382 Followers" -> "382" when the format asks for just the number."""
+    j = qa[key]
+    a1, a2 = j["answer"].strip(), (j.get("verify_answer") or "").strip()
+    return a2 if a2 and len(a2) < len(a1) and a2.lower() in a1.lower() else a1
+
+
 def answer_json(text):
     return af.action_to_str({"action_type": "answer", "text": text})
 
@@ -121,10 +129,10 @@ for f in use:
                 comp = dict(row, messages=v4([dict(m) for m in msgs], row["episode_id"], gt), split="dev_complete")
                 dev_complete.append(comp)
                 qm = v4(set_goal([dict(m) for m in msgs], new_goal(key, orig_goal)), row["episode_id"], gt)
-                qm[2] = {"role": "assistant", "content": answer_json(qa[key]["answer"]),
+                qm[2] = {"role": "assistant", "content": answer_json(final_answer(key)),
                          "reasoning_content": qa[key]["evidence"].strip()}
                 dev_answer.append(dict(row, messages=qm, split="dev_answer", episode_id=row["episode_id"] + "#qa",
-                                       gt_action=json.dumps({"action_type": "answer", "text": qa[key]["answer"]})))
+                                       gt_action=json.dumps({"action_type": "answer", "text": final_answer(key)})))
             continue
         if row["source"] == "screenqa":
             sk = f"{f}#{i}"
@@ -145,9 +153,9 @@ for f in use:
             if row["is_terminal"]:
                 assert gt["action_type"] == "status" and gt.get("goal_status") == "complete", key
                 assert row["img_sha"] == cands[key]["img_sha"], key
-                qm[2] = {"role": "assistant", "content": answer_json(qa[key]["answer"]),
+                qm[2] = {"role": "assistant", "content": answer_json(final_answer(key)),
                          "reasoning_content": qa[key]["evidence"].strip()}
-                cp["gt_action"] = json.dumps({"action_type": "answer", "text": qa[key]["answer"]})
+                cp["gt_action"] = json.dumps({"action_type": "answer", "text": final_answer(key)})
                 st["qa_final"] += 1
                 seen_final.add(key)
             cp["messages"] = qm
@@ -203,7 +211,7 @@ assert not ({r["episode_id"] for r in dev_complete} & set(ds["episode_id"]))
 print(f"local load OK: {len(ds)} rows; qa final answers {n_ans_final}; complete rows {n_complete} ({time.time() - t0:.0f}s)",
       flush=True)
 stats = {"stats": st, "src": f"{V3}@{V3_REV}", "teacher": labels.get("teacher"), "teacher_stats": labels.get("stats"),
-         "examples": [{"key": k, "goal": new_goal(k, cands[k]["goal"]), "answer": qa[k]["answer"],
+         "examples": [{"key": k, "goal": new_goal(k, cands[k]["goal"]), "answer": final_answer(k),
                        "evidence": qa[k]["evidence"]} for k in sorted(train_qa)[:200]]}
 json.dump(stats, open(os.path.join(a.work, "v4_stats.json"), "w"), indent=1)
 open(os.path.join(out_dir, "README.md"), "w").write(f"""---
