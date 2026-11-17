@@ -303,9 +303,13 @@ v3 (`{V3}` @ `{V3_REV[:10]}`) rewritten to the v4 prompt (answer-vs-complete rul
 {len(used_train_qa)} navigate-then-answer copies of AndroidControl train episodes ({st['qa_rows']} rows; question and answer
 written by `{labels.get('teacher')}` from the final screen and verified by an independent second call) and
 {st['sqa_short']} shortened ScreenQA answers. dev_answer / dev_complete: {len(dev_answer)} held-out, screen-disjoint
-episodes (question version / original action version). Built by `data/v4_build_parquet.py`; selection
-`data/v4_select.py`; teacher `data/vm_v4_teacher.py`. No AndroidWorld tasks, variants, trajectories or checkers;
-episodes touching AndroidWorld app names or app types were excluded from the question data.
+episodes (question version / original action version). Rows are step samples of each episode (as in v2/v3), not complete
+trajectories; every row's prompt carries the 8-step rolling text history used at inference. Built by
+`data/v4_build_parquet.py`; selection
+`data/v4_select.py`; teacher `data/vm_v4_teacher.py` (+ `vm_v4_teacher2.py` direct-question check, strict label check
+`data/v4_answer_check.py`). No AndroidWorld tasks, variants, trajectories or checkers; episodes touching AndroidWorld app
+names or app types (guard v2) were excluded from the question data. Dev episodes come from AndroidControl *train* (held out
+from v4, but present in v3's training data).
 """)
 if a.dry_run:
     print("DRY RUN: not uploading", flush=True)

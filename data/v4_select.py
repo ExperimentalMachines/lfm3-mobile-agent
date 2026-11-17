@@ -4,9 +4,10 @@ Input: v3 training metadata (no images) written by the v4 build prep: data/v4wor
 Output: data/v4work/v4_candidates.json  [{key, shard, row_in_shard (final screen), goal, kind, split, n_steps, ...}]
 
 Rules (all recorded in the output's "rules" block):
-  * AndroidControl only: the only source here with complete, contiguous episodes ending on a final screen
-    (a `status complete` row whose screenshot is the screen after the last action). GUI-Odyssey/AMEX rows are
-    step samples (~3 per episode) and cannot form a navigation prefix.
+  * AndroidControl only: the only source here whose episodes keep a final `status complete` row (its screenshot is the
+    screen after the last action). Rows are step samples of each episode (2,971 selected episodes miss some steps,
+    176 have only the final row); every row carries the 8-step rolling text history used at inference. GUI-Odyssey/AMEX
+    keep ~3 sampled rows per episode and no reliable final screen.
   * last row = status complete at step >= 1, and its text history must number up to that step (rows are step samples
     of the episode; the final row's prompt carries the full history, so it represents the whole navigation).
   * contamination guard: drop episodes whose goal or any open_app name mentions an AndroidWorld app or app type
