@@ -1,25 +1,27 @@
 """Build the v2 training mix (Codex dataset-viability plan, docs/DATA_V2_PLAN.md) in the v1 row format.
+Revision 3: incorporates the Codex data audit (results/codex/codex_data_v2_audit.md, F1-F12) and its re-verification
+(results/codex/codex_data_v2_verify.md).
 
 Sources -> rows {images:[jpeg], messages:[system,user,assistant(content=json action, reasoning_content=intent)], ...}:
-  androidcontrol  50,000 high-level next actions + 6,000 terminal rows sampled from the v1 train split (no step hints)
-  odyssey         10,000 GUI-Odyssey rows (<= 600 terminal), official random_split TRAIN episodes only
-  amex             8,000 AMEX trajectory rows (Enter <= 500, complete ~500, infeasible <= 150)
+  androidcontrol  ~50,000 high-level next actions + ~6,000 terminal rows from the v1 train split (portrait only, no
+                  step hints, episodes naming ambiguous AndroidWorld-app aliases removed)
+  odyssey         <= 10,000 GUI-Odyssey rows, official random_split TRAIN episodes, phones only, NO terminal rows
+  amex            <= 8,000 AMEX trajectory rows, NO terminal rows
   screenqa         6,000 ScreenQA train questions -> `answer` (5,000 short + 1,000 full answers, different questions)
-Held-out dev splits (never in train): dev_odyssey (random_split TEST episodes), dev_amex (5% of episodes, hashed),
-dev_screenqa (official validation split).
+Held-out dev splits (never in train, screen-disjoint by image hash): dev_odyssey (random_split TEST episodes),
+dev_amex (5% of episodes, hashed), dev_screenqa (official validation split).
 
-Filters (each counted in stats.json):
-  all     drop AndroidWorld apps (same 14 app patterns as v1 + their package names); drop missing/undecodable/landscape
-          screenshots; history = earlier steps of the same episode only (causal), truncated at the first step that our
-          action space cannot represent (the rest of that episode is dropped, never re-joined).
-  odyssey phones only (drop Pixel Tablet, Pixel Fold); KEY_APPSELECT and non-cardinal / short swipes are unsupported;
-          COMPLETE -> status complete, INCOMPLETE -> status infeasible; intent = the step's low-level instruction (the
-          post-hoc `context` field is NOT used: it can describe actions that happen later).
-  amex    drop episodes with any need_human_check step; drop episodes whose TASK_COMPLETE/TASK_IMPOSSIBLE is not the
-          last step; SWIPE only if cardinal; coordinates scaled from device_dim to the actual screenshot.
-  screenqa drop "<no answer>" questions and AW-app screens (Rico activity package); <= 2 questions per screen.
-Coordinates: 0-1000 ints of the screenshot. Scroll convention as v1: direction = where new content comes from
-(finger swipes up -> "down").
+Executor contract = unchanged AndroidWorld JSON executor: input_text = type + Enter; scroll = swipe along the screen
+centre. Therefore source TYPE followed by Enter / a soft-keyboard submit tap is ONE input_text; swipes that are short,
+diagonal or off the central band end the episode. Every episode is cut at the first step that cannot be represented
+(the rest is never re-joined); history = earlier retained steps of the same episode only.
+Terminal supervision: AndroidControl only. GUI-Odyssey COMPLETE/INCOMPLETE and AMEX TASK_COMPLETE/IMPOSSIBLE markers are
+not reliable success evidence and cannot be reviewed at scale, so they are quarantined.
+Intents: GUI-Odyssey low-level instructions are model-generated -> kept only if verb and stated screen region agree with
+the human-recorded action, else blank; AMEX has none -> blank (renders as <think></think>).
+Text: key names / empty payloads and near-miss copies of quoted strings or e-mail addresses in the goal end the episode.
+Apps: the 14 AndroidWorld third-party app families (+ ambiguous aliases) are excluded; shared built-ins are kept.
+Coordinates: 0-1000 ints of the screenshot. Scroll convention as v1: direction = where new content comes from.
 
 usage: python build_v2_mix.py --stage {ac,odyssey,amex,screenqa,merge} --root /data --out /data/v2 [--workers 30]
 """
@@ -57,6 +59,8 @@ AW_APP_RE = re.compile("|".join([
     # v2 audit F8: ambiguous aliases excluded conservatively (could be Simple Calendar Pro / Audio Recorder)
     r"calendar ?pro", r"(voice|sound) ?recorder",
 ]), re.I)
+# ScreenQA questions whose reference answer was found incomplete on visual review (Codex re-verification F7)
+SCREENQA_EXCLUDE = {("train", 10893, 10963)}
 # Odyssey app labels are bare names ("Calendar"): any calendar app is excluded there (audit F8)
 ODY_EXTRA_RE = re.compile(r"\bcalendar\b", re.I)
 MIN_SWIPE = 100  # on the 0-1000 grid
@@ -109,16 +113,52 @@ def bad_text(t):
 
 
 def near_miss(text, goal):
-    """True if `text` is a close-but-wrong copy of a span of the goal (typo trajectories, audit F7)."""
+    """True if `text` is a close-but-wrong copy of an EXACT entity in the goal: a quoted string or an e-mail address
+    (typo trajectories such as mark.tylor@ for mark.taylor@, audit F7). Paraphrased search queries are not entities and
+    are never rejected (re-verification issue 2)."""
     import difflib
     a = re.sub(r"\s+", " ", text.lower()).strip()
-    g = re.sub(r"\s+", " ", (goal or "").lower())
-    if not a or a in g or len(a) < 5:
+    ents = re.findall(r"[\"\u201c\u2018']([^\"\u201d\u2019']{3,})[\"\u201d\u2019']", goal or "")
+    ents += re.findall(r"[\w.+-]+@[\w-]+\.[\w.]+", goal or "")
+    for e in ents:
+        e = re.sub(r"\s+", " ", e.lower()).strip()
+        if a == e:
+            return False
+        if 0.8 <= difflib.SequenceMatcher(None, a, e).ratio() < 1.0:
+            return True
+    return False
+
+
+KEYBOARD_SUBMIT_RE = re.compile(r"keyboard|enter key|search key|return key|\bgo\b button|submit the search|"
+                                r"press (enter|search)|tap (the )?(enter|search|go) (key|icon|button) (on|of) the keyboard", re.I)
+
+
+def keyboard_submit(point, instr=""):
+    """A tap right after typing that submits via the soft keyboard (bottom-right key or described as a keyboard key).
+    AndroidWorld's input_text already presses Enter, so such a tap is merged into the preceding input_text."""
+    return bool(KEYBOARD_SUBMIT_RE.search(instr or "")) or (point[0] >= 780 and point[1] >= 850)
+
+
+_LOC = [(re.compile(r"\b(top|upper)\b", re.I), lambda x, y: y < 450), (re.compile(r"\b(bottom|lower)\b", re.I), lambda x, y: y > 550),
+        (re.compile(r"\bleft\b", re.I), lambda x, y: x < 500), (re.compile(r"\bright (side|corner|of the screen|edge)|top.right|bottom.right|upper.right", re.I), lambda x, y: x > 500)]
+_VERB = {"click": r"\b(tap|click|select|press|open|choose|hit|touch|go to|launch|pick|toggle|switch|enable|disable|check|uncheck|add|save|play|view|access)",
+         "long_press": r"\b(long|press|hold)", "scroll": r"\b(scroll|swipe)", "input_text": r"\b(type|enter|input|search|write|fill|add)",
+         "navigate_home": r"\b(home|return|go back|exit|close|leave)", "navigate_back": r"\b(back|return|previous|exit|close)"}
+
+
+def intent_consistent(act, instr):
+    """Low-level instructions in GUI-Odyssey are model-generated; keep one only if its verb fits the action type and
+    any stated screen region contains the (human-recorded) click point. Otherwise the intent is blanked (row kept)."""
+    if not instr:
         return False
-    toks, n = g.split(" "), len(a.split(" "))
-    best = max((difflib.SequenceMatcher(None, a, " ".join(toks[i:i + n])).ratio() for i in range(max(1, len(toks) - n + 1))),
-               default=0.0)
-    return best >= 0.8
+    t = act["action_type"]
+    if t in _VERB and not re.search(_VERB[t], instr, re.I):
+        return False
+    if t in ("click", "long_press"):
+        x, y = act["point_2d"]
+        if any(rx.search(instr) and not ok(x, y) for rx, ok in _LOC):
+            return False
+    return True
 
 
 def row(source, split, eid, step, goal, history, action, intent, img_ref, terminal=False, dev_portrait=None):
@@ -162,9 +202,10 @@ def _ocr_pending(ref):
     data = _open_zip(ref[1]).read(ref[2]) if ref[0] == "zip" else open(ref[1], "rb").read()
     with tempfile.NamedTemporaryFile(suffix=".png") as f:
         f.write(data); f.flush()
-        txt = subprocess.run(["tesseract", f.name, "stdout", "--psm", "3"], capture_output=True, text=True,
-                             timeout=120).stdout
-    return bool(PENDING_RE.search(txt))
+        pr = subprocess.run(["tesseract", f.name, "stdout", "--psm", "3"], capture_output=True, text=True, timeout=120)
+    if pr.returncode != 0 or len(pr.stdout.strip()) < 3:
+        raise RuntimeError(f"tesseract rc={pr.returncode}")  # fail closed -> terminal_ocr_failed
+    return bool(PENDING_RE.search(pr.stdout))
 
 
 def _work(r):
@@ -271,7 +312,7 @@ def odyssey():
             st["drop_ep_ambiguous_calendar_app"] += 1
             continue
         goal = (d["task_info"].get("instruction") or d["task_info"].get("task") or "").strip()
-        history = []
+        history, prev_t = [], None
         for s in d["steps"]:
             a, info = s["action"], s.get("info")
             act = None
@@ -301,18 +342,24 @@ def odyssey():
                 else:
                     st["text_rejected_key_empty_or_typo"] += 1
             elif a == "COMPLETE":
-                if INFO_GOAL_RE.search(goal):
-                    st["truncate_complete_on_info_goal"] += 1  # audit F6: would need a verified answer
-                else:
-                    act = {"action_type": "status", "goal_status": "complete"}
+                # re-verification F5/F6: source completion markers are not reliable success evidence (pending installs,
+                # unanswered information requests) and cannot be reviewed at scale -> no new-source terminal rows;
+                # terminal supervision comes from AndroidControl only
+                st["quarantine_complete"] += 1
             elif a == "INCOMPLETE":
                 st["quarantine_incomplete"] += 1  # audit F5: unreviewed infeasibility labels are not used
+            if act is not None and act["action_type"] == "click" and prev_t == "input_text" and \
+                    keyboard_submit(act["point_2d"], s.get("low_level_instruction")):
+                st["merged_type_keyboard_submit"] += 1  # AW input_text already pressed Enter (re-verification F2)
+                prev_t = "merged"
+                continue
             if act is None:
                 st[f"truncate_at_{a}{'_' + info if isinstance(info, str) and info.startswith('KEY_') else ''}"] += 1
                 break
             term = act["action_type"] == "status"
-            intent = TERMINAL_INTENT if act.get("goal_status") == "complete" else \
-                INFEASIBLE_INTENT if term else (s.get("low_level_instruction") or "").strip()
+            instr = (s.get("low_level_instruction") or "").strip()
+            intent = instr if intent_consistent(act, instr) else ""
+            st["intent_kept" if intent else "intent_blanked_inconsistent"] += 1
             name = os.path.basename(s["screenshot"])
             if name not in members:
                 st["drop_row_missing_image"] += 1
@@ -320,6 +367,7 @@ def odyssey():
             pools[sp].append(row("odyssey", sp, eid, int(s["step"]), goal, history, act, intent,
                                  ("zip", zpath, members[name]), terminal=term))
             history = history + [(intent if not term else "", af.action_to_str(act))]
+            prev_t = act["action_type"]
             if term:
                 break
     rng = random.Random(args.seed)
@@ -327,8 +375,7 @@ def odyssey():
     st["candidates_train"], st["candidates_dev"] = len(tr), len(pools["dev_odyssey"])
     save_stats("odyssey", st)
     assert tr and pools["dev_odyssey"], "no Odyssey candidates"
-    chosen = sample_rows(tr, 10000, rng, per_episode=3, quotas=[
-        (lambda r: r["action"].get("goal_status") == "complete", 650)])  # ~150 removed later by the OCR check
+    chosen = sample_rows(tr, 10000, rng, per_episode=3)
     dev = sample_rows(pools["dev_odyssey"], 1000, rng, per_episode=1)
     materialize(chosen, "odyssey_train", st)
     materialize(dev, "odyssey_dev", st)
@@ -370,6 +417,10 @@ def amex():
             act, intent = None, ""
             if a == "TAP":
                 act = {"action_type": "click", "point_2d": af.px_to_norm(tx, ty, W, H)}
+                if prev == "TYPE" and keyboard_submit(act["point_2d"]):
+                    st["merged_type_keyboard_submit"] += 1  # bottom-right soft-keyboard key right after typing
+                    prev = "PRESS_ENTER"
+                    continue
             elif a == "SWIPE":
                 x1, y1 = af.px_to_norm(tx, ty, W, H)
                 x2, y2 = af.px_to_norm(lx, ly, W, H)
@@ -395,10 +446,7 @@ def amex():
             elif a == "PRESS_HOME":
                 act = {"action_type": "navigate_home"}
             elif a == "TASK_COMPLETE":
-                if INFO_GOAL_RE.search(goal):
-                    st["truncate_complete_on_info_goal"] += 1  # audit F6: would need a verified answer
-                else:
-                    act, intent = {"action_type": "status", "goal_status": "complete"}, TERMINAL_INTENT
+                st["quarantine_complete"] += 1  # re-verification F5/F6: no unreviewed new-source terminal rows
             elif a == "TASK_IMPOSSIBLE":
                 st["quarantine_task_impossible"] += 1  # audit F5: unreviewed infeasibility labels are not used
             if act is None:
@@ -417,7 +465,6 @@ def amex():
     st["candidates_train"], st["candidates_dev"] = len(pools["train"]), len(pools["dev_amex"])
     chosen = sample_rows(pools["train"], 8000, rng, per_episode=3, quotas=[
         (lambda r: r["action"]["action_type"] == "keyboard_enter", 500),
-        (lambda r: r["action"].get("goal_status") == "complete", 650),  # ~150 removed later by the OCR check
         (lambda r: r["action"]["action_type"] == "input_text", 1000)])
     dev = sample_rows(pools["dev_amex"], 500, rng, per_episode=4)
     materialize(chosen, "amex_train", st)
@@ -455,6 +502,9 @@ def screenqa():
         rows_short, rows_full = [], []
         for i, s, fu in load(split):
             st[f"{tag}_questions"] += 1
+            if (split, s["image_id"], i) in SCREENQA_EXCLUDE:
+                st[f"{tag}_drop_reviewed_incorrect"] += 1
+                continue
             gts = [g for g in s["ground_truth"] if g and g.strip() and g.strip() != "<no answer>"]
             fulls = [g.get("full_answer", "").strip() for g in fu["ground_truth"]]
             fulls = [x for x in fulls if x and x != "<no answer>"]
@@ -514,8 +564,10 @@ def ac():
     bad_eps = {e for e, msgs in zip(meta["episode_id"], meta["messages"]) if is_aw(msgs[1]["content"])}
     st["drop_ep_aw_alias"] = len(bad_eps)
     ok_ep = [e not in bad_eps for e in meta["episode_id"]]
-    hi = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if m == "high" and not t and ok_ep[i]]
-    te = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if t and ok_ep[i]]
+    portrait = [h > w for w, h in zip(ds["orig_w"], ds["orig_h"])]
+    st["drop_landscape_rows"] = portrait.count(False)
+    hi = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if m == "high" and not t and ok_ep[i] and portrait[i]]
+    te = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if t and ok_ep[i] and portrait[i]]
     st["v1_high_nonterminal"], st["v1_terminal"] = len(hi), len(te)
     rng = random.Random(args.seed + 3)
     pick = sorted(rng.sample(hi, min(50000, len(hi))) + rng.sample(te, min(6000, len(te))))
@@ -556,9 +608,10 @@ def verify(train, devs):
             if t == "input_text":
                 assert not bad_text(a["text"]), (name, src, a["text"])
             if src in ("odyssey", "amex"):
-                assert not (t == "status" and a["goal_status"] == "infeasible"), (name, src)
-                if t == "status":
-                    assert not INFO_GOAL_RE.search(m[1]["content"].split("\nPrevious steps:")[0]), (name, src)
+                assert t != "status", (name, src, "new-source terminal row")
+                hl = m[1]["content"].split("Previous steps:\n")[1].split("\nWhat is the next action?")[0].splitlines()[-1]
+                if t == "click" and '"input_text"' in hl:
+                    assert not (a["point_2d"][0] >= 780 and a["point_2d"][1] >= 850), (name, src, "keyboard submit not merged")
             if src == "amex" and t != "status":
                 assert m[2]["reasoning_content"] == "", (name, "amex intent not blank")
             if src == "amex" and t == "keyboard_enter":

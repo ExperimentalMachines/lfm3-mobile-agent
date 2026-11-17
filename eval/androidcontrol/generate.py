@@ -29,10 +29,10 @@ p.add_argument("--filter_mode", default=None, help="only rows with this mode (hi
 p.add_argument("--subsample_episodes", type=int, default=0, help="deterministic episode subsample")
 args = p.parse_args()
 
-def _hub_data_files(repo, split):
+def _hub_data_files(repo, split, revision=None):
     """v1 repos use data/<split>/*.parquet; push_to_hub (v2) writes data/<split>-NNNNN-of-NNNNN.parquet."""
     from huggingface_hub import HfApi
-    files = HfApi().list_repo_files(repo, repo_type="dataset")
+    files = HfApi().list_repo_files(repo, repo_type="dataset", revision=revision)
     if any(f.startswith(f"data/{split}/") for f in files):
         return {split: f"data/{split}/*.parquet"}
     return {split: f"data/{split}-*.parquet"}
@@ -42,8 +42,9 @@ if os.path.isdir(args.data):
     ds = load_from_disk(args.data)
 else:
     _repo, _, _split = args.data.partition("@")
-    _split = _split or "test"
-    ds = load_dataset(_repo, data_files=_hub_data_files(_repo, _split), split=_split)
+    _split, _, _rev = _split.partition("#")  # 'org/repo@split#revision' pins an immutable dataset revision
+    _split, _rev = _split or "test", _rev or None
+    ds = load_dataset(_repo, data_files=_hub_data_files(_repo, _split, _rev), split=_split, revision=_rev)
 for _col, _val in (("mode", "high"), ("gt_bbox", "")):  # v2 dev splits lack these v1 columns
     if _col not in ds.column_names:
         ds = ds.add_column(_col, [_val] * len(ds))

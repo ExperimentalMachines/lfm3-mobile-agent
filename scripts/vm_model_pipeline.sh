@@ -149,13 +149,14 @@ for spec in ${DEV_MODELS:-}; do
     N=$(python - <<PY
 from huggingface_hub import HfApi
 from datasets import load_dataset
-fs = HfApi().list_repo_files("$DEV_REPO", repo_type="dataset")
-print(len(load_dataset("$DEV_REPO", data_files={"$sp": [f for f in fs if f.startswith("data/$sp-")]}, split="$sp")))
+rev = "${DEV_REV:-}" or None
+fs = HfApi().list_repo_files("$DEV_REPO", repo_type="dataset", revision=rev)
+print(len(load_dataset("$DEV_REPO", data_files={"$sp": [f for f in fs if f.startswith("data/$sp-")]}, split="$sp", revision=rev)))
 PY
 )
     if ! python score_dev.py /content/eval/${n}_${sp}.jsonl --expect_n $N --out /content/eval/${n}_${sp}.metrics.json > /dev/null 2>&1; then
       log "dev eval $n $sp ($N rows)"
-      python generate.py --model $m --data $DEV_REPO@$sp --out /content/eval/${n}_${sp}.jsonl --enable_thinking $th \
+      python generate.py --model $m --data "$DEV_REPO@$sp${DEV_REV:+#$DEV_REV}" --out /content/eval/${n}_${sp}.jsonl --enable_thinking $th \
         --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
         && python score_dev.py /content/eval/${n}_${sp}.jsonl --expect_n $N --out /content/eval/${n}_${sp}.metrics.json || fail "dev $n $sp"
       push_evals

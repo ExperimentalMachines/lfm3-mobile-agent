@@ -1,0 +1,121 @@
+"""Human visual judgments for the deterministic 32-per-source re-audit sample."""
+from data_v2_verify_rules import CACHE
+import collections as C, json
+
+notes={
+'odyssey':[
+'Messenger contact target is visible in the share sheet.',
+'Crosshair hits Keep new-note plus.',
+'Crosshair hits Trulia launcher icon.',
+'Crosshair hits Lyft notification settings row.',
+'Crosshair hits TickPick launcher icon.',
+'Crosshair hits Firefox Open button.',
+'Crosshair hits Firefox launcher icon.',
+'Visible keyboard search key matches click; preceding input_text already implies Enter under AW (F2).',
+'Crosshair hits Opera in app drawer; incidental Calendar icons are visible.',
+'Crosshair hits Display settings row.',
+'Crosshair hits Chrome search field.',
+'Crosshair hits close control on the Photos promotion.',
+'Crosshair hits X direct-message share target.',
+'Visible keyboard search key matches click; preceding input_text implies Enter under AW (F2).',
+'REJECT: intent says Try it now in bottom banner; point instead hits the central small search button.',
+'Visible Play Store keyboard search key matches click; preceding input_text implies Enter under AW (F2).',
+'Crosshair hits Chatty message entry.',
+'Crosshair hits WPS Create button.',
+'Crosshair hits clear button on stale Amazon query.',
+'Visible keyboard search key matches click; preceding input_text implies Enter under AW (F2).',
+'REJECT: intent describes purple plus beside Schedule event; screenshot is launcher and point hits Clock.',
+'Crosshair hits product overflow/options control for removing cart item.',
+'Crosshair hits Threads Post.',
+'REJECT: complete while Instagram has Cancel in Play Store; similar-app download/open is not established.',
+'Crosshair hits Add a language.',
+'REJECT: intent says top-right Continue to app banner; point hits bottom Choose UberX button.',
+'Crosshair hits AliExpress Uninstall.',
+'Full-width language list supports downward content scroll.',
+'Crosshair focuses existing Amazon search field for a new query.',
+'Crosshair focuses Opera search field.',
+'Crosshair focuses Opera search field.',
+'Crosshair hits Done in WPS edit toolbar; plausible step toward saving.'
+],
+'amex':[
+'UNCERTAIN: add target is second listed item; first is sold out, while goal says first item.',
+'Play control in Release Radar is visible, shuffle indicator enabled.',
+'Add to submenu is a plausible path to To read.',
+'Requested meeting body exactly matches goal and blank message body is visible.',
+'Upward finger swipe on launcher plausibly opens drawer (content down).',
+'UNCERTAIN: chosen Yelp listing appears under Sponsored Results; cannot establish first non-sponsored match.',
+'Crosshair hits ESPN launcher icon.',
+'Crosshair hits Singapore all-airports result.',
+'REJECT: goal asks third book favorite; second book has gold star, third star is unselected.',
+'Crosshair hits NewsBreak Language setting.',
+'Horizontal launcher swipe is plausible for finding Google Tasks.',
+'Crosshair hits NewsBreak launcher icon.',
+'Crosshair hits search submission button for requested shoe query.',
+'All Sport submenu is a plausible path to Golf.',
+'Upward launcher swipe plausibly opens drawer.',
+'Crosshair hits eBay icon.',
+'UNCERTAIN: text matches goal, but populated Tennis field is not visibly selected; replacement/focus semantics unresolved.',
+'Crosshair hits search-for-Hyatt suggestion.',
+'Body text matches requested email; insertion point visible.',
+'Full-width app drawer supports scroll down.',
+'Full-width settings list supports scroll down to playback options.',
+'Anytime control is the date-filter target for this weekend.',
+'Crosshair hits Dr. Tin avatar.',
+'Rome input matches requested destination and entry field is visible.',
+'Crosshair hits latest MixCloud show play control.',
+'Orlando input replaces visibly selected prior location.',
+'Latest Golf article is visible; browse/read completion is plausible, distinct from an explicit factual-answer request.',
+'Horizontal launcher swipe plausibly finds SmartNews.',
+'Crosshair hits favorite beside first similar event.',
+'Podcast query matches goal and search field is visible.',
+'Crosshair hits MyObservatory icon.',
+'Back control leaves visible light-theme settings screen to confirm appearance.'
+],
+'screenqa':[
+'Deals is visibly selected.',
+'Facebook and Google+ login buttons are visible.',
+'Price is $11.95.',
+'Password hint specifies maximum 15 digits.',
+'Support email matches visible contact text.',
+'Video thumbnail shows 0:30.',
+'Images checkbox is checked.',
+'Hip Bridges row shows 5 repetitions.',
+'Balance field shows 100.',
+'Lunch time shows 1:00 PM; short answer gives hour/minute.',
+'Usage-data switch is enabled.',
+'Title reads UNTITLED RECORD.',
+'UNCERTAIN: screenshot offers GBP50 for every three friends; question says for each of three, creating unit ambiguity.',
+'Logo reads My Mixtapez.',
+'Ex-showroom price reads INR39,337 onwards.',
+'Download progress displays 100%.',
+'CID services number reads 24569501.',
+'Weight reads 200.0 lbs.',
+'Female radio button is selected.',
+'Route arrival is MCO.',
+'Title reads DR. OZ.',
+'Enable vibration switch is enabled.',
+'The provided captcha transcription matches the visible characters.',
+'Remember Me box is checked.',
+'UNCERTAIN: Tucson is visible; Arizona is an unsupported expansion of the selected label in this screenshot.',
+'ACTIVITY tab is underlined.',
+'Facebook is the visible login provider; SpeakingPal is also named as requesting app.',
+'Weight indicator displays 198.3 pounds.',
+'Date reads FEB 21.',
+'Balance forecast reads $0.00.',
+'jara17 entry says 1 hour ago.',
+'Category title is Women\'s Shoes.'
+]}
+rows=json.loads((CACHE/'visual_samples.json').read_text());ledger=[]
+for r in rows:
+    source=r['source'];i=int(r['visual_id'].rsplit('_',1)[1])-1;note=notes[source][i]
+    verdict='reject' if note.startswith('REJECT:') else 'uncertain' if note.startswith('UNCERTAIN:') else 'plausible'
+    ledger.append({'visual_id':r['visual_id'],'id':r['id'],'verdict':verdict,'note':note,'image':'visual/'+r['visual_id']+'.png',
+                   'action':r['action'],'goal':r['goal'],'intent':r['messages'][-1]['reasoning_content']})
+assert len(ledger)==96 and all(sum(x['id'].split('/')[1]==s for x in ledger)==32 for s in notes)
+(CACHE/'visual_review.json').write_text(json.dumps(ledger,indent=2,ensure_ascii=False))
+lines=['# Pinned-revision visual review','',
+'Revision: `d33cb3c21756403deac1ac74e5e4a1d1909f3fdf`. Fresh train shards 1, 6, 10, 14; sorted row IDs; seeds 20261124/25/26; 32 rows per source without replacement. All twelve sheets inspected at original size. Labels below assess the visible current observation and reasoning. A locally plausible target does not clear an executor/history mismatch such as F2.','',
+'| Sample | Published row | Judgment | Observation |','|---|---|---|---|']
+for r in ledger:lines.append(f'| [{r["visual_id"]}]({r["image"]}) | `{r["id"]}` | {r["verdict"]} | {r["note"].replace("|","/")} |')
+(CACHE/'visual_review.md').write_text('\n'.join(lines)+'\n')
+print(json.dumps({s:dict(C.Counter(r['verdict'] for r in ledger if r['id'].split('/')[1]==s)) for s in notes},indent=2))
