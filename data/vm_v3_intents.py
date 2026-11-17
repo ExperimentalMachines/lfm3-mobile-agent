@@ -38,8 +38,15 @@ a = p.parse_args()
 
 api = HfApi()
 files = api.list_repo_files(a.src, repo_type="dataset", revision=a.rev)
-splits = {s: [f for f in files if f.startswith(f"data/{s}-")] for s in ("train", "dev_odyssey", "dev_amex", "dev_screenqa")}
-dd = DatasetDict({s: load_dataset(a.src, data_files={s: fs}, split=s, revision=a.rev) for s, fs in splits.items()})
+# parallel shard download first (load_dataset fetches shards one by one and stalled once on Modal)
+from huggingface_hub import snapshot_download
+t_dl = time.time()
+local = snapshot_download(a.src, repo_type="dataset", revision=a.rev, allow_patterns=["data/*"], max_workers=16,
+                          local_dir="/content/data/v2src")
+print(f"downloaded v2 shards in {time.time() - t_dl:.0f}s", flush=True)
+splits = {s: [os.path.join(local, f) for f in files if f.startswith(f"data/{s}-")]
+          for s in ("train", "dev_odyssey", "dev_amex", "dev_screenqa")}
+dd = DatasetDict({s: load_dataset("parquet", data_files={s: fs}, split=s) for s, fs in splits.items()})
 train = dd["train"]
 print({k: len(v) for k, v in dd.items()}, flush=True)
 

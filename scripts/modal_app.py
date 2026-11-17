@@ -19,6 +19,8 @@ FILES = {
     "train/qwen35_chat_template_gen.jinja": "/content/work/qwen35_chat_template_gen.jinja",
     "eval/androidcontrol/generate.py": "/content/work/generate.py",
     "eval/androidcontrol/score.py": "/content/work/score.py",
+    "eval/androidcontrol/score_dev.py": "/content/work/score_dev.py",
+    "data/vm_v3_intents.py": "/content/work/vm_v3_intents.py",
     "eval/general/eval_general.py": "/content/work/eval_general.py",
     "data/build_general_replay.py": "/content/work/build_general_replay.py",
     "scripts/vm_model_pipeline.sh": "/content/work/vm_model_pipeline.sh",
@@ -76,13 +78,37 @@ def general_logprob(specs: list) -> dict:
     return out
 
 
+# H100 variants (Modal's best speed per dollar for our workloads: ~3x A100 compute at ~1.9x the price).
+H100 = dict(gpu="H100", cpu=12, memory=65536, secrets=[SECRET])
+
+
+@app.function(timeout=3 * 3600, **H100)
+def v3_intents_h100(args: list) -> int:
+    """Teacher-fill blank intents of the v2 train split -> push the v3 dataset (data/vm_v3_intents.py)."""
+    os.makedirs("/content/eval", exist_ok=True)
+    e = dict(os.environ, TOKENIZERS_PARALLELISM="false", HF_HUB_DISABLE_XET="1", HF_HUB_DOWNLOAD_TIMEOUT="60",
+             HF_HUB_ETAG_TIMEOUT="60")
+    os.makedirs("/content/data", exist_ok=True)
+    p = subprocess.run(["python", "/content/work/vm_v3_intents.py", *args], cwd="/content/work", env=e)
+    print("INTENTS EXIT", p.returncode, flush=True)
+    return p.returncode
+
+
+@app.function(timeout=8 * 3600, **H100)
+def run_pipeline_h100(env: dict) -> int:
+    return run_pipeline.local(env)
+
+
 @app.local_entrypoint()
-def main(job: str = "", probe_only: bool = False):
+def main(job: str = "", probe_only: bool = False, gpu: str = "a100"):
     if probe_only:
         print(probe.remote())
         return
     if job.endswith(".logprob.json"):
         print(general_logprob.remote(json.load(open(job))))
         return
+    if job.endswith(".intents.json"):
+        print("exit:", v3_intents_h100.remote(json.load(open(job))))
+        return
     env = json.load(open(job))[0]["env"]
-    print("exit:", run_pipeline.remote(env))
+    print("exit:", (run_pipeline_h100 if gpu == "h100" else run_pipeline).remote(env))
