@@ -1,0 +1,66 @@
+{
+ "A": {
+  "run": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910",
+  "successes": 13,
+  "n_recorded": 116,
+  "rate_over_expected": 0.11206896551724138,
+  "wilson95": [
+   0.06667286239577594,
+   0.18233582907696805
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810",
+  "successes": 23,
+  "n_recorded": 116,
+  "rate_over_expected": 0.19827586206896552,
+  "wilson95": [
+   0.13591176378176467,
+   0.27998388514148065
+  ]
+ },
+ "paired": {
+  "n_pairs": 112,
+  "both": 5,
+  "A_only": 8,
+  "B_only": 18,
+  "neither": 81,
+  "mcnemar_exact_p": 0.07551869750022888,
+  "excluded_goal_or_seed_mismatch": [
+   "MarkorCreateFolder",
+   "RetroCreatePlaylist",
+   "SimpleSmsSend",
+   "SimpleSmsSendReceivedAddress"
+  ],
+  "B_only_tasks": [
+   "AudioRecorderRecordAudio",
+   "ContactsAddContact",
+   "ExpenseDeleteMultiple",
+   "NotesMeetingAttendeeCount",
+   "NotesRecipeIngredientCount",
+   "NotesTodoItemCount",
+   "SimpleCalendarAddOneEvent",
+   "SimpleCalendarAddOneEventRelativeDay",
+   "SimpleCalendarAnyEventsOnDate",
+   "SimpleCalendarEventsInTimeRange",
+   "SimpleCalendarEventsOnDate",
+   "SimpleCalendarLocationOfEvent",
+   "SimpleCalendarNextMeetingWithPerson",
+   "SimpleSmsReplyMostRecent",
+   "SystemBluetoothTurnOn",
+   "SystemWifiTurnOn",
+   "TasksDueOnDate",
+   "TasksIncompleteTasksOnDate"
+  ],
+  "A_only_tasks": [
+   "ClockStopWatchPausedVerify",
+   "ClockStopWatchRunning",
+   "OpenAppTaskEval",
+   "RecipeDeleteSingleWithRecipeWithNoise",
+   "SimpleCalendarDeleteOneEvent",
+   "SystemBrightnessMaxVerify",
+   "SystemWifiTurnOffVerify",
+   "SystemWifiTurnOnVerify"
+  ]
+ }
+}

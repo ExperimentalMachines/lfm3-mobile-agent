@@ -1,0 +1,54 @@
+{
+ "A": {
+  "run": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386",
+  "successes": 3,
+  "n_recorded": 116,
+  "rate_over_expected": 0.02586206896551724,
+  "wilson95": [
+   0.00883372783851618,
+   0.07328800618372652
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910",
+  "successes": 13,
+  "n_recorded": 116,
+  "rate_over_expected": 0.11206896551724138,
+  "wilson95": [
+   0.06667286239577594,
+   0.18233582907696805
+  ]
+ },
+ "paired": {
+  "n_pairs": 107,
+  "both": 3,
+  "A_only": 0,
+  "B_only": 10,
+  "neither": 94,
+  "mcnemar_exact_p": 0.001953125,
+  "excluded_goal_or_seed_mismatch": [
+   "MarkorCreateFolder",
+   "MarkorCreateNoteAndSms",
+   "MarkorDeleteNewestNote",
+   "RecipeDeleteDuplicateRecipes2",
+   "RetroCreatePlaylist",
+   "SimpleSmsResend",
+   "SimpleSmsSend",
+   "SimpleSmsSendReceivedAddress",
+   "SystemBrightnessMinVerify"
+  ],
+  "B_only_tasks": [
+   "ClockStopWatchPausedVerify",
+   "ClockStopWatchRunning",
+   "ExpenseDeleteSingle",
+   "OpenAppTaskEval",
+   "SimpleCalendarDeleteOneEvent",
+   "SystemBluetoothTurnOff",
+   "SystemBluetoothTurnOnVerify",
+   "SystemBrightnessMaxVerify",
+   "SystemWifiTurnOffVerify",
+   "SystemWifiTurnOnVerify"
+  ],
+  "A_only_tasks": []
+ }
+}

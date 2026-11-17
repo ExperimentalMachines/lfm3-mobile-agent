@@ -1,0 +1,52 @@
+{
+ "A": {
+  "run": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504",
+  "successes": 15,
+  "n_recorded": 116,
+  "rate_over_expected": 0.12931034482758622,
+  "wilson95": [
+   0.07995320598677602,
+   0.20243287697606827
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910",
+  "successes": 13,
+  "n_recorded": 116,
+  "rate_over_expected": 0.11206896551724138,
+  "wilson95": [
+   0.06667286239577594,
+   0.18233582907696805
+  ]
+ },
+ "paired": {
+  "n_pairs": 110,
+  "both": 9,
+  "A_only": 6,
+  "B_only": 4,
+  "neither": 91,
+  "mcnemar_exact_p": 0.75390625,
+  "excluded_goal_or_seed_mismatch": [
+   "MarkorCreateFolder",
+   "RetroCreatePlaylist",
+   "RetroPlayingQueue",
+   "SimpleSmsSend",
+   "SimpleSmsSendClipboardContent",
+   "SimpleSmsSendReceivedAddress"
+  ],
+  "B_only_tasks": [
+   "ClockStopWatchPausedVerify",
+   "ClockStopWatchRunning",
+   "SystemBrightnessMaxVerify",
+   "SystemWifiTurnOffVerify"
+  ],
+  "A_only_tasks": [
+   "AudioRecorderRecordAudio",
+   "RecipeDeleteDuplicateRecipes",
+   "SystemBrightnessMinVerify",
+   "SystemWifiTurnOff",
+   "SystemWifiTurnOn",
+   "TurnOnWifiAndOpenApp"
+  ]
+ }
+}
