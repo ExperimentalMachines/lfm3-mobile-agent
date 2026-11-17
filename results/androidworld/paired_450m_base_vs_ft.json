@@ -1,0 +1,39 @@
+{
+ "A": {
+  "run": "results/androidworld/lfm25vl450m_base/run_20261117T062246232259",
+  "successes": 0,
+  "n_recorded": 116,
+  "rate_over_expected": 0.0,
+  "wilson95": [
+   0.0,
+   0.03205564678709229
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/lfm25vl450m_ft/run_20261117T022926194002",
+  "successes": 2,
+  "n_recorded": 116,
+  "rate_over_expected": 0.017241379310344827,
+  "wilson95": [
+   0.004740913854513688,
+   0.06069212442267886
+  ]
+ },
+ "paired": {
+  "n_pairs": 114,
+  "both": 0,
+  "A_only": 0,
+  "B_only": 2,
+  "neither": 112,
+  "mcnemar_exact_p": 0.5,
+  "excluded_goal_or_seed_mismatch": [
+   "MarkorCreateFolder",
+   "MarkorCreateNoteAndSms"
+  ],
+  "B_only_tasks": [
+   "SystemBrightnessMaxVerify",
+   "SystemBrightnessMinVerify"
+  ],
+  "A_only_tasks": []
+ }
+}

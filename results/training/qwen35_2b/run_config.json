@@ -1,0 +1,43 @@
+{
+  "model_id": "Qwen/Qwen3.5-2B",
+  "train": [
+    "experimentalmachines/AndroidControl-screen-agent-sft@train"
+  ],
+  "val": "experimentalmachines/AndroidControl-screen-agent-sft@val",
+  "out": "/content/runs/qwen35-2b-ac-lora",
+  "max_pixels": 774400,
+  "min_pixels": 65536,
+  "epochs": 1.0,
+  "max_steps": 1250,
+  "lr": 0.0002,
+  "bs": 8,
+  "grad_accum": 4,
+  "lora_r": 64,
+  "lora_alpha": 128,
+  "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj|in_proj\\w*|out_proj)",
+  "modules_to_save": [],
+  "save_steps": 50,
+  "eval_steps": 250,
+  "hub_repo": "experimentalmachines/Qwen3.5-2B-AndroidControl-LoRA-ckpt",
+  "workers": 16,
+  "seed": 42,
+  "no_gc": false,
+  "chat_template_path": "/content/work/qwen35_chat_template_gen.jinja",
+  "max_agent_rows": 0,
+  "replay": [],
+  "inline_think": false,
+  "trust_remote_code": true,
+  "provenance": {
+    "model_sha": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@train": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+    "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@val": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+    "versions": {
+      "torch": "2.14.1+cu130",
+      "transformers": "5.20.2",
+      "trl": "1.16.0",
+      "peft": "0.21.2",
+      "datasets": "5.1.0",
+      "accelerate": "1.15.0"
+    }
+  }
+}

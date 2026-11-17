@@ -54,8 +54,19 @@ AW_APP_RE = re.compile("|".join([
     r"simplemobiletools", r"gsantner\.markor", r"arduia\.expense", r"flauschcode\.broccoli", r"cozic\.joplin",
     r"net\.osmand", r"monkey\.retromusic", r"videolan\.vlc", r"dimowner\.audiorecorder", r"dennisguse\.opentracks",
     r"^org\.tasks",
+    # v2 audit F8: ambiguous aliases excluded conservatively (could be Simple Calendar Pro / Audio Recorder)
+    r"calendar ?pro", r"(voice|sound) ?recorder",
 ]), re.I)
+# Odyssey app labels are bare names ("Calendar"): any calendar app is excluded there (audit F8)
+ODY_EXTRA_RE = re.compile(r"\bcalendar\b", re.I)
 MIN_SWIPE = 100  # on the 0-1000 grid
+# AndroidWorld executes scroll as a swipe along the screen's centre line: keep only source swipes that cross the
+# central band (audit F3: region-specific swipes, e.g. inside a dropdown, are not reproducible by that executor)
+KEY_TEXT = {"esc", "escape", "enter", "tab", "back", "home", "del", "delete", "backspace", "space"}  # audit F4
+INFO_GOAL_RE = re.compile(r"\?|\b(what|which|who|whom|whose|when|where|how (many|much|long|far|old|often))\b|"
+                          r"\b(find out|tell me|let me know|look up the|check (whether|if))\b", re.I)  # audit F6
+PENDING_RE = re.compile(r"\b(pending|loading|downloading|installing|please wait|processing|connecting|signing in|"
+                        r"uploading|sending|buffering)\b", re.I)  # audit F5: not-yet-finished end screens
 
 p = argparse.ArgumentParser()
 p.add_argument("--stage", required=True, choices=["ac", "odyssey", "amex", "screenqa", "merge"])
@@ -78,19 +89,42 @@ def h01(s):
 
 
 def swipe_dir(x1, y1, x2, y2):
-    """Normalized (0-1000) finger path -> scroll direction (content-side convention) or None."""
+    """Normalized (0-1000) finger path -> scroll direction (content-side convention) or None.
+    None for short/diagonal swipes and for swipes that do not cross the screen's central band (audit F3)."""
     dx, dy = x2 - x1, y2 - y1
     if abs(dy) >= MIN_SWIPE and abs(dy) >= 2 * abs(dx):
+        if not (350 <= (x1 + x2) / 2 <= 650 and min(y1, y2) <= 600 and max(y1, y2) >= 400):
+            return None
         return "down" if dy < 0 else "up"
     if abs(dx) >= MIN_SWIPE and abs(dx) >= 2 * abs(dy):
+        if not (300 <= (y1 + y2) / 2 <= 700 and min(x1, x2) <= 600 and max(x1, x2) >= 400):
+            return None
         return "right" if dx < 0 else "left"
     return None
 
 
-def row(source, split, eid, step, goal, history, action, intent, img_ref, terminal=False):
+def bad_text(t):
+    """Typed payloads that are really key presses or empty (audit F4)."""
+    return not t or not t.strip() or t.strip().lower() in KEY_TEXT
+
+
+def near_miss(text, goal):
+    """True if `text` is a close-but-wrong copy of a span of the goal (typo trajectories, audit F7)."""
+    import difflib
+    a = re.sub(r"\s+", " ", text.lower()).strip()
+    g = re.sub(r"\s+", " ", (goal or "").lower())
+    if not a or a in g or len(a) < 5:
+        return False
+    toks, n = g.split(" "), len(a.split(" "))
+    best = max((difflib.SequenceMatcher(None, a, " ".join(toks[i:i + n])).ratio() for i in range(max(1, len(toks) - n + 1))),
+               default=0.0)
+    return best >= 0.8
+
+
+def row(source, split, eid, step, goal, history, action, intent, img_ref, terminal=False, dev_portrait=None):
     return {"source": source, "split": split, "episode_id": str(eid), "step_idx": int(step), "goal": goal,
             "history": [list(h) for h in history], "action": action, "intent": intent, "img": img_ref,
-            "is_terminal": terminal}
+            "is_terminal": terminal, "dev_portrait": dev_portrait}
 
 
 # ---------------------------------------------------------------- image workers
@@ -123,8 +157,26 @@ def load_image(ref):
     return b.getvalue(), (w, h)
 
 
+def _ocr_pending(ref):
+    import subprocess, tempfile
+    data = _open_zip(ref[1]).read(ref[2]) if ref[0] == "zip" else open(ref[1], "rb").read()
+    with tempfile.NamedTemporaryFile(suffix=".png") as f:
+        f.write(data); f.flush()
+        txt = subprocess.run(["tesseract", f.name, "stdout", "--psm", "3"], capture_output=True, text=True,
+                             timeout=120).stdout
+    return bool(PENDING_RE.search(txt))
+
+
 def _work(r):
     jpg, info = load_image(r["img"])
+    if jpg is not None and r.get("dev_portrait") is not None and r["dev_portrait"] != (info[1] > info[0]):
+        return r, None, "frame_mismatch"
+    if jpg is not None and r["is_terminal"] and r["action"].get("goal_status") == "complete" and r["source"] != "screenqa":
+        try:
+            if _ocr_pending(r["img"]):
+                return r, None, "terminal_pending_screen"
+        except Exception:  # noqa: BLE001
+            return r, None, "terminal_ocr_failed"
     return r, jpg, info
 
 
@@ -136,7 +188,7 @@ def materialize(rows, name, st):
         "messages": [{"role": Value("string"), "content": Value("string"), "reasoning_content": Value("string")}],
         "source": Value("string"), "split": Value("string"), "episode_id": Value("string"),
         "step_idx": Value("int32"), "gt_action": Value("string"), "is_terminal": Value("bool"),
-        "orig_w": Value("int32"), "orig_h": Value("int32"),
+        "orig_w": Value("int32"), "orig_h": Value("int32"), "img_sha": Value("string"),
     })
     out = []
     with mp.Pool(args.workers) as pool:
@@ -152,7 +204,7 @@ def materialize(rows, name, st):
             out.append({"images": [{"bytes": jpg, "path": None}], "messages": msgs, "source": r["source"],
                         "split": r["split"], "episode_id": r["episode_id"], "step_idx": r["step_idx"],
                         "gt_action": json.dumps(act, ensure_ascii=False), "is_terminal": r["is_terminal"],
-                        "orig_w": info[0], "orig_h": info[1]})
+                        "orig_w": info[0], "orig_h": info[1], "img_sha": hashlib.sha256(jpg).hexdigest()})
     out.sort(key=lambda x: (x["episode_id"], x["step_idx"]))
     Dataset.from_list(out, features=feats).save_to_disk(os.path.join(args.out, name))
     st[f"{name}_rows"] = len(out)
@@ -164,12 +216,15 @@ def sample_rows(rows, n, rng, per_episode=2, quotas=None):
     """Pick n rows: quota rows first (by predicate, capped at k), then fill with <= per_episode rows per episode
     from rows matching NO quota predicate (so a quota is also a ceiling)."""
     rng.shuffle(rows)
-    chosen, used = [], set()
+    chosen, used, per = [], set(), Counter()
     for pred, k in (quotas or []):
-        picks = [r for r in rows if pred(r)][:k]
-        chosen += picks
-        used |= {id(r) for r in picks}
-    per = Counter(r["episode_id"] for r in chosen)
+        got = 0
+        for r in rows:
+            if got >= k or len(chosen) >= n:
+                break
+            if id(r) in used or per[r["episode_id"]] >= per_episode or not pred(r):
+                continue
+            chosen.append(r); used.add(id(r)); per[r["episode_id"]] += 1; got += 1
     for r in rows:
         if len(chosen) >= n:
             break
@@ -212,6 +267,9 @@ def odyssey():
         if is_aw(*apps, d["task_info"].get("instruction"), d["task_info"].get("task")):
             st["drop_ep_aw_app"] += 1
             continue
+        if any(ODY_EXTRA_RE.search(str(a_)) for a_ in apps):
+            st["drop_ep_ambiguous_calendar_app"] += 1
+            continue
         goal = (d["task_info"].get("instruction") or d["task_info"].get("task") or "").strip()
         history = []
         for s in d["steps"]:
@@ -238,11 +296,17 @@ def odyssey():
                     act = None
             elif a in ("TEXT", "TYPE"):
                 txt = info if isinstance(info, str) and info and not info.startswith("[") else s.get("ps")
-                act = {"action_type": "input_text", "text": str(txt)} if txt else None
+                if txt and not bad_text(str(txt)) and not near_miss(str(txt), goal):
+                    act = {"action_type": "input_text", "text": str(txt)}
+                else:
+                    st["text_rejected_key_empty_or_typo"] += 1
             elif a == "COMPLETE":
-                act = {"action_type": "status", "goal_status": "complete"}
+                if INFO_GOAL_RE.search(goal):
+                    st["truncate_complete_on_info_goal"] += 1  # audit F6: would need a verified answer
+                else:
+                    act = {"action_type": "status", "goal_status": "complete"}
             elif a == "INCOMPLETE":
-                act = {"action_type": "status", "goal_status": "infeasible"}
+                st["quarantine_incomplete"] += 1  # audit F5: unreviewed infeasibility labels are not used
             if act is None:
                 st[f"truncate_at_{a}{'_' + info if isinstance(info, str) and info.startswith('KEY_') else ''}"] += 1
                 break
@@ -264,8 +328,7 @@ def odyssey():
     save_stats("odyssey", st)
     assert tr and pools["dev_odyssey"], "no Odyssey candidates"
     chosen = sample_rows(tr, 10000, rng, per_episode=3, quotas=[
-        (lambda r: r["action"].get("goal_status") == "complete", 500),
-        (lambda r: r["action"].get("goal_status") == "infeasible", 100)])
+        (lambda r: r["action"].get("goal_status") == "complete", 650)])  # ~150 removed later by the OCR check
     dev = sample_rows(pools["dev_odyssey"], 1000, rng, per_episode=1)
     materialize(chosen, "odyssey_train", st)
     materialize(dev, "odyssey_dev", st)
@@ -296,36 +359,48 @@ def amex():
             continue
         sp = "dev_amex" if h01(eid) < 0.05 else "train"
         goal = (d.get("instruction") or "").strip()
-        history = []
+        history, prev = [], None
         for s in steps:
             a = s["action"]
             W, H = s["device_dim"]
             tx, ty = s["touch_coord"]
             lx, ly = s["lift_coord"]
+            # AMEX has no per-step instruction: non-terminal intents stay EMPTY (audit F10: a fixed template carries
+            # no target/state information); the chat template renders <think></think>
             act, intent = None, ""
             if a == "TAP":
                 act = {"action_type": "click", "point_2d": af.px_to_norm(tx, ty, W, H)}
-                intent = "Tap the next element needed for the task."
             elif a == "SWIPE":
                 x1, y1 = af.px_to_norm(tx, ty, W, H)
                 x2, y2 = af.px_to_norm(lx, ly, W, H)
                 dr = swipe_dir(x1, y1, x2, y2)
                 if dr:
                     act = {"action_type": "scroll", "direction": dr}
-                    intent = f"Scroll {dr} to see more content."
-            elif a == "TYPE" and s.get("type_text"):
-                act = {"action_type": "input_text", "text": s["type_text"]}
-                intent = f'Type "{s["type_text"]}".'
+            elif a == "TYPE":
+                t_ = s.get("type_text") or ""
+                if not bad_text(t_) and not near_miss(t_, goal):
+                    act = {"action_type": "input_text", "text": t_}
+                else:
+                    st["text_rejected_key_empty_or_typo"] += 1
             elif a == "PRESS_ENTER":
-                act, intent = {"action_type": "keyboard_enter"}, "Press Enter to submit."
+                if prev == "TYPE":
+                    # audit F2: AndroidWorld's input_text already presses Enter -> TYPE+ENTER is ONE input_text action;
+                    # the source's intermediate (typed, not yet submitted) screen does not exist under that executor
+                    st["merged_type_enter"] += 1
+                    prev = "PRESS_ENTER"
+                    continue
+                act = {"action_type": "keyboard_enter"}
             elif a == "PRESS_BACK":
-                act, intent = {"action_type": "navigate_back"}, "Go back."
+                act = {"action_type": "navigate_back"}
             elif a == "PRESS_HOME":
-                act, intent = {"action_type": "navigate_home"}, "Go to the home screen."
+                act = {"action_type": "navigate_home"}
             elif a == "TASK_COMPLETE":
-                act, intent = {"action_type": "status", "goal_status": "complete"}, TERMINAL_INTENT
+                if INFO_GOAL_RE.search(goal):
+                    st["truncate_complete_on_info_goal"] += 1  # audit F6: would need a verified answer
+                else:
+                    act, intent = {"action_type": "status", "goal_status": "complete"}, TERMINAL_INTENT
             elif a == "TASK_IMPOSSIBLE":
-                act, intent = {"action_type": "status", "goal_status": "infeasible"}, INFEASIBLE_INTENT
+                st["quarantine_task_impossible"] += 1  # audit F5: unreviewed infeasibility labels are not used
             if act is None:
                 st[f"truncate_at_{a}"] += 1
                 break
@@ -335,14 +410,14 @@ def amex():
                 break
             term = act["action_type"] == "status"
             pools[sp].append(row("amex", sp, eid, s["step_id"], goal, history, act, intent,
-                                 ("zip", zpath, members[name]), terminal=term))
+                                 ("zip", zpath, members[name]), terminal=term, dev_portrait=H > W))
             history = history + [(intent if not term else "", af.action_to_str(act))]
+            prev = a
     rng = random.Random(args.seed + 1)
     st["candidates_train"], st["candidates_dev"] = len(pools["train"]), len(pools["dev_amex"])
     chosen = sample_rows(pools["train"], 8000, rng, per_episode=3, quotas=[
         (lambda r: r["action"]["action_type"] == "keyboard_enter", 500),
-        (lambda r: r["action"].get("goal_status") == "complete", 500),
-        (lambda r: r["action"].get("goal_status") == "infeasible", 150),
+        (lambda r: r["action"].get("goal_status") == "complete", 650),  # ~150 removed later by the OCR check
         (lambda r: r["action"]["action_type"] == "input_text", 1000)])
     dev = sample_rows(pools["dev_amex"], 500, rng, per_episode=4)
     materialize(chosen, "amex_train", st)
@@ -390,7 +465,7 @@ def screenqa():
             if p_ is None or not os.path.exists(f"{rico}/{s['image_id']}.jpg"):
                 st[f"{tag}_drop_missing_rico"] += 1
                 continue
-            if is_aw(p_):
+            if is_aw(p_, s["question"]):
                 st[f"{tag}_drop_aw_app"] += 1
                 continue
             ref = ("file", f"{rico}/{s['image_id']}.jpg")
@@ -434,9 +509,13 @@ def ac():
     st = Counter()
     ds = load_dataset("parquet", data_files=f"{args.root}/ac_v1/data/train/*.parquet", split="train")
     st["v1_train_rows"] = len(ds)
-    meta = ds.select_columns(["mode", "is_terminal", "episode_id"])
-    hi = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if m == "high" and not t]
-    te = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if t]
+    meta = ds.select_columns(["mode", "is_terminal", "episode_id", "messages"])
+    # audit F8: drop whole episodes whose goal/history text names an (ambiguous) AndroidWorld app alias
+    bad_eps = {e for e, msgs in zip(meta["episode_id"], meta["messages"]) if is_aw(msgs[1]["content"])}
+    st["drop_ep_aw_alias"] = len(bad_eps)
+    ok_ep = [e not in bad_eps for e in meta["episode_id"]]
+    hi = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if m == "high" and not t and ok_ep[i]]
+    te = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if t and ok_ep[i]]
     st["v1_high_nonterminal"], st["v1_terminal"] = len(hi), len(te)
     rng = random.Random(args.seed + 3)
     pick = sorted(rng.sample(hi, min(50000, len(hi))) + rng.sample(te, min(6000, len(te))))
@@ -446,10 +525,51 @@ def ac():
                                   ("images", "messages", "episode_id", "step_idx", "gt_action", "is_terminal", "orig_w", "orig_h")],
                   num_proc=args.workers)
     sub = sub.cast_column("episode_id", Value("string"))
+    from datasets import Image as DImage, Sequence
+    raw = sub.cast_column("images", Sequence(DImage(decode=False)))
+    shas = raw.map(lambda e: {"img_sha": hashlib.sha256(e["images"][0]["bytes"]).hexdigest()},
+                   remove_columns=raw.column_names, num_proc=args.workers)["img_sha"]
+    sub = sub.add_column("img_sha", shas)
     sub.save_to_disk(os.path.join(args.out, "ac_train"))
     st["ac_rows"] = len(sub)
     st["ac_terminal_rows"] = sum(sub["is_terminal"])
     save_stats("ac", st)
+
+
+# ---------------------------------------------------------------- full-dataset assertions (run on every row)
+def verify(train, devs):
+    """Raise if any audit invariant fails on ANY row; return the measured counts."""
+    out = Counter()
+    dev_sha = set().union(*[set(d["img_sha"]) for d in devs.values()])
+    assert not (set(train["img_sha"]) & dev_sha), "train/dev image overlap"
+    out["train_dev_image_overlap"] = 0
+    per_ep = Counter()
+    for name, ds in [("train", train), *devs.items()]:
+        for r in ds.select_columns(["messages", "gt_action", "source", "episode_id", "is_terminal"]):
+            m = r["messages"]
+            assert [x["role"] for x in m] == ["system", "user", "assistant"], name
+            a = af.parse_action(m[2]["content"], strict=True)
+            assert a is not None and json.loads(r["gt_action"]) == a, (name, m[2]["content"])
+            src, t = r["source"], a["action_type"]
+            if src != "androidcontrol":  # AC rows are v1 rows (episode-level alias filter applied in the ac stage)
+                assert not is_aw(m[1]["content"]), (name, src, m[1]["content"][:120])
+            if t == "input_text":
+                assert not bad_text(a["text"]), (name, src, a["text"])
+            if src in ("odyssey", "amex"):
+                assert not (t == "status" and a["goal_status"] == "infeasible"), (name, src)
+                if t == "status":
+                    assert not INFO_GOAL_RE.search(m[1]["content"].split("\nPrevious steps:")[0]), (name, src)
+            if src == "amex" and t != "status":
+                assert m[2]["reasoning_content"] == "", (name, "amex intent not blank")
+            if src == "amex" and t == "keyboard_enter":
+                hist = m[1]["content"].split("Previous steps:\n")[1].split("\nWhat is the next action?")[0]
+                assert '"input_text"' not in hist.splitlines()[-1], (name, "type+enter not merged")
+            if name == "train" and src in ("odyssey", "amex"):
+                per_ep[(src, r["episode_id"])] += 1
+            out[f"{name}_{src}_{t}"] += 1
+    assert max(per_ep.values()) <= 3, "per-episode cap"
+    out["max_rows_per_episode_new_sources"] = max(per_ep.values())
+    return dict(out)
 
 
 # ---------------------------------------------------------------- merge + push
@@ -462,11 +582,28 @@ def merge():
         extra = [c for c in parts[k].column_names if c not in cols]
         parts[k] = parts[k].remove_columns(extra).cast(parts["odyssey_train"].features)
     train = concatenate_datasets([parts[k] for k in ("ac_train", "odyssey_train", "amex_train", "screenqa_train")])
-    train = train.shuffle(seed=args.seed)
-    dd = DatasetDict({"train": train, "dev_odyssey": parts["odyssey_dev"], "dev_amex": parts["amex_dev"],
-                      "dev_screenqa": parts["screenqa_dev"]})
+    devs = {"dev_odyssey": parts["odyssey_dev"], "dev_amex": parts["amex_dev"], "dev_screenqa": parts["screenqa_dev"]}
+    # audit F1: screen-disjoint dev -- drop every train row whose (resized JPEG) image is byte-identical to a dev image
+    dev_sha = set().union(*[set(d["img_sha"]) for d in devs.values()])
+    t_sha, t_src = train["img_sha"], train["source"]
+    leak = [i for i, h in enumerate(t_sha) if h in dev_sha]
+    leak_by_src = dict(Counter(t_src[i] for i in leak))
+    # audit F11: exact duplicate training examples (same image bytes + same messages) -> keep the first
+    msgs = train["messages"]
+    seen, dup = set(), []
+    for i, (h, m) in enumerate(zip(t_sha, msgs)):
+        k = (h, json.dumps(m, sort_keys=True))
+        if k in seen:
+            dup.append(i)
+        seen.add(k)
+    drop = set(leak) | set(dup)
+    train = train.select([i for i in range(len(train)) if i not in drop]).shuffle(seed=args.seed)
+    checks = verify(train, devs)
+    dd = DatasetDict({"train": train, **devs})
     stats = {"counts": {k: len(v) for k, v in dd.items()},
-             "train_by_source": dict(Counter(train["source"]))}
+             "train_by_source": dict(Counter(train["source"])),
+             "removed_train_rows_sharing_dev_image": leak_by_src, "removed_exact_duplicates": len(dup),
+             "full_dataset_assertions": checks}
     for f in sorted(glob.glob(os.path.join(args.out, "stats_*.json"))):
         stats[os.path.basename(f)[6:-5]] = json.load(open(f))
     json.dump(stats, open(os.path.join(args.out, "stats.json"), "w"), indent=1)

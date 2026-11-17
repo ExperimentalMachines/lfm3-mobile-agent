@@ -11,35 +11,40 @@ following the Codex dataset-viability review (`docs/DATA_V2_PLAN.md`).
 
 | split | rows | content |
 |---|---:|---|
-| train | 79,991 | AndroidControl 56,000 (50,000 high-level next actions + 6,000 terminal) · GUI-Odyssey 9,998 · AMEX 7,998 · ScreenQA 5,995 |
-| dev_odyssey | 1,000 | GUI-Odyssey official random_split **test** episodes (<= 1 row per episode) |
-| dev_amex | 500 | 5% of AMEX episodes (hash-held-out, never in train) |
-| dev_screenqa | 499 | ScreenQA official **validation** split |
+| train | 79,320 | AndroidControl 55,936 (high-level next actions + ~6,000 terminal) · GUI-Odyssey 9,940 · AMEX 7,450 · ScreenQA 5,994 |
+| dev_odyssey | 998 | GUI-Odyssey official random_split **test** episodes (<= 1 row per episode) |
+| dev_amex | 491 | 5% of AMEX episodes (hash-held-out, never in train) |
+| dev_screenqa | 500 | ScreenQA official **validation** split |
 
-Columns: `images` (1 JPEG, resized like LFM3-VL/Qwen3.5 processors, <= 880x880 px), `messages`
+Columns: `images` (1 JPEG, resized like LFM3-VL/Qwen3.5 processors to a pixel-AREA budget of 880x880 = 774,400 px, multiples of 32), `messages`
 (system / user / assistant with `content` = compact JSON action and `reasoning_content` = short intent), `source`,
 `split`, `episode_id`, `step_idx`, `gt_action`, `is_terminal`, `orig_w`, `orig_h`. Coordinates: integers 0-1000 of the
 screenshot. Action space: click, long_press, input_text, scroll(up/down/left/right; direction = where new content comes
 from), open_app, navigate_back, navigate_home, keyboard_enter, wait, answer, status(complete|infeasible).
 
-## Filters (counts in `stats/stats.json`)
-* **All sources:** AndroidWorld apps removed (14 app names + package names); undecodable / landscape screenshots dropped;
-  history = earlier steps of the same episode only; an episode is cut at the first step our action space cannot
-  represent (later steps never re-joined).
-* **AndroidControl:** v1 train split (official AndroidControl train episodes, AndroidWorld-app episodes already removed);
-  no low-level step hints in v2.
-* **GUI-Odyssey** (`hflqf88888/GUIOdyssey`, rev 61632d0f): random_split train episodes only; phones only (Pixel Tablet and
-  Pixel Fold episodes dropped: 2,743); KEY_APPSELECT (131) and non-cardinal/short swipes (297) end the episode;
-  intent = per-step low-level instruction (post-hoc `context` not used); <= 3 rows per episode; terminal rows <= 600
-  (500 complete + 100 infeasible). Scroll labels agree with the instruction's own direction word in 95.7% of
-  checkable steps (rest are tap instructions mislabelled as scrolls).
-* **AMEX** (`Yuxiang007/AMEX`, rev 17196b29): episodes with any `need_human_check` step dropped (56); episodes whose
-  TASK_COMPLETE/IMPOSSIBLE is not the last step dropped (2); non-cardinal swipes end the episode (148);
-  quotas are also ceilings: keyboard_enter 500, complete 500, infeasible 150, input_text 1,000; <= 3 rows per episode;
-  intents are templated (AMEX has no per-step instruction).
-* **ScreenQA** (`google-research-datasets/screen_qa` + Rico screenshots): train split only; `<no answer>` questions
-  dropped; AndroidWorld-app screens dropped (Rico activity package); <= 2 questions per screen; 1,000 full-sentence +
-  5,000 short answers on different questions -> `{"action_type":"answer","text":...}`.
+## Filters (revision 2, after the Codex data audit `results/codex/codex_data_v2_audit.md`; counts in `stats/stats.json`)
+* **Executor contract (AndroidWorld):** `input_text` = type + Enter, so AMEX TYPE immediately followed by PRESS_ENTER is ONE
+  `input_text` (472 merged); `scroll` = swipe along the screen centre, so source swipes that are short, diagonal or do not
+  cross the central band (e.g. inside a dropdown) end the episode (GUI-Odyssey 1,131, AMEX 812).
+* **Screen-disjoint dev:** any train row whose resized image is byte-identical to a dev image is removed (17); exact
+  duplicate (image + messages) train rows removed (65); verified over every row: 0 train/dev image overlap.
+* **Apps:** the 14 AndroidWorld third-party app families are excluded by name and package, plus ambiguous aliases
+  (`Calendar Pro`, voice/sound recorder; any app labelled `Calendar` in GUI-Odyssey): 180 AC episodes, 307 GUI-Odyssey
+  episodes. Shared built-in apps (Settings, Chrome, Clock, Contacts, Camera, Files) are intentionally kept, as in v1.
+* **Text:** key names typed as text (`esc`, `enter`, ...), empty text and near-miss typos of a goal span end the episode
+  (GUI-Odyssey 714, AMEX 134).
+* **Terminals:** unreviewed INCOMPLETE / TASK_IMPOSSIBLE labels are not used (0 infeasible rows from new sources);
+  `complete` on information-seeking goals is dropped (they would need a verified `answer`; 324); `complete` end screens
+  whose OCR shows Pending/Loading/Installing/... are dropped (61).
+* **AMEX intents:** blank for non-terminal rows (the source has no per-step instruction; a fixed template carried no
+  information). Rendered as an empty `<think></think>`.
+* **Caps:** <= 3 rows per episode for GUI-Odyssey/AMEX enforced in every quota pass; AMEX/GUI-Odyssey terminals <= 650
+  before OCR filtering; AMEX `input_text` <= 1,000.
+* **GUI-Odyssey:** random_split train episodes only (dev = its test episodes); phones only (2,743 tablet/Fold episodes
+  dropped); intent = per-step low-level instruction (post-hoc `context` not used).
+* **ScreenQA:** train split only; `<no answer>` dropped; AW-app screens/questions dropped; <= 2 questions per screen;
+  1,000 full-sentence + 5,000 short answers on different questions -> `{"action_type":"answer","text":...}`.
+* **AndroidControl:** v1 train split rows (official train episodes), high-level mode only, no step hints.
 
 ## Attribution
 AndroidControl (Google, Apache-2.0); GUI-Odyssey (OpenGVLab, CC BY 4.0); AMEX (Chai et al., CC BY 4.0);
