@@ -21,6 +21,7 @@ FILES = {
     "eval/androidcontrol/score.py": "/content/work/score.py",
     "eval/androidcontrol/score_dev.py": "/content/work/score_dev.py",
     "data/vm_v3_intents.py": "/content/work/vm_v3_intents.py",
+    "data/v3_build_parquet.py": "/content/work/v3_build_parquet.py",
     "eval/general/eval_general.py": "/content/work/eval_general.py",
     "data/build_general_replay.py": "/content/work/build_general_replay.py",
     "scripts/vm_model_pipeline.sh": "/content/work/vm_model_pipeline.sh",
@@ -98,11 +99,11 @@ def v3_intents_h100(args: list) -> int:
 
 @app.function(cpu=8, memory=32768, timeout=2 * 3600, secrets=[SECRET])
 def v3_build_cpu(args: list) -> int:
-    """Rebuild + push the v3 dataset from the saved labels (no GPU)."""
+    """Rebuild + push the v3 dataset from the saved labels with pyarrow (data/v3_build_parquet.py; no GPU)."""
     os.makedirs("/content/eval", exist_ok=True); os.makedirs("/content/data", exist_ok=True)
     e = dict(os.environ, TOKENIZERS_PARALLELISM="false", HF_HUB_DOWNLOAD_TIMEOUT="60", HF_HUB_ETAG_TIMEOUT="60",
              HF_XET_HIGH_PERFORMANCE="1", CUDA_VISIBLE_DEVICES="")
-    p = subprocess.run(["python", "/content/work/vm_v3_intents.py", *args], cwd="/content/work", env=e)
+    p = subprocess.run(["python", "/content/work/v3_build_parquet.py", *args], cwd="/content/work", env=e)
     print("BUILD EXIT", p.returncode, flush=True)
     return p.returncode
 

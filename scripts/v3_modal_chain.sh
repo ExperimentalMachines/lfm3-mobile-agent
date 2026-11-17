@@ -26,7 +26,8 @@ j = json.load(open("scripts/jobs/lfm3_v2mix_g4_personal.json")); e = j[0]["env"]
 e.update({"RUN": "lfm3vl2b-v3mix-lora", "TRAIN_DATA": f"alpharomercoma/AndroidAgent-SFT-v3@train#{rev}",
           "FINAL_REPO": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v3", "CKPT_REPO": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v3-LoRA-ckpt",
           "DEV_REPO": "experimentalmachines/AndroidAgent-SFT-v2", "DEV_REV": "42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
-          "DEV_MODELS": "FT=lfm3_v3:1", "LOGPROB_FT": "1", "MATCHED_NOTHINK": "0", "WORKERS": "12"})
+          "DEV_MODELS": "FT=lfm3_v3:1", "LOGPROB_FT": "1", "MATCHED_NOTHINK": "0", "WORKERS": "12",
+          "EVAL_BS": "32"})  # 64 only ever ran on the 96 GB G4; 32 is the proven Modal setting at 774,400 px
 j[0]["name"] = "lfm3_v3mix"
 json.dump(j, open("scripts/jobs/lfm3_v3mix_modal.json", "w"), indent=1); print("pinned", e["TRAIN_DATA"])
 PY
