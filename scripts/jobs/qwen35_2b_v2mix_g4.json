@@ -25,11 +25,12 @@
    "PRE_GENERAL_MODELS": "",
    "EXTRA_PIP": "flash-linear-attention",
    "WORKERS": "16",
-   "TRAIN_DATA": "experimentalmachines/AndroidAgent-SFT-v2@train",
+   "TRAIN_DATA": "experimentalmachines/AndroidAgent-SFT-v2@train#836e401958a62a25171f8a7bf7b1ec91727a6b6c",
    "DEV_REPO": "experimentalmachines/AndroidAgent-SFT-v2",
    "LOGPROB_FT": "1",
    "DEV_MODELS": "FT=qwen35_2b_v2:1 experimentalmachines/Qwen3.5-2B-AndroidControl=qwen35_2b_v1:1 Qwen/Qwen3.5-2B=qwen35_2b_base:0",
-   "POST_LOGPROB_MODELS": "Qwen/Qwen3.5-2B=qwen35-2b-ac-lora_base experimentalmachines/Qwen3.5-2B-AndroidControl=qwen35-2b-ac-lora_ft Qwen/Qwen3.5-0.8B=qwen35-08b-ac-lora_base experimentalmachines/Qwen3.5-0.8B-AndroidControl=qwen35-08b-ac-lora_ft"
+   "POST_LOGPROB_MODELS": "Qwen/Qwen3.5-2B=qwen35-2b-ac-lora_base experimentalmachines/Qwen3.5-2B-AndroidControl=qwen35-2b-ac-lora_ft Qwen/Qwen3.5-0.8B=qwen35-08b-ac-lora_base experimentalmachines/Qwen3.5-0.8B-AndroidControl=qwen35-08b-ac-lora_ft",
+   "DEV_REV": "836e401958a62a25171f8a7bf7b1ec91727a6b6c"
   }
  }
 ]

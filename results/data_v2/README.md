@@ -11,8 +11,8 @@ following the Codex dataset-viability review (`docs/DATA_V2_PLAN.md`).
 
 | split | rows | content |
 |---|---:|---|
-| train | 79,320 | AndroidControl 55,936 (high-level next actions + ~6,000 terminal) · GUI-Odyssey 9,940 · AMEX 7,450 · ScreenQA 5,994 |
-| dev_odyssey | 998 | GUI-Odyssey official random_split **test** episodes (<= 1 row per episode) |
+| train | 79,366 | AndroidControl 55,936 (high-level next actions + 5,998 terminal) · GUI-Odyssey 9,966 · AMEX 7,469 · ScreenQA 5,995 |
+| dev_odyssey | 1,000 | GUI-Odyssey official random_split **test** episodes (<= 1 row per episode) |
 | dev_amex | 491 | 5% of AMEX episodes (hash-held-out, never in train) |
 | dev_screenqa | 500 | ScreenQA official **validation** split |
 
@@ -22,10 +22,11 @@ Columns: `images` (1 JPEG, resized like LFM3-VL/Qwen3.5 processors to a pixel-AR
 screenshot. Action space: click, long_press, input_text, scroll(up/down/left/right; direction = where new content comes
 from), open_app, navigate_back, navigate_home, keyboard_enter, wait, answer, status(complete|infeasible).
 
-## Filters (revision 2, after the Codex data audit `results/codex/codex_data_v2_audit.md`; counts in `stats/stats.json`)
+## Filters (revision 3, after the Codex data audit and re-verification `results/codex/codex_data_v2_audit.md`; counts in `stats/stats.json`)
 * **Executor contract (AndroidWorld):** `input_text` = type + Enter, so AMEX TYPE immediately followed by PRESS_ENTER is ONE
   `input_text` (472 merged); `scroll` = swipe along the screen centre, so source swipes that are short, diagonal or do not
-  cross the central band (e.g. inside a dropdown) end the episode (GUI-Odyssey 1,131, AMEX 812).
+  cross the central band end the episode (GUI-Odyssey 1,282, AMEX 817). This band test is a heuristic for "the AW
+  centre-line swipe acts on the same scrollable region", not a proof.
 * **Screen-disjoint dev:** any train row whose resized image is byte-identical to a dev image is removed (17); exact
   duplicate (image + messages) train rows removed (65); verified over every row: 0 train/dev image overlap.
 * **Apps:** the 14 AndroidWorld third-party app families are excluded by name and package, plus ambiguous aliases
@@ -44,7 +45,7 @@ from), open_app, navigate_back, navigate_home, keyboard_enter, wait, answer, sta
   dropped); intent = per-step low-level instruction (post-hoc `context` not used).
 * **ScreenQA:** train split only; `<no answer>` dropped; AW-app screens/questions dropped; <= 2 questions per screen;
   1,000 full-sentence + 5,000 short answers on different questions -> `{"action_type":"answer","text":...}`.
-* **AndroidControl:** v1 train split rows (official train episodes), high-level mode only, no step hints.
+* **AndroidControl:** v1 train split rows (official train episodes), high-level mode only, no step hints, portrait only.
 
 ## Attribution
 AndroidControl (Google, Apache-2.0); GUI-Odyssey (OpenGVLab, CC BY 4.0); AMEX (Chai et al., CC BY 4.0);

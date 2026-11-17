@@ -312,7 +312,7 @@ def odyssey():
             st["drop_ep_ambiguous_calendar_app"] += 1
             continue
         goal = (d["task_info"].get("instruction") or d["task_info"].get("task") or "").strip()
-        history, prev_t = [], None
+        history, prev_t, raw_prev = [], None, None
         for s in d["steps"]:
             a, info = s["action"], s.get("info")
             act = None
@@ -350,9 +350,12 @@ def odyssey():
                 st["quarantine_incomplete"] += 1  # audit F5: unreviewed infeasibility labels are not used
             if act is not None and act["action_type"] == "click" and prev_t == "input_text" and \
                     keyboard_submit(act["point_2d"], s.get("low_level_instruction")):
-                st["merged_type_keyboard_submit"] += 1  # AW input_text already pressed Enter (re-verification F2)
-                prev_t = "merged"
-                continue
+                if raw_prev in ("TEXT", "TYPE"):
+                    st["merged_type_keyboard_submit"] += 1  # AW input_text already pressed Enter (re-verification F2)
+                    raw_prev = "MERGED_SUBMIT"
+                    continue
+                st["truncate_ambiguous_tap_after_submit"] += 1  # a 2nd submit-like tap: ambiguous -> end episode
+                break
             if act is None:
                 st[f"truncate_at_{a}{'_' + info if isinstance(info, str) and info.startswith('KEY_') else ''}"] += 1
                 break
@@ -367,7 +370,7 @@ def odyssey():
             pools[sp].append(row("odyssey", sp, eid, int(s["step"]), goal, history, act, intent,
                                  ("zip", zpath, members[name]), terminal=term))
             history = history + [(intent if not term else "", af.action_to_str(act))]
-            prev_t = act["action_type"]
+            prev_t, raw_prev = act["action_type"], a
             if term:
                 break
     rng = random.Random(args.seed)
@@ -406,7 +409,7 @@ def amex():
             continue
         sp = "dev_amex" if h01(eid) < 0.05 else "train"
         goal = (d.get("instruction") or "").strip()
-        history, prev = [], None
+        history, prev, last_kept = [], None, None
         for s in steps:
             a = s["action"]
             W, H = s["device_dim"]
@@ -417,10 +420,13 @@ def amex():
             act, intent = None, ""
             if a == "TAP":
                 act = {"action_type": "click", "point_2d": af.px_to_norm(tx, ty, W, H)}
-                if prev == "TYPE" and keyboard_submit(act["point_2d"]):
-                    st["merged_type_keyboard_submit"] += 1  # bottom-right soft-keyboard key right after typing
-                    prev = "PRESS_ENTER"
-                    continue
+                if last_kept == "input_text" and keyboard_submit(act["point_2d"]):
+                    if prev == "TYPE":
+                        st["merged_type_keyboard_submit"] += 1  # bottom-right soft-keyboard key right after typing
+                        prev = "PRESS_ENTER"
+                        continue
+                    st["truncate_ambiguous_tap_after_submit"] += 1
+                    break
             elif a == "SWIPE":
                 x1, y1 = af.px_to_norm(tx, ty, W, H)
                 x2, y2 = af.px_to_norm(lx, ly, W, H)
@@ -460,7 +466,7 @@ def amex():
             pools[sp].append(row("amex", sp, eid, s["step_id"], goal, history, act, intent,
                                  ("zip", zpath, members[name]), terminal=term, dev_portrait=H > W))
             history = history + [(intent if not term else "", af.action_to_str(act))]
-            prev = a
+            prev, last_kept = a, act["action_type"]
     rng = random.Random(args.seed + 1)
     st["candidates_train"], st["candidates_dev"] = len(pools["train"]), len(pools["dev_amex"])
     chosen = sample_rows(pools["train"], 8000, rng, per_episode=3, quotas=[
@@ -605,7 +611,7 @@ def verify(train, devs):
             src, t = r["source"], a["action_type"]
             if src != "androidcontrol":  # AC rows are v1 rows (episode-level alias filter applied in the ac stage)
                 assert not is_aw(m[1]["content"]), (name, src, m[1]["content"][:120])
-            if t == "input_text":
+            if t == "input_text" and src != "androidcontrol":  # AC text is human-typed (e.g. a search for "home")
                 assert not bad_text(a["text"]), (name, src, a["text"])
             if src in ("odyssey", "amex"):
                 assert t != "status", (name, src, "new-source terminal row")
