@@ -162,6 +162,10 @@ PY
     fi
   done
 done
+for spec in ${POST_LOGPROB_MODELS:-}; do  # "model=name ..." forced-choice general evals of other models (same scorer)
+  m=${spec%%=*}; n=${spec##*=}
+  general_ok /content/eval/${n}_general_logprob.summary.json || { log "general eval (logprob) $n"; python eval_general.py --model $m --out /content/eval/${n}_general_logprob --mode logprob --bs 16 --max_pixels $GPX || fail "general logprob $n"; push_evals; }
+done
 if [ "${LOGPROB_FT:-0}" = 1 ] && ! general_ok /content/eval/${RUN}_ft_general_logprob.summary.json; then
   log "general eval FT (forced-choice logprob)"
   python eval_general.py --model $OUT/merged --out /content/eval/${RUN}_ft_general_logprob --mode logprob --bs 16 --max_pixels $GPX || fail "general logprob ft"

@@ -1,52 +1,50 @@
-# Status — 2026-11-17 06:30 (Asia/Manila)
+# Status — 2026-11-17 12:35 (Asia/Manila)
 
-Audited by Codex (gpt-6-astra, max) in `results/codex/codex_final_eval.md` (cutoff 04:43); numbers below follow it.
 Auto-generated table with every model: `results/SUMMARY.md` (`python3 scripts/build_report.py`).
+Codex (gpt-6-astra, max) audits: `results/codex/` (final results audit `codex_final_eval.md`; v2 data audit
+`codex_data_v2_audit.md` → NO-GO, fixes applied, re-verification `codex_data_v2_verify.md` running).
 
 ## Running
 | What | Where | Status |
 |---|---|---|
-| AndroidWorld, GUI-Owl-1.5-2B 1-image reference (resumed) | this Mac, emulator 1 | 60/116 → running |
-| AndroidWorld, LFM2.5-VL-450M base → then LFM3 FT + runtime-feedback ablation | this Mac, emulator 2 | started 06:22 |
-| Qwen3.5-2B (LFM3 recipe) | Colab L4 `qwen2bl4` (<account-A>) | step ~300/1250; restarting from hub ckpt with flash-linear-attention (reference GDN path ran 46 s/step) |
-| Qwen3.5-0.8B (keep-knowledge recipe) | Colab L4 `lfm25l4` (<account-B>, via `state-dashboard-v4:~/vl`) | step ~400/1875; same FLA restart |
+| Qwen3.5-0.8B training (resumed from step 1200) → evals | Colab **G4** (RTX PRO 6000 96 GB), main account | 1.8 s/step (L4 was 18 s/step); done ≈ 13:30 |
+| Codex re-verification of the v2 data (revision `d33cb3c217`) | local | running |
+| AndroidWorld: Qwen3.5-2B fine-tuned | this Mac, emulator 1 | started 11:12 |
+| AndroidWorld: LFM3-VL-2B FT + runtime feedback (app-name resolution + failure notes) | this Mac, emulator 2 | started 11:26; Qwen3.5-0.8B follows |
+| v2 data builder box | AWS spot c6id.8xlarge (us-east-1) | kept until Codex GO, then terminated + key/SG deleted |
 
-Modal (A100-40GB, ≈ $2.8/h per job): **$13.40 metered** so far (LFM3 resume+evals, 450M resume+evals, forced-choice evals); target ≤ $26.
+Queued on the G4 after the 0.8B: **LFM3-VL-2B v2** (`scripts/jobs/lfm3_v2mix_g4.json`): v1 recipe and budget
+(1,250 steps × 32 rows, LoRA r64, lr 2e-4) on the v2 mix → AC test, v2 dev splits for base / v1 / v2, forced-choice
+general eval for v2 and the four Qwen models. v1 (AC-only, same budget) is the equal-budget control.
+
+Recovery note: the Mac rebooted ~08:37 and both Colab L4 VMs were reclaimed after their exec websockets dropped;
+everything resumed from hub checkpoints (`scripts/provision_and_launch.sh`, `scripts/local_aw_lane.sh`).
+Checkpoints now every 50 steps where the trainer honours it.
 
 ## Results
-| Model | AndroidControl test step SR (high / low) | AndroidWorld (116) | General knowledge (forced-choice, paired vs base) |
+| Model | AndroidControl test step SR (high / low) | AndroidWorld (116) | General knowledge |
 |---|---|---|---|
-| LFM3-VL-2B base (no-think) | 0.313 / 0.634 (Codex independent scorer 0.289 / 0.582); terminal 0% | **1/116 (0.9%)**, 2.25 s/step | MMStar 52.1%, MMLU 48.9% |
-| **LFM3-VL-2B fine-tuned** (Q4_K_M 1.1 GB + 0.2 GB mmproj) | **0.715 / 0.948**; episode 0.283 / 0.783; terminal 0.792; unseen app/task/category 0.671/0.696/0.681; no-think matched 0.664 | **15/116 (12.9%)** [8.0–20.2], 2.7 s/step, 52% self-terminated | MMStar **+5.0 pp** (p=3e-7), MMLU +0.6 pp [−1.7, +3.0] — no decline detected |
-| LFM2.5-VL-450M base | 0.009 / 0.024 (parse rate ~2%) | running | MMStar 38.5%, MMLU 39.9% |
-| **LFM2.5-VL-450M fine-tuned** (Q4_K_M ≈ 330 MB incl. mmproj) | **0.536 / 0.862**; episode 0.128 / 0.521; terminal 0.561; 100% valid format | **2.5/116 (2.2%)** = 2 full + 1 half-credit composite, 1.4 s/step | MMStar +0.8 pp [−0.8, +2.4], MMLU −0.7 pp [−2.3, +0.8] — no decline detected |
-| GUI-Owl-1.5-2B, 1 image (reference) | — | partial 9/60, 6.2 s/step, 2.3k prompt tokens | — |
-| GUI-Owl-1.5-2B native, 5 images | — | 2/2 *selected easy* tasks (not a suite score); 61 s/step, 10.7k tokens | — |
+| LFM3-VL-2B base | 0.313 / 0.634 | 1/116 | MMStar 52.1%, MMLU 48.9% (forced-choice) |
+| **LFM3-VL-2B FT (v1)** | **0.715 / 0.948**, terminal 0.792 | **15/116 (12.9%)**, 2.7 s/step | MMStar +5.0 pp (p=3e-7), MMLU +0.6 pp |
+| LFM2.5-VL-450M base | 0.009 / 0.024 | **0/116** (82% unparseable) | MMStar 38.5%, MMLU 39.9% |
+| LFM2.5-VL-450M FT | 0.536 / 0.862 | 2/116 (+1 half-credit); paired vs base 2–0, p=0.5 | +0.8 / −0.7 pp (n.s.) |
+| Qwen3.5-2B base | 0.384 / 0.590 | — | forced-choice pending (G4 job) |
+| **Qwen3.5-2B FT** | **0.734 / 0.949**, terminal 0.784 | running | forced-choice pending |
+| Qwen3.5-0.8B FT | training | queued | — |
+| GUI-Owl-1.5-2B, compute-matched (1 image) | — | **23/116 (19.8%)**, 7.9 s/step | — |
 
-Paired LFM3 base vs FT on identical AW task instances (task, instance, seed, goal; 111 pairs): FT-only wins **14**,
-base-only **0**, exact McNemar **p = 1.2e-4** (`results/androidworld/paired_lfm3_base_vs_ft.json`). FT wins: recipe/expense/
-calendar deletions, Wi-Fi/Bluetooth/brightness toggles, audio recording. Caveat: the base run predates the
-answer-ends-episode rule (its 3 answer tasks re-run under the rule: 0/3).
+Paired AndroidWorld (identical task instances): LFM3 FT vs base 14–0 (p=1.2e-4); GUI-Owl vs LFM3 FT 16–8 (p=0.15,
+n.s.) — GUI-Owl's extra wins are mostly question/answer tasks (calendar lookups, counts), which AC cannot teach.
 
-## What AndroidWorld shows (eval/androidworld/failure_modes.py → results/androidworld/*.failure_modes.json)
-* Neither FT model ever emits `answer`: AndroidControl has **zero** answer/keyboard_enter/infeasible labels → all
-  information-retrieval tasks fail by construction.
-* LFM3 FT signals `complete` on 45/101 failed episodes (often after a plausible save/confirm click) — completion is
-  over-confident; AC's synthetic terminal step only teaches "final screen of a successful demo".
-* App naming (full LFM3 run): `Music` ×25 (Retro Music), `File Manager` ×16 (Files), `Tracks` (OpenTracks), `Stopwatch` (Clock),
-  `Marker` (Markor); 450M: `Calendar Pro` ×11. android_world silently ignores unresolvable names.
-* 450M FT: wait runs and repeated identical clicks after an action had no visible effect → no recovery behaviour.
-* Offline AC gains do not transfer proportionally to closed-loop control (teacher-forced history vs own history).
+## v2 training data — `experimentalmachines/AndroidAgent-SFT-v2` (private, revision d33cb3c217)
+79,320 train rows = AndroidControl 55,936 · GUI-Odyssey 9,940 · AMEX 7,450 · ScreenQA 5,994; dev: GUI-Odyssey 998,
+AMEX 491, ScreenQA 500. Built on AWS from the raw sources by `data/build_v2_mix.py`; filters, counts and every-row
+assertions in `results/data_v2/stats.json` and the dataset card (`results/data_v2/README.md`). Revision 2 fixes Codex
+findings F1–F12 (screen-disjoint dev, type+Enter merged for AndroidWorld's executor, centre-band scrolls only,
+key-text/typo removal, no unreviewed infeasible labels, no silent completion of question tasks, OCR rejection of
+Pending/Loading end screens, ambiguous-app exclusion, per-episode caps, blank AMEX intents).
+GUI-Owl-1.5 releases no training data; ScreenSpot-v2 (mobile) and MobileWorld (GUI-only) are the recommended extra
+benchmarks (eval only).
 
-## Codex reviews
-* passes 1–11: adversarial QA of the pipeline (3 critical + ~20 major issues found and fixed); pass 11 GO.
-* dataset viability (web search): `docs/DATA_V2_PLAN.md`; GUI-Owl lessons: `docs/GUI_OWL_LESSONS.md`.
-* final results audit: `results/codex/codex_final_eval.md` — corrections applied (stale base numbers, p-value
-  rounding, "no forgetting" wording, 450M image-token note, classifier schema/loop definitions, protocol row counts).
-
-## Next
-1. Finish the 116-task runs (LFM3 FT, 450M FT, 450M base, GUI-Owl matched) → refresh SUMMARY, cards, paired stats.
-2. Qwen3.5-2B / 0.8B: training → AC + general evals on Colab → GGUF (converter supports Qwen3.5) → AndroidWorld.
-3. v2 (Codex's top recommendations): runtime app-name resolution + execution-error feedback; train answer actions,
-   recovery and calibrated completion (ScreenQA / GUI-Odyssey / AMEX mix, `DATA_V2_PLAN.md`) vs an equal-budget
-   AC-only control; then a physical-phone latency/memory/thermal test.
+## Budget
+Colab: main account 63 CU (G4 ≈ 10 CU/h), second account 40 CU (idle). Modal: $13.0 of $26 used. AWS: one spot box.
