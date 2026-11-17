@@ -1,0 +1,92 @@
+{
+  "endings": {
+    "lfm3vl2b_ft": {
+      "true_self_ended": 60,
+      "summary_self_ended": 60,
+      "reward_sum_matches": true,
+      "missed_episodes": []
+    },
+    "lfm3vl2b_v2": {
+      "true_self_ended": 40,
+      "summary_self_ended": 39,
+      "reward_sum_matches": true,
+      "missed_episodes": [
+        {
+          "task": "SimpleCalendarNextEvent",
+          "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarNextEvent_0.pkl.gz",
+          "last_action": {
+            "action_type": "answer",
+            "text": "Call with Marketing"
+          },
+          "ended_by": [
+            "answer"
+          ],
+          "episode_length": 2
+        }
+      ]
+    },
+    "lfm3vl2b_v2_forcethink": {
+      "true_self_ended": 47,
+      "summary_self_ended": 47,
+      "reward_sum_matches": true,
+      "missed_episodes": []
+    },
+    "lfm3vl2b_v3": {
+      "true_self_ended": 52,
+      "summary_self_ended": 52,
+      "reward_sum_matches": true,
+      "missed_episodes": []
+    },
+    "guiowl15_2b_matched": {
+      "true_self_ended": 24,
+      "summary_self_ended": 24,
+      "reward_sum_matches": true,
+      "missed_episodes": []
+    }
+  },
+  "p_values_match_scipy": true,
+  "monte_carlo_power": [
+    {
+      "n": 116,
+      "discordants": 10,
+      "simulated_power": 0.79983,
+      "within_0.005_of_target": true
+    },
+    {
+      "n": 110,
+      "discordants": 10,
+      "simulated_power": 0.79982,
+      "within_0.005_of_target": true
+    },
+    {
+      "n": 116,
+      "discordants": 26,
+      "simulated_power": 0.80172,
+      "within_0.005_of_target": true
+    },
+    {
+      "n": 112,
+      "discordants": 26,
+      "simulated_power": 0.79715,
+      "within_0.005_of_target": true
+    }
+  ],
+  "raw_files_unchanged": true,
+  "raw_files_hashed": 580,
+  "source_files_unchanged": {
+    "scripts/publish_v3_hf.py": true,
+    "data/build_androidcontrol.py": true,
+    "data/build_v2_mix.py": true,
+    "data/vm_v3_intents.py": true,
+    "data/v3_build_parquet.py": true,
+    "scripts/jobs/v3_build.build.json": true,
+    "scripts/jobs/v3_intents.intents.json": true,
+    "scripts/jobs/lfm3_v3mix_modal.json": true,
+    "results/training/lfm3vl2b_v3/run_config.json": true
+  },
+  "missing_seed_records": 14,
+  "nonmissing_seed30_mismatches": [],
+  "actual_goal_mismatch_task_names": [
+    "MarkorCreateFolder"
+  ]
+}

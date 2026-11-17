@@ -66,9 +66,8 @@ for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
         "difficulty": difficulty(task),
         "exception_info": (str(exc)[:300] if exc else None),
         "teardown_exception": bool(isinstance(ep.get("aux_data"), dict) and ep["aux_data"].get("teardown_exception")),
-        # GUI-Owl's agent also ends the episode on `answer` (guiowl_agent.py); ours needs a status action
-        "ended_with_status": bool(acts) and (acts[-1] == "status" or (acts[-1] == "answer" and isinstance(pa[-1], dict)
-                                                                       and "action" in pa[-1])),
+        # both agents end the episode on an executed `answer` (lfm_agent.py, guiowl_agent.py) or on status/terminate
+        "ended_with_status": bool(acts) and acts[-1] in ("status", "answer"),
         "n_answer_actions": acts.count("answer"),
     })
 

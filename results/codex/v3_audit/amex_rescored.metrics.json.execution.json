@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/Users/alpha/lfm3-android/.venv/bin/python",
+    "-B",
+    "/Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py",
+    "/Users/alpha/lfm3-android/results/codex/v3_audit/amex_frozen_inputs.jsonl",
+    "--expect_n",
+    "468",
+    "--out",
+    "/Users/alpha/lfm3-android/results/codex/v3_audit/amex_rescored.metrics.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"n_steps\": 468, \"parse_rate\": 1.0, \"type_match\": 0.9273504273504274, \"step_sr\": 0.7414529914529915, \"answer_mean_f1\": null}\n",
+  "stderr": ""
+}

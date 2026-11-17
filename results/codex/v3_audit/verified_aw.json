@@ -1,0 +1,1377 @@
+{
+  "runs": {
+    "lfm3vl2b_ft": {
+      "files": 116,
+      "episodes": 116,
+      "unique_instances": 116,
+      "full_successes": 15,
+      "reward_sum": 15.0,
+      "reward_mean": 0.12931034482758622,
+      "exceptions": 2,
+      "seed_mismatches": [
+        "RetroPlayingQueue",
+        "SimpleSmsSendClipboardContent"
+      ],
+      "partial_credit": [],
+      "labels": {
+        "complete_but_failed": 45,
+        "success": 15,
+        "step_budget_exhausted": 54,
+        "exception": 2
+      },
+      "answer_actions": 0,
+      "answer_episodes": 0,
+      "self_ended": 60,
+      "self_ended_correct": 15,
+      "self_ended_last_action": {
+        "status": 60
+      },
+      "open_apps": {
+        "Audio Recorder": 2,
+        "File Manager": 16,
+        "Photos": 1,
+        "YouTube": 1,
+        "Stopwatch": 6,
+        "Timer": 1,
+        "Contacts": 3,
+        "Simple Gallery Pro": 2,
+        "Markor": 14,
+        "Pro Expense": 7,
+        "Files by Google": 2,
+        "Marker": 4,
+        "Simple Gallery": 2,
+        "VLC": 3,
+        "Joplin": 4,
+        "OsmAnd Maps": 3,
+        "Broccoli": 10,
+        "Spotify": 14,
+        "Music": 25,
+        "Simple Calendar": 16,
+        "Simple Calendar Pro": 1,
+        "Simple Draw Pro": 1,
+        "SimpleSMS Messenger": 4,
+        "SMS Messenger": 2,
+        "OpenTracks": 4,
+        "Tracks": 8,
+        "Settings": 14,
+        "Notes": 3,
+        "Tasks": 6
+      },
+      "latency_mean": 2.688852595199238
+    },
+    "lfm3vl2b_v2": {
+      "files": 116,
+      "episodes": 116,
+      "unique_instances": 116,
+      "full_successes": 3,
+      "reward_sum": 3.0,
+      "reward_mean": 0.02586206896551724,
+      "exceptions": 5,
+      "seed_mismatches": [
+        "MarkorCreateNoteAndSms",
+        "MarkorDeleteNewestNote",
+        "RecipeDeleteDuplicateRecipes2",
+        "SimpleSmsResend",
+        "SystemBrightnessMinVerify"
+      ],
+      "partial_credit": [],
+      "labels": {
+        "complete_but_failed": 36,
+        "step_budget_exhausted": 71,
+        "exception": 5,
+        "success": 3,
+        "answer_but_failed": 1
+      },
+      "answer_actions": 1,
+      "answer_episodes": 1,
+      "self_ended": 39,
+      "self_ended_correct": 3,
+      "self_ended_last_action": {
+        "status": 39
+      },
+      "open_apps": {
+        "Audio Recorder": 2,
+        "File Manager": 12,
+        "Clock": 1,
+        "Contacts": 2,
+        "Simple Gallery Pro": 3,
+        "Pro Expense": 7,
+        "SDK_Gphone_X86_64": 2,
+        "Markor": 7,
+        "VLC": 3,
+        "Joplin": 4,
+        "OsmAnd": 2,
+        "OsmAnd Maps": 1,
+        "Broccoli": 9,
+        "Retro Music": 3,
+        "Simple Calendar Pro": 17,
+        "Simple Draw Pro": 1,
+        "SimpleSMS": 3,
+        "SimpleSMS Messenger": 8,
+        "SMS Messenger": 6,
+        "OpenTracks": 6,
+        "Settings": 4,
+        "Keep": 5,
+        "Tasks": 6
+      },
+      "latency_mean": 2.7127774681911503
+    },
+    "lfm3vl2b_v2_forcethink": {
+      "files": 116,
+      "episodes": 116,
+      "unique_instances": 116,
+      "full_successes": 6,
+      "reward_sum": 6.0,
+      "reward_mean": 0.05172413793103448,
+      "exceptions": 4,
+      "seed_mismatches": [
+        "SimpleSmsReplyMostRecent",
+        "SimpleSmsReply",
+        "SimpleSmsSendReceivedAddress",
+        "SportsTrackerActivitiesOnDate"
+      ],
+      "partial_credit": [],
+      "labels": {
+        "step_budget_exhausted": 65,
+        "complete_but_failed": 41,
+        "success": 6,
+        "exception": 4
+      },
+      "answer_actions": 0,
+      "answer_episodes": 0,
+      "self_ended": 47,
+      "self_ended_correct": 6,
+      "self_ended_last_action": {
+        "status": 47
+      },
+      "open_apps": {
+        "Audio Recorder": 2,
+        "File Manager": 13,
+        "Photos": 1,
+        "YouTube": 1,
+        "Stopwatch": 7,
+        "Clock": 1,
+        "Contacts": 3,
+        "Simple Gallery Pro": 3,
+        "Markor": 16,
+        "Pro Expense": 7,
+        "SDK_Gphone_X86_64": 7,
+        "VLC": 3,
+        "Joplin": 4,
+        "OsmAnd": 3,
+        "Broccoli": 10,
+        "Retro Music": 4,
+        "Simple Calendar Pro": 17,
+        "Simple Draw Pro": 1,
+        "SimpleSMS Messenger": 6,
+        "SMS Messenger": 6,
+        "OpenTracks": 5,
+        "Settings": 14,
+        "Keep": 5,
+        "Tasks": 6
+      },
+      "latency_mean": 2.984144657056499
+    },
+    "lfm3vl2b_v3": {
+      "files": 116,
+      "episodes": 116,
+      "unique_instances": 116,
+      "full_successes": 13,
+      "reward_sum": 13.5,
+      "reward_mean": 0.11637931034482758,
+      "exceptions": 3,
+      "seed_mismatches": [
+        "RetroCreatePlaylist",
+        "SimpleSmsSendReceivedAddress",
+        "SimpleSmsSend"
+      ],
+      "partial_credit": [
+        {
+          "task": "TurnOnWifiAndOpenApp",
+          "credited_score": 0.5
+        }
+      ],
+      "labels": {
+        "step_budget_exhausted": 61,
+        "complete_but_failed": 38,
+        "success": 13,
+        "exception": 3,
+        "partial_credit": 1
+      },
+      "answer_actions": 0,
+      "answer_episodes": 0,
+      "self_ended": 52,
+      "self_ended_correct": 13,
+      "self_ended_last_action": {
+        "status": 52
+      },
+      "open_apps": {
+        "Audio Recorder": 2,
+        "Photos": 1,
+        "YouTube": 1,
+        "Clock": 3,
+        "Contacts": 3,
+        "Simple Gallery Pro": 3,
+        "Marker": 29,
+        "Markers": 28,
+        "Pro Expense": 4,
+        "Pro Expenses": 3,
+        "Files by Google": 2,
+        "Markor": 5,
+        "Joplin": 4,
+        "OsmAnd": 3,
+        "Broccoli": 10,
+        "Retro Music": 3,
+        "Simple Calendar": 16,
+        "Simple Calendar Pro": 1,
+        "SimpleSMS Messenger": 1,
+        "SimpleSMS": 9,
+        "Simple Messaging": 2,
+        "OpenTracks": 6,
+        "Settings": 14,
+        "Clipboard": 3,
+        "Tasks": 6,
+        "VLC": 2
+      },
+      "latency_mean": 2.766616848860373
+    },
+    "guiowl15_2b_matched": {
+      "files": 116,
+      "episodes": 116,
+      "unique_instances": 116,
+      "full_successes": 23,
+      "reward_sum": 23.0,
+      "reward_mean": 0.19827586206896552,
+      "exceptions": 0,
+      "seed_mismatches": [],
+      "partial_credit": [],
+      "labels": {
+        "step_budget_exhausted": 92,
+        "success": 23,
+        "answer_but_failed": 1
+      },
+      "answer_actions": 11,
+      "answer_episodes": 11,
+      "self_ended": 24,
+      "self_ended_correct": 23,
+      "self_ended_last_action": {
+        "terminate": 13,
+        "answer": 11
+      },
+      "open_apps": {},
+      "latency_mean": 7.905839080335422
+    }
+  },
+  "comparisons": [
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v2",
+      "n_pairs": 108,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_030335."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_153954."
+          }
+        },
+        {
+          "task": "MarkorCreateNoteAndSms",
+          "instance": 0,
+          "A": {
+            "seed": 3221046986,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "MarkorDeleteNewestNote",
+          "instance": 0,
+          "A": {
+            "seed": 1958615684,
+            "goal": "Delete the newest note in Markor."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Delete the newest note in Markor."
+          }
+        },
+        {
+          "task": "RecipeDeleteDuplicateRecipes2",
+          "instance": 0,
+          "A": {
+            "seed": 2434742942,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          }
+        },
+        {
+          "task": "RetroPlayingQueue",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          },
+          "B": {
+            "seed": 145116843,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          }
+        },
+        {
+          "task": "SimpleSmsResend",
+          "instance": 0,
+          "A": {
+            "seed": 4246161322,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsSendClipboardContent",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3566412234,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SystemBrightnessMinVerify",
+          "instance": 0,
+          "A": {
+            "seed": 714289418,
+            "goal": "Turn brightness to the min value."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Turn brightness to the min value."
+          }
+        }
+      ],
+      "A_only": 11,
+      "B_only": 0,
+      "A_only_tasks": [
+        "AudioRecorderRecordAudio",
+        "ExpenseDeleteSingle",
+        "OpenAppTaskEval",
+        "RecipeDeleteDuplicateRecipes",
+        "SimpleCalendarDeleteOneEvent",
+        "SystemBluetoothTurnOff",
+        "SystemBluetoothTurnOnVerify",
+        "SystemWifiTurnOff",
+        "SystemWifiTurnOn",
+        "SystemWifiTurnOnVerify",
+        "TurnOnWifiAndOpenApp"
+      ],
+      "B_only_tasks": [],
+      "both": 3,
+      "p_exact": 0.0009765625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v2_forcethink",
+      "n_pairs": 109,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_030335."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_201810."
+          }
+        },
+        {
+          "task": "RetroPlayingQueue",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          },
+          "B": {
+            "seed": 145116843,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          }
+        },
+        {
+          "task": "SimpleSmsReply",
+          "instance": 0,
+          "A": {
+            "seed": 503761173,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsReplyMostRecent",
+          "instance": 0,
+          "A": {
+            "seed": 3689003352,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          }
+        },
+        {
+          "task": "SimpleSmsSendClipboardContent",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3566412234,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsSendReceivedAddress",
+          "instance": 0,
+          "A": {
+            "seed": 25708979,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SportsTrackerActivitiesOnDate",
+          "instance": 0,
+          "A": {
+            "seed": 1824649041,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          },
+          "B": {
+            "seed": null,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          }
+        }
+      ],
+      "A_only": 9,
+      "B_only": 0,
+      "A_only_tasks": [
+        "AudioRecorderRecordAudio",
+        "ExpenseDeleteSingle",
+        "RecipeDeleteDuplicateRecipes",
+        "SimpleCalendarDeleteOneEvent",
+        "SystemBluetoothTurnOff",
+        "SystemBrightnessMinVerify",
+        "SystemWifiTurnOff",
+        "SystemWifiTurnOn",
+        "SystemWifiTurnOnVerify"
+      ],
+      "B_only_tasks": [],
+      "both": 6,
+      "p_exact": 0.00390625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v3",
+      "n_pairs": 110,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_030335."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_210853."
+          }
+        },
+        {
+          "task": "RetroCreatePlaylist",
+          "instance": 0,
+          "A": {
+            "seed": 916405052,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          }
+        },
+        {
+          "task": "RetroPlayingQueue",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          },
+          "B": {
+            "seed": 145116843,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          }
+        },
+        {
+          "task": "SimpleSmsSend",
+          "instance": 0,
+          "A": {
+            "seed": 4209246460,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          }
+        },
+        {
+          "task": "SimpleSmsSendClipboardContent",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3566412234,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsSendReceivedAddress",
+          "instance": 0,
+          "A": {
+            "seed": 25708979,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          }
+        }
+      ],
+      "A_only": 6,
+      "B_only": 4,
+      "A_only_tasks": [
+        "AudioRecorderRecordAudio",
+        "RecipeDeleteDuplicateRecipes",
+        "SystemBrightnessMinVerify",
+        "SystemWifiTurnOff",
+        "SystemWifiTurnOn",
+        "TurnOnWifiAndOpenApp"
+      ],
+      "B_only_tasks": [
+        "ClockStopWatchPausedVerify",
+        "ClockStopWatchRunning",
+        "SystemBrightnessMaxVerify",
+        "SystemWifiTurnOffVerify"
+      ],
+      "both": 9,
+      "p_exact": 0.75390625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "guiowl15_2b_matched",
+      "n_pairs": 113,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_030335."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261116_231457."
+          }
+        },
+        {
+          "task": "RetroPlayingQueue",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          },
+          "B": {
+            "seed": 145116843,
+            "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+          }
+        },
+        {
+          "task": "SimpleSmsSendClipboardContent",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3566412234,
+            "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger"
+          }
+        }
+      ],
+      "A_only": 8,
+      "B_only": 16,
+      "A_only_tasks": [
+        "OpenAppTaskEval",
+        "RecipeDeleteDuplicateRecipes",
+        "RecipeDeleteSingleWithRecipeWithNoise",
+        "SimpleCalendarDeleteOneEvent",
+        "SystemBrightnessMinVerify",
+        "SystemWifiTurnOff",
+        "SystemWifiTurnOnVerify",
+        "TurnOnWifiAndOpenApp"
+      ],
+      "B_only_tasks": [
+        "ContactsAddContact",
+        "ExpenseDeleteMultiple",
+        "NotesMeetingAttendeeCount",
+        "NotesRecipeIngredientCount",
+        "NotesTodoItemCount",
+        "SimpleCalendarAddOneEvent",
+        "SimpleCalendarAddOneEventRelativeDay",
+        "SimpleCalendarAnyEventsOnDate",
+        "SimpleCalendarEventsInTimeRange",
+        "SimpleCalendarEventsOnDate",
+        "SimpleCalendarLocationOfEvent",
+        "SimpleCalendarNextMeetingWithPerson",
+        "SimpleSmsReplyMostRecent",
+        "SystemBluetoothTurnOn",
+        "TasksDueOnDate",
+        "TasksIncompleteTasksOnDate"
+      ],
+      "both": 7,
+      "p_exact": 0.15158963203430176
+    },
+    {
+      "A": "lfm3vl2b_v2",
+      "B": "lfm3vl2b_v2_forcethink",
+      "n_pairs": 106,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_153954."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_201810."
+          }
+        },
+        {
+          "task": "MarkorCreateNoteAndSms",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3221046986,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "MarkorDeleteNewestNote",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Delete the newest note in Markor."
+          },
+          "B": {
+            "seed": 1958615684,
+            "goal": "Delete the newest note in Markor."
+          }
+        },
+        {
+          "task": "RecipeDeleteDuplicateRecipes2",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          },
+          "B": {
+            "seed": 2434742942,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          }
+        },
+        {
+          "task": "SimpleSmsReply",
+          "instance": 0,
+          "A": {
+            "seed": 503761173,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsReplyMostRecent",
+          "instance": 0,
+          "A": {
+            "seed": 3689003352,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          }
+        },
+        {
+          "task": "SimpleSmsResend",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 4246161322,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsSendReceivedAddress",
+          "instance": 0,
+          "A": {
+            "seed": 25708979,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SportsTrackerActivitiesOnDate",
+          "instance": 0,
+          "A": {
+            "seed": 1824649041,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          },
+          "B": {
+            "seed": null,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          }
+        },
+        {
+          "task": "SystemBrightnessMinVerify",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Turn brightness to the min value."
+          },
+          "B": {
+            "seed": 714289418,
+            "goal": "Turn brightness to the min value."
+          }
+        }
+      ],
+      "A_only": 0,
+      "B_only": 3,
+      "A_only_tasks": [],
+      "B_only_tasks": [
+        "OpenAppTaskEval",
+        "SystemBluetoothTurnOnVerify",
+        "TurnOnWifiAndOpenApp"
+      ],
+      "both": 3,
+      "p_exact": 0.25
+    },
+    {
+      "A": "lfm3vl2b_v2",
+      "B": "lfm3vl2b_v3",
+      "n_pairs": 107,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_153954."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_210853."
+          }
+        },
+        {
+          "task": "MarkorCreateNoteAndSms",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3221046986,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "MarkorDeleteNewestNote",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Delete the newest note in Markor."
+          },
+          "B": {
+            "seed": 1958615684,
+            "goal": "Delete the newest note in Markor."
+          }
+        },
+        {
+          "task": "RecipeDeleteDuplicateRecipes2",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          },
+          "B": {
+            "seed": 2434742942,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          }
+        },
+        {
+          "task": "RetroCreatePlaylist",
+          "instance": 0,
+          "A": {
+            "seed": 916405052,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          }
+        },
+        {
+          "task": "SimpleSmsResend",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 4246161322,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsSend",
+          "instance": 0,
+          "A": {
+            "seed": 4209246460,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          }
+        },
+        {
+          "task": "SimpleSmsSendReceivedAddress",
+          "instance": 0,
+          "A": {
+            "seed": 25708979,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SystemBrightnessMinVerify",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Turn brightness to the min value."
+          },
+          "B": {
+            "seed": 714289418,
+            "goal": "Turn brightness to the min value."
+          }
+        }
+      ],
+      "A_only": 0,
+      "B_only": 10,
+      "A_only_tasks": [],
+      "B_only_tasks": [
+        "ClockStopWatchPausedVerify",
+        "ClockStopWatchRunning",
+        "ExpenseDeleteSingle",
+        "OpenAppTaskEval",
+        "SimpleCalendarDeleteOneEvent",
+        "SystemBluetoothTurnOff",
+        "SystemBluetoothTurnOnVerify",
+        "SystemBrightnessMaxVerify",
+        "SystemWifiTurnOffVerify",
+        "SystemWifiTurnOnVerify"
+      ],
+      "both": 3,
+      "p_exact": 0.001953125
+    },
+    {
+      "A": "lfm3vl2b_v2",
+      "B": "guiowl15_2b_matched",
+      "n_pairs": 110,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_153954."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261116_231457."
+          }
+        },
+        {
+          "task": "MarkorCreateNoteAndSms",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 3221046986,
+            "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "MarkorDeleteNewestNote",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Delete the newest note in Markor."
+          },
+          "B": {
+            "seed": 1958615684,
+            "goal": "Delete the newest note in Markor."
+          }
+        },
+        {
+          "task": "RecipeDeleteDuplicateRecipes2",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          },
+          "B": {
+            "seed": 2434742942,
+            "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+          }
+        },
+        {
+          "task": "SimpleSmsResend",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 4246161322,
+            "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SystemBrightnessMinVerify",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Turn brightness to the min value."
+          },
+          "B": {
+            "seed": 714289418,
+            "goal": "Turn brightness to the min value."
+          }
+        }
+      ],
+      "A_only": 1,
+      "B_only": 21,
+      "A_only_tasks": [
+        "RecipeDeleteSingleWithRecipeWithNoise"
+      ],
+      "B_only_tasks": [
+        "AudioRecorderRecordAudio",
+        "ContactsAddContact",
+        "ExpenseDeleteMultiple",
+        "ExpenseDeleteSingle",
+        "NotesMeetingAttendeeCount",
+        "NotesRecipeIngredientCount",
+        "NotesTodoItemCount",
+        "SimpleCalendarAddOneEvent",
+        "SimpleCalendarAddOneEventRelativeDay",
+        "SimpleCalendarAnyEventsOnDate",
+        "SimpleCalendarEventsInTimeRange",
+        "SimpleCalendarEventsOnDate",
+        "SimpleCalendarLocationOfEvent",
+        "SimpleCalendarNextMeetingWithPerson",
+        "SimpleSmsReplyMostRecent",
+        "SystemBluetoothTurnOff",
+        "SystemBluetoothTurnOn",
+        "SystemBluetoothTurnOnVerify",
+        "SystemWifiTurnOn",
+        "TasksDueOnDate",
+        "TasksIncompleteTasksOnDate"
+      ],
+      "both": 2,
+      "p_exact": 1.0967254638671875e-05
+    },
+    {
+      "A": "lfm3vl2b_v2_forcethink",
+      "B": "lfm3vl2b_v3",
+      "n_pairs": 110,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_201810."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_210853."
+          }
+        },
+        {
+          "task": "RetroCreatePlaylist",
+          "instance": 0,
+          "A": {
+            "seed": 916405052,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          },
+          "B": {
+            "seed": null,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          }
+        },
+        {
+          "task": "SimpleSmsReply",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 503761173,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsReplyMostRecent",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          },
+          "B": {
+            "seed": 3689003352,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          }
+        },
+        {
+          "task": "SimpleSmsSend",
+          "instance": 0,
+          "A": {
+            "seed": 4209246460,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          },
+          "B": {
+            "seed": null,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          }
+        },
+        {
+          "task": "SportsTrackerActivitiesOnDate",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          },
+          "B": {
+            "seed": 1824649041,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          }
+        }
+      ],
+      "A_only": 1,
+      "B_only": 8,
+      "A_only_tasks": [
+        "TurnOnWifiAndOpenApp"
+      ],
+      "B_only_tasks": [
+        "ClockStopWatchPausedVerify",
+        "ClockStopWatchRunning",
+        "ExpenseDeleteSingle",
+        "SimpleCalendarDeleteOneEvent",
+        "SystemBluetoothTurnOff",
+        "SystemBrightnessMaxVerify",
+        "SystemWifiTurnOffVerify",
+        "SystemWifiTurnOnVerify"
+      ],
+      "both": 5,
+      "p_exact": 0.0390625
+    },
+    {
+      "A": "lfm3vl2b_v2_forcethink",
+      "B": "guiowl15_2b_matched",
+      "n_pairs": 111,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_201810."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261116_231457."
+          }
+        },
+        {
+          "task": "SimpleSmsReply",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 503761173,
+            "goal": "Reply to +18407874306 with message: Yoga class every Tuesday and Thursday at 6 PM. in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SimpleSmsReplyMostRecent",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          },
+          "B": {
+            "seed": 3689003352,
+            "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox."
+          }
+        },
+        {
+          "task": "SimpleSmsSendReceivedAddress",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 25708979,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          }
+        },
+        {
+          "task": "SportsTrackerActivitiesOnDate",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          },
+          "B": {
+            "seed": 1824649041,
+            "goal": "What activities did I do October 01 in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+          }
+        }
+      ],
+      "A_only": 3,
+      "B_only": 19,
+      "A_only_tasks": [
+        "OpenAppTaskEval",
+        "RecipeDeleteSingleWithRecipeWithNoise",
+        "TurnOnWifiAndOpenApp"
+      ],
+      "B_only_tasks": [
+        "AudioRecorderRecordAudio",
+        "ContactsAddContact",
+        "ExpenseDeleteMultiple",
+        "ExpenseDeleteSingle",
+        "NotesMeetingAttendeeCount",
+        "NotesRecipeIngredientCount",
+        "NotesTodoItemCount",
+        "SimpleCalendarAddOneEvent",
+        "SimpleCalendarAddOneEventRelativeDay",
+        "SimpleCalendarAnyEventsOnDate",
+        "SimpleCalendarEventsInTimeRange",
+        "SimpleCalendarEventsOnDate",
+        "SimpleCalendarLocationOfEvent",
+        "SimpleCalendarNextMeetingWithPerson",
+        "SystemBluetoothTurnOff",
+        "SystemBluetoothTurnOn",
+        "SystemWifiTurnOn",
+        "TasksDueOnDate",
+        "TasksIncompleteTasksOnDate"
+      ],
+      "both": 3,
+      "p_exact": 0.0008554458618164062
+    },
+    {
+      "A": "lfm3vl2b_v3",
+      "B": "guiowl15_2b_matched",
+      "n_pairs": 112,
+      "missing_in_A": [],
+      "missing_in_B": [],
+      "instance_mismatches": [
+        {
+          "task": "MarkorCreateFolder",
+          "instance": 0,
+          "A": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261117_210853."
+          },
+          "B": {
+            "seed": 3163095783,
+            "goal": "Create a new folder in Markor named folder_20261116_231457."
+          }
+        },
+        {
+          "task": "RetroCreatePlaylist",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          },
+          "B": {
+            "seed": 916405052,
+            "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths"
+          }
+        },
+        {
+          "task": "SimpleSmsSend",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          },
+          "B": {
+            "seed": 4209246460,
+            "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+          }
+        },
+        {
+          "task": "SimpleSmsSendReceivedAddress",
+          "instance": 0,
+          "A": {
+            "seed": null,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          },
+          "B": {
+            "seed": 25708979,
+            "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+          }
+        }
+      ],
+      "A_only": 8,
+      "B_only": 18,
+      "A_only_tasks": [
+        "ClockStopWatchPausedVerify",
+        "ClockStopWatchRunning",
+        "OpenAppTaskEval",
+        "RecipeDeleteSingleWithRecipeWithNoise",
+        "SimpleCalendarDeleteOneEvent",
+        "SystemBrightnessMaxVerify",
+        "SystemWifiTurnOffVerify",
+        "SystemWifiTurnOnVerify"
+      ],
+      "B_only_tasks": [
+        "AudioRecorderRecordAudio",
+        "ContactsAddContact",
+        "ExpenseDeleteMultiple",
+        "NotesMeetingAttendeeCount",
+        "NotesRecipeIngredientCount",
+        "NotesTodoItemCount",
+        "SimpleCalendarAddOneEvent",
+        "SimpleCalendarAddOneEventRelativeDay",
+        "SimpleCalendarAnyEventsOnDate",
+        "SimpleCalendarEventsInTimeRange",
+        "SimpleCalendarEventsOnDate",
+        "SimpleCalendarLocationOfEvent",
+        "SimpleCalendarNextMeetingWithPerson",
+        "SimpleSmsReplyMostRecent",
+        "SystemBluetoothTurnOn",
+        "SystemWifiTurnOn",
+        "TasksDueOnDate",
+        "TasksIncompleteTasksOnDate"
+      ],
+      "both": 5,
+      "p_exact": 0.07551869750022888
+    }
+  ],
+  "saved_comparisons": [
+    {
+      "file": "results/androidworld/paired_lfm3ft_vs_guiowl.json",
+      "matches": true
+    },
+    {
+      "file": "results/androidworld/paired_lfm3v1_vs_v2.json",
+      "matches": true
+    },
+    {
+      "file": "results/androidworld/paired_lfm3v1_vs_v2forcethink.json",
+      "matches": true
+    },
+    {
+      "file": "results/androidworld/paired_lfm3v1_vs_v3.json",
+      "matches": true
+    },
+    {
+      "file": "results/androidworld/paired_lfm3v2_vs_v2forcethink.json",
+      "matches": true
+    },
+    {
+      "file": "results/androidworld/paired_lfm3v2_vs_v3.json",
+      "matches": true
+    },
+    {
+      "file": "results/androidworld/paired_lfm3v3_vs_guiowl.json",
+      "matches": true
+    }
+  ]
+}

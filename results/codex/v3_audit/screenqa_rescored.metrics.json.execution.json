@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/Users/alpha/lfm3-android/.venv/bin/python",
+    "-B",
+    "/Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py",
+    "/Users/alpha/lfm3-android/results/codex/v3_audit/screenqa_frozen_inputs.jsonl",
+    "--expect_n",
+    "500",
+    "--out",
+    "/Users/alpha/lfm3-android/results/codex/v3_audit/screenqa_rescored.metrics.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"n_steps\": 500, \"parse_rate\": 1.0, \"type_match\": 1.0, \"step_sr\": 0.724, \"answer_mean_f1\": 0.661670737490106}\n",
+  "stderr": ""
+}

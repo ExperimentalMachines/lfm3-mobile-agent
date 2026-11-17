@@ -1,0 +1,1545 @@
+{
+  "method": "Parse tasks.textproto via protobuf; registry creates InformationRetrieval subclasses whose is_successful reads interaction_cache; static _TASKS via AST.",
+  "answer_tasks": [
+    "NotesIsTodo",
+    "NotesMeetingAttendeeCount",
+    "NotesRecipeIngredientCount",
+    "NotesTodoItemCount",
+    "SimpleCalendarAnyEventsOnDate",
+    "SimpleCalendarEventOnDateAtTime",
+    "SimpleCalendarEventsInNextWeek",
+    "SimpleCalendarEventsInTimeRange",
+    "SimpleCalendarEventsOnDate",
+    "SimpleCalendarFirstEventAfterStartTime",
+    "SimpleCalendarLocationOfEvent",
+    "SimpleCalendarNextEvent",
+    "SimpleCalendarNextMeetingWithPerson",
+    "SportsTrackerActivitiesCountForWeek",
+    "SportsTrackerActivitiesOnDate",
+    "SportsTrackerActivityDuration",
+    "SportsTrackerLongestDistanceActivity",
+    "SportsTrackerTotalDistanceForCategoryOverInterval",
+    "SportsTrackerTotalDurationForCategoryThisWeek",
+    "TasksCompletedTasksForDate",
+    "TasksDueNextWeek",
+    "TasksDueOnDate",
+    "TasksHighPriorityTasks",
+    "TasksHighPriorityTasksDueOnDate",
+    "TasksIncompleteTasksOnDate"
+  ],
+  "action_task_count": 91,
+  "splits": {
+    "guiowl15_2b_matched": {
+      "answer_n": 25,
+      "answer_successes": 10,
+      "action_n": 91,
+      "action_successes": 13,
+      "missing_registry_tasks": [],
+      "extra_tasks": []
+    },
+    "lfm3vl2b_ft": {
+      "answer_n": 25,
+      "answer_successes": 0,
+      "action_n": 91,
+      "action_successes": 15,
+      "missing_registry_tasks": [],
+      "extra_tasks": []
+    },
+    "lfm3vl2b_v2": {
+      "answer_n": 25,
+      "answer_successes": 0,
+      "action_n": 91,
+      "action_successes": 3,
+      "missing_registry_tasks": [],
+      "extra_tasks": []
+    },
+    "lfm3vl2b_v2_forcethink": {
+      "answer_n": 25,
+      "answer_successes": 0,
+      "action_n": 91,
+      "action_successes": 6,
+      "missing_registry_tasks": [],
+      "extra_tasks": []
+    },
+    "lfm3vl2b_v3": {
+      "answer_n": 25,
+      "answer_successes": 0,
+      "action_n": 91,
+      "action_successes": 13,
+      "missing_registry_tasks": [],
+      "extra_tasks": []
+    }
+  },
+  "answer_episodes": [
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "NotesIsTodo",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/NotesIsTodo_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "NotesMeetingAttendeeCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/NotesMeetingAttendeeCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "NotesRecipeIngredientCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/NotesRecipeIngredientCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "NotesTodoItemCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/NotesTodoItemCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarAnyEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          642.0,
+          205.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarAnyEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarEventOnDateAtTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarEventOnDateAtTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarEventsInNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          152.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarEventsInNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarEventsInTimeRange",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarEventsInTimeRange_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarFirstEventAfterStartTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarLocationOfEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarLocationOfEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarNextEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          152.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarNextEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SimpleCalendarNextMeetingWithPerson",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleCalendarNextMeetingWithPerson_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SportsTrackerActivitiesCountForWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SportsTrackerActivitiesOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SportsTrackerActivitiesOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SportsTrackerActivityDuration",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SportsTrackerActivityDuration_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SportsTrackerLongestDistanceActivity",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SportsTrackerLongestDistanceActivity_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SportsTrackerTotalDistanceForCategoryOverInterval_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SportsTrackerTotalDurationForCategoryThisWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "TasksCompletedTasksForDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/TasksCompletedTasksForDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "TasksDueNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/TasksDueNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "TasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/TasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/TasksHighPriorityTasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "TasksHighPriorityTasks",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/TasksHighPriorityTasks_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_ft",
+      "task": "TasksIncompleteTasksOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/TasksIncompleteTasksOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "NotesIsTodo",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/NotesIsTodo_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "NotesMeetingAttendeeCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/NotesMeetingAttendeeCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "NotesRecipeIngredientCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/NotesRecipeIngredientCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "NotesTodoItemCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/NotesTodoItemCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarAnyEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarAnyEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarEventOnDateAtTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarEventOnDateAtTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarEventsInNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarEventsInNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarEventsInTimeRange",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarEventsInTimeRange_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarFirstEventAfterStartTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarLocationOfEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarLocationOfEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarNextEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "answer",
+        "text": "Call with Marketing"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarNextEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SimpleCalendarNextMeetingWithPerson",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SimpleCalendarNextMeetingWithPerson_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "scroll",
+        "direction": "down"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SportsTrackerActivitiesCountForWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SportsTrackerActivitiesOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SportsTrackerActivitiesOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SportsTrackerActivityDuration",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SportsTrackerActivityDuration_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SportsTrackerLongestDistanceActivity",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SportsTrackerLongestDistanceActivity_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SportsTrackerTotalDistanceForCategoryOverInterval_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/SportsTrackerTotalDurationForCategoryThisWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "TasksCompletedTasksForDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/TasksCompletedTasksForDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "TasksDueNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/TasksDueNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "TasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/TasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          951.0,
+          943.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/TasksHighPriorityTasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "TasksHighPriorityTasks",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/TasksHighPriorityTasks_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2",
+      "task": "TasksIncompleteTasksOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/TasksIncompleteTasksOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "NotesIsTodo",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/NotesIsTodo_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "NotesMeetingAttendeeCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/NotesMeetingAttendeeCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "NotesRecipeIngredientCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/NotesRecipeIngredientCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "NotesTodoItemCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/NotesTodoItemCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarAnyEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarAnyEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarEventOnDateAtTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarEventOnDateAtTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarEventsInNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarEventsInNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarEventsInTimeRange",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarEventsInTimeRange_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          162.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarFirstEventAfterStartTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarLocationOfEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarLocationOfEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarNextEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarNextEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SimpleCalendarNextMeetingWithPerson",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SimpleCalendarNextMeetingWithPerson_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SportsTrackerActivitiesCountForWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SportsTrackerActivitiesOnDate",
+      "full_success": false,
+      "last_action": {},
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SportsTrackerActivitiesOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SportsTrackerActivityDuration",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SportsTrackerActivityDuration_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SportsTrackerLongestDistanceActivity",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SportsTrackerLongestDistanceActivity_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SportsTrackerTotalDistanceForCategoryOverInterval_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/SportsTrackerTotalDurationForCategoryThisWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "TasksCompletedTasksForDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/TasksCompletedTasksForDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "TasksDueNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/TasksDueNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "TasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/TasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          951.0,
+          943.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/TasksHighPriorityTasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "TasksHighPriorityTasks",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/TasksHighPriorityTasks_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v2_forcethink",
+      "task": "TasksIncompleteTasksOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/TasksIncompleteTasksOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "NotesIsTodo",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/NotesIsTodo_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "NotesMeetingAttendeeCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          500.0,
+          178.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/NotesMeetingAttendeeCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "NotesRecipeIngredientCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/NotesRecipeIngredientCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "NotesTodoItemCount",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/NotesTodoItemCount_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarAnyEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "scroll",
+        "direction": "up"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarAnyEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarEventOnDateAtTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarEventOnDateAtTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarEventsInNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          931.0,
+          152.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarEventsInNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarEventsInTimeRange",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarEventsInTimeRange_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarEventsOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarFirstEventAfterStartTime_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarLocationOfEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarLocationOfEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarNextEvent",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarNextEvent_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SimpleCalendarNextMeetingWithPerson",
+      "full_success": false,
+      "last_action": {
+        "action_type": "click",
+        "point_2d": [
+          500.0,
+          89.0
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleCalendarNextMeetingWithPerson_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "scroll",
+        "direction": "down"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SportsTrackerActivitiesCountForWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SportsTrackerActivitiesOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SportsTrackerActivitiesOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SportsTrackerActivityDuration",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SportsTrackerActivityDuration_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SportsTrackerLongestDistanceActivity",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SportsTrackerLongestDistanceActivity_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SportsTrackerTotalDistanceForCategoryOverInterval_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SportsTrackerTotalDurationForCategoryThisWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "TasksCompletedTasksForDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/TasksCompletedTasksForDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "TasksDueNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/TasksDueNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "TasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "wait"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/TasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/TasksHighPriorityTasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "TasksHighPriorityTasks",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/TasksHighPriorityTasks_0.pkl.gz"
+    },
+    {
+      "run": "lfm3vl2b_v3",
+      "task": "TasksIncompleteTasksOnDate",
+      "full_success": false,
+      "last_action": {
+        "action_type": "status",
+        "goal_status": "complete"
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/TasksIncompleteTasksOnDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "NotesIsTodo",
+      "full_success": false,
+      "last_action": {
+        "action": "swipe",
+        "coordinate": [
+          511,
+          88
+        ],
+        "coordinate2": [
+          503,
+          917
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/NotesIsTodo_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "NotesMeetingAttendeeCount",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "25"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/NotesMeetingAttendeeCount_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "NotesRecipeIngredientCount",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "3/4 cup"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/NotesRecipeIngredientCount_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "NotesTodoItemCount",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "3"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/NotesTodoItemCount_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarAnyEventsOnDate",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "Game night, Product demo, Date night"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarAnyEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarEventOnDateAtTime",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          936,
+          163
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarEventOnDateAtTime_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarEventsInNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          935,
+          163
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarEventsInNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarEventsInTimeRange",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "Cooking Class"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarEventsInTimeRange_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarEventsOnDate",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "Trivia Night"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarEventsOnDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          456,
+          305
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarFirstEventAfterStartTime_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarLocationOfEvent",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "100 Main St Chicago"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarLocationOfEvent_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarNextEvent",
+      "full_success": false,
+      "last_action": {
+        "action": "answer",
+        "text": "Workshop on Project X, Call with Alice, Call with Dr. Smith"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarNextEvent_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SimpleCalendarNextMeetingWithPerson",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "October 27 2023 15:15"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SimpleCalendarNextMeetingWithPerson_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          74,
+          925
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SportsTrackerActivitiesCountForWeek_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SportsTrackerActivitiesOnDate",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          255,
+          777
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SportsTrackerActivitiesOnDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SportsTrackerActivityDuration",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          952,
+          86
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SportsTrackerActivityDuration_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SportsTrackerLongestDistanceActivity",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          137,
+          79
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SportsTrackerLongestDistanceActivity_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "full_success": false,
+      "last_action": {
+        "action": "swipe",
+        "coordinate": [
+          503,
+          100
+        ],
+        "coordinate2": [
+          967,
+          100
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SportsTrackerTotalDistanceForCategoryOverInterval_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          413,
+          927
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/SportsTrackerTotalDurationForCategoryThisWeek_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "TasksCompletedTasksForDate",
+      "full_success": false,
+      "last_action": {
+        "action": "swipe",
+        "coordinate": [
+          531,
+          86
+        ],
+        "coordinate2": [
+          531,
+          901
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/TasksCompletedTasksForDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "TasksDueNextWeek",
+      "full_success": false,
+      "last_action": {
+        "action": "swipe",
+        "coordinate": [
+          511,
+          78
+        ],
+        "coordinate2": [
+          503,
+          661
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/TasksDueNextWeek_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "TasksDueOnDate",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "Follow up on support tickets, Draft marketing email, Research market trends"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/TasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          948,
+          86
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/TasksHighPriorityTasksDueOnDate_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "TasksHighPriorityTasks",
+      "full_success": false,
+      "last_action": {
+        "action": "click",
+        "coordinate": [
+          61,
+          317
+        ]
+      },
+      "answer_actions": 0,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/TasksHighPriorityTasks_0.pkl.gz"
+    },
+    {
+      "run": "guiowl15_2b_matched",
+      "task": "TasksIncompleteTasksOnDate",
+      "full_success": true,
+      "last_action": {
+        "action": "answer",
+        "text": "Attend training session, Call client for follow-up, Research market trends"
+      },
+      "answer_actions": 1,
+      "file": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/TasksIncompleteTasksOnDate_0.pkl.gz"
+    }
+  ]
+}

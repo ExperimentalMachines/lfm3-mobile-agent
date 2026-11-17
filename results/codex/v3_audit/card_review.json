@@ -1,0 +1,199 @@
+{
+  "preview_returncode": 0,
+  "preview_sha256": "93c8c3602ec48c7798a3ae4fc48e906524d129f31d0b163bb3d6f95783f635a7",
+  "v3_number_checks": {
+    "AC_high": true,
+    "AC_low": true,
+    "AC_terminal_complete": true,
+    "odyssey": true,
+    "amex": true,
+    "screenqa": true,
+    "lfm3vl2b_ft": true,
+    "lfm3vl2b_v2": true,
+    "lfm3vl2b_v3": true,
+    "guiowl15_2b_matched": true,
+    "general_mmstar": true,
+    "general_mmlu": true,
+    "v3_latency": true
+  },
+  "app_spellings_resolve": {
+    "Marker": false,
+    "Markers": false,
+    "Markor": true
+  },
+  "v3_misnamed_app_episodes": [
+    {
+      "task": "ExpenseAddMultipleFromMarkor",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/ExpenseAddMultipleFromMarkor_0.pkl.gz",
+      "apps": {
+        "Marker": 1,
+        "Markers": 28
+      }
+    },
+    {
+      "task": "MarkorAddNoteHeader",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorAddNoteHeader_0.pkl.gz",
+      "apps": {
+        "Marker": 3
+      }
+    },
+    {
+      "task": "MarkorCreateNoteAndSms",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorCreateNoteAndSms_0.pkl.gz",
+      "apps": {
+        "Marker": 1
+      }
+    },
+    {
+      "task": "MarkorCreateNote",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorCreateNote_0.pkl.gz",
+      "apps": {
+        "Marker": 7
+      }
+    },
+    {
+      "task": "MarkorDeleteAllNotes",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorDeleteAllNotes_0.pkl.gz",
+      "apps": {
+        "Marker": 4
+      }
+    },
+    {
+      "task": "MarkorDeleteNewestNote",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorDeleteNewestNote_0.pkl.gz",
+      "apps": {
+        "Marker": 3
+      }
+    },
+    {
+      "task": "MarkorDeleteNote",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorDeleteNote_0.pkl.gz",
+      "apps": {
+        "Marker": 3
+      }
+    },
+    {
+      "task": "MarkorMergeNotes",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorMergeNotes_0.pkl.gz",
+      "apps": {
+        "Marker": 1
+      }
+    },
+    {
+      "task": "MarkorMoveNote",
+      "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/MarkorMoveNote_0.pkl.gz",
+      "apps": {
+        "Marker": 6
+      }
+    }
+  ],
+  "training_provenance": {
+    "sources_in_builder": [
+      "androidcontrol",
+      "odyssey",
+      "amex",
+      "screenqa"
+    ],
+    "androidworld_derived_training_rows_found": false,
+    "code_review": "build_v2_mix.py reads only the four named sources, excludes AW apps, adapts labels to AW executor semantics; v3 rewrites intents in pinned v2 shards. No AW episode/task/checker dataset reader found. vm_v3_intents.py explicitly motivates the change using AW evaluation results.",
+    "scope_limit": "Only 2/16 train shards exist locally. Code review and partial artifact inspection cannot certify every row of the final published training dataset, nor base/teacher pretraining.",
+    "partial_shards": [
+      {
+        "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/data/train-00000-of-00016.parquet",
+        "rows": 4937
+      },
+      {
+        "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/data/train-00001-of-00016.parquet",
+        "rows": 4937
+      },
+      {
+        "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/out/data/train-00000-of-00016.parquet",
+        "rows": 4934
+      },
+      {
+        "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/out/data/train-00001-of-00016.parquet",
+        "rows": 4931
+      }
+    ],
+    "partial_source_counts": {
+      "src": {
+        "androidcontrol": 6968,
+        "odyssey": 1240,
+        "screenqa": 723,
+        "amex": 943
+      },
+      "out": {
+        "androidcontrol": 6968,
+        "odyssey": 1238,
+        "screenqa": 723,
+        "amex": 936
+      }
+    },
+    "intent_labels_file": "/Users/alpha/.cache/huggingface/hub/datasets--alpharomercoma--AndroidAgent-SFT-v3/snapshots/d571c087c01bba53c0c31ac0915102ead71b29a0/stats/v3_intent_labels.json",
+    "intent_labels_sha256": "80080d906bd6b1f550350b4ad05e7a5db09dc75b1d645db4ffb1c5d170ab149b",
+    "label_source": "experimentalmachines/AndroidAgent-SFT-v2@42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+    "teacher": "Qwen/Qwen3-VL-8B-Instruct",
+    "filled": 8709,
+    "dropped": 30,
+    "v3_training_config": {
+      "model_id": "LiquidAI/LFM3-VL-2B",
+      "train": [
+        "alpharomercoma/AndroidAgent-SFT-v3@train#565ba76c4b10b6733549151f0fece1f70bc33b9c"
+      ],
+      "val": "experimentalmachines/AndroidControl-screen-agent-sft@val",
+      "out": "/content/runs/lfm3vl2b-v3mix-lora",
+      "max_pixels": 774400,
+      "min_pixels": 65536,
+      "epochs": 1.0,
+      "max_steps": 1250,
+      "lr": 0.0002,
+      "bs": 8,
+      "grad_accum": 4,
+      "lora_r": 64,
+      "lora_alpha": 128,
+      "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+      "modules_to_save": [],
+      "save_steps": 50,
+      "eval_steps": 250,
+      "hub_repo": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v3-LoRA-ckpt",
+      "workers": 12,
+      "seed": 42,
+      "no_gc": false,
+      "chat_template_path": null,
+      "max_agent_rows": 0,
+      "replay": [],
+      "inline_think": false,
+      "trust_remote_code": true,
+      "provenance": {
+        "model_sha": "23387beda43c60310348e83e25f78f33c3140d3a",
+        "dataset_sha:alpharomercoma/AndroidAgent-SFT-v3@train#565ba76c4b10b6733549151f0fece1f70bc33b9c": "565ba76c4b10b6733549151f0fece1f70bc33b9c",
+        "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@val": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+        "versions": {
+          "torch": "2.14.1",
+          "transformers": "5.20.2",
+          "trl": "1.16.0",
+          "peft": "0.21.2",
+          "datasets": "5.1.0",
+          "accelerate": "1.15.0"
+        }
+      }
+    },
+    "code_hashes": {
+      "scripts/publish_v3_hf.py": "1cc1eda20e73cf1e8f87b5b7e379db88c02d447632252922f62e3ce8a438da1e",
+      "data/build_androidcontrol.py": "f4dc3e8b79c11e3878fb91571429b4493f9adf69137b133b3144b9b9734bed7e",
+      "data/build_v2_mix.py": "d96819262789c6296fa7fe3e8079178568ef8b81f71ab4429b93f8984fc0f946",
+      "data/vm_v3_intents.py": "5f6d545702e69a8e793d9ac5b1d09ca1c73058579bba89283ffe81b0492ed9c6",
+      "data/v3_build_parquet.py": "6331f2a46979b1737af67da66daea84eff22bc24e4174bc1f5a27302e8644851",
+      "scripts/jobs/v3_build.build.json": "f2791d22f054a983ba0f38318415ca948c714839a09ba64da92236ad774e7209",
+      "scripts/jobs/v3_intents.intents.json": "dfa103c5396bf11b1ab113a6c16eeb8254121bef4304894fe72ee5aef7c3b911",
+      "scripts/jobs/lfm3_v3mix_modal.json": "aeab41f1f54b807a7455431ca1486aa99380e91cb26a0a3a232e1b22738f77d7",
+      "results/training/lfm3vl2b_v3/run_config.json": "af2116513f86a4979edbfcc10c7745789dae5037135fdc3dc4a2beadfd36867b"
+    }
+  },
+  "wording_defects": [
+    "Paired sample sizes and mismatch exclusions are omitted from the identical-instances wording.",
+    "AMEX held-out episodes reports step_sr=.74145, not episode_sr=.32231; Odyssey samples one step per episode, not an executed trajectory.",
+    "No detectable difference is a failure to reject, not proof v3 equals v1; regression is fixed should be restricted to improvement over v2 on seed-30 development data.",
+    "Absolute no-AW-data claim exceeds a full-artifact audit here; qualify as named fine-tuning sources and disclose AW-informed filtering/executor choices/selection."
+  ]
+}

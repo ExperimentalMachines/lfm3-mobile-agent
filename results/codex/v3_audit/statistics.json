@@ -1,0 +1,179 @@
+{
+  "method": "80% power, alpha=.05, two-sided exact McNemar; unconditional enumeration over M~Bin(n,q), then K~Bin(M,(1+delta/q)/2). q estimated from observed discordance and held fixed; illustrative prospective power, not evidence of equivalence. No unique MDE from n alone.",
+  "power": [
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v3",
+      "n": 116,
+      "discordants": 10,
+      "assumed_discordance_probability": 0.08620689655172414,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "two_sided": true,
+      "exact_unconditional_mde_pp": 7.628822972991113,
+      "expected_net_tasks_at_mde": 8.84943464866969,
+      "conditional_on_observed_discordants_mde_pp": 7.185173499453482,
+      "normal_approx_mde_pp": 7.637405472669478,
+      "minimum_significant_net_tasks_if_discordants_fixed": 8,
+      "observed_effect_power": 0.04896547987925606
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v3",
+      "n": 110,
+      "discordants": 10,
+      "assumed_discordance_probability": 0.09090909090909091,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "two_sided": true,
+      "exact_unconditional_mde_pp": 8.042550445917415,
+      "expected_net_tasks_at_mde": 8.846805490509157,
+      "conditional_on_observed_discordants_mde_pp": 7.5770920539691256,
+      "normal_approx_mde_pp": 8.053991225724177,
+      "minimum_significant_net_tasks_if_discordants_fixed": 8,
+      "observed_effect_power": 0.048970462651085886
+    },
+    {
+      "A": "lfm3vl2b_v3",
+      "B": "guiowl15_2b_matched",
+      "n": 116,
+      "discordants": 26,
+      "assumed_discordance_probability": 0.22413793103448276,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "two_sided": true,
+      "exact_unconditional_mde_pp": 12.700144046255055,
+      "expected_net_tasks_at_mde": 14.732167093655864,
+      "conditional_on_observed_discordants_mde_pp": 12.500093937834697,
+      "normal_approx_mde_pp": 12.314946289785448,
+      "minimum_significant_net_tasks_if_discordants_fixed": 12,
+      "observed_effect_power": 0.42408465721019545
+    },
+    {
+      "A": "lfm3vl2b_v3",
+      "B": "guiowl15_2b_matched",
+      "n": 112,
+      "discordants": 26,
+      "assumed_discordance_probability": 0.23214285714285715,
+      "alpha": 0.05,
+      "target_power": 0.8,
+      "two_sided": true,
+      "exact_unconditional_mde_pp": 13.152122743851963,
+      "expected_net_tasks_at_mde": 14.7303774731142,
+      "conditional_on_observed_discordants_mde_pp": 12.946525864185936,
+      "normal_approx_mde_pp": 12.754765800134932,
+      "minimum_significant_net_tasks_if_discordants_fixed": 12,
+      "observed_effect_power": 0.4240858715233667
+    }
+  ],
+  "sensitivity": [
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v3",
+      "rule": "strict_seed_and_goal",
+      "n": 110,
+      "A_only": 6,
+      "B_only": 4,
+      "p": 0.75390625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v3",
+      "rule": "equal_goal_allow_missing_seed",
+      "n": 115,
+      "A_only": 6,
+      "B_only": 4,
+      "p": 0.75390625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v3",
+      "rule": "all_task_ids_sensitivity_only",
+      "n": 116,
+      "A_only": 6,
+      "B_only": 4,
+      "p": 0.75390625
+    },
+    {
+      "A": "lfm3vl2b_v2",
+      "B": "lfm3vl2b_v3",
+      "rule": "strict_seed_and_goal",
+      "n": 107,
+      "A_only": 0,
+      "B_only": 10,
+      "p": 0.001953125
+    },
+    {
+      "A": "lfm3vl2b_v2",
+      "B": "lfm3vl2b_v3",
+      "rule": "equal_goal_allow_missing_seed",
+      "n": 115,
+      "A_only": 0,
+      "B_only": 10,
+      "p": 0.001953125
+    },
+    {
+      "A": "lfm3vl2b_v2",
+      "B": "lfm3vl2b_v3",
+      "rule": "all_task_ids_sensitivity_only",
+      "n": 116,
+      "A_only": 0,
+      "B_only": 10,
+      "p": 0.001953125
+    },
+    {
+      "A": "lfm3vl2b_v3",
+      "B": "guiowl15_2b_matched",
+      "rule": "strict_seed_and_goal",
+      "n": 112,
+      "A_only": 8,
+      "B_only": 18,
+      "p": 0.07551869750022888
+    },
+    {
+      "A": "lfm3vl2b_v3",
+      "B": "guiowl15_2b_matched",
+      "rule": "equal_goal_allow_missing_seed",
+      "n": 115,
+      "A_only": 8,
+      "B_only": 18,
+      "p": 0.07551869750022888
+    },
+    {
+      "A": "lfm3vl2b_v3",
+      "B": "guiowl15_2b_matched",
+      "rule": "all_task_ids_sensitivity_only",
+      "n": 116,
+      "A_only": 8,
+      "B_only": 18,
+      "p": 0.07551869750022888
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v2_forcethink",
+      "rule": "strict_seed_and_goal",
+      "n": 109,
+      "A_only": 9,
+      "B_only": 0,
+      "p": 0.00390625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v2_forcethink",
+      "rule": "equal_goal_allow_missing_seed",
+      "n": 115,
+      "A_only": 9,
+      "B_only": 0,
+      "p": 0.00390625
+    },
+    {
+      "A": "lfm3vl2b_ft",
+      "B": "lfm3vl2b_v2_forcethink",
+      "rule": "all_task_ids_sensitivity_only",
+      "n": 116,
+      "A_only": 9,
+      "B_only": 0,
+      "p": 0.00390625
+    }
+  ]
+}

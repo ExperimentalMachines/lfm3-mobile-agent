@@ -97,19 +97,22 @@ navigate_home / keyboard_enter / wait / answer / status), coordinates 0-1000. Bu
 
 | Evaluation | v1 (AndroidControl only) | v2 (mix, blank intents) | **v3 (this model)** |
 |---|---|---|---|
-| AndroidControl test step SR, high-level | {v1[0]} | {v2[0]} | **{v3[0]}** |
-| AndroidControl test step SR, low-level | {v1[1]} | {v2[1]} | {v3[1]} |
-| AndroidControl terminal ('complete') | {v1[2]} | {v2[2]} | {v3[2]} |
-| GUI-Odyssey held-out episodes | {d['odyssey'][0]} | {d['odyssey'][1]} | **{d['odyssey'][2]}** |
-| AMEX held-out episodes | {d['amex'][0]} | {d['amex'][1]} | **{d['amex'][2]}** |
-| ScreenQA validation (answer) | {d['screenqa'][0]} | **{d['screenqa'][1]}** | {d['screenqa'][2]} |
+| AndroidControl test, step success rate, high-level goals | {v1[0]} | {v2[0]} | **{v3[0]}** |
+| AndroidControl test, step success rate, low-level instructions | {v1[1]} | {v2[1]} | {v3[1]} |
+| AndroidControl test, terminal 'complete' steps | {v1[2]} | {v2[2]} | {v3[2]} |
+| GUI-Odyssey held-out episodes, sampled-step success rate (1 step per episode) | {d['odyssey'][0]} | {d['odyssey'][1]} | **{d['odyssey'][2]}** |
+| AMEX held-out episodes, sampled-step success rate (not episode completion) | {d['amex'][0]} | {d['amex'][1]} | **{d['amex'][2]}** |
+| ScreenQA validation, answer match rate (exact or token-F1 >= 0.5) | {d['screenqa'][0]} | **{d['screenqa'][1]}** | {d['screenqa'][2]} |
 | AndroidWorld, 116 tasks, seed 30, this GGUF, 1 screenshot/step (full successes) | {k1}/116 | {k2}/116 | {k3}/116 |
 | General knowledge (forced-choice, paired vs base) | {ret('lfm3vl2b')} | {ret('lfm3vl2b_v2')} | {ret('lfm3vl2b_v3')} |
 
-AndroidWorld, paired on identical task instances (exact McNemar):
-* v3 vs v1: v1-only {p13['A_only']}, v3-only {p13['B_only']} (p={p13['mcnemar_exact_p']:.2f}) - **no detectable difference**.
-* v3 vs v2: v3-only {p23['B_only']}, v2-only {p23['A_only']} (p={p23['mcnemar_exact_p']:.3f}) - v2's regression is fixed.
-* v3 vs GUI-Owl-1.5-2B in the same harness and budget (1 screenshot, Q4_K_M, {kg}/116): GUI-Owl-only {p3g['B_only']},
+AndroidWorld, paired on identical task instances (exact McNemar; instances whose generated goal or seed differs between
+runs, e.g. timestamped folder names or exception records without a seed, are excluded):
+* v3 vs v1 ({p13['n_pairs']} matched instances): v1-only {p13['A_only']}, v3-only {p13['B_only']} (p={p13['mcnemar_exact_p']:.2f}) -
+  no detectable difference; this does not show equivalence (a single 116-task run detects only gaps of ~9 tasks here).
+* v3 vs v2 ({p23['n_pairs']} matched instances): v3-only {p23['B_only']}, v2-only {p23['A_only']} (p={p23['mcnemar_exact_p']:.3f}) -
+  v3 improves over v2 on these seed-30 development tasks.
+* v3 vs GUI-Owl-1.5-2B in the same harness and budget (1 screenshot, Q4_K_M, {kg}/116; {p3g['n_pairs']} matched instances): GUI-Owl-only {p3g['B_only']},
   v3-only {p3g['A_only']} (p={p3g['mcnemar_exact_p']:.3f}). GUI-Owl's published 67.9% uses its own harness (5 screenshots,
   full resolution, unquantized); the numbers are not comparable.
 
@@ -117,7 +120,8 @@ Known limitations (AndroidWorld failure analysis): v3 never emits `answer` ({fm[
 so it fails the ~25 information-retrieval tasks; it declares `complete` on {fm['labels'].get('complete_but_failed', 0)}
 failed tasks; it misnames some apps (e.g. "Marker" for Markor). AndroidWorld seed 30 was used to choose between
 v1/v2/v3, so treat these scores as development-set numbers. Mean model latency {lat:.1f} s/step (Apple M5, llama.cpp).
-No AndroidWorld tasks, variants, trajectories or checkers were used in training.
+The fine-tuning sources (AndroidControl, GUI-Odyssey, AMEX, ScreenQA) contain no AndroidWorld tasks, variants,
+trajectories or checkers; AndroidWorld seed-30 results did inform data and prompt decisions.
 
 Serving (llama.cpp): `llama-server -m LFM3-VL-2B-AndroidAgent-v3-Q4_K_M.gguf --mmproj mmproj-LFM3-VL-2B-Q8_0.gguf
 -c 8192 --image-max-tokens 1024 --reasoning-format deepseek`. Prompt/action format: `train/agent_format.py` in the

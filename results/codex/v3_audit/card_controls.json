@@ -1,0 +1,156 @@
+{
+  "ac": {
+    "v1": {
+      "raw_path": "/Users/alpha/.cache/huggingface/hub/models--experimentalmachines--LFM3-VL-2B-AndroidControl/snapshots/0d06ed80146821ee4371e1c9b28c69a6df0fc39e/eval/lfm3vl2b-ac-lora_ft.jsonl",
+      "raw_sha256": "0db84d7f675ec9a1c9182a511c6d29f1e8711fbc30b7b0863413d5b53473fd34",
+      "n": 18415,
+      "step_sr": {
+        "high": 0.7148270961629559,
+        "low": 0.9475557664926436,
+        "terminal_complete": 0.7919637070641607
+      },
+      "saved_matches": true
+    },
+    "v2": {
+      "raw_path": "/Users/alpha/lfm3-android/results/androidcontrol/lfm3vl2b-v2mix-lora_ft.jsonl",
+      "raw_sha256": "390b2eff5cee0a2b16cd9a62cee0c41f84ac9097d5a910163780ff1fdffa6a29",
+      "n": 18415,
+      "step_sr": {
+        "high": 0.7158929417337755,
+        "low": 0.8932130991931656,
+        "terminal_complete": 0.7316915100453661
+      },
+      "saved_matches": true
+    }
+  },
+  "dev": {
+    "v1_odyssey": {
+      "n": 1000,
+      "step_sr": 0.269,
+      "episode_sr": 0.269,
+      "frozen_label_mismatches": [],
+      "saved_matches": true,
+      "raw_sha256": "7b7d146a98ea65617adeb88519efa6cf36f30cd5e19ccedcbf21a66ade29c784"
+    },
+    "v1_amex": {
+      "n": 468,
+      "step_sr": 0.3055555555555556,
+      "episode_sr": 0.0,
+      "frozen_label_mismatches": [],
+      "saved_matches": true,
+      "raw_sha256": "4edbc13e725df1b58a096e9caabb687478bfd515f3a89bf66b4266a843b973a9"
+    },
+    "v1_screenqa": {
+      "n": 500,
+      "step_sr": 0.0,
+      "episode_sr": 0.0,
+      "frozen_label_mismatches": [],
+      "saved_matches": true,
+      "raw_sha256": "05c7721828e6c3cd9707fd52dcb15aa882e55a975f886c694b1b3a9a803cbf74"
+    },
+    "v2_odyssey": {
+      "n": 1000,
+      "step_sr": 0.644,
+      "episode_sr": 0.644,
+      "frozen_label_mismatches": [],
+      "saved_matches": true,
+      "raw_sha256": "4be034e03d1984126035f25b5b62899e2433bd873217ecf2dc832837d638f59d"
+    },
+    "v2_amex": {
+      "n": 468,
+      "step_sr": 0.7350427350427351,
+      "episode_sr": 0.33884297520661155,
+      "frozen_label_mismatches": [],
+      "saved_matches": true,
+      "raw_sha256": "bcebcda392dbde10a9b4fc6d3f0de8c57926d6c90fa93391a52e53e3cc5ecab2"
+    },
+    "v2_screenqa": {
+      "n": 500,
+      "step_sr": 0.764,
+      "episode_sr": 0.75,
+      "frozen_label_mismatches": [],
+      "saved_matches": true,
+      "raw_sha256": "060b675acdcda1014b7c14ba9cc75ae241bb14a51b7b90e32c02b6d069176728"
+    }
+  },
+  "general": {
+    "v1_mmstar": {
+      "n": 1500,
+      "base_acc": 0.5213333333333333,
+      "ft_acc": 0.5713333333333334,
+      "delta": 0.050000000000000044,
+      "lost(base right, ft wrong)": 69,
+      "gained": 144,
+      "mcnemar_p": 3.0280723626020696e-07,
+      "saved_matches": true
+    },
+    "v1_mmlu": {
+      "n": 1000,
+      "base_acc": 0.489,
+      "ft_acc": 0.495,
+      "delta": 0.006000000000000005,
+      "lost(base right, ft wrong)": 69,
+      "gained": 75,
+      "mcnemar_p": 0.6770697943668329,
+      "saved_matches": true
+    },
+    "v2_mmstar": {
+      "n": 1500,
+      "base_acc": 0.5213333333333333,
+      "ft_acc": 0.546,
+      "delta": 0.024666666666666726,
+      "lost(base right, ft wrong)": 97,
+      "gained": 134,
+      "mcnemar_p": 0.017663498395802436,
+      "saved_matches": true
+    },
+    "v2_mmlu": {
+      "n": 1000,
+      "base_acc": 0.489,
+      "ft_acc": 0.509,
+      "delta": 0.020000000000000018,
+      "lost(base right, ft wrong)": 51,
+      "gained": 71,
+      "mcnemar_p": 0.08498064582685333,
+      "saved_matches": true
+    }
+  },
+  "recipe": {
+    "v1": {
+      "path": "/Users/alpha/.cache/huggingface/hub/models--experimentalmachines--LFM3-VL-2B-AndroidControl/snapshots/9df77c802f6a1b690b4738ca4a4288f6f166661b/training_logs/run_config.json",
+      "max_steps": 1250,
+      "bs": 8,
+      "grad_accum": 4,
+      "lr": 0.0002,
+      "lora_r": 64,
+      "lora_alpha": 128,
+      "max_pixels": 774400,
+      "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+      "replay": []
+    },
+    "v2": {
+      "path": "/Users/alpha/lfm3-android/results/training/lfm3vl2b_v2/run_config.json",
+      "max_steps": 1250,
+      "bs": 8,
+      "grad_accum": 4,
+      "lr": 0.0002,
+      "lora_r": 64,
+      "lora_alpha": 128,
+      "max_pixels": 774400,
+      "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+      "replay": []
+    },
+    "v3": {
+      "path": "/Users/alpha/lfm3-android/results/training/lfm3vl2b_v3/run_config.json",
+      "max_steps": 1250,
+      "bs": 8,
+      "grad_accum": 4,
+      "lr": 0.0002,
+      "lora_r": 64,
+      "lora_alpha": 128,
+      "max_pixels": 774400,
+      "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+      "replay": []
+    }
+  }
+}

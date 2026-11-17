@@ -1,0 +1,185 @@
+{
+  "androidcontrol": {
+    "metrics_match": {
+      "high": true,
+      "low": true,
+      "terminal_complete": true
+    },
+    "prediction_label_mismatches": [],
+    "integrity": {
+      "n_pred_rows": 18415,
+      "n_gt_rows": 18415,
+      "duplicate_keys": 0,
+      "missing": 0,
+      "extra": 0,
+      "row_models": [
+        "/content/runs/lfm3vl2b-v3mix-lora/merged"
+      ],
+      "manifest": {
+        "model": "/content/runs/lfm3vl2b-v3mix-lora/merged",
+        "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+        "n_rows": 18415,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "min_pixels": 65536,
+        "model_fingerprint": "4f932d09dbad2580",
+        "config_hash": "39aed59b9eb4881f"
+      },
+      "gt_file": "/Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl",
+      "complete": true,
+      "problems": []
+    },
+    "counts_and_scores": {
+      "high": {
+        "n": 8444,
+        "step_sr": 0.7225248697299858
+      },
+      "low": {
+        "n": 8428,
+        "step_sr": 0.9019933554817275
+      },
+      "terminal_complete": {
+        "n": 1543,
+        "step_sr": 0.7252106286454958
+      }
+    }
+  },
+  "dev": {
+    "odyssey": {
+      "n": 1000,
+      "unique_keys": 1000,
+      "gt_revision": "42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+      "gt_file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/data/dev_odyssey-00000-of-00001.parquet",
+      "gt_sha256": "8a97b088a003a6d727958b1c064b21fb374d19e2309fd4ec3bf5426797b3406b",
+      "hash_matches_download_metadata": true,
+      "frozen_label_mismatches": [],
+      "rows_match_config_hash": true,
+      "rows_match_model": true,
+      "all_metrics_match": true,
+      "step_sr": 0.662,
+      "episode_sr": 0.662,
+      "answer_mean_f1": null
+    },
+    "amex": {
+      "n": 468,
+      "unique_keys": 468,
+      "gt_revision": "42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+      "gt_file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/data/dev_amex-00000-of-00001.parquet",
+      "gt_sha256": "ef22b0a1dca71da697f75f9c8e52fcbf3536f733130e8421f57799be424565fc",
+      "hash_matches_download_metadata": true,
+      "frozen_label_mismatches": [],
+      "rows_match_config_hash": true,
+      "rows_match_model": true,
+      "all_metrics_match": true,
+      "step_sr": 0.7414529914529915,
+      "episode_sr": 0.32231404958677684,
+      "answer_mean_f1": null
+    },
+    "screenqa": {
+      "n": 500,
+      "unique_keys": 500,
+      "gt_revision": "42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+      "gt_file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/data/dev_screenqa-00000-of-00001.parquet",
+      "gt_sha256": "a4d4bc2cb66abaf613565eda933688c0d81b16b39511679a3cc9001cfff26a7f",
+      "hash_matches_download_metadata": true,
+      "frozen_label_mismatches": [],
+      "rows_match_config_hash": true,
+      "rows_match_model": true,
+      "all_metrics_match": true,
+      "step_sr": 0.724,
+      "episode_sr": 0.7094017094017094,
+      "answer_mean_f1": 0.661670737490106
+    }
+  },
+  "general": {
+    "mmstar": {
+      "n": 1500,
+      "base_correct": 782,
+      "v3_correct": 830,
+      "base_acc": 0.5213333333333333,
+      "ft_acc": 0.5533333333333333,
+      "delta": 0.032,
+      "lost": 95,
+      "gained": 143,
+      "mcnemar_p": 0.0022467345076008735
+    },
+    "mmlu": {
+      "n": 1000,
+      "base_correct": 489,
+      "v3_correct": 500,
+      "base_acc": 0.489,
+      "ft_acc": 0.5,
+      "delta": 0.011,
+      "lost": 60,
+      "gained": 71,
+      "mcnemar_p": 0.38235432135613495
+    }
+  },
+  "general_integrity": {
+    "duplicate_or_missing_keys": 0,
+    "stored_pred_or_correct_inconsistencies": [],
+    "base_v3_gold_mismatches": [],
+    "mmlu_frozen_gold_mismatches": [],
+    "mmlu_frozen_file": "/Users/alpha/.cache/huggingface/hub/datasets--cais--mmlu/snapshots/c30699e8356da336a370243923dbaf21066bb9fe/all/test-00000-of-00001.parquet",
+    "mmstar_independent_frozen_gold": "not yet available locally",
+    "saved_metrics_match": {
+      "mmstar": true,
+      "mmlu": true
+    }
+  },
+  "input_hashes": [
+    {
+      "file": "/Users/alpha/lfm3-android/results/androidcontrol/lfm3vl2b-v3mix-lora_ft.jsonl",
+      "sha256": "8ea0948d12bd865bdefcac09f938ea56b3ddd2a2988e4dd1991c2a5034a24e16"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl",
+      "sha256": "1926a44e0ffa7940b28866907d28913a5bd4af38f5b67463798cec8b6df25e84"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json",
+      "sha256": "67e897a73bf689732e05185b1cd9632deb879f6a55eeedae5acb9187ac09db60"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/results/v3_dev/lfm3_v3_dev_odyssey.jsonl",
+      "sha256": "e2b7a9529403a270522986368925f5c366eb7ad914bcc907475b67b3d7e6c29b"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/.cache/huggingface/download/data/dev_odyssey-00000-of-00001.parquet.metadata",
+      "sha256": "70ca361c0131feb5944b7a75558363bf8343b7081752f9de2b4a2a05273b5a88"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/results/v3_dev/lfm3_v3_dev_amex.jsonl",
+      "sha256": "4a01c29336df3a095c2cb9f3518c234c3495a9dddff4df2d653a21f5849c2ea8"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/.cache/huggingface/download/data/dev_amex-00000-of-00001.parquet.metadata",
+      "sha256": "8f9da0696d363e71597fc3ec2960637514d9eb52bb672dde1ae8a09a938a7bd7"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/results/v3_dev/lfm3_v3_dev_screenqa.jsonl",
+      "sha256": "7af8ea4f3d465d67f66ff02417aec62957a473f4c20d47fb3275aba04926258b"
+    },
+    {
+      "file": "/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/v3build/src/.cache/huggingface/download/data/dev_screenqa-00000-of-00001.parquet.metadata",
+      "sha256": "3a6b6141c34b10a2b6c8182858e69f79e57a24fcb49bf4989821974c5cdc05ab"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/results/general/lfm3vl2b-ac-lora_base_general_logprob.jsonl",
+      "sha256": "c5b515550de07cd91d9059270b3c1ce583e8381bb75751a4393d1ec468d35445"
+    },
+    {
+      "file": "/Users/alpha/lfm3-android/results/general/lfm3vl2b-v3mix-lora_ft_general_logprob.jsonl",
+      "sha256": "8c5203cdb7a7ed9819c37550c6337351fbd343f1c2722cc2625cafa406b7cd75"
+    },
+    {
+      "file": "/Users/alpha/.cache/huggingface/hub/datasets--cais--mmlu/snapshots/c30699e8356da336a370243923dbaf21066bb9fe/all/test-00000-of-00001.parquet",
+      "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7"
+    }
+  ]
+}

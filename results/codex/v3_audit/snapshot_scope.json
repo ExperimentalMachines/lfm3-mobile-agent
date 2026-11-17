@@ -1,0 +1,31 @@
+{
+  "audited_head": "64cd354be836f32c354b02b22fa8dcc69dca0ce6",
+  "head_during_finalization": "29d5d257e6a960c648629bbf541ae22c996346ef",
+  "external_status_additions": [
+    " M eval/androidworld/app_resolver.py",
+    " M eval/androidworld/guiowl_agent.py",
+    " M eval/androidworld/lfm_agent.py",
+    " M eval/androidworld/run_aw.py",
+    " M train/agent_format.py",
+    "?? data/v4work/v3_train_meta.parquet",
+    "?? logs/aw_sealed_v1_seed7.log",
+    "?? logs/llama_server_v1_seed7.log",
+    "?? logs/local_sealed_v1_seed7.log",
+    "?? results/androidworld_sealed/v1_seed7/run_20261118T013031530321/AudioRecorderRecordAudioWithFileName_0.pkl.gz",
+    "?? results/androidworld_sealed/v1_seed7/run_20261118T013031530321/AudioRecorderRecordAudio_0.pkl.gz",
+    "?? scripts/local_sealed_aw.sh"
+  ],
+  "raw_580_hashes_still_unchanged": true,
+  "audited_source_snapshot_sha256": {
+    "eval/androidcontrol/score.py": "f82705bdd1f5a285003859a56bbe3e76a967801682b180bcdaef4197d940c2c0",
+    "eval/androidcontrol/score_dev.py": "81029c597c45ed6a30ee844e78d82757ba4446568976ecd46c79ebe42ba15a77",
+    "eval/general/eval_general.py": "2e4dcfae03f377100807d001242beb49da4fad1db9b637893e635cf4a33fa5a3",
+    "eval/androidworld/summarize_aw.py": "27933b1ecd681268e57f05952751ebf12a55ad2e18e088be555dd4b793e8ac0f",
+    "eval/androidworld/paired_aw.py": "3c84ed25d803c6d94cf3ab8ad48918e41eb2c7f610084b5967ee217c65a16426",
+    "eval/androidworld/lfm_agent.py": "df5320241ffd81376f20a90ce64806fe9977662d9ba38a06bd060c0af5e13cd1",
+    "eval/androidworld/guiowl_agent.py": "1fbb84f6ceff05a7f442e87597afef24ffd3c9f5a040c1fe0af28075a7fa2d1f",
+    "eval/androidworld/run_aw.py": "93cd030fab7a9e57b2f97d38274dd7e1e2f3273b4c409349f97e5b28c9a7dd32",
+    "train/agent_format.py": "e295cf5593d4ce43b61e3893b4c53fe0ab0f9468e192506f23069b562e7aaee1"
+  },
+  "scope_note": "The report audits the original recorded snapshot. Another process added files, changed runtime/agent source, and advanced HEAD during finalization. These are not audit writes. The earlier concurrent_changes.json explanation mentioning only untracked additions became incomplete as further changes appeared. Core original scorer/agent sources are now preserved from the audited commit in audited_source_snapshot/. Reproduction should use that source revision; do not substitute the concurrently evolving working tree. No existing repository file was edited by this audit."
+}

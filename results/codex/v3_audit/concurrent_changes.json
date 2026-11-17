@@ -1,0 +1,23 @@
+{
+  "explanation": "The false whole-tree status equality in final_integrity.json is explained by concurrent unrelated untracked additions, not modifications by the audit. No audit command writes these paths. Audited raw/source hashes remain unchanged.",
+  "concurrent_new_entries": [
+    " M eval/androidworld/app_resolver.py",
+    " M eval/androidworld/guiowl_agent.py",
+    " M eval/androidworld/lfm_agent.py",
+    " M eval/androidworld/run_aw.py",
+    " M train/agent_format.py",
+    "?? data/v4work/v3_train_meta.parquet",
+    "?? logs/aw_sealed_v1_seed7.log",
+    "?? logs/llama_server_v1_seed7.log",
+    "?? logs/local_sealed_v1_seed7.log",
+    "?? results/androidworld_sealed/v1_seed7/run_20261118T013031530321/AudioRecorderRecordAudioWithFileName_0.pkl.gz",
+    "?? results/androidworld_sealed/v1_seed7/run_20261118T013031530321/AudioRecorderRecordAudio_0.pkl.gz",
+    "?? scripts/local_sealed_aw.sh"
+  ],
+  "removed_entries": [],
+  "tracked_status_unchanged": false,
+  "audit_write_scope": [
+    "results/codex/v3_audit/",
+    "results/codex/codex_v3_audit.md"
+  ]
+}
