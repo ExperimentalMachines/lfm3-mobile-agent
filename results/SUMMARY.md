@@ -13,7 +13,7 @@ Non-significant Δ means no decline was detected on these two tests (95% CIs in 
 | LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | 0.0% (0/116) | 3.3s / 1183 tok | MMStar 38.5%, MMLU 39.9% |
 | LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | 2.2% (2/116) | 1.4s / 1194 tok | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
 | Qwen3.5-2B base | 0.384 (ep 0.048) | 0.590 (ep 0.134) | 0.005 | — | — | MMStar 49.3%, MMLU 55.5% |
-| Qwen3.5-2B fine-tuned | 0.734 (ep 0.309) | 0.949 (ep 0.791) | 0.784 | — | — | MMStar 57.3%, MMLU 53.7% (Δ mmstar +8.1pp p=9.9e-11, mmlu -1.8pp p=0.24) |
+| Qwen3.5-2B fine-tuned | 0.734 (ep 0.309) | 0.949 (ep 0.791) | 0.784 | 13.8% (16/116) | 4.4s / 1172 tok | MMStar 57.3%, MMLU 53.7% (Δ mmstar +8.1pp p=9.9e-11, mmlu -1.8pp p=0.24) |
 | Qwen3.5-0.8B base | 0.392 (ep 0.082) | 0.737 (ep 0.272) | 0.000 | — | — | MMStar 42.4%, MMLU 43.9% |
 | Qwen3.5-0.8B fine-tuned | 0.694 (ep 0.253) | 0.942 (ep 0.763) | 0.745 | — | — | — |
 | GUI-Owl-1.5-2B (compute-matched, 1 img) | — | — | — | 19.8% (23/116) | 7.9s / 2261 tok | — |
