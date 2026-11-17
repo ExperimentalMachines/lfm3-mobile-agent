@@ -15,5 +15,7 @@ env = {
     "GENERAL_EVAL": "0", "BASE_AC_EVAL": "0", "LOGPROB_FT": "1", "MATCHED_NOTHINK": "0",
 }
 json.dump([{"name": "lfm3_v4", "script": "/content/work/vm_model_pipeline.sh", "log": "/content/runs/lfm3_v4_pipeline.log",
-            "env": env}], open("scripts/jobs/lfm3_v4_a100.json", "w"), indent=1)
+            "env": env},
+           {"name": "rl_hook", "script": "/content/work/vm_rl_hook.sh", "log": "/content/runs/rl_hook.log", "env": {},
+            "stagger_s": 5}], open("scripts/jobs/lfm3_v4_a100.json", "w"), indent=1)
 print("wrote scripts/jobs/lfm3_v4_a100.json", sha)

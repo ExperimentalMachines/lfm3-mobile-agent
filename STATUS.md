@@ -1,14 +1,24 @@
-# Status — 2026-11-18 02:00 (Asia/Manila)
+# Status — 2026-11-18 03:25 (Asia/Manila)
 
 Auto-generated table with every model: `results/SUMMARY.md` (`python3 scripts/build_report.py`).
 Codex (gpt-6-astra, max) audits: `results/codex/`. Research: `reports/Small GUI agent training methods.md`,
 `reports/Beating GUI Owl at 2B fairly.md` (notes in `research_notes/`).
 
-## Running
+## Running (overnight 2026-11-18)
 | What | Where | Status |
 |---|---|---|
-| Codex independent audit of the v3 results + published v3 card | local (`logs/codex_v3_audit.log`) | running → `results/codex/codex_v3_audit.md` |
-| AndroidWorld emulators 1 and 2 | this Mac | idle |
+| v4 training (v3 recipe; data `alpharomercoma/AndroidAgent-SFT-v4` @ 570febb) -> AC test + v4 dev splits | Colab A100-40GB `lfm3v4` (6.73 CU/h) | started 03:15, 7.6 s/step, train done ~05:55, evals ~06:40 |
+| RL pilot (static-screenshot GRPO from merged v4, KL 0.001; Codex research rank 1) | same VM, `vm_rl_hook.sh` | base-model smoke now; main run after the v4 pipeline (<= 4.5 h) |
+| v4 AndroidWorld seed-30 development pass | Mac emulator 2 (`scripts/local_v4_to_aw.sh`) | waits for v4 weights; pauses + later resumes sealed v1 seed 7 |
+| SEALED held-out seed 7: GUI-Owl matched (+ app list) and LFM3 v1 | Mac emulators 1/2 | running since 01:30; outcomes not inspected (docs/PREREG_v4.md) |
+| Codex adversarial audit of the built v4 data + RL pilot | local | running -> `results/codex/codex_v4_data_audit.md` |
+
+v4 = v3 rewritten to the v4 prompt (answer-vs-complete rules + installed-app list) + 2,835 navigate-then-answer copies of
+AndroidControl train episodes (question/answer written by Qwen3-VL-8B from the final screen, verified by a second call and a
+strict typed check; 392 verified direct questions) + 1,233 shortened ScreenQA answers; 162 held-out answer episodes
+(dev_answer) and 135 action-only completion controls (dev_complete). Pre-registration: `docs/PREREG_v4.md` (seeds 7/1234/2026
+sealed; gate; dated deviations). Codex: research `results/codex/codex_overnight_research.md`, pipeline audit
+`results/codex/codex_v4_pipeline_audit.md` (7 P1 fixed before training).
 
 ## LFM3-VL-2B versions (same recipe and budget: LoRA r64/α128, lr 2e-4, 1,250 steps × 32 rows)
 | Version | Training data | AC test high / low | Held-out Odyssey / AMEX / ScreenQA | AndroidWorld (116, seed 30, Q4_K_M, 1 screenshot) |
@@ -39,5 +49,5 @@ verified); v2 LFM3 / Qwen3.5-2B repos with cards; dataset `AndroidAgent-SFT-v3`.
 3. Fair comparison: GUI-Owl and LFM3 on ≥3 held-out seeds (~350 paired episodes, sealed), pre-registered margin.
 
 ## Budget
-Colab (main account): 25.5 CU left (G4 ≈ 10 CU/h). Modal (alpharomercoma): $18.44 of credits used this month,
+Colab (main account): 125 CU after the user's purchase; A100 6.73 CU/h; ~10 CU used by 03:25. Modal (alpharomercoma): $18.44 of credits used this month,
 allowance to confirm. Modal (old account): within the $26/$28 cap.
