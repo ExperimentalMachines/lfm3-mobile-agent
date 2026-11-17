@@ -30,6 +30,8 @@ from huggingface_hub import HfApi, snapshot_download
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "train"))
 import agent_format as af  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from v4_answer_check import preferred, safe_short, same_answer  # noqa: E402
 
 V3, V3_REV = "alpharomercoma/AndroidAgent-SFT-v3", "565ba76c4b10b6733549151f0fece1f70bc33b9c"
 OUT_REPO = "alpharomercoma/AndroidAgent-SFT-v4"
@@ -37,6 +39,9 @@ p = argparse.ArgumentParser()
 p.add_argument("--labels", required=True)
 p.add_argument("--candidates", default="data/v4work/v4_candidates.json")
 p.add_argument("--pool", default="data/v4work/app_pool.json")
+p.add_argument("--screenqa_rows", default="data/v4work/screenqa_rows.json")
+p.add_argument("--dup_final_question", type=int, default=4, help="total copies of each pure-question final answer row")
+p.add_argument("--dup_final_compound", type=int, default=2, help="total copies of each compound final answer row")
 p.add_argument("--work", required=True)
 p.add_argument("--shards", type=int, default=0)
 p.add_argument("--dry_run", action="store_true")
@@ -48,8 +53,13 @@ labels = json.load(open(a.labels))
 assert labels["src"] == f"{V3}@{V3_REV}", labels["src"]
 cands = {c["key"]: c for c in json.load(open(a.candidates))["candidates"]}
 pool = json.load(open(a.pool))
-qa = labels["qa"]
-short = labels["screenqa_short"]
+qa_raw = labels["qa"]
+# strict re-check of the teacher's two answers (generation-time agree() was too permissive; see v4_answer_check.py)
+qa = {k: v for k, v in qa_raw.items() if same_answer(v["answer"], v.get("verify_answer"))}
+sqa_long = {r["key"]: r["answer"] for r in json.load(open(a.screenqa_rows))["rows"]}
+short = {k: v for k, v in labels["screenqa_short"].items() if safe_short(sqa_long[k], v)}
+REJECT = {"qa_strict_reject": len(qa_raw) - len(qa), "sqa_short_reject": len(labels["screenqa_short"]) - len(short)}
+print("strict re-check:", REJECT, flush=True)
 dev_keys = {k for k, c in cands.items() if c["split"] == "dev"}
 train_qa = {k for k in qa if cands[k]["split"] == "train"}
 dev_qa = {k for k in qa if cands[k]["split"] == "dev"}
@@ -82,25 +92,36 @@ def set_goal(msgs, goal):
     return msgs
 
 
-def v4(msgs, eid, gt):
-    req = af.apps_in_text(msgs[1]["content"])
-    if gt.get("action_type") == "open_app":
-        req.append(gt["app_name"])
-    return af.to_v4_messages(msgs, af.v4_app_list(str(eid), req, pool))
+def collect_apps(rows, ep_apps):
+    """Per-episode installed-app requirement: every open_app name the episode uses (gold actions + text histories).
+    One frozen list per episode (same for every step and for its #qa copy), so the list cannot hint at the next action."""
+    for r in rows:
+        k = (r["source"], r["episode_id"])
+        g = json.loads(r["gt_action"])
+        names = af.apps_in_text(r["messages"][1]["content"]) + ([g["app_name"]] if g.get("action_type") == "open_app" else [])
+        ep_apps.setdefault(k, [])
+        for n in names:
+            if n not in ep_apps[k]:
+                ep_apps[k].append(n)
+
+
+def v4(msgs, key, ep_apps):
+    return af.to_v4_messages(msgs, af.v4_app_list(f"{key[0]}/{key[1]}", ep_apps[key], pool))
 
 
 def final_answer(key):
-    """The two independent teacher answers agreed (equal or one contains the other); keep the shorter one, which drops
-    trailing unit words such as "382 Followers" -> "382" when the format asks for just the number."""
-    j = qa[key]
-    a1, a2 = j["answer"].strip(), (j.get("verify_answer") or "").strip()
-    return a2 if a2 and len(a2) < len(a1) and a2.lower() in a1.lower() else a1
+    """Keep the shorter of the two strictly-agreeing teacher answers only when it just drops unit words."""
+    return preferred(qa[key]["answer"], qa[key].get("verify_answer"))
 
 
 def answer_json(text):
     return af.action_to_str({"action_type": "answer", "text": text})
 
 
+EP = {}  # (source, episode_id) -> required app names, from ALL train shards (episodes can span shards)
+for f in use:
+    collect_apps(pq.ParquetFile(os.path.join(local, f)).read(columns=["source", "episode_id", "messages", "gt_action"]).to_pylist(), EP)
+print(f"app requirements for {len(EP)} episodes ({time.time() - t0:.0f}s)", flush=True)
 out_dir = os.path.join(a.work, "out")
 shutil.rmtree(out_dir, ignore_errors=True)
 os.makedirs(os.path.join(out_dir, "data"))
@@ -117,6 +138,7 @@ for f in use:
     for i in range(n):
         row = {k: cols[k][i] for k in cols}
         key = f"{row['source']}/{row['episode_id']}"
+        ek = (row["source"], row["episode_id"])
         gt = json.loads(row["gt_action"])
         msgs = row["messages"]
         assert msgs[0]["content"] == af.SYSTEM_PROMPT, (f, i)
@@ -126,9 +148,9 @@ for f in use:
                 assert gt["action_type"] == "status" and gt.get("goal_status") == "complete", key
                 assert row["img_sha"] == cands[key]["img_sha"], key
                 orig_goal = msgs[1]["content"].split("\n", 1)[0].removeprefix("Goal: ")
-                comp = dict(row, messages=v4([dict(m) for m in msgs], row["episode_id"], gt), split="dev_complete")
+                comp = dict(row, messages=v4([dict(m) for m in msgs], ek, EP), split="dev_complete")
                 dev_complete.append(comp)
-                qm = v4(set_goal([dict(m) for m in msgs], new_goal(key, orig_goal)), row["episode_id"], gt)
+                qm = v4(set_goal([dict(m) for m in msgs], new_goal(key, orig_goal)), ek, EP)
                 qm[2] = {"role": "assistant", "content": answer_json(final_answer(key)),
                          "reasoning_content": qa[key]["evidence"].strip()}
                 dev_answer.append(dict(row, messages=qm, split="dev_answer", episode_id=row["episode_id"] + "#qa",
@@ -143,12 +165,12 @@ for f in use:
                 msgs[2]["content"] = answer_json(short[sk])
                 row["gt_action"] = json.dumps(gt)
                 st["sqa_short"] += 1
-        row["messages"] = v4([dict(m) for m in msgs], row["episode_id"], gt)
+        row["messages"] = v4([dict(m) for m in msgs], ek, EP)
         for k in cols:
             out[k].append(row[k])
         if key in train_qa:  # navigate-then-answer copy of this row
             orig_goal = msgs[1]["content"].split("\n", 1)[0].removeprefix("Goal: ")
-            qm = v4(set_goal([dict(m) for m in msgs], new_goal(key, orig_goal)), row["episode_id"], gt)
+            qm = v4(set_goal([dict(m) for m in msgs], new_goal(key, orig_goal)), ek, EP)
             cp = dict(row, episode_id=row["episode_id"] + "#qa")
             if row["is_terminal"]:
                 assert gt["action_type"] == "status" and gt.get("goal_status") == "complete", key
@@ -159,8 +181,13 @@ for f in use:
                 st["qa_final"] += 1
                 seen_final.add(key)
             cp["messages"] = qm
-            for k in cols:
-                extra[k].append(cp[k])
+            n_copies = 1
+            if row["is_terminal"]:  # weight the final answer rows (pure questions more), see --dup_final_*
+                n_copies = a.dup_final_question if cands[key]["kind"] == "question" else a.dup_final_compound
+                st["qa_final_dup_rows"] = st.get("qa_final_dup_rows", 0) + n_copies - 1
+            for _ in range(n_copies):
+                for k in cols:
+                    extra[k].append(cp[k])
             st["qa_rows"] += 1
             used_train_qa.add(key)
     merged = {k: out[k] + extra[k] for k in cols}
@@ -178,15 +205,18 @@ schema = pq.ParquetFile(os.path.join(local, use[0])).schema_arrow
 for f in dev_files:
     t = pq.ParquetFile(os.path.join(local, f)).read()
     rows = t.to_pylist()
+    dev_ep = {}
+    collect_apps(rows, dev_ep)
     for r in rows:
-        r["messages"] = v4([dict(m) for m in r["messages"]], r["episode_id"], json.loads(r["gt_action"]))
+        r["messages"] = v4([dict(m) for m in r["messages"]], (r["source"], r["episode_id"]), dev_ep)
     t2 = pa.Table.from_pylist(rows, schema=t.schema).replace_schema_metadata(t.schema.metadata)
     pq.write_table(t2, os.path.join(out_dir, f))
 for name, rows in (("dev_answer", dev_answer), ("dev_complete", dev_complete)):
     if rows:
         t2 = pa.Table.from_pylist(rows, schema=schema).replace_schema_metadata(schema.metadata)
         pq.write_table(t2, os.path.join(out_dir, f"data/{name}-00000-of-00001.parquet"))
-st.update(dev_answer=len(dev_answer), dev_complete=len(dev_complete), train_qa_episodes=len(used_train_qa))
+st.update(dev_answer=len(dev_answer), dev_complete=len(dev_complete), train_qa_episodes=len(used_train_qa), **REJECT,
+          train_qa_question=sum(cands[k]["kind"] == "question" for k in used_train_qa))
 print(json.dumps(st), flush=True)
 
 # verification: load back exactly as training/eval do
@@ -205,7 +235,7 @@ for m, g, e in zip(ds["messages"], ds["gt_action"], ds["episode_id"]):
         n_ans_final += g["action_type"] == "answer"
     n_complete += g["action_type"] == "status"
     assert not (m[2].get("reasoning_content") or "").strip() == "" or g["action_type"] in ("status", "answer")
-assert n_ans_final == st["qa_final"], (n_ans_final, st["qa_final"])
+assert n_ans_final == st["qa_final"] + st.get("qa_final_dup_rows", 0), (n_ans_final, st["qa_final"])
 assert not ({r["episode_id"] for r in dev_answer} & set(ds["episode_id"]))
 assert not ({r["episode_id"] for r in dev_complete} & set(ds["episode_id"]))
 print(f"local load OK: {len(ds)} rows; qa final answers {n_ans_final}; complete rows {n_complete} ({time.time() - t0:.0f}s)",

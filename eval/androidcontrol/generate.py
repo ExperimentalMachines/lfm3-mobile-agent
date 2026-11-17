@@ -77,15 +77,28 @@ if args.prompt_v4_pool:
     manifest["prompt"] = "v4:" + hashlib.sha256(json.dumps(_POOL).encode()).hexdigest()[:12]
 
 
+_EP_APPS = None
+
+
+def _episode_apps():
+    """One frozen app requirement per episode (all open_app names in its histories and gold actions), as in v4 training."""
+    ep = {}
+    for e, m, g in zip(ds["episode_id"], ds["messages"], ds["gt_action"]):
+        g = json.loads(g) if isinstance(g, str) else (g or {})
+        names = af.apps_in_text(m[1]["content"]) + ([g["app_name"]] if g.get("action_type") == "open_app" else [])
+        lst = ep.setdefault(str(e), [])
+        lst.extend(n for n in names if n not in lst)
+    return ep
+
+
 def v4_msgs(r):
-    """v4 prompt for a stored v1 row: required apps = open_app names in the history + the gold open_app (if any)."""
+    """v4 prompt for a stored v1 row (AndroidControl test): SYSTEM_PROMPT_V4 + the episode's installed-app list."""
+    global _EP_APPS
     if r["messages"][1]["content"].startswith("Goal: ") and "\nInstalled apps: " in r["messages"][1]["content"]:
         return r["messages"]  # already a v4 row (v4 dev splits)
-    req = af.apps_in_text(r["messages"][1]["content"])
-    g = json.loads(r["gt_action"]) if isinstance(r.get("gt_action"), str) else (r.get("gt_action") or {})
-    if g.get("action_type") == "open_app":
-        req.append(g["app_name"])
-    return af.to_v4_messages(r["messages"], af.v4_app_list(str(r["episode_id"]), req, _POOL))
+    if _EP_APPS is None:
+        _EP_APPS = _episode_apps()
+    return af.to_v4_messages(r["messages"], af.v4_app_list(f"androidcontrol/{r['episode_id']}", _EP_APPS[str(r["episode_id"])], _POOL))
 import glob as _glob
 
 
