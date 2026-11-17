@@ -76,4 +76,12 @@ exposure to AndroidWorld is undisclosed by its authors.
   name and checkpoint repo. (10) v4-RL promotion rule, fixed now: v4-RL replaces v4 as "LFM3 final" only if, versus v4,
   strict dev_answer match is >= +0.05 absolute, dev_complete false-answer rate <= 0.03, AndroidControl test high-level
   step SR >= -0.02, and on AndroidWorld seed 30 it passes the gate with total full successes >= v4's. Otherwise v4 stays.
+* 2026-11-18 04:45: Codex's re-audit of the rebuilt data (results/codex/codex_v4b_reaudit.md) again recommended STOP. Decision:
+  continue the v4 (v4b) SFT run and disclose the measured residuals instead of a second restart: answer errors 4/40 in a
+  balanced visual sample (Wilson 95% CI 4-23%; teacher errors that both teacher calls share, not removable without a
+  stronger adjudicator), goal-named apps missing from the inventory in 179/2,386 QA endpoints, 53 QA episodes involving
+  Google apps (Gmail/Drive/Maps/YouTube) that are installed on the AndroidWorld image but used by no AndroidWorld task.
+  The formal rule (no AndroidWorld tasks, variants, trajectories or checkers) holds. Before RL starts, its reward is
+  changed to exact normalised answer equality (data/v4_answer_check.exact_answer) because the re-audit showed the
+  typed-agreement check rewards padded answers ("12M is incorrect"); strict dev metrics use the strict parser.
 

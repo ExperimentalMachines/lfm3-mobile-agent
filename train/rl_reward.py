@@ -2,8 +2,8 @@
 
 Only the final action (content after </think>) is scored, with the project's strict parser; malformed output, extra
 objects, unfinished reasoning or a wrong action type score 0. No bonus for format, length, or picking `answer`.
-  answer        -> 1 iff action is `answer` and the text matches the reference (data/v4_answer_check.same_answer:
-                   numbers/signs/decimals/times exact, no partial entities, negation-aware)
+  answer        -> 1 iff action is `answer` and the text equals the reference after normalisation
+                   (data/v4_answer_check.exact_answer: no added/dropped words)
   status        -> 1 iff action is `status` with the same goal_status
   open_app      -> 1 iff same app name (case/space-insensitive)
   input_text    -> 1 iff same text after whitespace normalisation (case-sensitive)
@@ -21,7 +21,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data"))
 import agent_format as af  # noqa: E402
-from v4_answer_check import same_answer  # noqa: E402
+from v4_answer_check import exact_answer  # noqa: E402
 
 SIGMA = 0.05
 
@@ -36,8 +36,8 @@ def action_reward(output_text, gt):
     if a is None or a["action_type"] != gt["action_type"]:
         return 0.0
     t = gt["action_type"]
-    if t == "answer":
-        return float(same_answer(a["text"], gt["text"]))
+    if t == "answer":  # exact after normalisation: no padding words (Codex re-audit: "12M is incorrect" was rewarded)
+        return float(exact_answer(a["text"], gt["text"]))
     if t == "status":
         return float(a.get("goal_status") == gt.get("goal_status", "complete"))
     if t == "open_app":
@@ -97,6 +97,8 @@ if __name__ == "__main__":
     for o, g, want in cases:
         got = action_reward(o, g)
         assert abs(got - want) < 1e-6, (o, g, got, want)
+    assert action_reward(out({"action_type": "answer", "text": "12M is incorrect"}), A("12M")) == 0.0
+    assert action_reward(out({"action_type": "answer", "text": "INR8,109.08"}), A("€8,109.08")) == 0.0
     msg = [{"role": "assistant", "content": '{"action_type":"answer","text":"382"}', "reasoning_content": "It shows 382."}]
     assert reward_fn([msg], [A("382")]) == [1.0]
     assert reward_fn(['<think>x</think>{"action_type":"answer","text":"382"}'], [A("382")]) == [1.0]

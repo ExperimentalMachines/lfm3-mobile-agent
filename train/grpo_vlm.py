@@ -119,4 +119,6 @@ inp = processor.apply_chat_template([conv], add_generation_prompt=True, tokenize
 o = m2.generate(**inp, max_new_tokens=a.max_completion, do_sample=False)
 txt = processor.batch_decode(o[:, inp["input_ids"].shape[1]:], skip_special_tokens=False)[0]
 print("reload check output:", txt[:200].replace("\n", " "), flush=True)
+import agent_format as af  # noqa: E402
+assert af.parse_action(txt.split("<|im_end|>")[0]) is not None or a.smoke, "reloaded merged model did not produce a parseable action"
 print("RL DONE", flush=True)

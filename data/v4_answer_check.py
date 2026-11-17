@@ -29,7 +29,7 @@ def words(s):
     return set(re.findall(r"[a-z]+(?:'[a-z]+)?", NUM.sub(" ", s)))
 
 
-CUR = re.compile(r"[$€£¥₹₩₽¢]|\b(?:usd|eur|gbp|inr|aed|rs|c\$|a\$)\b")
+CUR = re.compile(r"[$€£¥₹₩₽¢]|(?<![a-z])(?:usd|eur|gbp|inr|aed|rs|c\$|a\$)(?![a-z])")  # "inr8,109" counts as INR
 
 
 # tokens that change an answer's meaning when dropped (Codex data audit #4: "12M"->"12", "Oct 4"->"4", "9:30 PM"->"9:30")
@@ -43,6 +43,7 @@ ESSENTIAL = {"k", "m", "b", "bn", "mn", "thousand", "million", "billion", "trill
 
 
 def essential(s):
+    s = re.sub(r"(\d)\s*([ap])\.?(?:m\.?)?(?![a-z])", lambda m: m.group(1) + " " + m.group(2) + "m", s)  # 5:00p -> 5:00 pm
     t = set(re.findall(r"[a-z]+", re.sub(r"(\d)([a-z])", r"\1 \2", s)))  # "12m" -> "12 m"
     return (t & ESSENTIAL) | ({"%"} if "%" in s else set())
 
@@ -64,6 +65,13 @@ def same_answer(a, b):
         short, long_ = sorted((a, b), key=len)
         return words(short) <= words(long_)
     return a == b
+
+
+def exact_answer(pred, gold):
+    """RL reward / strict scoring: equal after normalisation only (case, whitespace, quotes, trailing period, thousands
+    separators, spacing around currency). No added or dropped words: '12M is incorrect' != '12M'."""
+    f = lambda x: re.sub(r"(?<=\d),(?=\d{3}\b)", "", re.sub(r"([$€£¥₹₩₽¢])\s+", r"\1", norm(x)))
+    return bool(norm(pred)) and f(pred) == f(gold)
 
 
 def preferred(answer, verify):
@@ -102,4 +110,7 @@ if __name__ == "__main__":
     for x, y in [("12M", "12"), ("22K", "22"), ("Oct 4", "4"), ("9:30 PM", "9:30"), ("45%", "45"), ("4 GB", "4")]:
         assert not same_answer(x, y), (x, y)
     assert same_answer("12M", "12m") and same_answer("Oct 4", "oct 4") and same_answer("382 Followers", "382")
+    assert not same_answer("INR8,109.08", "€8,109.08") and not same_answer("5:00p", "5:00") and same_answer("5:00 PM", "5:00pm")
+    assert exact_answer("12M", "12m") and not exact_answer("12M is incorrect", "12M") and exact_answer("8,109.08", "8109.08")
+    assert exact_answer("$ 10", "$10") and not exact_answer("$10", "€10") and not exact_answer("", "")
     print("answer-check tests pass")
