@@ -56,7 +56,9 @@ for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
     ptok += u
     parse_fail += sum(1 for x in pa if x is None)
     nsteps_total += len(pa)
-    acts = [x.get("action_type") for x in pa if isinstance(x, dict)]
+    # our schema uses action_type (terminal = "status"); GUI-Owl uses action (terminal = "terminate")
+    acts = [x.get("action_type") or {"terminate": "status"}.get(x.get("action"), x.get("action"))
+            for x in pa if isinstance(x, dict)]
     task = ep.get("task_template") or f.name.rsplit("_", 1)[0]
     rows.append({
         "task": task, "file": f.name, "success": float(succ), "exception": bool(exc),
@@ -64,7 +66,9 @@ for f in sorted(Path(a.run_dir).glob("*.pkl.gz")):
         "difficulty": difficulty(task),
         "exception_info": (str(exc)[:300] if exc else None),
         "teardown_exception": bool(isinstance(ep.get("aux_data"), dict) and ep["aux_data"].get("teardown_exception")),
-        "ended_with_status": bool(acts) and acts[-1] == "status",
+        # GUI-Owl's agent also ends the episode on `answer` (guiowl_agent.py); ours needs a status action
+        "ended_with_status": bool(acts) and (acts[-1] == "status" or (acts[-1] == "answer" and isinstance(pa[-1], dict)
+                                                                       and "action" in pa[-1])),
         "n_answer_actions": acts.count("answer"),
     })
 
