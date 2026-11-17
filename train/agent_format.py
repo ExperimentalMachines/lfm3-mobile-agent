@@ -34,6 +34,28 @@ Actions:
 {"action_type":"answer","text":"..."}  (reply to a question about the screen)
 {"action_type":"status","goal_status":"complete|infeasible"}  (finish the task)"""
 
+# v4 (2026-11-18): AndroidWorld analysis showed the agent never answers questions - it navigated to the right screen and
+# then declared `complete`, partly because v1-v3 described `answer` as a "reply to a question about the screen".
+# v4 states when to answer vs complete and lists the installed apps (fixes invented names such as "Marker" for Markor).
+# Models v1-v3 keep SYSTEM_PROMPT; v4 data and the v4 AndroidWorld agent use SYSTEM_PROMPT_V4 + an "Installed apps" line.
+SYSTEM_PROMPT_V4 = """You are a phone-use agent operating an Android phone to complete the user's goal.
+Each turn you see the goal, the installed apps, your previous steps, and the current screenshot. Reply with ONE next action as JSON.
+Coordinates are integers normalized to 0-1000 (x from left, y from top) of the screenshot.
+Actions:
+{"action_type":"click","point_2d":[x,y]}
+{"action_type":"long_press","point_2d":[x,y]}
+{"action_type":"input_text","text":"..."}  (types into the focused field)
+{"action_type":"scroll","direction":"up|down|left|right"}  (down = reveal content below)
+{"action_type":"open_app","app_name":"..."}  (app_name must be one of the installed apps)
+{"action_type":"navigate_back"}
+{"action_type":"navigate_home"}
+{"action_type":"keyboard_enter"}
+{"action_type":"wait"}
+{"action_type":"answer","text":"..."}  (if the goal asks a question: the final reply, as short as possible and in the requested format; ends the task)
+{"action_type":"status","goal_status":"complete|infeasible"}  (finish a goal that asks for no information; never use it instead of answering a question)"""
+
+PROMPTS = {"v1": SYSTEM_PROMPT, "v4": SYSTEM_PROMPT_V4}
+
 VALID_TYPES = {
     "click", "long_press", "input_text", "scroll", "open_app", "navigate_back",
     "navigate_home", "keyboard_enter", "wait", "answer", "status",
@@ -70,25 +92,34 @@ def history_text(history: list[tuple[str, str]]) -> str:
     return "\n".join(lines)
 
 
-def user_text(goal: str, history: list[tuple[str, str]], step_instruction: str | None = None) -> str:
-    s = f"Goal: {goal}\nPrevious steps:\n{history_text(history)}"
+def apps_line(apps: list[str]) -> str:
+    return "Installed apps: " + ", ".join(apps)
+
+
+def user_text(goal: str, history: list[tuple[str, str]], step_instruction: str | None = None,
+              apps: list[str] | None = None) -> str:
+    """apps=None -> v1-v3 format (no app line); apps=[...] -> v4 format (app line right after the goal)."""
+    s = f"Goal: {goal}\n" + (apps_line(apps) + "\n" if apps is not None else "") + f"Previous steps:\n{history_text(history)}"
     if step_instruction:
         s += f"\nCurrent step hint: {step_instruction}"
     return s + "\nWhat is the next action?"
 
 
-def build_messages(goal, history, image=None, step_instruction=None, for_trl=False):
+def build_messages(goal, history, image=None, step_instruction=None, for_trl=False, prompt_version="v1", apps=None):
     """Messages for apply_chat_template. With for_trl=True the image is NOT inlined
     (TRL prepends the dataset's `images` column to the first user message)."""
-    text = user_text(goal, history, step_instruction)
+    if (prompt_version == "v4") != (apps is not None):
+        raise ValueError("prompt v4 requires an installed-app list and v1 must not have one")
+    sp = PROMPTS[prompt_version]
+    text = user_text(goal, history, step_instruction, apps=apps)
     if for_trl:
         return [
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": sp},
             {"role": "user", "content": text},
         ]
     content = ([{"type": "image", "image": image}] if image is not None else []) + [{"type": "text", "text": text}]
     return [
-        {"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]},
+        {"role": "system", "content": [{"type": "text", "text": sp}]},
         {"role": "user", "content": content},
     ]
 

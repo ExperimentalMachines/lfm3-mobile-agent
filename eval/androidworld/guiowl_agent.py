@@ -26,6 +26,7 @@ import agent_format as af  # noqa: E402  (smart_resize only)
 
 from android_world.agents import base_agent  # noqa: E402
 from android_world.env import adb_utils, interface, json_action  # noqa: E402
+import app_resolver  # noqa: E402
 
 SYSTEM_PROMPT = (Path(__file__).parent / "guiowl_system_prompt.txt").read_text()
 FIRST_USER = ("Please generate the next move according to the UI screenshot, instruction and previous actions.\n\n"
@@ -41,17 +42,23 @@ def _b64(img: Image.Image) -> str:
 class GUIOwlAgent(base_agent.EnvironmentInteractingAgent):
     def __init__(self, env: interface.AsyncEnv, server_url: str, name: str = "guiowl15_2b",
                  n_images: int = 5, max_pixels: int = 0, temperature: float = 0.0, max_tokens: int = 256,
-                 wait_after_action: float = 1.0):
+                 wait_after_action: float = 1.0, installed_apps: bool = False):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.n_images, self.max_pixels = n_images, max_pixels
         self.temperature, self.max_tokens, self.wait = temperature, max_tokens, wait_after_action
         self.turns: list[tuple[Image.Image, str]] = []  # (screenshot sent, assistant reply)
+        # installed_apps (fairness mirror of the LFM3 v4 input): the device's app list is appended to the instruction
+        self.installed_apps = installed_apps
+        self.apps = None
 
     def reset(self, go_home_on_reset: bool = False):
         super().reset(go_home_on_reset)
         self.env.hide_automation_ui()
         self.turns = []
+        if self.installed_apps:
+            self.apps = app_resolver.device_app_names(self.env.controller)
+            assert self.apps, "installed-app list is empty"
 
     def _prep(self, pixels) -> Image.Image:
         img = Image.fromarray(pixels).convert("RGB")
@@ -67,7 +74,8 @@ class GUIOwlAgent(base_agent.EnvironmentInteractingAgent):
         msgs = [{"role": "system", "content": [{"type": "text", "text": SYSTEM_PROMPT}]}]
         imgs = [t[0] for t in keep] + [cur]
         replies = [t[1] for t in keep]
-        msgs.append({"role": "user", "content": [{"type": "text", "text": FIRST_USER.format(goal=goal, history=hist)},
+        instr = goal + (f"\nInstalled apps: {', '.join(self.apps)}" if self.installed_apps else "")
+        msgs.append({"role": "user", "content": [{"type": "text", "text": FIRST_USER.format(goal=instr, history=hist)},
                                                  {"type": "image_url", "image_url": {"url": _b64(imgs[0])}}]})
         for i, rep in enumerate(replies):
             msgs.append({"role": "assistant", "content": [{"type": "text", "text": rep}]})

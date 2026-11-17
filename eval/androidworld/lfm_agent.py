@@ -36,7 +36,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  name: str = "lfm_screen_agent", enable_thinking: bool = True,
                  max_pixels: int = af.MAX_PIXELS, max_tokens: int = 512,
                  temperature: float = 0.0, wait_after_action: float = 1.0,
-                 max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False):
+                 max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False,
+                 prompt_version: str = "v1"):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -58,6 +59,10 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         # end-of-think token banned, then re-ask for the action with that intent prefilled as the reasoning.
         self.force_think = force_think
         self._think_end_id = None
+        # prompt_version "v4": SYSTEM_PROMPT_V4 + the device's installed-app list (read once per episode in reset()).
+        assert prompt_version in af.PROMPTS, prompt_version
+        self.prompt_version = prompt_version
+        self.apps = None
         if force_think:
             ids = requests.post(f"{self.server_url}/tokenize", json={"content": "</think>"}, timeout=30).json()["tokens"]
             assert len(ids) == 1, f"</think> is not a single token: {ids}"
@@ -68,13 +73,16 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self.env.hide_automation_ui()
         self.history = []
         self._prev_small, self._prev_type = None, None
+        if self.prompt_version == "v4":
+            self.apps = app_resolver.device_app_names(self.env.controller)
+            assert self.apps, "installed-app list is empty"
 
     def _query(self, goal: str, img: Image.Image, extra_messages=None, **overrides) -> dict:
-        text = af.user_text(goal, self.history)
+        text = af.user_text(goal, self.history, apps=self.apps if self.prompt_version == "v4" else None)
         payload = {
             "model": self.model,
             "messages": [
-                {"role": "system", "content": af.SYSTEM_PROMPT},
+                {"role": "system", "content": af.PROMPTS[self.prompt_version]},
                 {"role": "user", "content": [
                     {"type": "image_url", "image_url": {"url": "data:image/png;base64," + _png_b64(img)}},
                     {"type": "text", "text": text},

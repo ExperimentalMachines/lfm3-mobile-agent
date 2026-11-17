@@ -57,3 +57,38 @@ def resolve(name, labels, threshold=0.5):
     """-> (label or None, score). >= half of the query's identity tokens must match a label token; ties -> shortest label."""
     best = max(((score(name, l), -len(l), l) for l in labels), default=(0.0, 0, None))
     return (best[2], best[0]) if best[0] >= threshold else (None, best[0])
+
+
+# --- v4 installed-app list (prompt input; same list for the LFM3 v4 and GUI-Owl matched arms) ---------------------------
+# Display names for android_world's launchable apps: what a phone launcher would show. Each must resolve natively through
+# android_world's own get_adb_activity to the same activity as its pattern (checked by tests in check_app_names()).
+_INFRA = {"android world", "miniwob", "clipper", "caa"}  # benchmark infrastructure, not user apps
+_DISPLAY = {
+    "google chrome": "Chrome", "settings": "Settings", "youtube": "YouTube", "google play": "Google Play",
+    "gmail": "Gmail", "google maps": "Maps", "google photos": "Photos", "google calendar": "Google Calendar",
+    "camera": "Camera", "audio recorder": "Audio Recorder", "google drive": "Drive", "clock": "Clock",
+    "google search": "Google", "contacts": "Contacts", "files": "Files", "markor": "Markor", "messages": "Messages",
+    "simple sms messenger": "Simple SMS Messenger", "dialer": "Phone", "simple calendar pro": "Simple Calendar Pro",
+    "simple gallery pro": "Simple Gallery Pro", "simple draw pro": "Simple Draw Pro", "pro expense": "Pro Expense",
+    "broccoli": "Broccoli", "osmand": "OsmAnd", "tasks": "Tasks", "open tracks sports tracker": "OpenTracks",
+    "joplin": "Joplin", "vlc": "VLC", "retro music": "Retro Music",
+}
+
+
+def display_names(labels):
+    """android_world labels (first pattern alternatives) -> launcher-style names, infrastructure apps removed, sorted."""
+    return sorted({_DISPLAY.get(l, l.title()) for l in labels if l not in _INFRA}, key=str.lower)
+
+
+def device_app_names(env):
+    return display_names(installed_labels(env))
+
+
+def check_app_names():
+    """Every display name must launch the same activity as its android_world pattern."""
+    for pat, act in adb_utils._PATTERN_TO_ACTIVITY.items():
+        first = pat.split("|")[0]
+        if first in _DISPLAY:
+            got = adb_utils.get_adb_activity(_DISPLAY[first])
+            assert got == act, (first, _DISPLAY[first], got, act)
+    return True

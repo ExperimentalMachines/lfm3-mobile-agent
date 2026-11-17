@@ -46,6 +46,8 @@ flags.DEFINE_string("agent", "lfm", "lfm | guiowl")
 flags.DEFINE_boolean("runtime_feedback", False, "LFM agent: lexical open_app resolution + failure/no-change notes in history (ablation)")
 flags.DEFINE_boolean("force_think", False, "LFM agent: if the intent is empty, force a one-line intent (</think> banned) and re-ask for the action (ablation)")
 flags.DEFINE_integer("guiowl_images", 5, "GUI-Owl screenshots kept in context")
+flags.DEFINE_string("prompt_version", "v1", "LFM agent: v1 (models v1-v3) | v4 (answer/complete rules + installed-app list)")
+flags.DEFINE_boolean("installed_apps", False, "GUI-Owl agent: append the device's installed-app list (mirrors LFM3 v4)")
 flags.DEFINE_integer("guiowl_max_pixels", 0, "0 = full resolution (native)")
 
 
@@ -67,11 +69,12 @@ def main(argv):
     suite.suite_family = F.suite_family
     if F.agent == "guiowl":
         agent = GUIOwlAgent(env, server_url=F.server_url, name=F.agent_label, n_images=F.guiowl_images,
-                            max_pixels=F.guiowl_max_pixels)
+                            max_pixels=F.guiowl_max_pixels, installed_apps=F.installed_apps)
     else:
         agent = LFMScreenAgent(env, server_url=F.server_url, name=F.agent_label,
                                enable_thinking=F.enable_thinking, max_pixels=F.max_pixels,
-                               runtime_feedback=F.runtime_feedback, force_think=F.force_think)
+                               runtime_feedback=F.runtime_feedback, force_think=F.force_think,
+                               prompt_version=F.prompt_version)
     agent.transition_pause = None
     ckpt = F.checkpoint_dir or checkpointer_lib.create_run_directory(F.output_path)
     print(f"Writing to {ckpt}", flush=True)
