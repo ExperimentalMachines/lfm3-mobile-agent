@@ -1,0 +1,43 @@
+{
+  "model_id": "LiquidAI/LFM3-VL-2B",
+  "train": [
+    "experimentalmachines/AndroidAgent-SFT-v2@train#42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a"
+  ],
+  "val": "experimentalmachines/AndroidControl-screen-agent-sft@val",
+  "out": "/content/runs/lfm3vl2b-v2mix-lora",
+  "max_pixels": 774400,
+  "min_pixels": 65536,
+  "epochs": 1.0,
+  "max_steps": 1250,
+  "lr": 0.0002,
+  "bs": 8,
+  "grad_accum": 4,
+  "lora_r": 64,
+  "lora_alpha": 128,
+  "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+  "modules_to_save": [],
+  "save_steps": 50,
+  "eval_steps": 250,
+  "hub_repo": "experimentalmachines/LFM3-VL-2B-AndroidAgent-v2-LoRA-ckpt",
+  "workers": 16,
+  "seed": 42,
+  "no_gc": false,
+  "chat_template_path": null,
+  "max_agent_rows": 0,
+  "replay": [],
+  "inline_think": false,
+  "trust_remote_code": true,
+  "provenance": {
+    "model_sha": "23387beda43c60310348e83e25f78f33c3140d3a",
+    "dataset_sha:experimentalmachines/AndroidAgent-SFT-v2@train#42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a": "42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+    "dataset_sha:experimentalmachines/AndroidControl-screen-agent-sft@val": "1c49e7d117bd109eebd976b04deefa708b0e2007",
+    "versions": {
+      "torch": "2.14.1+cu130",
+      "transformers": "5.20.2",
+      "trl": "1.16.0",
+      "peft": "0.21.2",
+      "datasets": "5.1.0",
+      "accelerate": "1.15.0"
+    }
+  }
+}
