@@ -34,7 +34,10 @@ def dev(model, split):
 
 
 def aw(name):
+    if name.startswith("not run"):
+        return name
     s = j(f"androidworld/{name}.summary.json")
+    s = (s or {}).get("summary", s)  # summarize_aw.py nests the numbers under "summary"
     if not s or s.get("n_episodes", 0) < 116:
         return "running"
     k = round(s["success_rate"] * 116)
@@ -80,7 +83,7 @@ Screenshot-only Android phone agent: one screenshot + goal + short text history 
 | AndroidWorld (116 tasks, this GGUF, 1 screenshot/step) | {m['v1_aw']} | {aw(m['aw_name'])} |
 | General knowledge (forced-choice) | {ret(m['v1_ret'])} | {ret(m['v2_ret'])} |
 
-v2's lower low-level / terminal numbers are expected: v2 drops AndroidControl's step-hint rows and keeps terminal rows
+{m.get('aw_note', '')}v2's lower low-level / terminal numbers are expected: v2 drops AndroidControl's step-hint rows and keeps terminal rows
 only from AndroidControl (unreliable source completion markers were quarantined). Offline step accuracy does not
 transfer proportionally to closed-loop success; AndroidWorld is the deciding test.
 
@@ -94,6 +97,9 @@ MODELS = [
     dict(title="LFM3-VL-2B AndroidAgent v2", base="LiquidAI/LFM3-VL-2B",
          merged="alpharomercoma/LFM3-VL-2B-AndroidAgent-v2", gguf="alpharomercoma/LFM3-VL-2B-AndroidAgent-v2-GGUF",
          v1_ac="lfm3vl2b-ac-lora_ft", v2_ac="lfm3vl2b-v2mix-lora_ft", dev_prefix="lfm3", aw_name="lfm3vl2b_v2",
+         aw_note="**AndroidWorld regressed vs v1** (paired over 108 tasks: v1-only 11, v2-only 0, McNemar p=0.001). "
+                 "v2 leaves its intent (`<think>`) empty on 30.4% of AndroidWorld steps (v1: 0%), traced to 8,739 v2 "
+                 "training rows with blank intents (AMEX/GUI-Odyssey). v3 fills them; use v1 or v3 for closed-loop use.\n\n",
          v1_aw="15/116 (12.9%), 2.7 s/step", v1_ret="lfm3vl2b", v2_ret="lfm3vl2b_v2", pixels="774,400-pixel image budget",
          gguf_local="models/lfm3vl2b_v2-GGUF/LFM3-VL-2B-AndroidAgent-v2-Q4_K_M.gguf",
          mmproj_local="models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
@@ -102,7 +108,8 @@ MODELS = [
                  "projector file is the base model's."),
     dict(title="Qwen3.5-2B AndroidAgent v2", base="Qwen/Qwen3.5-2B",
          merged="alpharomercoma/Qwen3.5-2B-AndroidAgent-v2", gguf="alpharomercoma/Qwen3.5-2B-AndroidAgent-v2-GGUF",
-         v1_ac="qwen35-2b-ac-lora_ft", v2_ac="qwen35-2b-v2mix-lora_ft", dev_prefix="qwen35_2b", aw_name="qwen35_2b_v2",
+         v1_ac="qwen35-2b-ac-lora_ft", v2_ac="qwen35-2b-v2mix-lora_ft", dev_prefix="qwen35_2b",
+         aw_name="not run (skipped: the LFM3 v2 regression made a v3 retrain the priority)",
          v1_aw="16/116 (13.8%), 4.4 s/step", v1_ret="qwen35_2b", v2_ret="qwen35_2b_v2", pixels="774,400-pixel image budget",
          gguf_local="models/qwen35_2b_v2-GGUF/qwen35_2b_v2-Q4_K_M.gguf",
          mmproj_local="models/qwen35_2b_v2-GGUF/mmproj-qwen35_2b_v2-F16.gguf",

@@ -1,0 +1,136 @@
+task,file,success,exception,steps,runtime_s,difficulty,exception_info,teardown_exception,ended_with_status,n_answer_actions
+AudioRecorderRecordAudioWithFileName,AudioRecorderRecordAudioWithFileName_0.pkl.gz,0.0,False,14,98.2,easy,,False,True,0
+AudioRecorderRecordAudio,AudioRecorderRecordAudio_0.pkl.gz,0.0,False,7,46.3,easy,,False,True,0
+BrowserDraw,BrowserDraw_0.pkl.gz,0.0,False,20,96.0,easy,,False,False,0
+BrowserMaze,BrowserMaze_0.pkl.gz,0.0,False,20,92.5,easy,,False,False,0
+BrowserMultiply,BrowserMultiply_0.pkl.gz,0.0,False,22,143.4,hard,,False,False,0
+CameraTakePhoto,CameraTakePhoto_0.pkl.gz,0.0,False,10,58.3,easy,,False,False,0
+CameraTakeVideo,CameraTakeVideo_0.pkl.gz,0.0,False,10,70.0,medium,,False,False,0
+ClockStopWatchPausedVerify,ClockStopWatchPausedVerify_0.pkl.gz,0.0,False,10,49.5,easy,,False,False,0
+ClockStopWatchRunning,ClockStopWatchRunning_0.pkl.gz,0.0,False,10,45.0,easy,,False,False,0
+ClockTimerEntry,ClockTimerEntry_0.pkl.gz,0.0,False,10,53.1,easy,,False,False,0
+ContactsAddContact,ContactsAddContact_0.pkl.gz,0.0,False,12,71.9,easy,,False,False,0
+ContactsNewContactDraft,ContactsNewContactDraft_0.pkl.gz,0.0,False,12,74.7,easy,,False,False,0
+ExpenseAddMultipleFromGallery,ExpenseAddMultipleFromGallery_0.pkl.gz,0.0,False,18,209.9,hard,,False,True,0
+ExpenseAddMultipleFromMarkor,ExpenseAddMultipleFromMarkor_0.pkl.gz,0.0,False,60,459.4,hard,,False,False,0
+ExpenseAddMultiple,ExpenseAddMultiple_0.pkl.gz,0.0,False,9,76.4,medium,,False,True,0
+ExpenseAddSingle,ExpenseAddSingle_0.pkl.gz,0.0,False,11,98.4,easy,,False,True,0
+ExpenseDeleteDuplicates2,ExpenseDeleteDuplicates2_0.pkl.gz,0.0,False,18,145.4,medium,,False,False,0
+ExpenseDeleteDuplicates,ExpenseDeleteDuplicates_0.pkl.gz,0.0,False,12,92.1,medium,,False,False,0
+ExpenseDeleteMultiple2,ExpenseDeleteMultiple2_0.pkl.gz,0.0,False,8,89.0,hard,,False,True,0
+ExpenseDeleteMultiple,ExpenseDeleteMultiple_0.pkl.gz,0.0,False,5,55.3,easy,,False,True,0
+ExpenseDeleteSingle,ExpenseDeleteSingle_0.pkl.gz,0.0,False,4,40.1,easy,,False,True,0
+FilesDeleteFile,FilesDeleteFile_0.pkl.gz,0.0,False,22,276.4,medium,,False,False,0
+FilesMoveFile,FilesMoveFile_0.pkl.gz,0.0,False,20,188.9,medium,,False,False,0
+MarkorAddNoteHeader,MarkorAddNoteHeader_0.pkl.gz,0.0,False,12,144.3,medium,,False,False,0
+MarkorChangeNoteContent,MarkorChangeNoteContent_0.pkl.gz,0.0,False,12,101.8,medium,,False,False,0
+MarkorCreateFolder,MarkorCreateFolder_0.pkl.gz,0.0,False,10,85.8,easy,,False,False,0
+MarkorCreateNoteAndSms,MarkorCreateNoteAndSms_0.pkl.gz,0.0,True,nan,8.7,hard,"Traceback (most recent call last):
+  File ""/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py"", line 245, in _run_task
+    task.initialize_task(env)
+  File ""/Users/alpha/lfm3-android/android_world/android_world/task_evals/composite/markor_sms.py"", line 58, in initialize_task
+    se",False,False,0
+MarkorCreateNoteFromClipboard,MarkorCreateNoteFromClipboard_0.pkl.gz,0.0,False,14,158.3,medium,,False,False,0
+MarkorCreateNote,MarkorCreateNote_0.pkl.gz,0.0,False,16,140.0,medium,,False,False,0
+MarkorDeleteAllNotes,MarkorDeleteAllNotes_0.pkl.gz,0.0,False,14,100.2,easy,,False,False,0
+MarkorDeleteNewestNote,MarkorDeleteNewestNote_0.pkl.gz,0.0,True,nan,2.8,easy,"Traceback (most recent call last):
+  File ""/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py"", line 245, in _run_task
+    task.initialize_task(env)
+  File ""/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/markor.py"", line 337, in initialize_task
+    datetime",False,False,0
+MarkorDeleteNote,MarkorDeleteNote_0.pkl.gz,0.0,False,10,65.5,easy,,False,False,0
+MarkorEditNote,MarkorEditNote_0.pkl.gz,0.0,False,12,128.2,easy,,False,False,0
+MarkorMergeNotes,MarkorMergeNotes_0.pkl.gz,0.0,False,78,853.3,hard,,False,False,0
+MarkorMoveNote,MarkorMoveNote_0.pkl.gz,0.0,False,14,116.9,medium,,False,False,0
+MarkorTranscribeReceipt,MarkorTranscribeReceipt_0.pkl.gz,0.0,False,18,120.3,medium,,False,False,0
+MarkorTranscribeVideo,MarkorTranscribeVideo_0.pkl.gz,0.0,False,20,247.2,hard,,False,False,0
+NotesIsTodo,NotesIsTodo_0.pkl.gz,0.0,False,10,98.0,easy,,False,False,0
+NotesMeetingAttendeeCount,NotesMeetingAttendeeCount_0.pkl.gz,0.0,False,10,100.4,easy,,False,False,0
+NotesRecipeIngredientCount,NotesRecipeIngredientCount_0.pkl.gz,0.0,False,7,89.2,easy,,False,True,0
+NotesTodoItemCount,NotesTodoItemCount_0.pkl.gz,0.0,False,5,69.7,medium,,False,True,0
+OpenAppTaskEval,OpenAppTaskEval_0.pkl.gz,0.0,False,10,91.9,easy,,False,False,0
+OsmAndFavorite,OsmAndFavorite_0.pkl.gz,0.0,False,13,115.1,medium,,False,False,0
+OsmAndMarker,OsmAndMarker_0.pkl.gz,0.0,False,20,154.6,hard,,False,False,0
+OsmAndTrack,OsmAndTrack_0.pkl.gz,0.0,False,120,790.7,hard,,False,False,0
+RecipeAddMultipleRecipesFromImage,RecipeAddMultipleRecipesFromImage_0.pkl.gz,0.0,False,60,412.5,hard,,False,False,0
+RecipeAddMultipleRecipesFromMarkor2,RecipeAddMultipleRecipesFromMarkor2_0.pkl.gz,0.0,False,60,3286.4,hard,,False,False,0
+RecipeAddMultipleRecipesFromMarkor,RecipeAddMultipleRecipesFromMarkor_0.pkl.gz,0.0,False,6,62.7,hard,,False,True,0
+RecipeAddMultipleRecipes,RecipeAddMultipleRecipes_0.pkl.gz,0.0,False,9,105.7,medium,,False,True,0
+RecipeAddSingleRecipe,RecipeAddSingleRecipe_0.pkl.gz,0.0,False,11,76.6,easy,,False,True,0
+RecipeDeleteDuplicateRecipes2,RecipeDeleteDuplicateRecipes2_0.pkl.gz,0.0,True,nan,4.2,medium,"Traceback (most recent call last):
+  File ""/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py"", line 245, in _run_task
+    task.initialize_task(env)
+  File ""/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sqlite_validators.py"", line 413, in initia",False,False,0
+RecipeDeleteDuplicateRecipes3,RecipeDeleteDuplicateRecipes3_0.pkl.gz,0.0,False,34,210.1,medium,,False,False,0
+RecipeDeleteDuplicateRecipes,RecipeDeleteDuplicateRecipes_0.pkl.gz,0.0,False,10,57.5,easy,,False,False,0
+RecipeDeleteMultipleRecipesWithConstraint,RecipeDeleteMultipleRecipesWithConstraint_0.pkl.gz,1.0,False,8,47.7,hard,,False,True,0
+RecipeDeleteMultipleRecipesWithNoise,RecipeDeleteMultipleRecipesWithNoise_0.pkl.gz,0.0,False,10,61.2,medium,,False,True,0
+RecipeDeleteMultipleRecipes,RecipeDeleteMultipleRecipes_0.pkl.gz,0.0,False,8,51.2,easy,,False,True,0
+RecipeDeleteSingleRecipe,RecipeDeleteSingleRecipe_0.pkl.gz,1.0,False,6,39.5,easy,,False,True,0
+RecipeDeleteSingleWithRecipeWithNoise,RecipeDeleteSingleWithRecipeWithNoise_0.pkl.gz,1.0,False,9,59.1,easy,,False,True,0
+RetroCreatePlaylist,RetroCreatePlaylist_0.pkl.gz,0.0,False,7,55.4,medium,,False,True,0
+RetroPlayingQueue,RetroPlayingQueue_0.pkl.gz,0.0,False,7,65.9,easy,,False,True,0
+RetroPlaylistDuration,RetroPlaylistDuration_0.pkl.gz,0.0,False,7,46.5,medium,,False,True,0
+RetroSavePlaylist,RetroSavePlaylist_0.pkl.gz,0.0,False,50,275.6,hard,,False,False,0
+SaveCopyOfReceiptTaskEval,SaveCopyOfReceiptTaskEval_0.pkl.gz,0.0,False,16,99.6,hard,,False,False,0
+SimpleCalendarAddOneEventInTwoWeeks,SimpleCalendarAddOneEventInTwoWeeks_0.pkl.gz,0.0,False,16,94.7,medium,,False,True,0
+SimpleCalendarAddOneEventRelativeDay,SimpleCalendarAddOneEventRelativeDay_0.pkl.gz,0.0,False,34,176.0,easy,,False,False,0
+SimpleCalendarAddOneEventTomorrow,SimpleCalendarAddOneEventTomorrow_0.pkl.gz,0.0,False,15,90.2,easy,,False,True,0
+SimpleCalendarAddOneEvent,SimpleCalendarAddOneEvent_0.pkl.gz,0.0,False,34,171.1,hard,,False,False,0
+SimpleCalendarAddRepeatingEvent,SimpleCalendarAddRepeatingEvent_0.pkl.gz,0.0,False,16,105.5,easy,,False,True,0
+SimpleCalendarAnyEventsOnDate,SimpleCalendarAnyEventsOnDate_0.pkl.gz,0.0,False,3,22.4,easy,,False,True,0
+SimpleCalendarDeleteEventsOnRelativeDay,SimpleCalendarDeleteEventsOnRelativeDay_0.pkl.gz,0.0,False,12,84.1,medium,,False,False,0
+SimpleCalendarDeleteEvents,SimpleCalendarDeleteEvents_0.pkl.gz,0.0,False,11,76.1,easy,,False,True,0
+SimpleCalendarDeleteOneEvent,SimpleCalendarDeleteOneEvent_0.pkl.gz,0.0,False,12,90.1,easy,,False,False,0
+SimpleCalendarEventOnDateAtTime,SimpleCalendarEventOnDateAtTime_0.pkl.gz,0.0,False,10,72.8,medium,,False,False,0
+SimpleCalendarEventsInNextWeek,SimpleCalendarEventsInNextWeek_0.pkl.gz,0.0,False,10,66.9,easy,,False,False,0
+SimpleCalendarEventsInTimeRange,SimpleCalendarEventsInTimeRange_0.pkl.gz,0.0,False,8,53.9,easy,,False,True,0
+SimpleCalendarEventsOnDate,SimpleCalendarEventsOnDate_0.pkl.gz,0.0,False,10,67.5,medium,,False,False,0
+SimpleCalendarFirstEventAfterStartTime,SimpleCalendarFirstEventAfterStartTime_0.pkl.gz,0.0,False,10,69.2,easy,,False,False,0
+SimpleCalendarLocationOfEvent,SimpleCalendarLocationOfEvent_0.pkl.gz,0.0,False,5,47.1,easy,,False,True,0
+SimpleCalendarNextEvent,SimpleCalendarNextEvent_0.pkl.gz,0.0,False,2,22.1,easy,,False,False,1
+SimpleCalendarNextMeetingWithPerson,SimpleCalendarNextMeetingWithPerson_0.pkl.gz,0.0,False,4,29.6,medium,,False,True,0
+SimpleDrawProCreateDrawing,SimpleDrawProCreateDrawing_0.pkl.gz,0.0,False,18,111.1,easy,,False,False,0
+SimpleSmsReplyMostRecent,SimpleSmsReplyMostRecent_0.pkl.gz,0.0,False,12,95.8,medium,,False,False,0
+SimpleSmsReply,SimpleSmsReply_0.pkl.gz,0.0,False,12,151.4,easy,,False,False,0
+SimpleSmsResend,SimpleSmsResend_0.pkl.gz,0.0,True,nan,3.0,medium,"Traceback (most recent call last):
+  File ""/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py"", line 245, in _run_task
+    task.initialize_task(env)
+  File ""/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/sms.py"", line 273, in initialize_task
+    super().ini",False,False,0
+SimpleSmsSendClipboardContent,SimpleSmsSendClipboardContent_0.pkl.gz,0.0,False,12,144.1,easy,,False,False,0
+SimpleSmsSendReceivedAddress,SimpleSmsSendReceivedAddress_0.pkl.gz,0.0,False,18,223.3,medium,,False,False,0
+SimpleSmsSend,SimpleSmsSend_0.pkl.gz,0.0,False,12,153.2,medium,,False,False,0
+SportsTrackerActivitiesCountForWeek,SportsTrackerActivitiesCountForWeek_0.pkl.gz,0.0,False,10,62.7,easy,,False,False,0
+SportsTrackerActivitiesOnDate,SportsTrackerActivitiesOnDate_0.pkl.gz,0.0,False,4,32.8,hard,,False,True,0
+SportsTrackerActivityDuration,SportsTrackerActivityDuration_0.pkl.gz,0.0,False,3,25.1,easy,,False,True,0
+SportsTrackerLongestDistanceActivity,SportsTrackerLongestDistanceActivity_0.pkl.gz,0.0,False,4,33.2,easy,,False,True,0
+SportsTrackerTotalDistanceForCategoryOverInterval,SportsTrackerTotalDistanceForCategoryOverInterval_0.pkl.gz,0.0,False,4,27.9,hard,,False,True,0
+SportsTrackerTotalDurationForCategoryThisWeek,SportsTrackerTotalDurationForCategoryThisWeek_0.pkl.gz,0.0,False,3,24.9,hard,,False,True,0
+SystemBluetoothTurnOffVerify,SystemBluetoothTurnOffVerify_0.pkl.gz,0.0,False,10,101.7,easy,,False,False,0
+SystemBluetoothTurnOff,SystemBluetoothTurnOff_0.pkl.gz,0.0,False,10,97.6,easy,,False,False,0
+SystemBluetoothTurnOnVerify,SystemBluetoothTurnOnVerify_0.pkl.gz,0.0,False,10,103.0,easy,,False,False,0
+SystemBluetoothTurnOn,SystemBluetoothTurnOn_0.pkl.gz,0.0,False,10,93.7,easy,,False,False,0
+SystemBrightnessMaxVerify,SystemBrightnessMaxVerify_0.pkl.gz,0.0,False,10,63.8,easy,,False,False,0
+SystemBrightnessMax,SystemBrightnessMax_0.pkl.gz,0.0,False,10,55.0,easy,,False,False,0
+SystemBrightnessMinVerify,SystemBrightnessMinVerify_0.pkl.gz,0.0,True,nan,63.3,easy,"Traceback (most recent call last):
+  File ""/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py"", line 248, in _run_task
+    task_successful = task.is_successful(env)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/alpha/lfm3-android/android_world/android_world/task_eval",False,False,0
+SystemBrightnessMin,SystemBrightnessMin_0.pkl.gz,0.0,False,10,58.4,easy,,False,False,0
+SystemCopyToClipboard,SystemCopyToClipboard_0.pkl.gz,0.0,False,10,111.5,easy,,False,False,0
+SystemWifiTurnOffVerify,SystemWifiTurnOffVerify_0.pkl.gz,0.0,False,10,95.2,easy,,False,False,0
+SystemWifiTurnOff,SystemWifiTurnOff_0.pkl.gz,0.0,False,10,97.9,easy,,False,False,0
+SystemWifiTurnOnVerify,SystemWifiTurnOnVerify_0.pkl.gz,0.0,False,10,95.1,easy,,False,False,0
+SystemWifiTurnOn,SystemWifiTurnOn_0.pkl.gz,0.0,False,10,85.0,easy,,False,False,0
+TasksCompletedTasksForDate,TasksCompletedTasksForDate_0.pkl.gz,0.0,False,6,38.8,medium,,False,True,0
+TasksDueNextWeek,TasksDueNextWeek_0.pkl.gz,0.0,False,2,14.0,medium,,False,True,0
+TasksDueOnDate,TasksDueOnDate_0.pkl.gz,0.0,False,2,18.3,easy,,False,True,0
+TasksHighPriorityTasksDueOnDate,TasksHighPriorityTasksDueOnDate_0.pkl.gz,0.0,False,10,61.1,medium,,False,False,0
+TasksHighPriorityTasks,TasksHighPriorityTasks_0.pkl.gz,0.0,False,10,65.2,medium,,False,True,0
+TasksIncompleteTasksOnDate,TasksIncompleteTasksOnDate_0.pkl.gz,0.0,False,2,14.3,easy,,False,True,0
+TurnOffWifiAndTurnOnBluetooth,TurnOffWifiAndTurnOnBluetooth_0.pkl.gz,0.0,False,20,179.0,medium,,False,False,0
+TurnOnWifiAndOpenApp,TurnOnWifiAndOpenApp_0.pkl.gz,0.0,False,20,99.2,easy,,False,False,0
+VlcCreatePlaylist,VlcCreatePlaylist_0.pkl.gz,0.0,False,28,293.0,medium,,False,False,0
+VlcCreateTwoPlaylists,VlcCreateTwoPlaylists_0.pkl.gz,0.0,False,48,495.9,medium,,False,False,0
