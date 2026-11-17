@@ -1,0 +1,181 @@
+{
+  "hub_unavailable": {
+    "stdout": "hub resume failed: simulated temporary outage\n",
+    "calls": [
+      [
+        "list_repo_files",
+        [
+          "dummy/ckpt"
+        ],
+        {}
+      ],
+      [
+        "TRAIN",
+        {
+          "resume_from_checkpoint": null
+        }
+      ]
+    ],
+    "resume": null
+  },
+  "download_fails": {
+    "stdout": "hub resume failed: simulated incomplete download\n",
+    "calls": [
+      [
+        "list_repo_files",
+        [
+          "dummy/ckpt"
+        ],
+        {}
+      ],
+      [
+        "snapshot_download",
+        [
+          "dummy/ckpt"
+        ],
+        {
+          "allow_patterns": [
+            "last-checkpoint/*"
+          ],
+          "local_dir": "/Users/alpha/lfm3-android/results/codex/recovery_gate_audit/resume_fqimbw54/download_fails"
+        }
+      ],
+      [
+        "TRAIN",
+        {
+          "resume_from_checkpoint": null
+        }
+      ]
+    ],
+    "resume": null
+  },
+  "missing_hub_state": {
+    "stdout": "",
+    "calls": [
+      [
+        "list_repo_files",
+        [
+          "dummy/ckpt"
+        ],
+        {}
+      ],
+      [
+        "TRAIN",
+        {
+          "resume_from_checkpoint": null
+        }
+      ]
+    ],
+    "resume": null
+  },
+  "wrong_data_same_batch_and_steps": {
+    "stdout": "restored /Users/alpha/lfm3-android/results/codex/recovery_gate_audit/resume_fqimbw54/wrong_data_same_batch_and_steps/checkpoint-350 from hub\nresuming from latest checkpoint\n",
+    "calls": [
+      [
+        "list_repo_files",
+        [
+          "dummy/ckpt"
+        ],
+        {}
+      ],
+      [
+        "snapshot_download",
+        [
+          "dummy/ckpt"
+        ],
+        {
+          "allow_patterns": [
+            "last-checkpoint/*"
+          ],
+          "local_dir": "/Users/alpha/lfm3-android/results/codex/recovery_gate_audit/resume_fqimbw54/wrong_data_same_batch_and_steps"
+        }
+      ],
+      [
+        "TRAIN",
+        {
+          "resume_from_checkpoint": true
+        }
+      ]
+    ],
+    "resume": true
+  },
+  "incompatible_local_checkpoint": {
+    "stdout": "resuming from latest checkpoint\n",
+    "calls": [
+      [
+        "TRAIN",
+        {
+          "resume_from_checkpoint": true
+        }
+      ]
+    ],
+    "resume": true
+  },
+  "wrong_hub_batch_rejected": {
+    "exit": "incompatible hub checkpoint, refusing to resume: train_batch_size 4 != 8",
+    "stdout": "",
+    "calls": [
+      [
+        "list_repo_files",
+        [
+          "dummy/ckpt"
+        ],
+        {}
+      ],
+      [
+        "snapshot_download",
+        [
+          "dummy/ckpt"
+        ],
+        {
+          "allow_patterns": [
+            "last-checkpoint/*"
+          ],
+          "local_dir": "/Users/alpha/lfm3-android/results/codex/recovery_gate_audit/resume_fqimbw54/wrong_hub_batch_rejected"
+        }
+      ]
+    ],
+    "resume": null
+  },
+  "completed_hub_checkpoint": {
+    "stdout": "restored /Users/alpha/lfm3-android/results/codex/recovery_gate_audit/resume_fqimbw54/completed_hub_checkpoint/checkpoint-1250 from hub\nresuming from latest checkpoint\n",
+    "calls": [
+      [
+        "list_repo_files",
+        [
+          "dummy/ckpt"
+        ],
+        {}
+      ],
+      [
+        "snapshot_download",
+        [
+          "dummy/ckpt"
+        ],
+        {
+          "allow_patterns": [
+            "last-checkpoint/*"
+          ],
+          "local_dir": "/Users/alpha/lfm3-android/results/codex/recovery_gate_audit/resume_fqimbw54/completed_hub_checkpoint"
+        }
+      ],
+      [
+        "TRAIN",
+        {
+          "resume_from_checkpoint": true
+        }
+      ]
+    ],
+    "resume": true
+  },
+  "wrong_data_receipt_accepted": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "stale_dev_skip_predicate": {
+    "returncode": 0,
+    "stdout": "{\"n_steps\": 136, \"parse_rate\": 1.0, \"type_match\": 1.0, \"step_sr\": 1.0, \"answer_mean_f1\": 1.0}\n",
+    "stderr": ""
+  }
+}

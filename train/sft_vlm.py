@@ -203,9 +203,28 @@ resume = None
 ckpts = [d for d in os.listdir(args.out) if d.startswith("checkpoint-")] if os.path.isdir(args.out) else []
 if not ckpts and args.hub_repo:
     # VM was reclaimed? pull the last checkpoint pushed by hub_strategy="checkpoint"
+    from huggingface_hub import HfApi, snapshot_download
+    from huggingface_hub.errors import RepositoryNotFoundError
     try:
-        from huggingface_hub import HfApi, snapshot_download
         files = HfApi().list_repo_files(args.hub_repo)
+    except RepositoryNotFoundError:
+        files = []  # first run: no checkpoint repo yet
+    except Exception as e:  # never silently restart from step 0 over an existing checkpoint repo (Codex recovery audit P1)
+        raise SystemExit(f"cannot list hub checkpoint repo {args.hub_repo} ({e}); refusing to train from scratch")
+    KEYS = ("model_id", "train", "max_pixels", "lr", "bs", "grad_accum", "lora_r", "lora_alpha", "target_regex", "max_steps",
+            "epochs", "inline_think", "replay")
+    if "run_config.json" in files:  # identity of the run that wrote the checkpoints
+        old = json.load(open(snapshot_download(args.hub_repo, allow_patterns=["run_config.json"]) + "/run_config.json"))
+        diff = [f"{k}: {old.get(k)!r} != {vars(args).get(k)!r}" for k in KEYS if k in old and old.get(k) != vars(args).get(k)]
+        if diff:
+            raise SystemExit("hub checkpoints belong to a different run configuration, refusing: " + "; ".join(diff))
+    elif files:
+        print("WARNING: hub checkpoint repo has no run_config.json; only batch size / max_steps are checked", flush=True)
+    else:
+        HfApi().create_repo(args.hub_repo, private=True, exist_ok=True)
+        HfApi().upload_file(path_or_fileobj=f"{args.out}/logs/run_config.json", path_in_repo="run_config.json",
+                            repo_id=args.hub_repo)
+    try:
         if "last-checkpoint/trainer_state.json" in files:
             snapshot_download(args.hub_repo, allow_patterns=["last-checkpoint/*"], local_dir=args.out)
             st = json.load(open(f"{args.out}/last-checkpoint/trainer_state.json"))
@@ -222,8 +241,8 @@ if not ckpts and args.hub_repo:
             print(f"restored {dst} from hub", flush=True)
     except SystemExit:
         raise
-    except Exception as e:
-        print("hub resume failed:", e, flush=True)
+    except Exception as e:  # a listed checkpoint that cannot be restored must not become a fresh run
+        raise SystemExit(f"hub resume failed ({e}); refusing to train from scratch over {args.hub_repo}")
 if ckpts:
     resume = True
     print("resuming from latest checkpoint", flush=True)

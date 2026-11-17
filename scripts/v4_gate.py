@@ -1,7 +1,7 @@
 """v4 development gate (docs/PREREG_v4.md), computed from raw AndroidWorld episodes + offline dev metrics.
 
 Gate (all must hold to freeze v4 and run it on sealed held-out seeds):
-  (1) dev_answer: "clearly above 0" := strict typed answer match (v4_answer_check.same_answer) >= 0.20, and `answer`
+  (1) dev_answer: "clearly above 0" := answer match (v4_answer_check.gate_answer: same_answer and no added content words) >= 0.20, and `answer`
       emitted on >= 50% of rows;
   (2) dev_complete: `answer` on <= 3% of action-goal final rows;
   (3) AndroidWorld seed 30: >= 3 answer-task successes AND action-task successes >= v3's - 3.
@@ -24,7 +24,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "train"))
 import agent_format as af  # noqa: E402
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data"))
-from v4_answer_check import same_answer  # noqa: E402
+from v4_answer_check import gate_answer, same_answer  # noqa: E402
 
 p = argparse.ArgumentParser()
 p.add_argument("--v4", required=True)
@@ -36,8 +36,10 @@ p.add_argument("--v3_agent", default="lfm3vl2b_v3_q4km")
 p.add_argument("--dev_model", default="/content/runs/lfm3vl2b-v4bmix-lora/merged", help="`model` field of the dev predictions")
 p.add_argument("--dev_ref", default="results/v4_dev_reference.json",
                help="(episode_id, step_idx, gt_action) of the v4 dataset's dev splits, read from the hub at the pinned sha")
+p.add_argument("--v3_pin", default="results/v4_gate_v3_pin.json", help="sha256 of every v3 seed-30 episode file")
 a = p.parse_args()
 REF = json.load(open(a.dev_ref))
+PIN = json.load(open(a.v3_pin))
 ANSWER_TASKS = set(json.load(open("results/codex/v3_audit/answer_tasks.json"))["answer_tasks"])
 
 
@@ -48,9 +50,14 @@ def aw(run_root, agent):
     out, ident = {}, {}
     for f in glob.glob(os.path.join(runs[0], "*.pkl.gz")):
         ep = pickle.load(gzip.open(f))  # trusted: written by our own local AndroidWorld runs
-        ep = ep[0] if isinstance(ep, list) else ep
+        if isinstance(ep, list):
+            if len(ep) != 1:
+                raise SystemExit(f"GATE INPUT ERROR: {f} holds {len(ep)} episodes, expected 1")
+            ep = ep[0]
         r = ep.get("is_successful")
         ok = isinstance(r, (int, float)) and not math.isnan(r) and r >= 1 and not ep.get("exception_info")
+        if ok and not (isinstance(ep.get("episode_length"), int) and ep["episode_length"] >= 1):
+            raise SystemExit(f"GATE INPUT ERROR: {f} claims success with episode_length {ep.get('episode_length')!r}")
         if ep.get("agent_name") != agent:
             raise SystemExit(f"GATE INPUT ERROR: {f} agent_name {ep.get('agent_name')!r} != {agent!r}")
         t = os.path.basename(f).rsplit("_", 1)[0]
@@ -67,6 +74,12 @@ def preds(path, split):
     got = sorted((str(r["episode_id"]), int(r["step_idx"]), r["gt_action"]) for r in rows)
     if got != want or len(set(got)) != len(got):
         raise SystemExit(f"GATE INPUT ERROR: {path}: (episode_id, step_idx, gt_action) != {split} of {REF['repo']}@{REF['revision']}")
+    man = json.load(open(path + ".manifest.json"))  # written by generate.py next to the predictions
+    want_data = f"{REF['repo']}@{split}#{REF['revision']}"
+    if (man.get("model"), man.get("data"), man.get("n_rows"), man.get("do_sample"), man.get("enable_thinking")) != \
+            (a.dev_model, want_data, len(want), False, 1):
+        raise SystemExit(f"GATE INPUT ERROR: {path}.manifest.json does not describe greedy thinking-mode predictions of "
+                         f"{a.dev_model} on {want_data}: {man}")
     bad = [r for r in rows if r.get("model") != a.dev_model or r.get("split", split) != split]
     if bad:
         raise SystemExit(f"GATE INPUT ERROR: {path}: {len(bad)} rows from another model/split ({bad[0].get('model')})")
@@ -74,6 +87,10 @@ def preds(path, split):
     return rows, acts
 
 
+import hashlib  # noqa: E402
+v3_files = sorted(glob.glob(os.path.join(a.v3, "run_*", "*.pkl.gz")))
+if {os.path.basename(f): hashlib.sha256(open(f, "rb").read()).hexdigest() for f in v3_files} != PIN["sha256"]:
+    raise SystemExit(f"GATE INPUT ERROR: {a.v3} is not the pinned v3 seed-30 run ({a.v3_pin})")
 (v4, id4), (v3, id3) = aw(a.v4, a.v4_agent), aw(a.v3, a.v3_agent)
 ALL_TASKS = set(json.load(open("results/codex/v3_audit/answer_tasks.json"))["answer_tasks"]) | set(v3)
 if len(v4) != 116 or len(v3) != 116 or set(v4) != set(v3):
@@ -88,12 +105,14 @@ act3 = sum(v for t, v in v3.items() if t not in ANSWER_TASKS)
 rows, acts = preds(a.dev_answer, "dev_answer")
 emitted = sum(1 for x in acts if x and x["action_type"] == "answer") / max(1, len(acts))
 correct = sum(1 for r, x in zip(rows, acts) if x and x["action_type"] == "answer"
-              and same_answer(x["text"], json.loads(r["gt_action"])["text"])) / max(1, len(rows))
+              and gate_answer(x["text"], json.loads(r["gt_action"])["text"])) / max(1, len(rows))
+typed = sum(1 for r, x in zip(rows, acts) if x and x["action_type"] == "answer"
+            and same_answer(x["text"], json.loads(r["gt_action"])["text"])) / max(1, len(rows))
 rows_c, acts_c = preds(a.dev_complete, "dev_complete")
 false_ans = sum(1 for x in acts_c if x and x["action_type"] == "answer") / max(1, len(acts_c))
 complete = sum(1 for x in acts_c if x and x["action_type"] == "status" and x.get("goal_status") == "complete") / max(1, len(acts_c))
 g = {"aw_episodes_v4": len(v4), "aw_answer_task_successes_v4": ans4, "aw_action_task_successes_v4": act4,
-     "aw_action_task_successes_v3": act3, "dev_answer_emitted": round(emitted, 3), "dev_answer_exact": round(correct, 3),
+     "aw_action_task_successes_v3": act3, "dev_answer_emitted": round(emitted, 3), "dev_answer_exact": round(correct, 3), "dev_answer_typed_same_answer": round(typed, 3),
      "dev_complete_false_answer": round(false_ans, 3), "dev_complete_status": round(complete, 3)}
 g["gate"] = {"1_answers": emitted >= 0.5 and correct >= 0.20, "2_no_false_answers": false_ans <= 0.03,
              "3_aw": len(v4) == 116 and ans4 >= 3 and act4 >= act3 - 3}

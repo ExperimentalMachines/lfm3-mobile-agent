@@ -92,3 +92,12 @@ exposure to AndroidWorld is undisclosed by its authors.
   recomputed. The gate script gained input-identity checks (episode agent_name; same goal text, modulo the run timestamp
   of MarkorCreateFolder, and instance seed as the v3 seed-30 run; dev predictions must equal the dev splits pinned at
   3375539 and come from the v4 merged model) without changing any threshold.
+* 2026-11-18 06:25 (before any v4 result; after Codex's recovery/gate audit, results/codex/codex_recovery_gate_audit.md):
+  the gate's answer criterion becomes stricter: a dev_answer prediction counts only if `same_answer` holds AND it adds no
+  content words to the reference (data/v4_answer_check.gate_answer; appending "is incorrect" to every reference scored
+  92.6% under same_answer alone). The 0.20 threshold is unchanged; the same_answer rate is still reported. The v4-RL
+  promotion rule's "strict dev_answer" is computed with the same gate_answer, locally from the downloaded predictions.
+  Gate inputs are now also bound to the pinned v3 run (sha256 of its 116 episode files), the generate.py manifests
+  (model, dataset@split#revision, greedy, thinking mode), one episode per file and >= 1 step for any success.
+  Recovery: sft_vlm.py now refuses to train from scratch if a hub checkpoint repo exists but cannot be listed/restored,
+  and refuses checkpoints written under a different run configuration (run_config.json pinned on the checkpoint repo).

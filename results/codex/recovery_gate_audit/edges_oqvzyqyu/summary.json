@@ -1,0 +1,32 @@
+{
+  "contradictory_answers": {
+    "returncode": 0,
+    "stdout": "{\n \"aw_episodes_v4\": 116,\n \"aw_answer_task_successes_v4\": 25,\n \"aw_action_task_successes_v4\": 91,\n \"aw_action_task_successes_v3\": 13,\n \"dev_answer_emitted\": 1.0,\n \"dev_answer_exact\": 0.926,\n \"dev_complete_false_answer\": 0.0,\n \"dev_complete_status\": 1.0,\n \"gate\": {\n  \"1_answers\": true,\n  \"2_no_false_answers\": true,\n  \"3_aw\": true\n },\n \"PASS\": true\n}\n",
+    "stderr": ""
+  },
+  "same_weights_different_receipt_timing": {
+    "fingerprints": [
+      "22168ce3678ccdf9",
+      "a9ab309bd569dcb8"
+    ],
+    "different": true
+  },
+  "rl_train_call": [
+    {
+      "args": [],
+      "kwargs": {}
+    }
+  ],
+  "bash_version": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin26)",
+  "bash_syntax_returncodes": {
+    "v4_relaunch.sh": 0,
+    "colab_watchdog.sh": 0,
+    "colab_poll_fast_gpu.sh": 0,
+    "launch_on_session.sh": 0,
+    "gpu_session.sh": 0,
+    "colab_get_gpu.sh": 0,
+    "vm_model_pipeline.sh": 0,
+    "vm_rl_hook.sh": 0,
+    "vm_rl_go.sh": 0
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "real_runs_with_synthetic_oracle_dev_predictions": [
+    {
+      "arm": "guiowl15_2b_matched",
+      "episodes": 116,
+      "returncode": 0,
+      "exception_episodes": 0,
+      "seed_none": 0,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 10,
+        "aw_action_task_successes_v4": 13,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": true
+        },
+        "PASS": true
+      }
+    },
+    {
+      "arm": "lfm25vl450m_base",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 3,
+      "seed_none": 3,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 0,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm25vl450m_ft",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 4,
+      "seed_none": 4,
+      "half_credit": 1,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 2,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm3vl2b_base_nothink",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 2,
+      "seed_none": 2,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 1,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm3vl2b_base_nothink_answerrule",
+      "episodes": 3,
+      "returncode": 1,
+      "exception_episodes": 0,
+      "seed_none": 0,
+      "half_credit": 0,
+      "result": "GATE INPUT ERROR: need the same 116 tasks in both runs (v4 3, v3 116)"
+    },
+    {
+      "arm": "lfm3vl2b_ft",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 2,
+      "seed_none": 2,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 15,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm3vl2b_ft_runtimefb",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 7,
+      "seed_none": 7,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 10,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm3vl2b_v2",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 5,
+      "seed_none": 5,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 3,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm3vl2b_v2_forcethink",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 4,
+      "seed_none": 4,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 6,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "lfm3vl2b_v3",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 3,
+      "seed_none": 3,
+      "half_credit": 1,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 13,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "qwen35_08b_ft",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 1,
+      "seed_none": 1,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 12,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    },
+    {
+      "arm": "qwen35_2b_ft",
+      "episodes": 116,
+      "returncode": 3,
+      "exception_episodes": 2,
+      "seed_none": 2,
+      "half_credit": 0,
+      "result": {
+        "aw_episodes_v4": 116,
+        "aw_answer_task_successes_v4": 0,
+        "aw_action_task_successes_v4": 16,
+        "aw_action_task_successes_v3": 13,
+        "dev_answer_emitted": 1.0,
+        "dev_answer_exact": 1.0,
+        "dev_complete_false_answer": 0.0,
+        "dev_complete_status": 1.0,
+        "gate": {
+          "1_answers": true,
+          "2_no_false_answers": true,
+          "3_aw": false
+        },
+        "PASS": false
+      }
+    }
+  ],
+  "adversarial_returncodes": {
+    "fabricated_empty_episodes": 0,
+    "wrong_agent_rejected": 1,
+    "missing_episode_rejected": 1,
+    "duplicate_files_rejected": 1,
+    "extra_episodes_inside_pickle_ignored": 0,
+    "missing_seed_accepted": 0,
+    "wrong_nonnull_seed_rejected": 1,
+    "both_arms_wrong_seed_accepted": 0,
+    "wrong_manifest_revision_and_fingerprint_ignored": 0,
+    "wrong_model_label_rejected": 1,
+    "partial_predictions_rejected": 1,
+    "custom_reference_one_row_accepted": 0
+  },
+  "edge_success_counts": {
+    "half_credit": 0,
+    "exception": 0,
+    "infinity": 116
+  },
+  "v4_run_exists": false,
+  "scratch": "/Users/alpha/lfm3-android/results/codex/recovery_gate_audit/gate_el2ek0je"
+}

@@ -1,0 +1,66 @@
+#!/usr/local/bin/python3
+
+import json, os, pathlib, re, shutil, sys
+case = pathlib.Path(os.environ["AUDIT_CASE"])
+mode = os.environ["AUDIT_MODE"]
+tool = pathlib.Path(sys.argv[0]).name
+args = sys.argv[1:]
+with (case / "calls.jsonl").open("a") as stream:
+    stream.write(json.dumps([tool, args]) + "\n")
+if tool == "sleep":
+    if mode == "status_changes_during_grace" and args == ["7"]:
+        (case / "new_job_running").write_text("yes")
+    raise SystemExit(0)
+if tool == "pgrep":
+    commands = "colab exec -s lfm3v4a --timeout 200000" if mode == "prefix_alias" else ""
+    match = bool(re.search(args[-1], commands))
+    if match:
+        print("12345")
+    raise SystemExit(0 if match else 1)
+cmd = args[0]
+session = args[args.index("-s") + 1] if "-s" in args else ""
+if cmd == "new":
+    f = case / "allocations.json"
+    allocations = json.loads(f.read_text()) if f.exists() else []
+    allocations.append(session)
+    f.write_text(json.dumps(allocations))
+    print("[colab] Session READY.")
+elif cmd == "sessions":
+    if mode == "prefix_alias":
+        print("[lfm3v4a] endpoint-a | Hardware: A100 | Variant: GPU")
+    elif mode in ("relaunch_failed", "intentional_stop") and not (case / "allocations.json").exists():
+        print("[colab] No active sessions found on server.")
+    elif mode == "poll" and not (case / "allocations.json").exists():
+        print("[colab] No active sessions found on server.")
+    elif mode == "poll":
+        print("[lfm3v4a] new-endpoint | Hardware: G4 | Variant: GPU")
+    else:
+        print("[lfm3v4] endpoint-l | Hardware: L4 | Variant: GPU")
+elif cmd == "download":
+    remote, dst = args[-2:]
+    if remote.endswith("jobs_status.json"):
+        if mode in ("prefix_alias", "missing_status", "relaunch_failed"):
+            print("not found"); raise SystemExit(1)
+        status = {"lfm3_v4": "exit 1" if mode == "failed_jobs" else "exit 0", "rl_hook": "exit 0"}
+        if mode == "intentional_stop":
+            status = {"lfm3_v4": "running", "rl_hook": "running"}
+        pathlib.Path(dst).write_text(json.dumps({"run_id": "old-run", "status": status}))
+        print("Downloaded")
+    else:
+        print("download failed"); raise SystemExit(1)
+elif cmd == "stop":
+    if mode == "stop_fails":
+        print("Service Unavailable"); raise SystemExit(1)
+    (case / "stopped").write_text("new-job-running" if (case / "new_job_running").exists() else "old-job")
+    print("Stopped")
+elif cmd == "upload":
+    src, remote = args[-2:]
+    dst = case / "remote" / session / remote.lstrip("/")
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src, dst)
+    print("Uploaded")
+elif cmd == "exec":
+    sys.stdin.read()  # Never execute the supplied code.
+    print("meta ok")
+else:
+    raise SystemExit("unexpected stub command: " + repr(args))

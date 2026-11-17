@@ -67,6 +67,15 @@ def same_answer(a, b):
     return a == b
 
 
+FILLER = {"the", "a", "an", "is", "are", "it", "its", "of", "about", "approximately", "approx", "around", "total"}
+
+
+def gate_answer(pred, gold):
+    """Development-gate scoring (Codex recovery audit P2): same_answer, and the prediction may not ADD content words to the
+    reference ('12M is incorrect' vs '12M' fails; '12M downloads' vs '12M' fails too -- conservative)."""
+    return same_answer(pred, gold) and (words(norm(pred)) - words(norm(gold))) <= FILLER
+
+
 def exact_answer(pred, gold):
     """RL reward / strict scoring: equal after normalisation only (case, whitespace, quotes, trailing period, thousands
     separators, spacing around currency). No added or dropped words: '12M is incorrect' != '12M'."""
