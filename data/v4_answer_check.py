@@ -32,8 +32,25 @@ def words(s):
 CUR = re.compile(r"[$€£¥₹₩₽¢]|\b(?:usd|eur|gbp|inr|aed|rs|c\$|a\$)\b")
 
 
+# tokens that change an answer's meaning when dropped (Codex data audit #4: "12M"->"12", "Oct 4"->"4", "9:30 PM"->"9:30")
+ESSENTIAL = {"k", "m", "b", "bn", "mn", "thousand", "million", "billion", "trillion", "lakh", "lakhs", "crore", "crores",
+             "am", "pm", "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "sept", "oct", "nov", "dec",
+             "january", "february", "march", "april", "june", "july", "august", "september", "october", "november",
+             "december", "mon", "tue", "wed", "thu", "fri", "sat", "sun", "monday", "tuesday", "wednesday", "thursday",
+             "friday", "saturday", "sunday", "today", "tomorrow", "yesterday", "hr", "hrs", "hour", "hours", "min",
+             "mins", "minute", "minutes", "sec", "secs", "second", "seconds", "day", "days", "week", "weeks", "month",
+             "months", "year", "years", "km", "mi", "kg", "lb", "lbs", "gb", "mb", "tb", "kb"}
+
+
+def essential(s):
+    t = set(re.findall(r"[a-z]+", re.sub(r"(\d)([a-z])", r"\1 \2", s)))  # "12m" -> "12 m"
+    return (t & ESSENTIAL) | ({"%"} if "%" in s else set())
+
+
 def same_answer(a, b):
     a, b = norm(a), norm(b)
+    if a and b and essential(a) != essential(b):
+        return False
     if not a or not b or "none" in (a, b):
         return False
     if sorted(CUR.findall(a)) != sorted(CUR.findall(b)) and CUR.findall(a) and CUR.findall(b):
@@ -82,4 +99,7 @@ if __name__ == "__main__":
         assert not same_answer(x, y), (x, y)
     assert not safe_short("It is unavailable.", "available") and not safe_short("10:49 PM on Jan 31, 2017", "10:49 PM on Jan 31 2017")
     assert not safe_short("1.50", "150")
+    for x, y in [("12M", "12"), ("22K", "22"), ("Oct 4", "4"), ("9:30 PM", "9:30"), ("45%", "45"), ("4 GB", "4")]:
+        assert not same_answer(x, y), (x, y)
+    assert same_answer("12M", "12m") and same_answer("Oct 4", "oct 4") and same_answer("382 Followers", "382")
     print("answer-check tests pass")

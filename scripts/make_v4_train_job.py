@@ -1,10 +1,11 @@
 """Write scripts/jobs/lfm3_v4_a100.json for a pinned v4 dataset revision (v3 recipe unchanged; v4 prompt for evals)."""
 import json, sys
 sha = sys.argv[1]
+tag = sys.argv[2] if len(sys.argv) > 2 else "v4"   # new tag => new run dir + checkpoint repo (never resume another data build)
 assert len(sha) == 40, sha
 env = {
-    "MODEL": "LiquidAI/LFM3-VL-2B", "RUN": "lfm3vl2b-v4mix-lora",
-    "FINAL_REPO": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v4", "CKPT_REPO": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v4-LoRA-ckpt",
+    "MODEL": "LiquidAI/LFM3-VL-2B", "RUN": f"lfm3vl2b-{tag}mix-lora",
+    "FINAL_REPO": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v4", "CKPT_REPO": f"alpharomercoma/LFM3-VL-2B-AndroidAgent-{tag}-LoRA-ckpt",
     "TRAIN_DATA": f"alpharomercoma/AndroidAgent-SFT-v4@train#{sha}",
     "DEV_REPO": "alpharomercoma/AndroidAgent-SFT-v4", "DEV_REV": sha,
     "DEV_SPLITS": "dev_answer dev_complete dev_screenqa dev_odyssey dev_amex", "DEV_MODELS": "FT=lfm3_v4:1",

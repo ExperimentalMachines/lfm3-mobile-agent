@@ -69,3 +69,11 @@ exposure to AndroidWorld is undisclosed by its authors.
   whole-word app-type terms), the rewritten direct question is used as a goal only if separately verified on the same
   screen (otherwise the verified compound goal), and dev_complete controls exclude information-seeking original goals;
   (8) the preregistered single infrastructure retry is applied manually (documented per case), not by the runner.
+* 2026-11-18 04:05 (before any v4 or v4-RL result): (9) Codex's audit of the built v4 data (results/codex/codex_v4_data_audit.md)
+  returned STOP; the first v4 training run (data 570febb) is abandoned and v4 is retrained from the base model on a rebuilt
+  dataset (answer-leaking goals dropped, guard v3 on goals + history text, goal-named apps added to the installed-app
+  list, magnitude/date/time/unit-aware answer check, information-seeking goals removed from dev_complete), under a new run
+  name and checkpoint repo. (10) v4-RL promotion rule, fixed now: v4-RL replaces v4 as "LFM3 final" only if, versus v4,
+  strict dev_answer match is >= +0.05 absolute, dev_complete false-answer rate <= 0.03, AndroidControl test high-level
+  step SR >= -0.02, and on AndroidWorld seed 30 it passes the gate with total full successes >= v4's. Otherwise v4 stays.
+

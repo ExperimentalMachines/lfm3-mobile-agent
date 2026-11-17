@@ -32,7 +32,7 @@ from huggingface_hub import HfApi, snapshot_download
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "train"))
 import agent_format as af  # noqa: E402
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from v4_answer_check import preferred, safe_short, same_answer  # noqa: E402
+from v4_answer_check import norm, preferred, safe_short, same_answer  # noqa: E402
 
 V3, V3_REV = "alpharomercoma/AndroidAgent-SFT-v3", "565ba76c4b10b6733549151f0fece1f70bc33b9c"
 OUT_REPO = "alpharomercoma/AndroidAgent-SFT-v4"
@@ -109,6 +109,9 @@ def collect_apps(rows, ep_apps):
         for n in names:
             if n not in ep_apps[k]:
                 ep_apps[k].append(n)
+        hits = _CAP_APPS.findall(r["messages"][1]["content"].split("\n", 1)[-1])  # history/intent text (not the goal)
+        if hits:
+            HIST_AW.setdefault(k, set()).update(hits)
 
 
 def v4(msgs, key, ep_apps):
@@ -124,10 +127,28 @@ def answer_json(text):
     return af.action_to_str({"action_type": "answer", "text": text})
 
 
+# guard v3 (Codex data audit #3): capitalised AndroidWorld-device app names in goals AND in history/intent text
+# (clicked share targets such as "Click on Gmail"), case-sensitive to avoid prose like "phone number".
+_CAP_APPS = re.compile(r"\b(Gmail|Google Drive|Drive|Google Maps|Maps|YouTube|Google Photos|Photos|Chrome|Google Play|"
+                       r"Play Store|Google Calendar|Calendar|Clock|Contacts|Files|Messages|Settings|Camera|Markor|Joplin|"
+                       r"Broccoli|OpenTracks|OsmAnd|VLC|Retro Music|Simple [A-Z][a-z]+|Pro Expense|Audio Recorder|Tasks)\b")
+HIST_AW = {}
 EP = {}  # (source, episode_id) -> required app names, from ALL train shards (episodes can span shards)
 for f in use:
     collect_apps(pq.ParquetFile(os.path.join(local, f)).read(columns=["source", "episode_id", "messages", "gt_action"]).to_pylist(), EP)
-print(f"app requirements for {len(EP)} episodes ({time.time() - t0:.0f}s)", flush=True)
+_POOL_RE = re.compile(r"(?<![\w&.'+-])(" + "|".join(re.escape(n) for n in sorted({x for x in pool if len(x) >= 3}, key=len, reverse=True))
+                      + r")(?![\w&'+-])")
+_goal_of = {}
+for f in use:
+    for r in pq.ParquetFile(os.path.join(local, f)).read(columns=["source", "episode_id", "messages"]).to_pylist():
+        _goal_of.setdefault((r["source"], r["episode_id"]), r["messages"][1]["content"].split("\n", 1)[0].removeprefix("Goal: "))
+n_goal_apps = 0
+for k, g in _goal_of.items():
+    for n in _POOL_RE.findall(g):
+        if n not in EP[k]:
+            EP[k].append(n)
+            n_goal_apps += 1
+print(f"app requirements for {len(EP)} episodes; {n_goal_apps} goal-named apps added ({time.time() - t0:.0f}s)", flush=True)
 # AndroidWorld-app guard v2 (Codex pipeline audit #6): episode-wide app names (all histories + gold actions) checked
 # against android_world's own launcher patterns (re.match, as AW resolves names) and AW display names; goal prose
 # checked with whole-word app-type terms. Flagged episodes get no question copy and leave the dev splits.
@@ -148,6 +169,8 @@ def aw_flag(key):
     names = EP.get((src, eid), [])
     if any(n.lower() in _AW_NAMES or any(pt.match(n.lower()) for pt in _AW_PATS) or _TERMS.search(n) for n in names):
         return True
+    if HIST_AW.get((src, eid)) or _CAP_APPS.search(cands[key]["goal"]):
+        return True
     return bool(_TERMS.search(cands[key]["goal"]))
 
 
@@ -156,8 +179,22 @@ qa = {k: v for k, v in qa.items() if k not in AW_FLAGGED}
 train_qa = {k for k in qa if cands[k]["split"] == "train"}
 dev_qa = {k for k in qa if cands[k]["split"] == "dev"}
 dev_comp = {k for k in dev_qa if cands[k]["kind"] == "compound"}  # "complete" controls only for action-only original goals
+# answer leakage (Codex data audit #1): drop episodes whose final goal or question already contains the answer
+_leak = set()
+for k in list(qa):
+    span = re.escape(norm(final_answer(k)))
+    if span and (re.search(r"(?<![a-z0-9])" + span + r"(?![a-z0-9])", norm(new_goal(k, cands[k]["goal"])))
+                 or re.search(r"(?<![a-z0-9])" + span + r"(?![a-z0-9])", norm(qa[k]["question"]))):
+        _leak.add(k)
+qa = {k: v for k, v in qa.items() if k not in _leak}
+REJECT["answer_leak_dropped"] = len(_leak)
+train_qa = {k for k in qa if cands[k]["split"] == "train"}
+dev_qa = {k for k in qa if cands[k]["split"] == "dev"}
+_INFO_CUE = re.compile(r"\b(?:need to know|want to know|tell me|how (?:much|many|long)|what|which|when|where|who|"
+                       r"check|find out|look up|see|view|show|read|compare|know)\b", re.I)
+dev_comp = {k for k in dev_qa if cands[k]["kind"] == "compound" and not _INFO_CUE.search(cands[k]["goal"])}
 REJECT["aw_guard_v2_flagged"] = len(AW_FLAGGED)
-print("guard v2 flagged", len(AW_FLAGGED), "; train qa", len(train_qa), "; dev qa", len(dev_qa), "; dev complete", len(dev_comp), flush=True)
+print("guard v3 flagged", len(AW_FLAGGED), "; leak dropped", len(_leak), "; train qa", len(train_qa), "; dev qa", len(dev_qa), "; dev complete", len(dev_comp), flush=True)
 out_dir = os.path.join(a.work, "out")
 shutil.rmtree(out_dir, ignore_errors=True)
 os.makedirs(os.path.join(out_dir, "data"))

@@ -6,7 +6,7 @@ objects, unfinished reasoning or a wrong action type score 0. No bonus for forma
                    numbers/signs/decimals/times exact, no partial entities, negation-aware)
   status        -> 1 iff action is `status` with the same goal_status
   open_app      -> 1 iff same app name (case/space-insensitive)
-  input_text    -> 1 iff same text after whitespace/case normalisation
+  input_text    -> 1 iff same text after whitespace normalisation (case-sensitive)
   scroll        -> 1 iff same direction
   back/home/enter/wait -> 1 iff same type
   click/long_press -> exp(-(d / 0.05)^2), d = distance between points on the unit square (0-1000 grid / 1000);
@@ -42,8 +42,8 @@ def action_reward(output_text, gt):
         return float(a.get("goal_status") == gt.get("goal_status", "complete"))
     if t == "open_app":
         return float(_txt(a["app_name"]) == _txt(gt["app_name"]))
-    if t == "input_text":
-        return float(_txt(a["text"]) == _txt(gt["text"]))
+    if t == "input_text":  # case-sensitive (typed titles/names can matter to checkers); whitespace-normalised only
+        return float(re.sub(r"\s+", " ", a["text"].strip()) == re.sub(r"\s+", " ", gt["text"].strip()))
     if t == "scroll":
         return float(a["direction"] == gt["direction"])
     if t in ("click", "long_press"):
