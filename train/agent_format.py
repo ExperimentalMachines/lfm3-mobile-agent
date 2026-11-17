@@ -12,7 +12,9 @@ Design (on-device first):
 
 from __future__ import annotations
 
+import hashlib
 import json
+import random
 import re
 from typing import Any
 
@@ -103,6 +105,40 @@ def user_text(goal: str, history: list[tuple[str, str]], step_instruction: str |
     if step_instruction:
         s += f"\nCurrent step hint: {step_instruction}"
     return s + "\nWhat is the next action?"
+
+
+def v4_app_list(key: str, required: list[str], pool: list[str]) -> list[str]:
+    """Training/offline-eval stand-in for a device's installed apps: the episode's own apps plus distractors from the
+    training app pool, 12-30 names, deterministic per episode key, sorted case-insensitively like the device list."""
+    rnd = random.Random(hashlib.sha256(key.encode()).hexdigest())
+    k = rnd.randint(12, 30)
+    apps = list(dict.fromkeys(a for a in required if a))
+    cand = sorted({p for p in pool if p and p not in apps})
+    rnd.shuffle(cand)
+    apps += cand[: max(0, k - len(apps))]
+    return sorted(apps, key=str.lower)
+
+
+def to_v4_messages(messages: list[dict], apps: list[str]) -> list[dict]:
+    """Rewrite stored v1-format [system, user, (assistant)] messages to the v4 prompt: SYSTEM_PROMPT_V4 and an
+    "Installed apps" line right after the goal line. Text-only contents (dataset rows)."""
+    sys_m, user_m = dict(messages[0]), dict(messages[1])
+    if sys_m["content"] != SYSTEM_PROMPT or not user_m["content"].startswith("Goal: ") or "\nInstalled apps: " in user_m["content"]:
+        raise ValueError("not a v1-format row")
+    goal_line, rest = user_m["content"].split("\n", 1)
+    if not rest.startswith("Previous steps:\n"):
+        raise ValueError("unexpected user text layout")
+    sys_m["content"] = SYSTEM_PROMPT_V4
+    user_m["content"] = goal_line + "\n" + apps_line(apps) + "\n" + rest
+    return [sys_m, user_m] + [dict(m) for m in messages[2:]]
+
+
+_APP_RE = re.compile(r'"app_name":"((?:[^"\\]|\\.)*)"')
+
+
+def apps_in_text(text: str) -> list[str]:
+    """open_app names mentioned in a history text (compact action JSON)."""
+    return [json.loads('"' + m + '"') for m in _APP_RE.findall(text or "")]
 
 
 def build_messages(goal, history, image=None, step_instruction=None, for_trl=False, prompt_version="v1", apps=None):

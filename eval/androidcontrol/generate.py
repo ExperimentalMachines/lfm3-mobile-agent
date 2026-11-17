@@ -7,6 +7,7 @@ per step with the RAW model output. Scoring happens separately in score.py.
 """
 
 import argparse
+import hashlib
 import json
 import os
 import time
@@ -27,6 +28,8 @@ p.add_argument("--max_pixels", type=int, default=880 * 880)
 p.add_argument("--min_pixels", type=int, default=256 * 256)
 p.add_argument("--filter_mode", default=None, help="only rows with this mode (high/low)")
 p.add_argument("--subsample_episodes", type=int, default=0, help="deterministic episode subsample")
+p.add_argument("--prompt_v4_pool", default="", help="JSON list of training app names: rewrite stored v1 prompts to the "
+               "v4 prompt + installed-app list (agent_format.to_v4_messages) for v4 models")
 args = p.parse_args()
 
 def _hub_data_files(repo, split, revision=None):
@@ -66,7 +69,24 @@ model = AutoModelForImageTextToText.from_pretrained(
 manifest = {"model": args.model, "data": args.data, "n_rows": len(ds), "enable_thinking": args.enable_thinking,
             "max_pixels": args.max_pixels, "filter_mode": args.filter_mode, "subsample_episodes": args.subsample_episodes,
             "limit": args.limit, "max_new_tokens": args.max_new_tokens, "do_sample": False, "min_pixels": args.min_pixels}
-import hashlib, glob as _glob
+if args.prompt_v4_pool:
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "train"))
+    import agent_format as af
+    _POOL = json.load(open(args.prompt_v4_pool))
+    manifest["prompt"] = "v4:" + hashlib.sha256(json.dumps(_POOL).encode()).hexdigest()[:12]
+
+
+def v4_msgs(r):
+    """v4 prompt for a stored v1 row: required apps = open_app names in the history + the gold open_app (if any)."""
+    if r["messages"][1]["content"].startswith("Goal: ") and "\nInstalled apps: " in r["messages"][1]["content"]:
+        return r["messages"]  # already a v4 row (v4 dev splits)
+    req = af.apps_in_text(r["messages"][1]["content"])
+    g = json.loads(r["gt_action"]) if isinstance(r.get("gt_action"), str) else (r.get("gt_action") or {})
+    if g.get("action_type") == "open_app":
+        req.append(g["app_name"])
+    return af.to_v4_messages(r["messages"], af.v4_app_list(str(r["episode_id"]), req, _POOL))
+import glob as _glob
 
 
 def _fingerprint(model):
@@ -151,7 +171,7 @@ t0 = time.time()
 n_tok_in = 0
 for b in range(0, len(idx), args.bs):
     rows = [ds[i] for i in idx[b:b + args.bs]]
-    convs = [to_mm(r["messages"], r["images"][0]) for r in rows]
+    convs = [to_mm(v4_msgs(r) if args.prompt_v4_pool else r["messages"], r["images"][0]) for r in rows]
     _kw = {"enable_thinking": bool(args.enable_thinking)} if "enable_thinking" in (processor.chat_template or "") else {}
     inputs = processor.apply_chat_template(
         convs, add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors="pt",
