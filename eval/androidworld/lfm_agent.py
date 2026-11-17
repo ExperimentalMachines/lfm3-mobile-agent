@@ -36,7 +36,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  name: str = "lfm_screen_agent", enable_thinking: bool = True,
                  max_pixels: int = af.MAX_PIXELS, max_tokens: int = 512,
                  temperature: float = 0.0, wait_after_action: float = 1.0,
-                 max_parse_retries: int = 1, runtime_feedback: bool = False):
+                 max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -54,6 +54,14 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self._labels = None
         self._prev_small = None
         self._prev_type = None
+        # force_think (opt-in ablation): if the reply's intent (<think>) is empty, generate a one-line intent with the
+        # end-of-think token banned, then re-ask for the action with that intent prefilled as the reasoning.
+        self.force_think = force_think
+        self._think_end_id = None
+        if force_think:
+            ids = requests.post(f"{self.server_url}/tokenize", json={"content": "</think>"}, timeout=30).json()["tokens"]
+            assert len(ids) == 1, f"</think> is not a single token: {ids}"
+            self._think_end_id = ids[0]
 
     def reset(self, go_home_on_reset: bool = False):
         super().reset(go_home_on_reset)
@@ -61,7 +69,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self.history = []
         self._prev_small, self._prev_type = None, None
 
-    def _query(self, goal: str, img: Image.Image) -> dict:
+    def _query(self, goal: str, img: Image.Image, extra_messages=None, **overrides) -> dict:
         text = af.user_text(goal, self.history)
         payload = {
             "model": self.model,
@@ -71,10 +79,11 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                     {"type": "image_url", "image_url": {"url": "data:image/png;base64," + _png_b64(img)}},
                     {"type": "text", "text": text},
                 ]},
-            ],
+            ] + list(extra_messages or []),
             "temperature": self.temperature,
             "max_tokens": self.max_tokens,
             "chat_template_kwargs": {"enable_thinking": self.enable_thinking},
+            **overrides,
         }
         t0 = time.time()
         r = requests.post(f"{self.server_url}/v1/chat/completions", json=payload, timeout=300)
@@ -113,6 +122,24 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             if action is not None:
                 break
 
+        forced = None
+        if self.force_think and not (resp["reasoning"] or "").strip():
+            r1 = self._query(goal, img, max_tokens=40, stop=["\n", "{", ". "], logit_bias=[[self._think_end_id, False]])
+            intent = ((r1["reasoning"] or "") + (r1["content"] or "")).replace("<think>", "").strip()
+            intent = intent.splitlines()[0].strip().split(". ")[0].rstrip(".") + "." if intent else ""  # one sentence
+            if intent:
+                r2 = self._query(goal, img, extra_messages=[{"role": "assistant", "content": "", "reasoning_content": intent}],
+                                 max_tokens=128)
+                a2 = af.parse_action(r2["content"])
+                forced = {"intent": intent, "content": r2["content"], "ok": a2 is not None,
+                          "latency_s": r1["latency_s"] + r2["latency_s"]}
+                attempts.append({"content": r2["content"], "reasoning": intent, "latency_s": forced["latency_s"],
+                                 "usage": r2["usage"], "lenient_ok": a2 is not None, "forced_intent": True,
+                                 "strict_ok": af.parse_action(r2["content"], strict=True) is not None})
+                if a2 is not None:
+                    action = a2
+                    resp = {**r2, "reasoning": intent, "latency_s": forced["latency_s"]}
+
         thumb = io.BytesIO()
         Image.fromarray(pixels).convert("RGB").resize((360, 800)).save(thumb, format="JPEG", quality=70)
         data = {
@@ -126,6 +153,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             "usage": resp["usage"],
             "timings": resp["timings"],
             "parsed_action": action,
+            "forced_intent": forced,
         }
         if action is None:
             self.history.append(("(invalid output)", resp["content"][:80]))
