@@ -3,9 +3,17 @@
 set -u
 cd /Users/alpha/lfm3-android
 M="uvx --from modal modal"
-echo "[$(date +%T)] labeling on Modal H100"
-$M run scripts/modal_app.py --job scripts/jobs/v3_intents.intents.json > logs/modal_v3_intents.log 2>&1
-grep -a "exit:" logs/modal_v3_intents.log | tail -1
+if ! uvx --from huggingface_hub python -c "
+from huggingface_hub import HfApi; import sys
+sys.exit(0 if 'stats/v3_intent_labels.json' in HfApi().list_repo_files('alpharomercoma/AndroidAgent-SFT-v3', repo_type='dataset') else 1)" 2>/dev/null; then
+  echo "[$(date +%T)] labeling on Modal H100"
+  $M run scripts/modal_app.py --job scripts/jobs/v3_intents.intents.json > logs/modal_v3_intents.log 2>&1
+  grep -a "exit:" logs/modal_v3_intents.log | tail -1
+else
+  echo "[$(date +%T)] labels already saved -> CPU rebuild + push on Modal"
+  $M run scripts/modal_app.py --job scripts/jobs/v3_build.build.json > logs/modal_v3_build.log 2>&1
+  grep -a "exit:" logs/modal_v3_build.log | tail -1
+fi
 REV=$(uvx --from huggingface_hub python -c "
 from huggingface_hub import HfApi; import sys
 a=HfApi(); fs=a.list_repo_files('alpharomercoma/AndroidAgent-SFT-v3', repo_type='dataset')

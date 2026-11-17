@@ -34,6 +34,8 @@ p.add_argument("--out_repo", required=True)
 p.add_argument("--teacher", default="Qwen/Qwen3-VL-8B-Instruct")
 p.add_argument("--bs", type=int, default=32)
 p.add_argument("--limit", type=int, default=0, help="debug: label at most N teacher rows")
+p.add_argument("--labels_from", default="", help="rebuild from saved labels (stats/v3_intent_labels.json in this "
+               "dataset repo) instead of running the teacher; CPU only")
 a = p.parse_args()
 
 api = HfApi()
@@ -74,9 +76,21 @@ for i in blank:
     if t in TEMPL:
         fill[i] = TEMPL[t](acts[i]); st[f"template_{t}"] += 1
 
-proc = AutoProcessor.from_pretrained(a.teacher)
-proc.tokenizer.padding_side = "left"
-model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+if a.labels_from:
+    from huggingface_hub import hf_hub_download
+    saved = json.load(open(hf_hub_download(a.labels_from, "stats/v3_intent_labels.json", repo_type="dataset")))
+    assert saved["src"] == f"{a.src}@{a.rev}", saved["src"]
+    fill = {int(k): v for k, v in saved["fill"].items()}
+    teach = []  # skip the teacher loop below
+    st["rebuilt_from_saved_labels"] = len(fill)
+    st["teacher_ok"] = sum(1 for i in fill if acts[i]["action_type"] in ("click", "long_press"))
+    _saved_drop = set(saved["dropped"])
+else:
+    _saved_drop = set()
+proc = AutoProcessor.from_pretrained(a.teacher) if not a.labels_from else None
+if proc is not None:
+    proc.tokenizer.padding_side = "left"
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
 BAD = re.compile(r"[{}\[\]]|json|coordinate|red (circle|ring)|\bcircle\b|marked|screenshot|\(\d", re.I)
 
 
@@ -129,8 +143,20 @@ for b in range(0, len(teach), a.bs):
     if (b // a.bs) % 20 == 0:
         print(f"{b + len(idx)}/{len(teach)} {time.time() - t0:.0f}s  e.g. {texts[0].strip()[:80]!r}", flush=True)
 
-drop = set(i for i in teach if i not in fill)
+drop = set(i for i in teach if i not in fill) | _saved_drop
 st["dropped_rows"] = len(drop)
+if proc is not None:  # free the teacher before the multi-process push (forked workers OOM'd on a full GPU)
+    del model
+    torch.cuda.empty_cache()
+# durable copy of the labels BEFORE the slow full-dataset push (a failed upload must not lose the labeling)
+os.makedirs("/content/eval", exist_ok=True)
+json.dump({"src": f"{a.src}@{a.rev}", "teacher": a.teacher, "fill": {str(k): v for k, v in fill.items()},
+           "dropped": sorted(drop)}, open("/content/eval/v3_intent_labels.json", "w"))
+api.create_repo(a.out_repo, repo_type="dataset", private=True, exist_ok=True)
+if not a.labels_from:
+    api.upload_file(path_or_fileobj="/content/eval/v3_intent_labels.json", path_in_repo="stats/v3_intent_labels.json",
+                    repo_id=a.out_repo, repo_type="dataset")
+print("labels saved" if not a.labels_from else "labels reused", len(fill), flush=True)
 
 
 def apply(ex, i):
@@ -146,11 +172,12 @@ if drop:
     new_train = new_train.select([i for i in range(len(new_train)) if i not in drop])
 left = sum(1 for m in new_train["messages"] if not (m[2].get("reasoning_content") or "").strip())
 st["train_rows"], st["blank_intents_left"] = len(new_train), left
-samples = [{"row": i, "source": train[i]["source"], "action": acts[i], "intent": fill[i]} for i in teach[:300] if i in fill]
+_tk = [i for i in sorted(fill) if acts[i]["action_type"] in ("click", "long_press")]
+samples = [{"row": i, "source": train[i]["source"], "action": acts[i], "intent": fill[i]} for i in _tk[:300]]
 print(json.dumps(st), flush=True)
 out = DatasetDict({"train": new_train, **{k: v for k, v in dd.items() if k != "train"}})
 api.create_repo(a.out_repo, repo_type="dataset", private=True, exist_ok=True)
-out.push_to_hub(a.out_repo, private=True, max_shard_size="500MB")
+out.push_to_hub(a.out_repo, private=True, max_shard_size="500MB", num_proc=8)
 os.makedirs("/content/eval", exist_ok=True)
 json.dump({"stats": st, "src": f"{a.src}@{a.rev}", "teacher": a.teacher, "samples": samples},
           open("/content/eval/v3_intents_stats.json", "w"), indent=1)

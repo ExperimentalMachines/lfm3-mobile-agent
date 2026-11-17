@@ -86,11 +86,24 @@ H100 = dict(gpu="H100", cpu=12, memory=65536, secrets=[SECRET])
 def v3_intents_h100(args: list) -> int:
     """Teacher-fill blank intents of the v2 train split -> push the v3 dataset (data/vm_v3_intents.py)."""
     os.makedirs("/content/eval", exist_ok=True)
-    e = dict(os.environ, TOKENIZERS_PARALLELISM="false", HF_HUB_DISABLE_XET="1", HF_HUB_DOWNLOAD_TIMEOUT="60",
-             HF_HUB_ETAG_TIMEOUT="60")
+    # xet stays ON (uploads without it crawled at ~2 MB/s); the earlier download stall is handled by parallel
+    # snapshot_download + timeouts inside vm_v3_intents.py
+    e = dict(os.environ, TOKENIZERS_PARALLELISM="false", HF_HUB_DOWNLOAD_TIMEOUT="60", HF_HUB_ETAG_TIMEOUT="60",
+             HF_XET_HIGH_PERFORMANCE="1")
     os.makedirs("/content/data", exist_ok=True)
     p = subprocess.run(["python", "/content/work/vm_v3_intents.py", *args], cwd="/content/work", env=e)
     print("INTENTS EXIT", p.returncode, flush=True)
+    return p.returncode
+
+
+@app.function(cpu=8, memory=32768, timeout=2 * 3600, secrets=[SECRET])
+def v3_build_cpu(args: list) -> int:
+    """Rebuild + push the v3 dataset from the saved labels (no GPU)."""
+    os.makedirs("/content/eval", exist_ok=True); os.makedirs("/content/data", exist_ok=True)
+    e = dict(os.environ, TOKENIZERS_PARALLELISM="false", HF_HUB_DOWNLOAD_TIMEOUT="60", HF_HUB_ETAG_TIMEOUT="60",
+             HF_XET_HIGH_PERFORMANCE="1", CUDA_VISIBLE_DEVICES="")
+    p = subprocess.run(["python", "/content/work/vm_v3_intents.py", *args], cwd="/content/work", env=e)
+    print("BUILD EXIT", p.returncode, flush=True)
     return p.returncode
 
 
@@ -106,6 +119,9 @@ def main(job: str = "", probe_only: bool = False, gpu: str = "a100"):
         return
     if job.endswith(".logprob.json"):
         print(general_logprob.remote(json.load(open(job))))
+        return
+    if job.endswith(".build.json"):
+        print("exit:", v3_build_cpu.remote(json.load(open(job))))
         return
     if job.endswith(".intents.json"):
         print("exit:", v3_intents_h100.remote(json.load(open(job))))
