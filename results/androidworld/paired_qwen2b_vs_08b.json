@@ -1,0 +1,54 @@
+{
+ "A": {
+  "run": "results/androidworld/qwen35_2b_ft/run_20261117T111259609427",
+  "successes": 16,
+  "n_recorded": 116,
+  "rate_over_expected": 0.13793103448275862,
+  "wilson95": [
+   0.08671766101537676,
+   0.21235711769251764
+  ]
+ },
+ "B": {
+  "run": "results/androidworld/qwen35_08b_ft/run_20261117T152004373700",
+  "successes": 12,
+  "n_recorded": 116,
+  "rate_over_expected": 0.10344827586206896,
+  "wilson95": [
+   0.06017210366825829,
+   0.1721478920594356
+  ]
+ },
+ "paired": {
+  "n_pairs": 112,
+  "both": 7,
+  "A_only": 9,
+  "B_only": 5,
+  "neither": 91,
+  "mcnemar_exact_p": 0.4239501953125,
+  "excluded_goal_or_seed_mismatch": [
+   "MarkorCreateFolder",
+   "MarkorCreateNoteAndSms",
+   "RecipeDeleteDuplicateRecipes3",
+   "SimpleCalendarDeleteEventsOnRelativeDay"
+  ],
+  "B_only_tasks": [
+   "CameraTakePhoto",
+   "SimpleCalendarDeleteOneEvent",
+   "SimpleSmsReply",
+   "SimpleSmsResend",
+   "SystemWifiTurnOnVerify"
+  ],
+  "A_only_tasks": [
+   "ContactsAddContact",
+   "ExpenseDeleteDuplicates",
+   "RecipeDeleteDuplicateRecipes",
+   "RecipeDeleteSingleRecipe",
+   "RecipeDeleteSingleWithRecipeWithNoise",
+   "SystemBluetoothTurnOff",
+   "SystemBluetoothTurnOn",
+   "SystemBrightnessMaxVerify",
+   "SystemBrightnessMinVerify"
+  ]
+ }
+}
