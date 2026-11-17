@@ -1,0 +1,840 @@
+{
+  "join_summary.json": {
+    "libra_amex": {
+      "rows": 19694,
+      "parsed_action_counts": {
+        "status": 1914,
+        "scroll": 3539,
+        "input_text": 2017,
+        "answer": 242,
+        "keyboard_enter": 187,
+        "wait": 20,
+        "navigate_back": 20,
+        "navigate_home": 1,
+        "click": 11753
+      },
+      "parse_failures": 1,
+      "joined_by_split": {
+        "dev_amex": 249,
+        "train": 488
+      },
+      "action_agrees_by_split": {
+        "dev_amex": 235,
+        "train": 448
+      },
+      "same_goals_by_split": {
+        "dev_amex": 249,
+        "train": 488
+      }
+    },
+    "libra_odyssey": {
+      "rows": 21234,
+      "parsed_action_counts": {
+        "status": 1841,
+        "input_text": 3281,
+        "navigate_home": 1914,
+        "scroll": 841,
+        "navigate_back": 55,
+        "wait": 61,
+        "answer": 7,
+        "click": 13153,
+        "long_press": 81
+      },
+      "parse_failures": 0,
+      "joined_by_split": {
+        "dev_odyssey": 182,
+        "train": 217
+      },
+      "action_agrees_by_split": {
+        "dev_odyssey": 162,
+        "train": 209
+      },
+      "same_goals_by_split": {
+        "dev_odyssey": 182,
+        "train": 216
+      }
+    },
+    "aguvis_amex": {
+      "rows": 38469,
+      "parsed_action_counts": {
+        "scroll": 7627,
+        "click": 24802,
+        "mobile.terminate": 2824,
+        "input_text": 2418,
+        "UNSUPPORTED_KEY": 650,
+        "navigate_back": 135,
+        "navigate_home": 13
+      },
+      "parse_failures": 0,
+      "joined_by_split": {
+        "train": 873,
+        "dev_amex": 468
+      },
+      "action_agrees_by_split": {
+        "train": 871,
+        "dev_amex": 468
+      },
+      "same_goals_by_split": {
+        "train": 873,
+        "dev_amex": 468
+      }
+    },
+    "aguvis_odyssey": {
+      "rows": 118282,
+      "parsed_action_counts": {
+        "click": 77244,
+        "input_text": 12405,
+        "scroll": 11325,
+        "navigate_home": 9098,
+        "mobile.terminate": 7486,
+        "navigate_back": 232,
+        "mobile.long_press": 492
+      },
+      "parse_failures": 0,
+      "joined_by_split": {
+        "train": 1106,
+        "dev_odyssey": 954
+      },
+      "action_agrees_by_split": {
+        "train": 1093,
+        "dev_odyssey": 945
+      },
+      "same_goals_by_split": {
+        "train": 1104,
+        "dev_odyssey": 954
+      }
+    }
+  },
+  "sample_summary.json": {
+    "craigwu__GUI_Reflection_SFT_train/sft_reflection_ineffective_15k.jsonl": {
+      "n_available": 838,
+      "sample_rows": 40,
+      "sample_file": "craigwu__GUI_Reflection_SFT_train/sft_reflection_ineffective_15k.jsonl.review40.json",
+      "image_count": {
+        "3": 202,
+        "2": 147,
+        "5": 308,
+        "4": 181
+      },
+      "sources": {
+        "Android_Control": 838
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 38
+    },
+    "craigwu__GUI_Reflection_SFT_train/sft_reflection_modify_goal_17k.jsonl": {
+      "n_available": 892,
+      "sample_rows": 40,
+      "sample_file": "craigwu__GUI_Reflection_SFT_train/sft_reflection_modify_goal_17k.jsonl.review40.json",
+      "image_count": {
+        "4": 203,
+        "5": 282,
+        "2": 173,
+        "3": 234
+      },
+      "sources": {
+        "Android_Control": 892
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 466
+    },
+    "HanXiao1999__UI-Genie-Agent-16k/AMEX_Agent_34K.jsonl": {
+      "n_available": 475,
+      "sample_rows": 40,
+      "sample_file": "HanXiao1999__UI-Genie-Agent-16k/AMEX_Agent_34K.jsonl.review40.json",
+      "image_count": {
+        "1": 475
+      },
+      "sources": {
+        "null": 475
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 0
+    },
+    "craigwu__GUI_Reflection_Task_Suite_train/action_verification_Android_Control_32k.jsonl": {
+      "n_available": 3056,
+      "sample_rows": 40,
+      "sample_file": "craigwu__GUI_Reflection_Task_Suite_train/action_verification_Android_Control_32k.jsonl.review40.json",
+      "image_count": {
+        "2": 3056
+      },
+      "sources": {
+        "Android_Control": 3056
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 0
+    },
+    "craigwu__GUI_Reflection_Task_Suite_train/mistake_reattempt_AMEX_41k.jsonl": {
+      "n_available": 2319,
+      "sample_rows": 40,
+      "sample_file": "craigwu__GUI_Reflection_Task_Suite_train/mistake_reattempt_AMEX_41k.jsonl.review40.json",
+      "image_count": {
+        "1": 2319
+      },
+      "sources": {
+        "AMEX": 2319
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 0
+    },
+    "craigwu__GUI_Reflection_Task_Suite_train/action_reversal_Android_Control_4k.jsonl": {
+      "n_available": 915,
+      "sample_rows": 40,
+      "sample_file": "craigwu__GUI_Reflection_Task_Suite_train/action_reversal_Android_Control_4k.jsonl.review40.json",
+      "image_count": {
+        "2": 915
+      },
+      "sources": {
+        "Android_Control": 915
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 0
+    },
+    "OS-Copilot__OS-Genesis-mobile-data/os_genesis_ac_training_data.jsonl": {
+      "n_available": 904,
+      "sample_rows": 40,
+      "sample_file": "OS-Copilot__OS-Genesis-mobile-data/os_genesis_ac_training_data.jsonl.review40.json",
+      "image_count": {
+        "1": 904
+      },
+      "sources": {
+        "null": 904
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 0
+    },
+    "OS-Copilot__OS-Genesis-mobile-data/os_genesis_aw_training_data.jsonl": {
+      "n_available": 753,
+      "sample_rows": 40,
+      "sample_file": "OS-Copilot__OS-Genesis-mobile-data/os_genesis_aw_training_data.jsonl.review40.json",
+      "image_count": {
+        "1": 753
+      },
+      "sources": {
+        "null": 753
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 0
+    },
+    "xlangai__aguvis-stage2/amex-l2.json": {
+      "n_available": 38469,
+      "sample_rows": 40,
+      "sample_file": "xlangai__aguvis-stage2/amex-l2.json.review40.json",
+      "image_count": {
+        "1": 38468,
+        "2": 1
+      },
+      "sources": {
+        "null": 38469
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 135
+    },
+    "xlangai__aguvis-stage2/gui-odyssey-l3.json": {
+      "n_available": 118282,
+      "sample_rows": 40,
+      "sample_file": "xlangai__aguvis-stage2/gui-odyssey-l3.json.review40.json",
+      "image_count": {
+        "1": 118282
+      },
+      "sources": {
+        "null": 118282
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 232
+    },
+    "xlangai__aguvis-stage2/gui-odyssey-l2.json": {
+      "n_available": 118282,
+      "sample_rows": 40,
+      "sample_file": "xlangai__aguvis-stage2/gui-odyssey-l2.json.review40.json",
+      "image_count": {
+        "1": 118282
+      },
+      "sources": {
+        "null": 118282
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 232
+    },
+    "xlangai__aguvis-stage2/amex-l3.json": {
+      "n_available": 38469,
+      "sample_rows": 40,
+      "sample_file": "xlangai__aguvis-stage2/amex-l3.json.review40.json",
+      "image_count": {
+        "1": 38468,
+        "2": 1
+      },
+      "sources": {
+        "null": 38469
+      },
+      "answer_mentions_outputs": 0,
+      "back_outputs": 135
+    },
+    "Mobile-R1__Mobile-R1/data.jsonl": {
+      "n_available": 1007,
+      "sample_rows": 40,
+      "sample_file": "Mobile-R1__Mobile-R1/data.jsonl.review40.json"
+    },
+    "GUI-Libra__GUI-Libra-81K-SFT/data__annotations__amex-reasoning_and_grounding_changecoord_1000.json": {
+      "n_available": 19694,
+      "sample_rows": 40,
+      "sample_file": "GUI-Libra__GUI-Libra-81K-SFT/data__annotations__amex-reasoning_and_grounding_changecoord_1000.json.review40.json",
+      "image_count": {
+        "1": 19694
+      },
+      "sources": {
+        "null": 19694
+      },
+      "answer_mentions_outputs": 242,
+      "back_outputs": 20
+    },
+    "GUI-Libra__GUI-Libra-81K-SFT/data__annotations__gui-odyssey-reasoning_and_grounding_changecoord_1000.json": {
+      "n_available": 21234,
+      "sample_rows": 40,
+      "sample_file": "GUI-Libra__GUI-Libra-81K-SFT/data__annotations__gui-odyssey-reasoning_and_grounding_changecoord_1000.json.review40.json",
+      "image_count": {
+        "1": 21234
+      },
+      "sources": {
+        "null": 21234
+      },
+      "answer_mentions_outputs": 7,
+      "back_outputs": 55
+    }
+  },
+  "other_summary.json": {
+    "sft_reflection_ineffective_15k.jsonl": {
+      "source_split_counts": {
+        "train": 838
+      },
+      "first_examples": {
+        "train": {
+          "line": 1,
+          "episode": "10004"
+        }
+      }
+    },
+    "sft_reflection_modify_goal_17k.jsonl": {
+      "source_split_counts": {
+        "train": 892
+      },
+      "first_examples": {
+        "train": {
+          "line": 1,
+          "episode": "0"
+        }
+      }
+    },
+    "ui_genie": {
+      "downloaded_complete_rows": 471,
+      "actions": {
+        "wait": 16,
+        "click": 273,
+        "type": 43,
+        "terminate": 67,
+        "swipe": 40,
+        "open": 24,
+        "system_button": 8
+      },
+      "images_in_repo": 471
+    },
+    "mobile_r1": {
+      "trajectories": 1007,
+      "steps": 3899,
+      "apps": {
+        "快手": 50,
+        "小红书": 50,
+        "飞猪": 50,
+        "百度": 50,
+        "抖音": 50,
+        "系统": 1,
+        "京东": 50,
+        "淘宝": 50,
+        "拼多多": 50,
+        "瑞幸咖啡": 18,
+        "": 5,
+        "哔哩哔哩": 50,
+        "微信": 6,
+        "美团": 50,
+        "百度地图": 50,
+        "应用商店": 4,
+        "支付宝": 1,
+        "天气": 50,
+        "日历": 50,
+        "浏览器": 39,
+        "计算器": 50,
+        "笔记": 19,
+        "手机系统": 2,
+        "腾讯地图": 50,
+        "饿了么": 50,
+        "夸克": 50,
+        "高德地图": 50,
+        "转转": 1,
+        "闲鱼": 5,
+        "大众点评": 1,
+        "B站": 5
+      },
+      "actions": {
+        "click": 3148,
+        "swipe": 92,
+        "type": 361,
+        "terminate": 291,
+        "system_button": 2
+      },
+      "blank_thoughts": 0,
+      "one_step_trajectories": 67,
+      "length_mismatches": 0,
+      "terminal_end": 291,
+      "unique_images": 3899
+    },
+    "aitz": {
+      "viewer_total": 4724,
+      "checked": 160,
+      "test_path_rows": 160,
+      "blank_action_explanations": 0,
+      "actions": {
+        "scroll": 33,
+        "click": 84,
+        "input": 14,
+        "press": 13,
+        "finished": 16
+      }
+    }
+  },
+  "mobile_r1_defects.json": {
+    "type_payloads": {
+      "success": 361
+    },
+    "malformed": [
+      {
+        "row": 10,
+        "step": 4,
+        "action": "\"Action not recognized\""
+      },
+      {
+        "row": 222,
+        "step": 4,
+        "action": "\"Action not recognized\""
+      },
+      {
+        "row": 283,
+        "step": 4,
+        "action": "\"Action not recognized\""
+      },
+      {
+        "row": 767,
+        "step": 4,
+        "action": "\"Action not recognized\""
+      },
+      {
+        "row": 882,
+        "step": 4,
+        "action": "\"Action not recognized\""
+      }
+    ]
+  },
+  "libra_answer_filter_counts": {
+    "eligible": 132,
+    "dev_episode": 10,
+    "before_terminal_cut_or_nonterminal_answer": 86,
+    "source_flag": 7,
+    "no_supported_prefix": 7
+  },
+  "visual_reviews": [
+    {
+      "visual_id": 1,
+      "row": 1434,
+      "image": "e01cfac051f04b5190a7e37e6c212e78step10.png",
+      "episode_id": "e01cfac051f04b5190a7e37e6c212e78",
+      "step_idx": 11,
+      "visual_judgment": "Visible performer and tracked-event control support the factual answer; earlier next-event selection not replayed."
+    },
+    {
+      "visual_id": 2,
+      "row": 178,
+      "image": "5b2108728f054994acd898d7bb762e4dstep7.png",
+      "episode_id": "5b2108728f054994acd898d7bb762e4d",
+      "step_idx": 8,
+      "visual_judgment": "Venue name visibly supports answer; second-show ordering depends on earlier history."
+    },
+    {
+      "visual_id": 3,
+      "row": 2827,
+      "image": "19fa0b0e11d842c8850b844db163a182step7.png",
+      "episode_id": "19fa0b0e11d842c8850b844db163a182",
+      "step_idx": 8,
+      "visual_judgment": "Selected XL card visibly shows the answer range."
+    },
+    {
+      "visual_id": 4,
+      "row": 2347,
+      "image": "ba5e5178117d45c7b39054d96be0c423step4.png",
+      "episode_id": "ba5e5178117d45c7b39054d96be0c423",
+      "step_idx": 5,
+      "visual_judgment": "Latest inbound message and sender visibly support answer."
+    },
+    {
+      "visual_id": 5,
+      "row": 2586,
+      "image": "091f23e469c74caf8cabfaaec140ac00step7.png",
+      "episode_id": "091f23e469c74caf8cabfaaec140ac00",
+      "step_idx": 8,
+      "visual_judgment": "Visible age field supports 16+; earlier second-show selection not replayed."
+    },
+    {
+      "visual_id": 6,
+      "row": 1816,
+      "image": "6ef1ead2af8c4e4f8a6ff188037323ccstep10.png",
+      "episode_id": "6ef1ead2af8c4e4f8a6ff188037323cc",
+      "step_idx": 11,
+      "visual_judgment": "First transit option visibly shows 29 minutes."
+    },
+    {
+      "visual_id": 7,
+      "row": 1473,
+      "image": "174c6b290d3f4695936e8ad27701761cstep5.png",
+      "episode_id": "174c6b290d3f4695936e8ad27701761c",
+      "step_idx": 6,
+      "visual_judgment": "Official-site ticket listing visibly shows the stated price."
+    },
+    {
+      "visual_id": 8,
+      "row": 974,
+      "image": "4ab147b06d524c23aca4e25265fcd206step2.png",
+      "episode_id": "4ab147b06d524c23aca4e25265fcd206",
+      "step_idx": 3,
+      "visual_judgment": "Forecast for the following date visibly shows the humidity range."
+    },
+    {
+      "visual_id": 9,
+      "row": 1900,
+      "image": "9ab05ab176134faa9dda75a4efe75224step7.png",
+      "episode_id": "9ab05ab176134faa9dda75a4efe75224",
+      "step_idx": 8,
+      "visual_judgment": "Third visible result agrees with the named event; search/sort visible."
+    },
+    {
+      "visual_id": 10,
+      "row": 7753,
+      "image": "08259a339eb641d584a64ab66516033dstep6.png",
+      "episode_id": "08259a339eb641d584a64ab66516033d",
+      "step_idx": 7,
+      "visual_judgment": "Goal says euros but filter is pounds; reject goal/filter mismatch."
+    },
+    {
+      "visual_id": 11,
+      "row": 201,
+      "image": "4e8bb60460ef48208908f52d236797efstep6.png",
+      "episode_id": "4e8bb60460ef48208908f52d236797ef",
+      "step_idx": 7,
+      "visual_judgment": "Lottery section visibly supports answer and open-entry status."
+    },
+    {
+      "visual_id": 12,
+      "row": 71,
+      "image": "292d9eae4ebc4aefaa40543f859c5112step3.png",
+      "episode_id": "292d9eae4ebc4aefaa40543f859c5112",
+      "step_idx": 4,
+      "visual_judgment": "Cart subtotal visibly supports product-total answer; do not relabel as a checkout grand total."
+    },
+    {
+      "visual_id": 13,
+      "row": 6722,
+      "image": "8fbd324ce4934f46b1ba283e46904643step8.png",
+      "episode_id": "8fbd324ce4934f46b1ba283e46904643",
+      "step_idx": 9,
+      "visual_judgment": "Address is visible, but desired date/order are not established by the endpoint."
+    },
+    {
+      "visual_id": 14,
+      "row": 5423,
+      "image": "35935d95104d4c65ab1fea527d05f572step8.png",
+      "episode_id": "35935d95104d4c65ab1fea527d05f572",
+      "step_idx": 9,
+      "visual_judgment": "Boarding stop visibly supports answer; full route selection not replayed."
+    },
+    {
+      "visual_id": 15,
+      "row": 1995,
+      "image": "bebd87c3794c4838aab08f613de43f4bstep8.png",
+      "episode_id": "bebd87c3794c4838aab08f613de43f4b",
+      "step_idx": 9,
+      "visual_judgment": "First three billed cast members visible."
+    },
+    {
+      "visual_id": 16,
+      "row": 7772,
+      "image": "026f6537e17d4c4890ccec3b0f91f749step12.png",
+      "episode_id": "026f6537e17d4c4890ccec3b0f91f749",
+      "step_idx": 13,
+      "visual_judgment": "Director filter and descending release order visible; first title/year agree."
+    },
+    {
+      "visual_id": 17,
+      "row": 1343,
+      "image": "4e9ff9b9c02a4e03a7cc887d6e8204d3step12.png",
+      "episode_id": "4e9ff9b9c02a4e03a7cc887d6e8204d3",
+      "step_idx": 13,
+      "visual_judgment": "One size visible; absence of other size options is not established on this screen."
+    },
+    {
+      "visual_id": 18,
+      "row": 3153,
+      "image": "d38816ed39474ec99ffe600d01b40358step2.png",
+      "episode_id": "d38816ed39474ec99ffe600d01b40358",
+      "step_idx": 3,
+      "visual_judgment": "14:00 row supports direction and speed."
+    },
+    {
+      "visual_id": 19,
+      "row": 5052,
+      "image": "a9f633a394e74f78843aa30bd2792346step19.png",
+      "episode_id": "a9f633a394e74f78843aa30bd2792346",
+      "step_idx": 20,
+      "visual_judgment": "Free admission is visible; next-week/non-promoted selection not established at endpoint."
+    },
+    {
+      "visual_id": 20,
+      "row": 578,
+      "image": "87a4e07a65b343b38cb018389a976728step6.png",
+      "episode_id": "87a4e07a65b343b38cb018389a976728",
+      "step_idx": 7,
+      "visual_judgment": "Rating 4.4 visible; fifth-trending selection not established at endpoint."
+    },
+    {
+      "visual_id": 21,
+      "row": 3486,
+      "image": "3056929fb56a426a8334855b99bd4ddestep2.png",
+      "episode_id": "3056929fb56a426a8334855b99bd4dde",
+      "step_idx": 3,
+      "visual_judgment": "Speed 9 visible; compass-only direction requires closer check, marked uncertain."
+    },
+    {
+      "visual_id": 22,
+      "row": 5374,
+      "image": "f502e886c78146dfb2f1efc2a331c781step19.png",
+      "episode_id": "f502e886c78146dfb2f1efc2a331c781",
+      "step_idx": 20,
+      "visual_judgment": "Count 772 and date filter visible."
+    },
+    {
+      "visual_id": 23,
+      "row": 7723,
+      "image": "bec4e7f9cd84416f8ff742209df257c3step12.png",
+      "episode_id": "bec4e7f9cd84416f8ff742209df257c3",
+      "step_idx": 13,
+      "visual_judgment": "Endpoint shows packaging dimensions, not claimed curtain height 250 cm; unsupported without earlier evidence."
+    },
+    {
+      "visual_id": 24,
+      "row": 3111,
+      "image": "57b0f0bcf4954b2985f11274d4f3426dstep11.png",
+      "episode_id": "57b0f0bcf4954b2985f11274d4f3426d",
+      "step_idx": 12,
+      "visual_judgment": "Phone number visible; non-sponsored rank depends on history."
+    },
+    {
+      "visual_id": 25,
+      "row": 812,
+      "image": "f0d6c7e79dd44514acfec3d278af0a9dstep6.png",
+      "episode_id": "f0d6c7e79dd44514acfec3d278af0a9d",
+      "step_idx": 7,
+      "visual_judgment": "Rating 8.7/10 visible."
+    },
+    {
+      "visual_id": 26,
+      "row": 585,
+      "image": "b6779b7b382e4a558ea0fb0fb21f41b3step4.png",
+      "episode_id": "b6779b7b382e4a558ea0fb0fb21f41b3",
+      "step_idx": 5,
+      "visual_judgment": "Latest inbound message visible."
+    },
+    {
+      "visual_id": 27,
+      "row": 7491,
+      "image": "7adfedba188c45b6a6fd4d718234f7aestep7.png",
+      "episode_id": "7adfedba188c45b6a6fd4d718234f7ae",
+      "step_idx": 8,
+      "visual_judgment": "Run time and intermission visible; first-show selection depends on history."
+    },
+    {
+      "visual_id": 28,
+      "row": 4691,
+      "image": "5a4aebe125014b01936eb26293df178fstep10.png",
+      "episode_id": "5a4aebe125014b01936eb26293df178f",
+      "step_idx": 11,
+      "visual_judgment": "Latest selected date/time visible, earlier claimed time is not; requires unavailable visual evidence in our text-history format."
+    },
+    {
+      "visual_id": 29,
+      "row": 4791,
+      "image": "096ae07ea50f4fecaf9534ba428d8a7cstep8.png",
+      "episode_id": "096ae07ea50f4fecaf9534ba428d8a7c",
+      "step_idx": 9,
+      "visual_judgment": "Ticket type list and ages visible."
+    },
+    {
+      "visual_id": 30,
+      "row": 3744,
+      "image": "eddcce5e496c48d1b6f1f5aba5b3d1c3step11.png",
+      "episode_id": "eddcce5e496c48d1b6f1f5aba5b3d1c3",
+      "step_idx": 12,
+      "visual_judgment": "First offered date visible; current-date interpretation not replayed."
+    },
+    {
+      "visual_id": 31,
+      "row": 4077,
+      "image": "301f0efdcd1b474db0550193b025d3abstep9.png",
+      "episode_id": "301f0efdcd1b474db0550193b025d3ab",
+      "step_idx": 10,
+      "visual_judgment": "First All Results entry and 3.7 rating visible, separated from promoted card."
+    },
+    {
+      "visual_id": 32,
+      "row": 3811,
+      "image": "a74928d8db8a466b8fefead6eab3ba08step6.png",
+      "episode_id": "a74928d8db8a466b8fefead6eab3ba08",
+      "step_idx": 7,
+      "visual_judgment": "Total visible but first item quantity is 1; requested quantity-2 state is not established."
+    },
+    {
+      "visual_id": 33,
+      "row": 624,
+      "image": "0a9d43aff70f44559d71bcfb09d883c8step2.png",
+      "episode_id": "0a9d43aff70f44559d71bcfb09d883c8",
+      "step_idx": 3,
+      "visual_judgment": "Next-day forecast min/max visible."
+    },
+    {
+      "visual_id": 34,
+      "row": 4420,
+      "image": "20741b582b3440789ead7d835615aecbstep16.png",
+      "episode_id": "20741b582b3440789ead7d835615aecb",
+      "step_idx": 17,
+      "visual_judgment": "Info fields visible but result is a food/culture tour, requiring review of concert/date constraints."
+    },
+    {
+      "visual_id": 35,
+      "row": 1067,
+      "image": "c0131b3076be484a875a13f01b725803step11.png",
+      "episode_id": "c0131b3076be484a875a13f01b725803",
+      "step_idx": 12,
+      "visual_judgment": "Price sort and first ticket price visible."
+    },
+    {
+      "visual_id": 36,
+      "row": 3963,
+      "image": "1cc69540849e491bb4fc78ed1f09c554step9.png",
+      "episode_id": "1cc69540849e491bb4fc78ed1f09c554",
+      "step_idx": 10,
+      "visual_judgment": "Performer list visible; taxonomy entries also listed by app, keep answer wording aligned."
+    },
+    {
+      "visual_id": 37,
+      "row": 718,
+      "image": "adcc9f63981949a3bc63fa61d27f92d5step8.png",
+      "episode_id": "adcc9f63981949a3bc63fa61d27f92d5",
+      "step_idx": 9,
+      "visual_judgment": "Four results are visible; the claim last three selects the first three and is not justified by visible chronology."
+    },
+    {
+      "visual_id": 38,
+      "row": 6163,
+      "image": "11dc16a004a24c7fb3079d02c65d0675step11.png",
+      "episode_id": "11dc16a004a24c7fb3079d02c65d0675",
+      "step_idx": 12,
+      "visual_judgment": "Phone number visible; ranking depends on prior selection."
+    },
+    {
+      "visual_id": 39,
+      "row": 4447,
+      "image": "cddec0b77d44448dad2d5555ffe4fe43step4.png",
+      "episode_id": "cddec0b77d44448dad2d5555ffe4fe43",
+      "step_idx": 5,
+      "visual_judgment": "Shopping-bag total visibly supports answer."
+    },
+    {
+      "visual_id": 40,
+      "row": 4985,
+      "image": "88c08eec09c94c3eb0913f53b3861a7fstep16.png",
+      "episode_id": "88c08eec09c94c3eb0913f53b3861a7f",
+      "step_idx": 17,
+      "visual_judgment": "4.7 is labelled provider ratings, not clearly item overall rating; also chosen size differs from requested 9. Reject unqualified answer."
+    }
+  ],
+  "revisions": {
+    "craigwu/GUI_Reflection_SFT_train": "58bca9449fc3ce46d52641a0f8e59c9da1f99313",
+    "HanXiao1999/UI-Genie-Agent-16k": "13cf4f3e66e9bd2528f9cf080e72d7983394f27d",
+    "craigwu/GUI_Reflection_Task_Suite_train": "df3dcc4e81ddbe92349da2d38f8cabb4c9439d69",
+    "OS-Copilot/OS-Genesis-mobile-data": "872b66a76210a43fca7c15c2b160c31829e9dc52",
+    "xlangai/aguvis-stage2": "bd6f1ed43498beb8e5474adcb2592c7d521d692e",
+    "xwm/AITZ": "633599cc37e81e00bb2f050d086cd9c63d191947",
+    "xuyifan/android-lab-train": "99627f2eeceb45050c23fe25b16ba7f0fd06c9d1",
+    "Mobile-R1/Mobile-R1": "c3904f0fdad03a3a4191492880312bda5ad36516",
+    "GUI-Libra/GUI-Libra-81K-SFT": "05bb2c5f7e81de38f3d7826739db46913dd08a23"
+  },
+  "audit_date": "2026-11-17",
+  "admission_decision": {
+    "craigwu/GUI_Reflection_SFT_train": "REJECT for next budget; 0 imported training rows",
+    "craigwu/GUI_Reflection_Task_Suite_train": "REJECT for next budget; 0 imported training rows",
+    "xuyifan/android-lab-train": "REJECT for next budget; 0 imported training rows",
+    "GUI-Libra/GUI-Libra-81K-SFT": "REJECT for next budget; 0 imported training rows",
+    "xlangai/aguvis-stage2": "REJECT for next budget; 0 imported training rows",
+    "xwm/AITZ": "REJECT for next budget; 0 imported training rows",
+    "HanXiao1999/UI-Genie-Agent-16k": "REJECT for next budget; 0 imported training rows",
+    "OS-Copilot/OS-Genesis-mobile-data": "REJECT for next budget; 0 imported training rows",
+    "Mobile-R1/Mobile-R1": "REJECT for next budget; 0 imported training rows"
+  },
+  "blank_intent_join_counts": {
+    "libra_amex": {
+      "blank_current": 488,
+      "blank_goal_projected_action_match": 448,
+      "semantic_intent_acceptance": "UNVERIFIED"
+    },
+    "libra_odyssey": {
+      "blank_current": 35,
+      "blank_goal_projected_action_match": 34,
+      "semantic_intent_acceptance": "UNVERIFIED"
+    },
+    "aguvis_amex": {
+      "blank_current": 873,
+      "blank_goal_projected_action_match": 871,
+      "semantic_intent_acceptance": "UNVERIFIED"
+    },
+    "aguvis_odyssey": {
+      "blank_current": 189,
+      "blank_goal_projected_action_match": 183,
+      "semantic_intent_acceptance": "UNVERIFIED"
+    }
+  },
+  "libra_answer_candidate_size": {
+    "endpoints": 132,
+    "unique_episodes": 132,
+    "prefix_rows": 1166,
+    "admitted": 0,
+    "qualification": "Structural screen with stubbed image membership, not replayed transitions."
+  },
+  "os_genesis_collection_evidence": {
+    "readme": "https://github.com/OS-Copilot/OS-Genesis/blob/main/collection/README.md",
+    "code": "https://github.com/OS-Copilot/OS-Genesis/blob/main/collection/random_walk_aw.py",
+    "verified_operations": [
+      "env_launcher.load_and_setup_env",
+      "registry.TaskRegistry.ANDROID_WORLD_FAMILY",
+      "task_type.generate_random_params",
+      "task.initialize_task(env)"
+    ],
+    "app_mapping_includes_all_14_families": true,
+    "exact_goal_or_seed_duplication": "UNVERIFIED"
+  },
+  "scope": {
+    "full_annotations_downloaded": "Libra AMEX/Odyssey and Aguvis AMEX/Odyssey L2/L3, about 1.21 GB combined; Mobile-R1 full JSONL",
+    "limited_media": "40 AMEX answer endpoints, fetched from matching filenames in Aguvis AMEX ZIP",
+    "media_caveat": "Byte identity with Libra image archives not verified; earlier trajectories not replayed.",
+    "selected_train_join_denominators": {
+      "amex": 873,
+      "odyssey": 1195
+    },
+    "join_metadata_scope": "Two of thirteen v2 train shards plus cached complete AMEX/Odyssey dev metadata",
+    "random_seed": 20261117
+  }
+}
