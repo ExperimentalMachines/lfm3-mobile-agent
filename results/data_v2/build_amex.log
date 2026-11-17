@@ -1,35 +1,37 @@
-Saving the dataset (0/2 shards):   0%|          | 0/7473 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):  13%|█▎        | 968/7473 [00:00<00:00, 7943.96 examples/s]Saving the dataset (0/2 shards):  26%|██▌       | 1936/7473 [00:00<00:00, 8351.20 examples/s]Saving the dataset (0/2 shards):  39%|███▉      | 2904/7473 [00:00<00:00, 8696.89 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 3737/7473 [00:00<00:00, 8696.89 examples/s]Saving the dataset (1/2 shards):  63%|██████▎   | 4705/7473 [00:00<00:00, 8532.48 examples/s]Saving the dataset (1/2 shards):  76%|███████▌  | 5673/7473 [00:00<00:00, 8514.42 examples/s]Saving the dataset (1/2 shards):  89%|████████▉ | 6641/7473 [00:00<00:00, 8675.37 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 7473/7473 [00:00<00:00, 8675.37 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 7473/7473 [00:00<00:00, 8406.33 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/491 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 491/491 [00:00<00:00, 5836.19 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 491/491 [00:00<00:00, 5823.33 examples/s]
+Saving the dataset (0/2 shards):   0%|          | 0/7075 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):  14%|█▍        | 974/7075 [00:00<00:01, 6025.85 examples/s]Saving the dataset (0/2 shards):  28%|██▊       | 1948/7075 [00:00<00:00, 6849.22 examples/s]Saving the dataset (0/2 shards):  41%|████▏     | 2922/7075 [00:00<00:00, 7568.36 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 3538/7075 [00:00<00:00, 7568.36 examples/s]Saving the dataset (1/2 shards):  64%|██████▍   | 4512/7075 [00:00<00:00, 7831.81 examples/s]Saving the dataset (1/2 shards):  78%|███████▊  | 5486/7075 [00:00<00:00, 7710.01 examples/s]Saving the dataset (1/2 shards):  91%|█████████▏| 6460/7075 [00:00<00:00, 8013.83 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 7075/7075 [00:00<00:00, 8013.83 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 7075/7075 [00:00<00:00, 7762.41 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/468 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 468/468 [00:00<00:00, 7154.62 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 468/468 [00:00<00:00, 7135.56 examples/s]
 {
  "episodes": 3046,
- "merged_type_enter": 477,
- "truncate_at_SWIPE": 817,
- "quarantine_complete": 1849,
- "truncate_at_TASK_COMPLETE": 1849,
+ "merged_type_enter": 449,
+ "truncate_at_SWIPE": 975,
+ "quarantine_complete": 1714,
+ "truncate_at_TASK_COMPLETE": 1714,
  "drop_ep_need_human_check": 56,
  "drop_ep_terminal_not_last": 2,
- "quarantine_task_impossible": 168,
- "truncate_at_TASK_IMPOSSIBLE": 168,
- "truncate_ambiguous_tap_after_submit": 6,
- "text_rejected_key_empty_or_typo": 148,
- "truncate_at_TYPE": 148,
- "merged_type_keyboard_submit": 34,
- "candidates_train": 24329,
- "candidates_dev": 1279,
+ "quarantine_task_impossible": 156,
+ "truncate_at_TASK_IMPOSSIBLE": 156,
+ "truncate_ambiguous_keyboard_tap": 5,
+ "text_rejected_key_empty_or_typo": 138,
+ "truncate_at_TYPE": 138,
+ "merged_type_keyboard_submit": 33,
+ "candidates_train": 22625,
+ "candidates_dev": 1201,
  "amex_train_drop_frame_mismatch": 3,
- "amex_train_rows": 7473,
+ "amex_train_rows": 7075,
  "amex_train_actions": {
-  "click": 4892,
-  "input_text": 1000,
-  "scroll": 1548,
-  "navigate_back": 20,
-  "keyboard_enter": 13
+  "click": 4569,
+  "input_text": 999,
+  "scroll": 1470,
+  "keyboard_enter": 12,
+  "navigate_back": 24,
+  "navigate_home": 1
  },
- "amex_dev_rows": 491,
+ "amex_dev_rows": 468,
  "amex_dev_actions": {
-  "click": 359,
-  "scroll": 102,
-  "input_text": 24,
-  "navigate_back": 6
+  "click": 332,
+  "scroll": 100,
+  "input_text": 29,
+  "navigate_back": 6,
+  "navigate_home": 1
  }
 }

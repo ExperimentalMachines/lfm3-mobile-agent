@@ -1,61 +1,63 @@
 {
  "episodes": 8334,
- "intent_kept": 48952,
- "merged_type_keyboard_submit": 3103,
- "intent_blanked_inconsistent": 10132,
- "quarantine_incomplete": 198,
- "truncate_at_INCOMPLETE": 198,
+ "intent_kept": 46180,
+ "truncate_ambiguous_keyboard_tap": 172,
  "drop_ep_tablet_or_fold": 2743,
- "truncate_at_SCROLL": 1279,
- "quarantine_complete": 3603,
- "truncate_at_COMPLETE": 3603,
- "text_rejected_key_empty_or_typo": 75,
- "truncate_at_TEXT": 75,
+ "intent_blanked_inconsistent": 9160,
+ "truncate_at_SCROLL": 1417,
+ "truncate_scroll_not_a_page_scroll": 126,
+ "merged_type_keyboard_submit": 2839,
+ "quarantine_complete": 3244,
+ "truncate_at_COMPLETE": 3244,
+ "quarantine_incomplete": 163,
+ "truncate_at_INCOMPLETE": 163,
+ "text_rejected_key_empty_or_typo": 72,
+ "truncate_at_TEXT": 72,
  "drop_ep_ambiguous_calendar_app": 307,
- "truncate_at_CLICK_KEY_APPSELECT": 91,
- "truncate_ambiguous_tap_after_submit": 30,
+ "truncate_at_CLICK_KEY_APPSELECT": 82,
  "drop_ep_aw_app": 8,
- "candidates_train": 47235,
- "candidates_dev": 11849
+ "candidates_train": 44207,
+ "candidates_dev": 11133
 }
-Saving the dataset (0/3 shards):   0%|          | 0/9996 [00:00<?, ? examples/s]Saving the dataset (0/3 shards):   9%|▉         | 933/9996 [00:00<00:01, 5469.83 examples/s]Saving the dataset (0/3 shards):  19%|█▊        | 1866/9996 [00:00<00:01, 6374.82 examples/s]Saving the dataset (0/3 shards):  28%|██▊       | 2799/9996 [00:00<00:01, 6939.94 examples/s]Saving the dataset (1/3 shards):  33%|███▎      | 3332/9996 [00:00<00:00, 6939.94 examples/s]Saving the dataset (1/3 shards):  43%|████▎     | 4265/9996 [00:00<00:00, 7245.46 examples/s]Saving the dataset (1/3 shards):  52%|█████▏    | 5198/9996 [00:00<00:00, 7454.04 examples/s]Saving the dataset (1/3 shards):  61%|██████▏   | 6131/9996 [00:00<00:00, 7520.92 examples/s]Saving the dataset (2/3 shards):  67%|██████▋   | 6664/9996 [00:00<00:00, 7520.92 examples/s]Saving the dataset (2/3 shards):  76%|███████▌  | 7597/9996 [00:01<00:00, 7631.71 examples/s]Saving the dataset (2/3 shards):  85%|████████▌ | 8530/9996 [00:01<00:00, 7260.61 examples/s]Saving the dataset (2/3 shards):  95%|█████████▍| 9463/9996 [00:01<00:00, 7337.67 examples/s]Saving the dataset (3/3 shards): 100%|██████████| 9996/9996 [00:01<00:00, 7337.67 examples/s]Saving the dataset (3/3 shards): 100%|██████████| 9996/9996 [00:01<00:00, 7254.75 examples/s]
-Saving the dataset (0/1 shards):   0%|          | 0/1000 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):  94%|█████████▍| 938/1000 [00:00<00:00, 6358.68 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1000/1000 [00:00<00:00, 6358.68 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1000/1000 [00:00<00:00, 6420.00 examples/s]
+Saving the dataset (0/3 shards):   0%|          | 0/9998 [00:00<?, ? examples/s]Saving the dataset (0/3 shards):   9%|▉         | 938/9998 [00:00<00:01, 6150.39 examples/s]Saving the dataset (0/3 shards):  19%|█▉        | 1876/9998 [00:00<00:01, 7182.58 examples/s]Saving the dataset (0/3 shards):  28%|██▊       | 2814/9998 [00:00<00:00, 7702.03 examples/s]Saving the dataset (1/3 shards):  33%|███▎      | 3333/9998 [00:00<00:00, 7702.03 examples/s]Saving the dataset (1/3 shards):  43%|████▎     | 4271/9998 [00:00<00:00, 8049.41 examples/s]Saving the dataset (1/3 shards):  52%|█████▏    | 5209/9998 [00:00<00:00, 8051.99 examples/s]Saving the dataset (1/3 shards):  61%|██████▏   | 6147/9998 [00:00<00:00, 8180.51 examples/s]Saving the dataset (2/3 shards):  67%|██████▋   | 6666/9998 [00:00<00:00, 8180.51 examples/s]Saving the dataset (2/3 shards):  76%|███████▌  | 7604/9998 [00:00<00:00, 8171.20 examples/s]Saving the dataset (2/3 shards):  85%|████████▌ | 8542/9998 [00:01<00:00, 8171.55 examples/s]Saving the dataset (2/3 shards):  95%|█████████▍| 9480/9998 [00:01<00:00, 7618.73 examples/s]Saving the dataset (3/3 shards): 100%|██████████| 9998/9998 [00:01<00:00, 7618.73 examples/s]Saving the dataset (3/3 shards): 100%|██████████| 9998/9998 [00:01<00:00, 7851.05 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/1000 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):  96%|█████████▌| 961/1000 [00:00<00:00, 7443.29 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1000/1000 [00:00<00:00, 7443.29 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1000/1000 [00:00<00:00, 7431.83 examples/s]
 {
  "episodes": 8334,
- "intent_kept": 48952,
- "merged_type_keyboard_submit": 3103,
- "intent_blanked_inconsistent": 10132,
- "quarantine_incomplete": 198,
- "truncate_at_INCOMPLETE": 198,
+ "intent_kept": 46180,
+ "truncate_ambiguous_keyboard_tap": 172,
  "drop_ep_tablet_or_fold": 2743,
- "truncate_at_SCROLL": 1279,
- "quarantine_complete": 3603,
- "truncate_at_COMPLETE": 3603,
- "text_rejected_key_empty_or_typo": 75,
- "truncate_at_TEXT": 75,
+ "intent_blanked_inconsistent": 9160,
+ "truncate_at_SCROLL": 1417,
+ "truncate_scroll_not_a_page_scroll": 126,
+ "merged_type_keyboard_submit": 2839,
+ "quarantine_complete": 3244,
+ "truncate_at_COMPLETE": 3244,
+ "quarantine_incomplete": 163,
+ "truncate_at_INCOMPLETE": 163,
+ "text_rejected_key_empty_or_typo": 72,
+ "truncate_at_TEXT": 72,
  "drop_ep_ambiguous_calendar_app": 307,
- "truncate_at_CLICK_KEY_APPSELECT": 91,
- "truncate_ambiguous_tap_after_submit": 30,
+ "truncate_at_CLICK_KEY_APPSELECT": 82,
  "drop_ep_aw_app": 8,
- "candidates_train": 47235,
- "candidates_dev": 11849,
- "odyssey_train_drop_landscape": 4,
- "odyssey_train_rows": 9996,
+ "candidates_train": 44207,
+ "candidates_dev": 11133,
+ "odyssey_train_drop_landscape": 2,
+ "odyssey_train_rows": 9998,
  "odyssey_train_actions": {
-  "click": 7016,
-  "navigate_home": 839,
-  "scroll": 749,
-  "input_text": 1292,
-  "long_press": 60,
-  "navigate_back": 40
+  "click": 7071,
+  "input_text": 1303,
+  "navigate_home": 880,
+  "scroll": 654,
+  "long_press": 55,
+  "navigate_back": 35
  },
  "odyssey_dev_rows": 1000,
  "odyssey_dev_actions": {
-  "click": 732,
-  "input_text": 122,
-  "scroll": 66,
-  "navigate_home": 74,
-  "long_press": 3,
+  "click": 686,
+  "input_text": 142,
+  "scroll": 71,
+  "navigate_home": 92,
+  "long_press": 6,
   "navigate_back": 3
  }
 }
