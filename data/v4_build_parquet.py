@@ -20,6 +20,7 @@ import argparse
 import json
 import os
 import random
+import re
 import shutil
 import sys
 import time
@@ -40,6 +41,8 @@ p.add_argument("--labels", required=True)
 p.add_argument("--candidates", default="data/v4work/v4_candidates.json")
 p.add_argument("--pool", default="data/v4work/app_pool.json")
 p.add_argument("--screenqa_rows", default="data/v4work/screenqa_rows.json")
+p.add_argument("--direct_check", default="", help="stats/v4_direct_check.json from vm_v4_teacher2.py")
+p.add_argument("--aw_patterns", default="data/v4work/aw_app_patterns.json")
 p.add_argument("--dup_final_question", type=int, default=4, help="total copies of each pure-question final answer row")
 p.add_argument("--dup_final_compound", type=int, default=2, help="total copies of each compound final answer row")
 p.add_argument("--work", required=True)
@@ -60,6 +63,9 @@ sqa_long = {r["key"]: r["answer"] for r in json.load(open(a.screenqa_rows))["row
 short = {k: v for k, v in labels["screenqa_short"].items() if safe_short(sqa_long[k], v)}
 REJECT = {"qa_strict_reject": len(qa_raw) - len(qa), "sqa_short_reject": len(labels["screenqa_short"]) - len(short)}
 print("strict re-check:", REJECT, flush=True)
+direct = json.load(open(a.direct_check)) if a.direct_check else {}
+DIRECT_OK = {k for k, v in direct.items() if v.get("ok")}
+REJECT["direct_question_fallback_to_compound"] = sum(1 for k in qa if cands[k]["kind"] == "question" and k not in DIRECT_OK)
 dev_keys = {k for k, c in cands.items() if c["split"] == "dev"}
 train_qa = {k for k in qa if cands[k]["split"] == "train"}
 dev_qa = {k for k in qa if cands[k]["split"] == "dev"}
@@ -79,7 +85,7 @@ print(f"downloaded {len(use)} train + {len(dev_files)} dev shards ({time.time() 
 
 def new_goal(key, orig):
     j, c = qa[key], cands[key]
-    if c["kind"] == "question":
+    if c["kind"] == "question" and key in DIRECT_OK:  # verified by vm_v4_teacher2.py; otherwise the compound form
         return f"{j['direct_question'].strip()} {j['format'].strip()}"
     rnd = random.Random(key)
     return rnd.choice(CONNECT).format(g=orig.rstrip(" ."), q=j["question"].strip(), f=j["format"].strip())
@@ -122,6 +128,36 @@ EP = {}  # (source, episode_id) -> required app names, from ALL train shards (ep
 for f in use:
     collect_apps(pq.ParquetFile(os.path.join(local, f)).read(columns=["source", "episode_id", "messages", "gt_action"]).to_pylist(), EP)
 print(f"app requirements for {len(EP)} episodes ({time.time() - t0:.0f}s)", flush=True)
+# AndroidWorld-app guard v2 (Codex pipeline audit #6): episode-wide app names (all histories + gold actions) checked
+# against android_world's own launcher patterns (re.match, as AW resolves names) and AW display names; goal prose
+# checked with whole-word app-type terms. Flagged episodes get no question copy and leave the dev splits.
+_awp = json.load(open(a.aw_patterns))
+_AW_PATS = [re.compile(x.lower()) for x in _awp["patterns"]] + [re.compile(re.escape(x)) for x in _awp["default_uris"]]
+_AW_NAMES = {x.lower() for x in ["Audio Recorder", "Broccoli", "Camera", "Chrome", "Clock", "Contacts", "Drive", "Files",
+             "Gmail", "Google", "Google Calendar", "Google Play", "Joplin", "Maps", "Markor", "Messages", "OpenTracks",
+             "OsmAnd", "Phone", "Photos", "Pro Expense", "Retro Music", "Settings", "Simple Calendar Pro",
+             "Simple Draw Pro", "Simple Gallery Pro", "Simple SMS Messenger", "Tasks", "VLC", "YouTube"]}
+_TERMS = re.compile(r"\b(?:android world|markor|joplin|broccoli|recipes?|expenses?|opentracks|open tracks|osmand|vlc|"
+                    r"retro music|music player|audio recorder|voice recorder|recorder|calendar|clock|alarms?|timers?|"
+                    r"stopwatch|contacts?|dialer|sms|messages?|messenger|files|file manager|gallery|photos|camera|"
+                    r"draw|tasks|to-do|todo|notes?|chrome|browser|settings|wi-?fi|bluetooth|brightness)\b", re.I)
+
+
+def aw_flag(key):
+    src, eid = key.split("/", 1)
+    names = EP.get((src, eid), [])
+    if any(n.lower() in _AW_NAMES or any(pt.match(n.lower()) for pt in _AW_PATS) or _TERMS.search(n) for n in names):
+        return True
+    return bool(_TERMS.search(cands[key]["goal"]))
+
+
+AW_FLAGGED = {k for k in qa if aw_flag(k)}
+qa = {k: v for k, v in qa.items() if k not in AW_FLAGGED}
+train_qa = {k for k in qa if cands[k]["split"] == "train"}
+dev_qa = {k for k in qa if cands[k]["split"] == "dev"}
+dev_comp = {k for k in dev_qa if cands[k]["kind"] == "compound"}  # "complete" controls only for action-only original goals
+REJECT["aw_guard_v2_flagged"] = len(AW_FLAGGED)
+print("guard v2 flagged", len(AW_FLAGGED), "; train qa", len(train_qa), "; dev qa", len(dev_qa), "; dev complete", len(dev_comp), flush=True)
 out_dir = os.path.join(a.work, "out")
 shutil.rmtree(out_dir, ignore_errors=True)
 os.makedirs(os.path.join(out_dir, "data"))
@@ -148,8 +184,8 @@ for f in use:
                 assert gt["action_type"] == "status" and gt.get("goal_status") == "complete", key
                 assert row["img_sha"] == cands[key]["img_sha"], key
                 orig_goal = msgs[1]["content"].split("\n", 1)[0].removeprefix("Goal: ")
-                comp = dict(row, messages=v4([dict(m) for m in msgs], ek, EP), split="dev_complete")
-                dev_complete.append(comp)
+                if key in dev_comp:
+                    dev_complete.append(dict(row, messages=v4([dict(m) for m in msgs], ek, EP), split="dev_complete"))
                 qm = v4(set_goal([dict(m) for m in msgs], new_goal(key, orig_goal)), ek, EP)
                 qm[2] = {"role": "assistant", "content": answer_json(final_answer(key)),
                          "reasoning_content": qa[key]["evidence"].strip()}
@@ -159,7 +195,7 @@ for f in use:
         if row["source"] == "screenqa":
             sk = f"{f}#{i}"
             if sk in short:
-                assert gt["action_type"] == "answer" and short[sk].lower() in gt["text"].lower(), sk
+                assert gt["action_type"] == "answer" and safe_short(gt["text"], short[sk]), sk
                 gt = {"action_type": "answer", "text": short[sk]}
                 msgs = [dict(m) for m in msgs]
                 msgs[2]["content"] = answer_json(short[sk])
@@ -199,7 +235,7 @@ for f in use:
 
 if full:
     assert seen_final == train_qa, f"{len(train_qa - seen_final)} labelled train episodes had no final row"
-    assert len(dev_answer) == len(dev_qa) == len(dev_complete), (len(dev_answer), len(dev_qa), len(dev_complete))
+    assert len(dev_answer) == len(dev_qa) and len(dev_complete) == len(dev_comp), (len(dev_answer), len(dev_qa), len(dev_complete))
 # dev splits: existing ones rewritten to the v4 prompt; two new ones from the held-out episodes
 schema = pq.ParquetFile(os.path.join(local, use[0])).schema_arrow
 for f in dev_files:
@@ -276,9 +312,10 @@ if a.dry_run:
     raise SystemExit(0)
 assert full, "refusing to upload a partial build"
 api.create_repo(OUT_REPO, repo_type="dataset", private=True, exist_ok=True)
-for extra_f, dst in ((a.candidates, "stats/v4_candidates.json"), (a.labels, "stats/v4_teacher_labels.json"),
+for extra_f, dst in ((a.candidates, "stats/v4_candidates.json"), (a.labels, "stats/v4_teacher_labels_used.json"),
                      (a.pool, "stats/app_pool.json"), (os.path.join(a.work, "v4_stats.json"), "stats/v4_stats.json")):
-    shutil.copy(extra_f, os.path.join(out_dir, os.path.basename(dst)))
+    os.makedirs(os.path.join(out_dir, "stats"), exist_ok=True)
+    shutil.copy(extra_f, os.path.join(out_dir, dst))
 api.upload_folder(folder_path=out_dir, repo_id=OUT_REPO, repo_type="dataset",
                   commit_message="v4: v4 prompt + navigate-then-answer copies + short ScreenQA answers")
 sha = api.dataset_info(OUT_REPO).sha

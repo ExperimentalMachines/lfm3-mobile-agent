@@ -1,6 +1,7 @@
 #!/bin/bash
 # Run one SEALED AndroidWorld arm on a held-out seed (docs/PREREG_v4.md): results go to results/androidworld_sealed/,
-# per-task outcome lines are dropped from the log so nobody reads results before every arm on the seed has finished.
+# the runner's full output is written only inside the sealed dir; progress = episode-file counts; nobody reads results
+# before every arm on the seed has finished. Exit status and the 116-episode inventory decide "finished" vs "FAILED".
 # Usage: bash scripts/local_sealed_aw_v2.sh <arm> <seed> <console_port> <grpc_port> <server_port> [resume_run_dir]
 #   arm = v1 | v3 | v4 | guiowl
 set -u
@@ -8,7 +9,7 @@ cd /Users/alpha/lfm3-android
 ARM=$1; SEED=$2; CP=$3; GP=$4; PORT=$5; RESUME=${6:-}
 NAME=${ARM}_seed${SEED}
 OUT=results/androidworld_sealed/$NAME
-LOG=logs/aw_sealed_$NAME.log
+LOG=$OUT/run_output.SEALED.log   # full runner output stays inside the sealed dir (AW prints per-episode result tables)
 mkdir -p "$OUT"
 # outcome lines (suite_utils prints "Task Successful/Failed") and android_env fork noise are not written to the log
 FILTER="Task Successful\|Task Failed\|_os_env_vars\|FD from fork\|fork_posix"
@@ -34,7 +35,10 @@ nohup llama-server "${SRV[@]}" -np 1 -ngl 99 --port $PORT --host 127.0.0.1 > log
 until curl -s 127.0.0.1:$PORT/health | grep -q ok; do sleep 3; done
 echo "[$(date +%T)] server :$PORT up; starting SEALED $NAME (seed $SEED) on emulator $CP"
 .venv-aw/bin/python eval/androidworld/run_aw.py --console_port=$CP --grpc_port=$GP --server_url=http://127.0.0.1:$PORT \
-  --task_random_seed=$SEED --n_task_combinations=1 --output_path=$OUT ${RESUME:+--checkpoint_dir=$RESUME} "${RUN[@]}" 2>&1 \
-  | grep --line-buffered -v "$FILTER" >> "$LOG"
+  --task_random_seed=$SEED --n_task_combinations=1 --output_path=$OUT ${RESUME:+--checkpoint_dir=$RESUME} "${RUN[@]}" \
+  >> "$LOG" 2>&1
+RC=$?
 pkill -f "[l]lama-server.*--port $PORT "
-echo "[$(date +%T)] SEALED $NAME AndroidWorld finished"
+N=$(ls -d $OUT/run_*/ 2>/dev/null | tail -1 | xargs -I{} sh -c 'ls {}*.pkl.gz 2>/dev/null | wc -l' | tr -d ' ')
+if [ "$RC" = 0 ] && [ "${N:-0}" = 116 ]; then echo "[$(date +%T)] SEALED $NAME AndroidWorld finished"
+else echo "[$(date +%T)] SEALED $NAME AndroidWorld FAILED (exit $RC, ${N:-0}/116 episodes)"; exit 1; fi

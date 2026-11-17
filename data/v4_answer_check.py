@@ -29,10 +29,15 @@ def words(s):
     return set(re.findall(r"[a-z]+(?:'[a-z]+)?", NUM.sub(" ", s)))
 
 
+CUR = re.compile(r"[$€£¥₹₩₽¢]|\b(?:usd|eur|gbp|inr|aed|rs|c\$|a\$)\b")
+
+
 def same_answer(a, b):
     a, b = norm(a), norm(b)
     if not a or not b or "none" in (a, b):
         return False
+    if sorted(CUR.findall(a)) != sorted(CUR.findall(b)) and CUR.findall(a) and CUR.findall(b):
+        return False  # "$10" vs "€10"
     if (words(a) & NEG) != (words(b) & NEG):
         return False
     na, nb = nums(a), nums(b)
@@ -55,8 +60,8 @@ def preferred(answer, verify):
 def safe_short(long_answer, short):
     """ScreenQA shortening is accepted only if it keeps every number and negation of the original and is a substring."""
     L, S = norm(long_answer), norm(short)
-    if not S or S not in L or len(S) >= len(L):
-        return False
+    if not S or len(S) >= len(L) or not re.search(r"(?<![a-z0-9])" + re.escape(S) + r"(?![a-z0-9])", L):
+        return False  # whole-token span only: "available" is not a span of "unavailable"
     if (words(L) & NEG) - (words(S) & NEG):
         return False
     return all(n in nums(S) for n in nums(L))
@@ -73,4 +78,8 @@ if __name__ == "__main__":
     assert preferred("382 Followers", "382") == "382" and preferred("York", "New York") == "York"
     assert safe_short("The temperature today is 51°.", "51°") and not safe_short("There are no alerts", "alerts")
     assert not safe_short("3 of 5 stars", "3") and safe_short("Wednesday, Feb 1st, 2017", "Feb 1st, 2017")
+    for x, y in [("$10", "€10"), ("-5", "5"), ("100", "1000"), ("available", "unavailable")]:
+        assert not same_answer(x, y), (x, y)
+    assert not safe_short("It is unavailable.", "available") and not safe_short("10:49 PM on Jan 31, 2017", "10:49 PM on Jan 31 2017")
+    assert not safe_short("1.50", "150")
     print("answer-check tests pass")

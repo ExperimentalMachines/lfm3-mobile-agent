@@ -58,3 +58,14 @@ exposure to AndroidWorld is undisclosed by its authors.
   (static-screenshot GRPO from v4, Codex research rank 1), would be a separate, dated arm: it can replace v4 as
   "LFM3 final" only if it passes the same gate on seed 30 plus an offline promotion rule written down before its
   training ends, and only before seed 7 is unsealed.
+* 2026-11-18 02:45 (after Codex's adversarial pipeline audit, results/codex/codex_v4_pipeline_audit.md; still before any
+  held-out result was read): (5) gate criterion (1) is made numeric: strict typed answer match on dev_answer >= 0.20
+  and `answer` emitted on >= 50% of its rows (scripts/v4_gate.py now also fails on incomplete inputs); (6) the two arms
+  started at 01:30/01:35 (v1 and GUI-Owl, seed 7) use the first sealed runner, whose run logs
+  (logs/aw_sealed_*_seed7.log) still contain android_world's per-episode result tables: those files have not been
+  opened (only episode-file counts were checked) and will not be opened before every seed-7 arm has finished; all
+  later sealed arms use scripts/local_sealed_aw_v2.sh (output only inside the sealed dir, truthful exit status);
+  (7) question data: AndroidWorld-app guard tightened (episode-wide app names vs android_world's launcher patterns,
+  whole-word app-type terms), the rewritten direct question is used as a goal only if separately verified on the same
+  screen (otherwise the verified compound goal), and dev_complete controls exclude information-seeking original goals;
+  (8) the preregistered single infrastructure retry is applied manually (documented per case), not by the runner.
