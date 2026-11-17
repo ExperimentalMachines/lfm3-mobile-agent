@@ -39,6 +39,9 @@ for name, ac, aw, gen_b, gen_f, ret in [
      "general/qwen35-08b-ac-lora_base_general_logprob.summary.json", None, None),
     ("Qwen3.5-0.8B fine-tuned", "androidcontrol/qwen35-08b-ac-lora_ft.metrics.json", "androidworld/qwen35_08b_ft.summary.json",
      None, "general/qwen35-08b-ac-lora_ft_general_logprob.summary.json", "general/qwen35_08b_retention_logprob.json"),
+    ("LFM3-VL-2B v2 + forced intent at inference", None, "androidworld/lfm3vl2b_v2_forcethink.summary.json", None, None, None),
+    ("LFM3-VL-2B v3 (v2 mix, all intents filled)", "androidcontrol/lfm3vl2b-v3mix-lora_ft.metrics.json", "androidworld/lfm3vl2b_v3.summary.json",
+     None, "general/lfm3vl2b-v3mix-lora_ft_general_logprob.summary.json", "general/lfm3vl2b_v3_retention_logprob.json"),
     ("GUI-Owl-1.5-2B (compute-matched, 1 img)", None, "androidworld/guiowl15_2b_matched.summary.json", None, None, None),
     ("GUI-Owl-1.5-2B (native, 5 imgs, 2-task sample)", None, "androidworld/guiowl15_2b_native_sample.summary.json", None, None, None),
 ]:
@@ -58,7 +61,10 @@ for name, ac, aw, gen_b, gen_f, ret in [
     if w:
         s = w["summary"]
         k = round(s['success_rate'] * s['expected_episodes'])
-        aw_cell = f"{s['success_rate']:.1%} ({k}/{s['expected_episodes']})"
+        eps = w.get("episodes") or []
+        full = sum(e["success"] >= 1 for e in eps)
+        half = sum(0 < e["success"] < 1 for e in eps)  # AndroidWorld composite tasks can return 0.5
+        aw_cell = f"{s['success_rate']:.1%} ({full}/{s['expected_episodes']}" + (f" + {half} half-credit" if half else "") + ")"
         if s['expected_episodes'] < 116:
             aw_cell = f"{k}/{s['expected_episodes']} selected sample tasks (not a suite score)"
         if partial:

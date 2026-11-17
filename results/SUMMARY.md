@@ -11,12 +11,14 @@ Non-significant Δ means no decline was detected on these two tests (95% CIs in 
 | LFM3-VL-2B base | 0.313 (ep 0.027) | 0.634 (ep 0.173) | 0.000 | 0.9% (1/116) | 2.3s / 1121 tok | MMStar 52.1%, MMLU 48.9% |
 | LFM3-VL-2B fine-tuned | 0.715 (ep 0.283) | 0.948 (ep 0.783) | 0.792 | 12.9% (15/116) | 2.7s / 1145 tok | MMStar 57.1%, MMLU 49.5% (Δ mmstar +5.0pp p=3.0e-07, mmlu +0.6pp p=0.68) |
 | LFM2.5-VL-450M base | 0.009 (ep 0.000) | 0.024 (ep 0.000) | 0.000 | 0.0% (0/116) | 3.3s / 1183 tok | MMStar 38.5%, MMLU 39.9% |
-| LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | 2.2% (2/116) | 1.4s / 1194 tok | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
+| LFM2.5-VL-450M fine-tuned | 0.536 (ep 0.128) | 0.862 (ep 0.521) | 0.561 | 2.2% (2/116 + 1 half-credit) | 1.4s / 1194 tok | MMStar 39.3%, MMLU 39.2% (Δ mmstar +0.8pp p=0.37, mmlu -0.7pp p=0.45) |
 | Qwen3.5-2B base | 0.384 (ep 0.048) | 0.590 (ep 0.134) | 0.005 | — | — | MMStar 49.3%, MMLU 55.5% |
 | Qwen3.5-2B fine-tuned | 0.734 (ep 0.309) | 0.949 (ep 0.791) | 0.784 | 13.8% (16/116) | 4.4s / 1172 tok | MMStar 57.3%, MMLU 53.7% (Δ mmstar +8.1pp p=9.9e-11, mmlu -1.8pp p=0.24) |
-| LFM3-VL-2B v2 (AC+Odyssey+AMEX+ScreenQA) | 0.716 (ep 0.281) | 0.893 (ep 0.611) | 0.732 | — | — | MMStar 54.6%, MMLU 50.9% (Δ mmstar +2.5pp p=0.02, mmlu +2.0pp p=0.08) |
+| LFM3-VL-2B v2 (AC+Odyssey+AMEX+ScreenQA) | 0.716 (ep 0.281) | 0.893 (ep 0.611) | 0.732 | 2.6% (3/116) | 2.7s / 1128 tok | MMStar 54.6%, MMLU 50.9% (Δ mmstar +2.5pp p=0.02, mmlu +2.0pp p=0.08) |
 | Qwen3.5-2B v2 (AC+Odyssey+AMEX+ScreenQA) | 0.739 (ep 0.318) | 0.907 (ep 0.651) | 0.750 | — | — | MMStar 54.0%, MMLU 56.0% (Δ mmstar +4.7pp p=4.6e-04, mmlu +0.5pp p=0.77) |
 | Qwen3.5-0.8B base | 0.392 (ep 0.082) | 0.737 (ep 0.272) | 0.000 | — | — | MMStar 42.4%, MMLU 43.9% |
-| Qwen3.5-0.8B fine-tuned | 0.694 (ep 0.253) | 0.942 (ep 0.763) | 0.745 | — | — | MMStar 48.9%, MMLU 45.2% (Δ mmstar +6.5pp p=1.1e-07, mmlu +1.3pp p=0.40) |
+| Qwen3.5-0.8B fine-tuned | 0.694 (ep 0.253) | 0.942 (ep 0.763) | 0.745 | 10.3% (12/116) | 2.1s / 1190 tok | MMStar 48.9%, MMLU 45.2% (Δ mmstar +6.5pp p=1.1e-07, mmlu +1.3pp p=0.40) |
+| LFM3-VL-2B v2 + forced intent at inference | — | — | — | 5.2% (6/116) | 3.0s / 1143 tok | — |
+| LFM3-VL-2B v3 (v2 mix, all intents filled) | 0.723 (ep 0.287) | 0.902 (ep 0.640) | 0.725 | 11.6% (13/116 + 1 half-credit) | 2.8s / 1159 tok | MMStar 55.3%, MMLU 50.0% (Δ mmlu +1.1pp p=0.38, mmstar +3.2pp p=0.00) |
 | GUI-Owl-1.5-2B (compute-matched, 1 img) | — | — | — | 19.8% (23/116) | 7.9s / 2261 tok | — |
 | GUI-Owl-1.5-2B (native, 5 imgs, 2-task sample) | — | — | — | 2/2 selected sample tasks (not a suite score) | 61.1s / 10707 tok | — |
