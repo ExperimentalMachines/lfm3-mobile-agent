@@ -49,4 +49,12 @@ from AndroidControl val episodes. The installed-app list at inference is read fr
 exposure to AndroidWorld is undisclosed by its authors.
 
 ## Deviations
-(none yet)
+* 2026-11-18 02:35 (before any held-out result was read): (1) the question dev set is 200 screen-disjoint AndroidControl
+  *train* episodes held out from v4 training (their action versions are removed too; v4 trains from the base model),
+  not AndroidControl val as written above; (2) teacher labels are accepted only under a strict type-aware answer check
+  (data/v4_answer_check.py) adopted after Codex's research found false agreements in the generation-time check;
+  (3) the sealed v1 seed-7 arm is paused while v4's seed-30 development pass runs and resumed from its AndroidWorld
+  checkpoint (same seed and harness; an interrupted episode is re-run); (4) a possible second branch, `v4-RL`
+  (static-screenshot GRPO from v4, Codex research rank 1), would be a separate, dated arm: it can replace v4 as
+  "LFM3 final" only if it passes the same gate on seed 30 plus an offline promotion rule written down before its
+  training ends, and only before seed 7 is unsealed.
