@@ -22,30 +22,36 @@ Columns: `images` (1 JPEG, resized like LFM3-VL/Qwen3.5 processors to a pixel-AR
 screenshot. Action space: click, long_press, input_text, scroll(up/down/left/right; direction = where new content comes
 from), open_app, navigate_back, navigate_home, keyboard_enter, wait, answer, status(complete|infeasible).
 
-## Filters (revision 3, after the Codex data audit and re-verification `results/codex/codex_data_v2_audit.md`; counts in `stats/stats.json`)
-* **Executor contract (AndroidWorld):** `input_text` = type + Enter, so AMEX TYPE immediately followed by PRESS_ENTER is ONE
-  `input_text` (472 merged); `scroll` = swipe along the screen centre, so source swipes that are short, diagonal or do not
-  cross the central band end the episode (GUI-Odyssey 1,282, AMEX 817). This band test is a heuristic for "the AW
-  centre-line swipe acts on the same scrollable region", not a proof.
-* **Screen-disjoint dev:** any train row whose resized image is byte-identical to a dev image is removed (17); exact
-  duplicate (image + messages) train rows removed (65); verified over every row: 0 train/dev image overlap.
+## Filters (revision 3, after the Codex data audit `results/codex/codex_data_v2_audit.md` and re-verification `codex_data_v2_verify.md`; counts in `stats/stats.json`)
+* **Executor contract (unchanged AndroidWorld JSON executor):** `input_text` = type + Enter, so a source TYPE immediately
+  followed by PRESS_ENTER or by a soft-keyboard submit tap is ONE `input_text` (AMEX 477 Enter + 34 taps, GUI-Odyssey
+  3,103 taps merged; a second submit-like tap ends the episode: 36). `scroll` = swipe along the screen centre, so source
+  swipes that are short, diagonal or do not cross the central band end the episode (GUI-Odyssey 1,282, AMEX 817). The
+  band test is a heuristic for "the centre-line swipe acts on the same scrollable region", not a proof.
+* **Terminals: AndroidControl only (5,998 rows).** GUI-Odyssey COMPLETE/INCOMPLETE and AMEX TASK_COMPLETE/IMPOSSIBLE
+  markers proved unreliable on review (pending installs, wrong item starred, information requests ending without an
+  answer) and are quarantined: 0 terminal rows from the new sources.
+* **Screen-disjoint dev:** train rows whose resized image is byte-identical to any dev image are removed (34); exact
+  duplicate (image + messages) train rows removed (64); verified over every row: 0 train/dev image overlap.
+* **Intents:** GUI-Odyssey low-level instructions are model-generated; one is kept only if its verb fits the action type
+  and any stated screen region contains the human-recorded point, otherwise blanked (10,132 of 59,084 candidate steps).
+  AMEX has no per-step instruction: blank. Blank intents render as an empty `<think></think>`.
+* **Text:** key names typed as text (`esc`, `enter`, ...), empty text, and near-miss copies of a quoted string or e-mail
+  address in the goal end the episode (GUI-Odyssey 75, AMEX 148). Paraphrased search queries are kept.
 * **Apps:** the 14 AndroidWorld third-party app families are excluded by name and package, plus ambiguous aliases
   (`Calendar Pro`, voice/sound recorder; any app labelled `Calendar` in GUI-Odyssey): 180 AC episodes, 307 GUI-Odyssey
   episodes. Shared built-in apps (Settings, Chrome, Clock, Contacts, Camera, Files) are intentionally kept, as in v1.
-* **Text:** key names typed as text (`esc`, `enter`, ...), empty text and near-miss typos of a goal span end the episode
-  (GUI-Odyssey 714, AMEX 134).
-* **Terminals:** unreviewed INCOMPLETE / TASK_IMPOSSIBLE labels are not used (0 infeasible rows from new sources);
-  `complete` on information-seeking goals is dropped (they would need a verified `answer`; 324); `complete` end screens
-  whose OCR shows Pending/Loading/Installing/... are dropped (61).
-* **AMEX intents:** blank for non-terminal rows (the source has no per-step instruction; a fixed template carried no
-  information). Rendered as an empty `<think></think>`.
-* **Caps:** <= 3 rows per episode for GUI-Odyssey/AMEX enforced in every quota pass; AMEX/GUI-Odyssey terminals <= 650
-  before OCR filtering; AMEX `input_text` <= 1,000.
+* **Caps:** <= 3 rows per episode for GUI-Odyssey/AMEX, enforced in every quota pass; AMEX `input_text` <= 1,000,
+  `keyboard_enter` <= 500 (13 remain after merging).
 * **GUI-Odyssey:** random_split train episodes only (dev = its test episodes); phones only (2,743 tablet/Fold episodes
-  dropped); intent = per-step low-level instruction (post-hoc `context` not used).
+  dropped); post-hoc `context` field never used.
+* **AMEX:** episodes with any `need_human_check` step (56) or a non-final terminal marker (2) dropped; device/screenshot
+  orientation mismatches quarantined (3).
 * **ScreenQA:** train split only; `<no answer>` dropped; AW-app screens/questions dropped; <= 2 questions per screen;
-  1,000 full-sentence + 5,000 short answers on different questions -> `{"action_type":"answer","text":...}`.
+  1,000 full-sentence + 5,000 short answers on different questions -> `{"action_type":"answer","text":...}`; one question
+  with a reviewed incomplete answer removed.
 * **AndroidControl:** v1 train split rows (official train episodes), high-level mode only, no step hints, portrait only.
+* **OCR** (Tesseract, fail-closed) is retained in the builder for any terminal row from a new source; none remain.
 
 ## Attribution
 AndroidControl (Google, Apache-2.0); GUI-Odyssey (OpenGVLab, CC BY 4.0); AMEX (Chai et al., CC BY 4.0);
