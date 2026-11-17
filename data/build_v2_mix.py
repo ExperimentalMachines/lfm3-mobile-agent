@@ -94,8 +94,11 @@ def h01(s):
 
 def swipe_dir(x1, y1, x2, y2):
     """Normalized (0-1000) finger path -> scroll direction (content-side convention) or None.
-    None for short/diagonal swipes and for swipes that do not cross the screen's central band (audit F3)."""
+    None for short (< 200), not clearly one-directional (< 3:1) and off-centre swipes: those are typically control
+    drags (clock hands, selection handles, sliders) that the centre-line scroll executor cannot reproduce (verify3 B2)."""
     dx, dy = x2 - x1, y2 - y1
+    if max(abs(dx), abs(dy)) < 200 or max(abs(dx), abs(dy)) < 3 * min(abs(dx), abs(dy)):
+        return None
     if abs(dy) >= MIN_SWIPE and abs(dy) >= 2 * abs(dx):
         if not (350 <= (x1 + x2) / 2 <= 650 and min(y1, y2) <= 600 and max(y1, y2) >= 400):
             return None
@@ -129,14 +132,27 @@ def near_miss(text, goal):
     return False
 
 
-KEYBOARD_SUBMIT_RE = re.compile(r"keyboard|enter key|search key|return key|\bgo\b button|submit the search|"
-                                r"press (enter|search)|tap (the )?(enter|search|go) (key|icon|button) (on|of) the keyboard", re.I)
+KEYBOARD_NEG_RE = re.compile(r"hide|minimi|dismiss|close the keyboard|collapse|toolbar|above the keyboard|suggest|"
+                             r"emoji|microphone|voice|clipboard|switch|language|shift|caps|delete|backspace", re.I)
+KEYBOARD_ANY_RE = re.compile(r"keyboard|keypad", re.I)
 
 
-def keyboard_submit(point, instr=""):
-    """A tap right after typing that submits via the soft keyboard (bottom-right key or described as a keyboard key).
-    AndroidWorld's input_text already presses Enter, so such a tap is merged into the preceding input_text."""
-    return bool(KEYBOARD_SUBMIT_RE.search(instr or "")) or (point[0] >= 780 and point[1] >= 850)
+def keyboard_tap_kind(point, instr=""):
+    """Classify a tap that directly follows typing (verify3 B1). 'submit' only on positive evidence: the bottom-right
+    Enter/Search key position AND no wording about hiding the keyboard, its toolbar, suggestions or other keys.
+    'ambiguous' = any other keyboard-related tap (the episode is cut: the action is neither deleted nor kept as a
+    generic click). 'other' = an ordinary tap on the app."""
+    instr = instr or ""
+    br = point[0] >= 780 and point[1] >= 850
+    if br and not KEYBOARD_NEG_RE.search(instr):
+        return "submit"
+    if br or KEYBOARD_ANY_RE.search(instr) or KEYBOARD_NEG_RE.search(instr) and point[1] >= 600:
+        return "ambiguous"
+    return "other"
+
+
+DRAG_WORDS_RE = re.compile(r"drag|handle|slider|seek|dial|clock hand|minute|hour hand|adjust|select(ing)? (the )?text|"
+                           r"highlight|move the (pin|marker|cursor)", re.I)
 
 
 _LOC = [(re.compile(r"\b(top|upper)\b", re.I), lambda x, y: y < 450), (re.compile(r"\b(bottom|lower)\b", re.I), lambda x, y: y > 550),
@@ -348,14 +364,20 @@ def odyssey():
                 st["quarantine_complete"] += 1
             elif a == "INCOMPLETE":
                 st["quarantine_incomplete"] += 1  # audit F5: unreviewed infeasibility labels are not used
-            if act is not None and act["action_type"] == "click" and prev_t == "input_text" and \
-                    keyboard_submit(act["point_2d"], s.get("low_level_instruction")):
-                if raw_prev in ("TEXT", "TYPE"):
-                    st["merged_type_keyboard_submit"] += 1  # AW input_text already pressed Enter (re-verification F2)
+            if act is not None and act["action_type"] == "click" and prev_t == "input_text":
+                kind = keyboard_tap_kind(act["point_2d"], s.get("low_level_instruction"))
+                if kind == "submit" and raw_prev in ("TEXT", "TYPE"):
+                    st["merged_type_keyboard_submit"] += 1  # AW input_text already pressed Enter
                     raw_prev = "MERGED_SUBMIT"
                     continue
-                st["truncate_ambiguous_tap_after_submit"] += 1  # a 2nd submit-like tap: ambiguous -> end episode
-                break
+                if kind != "other":
+                    st["truncate_ambiguous_keyboard_tap"] += 1  # verify3 B1: never delete a non-submit action
+                    break
+            if act is not None and act["action_type"] == "scroll":
+                ins = s.get("low_level_instruction") or ""
+                if prev_t == "long_press" or DRAG_WORDS_RE.search(ins) or not re.search(r"scroll|swipe", ins, re.I):
+                    st["truncate_scroll_not_a_page_scroll"] += 1  # verify3 B2: control/selection drags
+                    break
             if act is None:
                 st[f"truncate_at_{a}{'_' + info if isinstance(info, str) and info.startswith('KEY_') else ''}"] += 1
                 break
@@ -420,13 +442,15 @@ def amex():
             act, intent = None, ""
             if a == "TAP":
                 act = {"action_type": "click", "point_2d": af.px_to_norm(tx, ty, W, H)}
-                if last_kept == "input_text" and keyboard_submit(act["point_2d"]):
-                    if prev == "TYPE":
+                if last_kept == "input_text":
+                    kind = keyboard_tap_kind(act["point_2d"])
+                    if kind == "submit" and prev == "TYPE":
                         st["merged_type_keyboard_submit"] += 1  # bottom-right soft-keyboard key right after typing
                         prev = "PRESS_ENTER"
                         continue
-                    st["truncate_ambiguous_tap_after_submit"] += 1
-                    break
+                    if kind != "other":
+                        st["truncate_ambiguous_keyboard_tap"] += 1
+                        break
             elif a == "SWIPE":
                 x1, y1 = af.px_to_norm(tx, ty, W, H)
                 x2, y2 = af.px_to_norm(lx, ly, W, H)
