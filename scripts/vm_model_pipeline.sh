@@ -101,6 +101,7 @@ REGEX_ARGS=${TARGET_REGEX:+--target_regex $TARGET_REGEX}
 STEP_ARGS="--epochs ${EPOCHS:-1}"; [ -n "${MAX_STEPS:-}" ] && STEP_ARGS="--max_steps $MAX_STEPS"
 ROWS_ARGS=""; [ -n "${MAX_AGENT_ROWS:-}" ] && ROWS_ARGS="--max_agent_rows $MAX_AGENT_ROWS"
 INLINE_ARGS=""; [ "${INLINE_THINK:-0}" = 1 ] && INLINE_ARGS="--inline_think"
+PROMPT_ARGS=${PROMPT_V4_POOL:+--prompt_v4_pool $PROMPT_V4_POOL}   # v4 models: stored v1 eval prompts -> v4 prompt + app list
 
 if ! receipt_ok $OUT/train_receipt.json; then
   rm -rf $OUT/merged $OUT/lora $OUT/train_receipt.json
@@ -130,7 +131,7 @@ fi
 if ! python score.py /content/eval/${RUN}_ft.jsonl --gt $GT --expect model=$OUT/merged,max_pixels=${MAX_PIXELS:-774400},enable_thinking=${FT_THINK:-1} --out /content/eval/${RUN}_ft.metrics.json > /dev/null 2>&1; then
   log "AndroidControl test FT"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft.jsonl --enable_thinking ${FT_THINK:-1} \
-    --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && python score.py /content/eval/${RUN}_ft.jsonl --gt $GT --expect model=$OUT/merged,max_pixels=${MAX_PIXELS:-774400},enable_thinking=${FT_THINK:-1} --out /content/eval/${RUN}_ft.metrics.json > /dev/null || fail "ft AC eval"
+    --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} $PROMPT_ARGS && python score.py /content/eval/${RUN}_ft.jsonl --gt $GT --expect model=$OUT/merged,max_pixels=${MAX_PIXELS:-774400},enable_thinking=${FT_THINK:-1} --out /content/eval/${RUN}_ft.metrics.json > /dev/null || fail "ft AC eval"
   push_evals
 fi
 if [ "${BASE_AC_EVAL:-1}" = 1 ] && ! python score.py /content/eval/${RUN}_base.jsonl --gt $GT --expect model=$MODEL,max_pixels=${MAX_PIXELS:-774400},enable_thinking=0 --out /content/eval/${RUN}_base.metrics.json > /dev/null 2>&1; then
@@ -157,7 +158,7 @@ PY
     if ! python score_dev.py /content/eval/${n}_${sp}.jsonl --expect_n $N --out /content/eval/${n}_${sp}.metrics.json > /dev/null 2>&1; then
       log "dev eval $n $sp ($N rows)"
       python generate.py --model $m --data "$DEV_REPO@$sp${DEV_REV:+#$DEV_REV}" --out /content/eval/${n}_${sp}.jsonl --enable_thinking $th \
-        --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
+        --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} $PROMPT_ARGS \
         && python score_dev.py /content/eval/${n}_${sp}.jsonl --expect_n $N --out /content/eval/${n}_${sp}.metrics.json || fail "dev $n $sp"
       push_evals
     fi
@@ -175,7 +176,7 @@ fi
 if [ "${MATCHED_NOTHINK:-1}" = 1 ] && ! python score.py /content/eval/${RUN}_ft_nothink_high.jsonl --gt $GT --modes high --expect model=$OUT/merged,max_pixels=${MAX_PIXELS:-774400},enable_thinking=0 --out /content/eval/${RUN}_ft_nothink_high.metrics.json > /dev/null 2>&1; then
   log "AndroidControl test FT matched no-think (high-level)"
   python generate.py --model $OUT/merged --data $R@test --out /content/eval/${RUN}_ft_nothink_high.jsonl --enable_thinking 0 \
-    --filter_mode high --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
+    --filter_mode high --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} $PROMPT_ARGS \
     && python score.py /content/eval/${RUN}_ft_nothink_high.jsonl --gt $GT --modes high --expect model=$OUT/merged,max_pixels=${MAX_PIXELS:-774400},enable_thinking=0 --out /content/eval/${RUN}_ft_nothink_high.metrics.json > /dev/null \
     && touch /content/eval/${RUN}_ft_nothink_high.jsonl.done || fail "ft nothink eval"
   push_evals
