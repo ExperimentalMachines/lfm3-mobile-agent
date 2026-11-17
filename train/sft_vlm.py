@@ -71,13 +71,22 @@ def _provenance():
 json.dump({**vars(args), "provenance": _provenance()}, open(f"{args.out}/logs/run_config.json", "w"), indent=2)
 
 
+def _hub_data_files(repo, split):
+    """v1 repos use data/<split>/*.parquet; push_to_hub (v2) writes data/<split>-NNNNN-of-NNNNN.parquet."""
+    from huggingface_hub import HfApi
+    files = HfApi().list_repo_files(repo, repo_type="dataset")
+    if any(f.startswith(f"data/{split}/") for f in files):
+        return {split: f"data/{split}/*.parquet"}
+    return {split: f"data/{split}-*.parquet"}
+
+
 def load_any(path):
     """local save_to_disk dir, or 'org/repo@split' on the Hub."""
     if os.path.isdir(path):
         return load_from_disk(path)
     repo, _, split = path.partition("@")
     split = split or "train"
-    return load_dataset(repo, data_files={split: f"data/{split}/*.parquet"}, split=split)
+    return load_dataset(repo, data_files=_hub_data_files(repo, split), split=split)
 
 
 train_ds = concatenate_datasets([load_any(t) for t in args.train]).shuffle(seed=args.seed)

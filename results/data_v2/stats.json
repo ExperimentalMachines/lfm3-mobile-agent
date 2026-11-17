@@ -1,0 +1,101 @@
+{
+ "counts": {
+  "train": 79991,
+  "dev_odyssey": 1000,
+  "dev_amex": 500,
+  "dev_screenqa": 499
+ },
+ "train_by_source": {
+  "amex": 7998,
+  "screenqa": 5995,
+  "androidcontrol": 56000,
+  "odyssey": 9998
+ },
+ "ac": {
+  "v1_train_rows": 99216,
+  "v1_high_nonterminal": 74595,
+  "v1_terminal": 13573,
+  "ac_rows": 56000,
+  "ac_terminal_rows": 6000
+ },
+ "amex": {
+  "episodes": 3046,
+  "drop_ep_need_human_check": 56,
+  "drop_ep_terminal_not_last": 2,
+  "truncate_at_SWIPE": 148,
+  "truncate_at_TYPE": 3,
+  "candidates_train": 34450,
+  "candidates_dev": 1628,
+  "amex_train_drop_landscape": 2,
+  "amex_train_rows": 7998,
+  "amex_train_actions": {
+   "scroll": 1406,
+   "input_text": 1000,
+   "click": 4423,
+   "status": 649,
+   "keyboard_enter": 500,
+   "navigate_back": 18,
+   "navigate_home": 2
+  },
+  "amex_dev_rows": 500,
+  "amex_dev_actions": {
+   "click": 319,
+   "scroll": 92,
+   "input_text": 29,
+   "keyboard_enter": 11,
+   "status": 43,
+   "navigate_back": 5,
+   "navigate_home": 1
+  }
+ },
+ "odyssey": {
+  "episodes": 8334,
+  "drop_ep_tablet_or_fold": 2743,
+  "truncate_at_SCROLL": 297,
+  "truncate_at_CLICK_KEY_APPSELECT": 131,
+  "drop_ep_aw_app": 8,
+  "candidates_train": 65379,
+  "candidates_dev": 16474,
+  "odyssey_train_drop_landscape": 2,
+  "odyssey_train_rows": 9998,
+  "odyssey_train_actions": {
+   "input_text": 1097,
+   "click": 6532,
+   "navigate_home": 778,
+   "status": 600,
+   "scroll": 910,
+   "long_press": 48,
+   "navigate_back": 33
+  },
+  "odyssey_dev_rows": 1000,
+  "odyssey_dev_actions": {
+   "navigate_home": 73,
+   "click": 677,
+   "status": 57,
+   "input_text": 111,
+   "long_press": 9,
+   "scroll": 67,
+   "navigate_back": 6
+  }
+ },
+ "screenqa": {
+  "train_questions": 68951,
+  "train_drop_no_answer": 6576,
+  "train_drop_aw_app": 136,
+  "train_full_answer_rows": 1000,
+  "train_short_answer_rows": 5000,
+  "validation_questions": 8614,
+  "validation_drop_no_answer": 705,
+  "validation_drop_aw_app": 28,
+  "screenqa_train_drop_landscape": 5,
+  "screenqa_train_rows": 5995,
+  "screenqa_train_actions": {
+   "answer": 5995
+  },
+  "screenqa_dev_drop_landscape": 1,
+  "screenqa_dev_rows": 499,
+  "screenqa_dev_actions": {
+   "answer": 499
+  }
+ }
+}

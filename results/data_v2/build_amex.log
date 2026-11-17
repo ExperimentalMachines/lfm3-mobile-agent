@@ -1,0 +1,32 @@
+Saving the dataset (0/2 shards):   0%|          | 0/7998 [00:00<?, ? examples/s]Saving the dataset (0/2 shards):  12%|█▏        | 969/7998 [00:00<00:01, 6226.77 examples/s]Saving the dataset (0/2 shards):  24%|██▍       | 1938/7998 [00:00<00:00, 7666.81 examples/s]Saving the dataset (0/2 shards):  36%|███▋      | 2907/7998 [00:00<00:00, 8366.92 examples/s]Saving the dataset (0/2 shards):  48%|████▊     | 3876/7998 [00:00<00:00, 8787.40 examples/s]Saving the dataset (1/2 shards):  50%|█████     | 3999/7998 [00:00<00:00, 8787.40 examples/s]Saving the dataset (1/2 shards):  62%|██████▏   | 4968/7998 [00:00<00:00, 8772.20 examples/s]Saving the dataset (1/2 shards):  74%|███████▍  | 5937/7998 [00:00<00:00, 8952.58 examples/s]Saving the dataset (1/2 shards):  86%|████████▋ | 6906/7998 [00:00<00:00, 9097.48 examples/s]Saving the dataset (1/2 shards):  98%|█████████▊| 7875/7998 [00:00<00:00, 8961.10 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 7998/7998 [00:00<00:00, 8961.10 examples/s]Saving the dataset (2/2 shards): 100%|██████████| 7998/7998 [00:00<00:00, 8665.89 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/500 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 500/500 [00:00<00:00, 8487.37 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 500/500 [00:00<00:00, 8462.30 examples/s]
+{
+ "episodes": 3046,
+ "drop_ep_need_human_check": 56,
+ "drop_ep_terminal_not_last": 2,
+ "truncate_at_SWIPE": 148,
+ "truncate_at_TYPE": 3,
+ "candidates_train": 34450,
+ "candidates_dev": 1628,
+ "amex_train_drop_landscape": 2,
+ "amex_train_rows": 7998,
+ "amex_train_actions": {
+  "scroll": 1406,
+  "input_text": 1000,
+  "click": 4423,
+  "status": 649,
+  "keyboard_enter": 500,
+  "navigate_back": 18,
+  "navigate_home": 2
+ },
+ "amex_dev_rows": 500,
+ "amex_dev_actions": {
+  "click": 319,
+  "scroll": 92,
+  "input_text": 29,
+  "keyboard_enter": 11,
+  "status": 43,
+  "navigate_back": 5,
+  "navigate_home": 1
+ }
+}

@@ -106,7 +106,7 @@ if ! receipt_ok $OUT/train_receipt.json; then
   rm -rf $OUT/merged $OUT/lora $OUT/train_receipt.json
   rm -f /content/eval/${RUN}_ft.* /content/eval/${RUN}_ft_nothink_high.* /content/eval/${RUN}_ft_general.*  # new weights => stale FT evals
   log "train"
-  python sft_vlm.py --model_id $MODEL --train $R@train --val $R@val --out $OUT $REPLAY_ARGS $ROWS_ARGS $STEP_ARGS \
+  python sft_vlm.py --model_id $MODEL --train ${TRAIN_DATA:-$R@train} --val $R@val --out $OUT $REPLAY_ARGS $ROWS_ARGS $STEP_ARGS \
     --max_pixels ${MAX_PIXELS:-774400} $INLINE_ARGS $TEMPLATE_ARGS $REGEX_ARGS \
     --bs ${BS:-8} --grad_accum ${GA:-4} --lr ${LR:-2e-4} --lora_r ${LORA_R:-64} --lora_alpha ${LORA_ALPHA:-128} \
     --modules_to_save --save_steps ${SAVE_STEPS:-100} --eval_steps ${EVAL_STEPS:-250} --workers ${WORKERS:-10} \
@@ -137,6 +137,34 @@ if [ "${BASE_AC_EVAL:-1}" = 1 ] && ! python score.py /content/eval/${RUN}_base.j
   log "AndroidControl test BASE (no-think)"
   python generate.py --model $MODEL --data $R@test --out /content/eval/${RUN}_base.jsonl --enable_thinking 0 \
     --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} && python score.py /content/eval/${RUN}_base.jsonl --gt $GT --expect model=$MODEL,max_pixels=${MAX_PIXELS:-774400},enable_thinking=0 --out /content/eval/${RUN}_base.metrics.json > /dev/null || fail "base AC eval"
+  push_evals
+fi
+
+# ---- v2 extras: held-out dev splits for several models + forced-choice general eval of the FT model
+# DEV_MODELS="hub_or_FT=name:think ..." (FT = this run's merged weights); DEV_REPO holds dev_odyssey/dev_amex/dev_screenqa
+for spec in ${DEV_MODELS:-}; do
+  m=${spec%%=*}; rest=${spec##*=}; n=${rest%%:*}; th=${rest##*:}
+  [ "$m" = FT ] && m=$OUT/merged
+  for sp in ${DEV_SPLITS:-dev_odyssey dev_amex dev_screenqa}; do
+    N=$(python - <<PY
+from huggingface_hub import HfApi
+from datasets import load_dataset
+fs = HfApi().list_repo_files("$DEV_REPO", repo_type="dataset")
+print(len(load_dataset("$DEV_REPO", data_files={"$sp": [f for f in fs if f.startswith("data/$sp-")]}, split="$sp")))
+PY
+)
+    if ! python score_dev.py /content/eval/${n}_${sp}.jsonl --expect_n $N --out /content/eval/${n}_${sp}.metrics.json > /dev/null 2>&1; then
+      log "dev eval $n $sp ($N rows)"
+      python generate.py --model $m --data $DEV_REPO@$sp --out /content/eval/${n}_${sp}.jsonl --enable_thinking $th \
+        --bs ${EVAL_BS:-32} --max_pixels ${MAX_PIXELS:-774400} \
+        && python score_dev.py /content/eval/${n}_${sp}.jsonl --expect_n $N --out /content/eval/${n}_${sp}.metrics.json || fail "dev $n $sp"
+      push_evals
+    fi
+  done
+done
+if [ "${LOGPROB_FT:-0}" = 1 ] && ! general_ok /content/eval/${RUN}_ft_general_logprob.summary.json; then
+  log "general eval FT (forced-choice logprob)"
+  python eval_general.py --model $OUT/merged --out /content/eval/${RUN}_ft_general_logprob --mode logprob --bs 16 --max_pixels $GPX || fail "general logprob ft"
   push_evals
 fi
 if [ "${MATCHED_NOTHINK:-1}" = 1 ] && ! python score.py /content/eval/${RUN}_ft_nothink_high.jsonl --gt $GT --modes high --expect model=$OUT/merged,max_pixels=${MAX_PIXELS:-774400},enable_thinking=0 --out /content/eval/${RUN}_ft_nothink_high.metrics.json > /dev/null 2>&1; then

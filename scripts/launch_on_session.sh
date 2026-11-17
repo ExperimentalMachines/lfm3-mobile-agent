@@ -11,7 +11,7 @@ C restart-kernel -s "$SESS" | tail -1
 echo 'import subprocess,os;print(subprocess.run("pkill -f [s]ft_vlm.py; pkill -f [v]m_train_eval_push; pkill -f [v]m_model_pipeline; pkill -f [g]enerate.py; pkill -f [e]val_general.py; sleep 3; ps aux | grep -cE \"[s]ft_vlm|[g]enerate.py\"",shell=True,capture_output=True,text=True).stdout.strip(), "killed"); os.makedirs("/content/work/meta",exist_ok=True); print("meta", "ok" if os.path.isdir("/content/work/meta") else "MISSING")' \
   | "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" 2>/dev/null | grep -q "meta ok" || { echo "kernel unreachable"; exit 1; }
 for f in train/sft_vlm.py train/agent_format.py train/qwen35_chat_template_gen.jinja eval/androidcontrol/generate.py \
-         eval/androidcontrol/score.py eval/general/eval_general.py data/build_general_replay.py scripts/vm_model_pipeline.sh \
+         eval/androidcontrol/score.py eval/androidcontrol/score_dev.py eval/general/eval_general.py data/build_general_replay.py scripts/vm_model_pipeline.sh \
          scripts/vm_blocking_jobs.py data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json; do
   dst="/content/work/$(basename "$f")"; [[ "$f" == data/meta/* ]] && dst="/content/work/meta/$(basename "$f")"
   C upload -s "$SESS" "$f" "$dst" | grep -q Uploaded || { echo "upload failed: $f"; exit 1; }
