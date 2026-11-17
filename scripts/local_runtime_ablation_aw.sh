@@ -3,7 +3,7 @@
 # (lexical open_app resolution against installed apps + failure / no-visible-change notes in the history).
 # Runs on emulator 2 (5558/8558) after the 450M base run there has finished.
 cd /Users/alpha/lfm3-android
-sleep 120
+sleep 5
 while pgrep -f "local_450m_base_aw.sh" >/dev/null || pgrep -f "agent_label=lfm25vl450m" >/dev/null; do sleep 60; done
 until curl -s 127.0.0.1:8096/health | grep -q ok; do
   echo "[$(date +%T)] LFM3 FT server not up; starting it"
