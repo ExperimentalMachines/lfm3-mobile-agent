@@ -23,7 +23,8 @@ while true; do
     n=$((n+1)); log "VM LOST; re-provision + relaunch #$n"
     if bash scripts/colab_get_gpu.sh "$S" 6 >> "logs/colab_get_gpu_${S}_wd.log" 2>&1; then
       tail -1 "logs/colab_get_gpu_${S}_wd.log"
-      bash scripts/v4_relaunch.sh "$S" 2>&1 | tail -5
+      nr=${NO_RL:-0}; tail -1 "logs/colab_get_gpu_${S}_wd.log" | grep -q "GOT L4" && nr=1   # no GRPO smoke next to SFT on 24 GB
+      NO_RL=$nr bash scripts/v4_relaunch.sh "$S" 2>&1 | tail -5
     else
       log "no GPU this round"; sleep 300
     fi

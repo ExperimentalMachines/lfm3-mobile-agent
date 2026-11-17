@@ -85,3 +85,10 @@ exposure to AndroidWorld is undisclosed by its authors.
   changed to exact normalised answer equality (data/v4_answer_check.exact_answer) because the re-audit showed the
   typed-agreement check rewards padded answers ("12M is incorrect"); strict dev metrics use the strict parser.
 
+* 2026-11-18 06:10 (before any v4 result): infrastructure, no design change. The Colab A100 VM was pruned at 04:51 during
+  v4b SFT (step 353/1250). Training resumes from the step-350 hub checkpoint (adapter, optimizer, scheduler, RNG state and
+  trainer_state; data order continues from the saved step), first on an interim L4 for ~5 min that wrote no checkpoint
+  (stopped before step 400), then on a new A100 (session lfm3v4a) where the RL hook was reinstalled. Steps 351-353 are
+  recomputed. The gate script gained input-identity checks (episode agent_name; same goal text, modulo the run timestamp
+  of MarkorCreateFolder, and instance seed as the v3 seed-30 run; dev predictions must equal the dev splits pinned at
+  3375539 and come from the v4 merged model) without changing any threshold.
