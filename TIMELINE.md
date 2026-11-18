@@ -138,3 +138,4 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-18 21:33 | `0a507dd` | QDC round 2: option 2 pass 2 (reversed) + phone listing |
 | 2026-11-18 21:35 | `88c6435` | QDC round 2 complete (option 1 + option 2 both orders); phone cleaned, tunnel closed |
 | 2026-11-18 21:36 | `cfdca57` | QDC report: like-for-like headline at equal sampled clock (v4 ~39 s vs GUI-Owl 1100 s / MAI-UI 1063 s as evaluated; 5.1x / 4.7x at equal 1,024 image budget); frequency column for option 1 |
+| 2026-11-18 21:55 | `7702178` | Docs fixes from Codex round2_audit (no P1): phone prompt-prefix reuse disclosed (GUI-Owl/MAI-UI ~460-990 cached tokens per call, v4 none), timeout/retry policy stated as configured, configured image ceiling and sampled-frequency wording, input sizes and output caps; MAI-UI AW arm = Q8_0; MobileWorld adapter v2 limits (step-50 Enter, empty-text 500) disclosed; README latest results; TIMELINE/AUDITS generator |

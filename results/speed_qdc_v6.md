@@ -2,7 +2,7 @@ Device: Qualcomm reference phone "Art for arm64" (SM8975, Snapdragon 8 Elite Ext
 
 **Headline (same phone, same median sampled maximum core frequency, ~2.65 GHz):** v4's evaluation image ceiling is 1,024 tokens, so its option-2 runs are also its evaluation setting, and they ran at the same median sampled maximum frequency as GUI-Owl's and MAI-UI's option-1 runs. As evaluated, one step takes **~39.0 s for v4** vs 1100 s for GUI-Owl and 1063 s for MAI-UI (~28× and ~27×). At the same 1,024-token image budget for all three (option 2), GUI-Owl and MAI-UI take ~5.1× and ~4.7× v4's time. Option 1's v4 row ran earlier, when the sampled maximum was 4.03 GHz, so it is not the like-for-like number.
 
-**Option 1: each model at its evaluation image budget** (v4 1,024 image tokens; GUI-Owl and MAI-UI 2,600), flash attention on for all, MAI-UI at Q8_0 (its Q4_K_M output degenerates), 2 screenshots after a warm-up call:
+**Option 1: each model at its evaluation image ceiling** (v4 1,024 image tokens; GUI-Owl and MAI-UI 2,600), `-fa on` requested for all, MAI-UI at Q8_0 (its Q4_K_M output degenerates), 2 screenshots after a warm-up call:
 
 | Model | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally | Fastest core, sampled GHz |
 |---|---|---|---|---|---|---|---|---|---|
