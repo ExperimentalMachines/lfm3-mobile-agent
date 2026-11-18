@@ -1,0 +1,22 @@
+[15:55:06] dev0 phone: "ro.product.model": "Art for arm64", order v4 guiowl maiui
+[15:55:07] dev0 on-phone downloader: curl -sfL -o
+[15:55:32] dev0   llama-b12110-bin-android-arm64.tar.gz verified (44462ddcc09a841942e5cfe76554240ed6d7763bdf8538232075eb0ffd46ccbe)
+version: 0.9.0-dev (build 12110, commit cd959bae9)
+built with Clang 21.0.0 for Android aarch64
+[15:55:37] dev0 == v4
+[15:56:50] dev0   LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf verified (5285279249948dc019abf9341f98b65778f679a1f2cbc76e94c57a96af2a35e7)
+[15:57:10] dev0   mmproj-LFM3-VL-2B-Q8_0.gguf verified (c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab)
+[15:57:18] dev0 v4: server up on the phone
+[16:05:32] dev0 v4: bench exit 0 (16 recorded requests)
+scripts/devstream_device_v5.sh: line 81:  1227 Terminated: 15          ( cd eval/devicestream && ../../$PY record_proxy_adb.py --listen $PPORT --adb "adb -P $ADB_PORT -s $SER" --log "../../$OUT/requests_$m.jsonl" --device "qdc$IDX" --model $m )
+[16:05:39] dev0 == guiowl
+[16:06:39] dev0   GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf verified (5fd2c77781a14a91128928b5bd313252aab076b44682396af4bb2c99667f5ef5)
+[16:07:11] dev0   GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf verified (16748786911f630d0c14869ac28999f77715053a62b2a00d2327021bd6d2afb7)
+[16:07:17] dev0 guiowl: server up on the phone
+scripts/devstream_device_v5.sh: line 97: results/qdc/run_20261118_1554/dev0/requests_guiowl.jsonl: No such file or directory
+[16:25:30] dev0 guiowl: bench exit 1 ( recorded requests)
+scripts/devstream_device_v5.sh: line 81:  5442 Terminated: 15          ( cd eval/devicestream && ../../$PY record_proxy_adb.py --listen $PPORT --adb "adb -P $ADB_PORT -s $SER" --log "../../$OUT/requests_$m.jsonl" --device "qdc$IDX" --model $m )
+[16:25:38] dev0 == maiui
+[16:26:41] dev0   MAI-UI-2B-Q4_K_M.gguf verified (76e74923e1f5267d3e22e9ff412dc586158ed084ac4bbdd49552b9453fac56b0)
+[16:27:22] dev0   mmproj-MAI-UI-2B-Q8_0.gguf verified (abeaacca571eeaf59ff193d3485025d0e532cd9c04501ef6779a685182fe561e)
+[16:27:28] dev0 maiui: server up on the phone

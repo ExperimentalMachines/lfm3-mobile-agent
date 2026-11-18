@@ -28,6 +28,9 @@ p.add_argument("--out", required=True)
 p.add_argument("--jsonl", default="", help="also append each call to this file (fsync) as it completes")
 p.add_argument("--mirror_warmup", action="store_true",
                help="warm up on a mirrored copy of the first screenshot so no timed call repeats the warm-up prompt")
+p.add_argument("--client_timeout", type=float, default=0,
+               help="if >0: OpenAI client timeout in seconds and max_retries=0 (slow phones; MobileWorld's default is 120 s with "
+                    "2 automatic re-sends, which queue duplicate requests on a single-slot server)")
 p.add_argument("--agent_dir", default="", help="directory holding lfm3_mw_agent.py / maiui_1img_agent.py / agent_format.py")
 a = p.parse_args()
 sys.path.insert(0, os.path.expanduser(a.agent_dir or "~/lfm3"))
@@ -59,6 +62,8 @@ for rep in range(a.reps + 1):  # rep 0 = warm-up (first case only)
         if rep == 0 and a.mirror_warmup:
             img = ImageOps.mirror(img)
         ag = make()
+        if a.client_timeout > 0 and getattr(ag, "openai_client", None) is not None:
+            ag.openai_client = ag.openai_client.with_options(timeout=a.client_timeout, max_retries=0)
         ag.initialize(goal)
         t0 = time.time()
         res = ag.predict({"screenshot": img, "tool_call": None, "ask_user_response": None})

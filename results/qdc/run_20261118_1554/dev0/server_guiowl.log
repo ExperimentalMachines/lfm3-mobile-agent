@@ -1,0 +1,18 @@
+0.00.002.604 I srv  llama_server: initializing ...
+0.00.012.941 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.013.626 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.016.121 I srv    load_model: loading model '/data/local/tmp/lfm3bench/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf'
+0.00.227.523 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.00.872.570 I cmn          init: llama threadpool init, n_threads = 4
+0.00.953.835 W load_hparams: Qwen-VL models require at minimum 1024 image tokens to function correctly on grounding tasks
+0.00.953.839 W load_hparams: if you encounter problems with accuracy, try adding --image-min-tokens 1024
+0.00.953.840 W load_hparams: more info: https://github.com/ggml-org/llama.cpp/issues/16842
+
+0.01.067.251 I srv    load_model: loaded multimodal model, '/data/local/tmp/lfm3bench/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf'
+0.01.177.156 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 20480, kv_unified = 'false'
+0.01.177.206 W srv          init: --cache-idle-slots requires --cache-ram, disabling
+0.01.179.994 I srv  server_run_i: model loaded
+0.01.179.999 I srv  server_on_li: listening on http://127.0.0.1:8080
+0.11.308.092 I slot get_availabl: id  0 | task -1 | selected slot by LRU, n_tokens = 0, t_last = -1
+0.11.308.268 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.24.954.660 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =   1001, progress = 0.28, t =  13.65 s / 73.35 tokens per second
