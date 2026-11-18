@@ -158,3 +158,5 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-19 03:04 | `bf7599f` | Live snapshot: MobileWorld counts, QDC phone report (03:04) |
 | 2026-11-19 03:35 | `c0043b4` | Live snapshot: MobileWorld counts, QDC phone report (03:35) |
 | 2026-11-19 04:05 | `24e133a` | Live snapshot: MobileWorld counts, QDC phone report (04:05) |
+| 2026-11-19 04:35 | `c032d6e` | Live snapshot: MobileWorld counts, QDC phone report (04:35) |
+| 2026-11-19 05:02 | `be179d3` | MobileWorld run 2: summaries (GUI-Owl provisional: one fresh-container attempt pending), MAI-UI MobileWorld arm prereg + driver |
