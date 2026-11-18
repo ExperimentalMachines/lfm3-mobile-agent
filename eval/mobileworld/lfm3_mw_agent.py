@@ -7,7 +7,16 @@ Same model-side contract as the AndroidWorld agent (eval/androidworld/lfm_agent.
   * llama-server /v1/chat/completions, temperature 0, thinking on, one parse retry; only the final action is parsed;
   * point_2d on the 0-1000 grid -> screen pixels.
 Mapping to MobileWorld actions: status (complete or infeasible) -> `finished` (episode ends; MobileWorld scores the
-device/backend state), answer -> `answer` (MobileWorld ends the episode after an answer), everything else 1:1.
+device/backend state), answer -> `answer` (MobileWorld ends the episode after an answer), everything else 1:1, except
+two actions whose AndroidWorld execution (the contract v4 was trained and evaluated on) MobileWorld implements
+differently (Codex audit results/codex/session_1118_audit, C1/C2; fixed 2026-11-18 for run v4_gui_en_r2):
+  * scroll: AndroidWorld swipes from the screen centre to the edge OPPOSITE the content direction (scroll down ->
+    finger to y=0; scroll right -> finger to x=0; actuation.py). MobileWorld's `scroll` reverses only up/down and uses
+    its own distance, so it is sent as an explicit `drag` with AndroidWorld's start/end points (MobileWorld's drag =
+    `input swipe ... 400` ms; AndroidWorld omits the duration, Android's default being 300 ms).
+  * input_text: AndroidWorld types and then presses Enter in one action; MobileWorld only types. The adapter sends the
+    text, and on the next step sends `keyboard_enter` WITHOUT querying the model (one extra environment step of the
+    50-step budget per text action; the model's history is unchanged, as in AndroidWorld).
 Installed apps for v4: the names MobileWorld's open_app resolves (runtime/utils/models.APP_DICT, English names).
 Load with: mw eval --agent_type <this file> ... (MobileWorld's registry loads agent classes from a .py path).
 Env: LFM3_PROMPT_VERSION (v4 default), LFM3_AGENT_FORMAT_DIR (dir holding agent_format.py).
@@ -50,12 +59,15 @@ class LFM3MobileWorldAgent(BaseAgent):
         self.apps = MW_APPS if self.prompt_version == "v4" else None
         self.history: list[tuple[str, str]] = []
         self.max_parse_retries = 1
+        self._pending_enter = False
 
     def initialize_hook(self, instruction: str) -> None:
         self.history = []
+        self._pending_enter = False
 
     def reset(self) -> None:
         self.history = []
+        self._pending_enter = False
 
     def _query(self, goal: str, img) -> dict:
         payload = {
@@ -81,6 +93,9 @@ class LFM3MobileWorldAgent(BaseAgent):
                 "latency_s": time.time() - t0}
 
     def predict(self, observation: dict[str, Any]) -> tuple[str, JSONAction]:
+        if self._pending_enter:  # second half of AndroidWorld's input_text (type + Enter); no model call
+            self._pending_enter = False
+            return "(adapter) keyboard_enter completing the previous input_text", JSONAction(action_type="keyboard_enter")
         shot = observation["screenshot"]
         W, H = shot.size
         img = af.resize_screenshot(shot, af.MAX_PIXELS)
@@ -104,10 +119,16 @@ class LFM3MobileWorldAgent(BaseAgent):
         if t in af.POINT_TYPES:
             x, y = af.norm_to_px(action["point_2d"], W, H)
             return raw, JSONAction(action_type=t, x=x, y=y)
-        if t in ("input_text", "answer"):
+        if t == "answer":
+            return raw, JSONAction(action_type=t, text=action["text"])
+        if t == "input_text":
+            self._pending_enter = bool(action["text"])  # AndroidWorld skips both type and Enter for empty text
             return raw, JSONAction(action_type=t, text=action["text"])
         if t == "scroll":
-            return raw, JSONAction(action_type="scroll", direction=action["direction"])
+            end = {"down": (W // 2, 0), "up": (W // 2, H), "right": (0, H // 2), "left": (W, H // 2)}.get(action["direction"])
+            if end is None:
+                return raw, JSONAction(action_type="wait")
+            return raw, JSONAction(action_type="drag", start_x=W // 2, start_y=H // 2, end_x=end[0], end_y=end[1])
         if t == "open_app":
             return raw, JSONAction(action_type="open_app", app_name=action["app_name"])
         return raw, JSONAction(action_type=t)  # navigate_back / navigate_home / keyboard_enter / wait

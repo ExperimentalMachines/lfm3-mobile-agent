@@ -1,0 +1,76 @@
+{
+  "up": {
+    "androidworld": [
+      {
+        "swipe": [
+          540,
+          1200,
+          540,
+          2400
+        ]
+      }
+    ],
+    "mobileworld": [
+      "adb -s FAKE_DEVICE shell input swipe 540 1200 540 1632 400"
+    ]
+  },
+  "down": {
+    "androidworld": [
+      {
+        "swipe": [
+          540,
+          1200,
+          540,
+          0
+        ]
+      }
+    ],
+    "mobileworld": [
+      "adb -s FAKE_DEVICE shell input swipe 540 1200 540 768 400"
+    ]
+  },
+  "left": {
+    "androidworld": [
+      {
+        "swipe": [
+          540,
+          1200,
+          1080,
+          1200
+        ]
+      }
+    ],
+    "mobileworld": [
+      "adb -s FAKE_DEVICE shell input swipe 540 1200 324 1200 400"
+    ]
+  },
+  "right": {
+    "androidworld": [
+      {
+        "swipe": [
+          540,
+          1200,
+          0,
+          1200
+        ]
+      }
+    ],
+    "mobileworld": [
+      "adb -s FAKE_DEVICE shell input swipe 540 1200 756 1200 400"
+    ]
+  },
+  "input_text": {
+    "androidworld": [
+      {
+        "text": "example query"
+      },
+      {
+        "key": "Enter"
+      }
+    ],
+    "mobileworld": [
+      "adb -s FAKE_DEVICE shell am broadcast -a ADB_INPUT_B64 --es msg 'ZXhhbXBsZSBxdWVyeQ=='"
+    ]
+  },
+  "real_processes_or_connections": 0
+}
