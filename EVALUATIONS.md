@@ -146,7 +146,7 @@ finished; only episode-file counts are reported:
 
 | sealed arm | episode files present | of |
 |---|---|---|
-| guiowl_seed1234 | 61 | 116 |
+| guiowl_seed1234 | 62 | 116 |
 | guiowl_seed7 | 116 | 116 |
 | v1_seed1234 | 116 | 116 |
 | v1_seed7 | 116 | 116 |
