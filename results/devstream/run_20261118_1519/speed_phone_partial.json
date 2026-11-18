@@ -1,0 +1,44 @@
+{
+ "run": "results/devstream/run_20261118_1519",
+ "device": {
+  "ro.product.model": "Pixel 9",
+  "ro.product.device": "tokay",
+  "ro.build.fingerprint": "google/tokay/tokay:16/CP1A.260505.005/15081906:user/release-keys",
+  "ro.build.version.sdk": "36",
+  "ro.soc.model": "Tensor G4",
+  "ro.soc.manufacturer": "Google",
+  "mem": "MemTotal: 11848700 kB",
+  "cpus": "1950000 1950000 1950000 1950000 2600000 2600000 2600000 3105000 ",
+  "serial": "localhost:60148",
+  "idx": 0,
+  "order": "v4 guiowl maiui"
+ },
+ "models": {
+  "v4": {
+   "label": "v4 (ours)",
+   "n": 11,
+   "latency_median_s": 74.4,
+   "latency_min_max_s": [
+    43.1,
+    91.2
+   ],
+   "prompt_tokens_median": 1081,
+   "prompt_processed_median": 1081,
+   "prompt_s_median": 70.5,
+   "prompt_tok_per_s": 16.7,
+   "gen_tokens_median": 28,
+   "gen_tok_per_s": 12.0,
+   "files_gb": 1.3,
+   "passes": {
+    "pass1": {
+     "n": 11,
+     "latency_median_s": 74.41,
+     "prompt_s_median": 70.52,
+     "battery_c_median": 36.4,
+     "battery_c_max": 37.7,
+     "thermal_status_max": "0"
+    }
+   }
+  }
+ }
+}
