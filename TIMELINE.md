@@ -150,3 +150,6 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-19 00:56 | `230553d` | Seed-7 analysis fixes from Codex seed7_analysis_audit (VALID WITH CAVEATS): source-checked 78-template goal-can-vary manifest (was 76 by goal-text diff), exact CI endpoints rounded outward ([-7.3, +10.8]; NI still no), checker-dispute sensitivity (v4 ClockStopWatchPausedVerify false positive: 17 vs 16, +0.9 pp, CI [-8.1, +9.9]), known limits (adb stderr pollution, nominal sign-flip CI); prereg entry before seeds 1234/2026 are opened; Codex report |
 | 2026-11-19 00:57 | `3b87d5c` | Docs registry: MAI-UI-2B seed-30 row and paired comparisons (v4 vs MAI-UI 6/20, McNemar 0.009; MAI-UI vs GUI-Owl 20/11, 0.15) |
 | 2026-11-19 01:04 | `081c8e1` | Live snapshot: MobileWorld counts, QDC phone report (01:04) |
+| 2026-11-19 01:34 | `eeacb13` | Live snapshot: MobileWorld counts, QDC phone report (01:34) |
+| 2026-11-19 01:46 | `ad94809` | MobileWorld run-2 completion rule (env failures get one re-run in a fresh container; model-caused crashes and ask_user without a user simulator count as failures), VM resume script, Mac watcher (restart after the 12-h stop, reserved IP); prereg entry |
+| 2026-11-19 01:46 | `faa7383` | PREREG: correct count (4 setup failures, not 5) |
