@@ -101,3 +101,15 @@ exposure to AndroidWorld is undisclosed by its authors.
   (model, dataset@split#revision, greedy, thinking mode), one episode per file and >= 1 step for any success.
   Recovery: sft_vlm.py now refuses to train from scratch if a hub checkpoint repo exists but cannot be listed/restored,
   and refuses checkpoints written under a different run configuration (run_config.json pinned on the checkpoint repo).
+* 2026-11-18 09:30 (v4 offline dev evals were read; no v4 or v4-RL AndroidWorld result exists; nothing sealed was
+  opened): infrastructure, no design change. (1) The merged-v4 upload to the hub failed ("Private storage limit
+  reached"); the merged weights were copied from the VM and verified before export: bf16(base@23387beda4 + 2*B@A of the
+  final step-1250 adapter, hub ckpt repo @58bcb65) within 1 bf16 ulp on all 153 LoRA targets, the other 271 tensors
+  bit-identical to the base, and the 14 non-weight files byte-identical to the v3 merged release; pinned in
+  results/v4_local_export_manifest.json, exported by scripts/local_v4_to_aw_v2.sh (seed-30 flags unchanged). v4-RL
+  weights will be copied from the VM the same way. (2) Resuming a paused AndroidWorld arm no longer re-runs saved
+  exception episodes (android_world's default would have given paused arms a second try): they stay scored failures,
+  as written above; only the episode interrupted by the pause, which was never saved, is run again
+  (run_aw.py --retry_failed_on_resume, default off). No sealed arm had been resumed before this change. (3) The
+  emulator-2 filler would have resumed the paused GUI-Owl seed-1234 arm from its log file instead of its run directory;
+  replaced by scripts/local_emu2_fill_v2.sh before the pause happened.

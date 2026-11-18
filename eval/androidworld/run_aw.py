@@ -36,6 +36,7 @@ flags.DEFINE_integer("task_random_seed", 30, "seed for task params")
 flags.DEFINE_list("tasks", None, "subset of tasks")
 flags.DEFINE_integer("n_task_combinations", 1, "instances per task")
 flags.DEFINE_string("checkpoint_dir", "", "resume dir")
+flags.DEFINE_boolean("retry_failed_on_resume", False, "re-run saved exception episodes when resuming (upstream AW behaviour; off: prereg keeps them as failures)")
 flags.DEFINE_string("output_path", "results/androidworld", "output root")
 flags.DEFINE_string("agent_label", "lfm_screen_agent", "name stored in results")
 flags.DEFINE_string("server_url", "http://127.0.0.1:8080", "OpenAI-compatible server")
@@ -78,6 +79,7 @@ def main(argv):
     agent.transition_pause = None
     ckpt = F.checkpoint_dir or checkpointer_lib.create_run_directory(F.output_path)
     print(f"Writing to {ckpt}", flush=True)
+    suite_utils.RETRY_FAILED_ON_RESUME = F.retry_failed_on_resume
     suite_utils.run(suite, agent, checkpointer=checkpointer_lib.IncrementalCheckpointer(ckpt), demo_mode=False)
     print(f"Done. Results in {ckpt}", flush=True)
     env.close()

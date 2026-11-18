@@ -56,10 +56,10 @@ index 6505b4e..763aed0 100644
              joplin_package,
              "-candroid.intent.category.LAUNCHER",
 diff --git a/android_world/suite_utils.py b/android_world/suite_utils.py
-index 2c72a41..b828c5d 100644
+index 2c72a41..550e195 100644
 --- a/android_world/suite_utils.py
 +++ b/android_world/suite_utils.py
-@@ -285,7 +285,15 @@ def _run_task(
+@@ -285,10 +285,22 @@ def _run_task(
              constants.EpisodeConstants.SEED
          ],
      }
@@ -76,6 +76,25 @@ index 2c72a41..b828c5d 100644
      return result
  
  
++# PATCH (lfm3-android): see run(); set by eval/androidworld/run_aw.py --retry_failed_on_resume (default False).
++RETRY_FAILED_ON_RESUME = False
++
++
+ def _get_task_info(
+     episodes: list[dict[str, Any]],
+ ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, list[dict[str, Any]]]]:
+@@ -387,6 +399,11 @@ def _run_task_suite(
+       already_processed = (
+           instance_name in completed_tasks and instance_name not in failed_tasks
+       )
++      # PATCH (lfm3-android): when resuming, keep saved exception episodes as scored failures instead of re-running
++      # them (docs/PREREG_v4.md: only a pre-step-1 infrastructure crash is re-run, once, manually). Upstream behaviour
++      # (re-run them) only with RETRY_FAILED_ON_RESUME = True.
++      if not RETRY_FAILED_ON_RESUME and instance_name in failed_tasks:
++        already_processed = True
+       if already_processed:
+         _log_and_print('Skipping already processed task %s', instance_name)
+         continue
 diff --git a/android_world/utils/file_utils.py b/android_world/utils/file_utils.py
 index bf22803..208f852 100644
 --- a/android_world/utils/file_utils.py

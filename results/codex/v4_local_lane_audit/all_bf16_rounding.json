@@ -1,0 +1,775 @@
+{
+  "summary": {
+    "checked": 153,
+    "fails": 12,
+    "min_relative_error": 0.011867302469909191,
+    "max_relative_error": 0.15211693942546844
+  },
+  "rows": [
+    {
+      "tensor": "model.language_model.layers.0.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.03519633412361145,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.0.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03452223539352417,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.0.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03186407312750816,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.0.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.03872235119342804,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.0.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03221037611365318,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.1.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.03181876242160797,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.1.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03575565293431282,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.1.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.037063393741846085,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.1.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04343176260590553,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.1.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.0334404818713665,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.02859071083366871,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.038079336285591125,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.029267746955156326,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.10932391881942749,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.10.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.024405838921666145,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03255791589617729,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.02841598354279995,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.10.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.035922322422266006,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.11.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.026068681851029396,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.11.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.030799755826592445,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.11.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.029881753027439117,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.11.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04110128432512283,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.11.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.02996331825852394,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.031052304431796074,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04518008232116699,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.030811920762062073,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.13244643807411194,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.12.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.027802802622318268,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03405299410223961,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.027748504653573036,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.12.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.03386924788355827,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.13.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.026790879666805267,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.13.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.0322175957262516,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.13.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.0316540002822876,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.13.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04560835286974907,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.13.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03178632631897926,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03270912542939186,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.048025887459516525,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03282952681183815,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.12559379637241364,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.14.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.026560168713331223,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03864822909235954,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.029423659667372704,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.14.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.040526822209358215,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.15.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.02868947759270668,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.15.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.031650934368371964,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.15.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03307867795228958,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.15.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04657755792140961,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.15.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03191660717129707,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.032717566937208176,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04815469682216644,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03102908469736576,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.10287896543741226,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.16.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.02374502457678318,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03494860231876373,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.026429783552885056,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.16.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.029971348121762276,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.17.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.02710653468966484,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.17.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03215281292796135,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.17.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03227788954973221,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.17.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04721670597791672,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.17.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03157939016819,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03190096467733383,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04775543883442879,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03074922040104866,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.11329478025436401,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.18.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.011867302469909191,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.027043472975492477,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.03471606224775314,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.18.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.025911543518304825,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.19.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.0290340818464756,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.19.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.034874796867370605,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.19.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03146364912390709,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.19.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.0430816188454628,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.19.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.029770182445645332,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03328213840723038,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.038985494524240494,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03318659961223602,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.09756603837013245,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.2.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.03202933073043823,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.035537973046302795,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.03146859258413315,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.2.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.038102541118860245,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.02918293885886669,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04441826045513153,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.02956175059080124,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.12675286829471588,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.20.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.025122055783867836,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.033229175955057144,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.02739572711288929,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.20.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.031252726912498474,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.21.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.02715427801012993,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.21.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03225812688469887,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.21.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.029278185218572617,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.21.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.03958798199892044,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.21.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.028669748455286026,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03246159106492996,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04589400440454483,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.030409391969442368,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.15211693942546844,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.02678985893726349,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.031017476692795753,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.02558867819607258,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.03466559946537018,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.23.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.032337039709091187,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.23.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03135225176811218,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.23.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03285064548254013,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.23.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.0713033527135849,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.23.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03269599378108978,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.3.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.02916118875145912,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.3.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03394872695207596,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.3.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.0334184356033802,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.3.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.042474325746297836,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.3.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03247111290693283,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03381894528865814,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.038344211876392365,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.030901221558451653,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.10695847868919373,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.4.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.027253249660134315,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03298429027199745,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.02851145528256893,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.4.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.03305545449256897,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.5.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.029267696663737297,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.5.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.03197348490357399,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.5.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.0316828191280365,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.5.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04250993952155113,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.5.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03137524425983429,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.03216264024376869,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.041031308472156525,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.03060261346399784,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.12496457248926163,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.6.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.02684946358203888,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03619519993662834,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.028770042583346367,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.6.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.03564287722110748,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.7.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.028488457202911377,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.7.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.031250081956386566,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.7.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.031146535649895668,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.7.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04301527887582779,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.7.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.031197018921375275,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.0315365232527256,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.04063500836491585,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.030586525797843933,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.self_attn.gate_proj.weight",
+      "bf16_merge_relative_error": 0.08138907700777054,
+      "passes_checker": false
+    },
+    {
+      "tensor": "model.language_model.layers.8.self_attn.k_proj.weight",
+      "bf16_merge_relative_error": 0.024745019152760506,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.self_attn.o_proj.weight",
+      "bf16_merge_relative_error": 0.03359239548444748,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.self_attn.q_proj.weight",
+      "bf16_merge_relative_error": 0.02737797424197197,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.8.self_attn.v_proj.weight",
+      "bf16_merge_relative_error": 0.03319291025400162,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.9.conv.in_proj.weight",
+      "bf16_merge_relative_error": 0.028318900614976883,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.9.conv.out_proj.weight",
+      "bf16_merge_relative_error": 0.030338048934936523,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.9.feed_forward.w1.weight",
+      "bf16_merge_relative_error": 0.02898012101650238,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.9.feed_forward.w2.weight",
+      "bf16_merge_relative_error": 0.036850471049547195,
+      "passes_checker": true
+    },
+    {
+      "tensor": "model.language_model.layers.9.feed_forward.w3.weight",
+      "bf16_merge_relative_error": 0.030426496639847755,
+      "passes_checker": true
+    }
+  ]
+}

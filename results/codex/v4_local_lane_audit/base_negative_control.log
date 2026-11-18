@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/scripts/check_local_merge.py", line 48, in <module>
+    assert got.abs().max() > 0, f"targeted tensor unchanged: {k}"
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: targeted tensor unchanged: model.language_model.layers.0.conv.in_proj.weight

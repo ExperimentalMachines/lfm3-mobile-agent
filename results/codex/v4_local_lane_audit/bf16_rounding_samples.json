@@ -1,0 +1,92 @@
+[
+  {
+    "tensor": "model.language_model.layers.0.conv.in_proj.weight",
+    "base_shape": [
+      6144,
+      2048
+    ],
+    "adapter_dtypes": [
+      "torch.float32",
+      "torch.float32"
+    ],
+    "delta_norm": 3.028262138366699,
+    "base_norm": 64.20907592773438,
+    "bf16_merge_relative_error": 0.03519633412361145,
+    "passes_checker": true
+  },
+  {
+    "tensor": "model.language_model.layers.0.conv.out_proj.weight",
+    "base_shape": [
+      2048,
+      2048
+    ],
+    "adapter_dtypes": [
+      "torch.float32",
+      "torch.float32"
+    ],
+    "delta_norm": 1.7463507652282715,
+    "base_norm": 36.31922912597656,
+    "bf16_merge_relative_error": 0.03452223539352417,
+    "passes_checker": true
+  },
+  {
+    "tensor": "model.language_model.layers.0.feed_forward.w1.weight",
+    "base_shape": [
+      7680,
+      2048
+    ],
+    "adapter_dtypes": [
+      "torch.float32",
+      "torch.float32"
+    ],
+    "delta_norm": 3.6757638454437256,
+    "base_norm": 70.44596099853516,
+    "bf16_merge_relative_error": 0.03186407312750816,
+    "passes_checker": true
+  },
+  {
+    "tensor": "model.language_model.layers.0.feed_forward.w2.weight",
+    "base_shape": [
+      2048,
+      7680
+    ],
+    "adapter_dtypes": [
+      "torch.float32",
+      "torch.float32"
+    ],
+    "delta_norm": 2.8403923511505127,
+    "base_norm": 66.2137222290039,
+    "bf16_merge_relative_error": 0.03872235119342804,
+    "passes_checker": true
+  },
+  {
+    "tensor": "model.language_model.layers.10.self_attn.gate_proj.weight",
+    "base_shape": [
+      16,
+      2048
+    ],
+    "adapter_dtypes": [
+      "torch.float32",
+      "torch.float32"
+    ],
+    "delta_norm": 0.17966459691524506,
+    "base_norm": 12.169196128845215,
+    "bf16_merge_relative_error": 0.10932391881942749,
+    "passes_checker": false
+  },
+  {
+    "tensor": "model.language_model.layers.10.self_attn.k_proj.weight",
+    "base_shape": [
+      512,
+      2048
+    ],
+    "adapter_dtypes": [
+      "torch.float32",
+      "torch.float32"
+    ],
+    "delta_norm": 1.0633621215820312,
+    "base_norm": 15.59985065460205,
+    "bf16_merge_relative_error": 0.024405838921666145,
+    "passes_checker": true
+  }
+]
