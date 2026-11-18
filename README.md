@@ -6,7 +6,7 @@ LiquidAI **LFM3-VL-2B** into an on-device, screenshot-only Android agent and com
 
 Numbers in the tables are generated from the working repository's result files by
 [`data/build_runs_registry.py`](data/build_runs_registry.py) (machine-readable copy: [`data/runs.json`](data/runs.json));
-nothing is typed in by hand. Snapshot: lfm3-android @ 6bc02c8, 2026-11-18 21:03.
+nothing is typed in by hand. Snapshot: lfm3-android @ 2dc21de, 2026-11-18 21:33.
 
 ## Headline (AndroidWorld, 116 tasks, development seed 30, same harness for every model)
 
