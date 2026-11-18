@@ -153,3 +153,14 @@ exposure to AndroidWorld is undisclosed by its authors.
   sensitivity v4 17 vs GUI-Owl 16, +0.9 pp, CI [-8.1, +9.9]. (4) Disclosed, not fixed mid-protocol: gRPC fork warnings
   on adb stderr can corrupt adb output during task setup in every arm. Such setup crashes remain exceptions handled by
   the single re-run rule, so all remaining arms run on the same harness.
+* 2026-11-19 01:55 (MobileWorld run 2, before any re-run outcome): completion rule for both MobileWorld runs (GUI-Owl
+  and v4; also any later MAI-UI run), implemented in scripts/gcp_mw_resume_vm.sh. A task without a result counts as a
+  failure unless the environment caused it: task setup failed (/task/init 500) or scoring failed (/task/eval 500) gets
+  ONE more attempt in a freshly restarted container after the run's list ends; a task cut off by a VM stop or
+  preemption, or never reached, is run. Not re-run (counted as failures, disclosed): an action the runtime rejects
+  (GUI-Owl's double_tap), output the official agent cannot parse after its own retries, and ask_user, whose simulated
+  user needs an LLM API key this setup does not have. Replaced task folders are kept under traj_logs/_interrupted/ and
+  every decision is logged (traj_logs/_retry_manifest_<run>.jsonl). Known before this rule: GUI-Owl's container had 5
+  setup and 2 scoring failures (mostly Mastodon tasks); v4's container had none. Tasks that did produce a result in
+  that container may also have been affected; not corrected, disclosed. The VM's IP is reserved so a restart keeps the
+  model tunnels.
