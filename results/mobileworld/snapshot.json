@@ -1,0 +1,287 @@
+{
+ "snapshot_time": "2026-11-18 14:12 PST",
+ "suite": "MobileWorld a026188, 105 English GUI-only tasks, max 50 steps, step_wait 3 s, auto_retry 3",
+ "runs": {
+  "lfm3_v4": {
+   "host": "AWS c8i.4xlarge us-west-2, model on CPU (8 threads)",
+   "agent": "eval/mobileworld/lfm3_mw_agent.py (v4 prompt)",
+   "finished": 49,
+   "successes": 5,
+   "tasks": [
+    {
+     "task": "AcceptMeetingTask",
+     "score": 0.0,
+     "steps": 6
+    },
+    {
+     "task": "AdjustBrightnessMaximumTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "AdjustBrightnessMinimumTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "AdjustFontIconMaximumTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "AdjustFontIconMinimumTask",
+     "score": 1.0,
+     "steps": 50
+    },
+    {
+     "task": "CancelMeetingTask",
+     "score": 0.0,
+     "steps": 5
+    },
+    {
+     "task": "ChangeWallpaperTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "CheckConferenceDurationTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "CheckDeduplicatedEventsTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "CheckEventTimeTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "CheckSetMeetTimeTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "ChromeSearchBeijingWeatherTask",
+     "score": 0.0,
+     "steps": 8
+    },
+    {
+     "task": "CloseFlightModeTask",
+     "score": 1.0,
+     "steps": 4
+    },
+    {
+     "task": "MastodonAddBookmarkTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonAddFeaturedHashtagsTask",
+     "score": 0.0,
+     "steps": 9
+    },
+    {
+     "task": "MastodonAdjustTootsTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonChangeHeaderTask",
+     "score": 0.0,
+     "steps": 14
+    },
+    {
+     "task": "MastodonChangeLanguageTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonConditionalFavoTask",
+     "score": 0.0,
+     "steps": 10
+    },
+    {
+     "task": "MastodonCreateListTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonExportFollowsTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonFavoriteTootsTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonFilterLanguageTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonFollowTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonImportMutedUsersTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonInviteTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonManageHashtagsTask",
+     "score": 0.0,
+     "steps": 4
+    },
+    {
+     "task": "MastodonNewPostTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonPinTootsTask",
+     "score": 0.0,
+     "steps": 4
+    },
+    {
+     "task": "MastodonPostEditedPhotoTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonRemoveBookmarkTask",
+     "score": 0.0,
+     "steps": 7
+    },
+    {
+     "task": "MastodonReplyTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonRevisePollTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonSavePhotosTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonShareLocationTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MastodonUnfollowTask",
+     "score": 0.0,
+     "steps": 17
+    },
+    {
+     "task": "MattermostCreateChannelTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MattermostReplyToMessageTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "MattermostSendFileTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "OpenFlightModeTask",
+     "score": 1.0,
+     "steps": 4
+    },
+    {
+     "task": "ReadQwen3PaperTask2",
+     "score": 0.0,
+     "steps": 44
+    },
+    {
+     "task": "ScheduleLunchViaSmsTask",
+     "score": 0.0,
+     "steps": 12
+    },
+    {
+     "task": "SendInterviewEmailTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "SendInterviewInvitationTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "SendWaiverTask",
+     "score": 1.0,
+     "steps": 11
+    },
+    {
+     "task": "SetAlarmTask",
+     "score": 0.0,
+     "steps": 50
+    },
+    {
+     "task": "SharePhotosTask",
+     "score": 0.0,
+     "steps": 16
+    },
+    {
+     "task": "TakeSelfieTask",
+     "score": 1.0,
+     "steps": 50
+    },
+    {
+     "task": "TextArrivalTimeTask",
+     "score": 0.0,
+     "steps": 6
+    }
+   ]
+  },
+  "guiowl15_2b": {
+   "host": "GCP n2-standard-16 us-west1, model on Colab T4 via tunnel",
+   "agent": "MobileWorld gui_owl_1_5 (history_n=1)",
+   "finished": 4,
+   "successes": 4,
+   "tasks": [
+    {
+     "task": "AdjustBrightnessMaximumTask",
+     "score": 1.0,
+     "steps": 6
+    },
+    {
+     "task": "AdjustBrightnessMinimumTask",
+     "score": 1.0,
+     "steps": 13
+    },
+    {
+     "task": "CloseFlightModeTask",
+     "score": 1.0,
+     "steps": 4
+    },
+    {
+     "task": "OpenFlightModeTask",
+     "score": 1.0,
+     "steps": 4
+    }
+   ]
+  }
+ }
+}

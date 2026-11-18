@@ -23,6 +23,7 @@ from android_world.env import env_launcher  # noqa: E402
 
 from lfm_agent import LFMScreenAgent  # noqa: E402
 from guiowl_agent import GUIOwlAgent  # noqa: E402
+from maiui_agent import MAIUIAgent  # noqa: E402
 
 os.environ.setdefault("GRPC_VERBOSITY", "ERROR")
 
@@ -43,13 +44,15 @@ flags.DEFINE_string("server_url", "http://127.0.0.1:8080", "OpenAI-compatible se
 flags.DEFINE_boolean("enable_thinking", True, "chat_template enable_thinking")
 flags.DEFINE_integer("max_pixels", 880 * 880, "screenshot pixel budget")
 flags.DEFINE_boolean("fixed_task_seed", False, "identical params across combos")
-flags.DEFINE_string("agent", "lfm", "lfm | guiowl")
+flags.DEFINE_string("agent", "lfm", "lfm | guiowl | maiui")
 flags.DEFINE_boolean("runtime_feedback", False, "LFM agent: lexical open_app resolution + failure/no-change notes in history (ablation)")
 flags.DEFINE_boolean("force_think", False, "LFM agent: if the intent is empty, force a one-line intent (</think> banned) and re-ask for the action (ablation)")
 flags.DEFINE_integer("guiowl_images", 5, "GUI-Owl screenshots kept in context")
 flags.DEFINE_string("prompt_version", "v1", "LFM agent: v1 (models v1-v3) | v4 (answer/complete rules + installed-app list)")
 flags.DEFINE_boolean("installed_apps", False, "GUI-Owl agent: append the device's installed-app list (mirrors LFM3 v4)")
 flags.DEFINE_integer("guiowl_max_pixels", 0, "0 = full resolution (native)")
+flags.DEFINE_integer("maiui_images", 1, "MAI-UI history_n (screenshots in context; official default 3, matched 1)")
+flags.DEFINE_integer("maiui_max_pixels", 1048576, "MAI-UI screenshot pixel budget (matched to --guiowl_max_pixels)")
 
 
 def main(argv):
@@ -68,7 +71,10 @@ def main(argv):
         tasks=F.tasks, use_identical_params=F.fixed_task_seed,
     )
     suite.suite_family = F.suite_family
-    if F.agent == "guiowl":
+    if F.agent == "maiui":
+        agent = MAIUIAgent(env, server_url=F.server_url, name=F.agent_label, history_n=F.maiui_images,
+                           max_pixels=F.maiui_max_pixels)
+    elif F.agent == "guiowl":
         agent = GUIOwlAgent(env, server_url=F.server_url, name=F.agent_label, n_images=F.guiowl_images,
                             max_pixels=F.guiowl_max_pixels, installed_apps=F.installed_apps)
     else:
