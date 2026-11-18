@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ be179d3",
+ "generated_from": "lfm3-android @ 392e0f2",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -881,12 +881,12 @@
   },
   {
    "arm": "v4_seed1234",
-   "episode_files": 69,
+   "episode_files": 76,
    "of": 116
   },
   {
    "arm": "v4_seed2026",
-   "episode_files": 3,
+   "episode_files": 27,
    "of": 116
   },
   {
@@ -1051,7 +1051,7 @@
   "MAI-UI-2B Q8_0": 2.279
  },
  "mobileworld_snapshot": {
-  "snapshot_time": "2026-11-19 04:35",
+  "snapshot_time": "2026-11-19 05:06",
   "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
   "runs": {
    "v4 run 1 (AWS c8i, CPU server)": {
@@ -1071,22 +1071,27 @@
    "GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0)": {
     "host": "GCP n2-standard-16 + Colab T4",
     "agent": "MobileWorld official gui_owl_1_5",
-    "finished": 100,
+    "finished": 102,
     "successes": 22,
-    "status": "in progress"
+    "status": "task list finished; ONE fresh-container attempt pending for ThanksgivingPrepTask (setup fails in every container); VM stopped at its 12-h limit and the gcloud login expired, so it waits for re-login"
    },
    "v4 run 2 (GCP + Colab T4, fixed adapter)": {
     "host": "GCP n2-standard-16 + Colab T4",
     "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step; known limits: a text action on step 50 loses its Enter, empty text gets an HTTP 500 no-op; Codex round2_audit M1/M2)",
     "finished": 104,
     "successes": 6,
-    "status": "complete"
+    "status": "complete (ThanksgivingPrepTask: setup failed in every attempt, counted as failure)"
    }
   },
   "paired_so_far": {
-   "tasks_finished_by_both": 100,
+   "tasks_finished_by_both": 105,
    "v4_successes": 6,
-   "guiowl_successes": 22
-  }
+   "guiowl_successes": 22,
+   "both": 6,
+   "v4_only": 0,
+   "guiowl_only": 16,
+   "mcnemar_exact_p": 3.05e-05
+  },
+  "maiui_run": "prepared (docs/PREREG_v4.md 2026-11-19 05:20): official agent with 1 screenshot, Q8_0, two halves in parallel; starts after GUI-Owl is complete"
  }
 }
