@@ -161,3 +161,5 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-19 04:35 | `c032d6e` | Live snapshot: MobileWorld counts, QDC phone report (04:35) |
 | 2026-11-19 05:02 | `be179d3` | MobileWorld run 2: summaries (GUI-Owl provisional: one fresh-container attempt pending), MAI-UI MobileWorld arm prereg + driver |
 | 2026-11-19 05:06 | `392e0f2` | MobileWorld snapshot: run 2 final counts (GUI-Owl one attempt pending) |
+| 2026-11-19 05:44 | `b5e7fc8` | MobileWorld: apply Codex mw_r2_audit (VALID WITH CAVEATS) |
+| 2026-11-19 05:44 | `d77c702` | Docs: include MobileWorld run-2 comparison and summaries in the run log |

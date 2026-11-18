@@ -1,0 +1,82 @@
+{
+ "provisional": true,
+ "complete": {
+  "guiowl": false,
+  "v4": true
+ },
+ "pending_eligible_tasks": {
+  "guiowl": [
+   "ThanksgivingPrepTask"
+  ],
+  "v4": []
+ },
+ "n_tasks": 105,
+ "v4_successes": 6,
+ "guiowl_successes": 22,
+ "difference_pp": -15.238095238095237,
+ "both": 6,
+ "v4_only": [],
+ "guiowl_only": [
+  "AcceptMeetingTask",
+  "AdjustBrightnessMaximumTask",
+  "AdjustBrightnessMinimumTask",
+  "CancelMeetingTask",
+  "ChangeWallpaperTask",
+  "CheckConferenceAndSendSmsTask1",
+  "CheckConferenceLocationTask",
+  "CheckDepartTimeTask",
+  "MastodonChangeHeaderTask",
+  "MastodonChangeLanguageTask",
+  "MastodonInviteTask",
+  "MastodonNewPostTask",
+  "MastodonRevisePhotoAltTask",
+  "MastodonRevisePollTask",
+  "RequestCarpoolingTask",
+  "SetAlarmTask"
+ ],
+ "neither": 83,
+ "mcnemar_exact_p": 3.0517578125e-05,
+ "sensitivity_narrow": {
+  "rule": "exclude tasks with a folder-level setup/scoring failure in either run",
+  "tasks": [
+   "AdjustFontIconMaximumTask",
+   "CheckConferenceDurationTask",
+   "MastodonCreateListTask",
+   "MastodonMultiInviteTask",
+   "MastodonPostEditedPhotoTask",
+   "MattermostResourceConflictResolutionTask",
+   "SendInterviewEmailTask",
+   "ThanksgivingPrepTask"
+  ],
+  "n_tasks": 97,
+  "v4": 6,
+  "guiowl": 22
+ },
+ "sensitivity_broad": {
+  "rule": "also exclude tasks with a MobileWorld device-health re-initialisation in either run",
+  "tasks": [
+   "AdjustFontIconMaximumTask",
+   "CartInfoNotificationTask",
+   "CheckConferenceDurationTask",
+   "CheckInvoiceTask2",
+   "MastodonCreateListTask",
+   "MastodonExportFollowsTask",
+   "MastodonFollowTask",
+   "MastodonManageMultiListTask",
+   "MastodonMattermostPostNoticeTask",
+   "MastodonMultiInviteTask",
+   "MastodonPostEditedPhotoTask",
+   "MastodonUpdateContactsTask",
+   "MattermostResourceConflictResolutionTask",
+   "ReadQwen3PaperTask1",
+   "ScheduleCoffeeTimeViaSmsTask",
+   "SendInterviewEmailTask",
+   "SendWaiverTask",
+   "ThanksgivingPrepTask"
+  ],
+  "n_tasks": 87,
+  "v4": 5,
+  "guiowl": 21
+ },
+ "note": "Secondary, descriptive benchmark (not preregistered as a primary endpoint); single run per model, temperature 0. Compares configured agent pipelines (adapter, prompt, image budget, parsing), not model weights alone."
+}

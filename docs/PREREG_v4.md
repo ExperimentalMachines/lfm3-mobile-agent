@@ -186,3 +186,22 @@ exposure to AndroidWorld is undisclosed by its authors.
   (3) The Mac's gcloud login expired at about 04:55, just before the VM's 12-h stop, so GUI-Owl's one remaining
   fresh-container attempt (ThanksgivingPrepTask) and the MAI-UI run wait until the login is renewed. Both watchers
   resume on their own after that (scripts/gcp_mw_resume_watch.sh, scripts/gcp_mw_maiui_watch.sh).
+* 2026-11-19 05:45 (after Codex's audit of MobileWorld run 2, results/codex/mw_r2_audit/report.md, VALID WITH CAVEATS;
+  no MAI-UI MobileWorld step has run; no score changed). (1) Clarification of "ONE more attempt": as implemented and
+  already applied to v4, it is one more `mw eval` invocation in a freshly restarted container, inside which
+  MobileWorld's `--auto_retry 3` allows up to 4 executions (v4's ThanksgivingPrepTask got 4, all failed setup). GUI-Owl's
+  pending attempt and MAI-UI get exactly the same. (2) Environment inventory, qualified: besides folder-level failures,
+  MobileWorld re-initialises a task inside the same folder when the device is unhealthy (15 times for GUI-Owl, 2 for v4,
+  all before any model action; GUI-Owl's SendWaiverTask succeeded after one). "v4's container had none [except
+  Thanksgiving]" holds for folder-level failures only. Reported sensitivities: narrow (folder-level failures, 97 tasks)
+  and broad (also re-initialisations, 87 tasks: v4 5 vs GUI-Owl 21). (3) Disclosed harness effects, not corrected in
+  run 2: v4's adapter sends its type-then-Enter as two environment rounds, so Enter was never sent when typing was round
+  50 (3 tasks, all scored 0) and 37 v4 tasks that reached the budget had fewer than 50 model decisions; GUI-Owl's
+  official agent's parse-failure sentinel (`error_env`) is rejected by MobileWorld's own validator, so 2 tasks were
+  re-executed instead of being scored (both 0); `double_tap` was rejected by GUI-Owl's official action adapter, not the
+  runtime; ThanksgivingPrepTask is a persistent task-specific initialisation failure whose cause (task code or a shared
+  dependency) is not identified. (4) MAI-UI launch safeguards (Codex P1s fixed before launch): task halves validated as
+  the exact 53/52 alternate split; planner failures stop the run without a completion marker; completion requires a
+  parsed plan accounting for every task; a half launches only when its tunnel's server reports MAI-UI-2B-Q8_0.gguf,
+  llama.cpp cd959bae9, n_ctx 20480 (attested now: logs/colab_maiui_q8_attestation.txt, both SHA-256s match the Mac);
+  both GUI-Owl and v4 must be complete before their containers are reused.

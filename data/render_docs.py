@@ -28,6 +28,8 @@ ps = mw.get("paired_so_far")
 if ps:
     mwt += f"\nPaired so far (tasks both valid runs have finished): {ps['tasks_finished_by_both']} tasks, v4 {ps['v4_successes']} vs GUI-Owl {ps['guiowl_successes']} successes.\n"
 mwt += "\nOnly complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).\n"
+if reg.get("mobileworld_r2_comparison_md"):  # full run-2 comparison (scripts/mw_summarize_r2.py), heading demoted one level
+    mwt += "\n" + reg["mobileworld_r2_comparison_md"].replace("# MobileWorld run 2", "### MobileWorld run 2", 1)
 sizes_d = reg["gguf_sizes_gb"]
 sp = reg.get("speed_cpu_t8") or []
 lab = {"LFM3 v4 (ours)": "**v4 (ours)**", "GUI-Owl-1.5-2B": "GUI-Owl-1.5-2B", "MAI-UI-2B": "MAI-UI-2B"}

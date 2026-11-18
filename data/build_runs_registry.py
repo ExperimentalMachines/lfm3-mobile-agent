@@ -249,7 +249,8 @@ reg = {"generated_from": "lfm3-android @ " + os.popen("git rev-parse --short HEA
        "training": train_rows, "androidcontrol_test": ac_rows, "general_retention": gen_rows, "dev_splits": DEV,
        "v4rl_promotion_offline": gate, "androidworld_seed30": aw_rows, "androidworld_seed30_pairs": pairs,
        "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "speed_m5_in_run": speed_m5, "speed_phones": speed_phones, "seed7_analysis_md": seed7, "seed7_status": seed7_status, "gguf_sizes_gb": sizes,
-       "mobileworld_snapshot": J(MW) if MW else None}
+       "mobileworld_snapshot": J(MW) if MW else None,
+       "mobileworld_r2_comparison_md": open("results/mobileworld/mw_r2_comparison.md").read() if os.path.exists("results/mobileworld/mw_r2_comparison.md") else None}
 json.dump(reg, open(os.path.join(OUT, "data", "runs.json"), "w"), indent=1, default=str)
 
 # ---------------------------------------------------------------- markdown tables
