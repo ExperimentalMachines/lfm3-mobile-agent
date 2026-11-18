@@ -21,7 +21,7 @@ running (llama.cpp Metal):
 |---|---|---|---|---|---|
 | **v4 (ours)** | Q4_K_M | 1,706 | **2.96** (1.7–4.6) | 1,303 | 22 |
 | GUI-Owl-1.5-2B | Q4_K_M | 2,228 | 7.00 (4.6–10.4) | 2,106 | 47 |
-| MAI-UI-2B (run in progress: 87 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,733 | 9.04 (6.1–13.3) | 2,181 | 51 |
+| MAI-UI-2B (run in progress: 98 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,837 | 9.16 (6.1–13.6) | 2,128 | 51 |
 
 
 ## Real phone: Snapdragon 8 Elite Extreme Gen 6 (Qualcomm Device Cloud)
