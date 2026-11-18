@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ 7e1f11d",
+ "generated_from": "lfm3-android @ 456732a",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -823,7 +823,7 @@
  "androidworld_sealed_counts_only": [
   {
    "arm": "guiowl_seed1234",
-   "episode_files": 33,
+   "episode_files": 43,
    "of": 116
   },
   {
@@ -843,7 +843,7 @@
   },
   {
    "arm": "v4_seed7",
-   "episode_files": 51,
+   "episode_files": 116,
    "of": 116
   }
  ],
@@ -931,13 +931,13 @@
   {
    "model": "MAI-UI-2B",
    "quant": "Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md)",
-   "episodes": 17,
-   "steps": 324,
-   "median_s": 8.46,
-   "p10_s": 6.66,
-   "p90_s": 11.46,
-   "prompt_tokens_median": 2006,
-   "output_tokens_median": 53,
+   "episodes": 48,
+   "steps": 1040,
+   "median_s": 8.15,
+   "p10_s": 5.6,
+   "p90_s": 14.94,
+   "prompt_tokens_median": 2278,
+   "output_tokens_median": 51,
    "run_dir": "results/androidworld/maiui_2b_matched_q8_0/run_20261118T144721333786/"
   }
  ],
@@ -995,289 +995,36 @@
   "MAI-UI-2B Q8_0": 2.279
  },
  "mobileworld_snapshot": {
-  "snapshot_time": "2026-11-18 14:12 PST",
-  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max 50 steps, step_wait 3 s, auto_retry 3",
+  "snapshot_time": "2026-11-18 18:55",
+  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
   "runs": {
-   "lfm3_v4": {
-    "host": "AWS c8i.4xlarge us-west-2, model on CPU (8 threads)",
-    "agent": "eval/mobileworld/lfm3_mw_agent.py (v4 prompt)",
-    "finished": 49,
+   "v4 run 1 (AWS c8i, CPU server)": {
+    "host": "AWS c8i.4xlarge",
+    "agent": "LFM3 adapter (first version)",
+    "finished": 105,
     "successes": 5,
-    "tasks": [
-     {
-      "task": "AcceptMeetingTask",
-      "score": 0.0,
-      "steps": 6
-     },
-     {
-      "task": "AdjustBrightnessMaximumTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "AdjustBrightnessMinimumTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "AdjustFontIconMaximumTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "AdjustFontIconMinimumTask",
-      "score": 1.0,
-      "steps": 50
-     },
-     {
-      "task": "CancelMeetingTask",
-      "score": 0.0,
-      "steps": 5
-     },
-     {
-      "task": "ChangeWallpaperTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "CheckConferenceDurationTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "CheckDeduplicatedEventsTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "CheckEventTimeTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "CheckSetMeetTimeTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "ChromeSearchBeijingWeatherTask",
-      "score": 0.0,
-      "steps": 8
-     },
-     {
-      "task": "CloseFlightModeTask",
-      "score": 1.0,
-      "steps": 4
-     },
-     {
-      "task": "MastodonAddBookmarkTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonAddFeaturedHashtagsTask",
-      "score": 0.0,
-      "steps": 9
-     },
-     {
-      "task": "MastodonAdjustTootsTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonChangeHeaderTask",
-      "score": 0.0,
-      "steps": 14
-     },
-     {
-      "task": "MastodonChangeLanguageTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonConditionalFavoTask",
-      "score": 0.0,
-      "steps": 10
-     },
-     {
-      "task": "MastodonCreateListTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonExportFollowsTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonFavoriteTootsTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonFilterLanguageTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonFollowTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonImportMutedUsersTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonInviteTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonManageHashtagsTask",
-      "score": 0.0,
-      "steps": 4
-     },
-     {
-      "task": "MastodonNewPostTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonPinTootsTask",
-      "score": 0.0,
-      "steps": 4
-     },
-     {
-      "task": "MastodonPostEditedPhotoTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonRemoveBookmarkTask",
-      "score": 0.0,
-      "steps": 7
-     },
-     {
-      "task": "MastodonReplyTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonRevisePollTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonSavePhotosTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonShareLocationTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MastodonUnfollowTask",
-      "score": 0.0,
-      "steps": 17
-     },
-     {
-      "task": "MattermostCreateChannelTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MattermostReplyToMessageTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "MattermostSendFileTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "OpenFlightModeTask",
-      "score": 1.0,
-      "steps": 4
-     },
-     {
-      "task": "ReadQwen3PaperTask2",
-      "score": 0.0,
-      "steps": 44
-     },
-     {
-      "task": "ScheduleLunchViaSmsTask",
-      "score": 0.0,
-      "steps": 12
-     },
-     {
-      "task": "SendInterviewEmailTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "SendInterviewInvitationTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "SendWaiverTask",
-      "score": 1.0,
-      "steps": 11
-     },
-     {
-      "task": "SetAlarmTask",
-      "score": 0.0,
-      "steps": 50
-     },
-     {
-      "task": "SharePhotosTask",
-      "score": 0.0,
-      "steps": 16
-     },
-     {
-      "task": "TakeSelfieTask",
-      "score": 1.0,
-      "steps": 50
-     },
-     {
-      "task": "TextArrivalTimeTask",
-      "score": 0.0,
-      "steps": 6
-     }
-    ]
+    "status": "complete, NOT a fair measure: Codex (results/codex/session_1118_audit C1/C2) found the adapter reversed v4's horizontal scrolls, changed scroll distance and dropped the Enter that v4's type action includes; superseded by run 2"
    },
-   "guiowl15_2b": {
-    "host": "GCP n2-standard-16 us-west1, model on Colab T4 via tunnel",
-    "agent": "MobileWorld gui_owl_1_5 (history_n=1)",
+   "GUI-Owl run 1 (GCP + Colab T4)": {
+    "host": "GCP n2-standard-16 + Colab T4",
+    "agent": "MobileWorld official gui_owl_1_5",
     "finished": 4,
     "successes": 4,
-    "tasks": [
-     {
-      "task": "AdjustBrightnessMaximumTask",
-      "score": 1.0,
-      "steps": 6
-     },
-     {
-      "task": "AdjustBrightnessMinimumTask",
-      "score": 1.0,
-      "steps": 13
-     },
-     {
-      "task": "CloseFlightModeTask",
-      "score": 1.0,
-      "steps": 4
-     },
-     {
-      "task": "OpenFlightModeTask",
-      "score": 1.0,
-      "steps": 4
-     }
-    ]
+    "status": "INVALID: model server OOM-killed at 14:09 (RAM prompt cache); every later task failed with no model reply; discarded, not stitched"
+   },
+   "GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0)": {
+    "host": "GCP n2-standard-16 + Colab T4",
+    "agent": "MobileWorld official gui_owl_1_5",
+    "finished": null,
+    "successes": null,
+    "status": "in progress (fresh full run)"
+   },
+   "v4 run 2 (GCP + Colab T4, fixed adapter)": {
+    "host": "GCP n2-standard-16 + Colab T4",
+    "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step)",
+    "finished": null,
+    "successes": null,
+    "status": "starting"
    }
   }
  }

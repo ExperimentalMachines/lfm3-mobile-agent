@@ -21,14 +21,14 @@ running (llama.cpp Metal):
 |---|---|---|---|---|---|
 | **v4 (ours)** | Q4_K_M | 1,706 | **2.96** (1.7–4.6) | 1,303 | 22 |
 | GUI-Owl-1.5-2B | Q4_K_M | 2,228 | 7.00 (4.6–10.4) | 2,106 | 47 |
-| MAI-UI-2B (run in progress: 17 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 324 | 8.46 (6.7–11.5) | 2,006 | 53 |
+| MAI-UI-2B (run in progress: 48 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,040 | 8.15 (5.6–14.9) | 2,278 | 51 |
 
 
 ## Real phone: Snapdragon 8 Elite Extreme Gen 6 (Qualcomm Device Cloud)
 
 _Run in progress._
 
-Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s: from the 5th call on, battery temperature had risen from 27 to ~36 °C and the big cores were capped from 3.1 GHz to ~1.8–2.0 GHz (prompt speed fell from ~26 to ~14 tok/s) while Android's thermal status still read 0 (raw data and thermal log in the working repo, `results/devstream/`).
+Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s (not monotonically; the last call took 66.7 s). From the 5th request (4th timed call) the sampled frequencies of the three performance cores (CPU 4–6, max 2.6 GHz) fell to ~1.8 GHz and the prime core (CPU 7, max 3.1 GHz) slowed and varied (down to 1.4 GHz and lower), while the battery warmed from 27 to ~36 °C and prompt speed fell from ~26 to ~15 tok/s; Android's thermal status still read 0. These are sampled current frequencies, not recorded caps (raw data and thermal log in the working repo, `results/devstream/`).
 
 
 ## How it was measured

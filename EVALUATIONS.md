@@ -146,11 +146,11 @@ finished; only episode-file counts are reported:
 
 | sealed arm | episode files present | of |
 |---|---|---|
-| guiowl_seed1234 | 33 | 116 |
+| guiowl_seed1234 | 43 | 116 |
 | guiowl_seed7 | 116 | 116 |
 | v1_seed1234 | 116 | 116 |
 | v1_seed7 | 116 | 116 |
-| v4_seed7 | 51 | 116 |
+| v4_seed7 | 116 | 116 |
 
 
 Arms: GUI-Owl-1.5-2B matched (1 screenshot, Q4_K_M, installed-app list), LFM3 v1 (reference), LFM3 v4 (final).
@@ -159,14 +159,16 @@ non-inferiority margin 8 tasks per 116.
 
 ## 6. MobileWorld (secondary benchmark, in progress)
 
-Snapshot 2026-11-18 14:12 PST; suite: MobileWorld a026188, 105 English GUI-only tasks, max 50 steps, step_wait 3 s, auto_retry 3.
+Status 2026-11-18 18:55; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
 
-| model | host | agent | finished | successes |
-|---|---|---|---|---|
-| lfm3_v4 | AWS c8i.4xlarge us-west-2, model on CPU (8 threads) | eval/mobileworld/lfm3_mw_agent.py (v4 prompt) | 49/105 | 5 |
-| guiowl15_2b | GCP n2-standard-16 us-west1, model on Colab T4 via tunnel | MobileWorld gui_owl_1_5 (history_n=1) | 4/105 | 4 |
+| run | host | agent | finished | successes | status |
+|---|---|---|---|---|---|
+| v4 run 1 (AWS c8i, CPU server) | AWS c8i.4xlarge | LFM3 adapter (first version) | 105/105 | 5 | complete, NOT a fair measure: Codex (results/codex/session_1118_audit C1/C2) found the adapter reversed v4's horizontal scrolls, changed scroll distance and dropped the Enter that v4's type action includes; superseded by run 2 |
+| GUI-Owl run 1 (GCP + Colab T4) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | 4/105 | 4 | INVALID: model server OOM-killed at 14:09 (RAM prompt cache); every later task failed with no model reply; discarded, not stitched |
+| GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | – | – | in progress (fresh full run) |
+| v4 run 2 (GCP + Colab T4, fixed adapter) | GCP n2-standard-16 + Colab T4 | LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step) | – | – | starting |
 
-Per-task scores and step counts are in `results/snapshot.json`. Runs are still in progress; partial success rates are not comparable until both finish (task order differs).
+Only complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).
 
 
 ## 7. MAI-UI-2B on AndroidWorld (extra development arm, in progress)

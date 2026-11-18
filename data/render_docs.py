@@ -19,10 +19,12 @@ gate = ("v4 gate (from `results/v4_gate_seed30.txt`):\n\n```json\n" + gate_txt.s
         "v4-RL offline promotion (from `results/v4rl_promotion_offline.json`): criteria "
         + ", ".join(f"`{k}` = {v}" for k, v in (g.get("criteria") or {}).items()) + " → **not promoted**.\n")
 mw = reg.get("mobileworld_snapshot") or {}
-mwt = f"Snapshot {mw.get('snapshot_time', '?')}; suite: {mw.get('suite', '')}.\n\n| model | host | agent | finished | successes |\n|---|---|---|---|---|\n"
+mwt = f"Status {mw.get('snapshot_time', '?')}; suite: {mw.get('suite', '')}.\n\n| run | host | agent | finished | successes | status |\n|---|---|---|---|---|---|\n"
 for k, v in (mw.get("runs") or {}).items():
-    mwt += f"| {k} | {v['host']} | {v['agent']} | {v['finished']}/105 | {v['successes']} |\n"
-mwt += "\nPer-task scores and step counts are in `results/snapshot.json`. Runs are still in progress; partial success rates are not comparable until both finish (task order differs).\n"
+    fin = f"{v['finished']}/105" if v.get("finished") is not None else "–"
+    suc = v["successes"] if v.get("successes") is not None else "–"
+    mwt += f"| {k} | {v['host']} | {v['agent']} | {fin} | {suc} | {v.get('status', '')} |\n"
+mwt += "\nOnly complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).\n"
 sizes_d = reg["gguf_sizes_gb"]
 sp = reg.get("speed_cpu_t8") or []
 lab = {"LFM3 v4 (ours)": "**v4 (ours)**", "GUI-Owl-1.5-2B": "GUI-Owl-1.5-2B", "MAI-UI-2B": "MAI-UI-2B"}
@@ -72,8 +74,10 @@ fbv4 = (fb.get("models") or {}).get("v4")
 qdc_txt = (qdc or "_Run in progress._\n") + (
     f"\nEarlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we "
     f"switched to Qualcomm Device Cloud: v4 median {fbv4['latency_median_s']} s/step over {fbv4['n']} calls, rising from "
-    f"{fbv4['latency_min_max_s'][0]} to {fbv4['latency_min_max_s'][1]} s: from the 5th call on, battery temperature had risen from 27 to ~36 °C and "
-    f"the big cores were capped from 3.1 GHz to ~1.8–2.0 GHz (prompt speed fell from ~26 to ~14 tok/s) while Android's thermal status still read 0 "
+    f"{fbv4['latency_min_max_s'][0]} to {fbv4['latency_min_max_s'][1]} s (not monotonically; the last call took 66.7 s). From the 5th request "
+    f"(4th timed call) the sampled frequencies of the three performance cores (CPU 4–6, max 2.6 GHz) fell to ~1.8 GHz and the prime core "
+    f"(CPU 7, max 3.1 GHz) slowed and varied (down to 1.4 GHz and lower), while the battery warmed from 27 to ~36 °C and prompt speed fell from "
+    f"~26 to ~15 tok/s; Android's thermal status still read 0. These are sampled current frequencies, not recorded caps "
     f"(raw data and thermal log in the working repo, `results/devstream/`).\n" if fbv4 else "")
 sub = {"generated_from": reg["generated_from"], "now": time.strftime("%Y-%m-%d %H:%M"), "headline": head, "rl_details": rl_details,
        "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt}
