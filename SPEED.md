@@ -21,7 +21,14 @@ running (llama.cpp Metal):
 |---|---|---|---|---|---|
 | **v4 (ours)** | Q4_K_M | 1,706 | **2.96** (1.7–4.6) | 1,303 | 22 |
 | GUI-Owl-1.5-2B | Q4_K_M | 2,228 | 7.00 (4.6–10.4) | 2,106 | 47 |
-| MAI-UI-2B (run in progress: 15 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 300 | 8.38 (6.6–11.1) | 2,031 | 53 |
+| MAI-UI-2B (run in progress: 17 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 324 | 8.46 (6.7–11.5) | 2,006 | 53 |
+
+
+## Real phone: Snapdragon 8 Elite Extreme Gen 6 (Qualcomm Device Cloud)
+
+_Run in progress._
+
+Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s as the phone heated up (raw data in the working repo, `results/devstream/`).
 
 
 ## How it was measured
@@ -35,6 +42,14 @@ running (llama.cpp Metal):
   MAI-UI's repeated screenshots in passes 2–3 were served from cache. Only calls whose prompt was actually processed
   are kept (v4 14, GUI-Owl 4, MAI-UI 4; the kept calls are tightly clustered). The cache also inflated GUI-Owl/MAI-UI
   server memory (~7.5 GB RSS), so memory is shown as model file size; v4's server used 2.8 GB.
+* **Phones.** The model runs ON the phone: llama.cpp b12110 (official Android arm64 build = `cd959bae9`), CPU,
+  `-t 4 -np 1 --cache-ram 0`, the evaluation flags of each model; model files downloaded on the phone and SHA-256-checked
+  against the files used everywhere else; the same 5 screenshots and agent code as the CPU benchmark, driven from the
+  Mac. Each request went through a recording proxy that wrote the phone-side llama.cpp timings to disk as it
+  completed. Order: pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed; the first call of each model in each pass is a
+  warm-up on a mirrored screenshot and is excluded. Phone-side prompt time counts every prompt token (no prefix reuse on
+  the phone), unlike the CPU table where llama.cpp reused the cached system prompt. End-to-end latency includes the
+  SSH/adb tunnel to the device lab (~2–3 s).
 * **MAI-UI on the M5 runs at Q8_0.** At Q4_K_M MAI-UI-2B's output collapses into empty `<thinking>` loops on
   AndroidWorld screens ([evidence](results/maiui_quant_check.md)); its AndroidWorld arm therefore uses the 8-bit file
   (1.83 GB + 0.45 GB projector), which is also somewhat slower per token than Q4_K_M. Its CPU row above is Q4_K_M

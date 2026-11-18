@@ -213,6 +213,13 @@ def aw_speed(d):  # per-step model latency and token counts over every saved ste
             "output_tokens_median": int(st.median(G)) if G else None, "run_dir": runs[-1]}
 
 
+def latest_json(pattern):
+    fs = sorted(glob.glob(pattern))
+    return J(fs[-1]) if fs else None
+
+
+speed_phones = {"qdc_sm8975": latest_json("results/qdc/run_*/speed_qdc.json"),
+                "firebase_pixel9_partial": latest_json("results/devstream/run_*/speed_phone_partial.json")}
 speed_m5 = []
 for k, lab, note in [("lfm3vl2b_v4", "v4 (ours)", "Q4_K_M"), ("guiowl15_2b_matched", "GUI-Owl-1.5-2B", "Q4_K_M"),
                      ("maiui_2b_matched_q8_0", "MAI-UI-2B", "Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md)")]:
@@ -229,7 +236,7 @@ for lab, files in [("LFM3 v4", ["models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent
 reg = {"generated_from": "lfm3-android @ " + os.popen("git rev-parse --short HEAD").read().strip(),
        "training": train_rows, "androidcontrol_test": ac_rows, "general_retention": gen_rows, "dev_splits": DEV,
        "v4rl_promotion_offline": gate, "androidworld_seed30": aw_rows, "androidworld_seed30_pairs": pairs,
-       "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "speed_m5_in_run": speed_m5, "gguf_sizes_gb": sizes,
+       "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "speed_m5_in_run": speed_m5, "speed_phones": speed_phones, "gguf_sizes_gb": sizes,
        "mobileworld_snapshot": J(MW) if MW else None}
 json.dump(reg, open(os.path.join(OUT, "data", "runs.json"), "w"), indent=1, default=str)
 

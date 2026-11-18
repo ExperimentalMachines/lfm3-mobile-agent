@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ 85a68aa",
+ "generated_from": "lfm3-android @ 5c93a68",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -843,7 +843,7 @@
   },
   {
    "arm": "v4_seed7",
-   "episode_files": 48,
+   "episode_files": 51,
    "of": 116
   }
  ],
@@ -931,16 +931,63 @@
   {
    "model": "MAI-UI-2B",
    "quant": "Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md)",
-   "episodes": 15,
-   "steps": 300,
-   "median_s": 8.38,
-   "p10_s": 6.63,
-   "p90_s": 11.11,
-   "prompt_tokens_median": 2031,
+   "episodes": 17,
+   "steps": 324,
+   "median_s": 8.46,
+   "p10_s": 6.66,
+   "p90_s": 11.46,
+   "prompt_tokens_median": 2006,
    "output_tokens_median": 53,
    "run_dir": "results/androidworld/maiui_2b_matched_q8_0/run_20261118T144721333786/"
   }
  ],
+ "speed_phones": {
+  "qdc_sm8975": null,
+  "firebase_pixel9_partial": {
+   "run": "results/devstream/run_20261118_1519",
+   "device": {
+    "ro.product.model": "Pixel 9",
+    "ro.product.device": "tokay",
+    "ro.build.fingerprint": "google/tokay/tokay:16/CP1A.260505.005/15081906:user/release-keys",
+    "ro.build.version.sdk": "36",
+    "ro.soc.model": "Tensor G4",
+    "ro.soc.manufacturer": "Google",
+    "mem": "MemTotal: 11848700 kB",
+    "cpus": "1950000 1950000 1950000 1950000 2600000 2600000 2600000 3105000 ",
+    "serial": "localhost:60148",
+    "idx": 0,
+    "order": "v4 guiowl maiui"
+   },
+   "models": {
+    "v4": {
+     "label": "v4 (ours)",
+     "n": 11,
+     "latency_median_s": 74.4,
+     "latency_min_max_s": [
+      43.1,
+      91.2
+     ],
+     "prompt_tokens_median": 1081,
+     "prompt_processed_median": 1081,
+     "prompt_s_median": 70.5,
+     "prompt_tok_per_s": 16.7,
+     "gen_tokens_median": 28,
+     "gen_tok_per_s": 12.0,
+     "files_gb": 1.3,
+     "passes": {
+      "pass1": {
+       "n": 11,
+       "latency_median_s": 74.41,
+       "prompt_s_median": 70.52,
+       "battery_c_median": 36.4,
+       "battery_c_max": 37.7,
+       "thermal_status_max": "0"
+      }
+     }
+    }
+   }
+  }
+ },
  "gguf_sizes_gb": {
   "LFM3 v4": 1.303,
   "GUI-Owl-1.5-2B": 1.552,

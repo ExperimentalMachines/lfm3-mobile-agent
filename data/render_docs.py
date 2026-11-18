@@ -45,8 +45,36 @@ for o in sp:
     spt += (f"| {o['model']} | {o['n']} | **{o['latency_median_s']}** ({o['latency_min_max_s'][0]}–{o['latency_min_max_s'][1]}) | {o['prompt_tokens_median']} | "
             f"{o['prompt_s_median']} | {o['prompt_tok_per_s']} | {o['gen_tokens_median']} | {o['gen_s_median']} | {o['gen_tok_per_s']} |\n")
 sizes = ", ".join(f"{k} {v} GB" for k, v in reg["gguf_sizes_gb"].items())
+def phone_section(ph, title_note):
+    if not ph or not ph.get("models"):
+        return None
+    dv = ph.get("device") or {}
+    t = (f"Device: {dv.get('ro.product.model', '?')} ({dv.get('ro.soc.model', '?')}), Android SDK {dv.get('ro.build.version.sdk', '?')}, "
+         f"{dv.get('mem', '').replace('MemTotal:', '').strip()} RAM, CPU max kHz {dv.get('cpus', '').strip()}. {title_note}\n\n")
+    t += ("| Model | Seconds per step (median, end-to-end) | Prompt tokens | Prompt time (phone) | Prompt tokens/s | Output tokens | Output tokens/s | Model files |\n"
+          "|---|---|---|---|---|---|---|---|\n")
+    for m, o in ph["models"].items():
+        b = "**" if m == "v4" else ""
+        t += (f"| {b}{o['label']}{b} | {b}{o['latency_median_s']}{b} ({o['latency_min_max_s'][0]}–{o['latency_min_max_s'][1]}) | "
+              f"{o['prompt_tokens_median']:,} | {o['prompt_s_median']} s | {o['prompt_tok_per_s']:.0f} | {o['gen_tokens_median']} | "
+              f"{o['gen_tok_per_s']:.0f} | {o['files_gb']:.2f} GB |\n")
+    t += "\n| Model | Pass | Calls | Seconds per step (median) | Prompt time (median) | Battery °C (median / max) | Max thermal status |\n|---|---|---|---|---|---|---|\n"
+    for m, o in ph["models"].items():
+        for pn, pp in o["passes"].items():
+            t += f"| {o['label']} | {pn} | {pp['n']} | {pp['latency_median_s']} | {pp['prompt_s_median']} s | {pp['battery_c_median']} / {pp['battery_c_max']} | {pp['thermal_status_max']} |\n"
+    return t
+
+
+phs = reg.get("speed_phones") or {}
+qdc = phone_section(phs.get("qdc_sm8975"), "Pass 1 = v4 → GUI-Owl → MAI-UI, pass 2 reversed, 3 timed passes each.")
+fb = phs.get("firebase_pixel9_partial") or {}
+fbv4 = (fb.get("models") or {}).get("v4")
+qdc_txt = (qdc or "_Run in progress._\n") + (
+    f"\nEarlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we "
+    f"switched to Qualcomm Device Cloud: v4 median {fbv4['latency_median_s']} s/step over {fbv4['n']} calls, rising from "
+    f"{fbv4['latency_min_max_s'][0]} to {fbv4['latency_min_max_s'][1]} s as the phone heated up (raw data in the working repo, `results/devstream/`).\n" if fbv4 else "")
 sub = {"generated_from": reg["generated_from"], "now": time.strftime("%Y-%m-%d %H:%M"), "headline": head, "rl_details": rl_details,
-       "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5}
+       "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt}
 for k in ["training", "ac", "gen", "dev", "aw", "pairs", "sealed"]:
     sub[f"table_{k}"] = T(k)
 for f in os.listdir(os.path.join(R, "templates")):
