@@ -148,3 +148,4 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-19 00:31 | `ac9dee6` | Seed 7 final (after preregistered single re-runs) |
 | 2026-11-19 00:34 | `1bebc29` | Live snapshot: MobileWorld counts, QDC phone report (00:34) |
 | 2026-11-19 00:56 | `230553d` | Seed-7 analysis fixes from Codex seed7_analysis_audit (VALID WITH CAVEATS): source-checked 78-template goal-can-vary manifest (was 76 by goal-text diff), exact CI endpoints rounded outward ([-7.3, +10.8]; NI still no), checker-dispute sensitivity (v4 ClockStopWatchPausedVerify false positive: 17 vs 16, +0.9 pp, CI [-8.1, +9.9]), known limits (adb stderr pollution, nominal sign-flip CI); prereg entry before seeds 1234/2026 are opened; Codex report |
+| 2026-11-19 00:57 | `3b87d5c` | Docs registry: MAI-UI-2B seed-30 row and paired comparisons (v4 vs MAI-UI 6/20, McNemar 0.009; MAI-UI vs GUI-Owl 20/11, 0.15) |
