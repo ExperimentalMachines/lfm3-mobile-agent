@@ -1,0 +1,40 @@
+{
+  "positive_real_subset": {
+    "exit_code": 0,
+    "expected_ok": true,
+    "last_line": "{\"ok\": true, \"tensors\": 2, \"untargeted_identical\": 1, \"lora_merged\": 1, \"lora_pairs\": 1, \"worst_rel_err\": 0.0, \"worst_ulps\": 0.0, \"worst_mismatch_frac\": 0.0, \"scale\": 2.0}"
+  },
+  "negative_base_only": {
+    "exit_code": 1,
+    "expected_ok": false,
+    "last_line": "AssertionError: targeted tensor unchanged: model.language_model.layers.0.conv.in_proj.weight"
+  },
+  "negative_unmerged_row": {
+    "exit_code": 1,
+    "expected_ok": false,
+    "last_line": "AssertionError: model.language_model.layers.0.conv.in_proj.weight: merged != bf16(base + scale*B@A) (rel err 1.67e-02)"
+  },
+  "negative_sparse_element": {
+    "exit_code": 1,
+    "expected_ok": false,
+    "last_line": "AssertionError: model.language_model.layers.0.conv.in_proj.weight: merged != bf16(base + scale*B@A) (rel err 2.07e-02)"
+  },
+  "negative_untargeted": {
+    "exit_code": 1,
+    "expected_ok": false,
+    "last_line": "AssertionError: untargeted tensor changed: model.language_model.embedding_norm.weight"
+  },
+  "negative_truncated": {
+    "exit_code": 1,
+    "expected_ok": false,
+    "last_line": "safetensors._safetensors_rust.SafetensorError: Error while deserializing header: invalid header length"
+  },
+  "manifest_extra_index": {
+    "exit_code": 1,
+    "last_line": "AssertionError: file set differs: extra {'model.safetensors.index.json'}, missing set()"
+  },
+  "manifest_changed_config": {
+    "exit_code": 1,
+    "last_line": "AssertionError: sha256 mismatch: config.json"
+  }
+}

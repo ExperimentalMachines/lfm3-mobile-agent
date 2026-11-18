@@ -1,3 +1,37 @@
+diff --git a/android_world/checkpointer.py b/android_world/checkpointer.py
+index 14550cb..0cc7736 100644
+--- a/android_world/checkpointer.py
++++ b/android_world/checkpointer.py
+@@ -123,9 +123,15 @@ class IncrementalCheckpointer(Checkpointer):
+         task_name: The unique identifier for the task group.
+     """
+     filename = os.path.join(self.directory, f'{task_name}.pkl.gz')
+-    with open(filename, 'wb') as f:
++    # PATCH (lfm3-android): atomic write (temp file + rename), so a run killed mid-save never leaves a partial
++    # episode file that load() below would have to guess about.
++    tmp = filename + '.tmp'
++    with open(tmp, 'wb') as f:
+       compressed = _gzip_pickle(task_episodes)
+       f.write(compressed)
++      f.flush()
++      os.fsync(f.fileno())
++    os.replace(tmp, filename)
+     logging.info('Wrote task episodes for %s to %s', task_name, filename)
+ 
+   def load(self, fields: list[str] | None = None) -> list[Episode]:
+@@ -147,7 +153,11 @@ class IncrementalCheckpointer(Checkpointer):
+             ]
+           data.extend(task_group)
+         except Exception as e:  # pylint: disable=broad-exception-caught
+-          logging.info('Unable to load %s with exception: %s', filename, e)
++          # PATCH (lfm3-android): fail closed. Upstream logged and skipped the file, so a saved (scored) episode that
++          # could not be read was silently re-run and overwritten on resume.
++          raise RuntimeError(
++              f'checkpoint {filename} in {self.directory} is unreadable ({e!r}); refusing to resume'
++          ) from e
+     return data
+ 
+   def _load_task_group(self, task_group_id: str) -> list[Episode]:
 diff --git a/android_world/env/adb_utils.py b/android_world/env/adb_utils.py
 index f59f6c4..c00508d 100644
 --- a/android_world/env/adb_utils.py
@@ -56,7 +90,7 @@ index 6505b4e..763aed0 100644
              joplin_package,
              "-candroid.intent.category.LAUNCHER",
 diff --git a/android_world/suite_utils.py b/android_world/suite_utils.py
-index 2c72a41..550e195 100644
+index 2c72a41..7d80fbe 100644
 --- a/android_world/suite_utils.py
 +++ b/android_world/suite_utils.py
 @@ -285,10 +285,22 @@ def _run_task(
@@ -83,7 +117,14 @@ index 2c72a41..550e195 100644
  def _get_task_info(
      episodes: list[dict[str, Any]],
  ) -> tuple[dict[str, list[dict[str, Any]]], dict[str, list[dict[str, Any]]]]:
-@@ -387,6 +399,11 @@ def _run_task_suite(
+@@ -382,11 +394,17 @@ def _run_task_suite(
+             instance_name
+         ]
+         episodes_metadata.extend(completed_episodes)
+-      if instance_name in failed_tasks:
++      if instance_name in failed_tasks and not RETRY_FAILED_ON_RESUME:
++        # PATCH (lfm3-android): a kept failure is reported once; a retried one is replaced by its re-run below.
+         episodes_metadata.extend(failed_tasks[instance_name])
        already_processed = (
            instance_name in completed_tasks and instance_name not in failed_tasks
        )

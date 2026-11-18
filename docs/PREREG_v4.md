@@ -113,3 +113,8 @@ exposure to AndroidWorld is undisclosed by its authors.
   (run_aw.py --retry_failed_on_resume, default off). No sealed arm had been resumed before this change. (3) The
   emulator-2 filler would have resumed the paused GUI-Owl seed-1234 arm from its log file instead of its run directory;
   replaced by scripts/local_emu2_fill_v2.sh before the pause happened.
+* 2026-11-18 10:10 (same state; Codex re-audit results/codex/v4_lane_reaudit/): checkpoint files are now written
+  atomically and an unreadable saved episode stops a resume instead of being silently re-run (android_world's default
+  skipped unreadable files). The 33 saved GUI-Owl seed-1234 episode files pass `gzip -t` (no contents read).
+  v4-RL offline promotion is computed by scripts/v4rl_promotion.py (item 10 thresholds, gate_answer, inputs bound to
+  the pinned dev rows, one prompt/pixel setting for both models).

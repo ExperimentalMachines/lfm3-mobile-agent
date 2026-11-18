@@ -1,0 +1,32 @@
+**Verdict: FIX.** Re-audit of `259281a30e8e3fb6e2625c49b469ae2e56ab7f7b`, 2026-11-18. The merge and ordinary resume checks pass; failure handling still has defects. These are conditional defects, not claims that the running evaluation encountered them.
+
+**Remaining findings**
+
+1. **P2 — Health requests defeat the startup deadline and can strand the sealed arm.** `scripts/local_v4_to_aw_v2.sh:60,65–68`; `scripts/local_emu2_fill_v2.sh:29`. Neither `curl` has a request timeout. If a listener accepts the connection but never finishes its response, execution never reaches the 600-second deadline or `release`; the filler waits indefinitely for `finished`. Unexpected lane termination also has no cleanup trap or filler liveness fallback. Bound each request and ensure handoff release on termination.
+
+2. **P2 — The readiness check does not identify the listening process.** `scripts/local_v4_to_aw_v2.sh:60–70`. An incumbent on 8114 can return “loading” during the first probe, then become healthy while the newly spawned process is still alive before its bind failure. `pgrep` merely confirms that the new PID's command mentions the port; the healthy response can belong to the incumbent. Evaluation can therefore use its model under the v4 label. Reject any occupied listening socket and verify that the serving socket belongs to `SP`. The extracted guard accepts this state with mocked process/HTTP observations: [handoff evidence](handoff_probe.json).
+
+3. **P2 — Pausing before checkpoint creation permanently abandons the sealed arm.** `scripts/local_emu2_fill_v2.sh:24–29`. If GUI-Owl is still loading its server or initializing the environment, no run directory exists yet (`eval/androidworld/run_aw.py:57–83`). The filler first stops the arm, then exits at line 27; even a subsequent v4 `finished` marker cannot resume it. Preserve a fresh-start continuation when no checkpoint exists. The isolated guard reproduction exits after the mocked pause. This did **not** describe the observed handoff, which had 33 saved episodes.
+
+4. **P2 — Checkpoint read errors still permit silent retries and overwrites.** `android_world/android_world/checkpointer.py:138–150,125–128`; `android_world/android_world/suite_utils.py:370–372,411–420`. Any load error is logged and ignored. A valid saved exception episode suffering a transient read error disappears from the completed/failed maps, is rerun despite `RETRY_FAILED_ON_RESUME=False`, and its file is opened with `wb`. A synthetic read-error injection replaced a saved failure with success. Write checkpoints atomically and distinguish an interrupted, uncommitted save from an unreadable committed episode; fail closed on the latter. [Resume evidence](resume_probe.json).
+
+5. **P3 — Opt-in retries duplicate returned episode metadata.** `android_world/android_world/suite_utils.py:397–398,420–426`; `eval/androidworld/run_aw.py:39,82`. With `--retry_failed_on_resume=true`, the old exception is appended before its replacement. One retried instance returns two records while disk contains one; summary exception counts/runtime disagree with the saved result. Replace the old metadata when retrying. This is disabled in the preregistered lane and does not duplicate its primary file-based score.
+
+**Disposition of the six earlier findings**
+
+| Earlier finding | Status and evidence |
+|---|---|
+| 1. bf16 verification rejects valid merges / misses sparse corruption | **Fixed:** `scripts/check_local_merge.py:49–62`; actual copy passes, negative controls fail. |
+| 2. Resume retries saved exceptions | **Partially fixed:** readable saved exceptions are preserved by `suite_utils.py:395–409`, with the flag default/set at `run_aw.py:39,82`. Read-error bypass remains finding 4. |
+| 3. Filler selects the sealed log as its resume directory | **Fixed on the active v2 path:** `scripts/local_emu2_fill_v2.sh:15,26–32`. Retired `local_emu2_fill.sh:32` and the diagnostic in `pause_sealed_arm.sh:15` remain wrong; neither supplies v2's resume argument. |
+| 4. Unbounded / unowned server readiness | **Partially fixed:** exit/deadline checks added at `local_v4_to_aw_v2.sh:66–70`; findings 1–2 remain. |
+| 5. Export inventory and adapter revision unbound | **Fixed in the lane:** `local_v4_to_aw_v2.sh:28–48`; exact file hashes/inventory and pinned adapter revision precede export. |
+| 6. Original two-runner race during sealed-server startup | **Fixed:** `local_v4_to_aw_v2.sh:54–58` waits for launcher, runner and server. The separate cold-start continuation defect is finding 3. |
+
+**Verified behavior.** The actual model passes all 424 tensors: 153 merged targets, 271 identical untargeted tensors, maximum 1 ULP, maximum mismatch fraction `3.0517578125e-05` ([checker](check_actual.log)). All 15 source files match the manifest. Controls reject base-only weights, an unmerged row, sparse corruption including a three-ULP element, an altered untargeted weight, truncation, an extra converter index and changed config ([controls](merge_controls.json)).
+
+For readable checkpoints with the default flag, extracted bookkeeping preserves every saved file hash, includes the saved exception exactly once, reruns the unsaved interrupted instance, and performs no work on a second resume. Synthetic uninterrupted/resumed runs both score **39/116**, with 116 unique records, using `paired_aw.py` ([comparison](paired_synthetic.json)). `paired_aw.py:21,64–67` and `v4_gate.py:57–66,96–97` implement full-success counting; upstream `suite_utils.py:569,698–705` still drops exception NaNs in its printed secondary table. The tracked local patch exactly matches the AndroidWorld worktree diff ([inputs](audit_inputs.json)).
+
+**09:30 prereg entry:** `docs/PREREG_v4.md:104–115` accurately describes the verified merge and intended default resume policy, and the cached trainer state is step 1250. Control markers confirm v2 was installed before the pause. Its unconditional preservation claim at lines 110–113 needs the checkpoint failure handling in finding 4. The v3 ancillary-file provenance and historical no-prior-resume/noninspection assertions were not independently established; current bytes match the recorded manifest.
+
+No AndroidWorld harness, emulator or llama-server was launched; no process was signalled. No prohibited log or sealed episode contents were opened. Runtime observations were limited to permitted control markers. All audit writes are confined to this directory.

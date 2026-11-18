@@ -1,0 +1,23 @@
+{
+  "method": "source snippets; curl and process observations mocked; no sockets, signals, servers or AndroidWorld",
+  "wrong_listener": {
+    "incumbent_listener_pid": 313131,
+    "new_process_pid": 424242,
+    "new_process_alive_but_not_listening": true,
+    "guard_exit": 0,
+    "guard_admits_run": true,
+    "output": "server :8114 up (pid 424242, synthetic-v4.gguf); starting v4 seed-30 development pass on emulator 5558\n"
+  },
+  "pause_before_checkpoint_creation": {
+    "guard_exit": 1,
+    "output": "v4 lane ready: pausing guiowl_seed1234\nMOCK PAUSE guiowl 1234 8115 --dry-run\nMOCK PAUSE guiowl 1234 8115\nno run dir to resume in synthetic-no-checkpoint; not resuming\n",
+    "resume_path_reached": false
+  },
+  "health_timeout_static": {
+    "curl_lines": [
+      "curl -s 127.0.0.1:$PORT/health | grep -q ok && release \"port $PORT already serving another process; v4 seed-30 run NOT STARTED\"",
+      "until curl -s 127.0.0.1:$PORT/health | grep -q ok; do"
+    ],
+    "deadline_checked_only_after_curl_returns": "  [ $(( $(date +%s) - t0 )) -gt 600 ] && release \"llama-server not healthy after 600 s; v4 seed-30 run NOT STARTED\""
+  }
+}

@@ -1,0 +1,10 @@
+Adversarial re-audit in /Users/alpha/lfm3-android of commit 259281a, which responds to your earlier audit results/codex/v4_local_lane_audit/codex_v4_local_lane_audit.md. Find real defects only. Do NOT run AndroidWorld/emulators/llama-server, kill or signal processes, or open logs/aw_sealed_*, any run_output.SEALED.log, or episode contents under results/androidworld_sealed/ (file counts only). Write only inside results/codex/v4_lane_reaudit/.
+
+Processes now running (do not touch): scripts/local_v4_to_aw_v2.sh (GGUF export, then seed-30 dev pass on emulator 5558), scripts/local_emu2_fill_v2.sh (pauses the sealed GUI-Owl seed-1234 arm on "exported; pausing", resumes it after "v4 AndroidWorld seed-30 finished"), scripts/local_emu1_queue.sh, scripts/colab_watchdog_v2.sh.
+
+Check:
+1. Each earlier finding: fixed, partially fixed, or not fixed (cite file:line). In particular the android_world patch (android_world/android_world/suite_utils.py RETRY_FAILED_ON_RESUME; eval/androidworld/run_aw.py --retry_failed_on_resume; tracked as eval/androidworld/android_world_local_fixes.patch): does a resumed run now keep saved exception episodes, tally them identically to an uninterrupted run (primary score: exception = failure, over 116), never double count, and still re-run the episode the pause interrupted? Does anything else in suite_utils/checkpointer re-run or overwrite saved episodes?
+2. scripts/check_local_merge.py: the actual copy at models/hf_local/LFM3-VL-2B-AndroidAgent-v4 is now present; you may run the checker (.venv-convert/bin/python; base and adapter paths are in scripts/local_v4_to_aw_v2.sh) and negative controls on copies inside your directory.
+3. scripts/local_v4_to_aw_v2.sh + scripts/local_emu2_fill_v2.sh interplay: any path that leaves the sealed arm paused forever, runs two runners on emulator 5558, or lets the v4 run use a wrong server/model.
+4. docs/PREREG_v4.md last entry (09:30): accurate and sufficient?
+Write findings (P1/P2/P3, file:line, concrete scenario) and a verdict OK / FIX to results/codex/v4_lane_reaudit/codex_v4_lane_reaudit.md. Be concise.

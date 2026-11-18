@@ -1,0 +1,33 @@
+{
+ "A": {
+  "run": "results/codex/v4_lane_reaudit/synthetic_resume/uninterrupted",
+  "successes": 39,
+  "n_recorded": 116,
+  "rate_over_expected": 0.33620689655172414,
+  "wilson95": [
+   0.256713749380335,
+   0.4262010314637126
+  ]
+ },
+ "B": {
+  "run": "results/codex/v4_lane_reaudit/synthetic_resume/resumed",
+  "successes": 39,
+  "n_recorded": 116,
+  "rate_over_expected": 0.33620689655172414,
+  "wilson95": [
+   0.256713749380335,
+   0.4262010314637126
+  ]
+ },
+ "paired": {
+  "n_pairs": 116,
+  "both": 39,
+  "A_only": 0,
+  "B_only": 0,
+  "neither": 77,
+  "mcnemar_exact_p": 1.0,
+  "excluded_goal_or_seed_mismatch": [],
+  "B_only_tasks": [],
+  "A_only_tasks": []
+ }
+}
