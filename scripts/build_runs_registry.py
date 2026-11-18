@@ -218,7 +218,19 @@ def latest_json(pattern):
     return J(fs[-1]) if fs else None
 
 
-speed_phones = {"qdc_sm8975": latest_json("results/qdc/run_*/speed_qdc.json"),
+def text_or_none(path):
+    return open(path).read() if os.path.exists(path) else None
+
+
+# seed 7 is unsealed (docs/PREREG_v4.md 2026-11-18 18:25): its preregistered analysis output is reported; seeds 1234/2026
+# stay counts-only. Final = after the preregistered single re-runs; otherwise the preliminary file (labelled as such).
+seed7 = text_or_none("results/sealed_analysis_seed7.md")
+seed7_status = "final (after the preregistered single re-runs of infrastructure crashes)" if seed7 else None
+if seed7 is None and os.path.exists("results/sealed_analysis_seed7_prelim.md"):
+    seed7 = text_or_none("results/sealed_analysis_seed7_prelim.md")
+    seed7_status = "PRELIMINARY: before the preregistered single re-runs of 5 infrastructure-crash episodes (4 v4, 1 GUI-Owl), which are queued"
+speed_phones = {"qdc_v6_md": text_or_none("results/qdc/speed_qdc_v6.md"),
+                "qdc_sm8975": latest_json("results/qdc/run_*/speed_qdc.json"),
                 "firebase_pixel9_partial": latest_json("results/devstream/run_*/speed_phone_partial.json")}
 speed_m5 = []
 for k, lab, note in [("lfm3vl2b_v4", "v4 (ours)", "Q4_K_M"), ("guiowl15_2b_matched", "GUI-Owl-1.5-2B", "Q4_K_M"),
@@ -236,7 +248,7 @@ for lab, files in [("LFM3 v4", ["models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent
 reg = {"generated_from": "lfm3-android @ " + os.popen("git rev-parse --short HEAD").read().strip(),
        "training": train_rows, "androidcontrol_test": ac_rows, "general_retention": gen_rows, "dev_splits": DEV,
        "v4rl_promotion_offline": gate, "androidworld_seed30": aw_rows, "androidworld_seed30_pairs": pairs,
-       "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "speed_m5_in_run": speed_m5, "speed_phones": speed_phones, "gguf_sizes_gb": sizes,
+       "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "speed_m5_in_run": speed_m5, "speed_phones": speed_phones, "seed7_analysis_md": seed7, "seed7_status": seed7_status, "gguf_sizes_gb": sizes,
        "mobileworld_snapshot": J(MW) if MW else None}
 json.dump(reg, open(os.path.join(OUT, "data", "runs.json"), "w"), indent=1, default=str)
 
