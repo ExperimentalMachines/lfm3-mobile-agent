@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ 202d60b",
+ "generated_from": "lfm3-android @ 85a68aa",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -843,7 +843,7 @@
   },
   {
    "arm": "v4_seed7",
-   "episode_files": 33,
+   "episode_files": 48,
    "of": 116
   }
  ],
@@ -927,6 +927,18 @@
    "prompt_tokens_median": 2106,
    "output_tokens_median": 47,
    "run_dir": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/"
+  },
+  {
+   "model": "MAI-UI-2B",
+   "quant": "Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md)",
+   "episodes": 15,
+   "steps": 300,
+   "median_s": 8.38,
+   "p10_s": 6.63,
+   "p90_s": 11.11,
+   "prompt_tokens_median": 2031,
+   "output_tokens_median": 53,
+   "run_dir": "results/androidworld/maiui_2b_matched_q8_0/run_20261118T144721333786/"
   }
  ],
  "gguf_sizes_gb": {
