@@ -95,10 +95,22 @@ def row(m, s, extra=""):
             f"{s['prompt_tokens_median']:,} | {s['prompt_s_median']} s | {s['gen_tokens_median']} | {s['gen_tok_s_llamacpp_median']:.0f} | {s['finished_normally']} |")
 
 
+o1, o2 = out["option1"], out["option2"]
+v4_eq = [o2[pn]["v4"]["e2e_median_s"] for pn in ("pass1", "pass2") if "v4" in o2[pn]]
+if v4_eq and "guiowl" in o1 and "maiui" in o1:
+    v4m = round(sum(v4_eq) / len(v4_eq), 1)
+    L += [f"**Headline (same phone, same clock):** v4's evaluation image budget is 1,024 tokens, so its option-2 runs are also its "
+          f"evaluation setting; they ran at the same sampled ~2.65 GHz as GUI-Owl's and MAI-UI's option-1 runs. As evaluated, one step takes "
+          f"**~{v4m} s for v4** vs {o1['guiowl']['e2e_median_s']:.0f} s for GUI-Owl and {o1['maiui']['e2e_median_s']:.0f} s for MAI-UI "
+          f"(~{o1['guiowl']['e2e_median_s'] / v4m:.0f}× and ~{o1['maiui']['e2e_median_s'] / v4m:.0f}×). At the same 1,024-token image budget "
+          f"for all three (option 2), GUI-Owl and MAI-UI take ~{o2['pass1']['guiowl']['e2e_median_s'] / v4m:.1f}× and "
+          f"~{o2['pass1']['maiui']['e2e_median_s'] / v4m:.1f}× v4's time. Option 1's v4 row ran earlier at the full 4.03 GHz, so it is not "
+          "the like-for-like number.", ""]
 L += ["**Option 1: each model at its evaluation image budget** (v4 1,024 image tokens; GUI-Owl and MAI-UI 2,600), flash "
       "attention on for all, MAI-UI at Q8_0 (its Q4_K_M output degenerates), 2 screenshots after a warm-up call:", "", HDR]
+L[-1] = HDR.replace("| Finished normally |", "| Finished normally | Fastest core, sampled GHz |").replace("|---|---|---|---|---|---|---|---|---|", "|---|---|---|---|---|---|---|---|---|---|")
 for m, s in out["option1"].items():
-    L.append(row(m, s))
+    L.append(row(m, s) + f" {s.get('fastest_core_ghz_median_sampled')} |")
 L += ["", "**Option 2: all three at the same 1,024-token image budget** (a speed comparison at equal image size; GUI-Owl's and "
       "MAI-UI's accuracy at this budget was not measured), 5 screenshots, pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed:", "",
       HDR.replace("| Model |", "| Model (pass) |").replace("| Finished normally |", "| Finished normally | Fastest core, sampled GHz |")
