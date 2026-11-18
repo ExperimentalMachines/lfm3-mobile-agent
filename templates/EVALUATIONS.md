@@ -70,9 +70,9 @@ non-inferiority margin 8 tasks per 116.
 
 {{mobileworld}}
 
-## 7. MAI-UI-2B on AndroidWorld (extra development arm, in progress)
+## 7. MAI-UI-2B on AndroidWorld (extra development arm, seed 30)
 
 Runs at **Q8_0** (+ Q8_0 mmproj): at Q4_K_M, MAI-UI-2B's output collapsed into empty `<thinking>` loops on AndroidWorld
 screens (evidence: `results/maiui_quant_check.md` in the working repo), unlike GUI-Owl, which runs at Q4_K_M. Agent ported from the official MAI-UI repo
 (navigation prompt, history format); matched budget: one screenshot at ≤ 1,048,576 px, temperature 0. Runs on
-emulator 1 on seed 30; see `scripts/local_maiui_aw.sh` in the working repo. Results will be added when the run finishes.
+emulator 1 on seed 30; see `scripts/local_maiui_aw.sh` in the working repo. Finished 2026-11-18 23:32: **32/116** full successes (plus one half-scored composite task, TurnOffWifiAndTurnOnBluetooth, not counted), 1 exception; its row and paired comparisons are in section 4. It is the strongest model on the development seed; it is not one of the preregistered held-out arms.

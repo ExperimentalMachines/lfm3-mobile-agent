@@ -12,3 +12,4 @@
 | Qwen3.5-0.8B v1 | 12 | 0 | 12 | 1 | 10 | 2.0 | qwen35_08b_ft_q4km | results/androidworld/qwen35_08b_ft/run_20261117T152004373700/ |
 | LFM2.5-VL-450M base | 0 | 0 | 0 | 3 | 12 | 2.21 | lfm25vl450m_base_q4km | results/androidworld/lfm25vl450m_base/run_20261117T062246232259/ |
 | LFM2.5-VL-450M v1 | 2 | 0 | 2 | 4 | 12 | 1.14 | lfm25vl450m_ft_q4km | results/androidworld/lfm25vl450m_ft/run_20261117T022926194002/ |
+| MAI-UI-2B (matched: 1 screenshot, Q8_0) | 32 | 5 | 27 | 1 | 11 | 9.35 | maiui_2b_matched1img_q8_0 | results/androidworld/maiui_2b_matched_q8_0/run_20261118T144721333786/ |

@@ -35,3 +35,4 @@ Every audit was run with Codex CLI (model gpt-6-astra, reasoning effort max) as 
 | [`v4_seed30_audit/report.md`](audits/v4_seed30_audit__report.md) | Verdict: FREEZE OK |
 | [`round2_audit/report.md`](audits/round2_audit__report.md) | / Requested section / Verdict / Reason / |
 | [`session_1118_audit/report.md`](audits/session_1118_audit__report.md) | / Section / Verdict / Main reason / |
+| [`seed7_analysis_audit/report.md`](audits/seed7_analysis_audit__report.md) | Verdict: VALID WITH CAVEATS — as a preliminary, preregistered benchmark-checker result. The final recorded scores and retry substitutions reproduce. Seed 7 does |

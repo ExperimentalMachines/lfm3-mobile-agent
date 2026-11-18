@@ -154,7 +154,7 @@ AW_LABELS = {"lfm3vl2b_base_nothink": "LFM3-VL-2B base (no thinking)", "lfm3vl2b
              "lfm3vl2b_v2_forcethink": "LFM3-VL-2B v2 + forced intent (inference ablation)", "lfm3vl2b_v3": "LFM3-VL-2B v3",
              "lfm3vl2b_v4": "LFM3-VL-2B v4 (frozen final)", "guiowl15_2b_matched": "GUI-Owl-1.5-2B (matched: 1 screenshot, Q4_K_M)",
              "qwen35_2b_ft": "Qwen3.5-2B v1", "qwen35_08b_ft": "Qwen3.5-0.8B v1", "lfm25vl450m_base": "LFM2.5-VL-450M base",
-             "lfm25vl450m_ft": "LFM2.5-VL-450M v1"}
+             "lfm25vl450m_ft": "LFM2.5-VL-450M v1", "maiui_2b_matched_q8_0": "MAI-UI-2B (matched: 1 screenshot, Q8_0)"}
 aw_rows = []
 for k, label in AW_LABELS.items():
     a = aw(f"results/androidworld/{k}")
@@ -172,7 +172,7 @@ def mcnemar(x, y):
 pairs = []
 for a_, b_ in [("lfm3vl2b_v4", "guiowl15_2b_matched"), ("lfm3vl2b_v4", "lfm3vl2b_v3"), ("lfm3vl2b_v4", "lfm3vl2b_ft"),
                ("lfm3vl2b_v3", "lfm3vl2b_ft"), ("lfm3vl2b_v2", "lfm3vl2b_ft"), ("lfm3vl2b_ft", "guiowl15_2b_matched"),
-               ("qwen35_2b_ft", "lfm3vl2b_ft")]:
+               ("qwen35_2b_ft", "lfm3vl2b_ft"), ("lfm3vl2b_v4", "maiui_2b_matched_q8_0"), ("maiui_2b_matched_q8_0", "guiowl15_2b_matched")]:
     if a_ in ref and b_ in ref:
         b, c, p = mcnemar(ref[a_], ref[b_]); pairs.append({"a": a_, "b": b_, "a_only": b, "b_only": c, "p_exact_mcnemar": p})
 for r in aw_rows:

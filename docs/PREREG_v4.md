@@ -139,3 +139,17 @@ exposure to AndroidWorld is undisclosed by its authors.
   are fixed. Remaining sealed arms are queued (scripts/local_sealed_queue.sh, same runner local_sealed_aw_v3.sh):
   emulator 2 after GUI-Owl seed 1234 -> v4 seed 1234 -> v1 seed 2026; emulator 1 after the MAI-UI seed-30 development
   run -> GUI-Owl seed 2026 -> v4 seed 2026.
+* 2026-11-19 00:56 (seeds 1234 and 2026 still sealed; only seed 7 has been read): changes from Codex's audit of the seed-7
+  analysis (results/codex/seed7_analysis_audit/report.md, verdict VALID WITH CAVEATS), fixed before any further seed is
+  opened. (1) The "seed-varying" breakdown now uses a source-checked manifest of the 78 templates whose goal text can
+  vary with the seed (results/aw_template_manifest.json), as this document originally stated; the earlier goal-text
+  comparison against seed 30 found 76 because two templates drew the same wording by chance. (2) The 95% CI reports
+  the exact endpoints of the inverted sign-flip test for the fixed 10,000 draws, rounded outward to 0.1 pp (the 0.1-pp
+  grid trimmed them inward); the non-inferiority decision uses the unrounded lower bound. Seed 7 is unchanged by this:
+  [-7.27, +10.77] pp, not non-inferior. (3) Every checker success of every arm on every held-out seed gets the same
+  trajectory review once that seed is unsealed; successes the saved trajectory contradicts are listed in
+  results/aw_checker_disputes.json and counted as failures only in a reported sensitivity analysis. The primary
+  endpoint stays the checker verdict. Seed 7 has one such case: v4 ClockStopWatchPausedVerify (stopwatch left running);
+  sensitivity v4 17 vs GUI-Owl 16, +0.9 pp, CI [-8.1, +9.9]. (4) Disclosed, not fixed mid-protocol: gRPC fork warnings
+  on adb stderr can corrupt adb output during task setup in every arm. Such setup crashes remain exceptions handled by
+  the single re-run rule, so all remaining arms run on the same harness.

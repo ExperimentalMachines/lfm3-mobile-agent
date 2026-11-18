@@ -16,7 +16,7 @@
      ],
      "answer_tasks": "6/25",
      "action_tasks": "12/91",
-     "seed_varying": "10/76",
+     "goal_can_vary": "11/78",
      "exceptions": 0,
      "exception_templates": [],
      "by_difficulty": {
@@ -47,7 +47,7 @@
      ],
      "answer_tasks": "7/25",
      "action_tasks": "9/91",
-     "seed_varying": "14/76",
+     "goal_can_vary": "14/78",
      "exceptions": 0,
      "exception_templates": [],
      "by_difficulty": {
@@ -78,7 +78,7 @@
      ],
      "answer_tasks": "0/25",
      "action_tasks": "11/91",
-     "seed_varying": "4/76",
+     "goal_can_vary": "5/78",
      "exceptions": 0,
      "exception_templates": [],
      "by_difficulty": {
@@ -102,8 +102,12 @@
    "mean_diff_pp": 1.7,
    "signflip_p_two_sided": 0.8517,
    "ci95_pp_test_inversion": [
-    -7.2,
-    10.7
+    -7.3,
+    10.8
+   ],
+   "ci95_pp_exact_endpoints": [
+    -7.272727,
+    10.769231
    ],
    "per_seed": {
     "7": {
@@ -131,7 +135,11 @@
    "signflip_p_two_sided": 0.4035,
    "ci95_pp_test_inversion": [
     -12.5,
-    3.7
+    3.8
+   ],
+   "ci95_pp_exact_endpoints": [
+    -12.5,
+    3.773585
    ],
    "per_seed": {
     "7": {
@@ -151,6 +159,10 @@
     0.0,
     12.5
    ],
+   "ci95_pp_exact_endpoints": [
+    0.0,
+    12.5
+   ],
    "per_seed": {
     "7": {
      "v4_only": 11,
@@ -166,7 +178,8 @@
  "notes": [
   "One held-out seed only: PRELIMINARY (preregistered label; detectable gap ~14 tasks)."
  ],
- "seed_varying_counts": {
+ "goal_can_vary_templates": 78,
+ "observed_goal_changes_vs_seed30": {
   "7": 76
  },
  "reruns_applied": [
@@ -205,5 +218,42 @@
    "rerun_success": true,
    "rerun_exception": false
   }
+ ],
+ "sensitivity_checker_disputes": {
+  "mean_diff_pp": 0.9,
+  "signflip_p_two_sided": 1.0,
+  "ci95_pp_test_inversion": [
+   -8.1,
+   9.9
+  ],
+  "ci95_pp_exact_endpoints": [
+   -8.064516,
+   9.803922
+  ],
+  "per_seed": {
+   "7": {
+    "v4_only": 14,
+    "guiowl_only": 13,
+    "both": 3,
+    "mcnemar_exact_p": 1.0
+   }
+  },
+  "n_instances": 116,
+  "n_clusters": 116,
+  "non_inferiority_margin_pp": -6.9,
+  "non_inferior": false,
+  "disputed_successes_counted_as_failures": [
+   "v4 seed 7 ClockStopWatchPausedVerify"
+  ],
+  "totals": {
+   "v4": 17,
+   "guiowl": 16,
+   "v1": 11
+  }
+ },
+ "known_limits": [
+  "The primary score is AndroidWorld's checker verdict (preregistered). Every success is also reviewed against its saved trajectory; disputed successes are listed in results/aw_checker_disputes.json and only enter the sensitivity analysis.",
+  "Harness defect affecting all arms: gRPC fork warnings on adb stderr can corrupt adb query output during task setup (android_env's adb controller merges stderr into stdout). Such setup crashes are exceptions and get the preregistered single re-run; the harness is not changed mid-protocol.",
+  "The 95% CI inverts the sign-flip test (10,000 draws, seed 0); it is a nominal interval that assumes the shifted paired differences are symmetric, not an interval with guaranteed exact coverage."
  ]
 }
