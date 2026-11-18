@@ -72,7 +72,9 @@ fbv4 = (fb.get("models") or {}).get("v4")
 qdc_txt = (qdc or "_Run in progress._\n") + (
     f"\nEarlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we "
     f"switched to Qualcomm Device Cloud: v4 median {fbv4['latency_median_s']} s/step over {fbv4['n']} calls, rising from "
-    f"{fbv4['latency_min_max_s'][0]} to {fbv4['latency_min_max_s'][1]} s as the phone heated up (raw data in the working repo, `results/devstream/`).\n" if fbv4 else "")
+    f"{fbv4['latency_min_max_s'][0]} to {fbv4['latency_min_max_s'][1]} s: from the 5th call on, battery temperature had risen from 27 to ~36 °C and "
+    f"the big cores were capped from 3.1 GHz to ~1.8–2.0 GHz (prompt speed fell from ~26 to ~14 tok/s) while Android's thermal status still read 0 "
+    f"(raw data and thermal log in the working repo, `results/devstream/`).\n" if fbv4 else "")
 sub = {"generated_from": reg["generated_from"], "now": time.strftime("%Y-%m-%d %H:%M"), "headline": head, "rl_details": rl_details,
        "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt}
 for k in ["training", "ac", "gen", "dev", "aw", "pairs", "sealed"]:

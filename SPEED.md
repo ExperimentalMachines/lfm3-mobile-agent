@@ -28,7 +28,7 @@ running (llama.cpp Metal):
 
 _Run in progress._
 
-Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s as the phone heated up (raw data in the working repo, `results/devstream/`).
+Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s: from the 5th call on, battery temperature had risen from 27 to ~36 °C and the big cores were capped from 3.1 GHz to ~1.8–2.0 GHz (prompt speed fell from ~26 to ~14 tok/s) while Android's thermal status still read 0 (raw data and thermal log in the working repo, `results/devstream/`).
 
 
 ## How it was measured
