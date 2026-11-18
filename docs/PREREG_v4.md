@@ -133,7 +133,7 @@ exposure to AndroidWorld is undisclosed by its authors.
   exceptions with no recorded steps (adb output polluted by a gRPC fork warning: SimpleSmsSend,
   SimpleSmsSendClipboardContent, MarkorCreateNoteAndSms; app-data reset failure: SimpleCalendarNextEvent); they count as
   failures here and do not change the gate. Codex's adversarial review: results/codex/v4_seed30_audit/.
-* 2026-11-18 18:35 (no sealed outcome read yet): every seed-7 arm has finished (GUI-Owl matched, v4 = LFM3 final, v1:
+* 2026-11-18 18:25 (no sealed outcome read yet): every seed-7 arm has finished (GUI-Owl matched, v4 = LFM3 final, v1:
   116 episode files each), so seed 7 is unsealed now for the preliminary analysis in "Analysis" (one held-out seed ->
   labelled preliminary). Nothing about the remaining arms changes with what seed 7 shows: v4 is frozen, harness and flags
   are fixed. Remaining sealed arms are queued (scripts/local_sealed_queue.sh, same runner local_sealed_aw_v3.sh):
