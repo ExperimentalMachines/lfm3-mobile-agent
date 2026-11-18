@@ -1,0 +1,5 @@
+Thu 19 Nov 2026 05:43:31 PST
+Colab mwgpu after scripts/colab_mw_maiui_q8.py: /props 8093 and 8094 model_path=models/MAI-UI-2B-Q8_0.gguf, build b12110-cd959bae9, n_ctx 20480; 8092 GUI-Owl Q4_K_M unchanged
+MAI-UI-2B-Q8_0.gguf sha256 5bc5ca6886c4b9ef1c76e9a911f1ac0b1ce807d12c1127c8c106c01fae363eaa (= Mac)
+mmproj-MAI-UI-2B-Q8_0.gguf sha256 abeaacca571eeaf59ff193d3485025d0e532cd9c04501ef6779a685182fe561e (= Mac)
+processes: 69787 GUI-Owl :8092; 246000 MAI-UI Q8_0 :8093; 246001 MAI-UI Q8_0 :8094 (-c 20480 -np 1 -ngl 99 --image-max-tokens 2600 --jinja --cache-ram 0)

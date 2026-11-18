@@ -1,0 +1,113 @@
+{
+  "mai_wrapper": {
+    "selected_classes": [
+      "MAIUIOneScreenshotAgent"
+    ],
+    "only_default_changed": "history_n: 3 -> 1",
+    "tools_forwarded": true,
+    "normal_gui_images": [
+      "data:image/png;base64,current"
+    ],
+    "text_history_retained": true,
+    "on_nonvisual_observation_latest_prior_image_is_kept": [
+      "data:image/png;base64,old1"
+    ]
+  },
+  "v4_replay": {
+    "serialized_actions": 4461,
+    "model_decisions": 4323,
+    "synthetic_enters": 138,
+    "drags": 780,
+    "mismatches": [],
+    "pending_enter_at_step_50": [
+      "MastodonAdjustTootsTask",
+      "MastodonUpdateContactsTask",
+      "MattermostIncidentEscalationTask"
+    ],
+    "dimensions": [
+      1080,
+      2400
+    ],
+    "dimension_basis": "all 780 saved drag origins are (540,1200)"
+  },
+  "classifiers": {
+    "folders_checked": 241,
+    "no_result_disagreements": 0,
+    "note": "Result existence is checked by resume outside classify()."
+  },
+  "result_log_consistency": {
+    "result_files_checked": 206,
+    "score_disagreements": 0,
+    "step_discontinuities": 0,
+    "tasks_over_50_steps": 0
+  },
+  "guiowl_terminal_sentinel": {
+    "ENV_FAIL": "error_env",
+    "accepted_by_JSONAction": false,
+    "observed_crash_tasks": [
+      "MastodonCreateMemoTask",
+      "ReadQwen3PaperTask5"
+    ]
+  },
+  "snapshot_resume_plan": {
+    "v4": {
+      "todo": [],
+      "decisions": [
+        {
+          "task": "ThanksgivingPrepTask",
+          "category": "setup_failed",
+          "prior_attempts_moved": [
+            "setup_failed"
+          ],
+          "action": "final_failure"
+        }
+      ]
+    },
+    "guiowl": {
+      "todo": [
+        "ThanksgivingPrepTask"
+      ],
+      "decisions": [
+        {
+          "task": "SendInterviewEmailTask",
+          "category": "ask_user_without_simulator",
+          "prior_attempts_moved": [],
+          "action": "final_failure"
+        },
+        {
+          "task": "CheckInvoiceTask2",
+          "category": "unsupported_action",
+          "prior_attempts_moved": [],
+          "action": "final_failure"
+        },
+        {
+          "task": "ThanksgivingPrepTask",
+          "category": "setup_failed",
+          "prior_attempts_moved": [],
+          "action": "rerun"
+        }
+      ]
+    }
+  },
+  "failed_planner_pipeline": {
+    "producer_exit": 2,
+    "pipeline_exit": 0,
+    "output": "FALSE_COMPLETION"
+  },
+  "mai_split": {
+    "halves": [
+      53,
+      52
+    ],
+    "disjoint": true,
+    "regex_cross_matches": false,
+    "scan_filters_exact_task_names": true
+  },
+  "swap_identity_guard": {
+    "relative_path_selected": true,
+    "absolute_path_selected": false,
+    "long_model_flag_selected": false,
+    "generic_old_model_health_passes": true,
+    "limit": "Demonstrates unguarded failure path; does not assert a live server mismatch."
+  }
+}

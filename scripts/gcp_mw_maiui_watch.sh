@@ -1,6 +1,7 @@
 #!/bin/bash
 # Mac-side driver for the MAI-UI-2B MobileWorld run (docs/PREREG_v4.md, 2026-11-19 05:20 entry). Starts only after the
-# GUI-Owl run is complete (guiowl_complete on the VM) so neither container is shared. MAI-UI's 105 tasks are split
+# GUI-Owl and v4 runs are complete (guiowl_complete, v4_complete on the VM) so neither container is shared. A half is
+# launched only after its container is healthy AND check_maiui_server.py confirms its tunnel serves MAI-UI Q8_0. MAI-UI's 105 tasks are split
 # alternately into two halves run in parallel: maiui_a on mobile_world_env_0 (model server tunnel 18093) and maiui_b on
 # lfmenv_0 (identical server, tunnel 18094); both write traj_logs/maiui_gui_en_r2. Each half is launched and completed by
 # mw_resume2.sh (= scripts/gcp_mw_resume_vm.sh: same completion rule as GUI-Owl and v4).
@@ -20,15 +21,17 @@ port() { [ "$1" = maiui_a ] && echo 18093 || echo 18094; }
 ep() { [ "$1" = maiui_a ] && echo mobile_world_env || echo lfmenv; }
 wait_ready() {  # $1 = half; container healthy + its model tunnel answering, up to 20 min
   local t0=$(date +%s) c; c=$(ctr "$1")
-  until S "[ \"\$(sudo docker inspect -f '{{.State.Health.Status}}' $c)\" = healthy ] && curl -s -m 5 localhost:$(port "$1")/health | grep -q ok" 2>/dev/null; do
+  # container healthy AND the tunnel's server is MAI-UI-2B Q8_0 / cd959bae9 / n_ctx 20480 (not just any /health "ok")
+  until S "[ \"\$(sudo docker inspect -f '{{.State.Health.Status}}' $c)\" = healthy ] && python3 check_maiui_server.py $(port "$1")" > /dev/null 2>&1; do
     [ $(( $(date +%s) - t0 )) -gt 1200 ] && { log "$1: not ready after 20 min"; return 1; }
     sleep 20
   done
 }
-deploy() {  # idempotent: agent wrapper, resume script, the two task halves
+deploy() {  # idempotent: agent wrapper, resume script, server check, the two task halves (validated: 53 + 52, disjoint, = manifest)
   scp -q -o BatchMode=yes -i "$PEM" eval/mobileworld/maiui_mw_agent.py "ubuntu@${IP}:lfm3/maiui_mw_agent.py" &&
   scp -q -o BatchMode=yes -i "$PEM" scripts/gcp_mw_resume_vm.sh "ubuntu@${IP}:mw_resume2.sh" &&
-  S "python3 -c \"import json; t=json.load(open('mw_gui_en.json')); json.dump(t[0::2], open('mw_gui_en_maiui_a.json','w')); json.dump(t[1::2], open('mw_gui_en_maiui_b.json','w')); print(len(t[0::2]), len(t[1::2]))\""
+  scp -q -o BatchMode=yes -i "$PEM" scripts/check_maiui_server.py "ubuntu@${IP}:check_maiui_server.py" &&
+  S "python3 -c \"import json; t=json.load(open('mw_gui_en.json')); assert len(t)==105==len(set(t)); a,b=t[0::2],t[1::2]; json.dump(a, open('mw_gui_en_maiui_a.json','w')); json.dump(b, open('mw_gui_en_maiui_b.json','w')); A=json.load(open('mw_gui_en_maiui_a.json')); B=json.load(open('mw_gui_en_maiui_b.json')); assert (len(A),len(B))==(53,52) and not set(A)&set(B) and set(A)|set(B)==set(t); print('halves ok', len(A), len(B))\""
 }
 T0=$(date +%s); last_auth_log=0; deployed=0
 log "MAI-UI watcher up (pid $$)"
@@ -37,8 +40,12 @@ while [ $(( $(date +%s) - T0 )) -lt 72000 ]; do
   if [ -z "$st" ]; then
     [ $(( $(date +%s) - last_auth_log )) -ge 1800 ] && { log "gcloud status unavailable (login expired?); waiting"; last_auth_log=$(date +%s); }
   elif [ "$st" = RUNNING ]; then
-    if ! S "test -f guiowl_complete" 2>/dev/null; then sleep 120; continue; fi
-    [ "$deployed" = 1 ] || { deploy && deployed=1 && log "deployed agent, mw_resume2.sh and task halves"; }
+    # both earlier runs must be complete before their containers are reused
+    if ! S "test -f guiowl_complete && test -f v4_complete" 2>/dev/null; then sleep 120; continue; fi
+    if [ "$deployed" != 1 ]; then
+      if deploy; then deployed=1; log "deployed agent, mw_resume2.sh, server check and validated task halves"
+      else log "deploy/validation FAILED; nothing launched; retrying in 2 min"; sleep 120; continue; fi
+    fi
     done_all=1
     for r in maiui_a maiui_b; do
       if S "test -f ${r}_complete" 2>/dev/null; then continue; fi
