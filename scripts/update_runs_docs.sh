@@ -11,7 +11,9 @@ cp results/speed/speed_t8.md results/speed/speed_t8.json results/v4_gate_seed30.
    results/v4_local_export_manifest.json results/v4rl_local_export_manifest.json results/mobileworld/snapshot.json "$R/results/"
 cp docs/PREREG_v4.md "$R/docs/"
 for f in results/qdc/speed_qdc_v6.md results/qdc/speed_qdc_v6.json results/sealed_analysis_seed7_prelim.md results/sealed_analysis_seed7_prelim.json \
-         results/sealed_analysis_seed7.md results/sealed_analysis_seed7.json results/mobileworld/v4_gui_en_summary.json; do
+         results/sealed_analysis_seed7.md results/sealed_analysis_seed7.json results/mobileworld/v4_gui_en_summary.json \
+         results/mobileworld/mw_r2_comparison.md results/mobileworld/mw_r2_comparison.json results/mobileworld/guiowl_gui_en_r2_summary.json \
+         results/mobileworld/v4_gui_en_r2_summary.json; do
   [ -f "$f" ] && cp "$f" "$R/results/"
 done
 python3 "$R/data/render_docs.py"
