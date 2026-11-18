@@ -13,10 +13,10 @@
 #   any other error -> counted as a failure, not re-run, flagged for manual review
 # Each replaced folder is moved to traj_logs/_interrupted/<run>/<task>_<timestamp> (kept, never mixed into the run);
 # decisions are appended to traj_logs/_retry_manifest_<run>.jsonl. Writes <run>_complete when nothing is left to do.
-# Usage: bash mw_resume.sh guiowl|v4 [--dry-run]
+# Usage: bash mw_resume.sh guiowl|v4|maiui_a|maiui_b [--dry-run]   (deployed for MAI-UI as /home/ubuntu/mw_resume2.sh)
 set -u
 cd /home/ubuntu
-RUN=$1; DRY=${2:-}
+RUN=$1; DRY=${2:-}; TASKS=/home/ubuntu/mw_gui_en.json
 case $RUN in
   guiowl) LOG=traj_logs/guiowl_gui_en_r2
           CMD=(sudo /home/ubuntu/.local/bin/uv run mw eval --agent_type gui_owl_1_5 --model_name GUI-Owl-1.5-2B
@@ -26,13 +26,23 @@ case $RUN in
           CMD=(sudo LFM3_PROMPT_VERSION=v4 LFM3_AGENT_FORMAT_DIR=/home/ubuntu/lfm3 /home/ubuntu/.local/bin/uv run mw eval
                --agent_type /home/ubuntu/lfm3/lfm3_mw_agent.py --model_name local --llm_base_url http://127.0.0.1:18094/v1
                --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix lfmenv --log_file_root /home/ubuntu/$LOG) ;;
-  *) echo "usage: $0 guiowl|v4 [--dry-run]"; exit 2 ;;
+  maiui_a|maiui_b)   # MAI-UI-2B Q8_0, official MobileWorld agent with one screenshot (eval/mobileworld/maiui_mw_agent.py);
+          # the 105 tasks are split alternately (mw_gui_en_maiui_a/b.json), half a on mobile_world_env_0 with the server on
+          # tunnel 18093, half b on lfmenv_0 with an identical server on 18094; one shared log root
+          LOG=traj_logs/maiui_gui_en_r2; TASKS=/home/ubuntu/mw_gui_en_$RUN.json
+          if [ $RUN = maiui_a ]; then EP=mobile_world_env; PORT=18093; else EP=lfmenv; PORT=18094; fi
+          CMD=(sudo /home/ubuntu/.local/bin/uv run mw eval --agent_type /home/ubuntu/lfm3/maiui_mw_agent.py --model_name MAI-UI-2B
+               --llm_base_url http://127.0.0.1:$PORT/v1 --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix $EP
+               --log_file_root /home/ubuntu/$LOG) ;;
+  *) echo "usage: $0 guiowl|v4|maiui_a|maiui_b [--dry-run]"; exit 2 ;;
 esac
-[ "$DRY" != --dry-run ] && pgrep -f "mw eval.*--log_file_root /home/ubuntu/$LOG" >/dev/null && { echo "[$(date +%T)] $RUN eval still running; refusing"; exit 1; }
-PLAN=$(sudo python3 - "$RUN" "$LOG" "$DRY" <<'PY'
+PAT="mw eval.*--log_file_root /home/ubuntu/$LOG"
+case $RUN in maiui_*) PAT="mw eval.*--env_prefix $EP --log_file_root /home/ubuntu/$LOG" ;; esac   # the two halves share LOG
+[ "$DRY" != --dry-run ] && pgrep -f "$PAT" >/dev/null && { echo "[$(date +%T)] $RUN eval still running; refusing"; exit 1; }
+PLAN=$(sudo python3 - "$RUN" "$LOG" "$DRY" "$TASKS" <<'PY'
 import glob, json, os, shutil, sys, time
 run, log, dry = sys.argv[1], sys.argv[2], sys.argv[3] == "--dry-run"
-tasks = json.load(open("/home/ubuntu/mw_gui_en.json"))
+tasks = json.load(open(sys.argv[4]))
 moved_root = f"/home/ubuntu/traj_logs/_interrupted/{run}"
 man = f"/home/ubuntu/traj_logs/_retry_manifest_{run}.jsonl"
 ts = time.strftime("%Y%m%d_%H%M%S")

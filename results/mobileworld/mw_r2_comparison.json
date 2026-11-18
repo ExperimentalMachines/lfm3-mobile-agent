@@ -1,0 +1,44 @@
+{
+ "n_tasks": 105,
+ "v4_successes": 6,
+ "guiowl_successes": 22,
+ "difference_pp": -15.2,
+ "both": 6,
+ "v4_only": [],
+ "guiowl_only": [
+  "AcceptMeetingTask",
+  "AdjustBrightnessMaximumTask",
+  "AdjustBrightnessMinimumTask",
+  "CancelMeetingTask",
+  "ChangeWallpaperTask",
+  "CheckConferenceAndSendSmsTask1",
+  "CheckConferenceLocationTask",
+  "CheckDepartTimeTask",
+  "MastodonChangeHeaderTask",
+  "MastodonChangeLanguageTask",
+  "MastodonInviteTask",
+  "MastodonNewPostTask",
+  "MastodonRevisePhotoAltTask",
+  "MastodonRevisePollTask",
+  "RequestCarpoolingTask",
+  "SetAlarmTask"
+ ],
+ "neither": 83,
+ "mcnemar_exact_p": 3.05e-05,
+ "tasks_with_an_environment_error_in_either_run": [
+  "AdjustFontIconMaximumTask",
+  "CheckConferenceDurationTask",
+  "MastodonCreateListTask",
+  "MastodonMultiInviteTask",
+  "MastodonPostEditedPhotoTask",
+  "MattermostResourceConflictResolutionTask",
+  "SendInterviewEmailTask",
+  "ThanksgivingPrepTask"
+ ],
+ "sensitivity_excluding_those_tasks": {
+  "n_tasks": 97,
+  "v4": 6,
+  "guiowl": 22
+ },
+ "note": "Secondary, descriptive benchmark (not preregistered as a primary endpoint); single run per model, temperature 0."
+}

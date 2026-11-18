@@ -164,3 +164,25 @@ exposure to AndroidWorld is undisclosed by its authors.
   setup and 2 scoring failures (mostly Mastodon tasks); v4's container had none. Tasks that did produce a result in
   that container may also have been affected; not corrected, disclosed. The VM's IP is reserved so a restart keeps the
   model tunnels.
+* 2026-11-19 05:20 (MobileWorld; before any MAI-UI MobileWorld step has run). (1) Correction and facts: MobileWorld's
+  own `--auto_retry 3` (same flag in every run) had already re-attempted, within each run, tasks whose attempt ended
+  without a result, whatever the reason. When the original lists ended, GUI-Owl had 3 tasks without a result
+  (CheckInvoiceTask2 unsupported action, SendInterviewEmailTask ask_user, ThanksgivingPrepTask setup failure) and v4 had
+  1 (ThanksgivingPrepTask). ThanksgivingPrepTask's setup failed on every attempt in both containers, including v4's
+  fresh-container re-run, and also in v4 run 1 on AWS. So it is a task-level environment defect, not one container's.
+  Under the rule above it gets its one fresh-container attempt and otherwise counts as a failure for every model. The
+  01:55 entry's "v4's container had none" holds except for this task. (2) MAI-UI-2B MobileWorld run, fixed now:
+  - Agent: MobileWorld's official MAI-UI agent with one screenshot per step (`history_n` 1, official default 3), to
+    match v4, GUI-Owl's official agent (default 1) and MAI-UI's AndroidWorld arm
+    (eval/mobileworld/maiui_mw_agent.py); everything else official.
+  - Model and server: MAI-UI-2B Q8_0 plus Q8_0 projector (SHA-256-checked against the Mac's file), llama.cpp
+    `cd959bae9` on the Colab T4 with `-c 20480 -np 1 -ngl 99 --image-max-tokens 2600 --jinja --cache-ram 0`.
+  - Task settings: the same 105 tasks, max_round 50, step_wait 3 s, auto_retry 3, temperature 0.
+  - To fit the model session, the tasks are split alternately into two halves run in parallel, one per freshly
+    restarted container, each container with its own identical server.
+  - Same completion rule. It starts only after GUI-Owl's run is complete, and it is secondary and descriptive like
+    the other MobileWorld results.
+
+  (3) The Mac's gcloud login expired at about 04:55, just before the VM's 12-h stop, so GUI-Owl's one remaining
+  fresh-container attempt (ThanksgivingPrepTask) and the MAI-UI run wait until the login is renewed. Both watchers
+  resume on their own after that (scripts/gcp_mw_resume_watch.sh, scripts/gcp_mw_maiui_watch.sh).
