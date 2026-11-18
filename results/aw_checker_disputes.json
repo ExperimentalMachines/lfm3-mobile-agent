@@ -1,0 +1,12 @@
+{
+ "definition": "Checker-scored successes whose saved trajectory contradicts the goal (per-success trajectory review). The preregistered primary score keeps the checker's verdict; these are counted as failures only in the sensitivity analysis.",
+ "disputes": [
+  {
+   "seed": 7,
+   "arm": "v4",
+   "task": "ClockStopWatchPausedVerify",
+   "source": "results/codex/seed7_analysis_audit/report.md (P2-1)",
+   "reason": "Goal 'Pause the stopwatch'; actions open Clock, Stopwatch tab, tap Play, status(complete); the final screen shows the stopwatch running (02.99, Pause button). The checker accepts any 'Start' node plus two Stopwatch nodes."
+  }
+ ]
+}

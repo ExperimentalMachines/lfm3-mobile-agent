@@ -5,7 +5,12 @@ only for seeds whose arms have ALL finished (it refuses otherwise). Score = full
 failure) per task template (n_task_combinations = 1, so one instance per template per seed).
 Primary: paired difference v4 - GUI-Owl over all held-out instances; template-clustered sign-flip permutation test
 (10,000 permutations, clusters = templates, seed 0); 95% CI by inverting that test; non-inferiority if the lower
-bound > -6.9 pp. Also: exact McNemar per seed, Wilson CIs, answer/action split, per difficulty, seed-varying templates.
+bound > -6.9 pp. Also: exact McNemar per seed, Wilson CIs, answer/action split, per difficulty, templates whose goal text
+can vary with the seed (source-checked manifest results/aw_template_manifest.json, 78 templates).
+CI endpoints are the exact endpoints of the accepted set of the inverted test for the fixed 10,000 sign draws (found at
+the test's breakpoints), reported rounded outward to 0.1 pp; the non-inferiority decision uses the unrounded bound.
+Sensitivity: successes disputed by the per-success trajectory review (results/aw_checker_disputes.json) counted as
+failures; the primary score is never rewritten.
 Usage: python scripts/sealed_analysis.py --seeds 7 --out results/sealed_analysis_seed7
 """
 import argparse
@@ -31,6 +36,9 @@ LABEL = {"v4": "LFM3 v4 (final)", "guiowl": "GUI-Owl-1.5-2B matched", "v1": "LFM
 NI_MARGIN = -6.9
 ANSWER = set(json.load(open("results/codex/v3_audit/answer_tasks.json"))["answer_tasks"])
 META = {m["task_name"]: m for m in json.load(open("android_world/android_world/task_metadata.json"))}
+VARY = set(json.load(open("results/aw_template_manifest.json"))["goal_text_can_vary"])
+assert len(VARY) == 78 and VARY <= set(META)
+DISPUTES = json.load(open("results/aw_checker_disputes.json"))["disputes"]
 
 
 def load(run_root, agent, expect=116, full=True):
@@ -88,6 +96,26 @@ def signflip(cluster_sums, n_inst, delta=0.0, perms=10000, seed=0):
     return float((1 + np.sum(stats >= obs - 1e-12)) / (perms + 1))
 
 
+def signflip_ci(cluster_sums, n_inst, perms=10000, seed=0, alpha=0.05):
+    """Exact endpoints of {delta: signflip(delta) >= alpha} for the same sign draws as signflip(). For draw j the
+    extremeness indicator |A_j - delta*B_j| >= |A0 - delta*B0| changes only where A_j - delta*B_j = +-(A0 - delta*B0), and
+    it holds with equality there, so the accepted set's endpoints are among these breakpoints (plus the point estimate)."""
+    x = np.array([s for s, m in cluster_sums], float)
+    w = np.array([m for s, m in cluster_sums], float)
+    rng = np.random.default_rng(seed)
+    signs = rng.choice([-1.0, 1.0], size=(perms, len(x)))
+    A, B, A0, B0 = signs @ x, signs @ w, x.sum(), w.sum()
+    with np.errstate(divide="ignore", invalid="ignore"):
+        cand = np.concatenate([(A - A0) / (B - B0), (A + A0) / (B + B0), [A0 / B0]])
+    cand = np.unique(cand[np.isfinite(cand) & (cand >= -1) & (cand <= 1)])
+    acc = []
+    for i in range(0, len(cand), 400):
+        d = cand[i:i + 400][:, None]
+        cnt = np.sum(np.abs(A[None, :] - d * B[None, :]) >= np.abs(A0 - d * B0) - 1e-9, axis=1)
+        acc += list(cand[i:i + 400][(1 + cnt) / (perms + 1) >= alpha])
+    return (float(min(acc)), float(max(acc))) if acc else None
+
+
 # ---- load (only the requested, complete seeds)
 data = {}
 for s in SEEDS:
@@ -116,9 +144,13 @@ for f in glob.glob("results/androidworld/guiowl15_2b_matched/run_*/*.pkl.gz"):
     ep = pickle.load(gzip.open(f))  # trusted: written by our own local AndroidWorld runs (seed-30 development data)
     ep = ep[0] if isinstance(ep, list) else ep
     dev[os.path.basename(f).rsplit("_", 1)[0]] = re.sub(r"\d{8}_\d{6}", "<ts>", ep.get("goal") or "")
-varying = {s: sorted(t for t in META if dev.get(t) != data[("guiowl", s)][2][t]) for s in SEEDS}
+observed_changes = {s: sorted(t for t in META if dev.get(t) != data[("guiowl", s)][2][t]) for s in SEEDS}
+if any(not set(v) <= VARY for v in observed_changes.values()):
+    raise SystemExit("INPUT ERROR: a goal changed for a template outside results/aw_template_manifest.json")
+varying = {s: sorted(VARY) for s in SEEDS}
 
-res = {"seeds": SEEDS, "arms": {}, "comparisons": {}, "notes": [], "seed_varying_counts": {s: len(v) for s, v in varying.items()},
+res = {"seeds": SEEDS, "arms": {}, "comparisons": {}, "notes": [], "goal_can_vary_templates": len(VARY),
+       "observed_goal_changes_vs_seed30": {s: len(v) for s, v in observed_changes.items()},
        "reruns_applied": SUBST}
 pending = [f"{arm} seed {s}: {sorted(t for t in data[(arm, s)][1] if data[(arm, s)][1][t])}" for s in SEEDS for arm in ARMS
            if any(data[(arm, s)][1].values()) and not os.path.isdir(f"results/androidworld_sealed/{arm}_seed{s}_rerun")]
@@ -134,7 +166,7 @@ for arm in ARMS:
         per[s] = {"successes": k, "of": 116, "pct": round(100 * k / 116, 1), "wilson95": wilson(k, 116),
                   "answer_tasks": f"{sum(ok[t] for t in ANSWER)}/{len(ANSWER)}",
                   "action_tasks": f"{sum(ok[t] for t in META if t not in ANSWER)}/{116 - len(ANSWER)}",
-                  "seed_varying": f"{sum(ok[t] for t in varying[s])}/{len(varying[s])}",
+                  "goal_can_vary": f"{sum(ok[t] for t in varying[s])}/{len(varying[s])}",
                   "exceptions": sum(exc.values()), "exception_templates": sorted(t for t in exc if exc[t]),
                   "by_difficulty": {d: f"{sum(ok[t] for t in META if META[t]['difficulty'] == d)}/{sum(1 for t in META if META[t]['difficulty'] == d)}"
                                     for d in ("easy", "medium", "hard")}}
@@ -147,28 +179,29 @@ for arm in ARMS:
                         "pct": round(100 * tot / (116 * len(SEEDS)), 1), "wilson95": wilson(tot, 116 * len(SEEDS))}
 
 
-def compare(x, y, primary=False):
+def compare(x, y, primary=False, D=None):
+    D = D or data
     n_inst = 116 * len(SEEDS)
     clusters, diffs, per_seed = [], [], {}
     for t in sorted(META):
-        ds = [int(data[(x, s)][0][t]) - int(data[(y, s)][0][t]) for s in SEEDS]
+        ds = [int(D[(x, s)][0][t]) - int(D[(y, s)][0][t]) for s in SEEDS]
         clusters.append((sum(ds), len(ds)))
         diffs += ds
     for s in SEEDS:
-        b = sum(1 for t in META if data[(x, s)][0][t] and not data[(y, s)][0][t])
-        c = sum(1 for t in META if data[(y, s)][0][t] and not data[(x, s)][0][t])
-        both = sum(1 for t in META if data[(x, s)][0][t] and data[(y, s)][0][t])
+        b = sum(1 for t in META if D[(x, s)][0][t] and not D[(y, s)][0][t])
+        c = sum(1 for t in META if D[(y, s)][0][t] and not D[(x, s)][0][t])
+        both = sum(1 for t in META if D[(x, s)][0][t] and D[(y, s)][0][t])
         per_seed[s] = {f"{x}_only": b, f"{y}_only": c, "both": both, "mcnemar_exact_p": round(mcnemar(b, c), 4)}
     mean = 100 * sum(diffs) / n_inst
     pval = signflip(clusters, n_inst, 0.0, a.perms)
-    grid = np.round(np.arange(-0.40, 0.40001, 0.001), 3)   # CI by test inversion, 0.1 pp grid
-    acc = [d for d in grid if signflip(clusters, n_inst, d, a.perms) >= 0.05]
-    ci = [round(100 * min(acc), 1), round(100 * max(acc), 1)] if acc else None
+    ex = signflip_ci(clusters, n_inst, a.perms)
+    ci = [math.floor(1000 * ex[0] + 1e-9) / 10, math.ceil(1000 * ex[1] - 1e-9) / 10] if ex else None  # outward to 0.1 pp
     out = {"mean_diff_pp": round(mean, 1), "signflip_p_two_sided": round(pval, 4), "ci95_pp_test_inversion": ci,
+           "ci95_pp_exact_endpoints": [round(100 * ex[0], 6), round(100 * ex[1], 6)] if ex else None,
            "per_seed": per_seed, "n_instances": n_inst, "n_clusters": len(clusters)}
     if primary:
         out["non_inferiority_margin_pp"] = NI_MARGIN
-        out["non_inferior"] = bool(ci and ci[0] > NI_MARGIN)
+        out["non_inferior"] = bool(ex and 100 * ex[0] > NI_MARGIN)
     return out
 
 
@@ -182,18 +215,38 @@ for s in SEEDS:
 res["comparisons"]["v4_vs_guiowl_secondary_exceptions_dropped"] = sec
 res["comparisons"]["v1_minus_guiowl"] = compare("v1", "guiowl")
 res["comparisons"]["v4_minus_v1"] = compare("v4", "v1")
+disp = [d for d in DISPUTES if d["seed"] in SEEDS]
+for d in disp:
+    if not data[(d["arm"], d["seed"])][0].get(d["task"]):
+        raise SystemExit(f"INPUT ERROR: disputed success {d} is not a success in the data")
+if disp:
+    D2 = {k: (dict(v[0]), v[1], v[2], v[3]) for k, v in data.items()}
+    for d in disp:
+        D2[(d["arm"], d["seed"])][0][d["task"]] = False
+    sens = compare("v4", "guiowl", primary=True, D=D2)
+    sens["disputed_successes_counted_as_failures"] = [f"{d['arm']} seed {d['seed']} {d['task']}" for d in disp]
+    sens["totals"] = {arm: sum(sum(D2[(arm, s)][0].values()) for s in SEEDS) for arm in ARMS}
+    res["sensitivity_checker_disputes"] = sens
+res["known_limits"] = [
+    "The primary score is AndroidWorld's checker verdict (preregistered). Every success is also reviewed against its saved "
+    "trajectory; disputed successes are listed in results/aw_checker_disputes.json and only enter the sensitivity analysis.",
+    "Harness defect affecting all arms: gRPC fork warnings on adb stderr can corrupt adb query output during task setup "
+    "(android_env's adb controller merges stderr into stdout). Such setup crashes are exceptions and get the preregistered "
+    "single re-run; the harness is not changed mid-protocol.",
+    "The 95% CI inverts the sign-flip test (10,000 draws, seed 0); it is a nominal interval that assumes the shifted paired "
+    "differences are symmetric, not an interval with guaranteed exact coverage."]
 json.dump(res, open(a.out + ".json", "w"), indent=1)
 
 L = [f"# Held-out AndroidWorld analysis, seed(s) {', '.join(map(str, SEEDS))}", ""]
 L += [f"> {n}" for n in res["notes"]] + [""] if res["notes"] else []
-L += ["| Arm | Successes | % | Wilson 95% | Answer tasks | Action tasks | Seed-varying | Easy | Medium | Hard | Exceptions |",
+L += ["| Arm | Successes | % | Wilson 95% | Answer tasks | Action tasks | Goal can vary (78) | Easy | Medium | Hard | Exceptions |",
       "|---|---|---|---|---|---|---|---|---|---|---|"]
 for arm, r in res["arms"].items():
     for s, q in r["per_seed"].items():
         d = q["by_difficulty"]
         L.append(f"| {r['label']} (seed {s}) | {q['successes']}/116 | {q['pct']} | {q['wilson95'][0]}–{q['wilson95'][1]} | {q['answer_tasks']} | "
-                 f"{q['action_tasks']} | {q['seed_varying']} | {d['easy']} | {d['medium']} | {d['hard']} | {q['exceptions']} |")
-L += ["", "| Comparison | Mean difference (pp) | 95% CI (sign-flip inversion) | p (two-sided) | Per seed: only-first / only-second / both, McNemar p |",
+                 f"{q['action_tasks']} | {q['goal_can_vary']} | {d['easy']} | {d['medium']} | {d['hard']} | {q['exceptions']} |")
+L += ["", "| Comparison | Mean difference (pp) | 95% CI (sign-flip inversion, rounded outward) | p (two-sided) | Per seed: only-first / only-second / both, McNemar p |",
       "|---|---|---|---|---|"]
 for k, c in res["comparisons"].items():
     if "secondary" in k:
@@ -205,6 +258,14 @@ L += ["", "Secondary (official rule, exceptions dropped): " + "; ".join(f"seed {
 L += ["", "Re-runs applied: " + (", ".join(f"{r['arm']} s{r['seed']} {r['task']} -> {'success' if r['rerun_success'] else ('exception' if r['rerun_exception'] else 'fail')}" for r in SUBST) or "none")]
 pc = res["comparisons"]["v4_minus_guiowl (PRIMARY)"]
 L += ["", f"Non-inferiority (lower 95% bound > {NI_MARGIN} pp): **{'yes' if pc['non_inferior'] else 'no'}** "
-      f"(lower bound {pc['ci95_pp_test_inversion'][0] if pc['ci95_pp_test_inversion'] else 'n/a'} pp)."]
+      f"(lower bound {pc['ci95_pp_exact_endpoints'][0] if pc['ci95_pp_exact_endpoints'] else 'n/a'} pp)."]
+if disp:
+    sc = res["sensitivity_checker_disputes"]
+    L += ["", f"Sensitivity, disputed checker successes counted as failures ({', '.join(sc['disputed_successes_counted_as_failures'])}): "
+          f"v4 {sc['totals']['v4']} vs GUI-Owl {sc['totals']['guiowl']}, difference {sc['mean_diff_pp']} pp, 95% CI {sc['ci95_pp_test_inversion']}, "
+          f"p = {sc['signflip_p_two_sided']}; non-inferior: {'yes' if sc['non_inferior'] else 'no'}."]
+L += ["", "Known limits:"] + [f"* {k}" for k in res["known_limits"]]
+L += ["", f"Goal can vary: {len(VARY)} templates in results/aw_template_manifest.json (source-checked); observed goal-text changes "
+      "versus dev seed 30: " + ", ".join(f"seed {s}: {n}" for s, n in res["observed_goal_changes_vs_seed30"].items()) + "."]
 open(a.out + ".md", "w").write("\n".join(L) + "\n")
 print("\n".join(L))
