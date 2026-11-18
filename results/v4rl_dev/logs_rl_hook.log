@@ -1,0 +1,1967 @@
+[22:07:41] rl_go.sh found; running
+[22:07:41] rl: smoke on base model
+[22:11:27] rl: smoke timing 33.0 s/step (measured next to SFT; an upper bound)
+[22:11:27] rl: waiting for the v4 pipeline to finish
+[00:56:28] rl: main GRPO from v4: 200 steps
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_http.py", line 866, in hf_raise_for_status
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/httpx2/_models.py", line 828, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx2.HTTPStatusError: Client error '400 Bad Request' for url 'https://huggingface.co/api/models/alpharomercoma/LFM3-VL-2B-AndroidAgent-v4-RL/commit/main'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 2036, in _inner
+    return fn(self, *args, **kwargs)
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 6011, in upload_folder
+    return pipelined_upload(
+        self,
+    ...<9 lines>...
+        parent_commit=parent_commit,
+    )
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_upload_pipeline.py", line 745, in pipelined_upload
+    ).run()
+      ~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_upload_pipeline.py", line 475, in run
+    raise self.errors[0]
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_upload_pipeline.py", line 573, in _committer_loop
+    self._process_batch(batch)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_upload_pipeline.py", line 610, in _process_batch
+    self._commit_with_split(ops_to_commit)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_upload_pipeline.py", line 614, in _commit_with_split
+    self._do_commit(ops)
+    ~~~~~~~~~~~~~~~^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_upload_pipeline.py", line 655, in _do_commit
+    self.last_commit_info = _send_commit(
+                            ~~~~~~~~~~~~^
+        operations=operations,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+        retry_on_error=True,
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/_commit_api.py", line 1068, in _send_commit
+    hf_raise_for_status(response, endpoint_name="commit")
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_http.py", line 959, in hf_raise_for_status
+    raise _format(BadRequestError, message, response) from e
+huggingface_hub.errors.BadRequestError: (Request ID: Root=1-6afd0570-58affa8b53b8fa93482177b9;ca1361ca-5188-404c-b1f6-77a4371a9a97)
+
+Bad request for commit endpoint:
+Private storage limit reached for user alpharomercoma, please upgrade your plan to increase your private storage limit
+[01:54:56] rl: FAILED: upload merged
+[01:54:56] rl: offline evals
+W1118 01:55:10.222000 61257 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1118 01:55:10.269000 61257 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 4244.01it/s]
+to generate: 136 / 136
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/136 6s avg_prompt_tok=1265
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/136 10s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/136 14s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/136 20s avg_prompt_tok=1266
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+136/136 22s avg_prompt_tok=1265
+DONE 21.539626598358154
+{"n_steps": 136, "parse_rate": 1.0, "type_match": 1.0, "step_sr": 0.9117647058823529, "answer_mean_f1": 0.8846638655462185}
+W1118 01:55:54.083000 61522 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1118 01:55:54.129000 61522 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 5311.81it/s]
+to generate: 80 / 80
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/80 6s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/80 9s avg_prompt_tok=1260
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+80/80 11s avg_prompt_tok=1258
+DONE 11.000624418258667
+{"n_steps": 80, "parse_rate": 1.0, "type_match": 0.9625, "step_sr": 0.9625, "answer_mean_f1": null}
+W1118 01:56:27.381000 61743 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1118 01:56:27.431000 61743 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 5291.35it/s]
+to generate: 500 / 500
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/500 6s avg_prompt_tok=1067
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/500 10s avg_prompt_tok=1058
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/500 15s avg_prompt_tok=1061
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/500 19s avg_prompt_tok=1063
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/500 23s avg_prompt_tok=1061
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/500 27s avg_prompt_tok=1063
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/500 30s avg_prompt_tok=1063
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/500 38s avg_prompt_tok=1066
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/500 41s avg_prompt_tok=1059
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+320/500 44s avg_prompt_tok=1058
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+352/500 48s avg_prompt_tok=1057
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+384/500 52s avg_prompt_tok=1057
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+416/500 56s avg_prompt_tok=1062
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+448/500 59s avg_prompt_tok=1062
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+480/500 63s avg_prompt_tok=1064
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+500/500 66s avg_prompt_tok=1064
+DONE 66.12265467643738
+{"n_steps": 500, "parse_rate": 1.0, "type_match": 1.0, "step_sr": 0.786, "answer_mean_f1": 0.7013981882319408}
+W1118 01:57:55.839000 62184 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1118 01:57:55.883000 62184 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 5155.80it/s]
+to generate: 1000 / 1000
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/1000 6s avg_prompt_tok=1252
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/1000 10s avg_prompt_tok=1244
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/1000 14s avg_prompt_tok=1232
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/1000 18s avg_prompt_tok=1237
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/1000 22s avg_prompt_tok=1237
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/1000 26s avg_prompt_tok=1241
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/1000 29s avg_prompt_tok=1243
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/1000 33s avg_prompt_tok=1243
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/1000 37s avg_prompt_tok=1244
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+320/1000 41s avg_prompt_tok=1247
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+352/1000 45s avg_prompt_tok=1247
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+384/1000 59s avg_prompt_tok=1247
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+416/1000 63s avg_prompt_tok=1247
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+448/1000 66s avg_prompt_tok=1248
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+480/1000 70s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+512/1000 74s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+544/1000 78s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+576/1000 82s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+608/1000 85s avg_prompt_tok=1251
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+640/1000 90s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+672/1000 94s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+704/1000 98s avg_prompt_tok=1249
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+736/1000 102s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+768/1000 106s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+800/1000 110s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+832/1000 115s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+864/1000 128s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+896/1000 132s avg_prompt_tok=1250
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+928/1000 136s avg_prompt_tok=1249
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+960/1000 140s avg_prompt_tok=1248
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+992/1000 144s avg_prompt_tok=1248
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1000/1000 146s avg_prompt_tok=1248
+DONE 146.24713706970215
+{"n_steps": 1000, "parse_rate": 0.998, "type_match": 0.853, "step_sr": 0.638, "answer_mean_f1": null}
+W1118 02:00:44.606000 62954 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1118 02:00:44.652000 62954 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 4790.21it/s]
+to generate: 468 / 468
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/468 6s avg_prompt_tok=1195
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/468 10s avg_prompt_tok=1202
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/468 13s avg_prompt_tok=1201
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/468 17s avg_prompt_tok=1196
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/468 21s avg_prompt_tok=1197
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/468 25s avg_prompt_tok=1194
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/468 28s avg_prompt_tok=1196
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/468 32s avg_prompt_tok=1197
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/468 36s avg_prompt_tok=1199
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+320/468 40s avg_prompt_tok=1197
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+352/468 44s avg_prompt_tok=1197
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+384/468 47s avg_prompt_tok=1196
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+416/468 51s avg_prompt_tok=1195
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+448/468 55s avg_prompt_tok=1194
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+468/468 58s avg_prompt_tok=1195
+DONE 57.865352392196655
+{"n_steps": 468, "parse_rate": 1.0, "type_match": 0.9145299145299145, "step_sr": 0.7329059829059829, "answer_mean_f1": null}
+W1118 02:02:00.791000 63322 torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1118 02:02:00.836000 63322 torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights:  82%|████████▏ | 348/424 [00:00<00:00, 3472.52it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 3614.24it/s]
+to generate: 18415 / 18415
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/18415 7s avg_prompt_tok=1175
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/18415 10s avg_prompt_tok=1200
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/18415 14s avg_prompt_tok=1201
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/18415 18s avg_prompt_tok=1221
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/18415 22s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/18415 25s avg_prompt_tok=1212
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/18415 29s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/18415 32s avg_prompt_tok=1212
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/18415 36s avg_prompt_tok=1208
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+320/18415 39s avg_prompt_tok=1208
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+352/18415 43s avg_prompt_tok=1208
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+384/18415 46s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+416/18415 50s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+448/18415 54s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+480/18415 57s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+512/18415 60s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+544/18415 64s avg_prompt_tok=1212
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+576/18415 68s avg_prompt_tok=1212
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+608/18415 71s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+640/18415 75s avg_prompt_tok=1211
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+672/18415 78s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+704/18415 82s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+736/18415 86s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+768/18415 89s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+800/18415 92s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+832/18415 96s avg_prompt_tok=1219
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+864/18415 100s avg_prompt_tok=1221
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+896/18415 103s avg_prompt_tok=1220
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+928/18415 107s avg_prompt_tok=1219
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+960/18415 110s avg_prompt_tok=1218
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+992/18415 114s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1024/18415 117s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1056/18415 121s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1088/18415 124s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1120/18415 130s avg_prompt_tok=1218
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1152/18415 134s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1184/18415 137s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1216/18415 140s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1248/18415 144s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1280/18415 148s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1312/18415 151s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1344/18415 155s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1376/18415 158s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1408/18415 162s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1440/18415 165s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1472/18415 169s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1504/18415 172s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1536/18415 175s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1568/18415 179s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1600/18415 183s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1632/18415 186s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1664/18415 189s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1696/18415 192s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1728/18415 196s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1760/18415 199s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1792/18415 203s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1824/18415 206s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1856/18415 210s avg_prompt_tok=1218
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1888/18415 213s avg_prompt_tok=1218
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1920/18415 216s avg_prompt_tok=1218
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1952/18415 220s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1984/18415 223s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2016/18415 227s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2048/18415 230s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2080/18415 234s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2112/18415 237s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2144/18415 241s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2176/18415 244s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2208/18415 248s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2240/18415 251s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2272/18415 255s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2304/18415 258s avg_prompt_tok=1217
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2336/18415 262s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2368/18415 265s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2400/18415 269s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2432/18415 272s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2464/18415 275s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2496/18415 279s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2528/18415 283s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2560/18415 286s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2592/18415 290s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2624/18415 293s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2656/18415 297s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2688/18415 300s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2720/18415 304s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2752/18415 307s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2784/18415 311s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2816/18415 314s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2848/18415 318s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2880/18415 321s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2912/18415 325s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2944/18415 329s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2976/18415 332s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3008/18415 336s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3040/18415 340s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3072/18415 343s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3104/18415 346s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3136/18415 350s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3168/18415 353s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3200/18415 357s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3232/18415 361s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3264/18415 364s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3296/18415 368s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3328/18415 371s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3360/18415 375s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3392/18415 378s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3424/18415 382s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3456/18415 385s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3488/18415 388s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3520/18415 393s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3552/18415 397s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3584/18415 400s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3616/18415 404s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3648/18415 407s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3680/18415 410s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3712/18415 414s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3744/18415 418s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3776/18415 421s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3808/18415 425s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3840/18415 429s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3872/18415 432s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3904/18415 436s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3936/18415 439s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3968/18415 443s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4000/18415 446s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4032/18415 450s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4064/18415 453s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4096/18415 457s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4128/18415 460s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4160/18415 463s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4192/18415 467s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4224/18415 470s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4256/18415 474s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4288/18415 477s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4320/18415 481s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4352/18415 484s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4384/18415 488s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4416/18415 491s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4448/18415 495s avg_prompt_tok=1213
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4480/18415 498s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4512/18415 502s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4544/18415 505s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4576/18415 509s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4608/18415 513s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4640/18415 517s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4672/18415 520s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4704/18415 524s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4736/18415 528s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4768/18415 531s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4800/18415 535s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4832/18415 538s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4864/18415 542s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4896/18415 545s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4928/18415 549s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4960/18415 552s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4992/18415 556s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5024/18415 560s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5056/18415 563s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5088/18415 567s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5120/18415 570s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5152/18415 574s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5184/18415 577s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5216/18415 581s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5248/18415 585s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5280/18415 588s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5312/18415 592s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5344/18415 595s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5376/18415 599s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5408/18415 602s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5440/18415 606s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5472/18415 609s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5504/18415 613s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5536/18415 616s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5568/18415 620s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5600/18415 623s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5632/18415 627s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5664/18415 630s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5696/18415 634s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5728/18415 637s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5760/18415 641s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5792/18415 644s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5824/18415 648s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5856/18415 652s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5888/18415 655s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5920/18415 659s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5952/18415 662s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5984/18415 666s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6016/18415 669s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6048/18415 673s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6080/18415 676s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6112/18415 680s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6144/18415 684s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6176/18415 687s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6208/18415 691s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6240/18415 694s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6272/18415 698s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6304/18415 702s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6336/18415 705s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6368/18415 709s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6400/18415 712s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6432/18415 716s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6464/18415 719s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6496/18415 723s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6528/18415 726s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6560/18415 730s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6592/18415 733s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6624/18415 737s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6656/18415 740s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6688/18415 744s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6720/18415 747s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6752/18415 751s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6784/18415 754s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6816/18415 758s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6848/18415 761s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6880/18415 765s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6912/18415 769s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6944/18415 772s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+6976/18415 775s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7008/18415 779s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7040/18415 782s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7072/18415 786s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7104/18415 790s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7136/18415 793s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7168/18415 797s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7200/18415 800s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7232/18415 804s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7264/18415 808s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7296/18415 811s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7328/18415 815s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7360/18415 818s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7392/18415 822s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7424/18415 826s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7456/18415 829s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7488/18415 832s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7520/18415 836s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7552/18415 839s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7584/18415 842s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7616/18415 846s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7648/18415 849s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7680/18415 853s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7712/18415 857s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7744/18415 860s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7776/18415 864s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7808/18415 867s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7840/18415 871s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7872/18415 874s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7904/18415 878s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7936/18415 881s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+7968/18415 885s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8000/18415 889s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8032/18415 892s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8064/18415 896s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8096/18415 899s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8128/18415 903s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8160/18415 906s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8192/18415 909s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8224/18415 913s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8256/18415 916s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8288/18415 920s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8320/18415 924s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8352/18415 927s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8384/18415 931s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8416/18415 935s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8448/18415 938s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8480/18415 941s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8512/18415 945s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8544/18415 949s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8576/18415 952s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8608/18415 956s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8640/18415 959s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8672/18415 963s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8704/18415 967s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8736/18415 970s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8768/18415 974s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8800/18415 977s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8832/18415 981s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8864/18415 984s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8896/18415 987s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8928/18415 991s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8960/18415 995s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+8992/18415 998s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9024/18415 1002s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9056/18415 1005s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9088/18415 1008s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9120/18415 1012s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9152/18415 1015s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9184/18415 1019s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9216/18415 1022s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9248/18415 1026s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9280/18415 1029s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9312/18415 1033s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9344/18415 1037s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9376/18415 1040s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9408/18415 1044s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9440/18415 1047s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9472/18415 1051s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9504/18415 1054s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9536/18415 1058s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9568/18415 1062s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9600/18415 1065s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9632/18415 1068s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9664/18415 1072s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9696/18415 1075s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9728/18415 1079s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9760/18415 1083s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9792/18415 1086s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9824/18415 1089s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9856/18415 1093s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9888/18415 1096s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9920/18415 1100s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9952/18415 1103s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+9984/18415 1107s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10016/18415 1110s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10048/18415 1114s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10080/18415 1117s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10112/18415 1121s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10144/18415 1125s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10176/18415 1128s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10208/18415 1132s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10240/18415 1136s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10272/18415 1139s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10304/18415 1143s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10336/18415 1146s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10368/18415 1150s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10400/18415 1153s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10432/18415 1157s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10464/18415 1161s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10496/18415 1164s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10528/18415 1168s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10560/18415 1171s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10592/18415 1175s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10624/18415 1179s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10656/18415 1182s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10688/18415 1186s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10720/18415 1189s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10752/18415 1193s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10784/18415 1196s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10816/18415 1200s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10848/18415 1204s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10880/18415 1207s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10912/18415 1211s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10944/18415 1215s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+10976/18415 1218s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11008/18415 1222s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11040/18415 1226s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11072/18415 1229s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11104/18415 1232s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11136/18415 1236s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11168/18415 1239s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11200/18415 1242s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11232/18415 1246s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11264/18415 1249s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11296/18415 1253s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11328/18415 1256s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11360/18415 1259s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11392/18415 1263s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11424/18415 1266s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11456/18415 1269s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11488/18415 1273s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11520/18415 1276s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11552/18415 1280s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11584/18415 1283s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11616/18415 1287s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11648/18415 1291s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11680/18415 1294s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11712/18415 1298s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11744/18415 1301s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11776/18415 1304s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11808/18415 1308s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11840/18415 1312s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11872/18415 1315s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11904/18415 1319s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11936/18415 1322s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+11968/18415 1326s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12000/18415 1329s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12032/18415 1333s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12064/18415 1337s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12096/18415 1340s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12128/18415 1344s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12160/18415 1347s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12192/18415 1351s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12224/18415 1354s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12256/18415 1357s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12288/18415 1361s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12320/18415 1364s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12352/18415 1368s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12384/18415 1371s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12416/18415 1375s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12448/18415 1379s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12480/18415 1382s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12512/18415 1385s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12544/18415 1389s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12576/18415 1392s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12608/18415 1396s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12640/18415 1400s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12672/18415 1403s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12704/18415 1407s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12736/18415 1411s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12768/18415 1414s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12800/18415 1418s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12832/18415 1421s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12864/18415 1424s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12896/18415 1428s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12928/18415 1432s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12960/18415 1435s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+12992/18415 1438s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13024/18415 1442s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13056/18415 1445s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13088/18415 1449s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13120/18415 1453s avg_prompt_tok=1214
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13152/18415 1456s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13184/18415 1460s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13216/18415 1463s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13248/18415 1467s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13280/18415 1470s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13312/18415 1474s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13344/18415 1477s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13376/18415 1481s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13408/18415 1484s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13440/18415 1488s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13472/18415 1491s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13504/18415 1495s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13536/18415 1498s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13568/18415 1502s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13600/18415 1505s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13632/18415 1509s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13664/18415 1512s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13696/18415 1516s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13728/18415 1519s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13760/18415 1523s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13792/18415 1526s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13824/18415 1530s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13856/18415 1533s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13888/18415 1537s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13920/18415 1541s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13952/18415 1544s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+13984/18415 1548s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14016/18415 1551s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14048/18415 1555s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14080/18415 1559s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14112/18415 1562s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14144/18415 1566s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14176/18415 1569s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14208/18415 1573s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14240/18415 1576s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14272/18415 1580s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14304/18415 1583s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14336/18415 1587s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14368/18415 1590s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14400/18415 1593s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14432/18415 1597s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14464/18415 1600s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14496/18415 1604s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14528/18415 1607s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14560/18415 1611s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14592/18415 1614s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14624/18415 1618s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14656/18415 1621s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14688/18415 1625s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14720/18415 1628s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14752/18415 1632s avg_prompt_tok=1216
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14784/18415 1635s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14816/18415 1638s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14848/18415 1641s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14880/18415 1645s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14912/18415 1648s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14944/18415 1652s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+14976/18415 1655s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15008/18415 1659s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15040/18415 1662s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15072/18415 1666s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15104/18415 1670s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15136/18415 1673s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15168/18415 1676s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15200/18415 1680s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15232/18415 1683s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15264/18415 1687s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15296/18415 1691s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15328/18415 1694s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15360/18415 1697s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15392/18415 1701s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15424/18415 1704s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15456/18415 1708s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15488/18415 1711s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15520/18415 1715s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15552/18415 1719s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15584/18415 1723s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15616/18415 1726s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15648/18415 1730s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15680/18415 1733s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15712/18415 1736s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15744/18415 1740s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15776/18415 1743s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15808/18415 1747s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15840/18415 1751s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15872/18415 1754s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15904/18415 1758s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15936/18415 1761s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+15968/18415 1764s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16000/18415 1768s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16032/18415 1772s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16064/18415 1775s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16096/18415 1779s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16128/18415 1782s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16160/18415 1785s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16192/18415 1789s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16224/18415 1793s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16256/18415 1796s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16288/18415 1800s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16320/18415 1803s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16352/18415 1807s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16384/18415 1810s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16416/18415 1814s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16448/18415 1817s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16480/18415 1821s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16512/18415 1825s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16544/18415 1828s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16576/18415 1832s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16608/18415 1835s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16640/18415 1838s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16672/18415 1842s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16704/18415 1846s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16736/18415 1849s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16768/18415 1852s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16800/18415 1856s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16832/18415 1860s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16864/18415 1863s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16896/18415 1866s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16928/18415 1869s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16960/18415 1873s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16992/18415 1877s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17024/18415 1880s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17056/18415 1884s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17088/18415 1887s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17120/18415 1891s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17152/18415 1894s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17184/18415 1897s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17216/18415 1901s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17248/18415 1905s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17280/18415 1908s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17312/18415 1911s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17344/18415 1915s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17376/18415 1919s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17408/18415 1922s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17440/18415 1926s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17472/18415 1929s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17504/18415 1932s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17536/18415 1936s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17568/18415 1939s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17600/18415 1943s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17632/18415 1946s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17664/18415 1949s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17696/18415 1953s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17728/18415 1956s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17760/18415 1959s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17792/18415 1963s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17824/18415 1966s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17856/18415 1970s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17888/18415 1973s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17920/18415 1977s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17952/18415 1980s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+17984/18415 1984s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18016/18415 1987s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18048/18415 1991s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18080/18415 1994s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18112/18415 1998s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18144/18415 2001s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18176/18415 2005s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18208/18415 2008s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18240/18415 2012s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18272/18415 2015s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18304/18415 2019s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18336/18415 2022s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18368/18415 2026s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18400/18415 2030s avg_prompt_tok=1215
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+18415/18415 2033s avg_prompt_tok=1215
+DONE 2032.5821704864502
+{
+  "high": {
+    "overall": {
+      "n_steps": 8444,
+      "n_episodes": 1543,
+      "parse_rate": 0.9998815727143534,
+      "type_match": 0.7565135007105637,
+      "step_sr": 0.6672193273330175,
+      "episode_sr": 0.24951393389500973,
+      "per_type": {
+        "click": {
+          "n": 5074,
+          "type_match": 0.8553409538825384,
+          "step_sr": 0.7232952305873078
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.9003164556962026,
+          "step_sr": 0.814873417721519
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.0,
+          "step_sr": 0.0
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.6559766763848397,
+          "step_sr": 0.6559766763848397
+        },
+        "open_app": {
+          "n": 608,
+          "type_match": 0.9111842105263158,
+          "step_sr": 0.90625
+        },
+        "scroll": {
+          "n": 1211,
+          "type_match": 0.342691990090834,
+          "step_sr": 0.32039636663914123
+        },
+        "wait": {
+          "n": 567,
+          "type_match": 0.5026455026455027,
+          "step_sr": 0.5026455026455027
+        }
+      }
+    },
+    "overall_strict_parse": {
+      "n_steps": 8444,
+      "n_episodes": 1543,
+      "parse_rate": 0.9998815727143534,
+      "type_match": 0.7565135007105637,
+      "step_sr": 0.6672193273330175,
+      "episode_sr": 0.24951393389500973,
+      "per_type": {
+        "click": {
+          "n": 5074,
+          "type_match": 0.8553409538825384,
+          "step_sr": 0.7232952305873078
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.9003164556962026,
+          "step_sr": 0.814873417721519
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.0,
+          "step_sr": 0.0
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.6559766763848397,
+          "step_sr": 0.6559766763848397
+        },
+        "open_app": {
+          "n": 608,
+          "type_match": 0.9111842105263158,
+          "step_sr": 0.90625
+        },
+        "scroll": {
+          "n": 1211,
+          "type_match": 0.342691990090834,
+          "step_sr": 0.32039636663914123
+        },
+        "wait": {
+          "n": 567,
+          "type_match": 0.5026455026455027,
+          "step_sr": 0.5026455026455027
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "n_steps": 3897,
+        "n_episodes": 721,
+        "parse_rate": 1.0,
+        "type_match": 0.7831665383628432,
+        "step_sr": 0.693097254298178,
+        "episode_sr": 0.2787794729542302,
+        "per_type": {
+          "click": {
+            "n": 2445,
+            "type_match": 0.8760736196319019,
+            "step_sr": 0.7484662576687117
+          },
+          "input_text": {
+            "n": 287,
+            "type_match": 0.8745644599303136,
+            "step_sr": 0.7979094076655052
+          },
+          "long_press": {
+            "n": 9,
+            "type_match": 0.0,
+            "step_sr": 0.0
+          },
+          "navigate_back": {
+            "n": 117,
+            "type_match": 0.6153846153846154,
+            "step_sr": 0.6153846153846154
+          },
+          "open_app": {
+            "n": 256,
+            "type_match": 0.90625,
+            "step_sr": 0.8984375
+          },
+          "scroll": {
+            "n": 510,
+            "type_match": 0.4411764705882353,
+            "step_sr": 0.4117647058823529
+          },
+          "wait": {
+            "n": 273,
+            "type_match": 0.47619047619047616,
+            "step_sr": 0.47619047619047616
+          }
+        }
+      },
+      "app_unseen": {
+        "n_steps": 3475,
+        "n_episodes": 631,
+        "parse_rate": 0.9997122302158273,
+        "type_match": 0.7179856115107913,
+        "step_sr": 0.6253237410071942,
+        "episode_sr": 0.19968304278922344,
+        "per_type": {
+          "click": {
+            "n": 2024,
+            "type_match": 0.8157114624505929,
+            "step_sr": 0.6739130434782609
+          },
+          "input_text": {
+            "n": 243,
+            "type_match": 0.9300411522633745,
+            "step_sr": 0.823045267489712
+          },
+          "navigate_back": {
+            "n": 211,
+            "type_match": 0.6682464454976303,
+            "step_sr": 0.6682464454976303
+          },
+          "open_app": {
+            "n": 243,
+            "type_match": 0.9012345679012346,
+            "step_sr": 0.897119341563786
+          },
+          "scroll": {
+            "n": 528,
+            "type_match": 0.25946969696969696,
+            "step_sr": 0.24431818181818182
+          },
+          "wait": {
+            "n": 226,
+            "type_match": 0.5353982300884956,
+            "step_sr": 0.5353982300884956
+          }
+        }
+      },
+      "category_unseen": {
+        "n_steps": 3891,
+        "n_episodes": 700,
+        "parse_rate": 0.9997429966589566,
+        "type_match": 0.7165253148290928,
+        "step_sr": 0.6278591621691082,
+        "episode_sr": 0.21,
+        "per_type": {
+          "click": {
+            "n": 2241,
+            "type_match": 0.822400713966979,
+            "step_sr": 0.6845158411423472
+          },
+          "input_text": {
+            "n": 268,
+            "type_match": 0.9365671641791045,
+            "step_sr": 0.8395522388059702
+          },
+          "navigate_back": {
+            "n": 215,
+            "type_match": 0.6837209302325581,
+            "step_sr": 0.6837209302325581
+          },
+          "open_app": {
+            "n": 280,
+            "type_match": 0.8964285714285715,
+            "step_sr": 0.8928571428571429
+          },
+          "scroll": {
+            "n": 647,
+            "type_match": 0.26275115919629055,
+            "step_sr": 0.24884080370942813
+          },
+          "wait": {
+            "n": 240,
+            "type_match": 0.525,
+            "step_sr": 0.525
+          }
+        }
+      },
+      "task_unseen": {
+        "n_steps": 4464,
+        "n_episodes": 803,
+        "parse_rate": 0.9997759856630825,
+        "type_match": 0.7343189964157706,
+        "step_sr": 0.6462813620071685,
+        "episode_sr": 0.2266500622665006,
+        "per_type": {
+          "click": {
+            "n": 2583,
+            "type_match": 0.8370112272551297,
+            "step_sr": 0.7015098722415796
+          },
+          "input_text": {
+            "n": 338,
+            "type_match": 0.9230769230769231,
+            "step_sr": 0.8313609467455622
+          },
+          "navigate_back": {
+            "n": 223,
+            "type_match": 0.6816143497757847,
+            "step_sr": 0.6816143497757847
+          },
+          "open_app": {
+            "n": 347,
+            "type_match": 0.9135446685878963,
+            "step_sr": 0.9106628242074928
+          },
+          "scroll": {
+            "n": 689,
+            "type_match": 0.2714078374455733,
+            "step_sr": 0.25544267053701014
+          },
+          "wait": {
+            "n": 284,
+            "type_match": 0.5211267605633803,
+            "step_sr": 0.5211267605633803
+          }
+        }
+      }
+    },
+    "click_bbox_hit_strict": {
+      "n": 5074,
+      "acc": 0.7089081592432006
+    }
+  },
+  "low": {
+    "overall": {
+      "n_steps": 8428,
+      "n_episodes": 1542,
+      "parse_rate": 1.0,
+      "type_match": 0.8688894162316089,
+      "step_sr": 0.8385144755576649,
+      "episode_sr": 0.5298313878080415,
+      "per_type": {
+        "click": {
+          "n": 5073,
+          "type_match": 0.9532820816085157,
+          "step_sr": 0.9128720678099743
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.944620253164557,
+          "step_sr": 0.939873417721519
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.6666666666666666,
+          "step_sr": 0.5555555555555556
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.8104956268221575,
+          "step_sr": 0.8104956268221575
+        },
+        "open_app": {
+          "n": 600,
+          "type_match": 0.985,
+          "step_sr": 0.985
+        },
+        "scroll": {
+          "n": 1210,
+          "type_match": 0.6008264462809917,
+          "step_sr": 0.5619834710743802
+        },
+        "wait": {
+          "n": 561,
+          "type_match": 0.5133689839572193,
+          "step_sr": 0.5133689839572193
+        }
+      }
+    },
+    "overall_strict_parse": {
+      "n_steps": 8428,
+      "n_episodes": 1542,
+      "parse_rate": 1.0,
+      "type_match": 0.8688894162316089,
+      "step_sr": 0.8385144755576649,
+      "episode_sr": 0.5298313878080415,
+      "per_type": {
+        "click": {
+          "n": 5073,
+          "type_match": 0.9532820816085157,
+          "step_sr": 0.9128720678099743
+        },
+        "input_text": {
+          "n": 632,
+          "type_match": 0.944620253164557,
+          "step_sr": 0.939873417721519
+        },
+        "long_press": {
+          "n": 9,
+          "type_match": 0.6666666666666666,
+          "step_sr": 0.5555555555555556
+        },
+        "navigate_back": {
+          "n": 343,
+          "type_match": 0.8104956268221575,
+          "step_sr": 0.8104956268221575
+        },
+        "open_app": {
+          "n": 600,
+          "type_match": 0.985,
+          "step_sr": 0.985
+        },
+        "scroll": {
+          "n": 1210,
+          "type_match": 0.6008264462809917,
+          "step_sr": 0.5619834710743802
+        },
+        "wait": {
+          "n": 561,
+          "type_match": 0.5133689839572193,
+          "step_sr": 0.5133689839572193
+        }
+      }
+    },
+    "by_subsplit": {
+      "IDD": {
+        "n_steps": 3887,
+        "n_episodes": 720,
+        "parse_rate": 1.0,
+        "type_match": 0.8842294828916902,
+        "step_sr": 0.854386416259326,
+        "episode_sr": 0.5541666666666667,
+        "per_type": {
+          "click": {
+            "n": 2444,
+            "type_match": 0.9599018003273322,
+            "step_sr": 0.9185761047463176
+          },
+          "input_text": {
+            "n": 287,
+            "type_match": 0.9512195121951219,
+            "step_sr": 0.9477351916376306
+          },
+          "long_press": {
+            "n": 9,
+            "type_match": 0.6666666666666666,
+            "step_sr": 0.5555555555555556
+          },
+          "navigate_back": {
+            "n": 117,
+            "type_match": 0.7777777777777778,
+            "step_sr": 0.7777777777777778
+          },
+          "open_app": {
+            "n": 253,
+            "type_match": 0.9683794466403162,
+            "step_sr": 0.9683794466403162
+          },
+          "scroll": {
+            "n": 509,
+            "type_match": 0.6719056974459725,
+            "step_sr": 0.6463654223968566
+          },
+          "wait": {
+            "n": 268,
+            "type_match": 0.5,
+            "step_sr": 0.5
+          }
+        }
+      },
+      "app_unseen": {
+        "n_steps": 3473,
+        "n_episodes": 631,
+        "parse_rate": 1.0,
+        "type_match": 0.8520011517420097,
+        "step_sr": 0.8188885689605528,
+        "episode_sr": 0.48019017432646594,
+        "per_type": {
+          "click": {
+            "n": 2024,
+            "type_match": 0.9377470355731226,
+            "step_sr": 0.8947628458498024
+          },
+          "input_text": {
+            "n": 243,
+            "type_match": 0.9423868312757202,
+            "step_sr": 0.934156378600823
+          },
+          "navigate_back": {
+            "n": 211,
+            "type_match": 0.8199052132701422,
+            "step_sr": 0.8199052132701422
+          },
+          "open_app": {
+            "n": 241,
+            "type_match": 0.995850622406639,
+            "step_sr": 0.995850622406639
+          },
+          "scroll": {
+            "n": 528,
+            "type_match": 0.5643939393939394,
+            "step_sr": 0.5151515151515151
+          },
+          "wait": {
+            "n": 226,
+            "type_match": 0.5353982300884956,
+            "step_sr": 0.5353982300884956
+          }
+        }
+      },
+      "category_unseen": {
+        "n_steps": 3888,
+        "n_episodes": 700,
+        "parse_rate": 1.0,
+        "type_match": 0.8482510288065843,
+        "step_sr": 0.8148148148148148,
+        "episode_sr": 0.4942857142857143,
+        "per_type": {
+          "click": {
+            "n": 2241,
+            "type_match": 0.9424364123159303,
+            "step_sr": 0.8987059348505132
+          },
+          "input_text": {
+            "n": 268,
+            "type_match": 0.9440298507462687,
+            "step_sr": 0.9365671641791045
+          },
+          "navigate_back": {
+            "n": 215,
+            "type_match": 0.8232558139534883,
+            "step_sr": 0.8232558139534883
+          },
+          "open_app": {
+            "n": 277,
+            "type_match": 0.9963898916967509,
+            "step_sr": 0.9963898916967509
+          },
+          "scroll": {
+            "n": 647,
+            "type_match": 0.5471406491499228,
+            "step_sr": 0.500772797527048
+          },
+          "wait": {
+            "n": 240,
+            "type_match": 0.525,
+            "step_sr": 0.525
+          }
+        }
+      },
+      "task_unseen": {
+        "n_steps": 4458,
+        "n_episodes": 803,
+        "parse_rate": 1.0,
+        "type_match": 0.8553162853297442,
+        "step_sr": 0.8243606998654105,
+        "episode_sr": 0.5105853051058531,
+        "per_type": {
+          "click": {
+            "n": 2583,
+            "type_match": 0.9473480449090205,
+            "step_sr": 0.9070847851335656
+          },
+          "input_text": {
+            "n": 338,
+            "type_match": 0.9378698224852071,
+            "step_sr": 0.9319526627218935
+          },
+          "navigate_back": {
+            "n": 223,
+            "type_match": 0.8251121076233184,
+            "step_sr": 0.8251121076233184
+          },
+          "open_app": {
+            "n": 342,
+            "type_match": 0.9970760233918129,
+            "step_sr": 0.9970760233918129
+          },
+          "scroll": {
+            "n": 689,
+            "type_match": 0.5471698113207547,
+            "step_sr": 0.5007256894049347
+          },
+          "wait": {
+            "n": 283,
+            "type_match": 0.519434628975265,
+            "step_sr": 0.519434628975265
+          }
+        }
+      }
+    },
+    "click_bbox_hit_strict": {
+      "n": 5073,
+      "acc": 0.9049871870687956
+    }
+  },
+  "terminal_complete": {
+    "n_steps": 1543,
+    "n_episodes": 1543,
+    "parse_rate": 1.0,
+    "type_match": 0.9254698639014906,
+    "step_sr": 0.9254698639014906,
+    "episode_sr": 0.9254698639014906,
+    "per_type": {
+      "status": {
+        "n": 1543,
+        "type_match": 0.9254698639014906,
+        "step_sr": 0.9254698639014906
+      }
+    }
+  },
+  "integrity": {
+    "n_pred_rows": 18415,
+    "n_gt_rows": 18415,
+    "duplicate_keys": 0,
+    "missing": 0,
+    "extra": 0,
+    "row_models": [
+      "/content/runs/v4rl/merged"
+    ],
+    "manifest": {
+      "model": "/content/runs/v4rl/merged",
+      "data": "experimentalmachines/AndroidControl-screen-agent-sft@test",
+      "n_rows": 18415,
+      "enable_thinking": 1,
+      "max_pixels": 774400,
+      "filter_mode": null,
+      "subsample_episodes": 0,
+      "limit": 0,
+      "max_new_tokens": 256,
+      "do_sample": false,
+      "min_pixels": 65536,
+      "prompt": "v4:9dffb9ee9259",
+      "model_fingerprint": "541ae082ce972b01",
+      "config_hash": "162e03f69cb4d40b"
+    },
+    "gt_file": "/content/work/meta/androidcontrol_test_gt.jsonl",
+    "complete": true,
+    "problems": []
+  }
+}
+{"n_answer": 136, "n_complete": 80, "answer_emitted": 1.0, "answer_exact_strict": 0.9044117647058824, "complete_false_answer": 0.0, "complete_status": 0.9625, "answer_exact_normalised": 0.8235294117647058}
+{"n_answer": 136, "n_complete": 80, "answer_emitted": 0.9558823529411765, "answer_exact_strict": 0.8823529411764706, "complete_false_answer": 0.0, "complete_status": 0.7625, "answer_exact_normalised": 0.8161764705882353}
+[02:36:57] rl: RL PIPELINE FINISHED WITH 1 FAILURES

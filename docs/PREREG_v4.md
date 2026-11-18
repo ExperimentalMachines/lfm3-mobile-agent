@@ -118,3 +118,10 @@ exposure to AndroidWorld is undisclosed by its authors.
   skipped unreadable files). The 33 saved GUI-Owl seed-1234 episode files pass `gzip -t` (no contents read).
   v4-RL offline promotion is computed by scripts/v4rl_promotion.py (item 10 thresholds, gate_answer, inputs bound to
   the pinned dev rows, one prompt/pixel setting for both models).
+* 2026-11-18 10:40 (no v4 or v4-RL AndroidWorld result read): v4-RL offline promotion (item 10) FAILS, so v4-RL is
+  not a candidate for "LFM3 final" and gets no seed-30 run as one (results/v4rl_promotion_offline.json; Codex recomputed
+  (a) independently, results/codex/emu2_v3_promo_audit/report.md): strict dev_answer 0.890 vs v4 0.868 (+0.022 < +0.05);
+  false answers 0/80 (pass); AndroidControl test high-level step SR 0.667 vs 0.728 (-0.061 < -0.02). The Colab VM was
+  stopped. Emulator 2 runs scripts/local_emu2_fill_v4.sh: after the v4 seed-30 pass it applies the gate mechanically
+  (PASS -> sealed v4 seed 7; FAIL -> sealed v3 seed 7, v1 seed 7 being done; input error -> none) and then resumes the
+  sealed GUI-Owl seed-1234 arm.

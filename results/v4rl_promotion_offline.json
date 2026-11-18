@@ -1,0 +1,28 @@
+{
+ "setting": [
+  "v4:9dffb9ee9259",
+  774400,
+  256
+ ],
+ "v4": {
+  "dev_answer_emitted": 0.9558823529411765,
+  "dev_answer_gate": 0.8676470588235294,
+  "dev_answer_same_answer": 0.8823529411764706,
+  "dev_complete_false_answer": 0.0,
+  "ac_high_step_sr": 0.7280909521553766
+ },
+ "v4rl": {
+  "dev_answer_emitted": 1.0,
+  "dev_answer_gate": 0.8897058823529411,
+  "dev_answer_same_answer": 0.9044117647058824,
+  "dev_complete_false_answer": 0.0,
+  "ac_high_step_sr": 0.6672193273330175
+ },
+ "criteria": {
+  "a_dev_answer_gate_delta>=+0.05": false,
+  "b_dev_complete_false_answer<=0.03": true,
+  "c_ac_high_step_sr_delta>=-0.02": false
+ },
+ "offline_pass": false,
+ "note": "offline part only; (d) AndroidWorld seed 30 is required as well"
+}
