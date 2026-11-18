@@ -1,0 +1,1 @@
+../../mobileworld/maiui_1img_agent.py

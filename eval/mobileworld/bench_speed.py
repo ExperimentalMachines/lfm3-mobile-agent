@@ -17,7 +17,7 @@ import os
 import sys
 import time
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 p = argparse.ArgumentParser()
 p.add_argument("--agent", required=True, choices=["lfm3", "guiowl", "maiui"])
@@ -25,8 +25,12 @@ p.add_argument("--url", required=True)
 p.add_argument("--shots", required=True)
 p.add_argument("--reps", type=int, default=3)
 p.add_argument("--out", required=True)
+p.add_argument("--jsonl", default="", help="also append each call to this file (fsync) as it completes")
+p.add_argument("--mirror_warmup", action="store_true",
+               help="warm up on a mirrored copy of the first screenshot so no timed call repeats the warm-up prompt")
+p.add_argument("--agent_dir", default="", help="directory holding lfm3_mw_agent.py / maiui_1img_agent.py / agent_format.py")
 a = p.parse_args()
-sys.path.insert(0, os.path.expanduser("~/lfm3"))
+sys.path.insert(0, os.path.expanduser(a.agent_dir or "~/lfm3"))
 
 from mobile_world.tasks.registry import TaskRegistry  # noqa: E402
 
@@ -52,6 +56,8 @@ for f in shots:
 rows = []
 for rep in range(a.reps + 1):  # rep 0 = warm-up (first case only)
     for i, (task, goal, img) in enumerate(cases if rep else cases[:1]):
+        if rep == 0 and a.mirror_warmup:
+            img = ImageOps.mirror(img)
         ag = make()
         ag.initialize(goal)
         t0 = time.time()
@@ -62,4 +68,9 @@ for rep in range(a.reps + 1):  # rep 0 = warm-up (first case only)
         rows.append({"rep": rep, "task": task, "latency_s": round(dt, 3), "raw_chars": len(raw),
                      "action": action.model_dump(exclude_none=True) if hasattr(action, "model_dump") else str(action)})
         print(json.dumps(rows[-1])[:200], flush=True)
+        if a.jsonl:
+            with open(a.jsonl, "a") as fh:
+                fh.write(json.dumps({"agent": a.agent, "t": time.time(), **rows[-1]}) + "\n")
+                fh.flush()
+                os.fsync(fh.fileno())
 json.dump({"agent": a.agent, "rows": rows}, open(a.out, "w"), indent=1)
