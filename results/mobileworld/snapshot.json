@@ -1,5 +1,5 @@
 {
- "snapshot_time": "2026-11-18 21:03",
+ "snapshot_time": "2026-11-18 21:33",
  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
  "runs": {
   "v4 run 1 (AWS c8i, CPU server)": {
@@ -19,21 +19,21 @@
   "GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0)": {
    "host": "GCP n2-standard-16 + Colab T4",
    "agent": "MobileWorld official gui_owl_1_5",
-   "finished": 39,
+   "finished": 43,
    "successes": 16,
    "status": "in progress"
   },
   "v4 run 2 (GCP + Colab T4, fixed adapter)": {
    "host": "GCP n2-standard-16 + Colab T4",
    "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step)",
-   "finished": 16,
+   "finished": 25,
    "successes": 4,
    "status": "in progress"
   }
  },
  "paired_so_far": {
-  "tasks_finished_by_both": 14,
+  "tasks_finished_by_both": 23,
   "v4_successes": 4,
-  "guiowl_successes": 9
+  "guiowl_successes": 12
  }
 }

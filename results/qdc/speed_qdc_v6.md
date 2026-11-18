@@ -15,7 +15,9 @@ Device: Qualcomm reference phone "Art for arm64" (SM8975, Snapdragon 8 Elite Ext
 | **v4 (ours)** (1) | 5 | **39.2** (38.3–41.3) | 36.9 s | 1,081 | 36.2 s | 28 | 41 | 5/5 | 2.65 |
 | GUI-Owl-1.5-2B (1) | 5 | 197.8 (197.0–198.5) | 195.4 s | 1,005 | 193.9 s | 44 | 31 | 5/5 | 2.65 |
 | MAI-UI-2B (1) | 5 | 183.2 (182.9–184.0) | 181.2 s | 1,010 | 179.0 s | 60 | 28 | 5/5 | 2.65 |
-| MAI-UI-2B (2) | 3 | 183.1 (182.7–183.3) | 180.9 s | 1,014 | 179.1 s | 55 | 28 | 3/3 | 2.65 |
+| **v4 (ours)** (2) | 4 | **38.8** (38.6–39.0) | 36.9 s | 1,083 | 36.2 s | 29 | 42 | 4/4 | 2.65 |
+| GUI-Owl-1.5-2B (2) | 5 | 197.4 (197.1–197.5) | 195.4 s | 1,005 | 193.9 s | 44 | 31 | 5/5 | 2.65 |
+| MAI-UI-2B (2) | 5 | 183.3 (182.7–184.3) | 181.3 s | 1,010 | 179.2 s | 60 | 28 | 5/5 | 2.65 |
 
 Round 1 (earlier the same day, default flash-attention setting, 3 timed passes): v4 completed all 15 timed calls, median 28.8 s end-to-end (26.9 s on the phone). GUI-Owl's and MAI-UI's first calls never completed before their client gave up (MobileWorld's 120 s timeout plus re-sends), so round 2 used one long timeout without re-sends for every model. A single MAI-UI Q4_K_M probe with flash attention took 1176.1 s (1066.2 s on the prompt) and ended in a 2048-token degenerate output (finish reason `length`).
 
