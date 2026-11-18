@@ -8,4 +8,11 @@ from mobile_world.agents.implementations.mai_ui_agent import MAIUINaivigationAge
 class MAIUI1ImageAgent(MAIUINaivigationAgent):
     def __init__(self, llm_base_url, model_name, api_key="empty", runtime_conf=None, **kwargs):
         conf = {"history_n": 1, **(runtime_conf or {})}
-        super().__init__(llm_base_url=llm_base_url, model_name=model_name, api_key=api_key, runtime_conf=conf, **kwargs)
+        # MAI-UI's agent is an MCPAgent: pass `tools` exactly as MobileWorld's registry does for registered agents
+        # (env.tools; empty for GUI-only tasks). File-loaded agents receive `env` but not `tools`.
+        tools = kwargs.pop("tools", None)
+        if tools is None:
+            env = kwargs.get("env")
+            tools = list(getattr(env, "tools", None) or [])
+        super().__init__(llm_base_url=llm_base_url, model_name=model_name, api_key=api_key, runtime_conf=conf,
+                         tools=tools, **kwargs)
