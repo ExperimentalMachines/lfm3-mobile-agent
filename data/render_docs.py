@@ -24,6 +24,9 @@ for k, v in (mw.get("runs") or {}).items():
     fin = f"{v['finished']}/105" if v.get("finished") is not None else "–"
     suc = v["successes"] if v.get("successes") is not None else "–"
     mwt += f"| {k} | {v['host']} | {v['agent']} | {fin} | {suc} | {v.get('status', '')} |\n"
+ps = mw.get("paired_so_far")
+if ps:
+    mwt += f"\nPaired so far (tasks both valid runs have finished): {ps['tasks_finished_by_both']} tasks, v4 {ps['v4_successes']} vs GUI-Owl {ps['guiowl_successes']} successes.\n"
 mwt += "\nOnly complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).\n"
 sizes_d = reg["gguf_sizes_gb"]
 sp = reg.get("speed_cpu_t8") or []
@@ -71,7 +74,7 @@ phs = reg.get("speed_phones") or {}
 qdc = phone_section(phs.get("qdc_sm8975"), "Pass 1 = v4 → GUI-Owl → MAI-UI, pass 2 reversed, 3 timed passes each.")
 fb = phs.get("firebase_pixel9_partial") or {}
 fbv4 = (fb.get("models") or {}).get("v4")
-qdc_txt = (qdc or "_Run in progress._\n") + (
+qdc_txt = (phs.get("qdc_v6_md") or qdc or "_Run in progress._\n") + (
     f"\nEarlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we "
     f"switched to Qualcomm Device Cloud: v4 median {fbv4['latency_median_s']} s/step over {fbv4['n']} calls, rising from "
     f"{fbv4['latency_min_max_s'][0]} to {fbv4['latency_min_max_s'][1]} s (not monotonically; the last call took 66.7 s). From the 5th request "
@@ -79,8 +82,10 @@ qdc_txt = (qdc or "_Run in progress._\n") + (
     f"(CPU 7, max 3.1 GHz) slowed and varied (down to 1.4 GHz and lower), while the battery warmed from 27 to ~36 °C and prompt speed fell from "
     f"~26 to ~15 tok/s; Android's thermal status still read 0. These are sampled current frequencies, not recorded caps "
     f"(raw data and thermal log in the working repo, `results/devstream/`).\n" if fbv4 else "")
+s7 = reg.get("seed7_analysis_md")
+seed7_txt = (f"Status: **{reg.get('seed7_status')}**.\n\n" + s7.split("\n", 1)[1]) if s7 else "_Seed 7 not yet unsealed._\n"
 sub = {"generated_from": reg["generated_from"], "now": time.strftime("%Y-%m-%d %H:%M"), "headline": head, "rl_details": rl_details,
-       "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt}
+       "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt, "sealed_seed7": seed7_txt}
 for k in ["training", "ac", "gen", "dev", "aw", "pairs", "sealed"]:
     sub[f"table_{k}"] = T(k)
 for f in os.listdir(os.path.join(R, "templates")):

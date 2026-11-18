@@ -146,11 +146,43 @@ finished; only episode-file counts are reported:
 
 | sealed arm | episode files present | of |
 |---|---|---|
-| guiowl_seed1234 | 43 | 116 |
+| guiowl_seed1234 | 57 | 116 |
 | guiowl_seed7 | 116 | 116 |
 | v1_seed1234 | 116 | 116 |
 | v1_seed7 | 116 | 116 |
 | v4_seed7 | 116 | 116 |
+
+
+### Held-out seed 7 (unsealed after all three arms finished)
+
+Preregistered analysis (`scripts/sealed_analysis.py`): full successes over 116 (exception = failure); primary = paired
+v4 − GUI-Owl difference, template-clustered sign-flip permutation test with a 95% interval by test inversion,
+non-inferiority margin −6.9 points. One seed only, so the result is preliminary by the preregistration's own rule.
+Seeds 1234 and 2026 remain sealed.
+
+Status: **PRELIMINARY: before the preregistered single re-runs of 5 infrastructure-crash episodes (4 v4, 1 GUI-Owl), which are queued**.
+
+
+> Exceptions without a re-run directory yet (check eligibility; preregistered single re-run pending): v4 seed 7: ['MarkorCreateNoteFromClipboard', 'RecipeDeleteMultipleRecipes', 'SimpleSmsSend', 'TasksDueNextWeek']; guiowl seed 7: ['SimpleSmsResend']
+> One held-out seed only: PRELIMINARY (preregistered label; detectable gap ~14 tasks).
+
+| Arm | Successes | % | Wilson 95% | Answer tasks | Action tasks | Seed-varying | Easy | Medium | Hard | Exceptions |
+|---|---|---|---|---|---|---|---|---|---|---|
+| LFM3 v4 (final) (seed 7) | 18/116 | 15.5 | 10.0–23.2 | 6/25 | 12/91 | 10/76 | 17/61 | 0/36 | 1/19 | 4 |
+| GUI-Owl-1.5-2B matched (seed 7) | 15/116 | 12.9 | 8.0–20.2 | 7/25 | 8/91 | 13/76 | 9/61 | 5/36 | 1/19 | 1 |
+| LFM3 v1 (reference) (seed 7) | 11/116 | 9.5 | 5.4–16.2 | 0/25 | 11/91 | 4/76 | 10/61 | 0/36 | 1/19 | 0 |
+
+| Comparison | Mean difference (pp) | 95% CI (sign-flip inversion) | p (two-sided) | Per seed: only-first / only-second / both, McNemar p |
+|---|---|---|---|---|
+| v4_minus_guiowl (PRIMARY) | 2.6 | [-6.2, 11.4] | 0.707 | seed 7: 15 / 12 / 3, p=0.7011 |
+| v1_minus_guiowl | -3.4 | [-11.5, 4.6] | 0.5216 | seed 7: 9 / 13 / 2, p=0.5235 |
+| v4_minus_v1 | 6.0 | [0.0, 12.5] | 0.1171 | seed 7: 11 / 4 / 7, p=0.1185 |
+
+Secondary (official rule, exceptions dropped): seed 7: 111 pairs, v4-only 15, GUI-Owl-only 10, McNemar p=0.4244
+
+Re-runs applied: none
+
+Non-inferiority (lower 95% bound > -6.9 pp): **yes** (lower bound -6.2 pp).
 
 
 Arms: GUI-Owl-1.5-2B matched (1 screenshot, Q4_K_M, installed-app list), LFM3 v1 (reference), LFM3 v4 (final).
@@ -159,14 +191,16 @@ non-inferiority margin 8 tasks per 116.
 
 ## 6. MobileWorld (secondary benchmark, in progress)
 
-Status 2026-11-18 18:55; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
+Status 2026-11-18 21:02; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
 
 | run | host | agent | finished | successes | status |
 |---|---|---|---|---|---|
 | v4 run 1 (AWS c8i, CPU server) | AWS c8i.4xlarge | LFM3 adapter (first version) | 105/105 | 5 | complete, NOT a fair measure: Codex (results/codex/session_1118_audit C1/C2) found the adapter reversed v4's horizontal scrolls, changed scroll distance and dropped the Enter that v4's type action includes; superseded by run 2 |
 | GUI-Owl run 1 (GCP + Colab T4) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | 4/105 | 4 | INVALID: model server OOM-killed at 14:09 (RAM prompt cache); every later task failed with no model reply; discarded, not stitched |
-| GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | – | – | in progress (fresh full run) |
-| v4 run 2 (GCP + Colab T4, fixed adapter) | GCP n2-standard-16 + Colab T4 | LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step) | – | – | starting |
+| GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | 39/105 | 16 | in progress |
+| v4 run 2 (GCP + Colab T4, fixed adapter) | GCP n2-standard-16 + Colab T4 | LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step) | 16/105 | 4 | in progress |
+
+Paired so far (tasks both valid runs have finished): 14 tasks, v4 4 vs GUI-Owl 9 successes.
 
 Only complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).
 

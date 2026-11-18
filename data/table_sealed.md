@@ -1,6 +1,6 @@
 | sealed arm | episode files present | of |
 |---|---|---|
-| guiowl_seed1234 | 43 | 116 |
+| guiowl_seed1234 | 57 | 116 |
 | guiowl_seed7 | 116 | 116 |
 | v1_seed1234 | 116 | 116 |
 | v1_seed7 | 116 | 116 |

@@ -53,6 +53,15 @@ finished; only episode-file counts are reported:
 
 {{table_sealed}}
 
+### Held-out seed 7 (unsealed after all three arms finished)
+
+Preregistered analysis (`scripts/sealed_analysis.py`): full successes over 116 (exception = failure); primary = paired
+v4 − GUI-Owl difference, template-clustered sign-flip permutation test with a 95% interval by test inversion,
+non-inferiority margin −6.9 points. One seed only, so the result is preliminary by the preregistration's own rule.
+Seeds 1234 and 2026 remain sealed.
+
+{{sealed_seed7}}
+
 Arms: GUI-Owl-1.5-2B matched (1 screenshot, Q4_K_M, installed-app list), LFM3 v1 (reference), LFM3 v4 (final).
 Primary analysis: paired difference LFM3 final − GUI-Owl, template-clustered sign-flip permutation test,
 non-inferiority margin 8 tasks per 116.

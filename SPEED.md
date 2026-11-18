@@ -21,12 +21,33 @@ running (llama.cpp Metal):
 |---|---|---|---|---|---|
 | **v4 (ours)** | Q4_K_M | 1,706 | **2.96** (1.7–4.6) | 1,303 | 22 |
 | GUI-Owl-1.5-2B | Q4_K_M | 2,228 | 7.00 (4.6–10.4) | 2,106 | 47 |
-| MAI-UI-2B (run in progress: 48 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,040 | 8.15 (5.6–14.9) | 2,278 | 51 |
+| MAI-UI-2B (run in progress: 66 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,516 | 8.82 (6.0–13.6) | 2,319 | 51 |
 
 
 ## Real phone: Snapdragon 8 Elite Extreme Gen 6 (Qualcomm Device Cloud)
 
-_Run in progress._
+Device: Qualcomm reference phone "Art for arm64" (SM8975, Snapdragon 8 Elite Extreme Gen 6), Android SDK 37, 11474320 kB RAM. Models run ON the phone's CPU (llama.cpp b12110 = `cd959bae9`, official Android arm64 build, 4 threads, no prompt cache); the Mac only sends the same screenshots and goals through each model's own agent code and records every response.
+
+**Option 1: each model at its evaluation image budget** (v4 1,024 image tokens; GUI-Owl and MAI-UI 2,600), flash attention on for all, MAI-UI at Q8_0 (its Q4_K_M output degenerates), 2 screenshots after a warm-up call:
+
+| Model | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally |
+|---|---|---|---|---|---|---|---|---|
+| **v4 (ours)** | 2 | **27.7** (27.4–27.9) | 25.6 s | 1,088 | 25.0 s | 28 | 50 | 2/2 |
+| GUI-Owl-1.5-2B | 2 | 1099.8 (1099.5–1100.2) | 1097.8 s | 2,567 | 1096.0 s | 43 | 24 | 2/2 |
+| MAI-UI-2B | 2 | 1063.1 (1062.8–1063.4) | 1061.0 s | 2,570 | 1058.4 s | 58 | 22 | 2/2 |
+
+**Option 2: all three at the same 1,024-token image budget** (a speed comparison at equal image size; GUI-Owl's and MAI-UI's accuracy at this budget was not measured), 5 screenshots, pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed:
+
+| Model (pass) | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally | Fastest core, sampled GHz |
+|---|---|---|---|---|---|---|---|---|---|
+| **v4 (ours)** (1) | 5 | **39.2** (38.3–41.3) | 36.9 s | 1,081 | 36.2 s | 28 | 41 | 5/5 | 2.65 |
+| GUI-Owl-1.5-2B (1) | 5 | 197.8 (197.0–198.5) | 195.4 s | 1,005 | 193.9 s | 44 | 31 | 5/5 | 2.65 |
+| MAI-UI-2B (1) | 5 | 183.2 (182.9–184.0) | 181.2 s | 1,010 | 179.0 s | 60 | 28 | 5/5 | 2.65 |
+| MAI-UI-2B (2) | 2 | 183.0 (182.7–183.3) | 181.1 s | 1,007 | 179.1 s | 57 | 28 | 2/2 | 2.65 |
+
+Round 1 (earlier the same day, default flash-attention setting, 3 timed passes): v4 completed all 15 timed calls, median 28.8 s end-to-end (26.9 s on the phone). GUI-Owl's and MAI-UI's first calls never completed before their client gave up (MobileWorld's 120 s timeout plus re-sends), so round 2 used one long timeout without re-sends for every model. A single MAI-UI Q4_K_M probe with flash attention took 1176.1 s (1066.2 s on the prompt) and ended in a 2048-token degenerate output (finish reason `length`).
+
+The phone slowed under sustained load: after about two hours the sampled fastest-core frequency had fallen from 4.03 GHz to about 2.65 GHz and v4's same screenshots went from ~27 s to ~38 s; that is why option 2 runs the models in both orders. Raw requests, thermal samples and server logs: working repo `results/qdc/`.
 
 Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s (not monotonically; the last call took 66.7 s). From the 5th request (4th timed call) the sampled frequencies of the three performance cores (CPU 4–6, max 2.6 GHz) fell to ~1.8 GHz and the prime core (CPU 7, max 3.1 GHz) slowed and varied (down to 1.4 GHz and lower), while the battery warmed from 27 to ~36 °C and prompt speed fell from ~26 to ~15 tok/s; Android's thermal status still read 0. These are sampled current frequencies, not recorded caps (raw data and thermal log in the working repo, `results/devstream/`).
 
