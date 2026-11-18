@@ -1,0 +1,611 @@
+2026-11-18 05:45:34.066 | INFO     | mobile_world.tasks.registry:_scan_and_register_tasks:35 - Starting task scanning in directory: /home/ubuntu/MobileWorld/src/mobile_world/tasks/definitions
+2026-11-18 05:45:34.869 | INFO     | mobile_world.tasks.registry:_scan_and_register_tasks:50 - Task registration complete. Total tasks registered: 201
+2026-11-18 05:45:34.869 | INFO     | mobile_world.tasks.registry:_scan_and_register_tasks:51 - Registered tasks: ['SearchBenchmarkTasksSmsTask', 'SearchGithubIssuesSmsTask', 'SendWebpageAudioCountSmsTask', 'PlanCyclingRouteSmsTask', 'PlanDrivingRouteSmsTask', 'SendStockEsgRatingSmsTask', 'SendWeatherSmsTask', 'SayHelloRoommatesAskUserTask2', 'CheckCandidateAskUserTask2', 'DeleteAllMessagesAskUserTask', 'SendInterviewInvitationAskUserTask', 'SayHelloRoommatesAskUserTask1', 'DeleteMessagesAskUserTask', 'CheckCandidateAskUserTask1', 'PlanTaxiRouteSmsTask', 'SendLocationAddressSmsTask', 'SearchPharmacyTask', 'FactCheckLemonWaterSmsTask', 'SendHighDividendStocksSmsTask', 'CompareApartmentsDistanceSmsTask', 'SendArxivPapersSmsTask', 'SendInterviewInvitationTask', 'PlanCommuteRouteSmsTask', 'MastodonAddFeaturedHashtagsTask', 'MastodonDumpImgAskUserTask', 'MastodonFilterLanguageTask', 'MastodonChangeHeaderTask', 'MastodonNewPostTask', 'MastodonRemoveBookmarkTask', 'MastodonInviteTask', 'MastodonMallShareOrderTask', 'MastodonManageMultiListTask', 'MastodonSavePhotosTask', 'MastodonConditionalFavoTask', 'MastodonManageHashtagsTask', 'MastodonExportFollowsTask', 'MastodonCreateListTask', 'MastodonServerInfoReportTask', 'MastodonAddBookmarkTask', 'MastodonImportMutedUsersTask', 'MastodonFollowTask', 'MastodonReportTask', 'MastodonPostEditedPhotoTask', 'MastodonUnfollowTask', 'MastodonOpenAutomatedDeletionTask', 'MastodonChangeLanguageTask', 'MastodonMallPurchaseCommodityTask', 'MastodonCreateMemoTask', 'MastodonUpdateContactsTask', 'MastodonDumpQcodeAskUserTask', 'MastodonPostPollTask', 'MastodonFavoriteTootsTask', 'MastodonAdjustTootsTask', 'MastodonPinTootsTask', 'MastodonRevisePollTask', 'MastodonCalendarMultiMemosTask', 'MastodonGetServerInfoTask', 'MastodonRevisePhotoAltTask', 'MastodonReplyTask', 'MastodonShareLocationTask', 'MastodonSharePhotosAskUserTask', 'MastodonMultiInviteTask', 'MastodonNewFilterTask', 'MastodonMattermostPostNoticeTask', 'MattermostTechnicalDebtTriageTask', 'MattermostMeetingPlanningTask', 'SearchMllmPapersEmailTask', 'MattermostEmailTask', 'ExtractWebpageLinksEmailTask', 'LocalFileManagementTask2', 'MattermostDeadlineReconciliationTask', 'MattermostProjectStatusReportTask', 'MattermostIncidentEscalationTask', 'StockCandidateListTask', 'GetIssueEmailTask', 'MattermostResourceConflictResolutionTask', 'MattermostReplyToMessageTask', 'GetArxivPaperEmailTask', 'MattermostReadingGroupTask', 'MattermostCustomerFeedbackAnalysisTask', 'MattermostVisualInstructionResponseTask', 'DownloadReadmeTask', 'ListGithubIssuesEmailTask', 'MattermostProjectHandoverTask', 'ExtractTrajectoryEnvironmentsEmailTask', 'LocalFileManagementTask', 'ExtractMultilingualScoresEmailTask', 'ExtractBenchmarkComparisonEmailTask', 'SearchRustUsersTask', 'ExtractPipelineStagesEmailTask', 'PhotoManagementTask', 'ParseReadingGroupPaperEmailTask', 'MattermostBudgetApprovalPipelineTask', 'MattermostSendFileTask', 'SearchPythonReposEmailTask', 'MattermostCreateChannelTask', 'ListRecentCommitsEmailTask', 'CalculateWalkingRouteEmailTask', 'MattermostShiftCoverageTask', 'CheckDeduplicatedEventsTask', 'CheckEventAndSetAlarmAskUserTask', 'ScheduleOneOneViaSmsAskUserTask', 'CheckMeetingEventAskUserTask', 'CheckConferenceAndSendSmsTask2', 'DeleteEventAskUserTask', 'CheckConferenceDurationTask', 'ScheduleCoffeeTimeViaSmsTask', 'ScheduleLunchViaSmsAskUserTask', 'CheckMealEventAskUserTask', 'CheckConferenceAndSendSmsTask1', 'ScheduleLunchViaSmsTask', 'AddBusinessTripAskUserTask', 'AddBusinessTripWithCafeTask', 'GoogleMapsAlibabaSouthNeighborTask', 'DownloadPoiImagesMcpTask', 'CheckDistanceMcpTask', 'CheckDistanceMcpTask2', 'GoogleMapsAlibabaSouthNeighborAskUserTask', 'GoogleMapsAlibabaPhoneContactAskUserTask', 'CheckDistanceAskUserTask1', 'TextArrivalTimeTask', 'GoogleMapsAlibabaPhoneContactTask', 'CheckDistanceAskUserTask2', 'CompareEsgRatingsEmailTask', 'AcceptMeetingTask', 'ThanksgivingPrepTask', 'CheckConferenceLocationTask', 'RequestCarpoolingTask', 'ReplyEmailViaSmsAskUserTask', 'CheckEventTimeTask', 'EstimateBikeRouteTask', 'CheckRegistrationTask', 'CheckSetMeetTimeTask', 'CancelMeetingTask', 'SendInterviewEmailTask', 'SendPhoneNumberAskUserTask', 'SuggestPaperTask', 'SendWaiverTask', 'SendFormsTask', 'CheckInterviewTimesTask', 'DownloadSendReceiptTask', 'PlanRouteTask', 'GraduationMassEmailTask', 'CheckDepartTimeTask', 'ChangeWallpaperTask', 'OpenFlightModeTask', 'AdjustBrightnessMinimumTask', 'AdjustFontIconMinimumTask', 'AdjustFontIconMaximumTask', 'AdjustBrightnessMaximumTask', 'CloseFlightModeTask', 'ChromeSearchBeijingWeatherTask', 'ChromeSearchBeijingWeatherAskUserTask', 'CheckGithubInfoTask', 'SearchTopInfoAskUserTask', 'CheckPuchasedItem', 'BuyBlackTennisShoesBrotherAddressAskUserTask', 'SearchWhiteSneakersCheckoutAskUserTask', 'CartManagementAskUserTask', 'CartInfoNotificationTask', 'CalculateCartPricesByOwnerAskUserTask', 'RecentTotalExpenseTask', 'SearchItemAndCheckoutTask', 'DeleteItemsAskUserTask', 'BuySugarFreeColaWorkAddressAskUserTask', 'CheckCartPriceTask', 'CartManagementTask', 'ItemCheckoutTask', 'SetAlarmTaskAskUser2', 'ReadQwen3PaperTask5', 'SharePhotosTask', 'SumFileLinesTask', 'BidFileRenameAskUserTask', 'CountFileLinesTask', 'ProjectPaperEmailAskUserTask', 'ReviewPaperEmailTask', 'SendZipFilesAskUserTask1', 'CheckInvoiceTask3', 'DeleteUselessFilesAskUserTask', 'InvoiceReceiptCopyAskUserTask', 'TakeSelfieTask', 'SetAlarmTaskAskUser1', 'ReadQwen3PaperTask1', 'ReadQwen3PaperTask4', 'SMSManagement', 'CVEmailAskUserTask', 'CVEmailTask', 'CheckInvoiceTask1', 'SetAlarmTaskAskUser3', 'TakeSelfieAskUserTask1', 'CheckInvoiceTask2', 'SharePhotosAskUserTask', 'ReadQwen3PaperTask2', 'BidFileRenameTask', 'InvoiceReceiptCopyTask', 'ReadQwen3PaperTask3', 'CheckInvoiceTask4AskUser', 'TakeSelfieAskUserTask2', 'SendZipFilesAskUserTask2', 'SetAlarmTask', 'SendInvoiceWithInfoTask']
+2026-11-18 05:45:35.568 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:45:35.674 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:45:35.674 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'
+2026-11-18 05:45:35.729 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:45:35.729 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:45:35.729 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:45:35.729 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:45:35.729 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:46:38.075 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=46, prompt=3557, cached=0 | Total: completion=46, prompt=3557, cached=0
+2026-11-18 05:46:38.075 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the reply icon next to Daniel's email.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [814, 217]}}
+</tool_call>
+2026-11-18 05:46:38.075 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8148148148148148, 0.2172172172172172]}, 'conclusion': "Click the reply icon next to Daniel's email.", 'action_name': 'mobile_use'}
+{"rep": 0, "task": "AcceptMeetingTask", "latency_s": 62.401, "raw_chars": 160, "action": {"action_type": "click", "x": 880, "y": 521}}
+2026-11-18 05:46:38.075 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:46:38.098 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:46:38.098 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'
+2026-11-18 05:46:38.151 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:46:38.152 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:46:38.152 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:46:38.152 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:46:38.152 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:46:40.146 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=41, prompt=3557, cached=3556 | Total: completion=41, prompt=3557, cached=3556
+2026-11-18 05:46:40.146 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the reply icon.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [814, 217]}}
+</tool_call>
+2026-11-18 05:46:40.146 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8148148148148148, 0.2172172172172172]}, 'conclusion': 'Click the reply icon.', 'action_name': 'mobile_use'}
+{"rep": 1, "task": "AcceptMeetingTask", "latency_s": 2.049, "raw_chars": 137, "action": {"action_type": "click", "x": 880, "y": 521}}
+2026-11-18 05:46:40.146 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:46:40.170 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:46:40.170 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: How many deduplicated events are there in the calendar, from October 20 to October 26?
+2026-11-18 05:46:40.241 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:46:40.241 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:46:40.241 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:46:40.241 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: How many deduplicated events are there in the calendar, from October 20 to October 26?"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:46:40.241 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:47:38.519 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=45, prompt=3552, cached=973 | Total: completion=45, prompt=3552, cached=973
+2026-11-18 05:47:38.520 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click on the date October 20.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [210, 617]}}
+</tool_call>
+2026-11-18 05:47:38.520 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.21021021021021022, 0.6176176176176176]}, 'conclusion': 'Click on the date October 20.', 'action_name': 'mobile_use'}
+{"rep": 1, "task": "CheckDeduplicatedEventsTask", "latency_s": 58.35, "raw_chars": 145, "action": {"action_type": "click", "x": 227, "y": 1482}}
+2026-11-18 05:47:38.520 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:47:38.543 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:47:38.543 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: In Mastodon, set the language of the account to Chinese Simplified.
+2026-11-18 05:47:38.680 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:47:38.680 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:47:38.680 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:47:38.681 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: In Mastodon, set the language of the account to Chinese Simplified."
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:47:38.681 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:48:36.266 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=44, prompt=3545, cached=973 | Total: completion=44, prompt=3545, cached=973
+2026-11-18 05:48:36.267 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Edit profile" button.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [888, 929]}}
+</tool_call>
+2026-11-18 05:48:36.267 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8888888888888888, 0.92992992992993]}, 'conclusion': 'Click the "Edit profile" button.', 'action_name': 'mobile_use'}
+{"rep": 1, "task": "MastodonChangeLanguageTask", "latency_s": 57.724, "raw_chars": 148, "action": {"action_type": "click", "x": 960, "y": 2232}}
+2026-11-18 05:48:36.267 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:48:36.290 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:48:36.290 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: In Mastodon, unfollow the hashtags I followed before related to animals.
+2026-11-18 05:48:36.380 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:48:36.380 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:48:36.381 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:48:36.381 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: In Mastodon, unfollow the hashtags I followed before related to animals."
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:48:36.381 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:49:34.429 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=53, prompt=3545, cached=977 | Total: completion=53, prompt=3545, cached=977
+2026-11-18 05:49:34.429 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Profile" button at the bottom right to navigate to the profile page.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [878, 929]}}
+</tool_call>
+2026-11-18 05:49:34.429 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8788788788788788, 0.92992992992993]}, 'conclusion': 'Click the "Profile" button at the bottom right to navigate to the profile page.', 'action_name': 'mobile_use'}
+{"rep": 1, "task": "MastodonManageHashtagsTask", "latency_s": 58.139, "raw_chars": 195, "action": {"action_type": "click", "x": 949, "y": 2232}}
+2026-11-18 05:49:34.429 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:49:34.453 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:49:34.453 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Turn on device flight mode
+2026-11-18 05:49:34.529 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:49:34.529 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:49:34.529 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:49:34.529 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Turn on device flight mode"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:49:34.529 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:32.308 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=49, prompt=3535, cached=973 | Total: completion=49, prompt=3535, cached=973
+2026-11-18 05:50:32.308 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Airplane mode" toggle to turn it on.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [898, 542]}}
+</tool_call>
+2026-11-18 05:50:32.308 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8988988988988988, 0.5425425425425425]}, 'conclusion': 'Click the "Airplane mode" toggle to turn it on.', 'action_name': 'mobile_use'}
+{"rep": 1, "task": "OpenFlightModeTask", "latency_s": 57.855, "raw_chars": 163, "action": {"action_type": "click", "x": 971, "y": 1302}}
+2026-11-18 05:50:32.308 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:32.331 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:32.331 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'
+2026-11-18 05:50:32.385 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:32.385 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:32.385 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:32.385 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:32.385 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:34.805 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=41, prompt=3557, cached=3556 | Total: completion=41, prompt=3557, cached=3556
+2026-11-18 05:50:34.805 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the reply icon.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [814, 217]}}
+</tool_call>
+2026-11-18 05:50:34.805 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8148148148148148, 0.2172172172172172]}, 'conclusion': 'Click the reply icon.', 'action_name': 'mobile_use'}
+{"rep": 2, "task": "AcceptMeetingTask", "latency_s": 2.474, "raw_chars": 137, "action": {"action_type": "click", "x": 880, "y": 521}}
+2026-11-18 05:50:34.805 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:34.828 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:34.828 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: How many deduplicated events are there in the calendar, from October 20 to October 26?
+2026-11-18 05:50:34.899 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:34.899 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:34.900 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:34.900 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: How many deduplicated events are there in the calendar, from October 20 to October 26?"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:34.900 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:37.287 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=42, prompt=3552, cached=3551 | Total: completion=42, prompt=3552, cached=3551
+2026-11-18 05:50:37.287 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click "Go to date".
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [532, 143]}}
+</tool_call>
+2026-11-18 05:50:37.287 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.5325325325325325, 0.14314314314314314]}, 'conclusion': 'Click "Go to date".', 'action_name': 'mobile_use'}
+{"rep": 2, "task": "CheckDeduplicatedEventsTask", "latency_s": 2.459, "raw_chars": 135, "action": {"action_type": "click", "x": 575, "y": 344}}
+2026-11-18 05:50:37.287 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:37.311 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:37.311 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: In Mastodon, set the language of the account to Chinese Simplified.
+2026-11-18 05:50:37.448 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:37.448 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:37.448 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:37.448 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: In Mastodon, set the language of the account to Chinese Simplified."
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:37.448 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:39.884 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=44, prompt=3545, cached=3544 | Total: completion=44, prompt=3545, cached=3544
+2026-11-18 05:50:39.884 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Edit profile" button.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [888, 929]}}
+</tool_call>
+2026-11-18 05:50:39.884 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8888888888888888, 0.92992992992993]}, 'conclusion': 'Click the "Edit profile" button.', 'action_name': 'mobile_use'}
+{"rep": 2, "task": "MastodonChangeLanguageTask", "latency_s": 2.573, "raw_chars": 148, "action": {"action_type": "click", "x": 960, "y": 2232}}
+2026-11-18 05:50:39.884 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:39.907 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:39.907 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: In Mastodon, unfollow the hashtags I followed before related to animals.
+2026-11-18 05:50:39.996 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:39.996 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:39.996 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:39.997 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: In Mastodon, unfollow the hashtags I followed before related to animals."
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:39.997 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:42.710 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=49, prompt=3545, cached=3544 | Total: completion=49, prompt=3545, cached=3544
+2026-11-18 05:50:42.710 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Unfollow pupper" option in the context menu.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [734, 395]}}
+</tool_call>
+2026-11-18 05:50:42.710 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.7347347347347347, 0.3953953953953954]}, 'conclusion': 'Click the "Unfollow pupper" option in the context menu.', 'action_name': 'mobile_use'}
+{"rep": 2, "task": "MastodonManageHashtagsTask", "latency_s": 2.803, "raw_chars": 171, "action": {"action_type": "click", "x": 794, "y": 949}}
+2026-11-18 05:50:42.710 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:42.734 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:42.734 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Turn on device flight mode
+2026-11-18 05:50:42.797 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:42.797 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:42.797 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:42.797 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Turn on device flight mode"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:42.797 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:45.625 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=49, prompt=3535, cached=3534 | Total: completion=49, prompt=3535, cached=3534
+2026-11-18 05:50:45.625 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Airplane mode" toggle to turn it on.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [898, 542]}}
+</tool_call>
+2026-11-18 05:50:45.625 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8988988988988988, 0.5425425425425425]}, 'conclusion': 'Click the "Airplane mode" toggle to turn it on.', 'action_name': 'mobile_use'}
+{"rep": 2, "task": "OpenFlightModeTask", "latency_s": 2.891, "raw_chars": 163, "action": {"action_type": "click", "x": 971, "y": 1302}}
+2026-11-18 05:50:45.625 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:45.648 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:45.648 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'
+2026-11-18 05:50:45.702 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:45.702 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:45.702 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:45.702 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Reply to Daniel's most recent email to tell him: 'I'll be there at 10:00 AM on Thursday.'"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:45.702 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:48.055 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=41, prompt=3557, cached=3556 | Total: completion=41, prompt=3557, cached=3556
+2026-11-18 05:50:48.056 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the reply icon.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [814, 217]}}
+</tool_call>
+2026-11-18 05:50:48.056 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8148148148148148, 0.2172172172172172]}, 'conclusion': 'Click the reply icon.', 'action_name': 'mobile_use'}
+{"rep": 3, "task": "AcceptMeetingTask", "latency_s": 2.407, "raw_chars": 137, "action": {"action_type": "click", "x": 880, "y": 521}}
+2026-11-18 05:50:48.056 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:48.079 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:48.079 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: How many deduplicated events are there in the calendar, from October 20 to October 26?
+2026-11-18 05:50:48.150 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:48.151 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:48.151 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:48.151 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: How many deduplicated events are there in the calendar, from October 20 to October 26?"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:48.151 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:50.671 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=42, prompt=3552, cached=3551 | Total: completion=42, prompt=3552, cached=3551
+2026-11-18 05:50:50.671 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click "Go to date".
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [532, 143]}}
+</tool_call>
+2026-11-18 05:50:50.671 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.5325325325325325, 0.14314314314314314]}, 'conclusion': 'Click "Go to date".', 'action_name': 'mobile_use'}
+{"rep": 3, "task": "CheckDeduplicatedEventsTask", "latency_s": 2.591, "raw_chars": 135, "action": {"action_type": "click", "x": 575, "y": 344}}
+2026-11-18 05:50:50.671 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:50.693 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:50.693 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: In Mastodon, set the language of the account to Chinese Simplified.
+2026-11-18 05:50:50.831 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:50.831 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:50.831 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:50.831 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: In Mastodon, set the language of the account to Chinese Simplified."
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:50.831 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:53.386 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=44, prompt=3545, cached=3544 | Total: completion=44, prompt=3545, cached=3544
+2026-11-18 05:50:53.386 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Edit profile" button.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [888, 929]}}
+</tool_call>
+2026-11-18 05:50:53.386 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8888888888888888, 0.92992992992993]}, 'conclusion': 'Click the "Edit profile" button.', 'action_name': 'mobile_use'}
+{"rep": 3, "task": "MastodonChangeLanguageTask", "latency_s": 2.693, "raw_chars": 148, "action": {"action_type": "click", "x": 960, "y": 2232}}
+2026-11-18 05:50:53.387 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:53.410 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:53.410 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: In Mastodon, unfollow the hashtags I followed before related to animals.
+2026-11-18 05:50:53.499 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:53.499 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:53.499 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:53.499 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: In Mastodon, unfollow the hashtags I followed before related to animals."
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:53.499 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:56.187 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=49, prompt=3545, cached=3544 | Total: completion=49, prompt=3545, cached=3544
+2026-11-18 05:50:56.187 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Unfollow pupper" option in the context menu.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [734, 395]}}
+</tool_call>
+2026-11-18 05:50:56.187 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.7347347347347347, 0.3953953953953954]}, 'conclusion': 'Click the "Unfollow pupper" option in the context menu.', 'action_name': 'mobile_use'}
+{"rep": 3, "task": "MastodonManageHashtagsTask", "latency_s": 2.778, "raw_chars": 171, "action": {"action_type": "click", "x": 794, "y": 949}}
+2026-11-18 05:50:56.187 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:__init__:251 - Running Task with policy model name: GUI-Owl-1.5-2B
+2026-11-18 05:50:56.211 | DEBUG    | mobile_world.agents.base:build_openai_client:63 - built the OpenAI client with base_url=http://127.0.0.1:8092/v1
+2026-11-18 05:50:56.211 | DEBUG    | mobile_world.agents.base:initialize:210 - initialized the agent with the given instruction: Turn on device flight mode
+2026-11-18 05:50:56.274 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:365 - History images count:    1
+2026-11-18 05:50:56.274 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:366 - History responses count: 0
+2026-11-18 05:50:56.275 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:458 - Constructed messages: 0 user-assistant pair(s) with images, 0 text-only history step(s).
+2026-11-18 05:50:56.275 | INFO     | mobile_world.runtime.utils.helpers:pretty_print_messages:107 - messages:
+[
+  {
+    "role": "system",
+    "content": "# Tools\n                                 \nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name_for_human\": \"mobile_use\", \"name\": \"mobile_use\", \"description\": \"Use a touchscreen to interact with a mobile device, and take screenshots.\\n* This is an interface to a mobile device with touchscreen. You can perform actions like clicking, typing, swiping, etc.\\n* Some applications may take time to start or process actions, so you may need to wait and take successive screenshots to see the results of your actions.\\n* The screen's resolution is 1000x1000.\n* Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.\", \"parameters\": {\"properties\": {\"action\": {\"description\": \"The action to perform. The available actions are:\n* `key`: Perform a key event on the mobile device.\\n    - This supports adb's `keyevent` syntax.\n    - Examples: \"volume_up\", \"volume_down\", \"power\", \"camera\", \"clear\".\n* `click`: Click the point on the screen with coordinate (x, y).\\n* `long_press`: Press the point on the screen with coordinate (x, y) for specified seconds.\\n* `swipe`: Swipe from the starting point with coordinate (x, y) to the end point with coordinates2 (x2, y2).\\n* `type`: Input the specified text into the activated input box.\\n* `system_button`: Press the system button.\n* `open`: Open an app on the device.\\n* `wait`: Wait specified seconds for the change to happen.\n* `answer`: Terminate the current task and output the answer.\\n* `interact`: Resolve the blocking window by interacting with the user.\\n* `terminate`: Terminate the current task and report its completion status.\", \"enum\": [\"key\", \"click\", \"long_press\", \"swipe\", \"type\", \"system_button\", \"open\", \"wait\", \"answer\", \"interact\", \"terminate\"], \"type\": \"string\"}, \"coordinate\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=click`, `action=long_press`, and `action=swipe`.\", \"type\": \"array\"}, \"coordinate2\": {\"description\": \"(x, y): The x (pixels from the left edge) and y (pixels from the top edge) coordinates to move the mouse to. Required only by `action=swipe`.\", \"type\": \"array\"}, \"text\": {\"description\": \"Required only by `action=key`, `action=type`, `action=open`, `action=answer`,and `action=interact`.\", \"type\": \"string\"}, \"time\": {\"description\": \"The seconds to wait. Required only by `action=long_press` and `action=wait`.\", \"type\": \"number\"}, \"button\": {\"description\": \"Back means returning to the previous interface, Home means returning to the desktop, Menu means opening the application background menu, and Enter means pressing the enter. Required only by `action=system_button`\", \"enum\": [\"Back\", \"Home\", \"Menu\", \"Enter\"], \"type\": \"string\"}, \"status\": {\"description\": \"The status of the task. Required only by `action=terminate`.\", \"type\": \"string\", \"enum\": [\"success\", \"failure\"]}}, \"required\": [\"action\"], \"type\": \"object\"}, \"args_format\": \"Format the arguments as a JSON object.\"}}\n</tools>\n\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\n<tool_call>\n{\"name\": <function-name>, \"arguments\": <args-json-object>}\n</tool_call>\n\n# Response format\n\nResponse format for every step:\n1) Action: a short imperative describing what to do in the UI.\n2) A single <tool_call>...</tool_call> block containing only the JSON: {\"name\": <function-name>, \"arguments\": <args-json-object>}.\n\nRules:\n- Output exactly in the order: Action, <tool_call>.\n- Be brief: one for Action.\n- Do not output anything else outside those two parts.\n- If finishing, use mobile_use with action=terminate in the tool call."
+  },
+  {
+    "role": "user",
+    "content": [
+      {
+        "type": "text",
+        "text": "Please generate the next move according to the UI screenshot, instruction and previous actions.\n\nInstruction: Turn on device flight mode"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "[IMAGE_BASE64]"
+        }
+      }
+    ]
+  }
+]
+2026-11-18 05:50:56.275 | DEBUG    | mobile_world.agents.implementations.gui_owl_1_5:predict:463 - ****************************************************************************************************
+2026-11-18 05:50:58.949 | DEBUG    | mobile_world.agents.base:_log_openai_usage:173 - OpenAI API usage: completion=49, prompt=3535, cached=3534 | Total: completion=49, prompt=3535, cached=3534
+2026-11-18 05:50:58.949 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:481 - Raw prediction (attempt 1):
+Action: Click the "Airplane mode" toggle to turn it on.
+<tool_call>
+{"name": "mobile_use", "arguments": {"action": "click", "coordinate": [898, 542]}}
+</tool_call>
+2026-11-18 05:50:58.949 | INFO     | mobile_world.agents.implementations.gui_owl_1_5:predict:488 - Parsed response:
+{'thinking': '', 'action_json': {'action': 'click', 'coordinate': [0.8988988988988988, 0.5425425425425425]}, 'conclusion': 'Click the "Airplane mode" toggle to turn it on.', 'action_name': 'mobile_use'}
+{"rep": 3, "task": "OpenFlightModeTask", "latency_s": 2.738, "raw_chars": 163, "action": {"action_type": "click", "x": 971, "y": 1302}}

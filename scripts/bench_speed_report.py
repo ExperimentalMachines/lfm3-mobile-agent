@@ -24,11 +24,15 @@ for name, label in [("v4", "LFM3 v4 (ours)"), ("guiowl", "GUI-Owl-1.5-2B"), ("ma
     # prompt cache (GUI-Owl: 2 s vs ~58 s), so it is excluded for every model alike
     first = next(i for i, r in enumerate(rows) if r["rep"] == 1)
     keep = [i for i, r in enumerate(rows) if r["rep"] >= 1 and i != first]
+    # llama-server (cd959bae9) also keeps a RAM prompt cache (--cache-ram, 8 GB default): a repeated screenshot+goal is
+    # served from it (1 prompt token processed). Keep only calls whose prompt was actually processed (>= 100 tokens).
+    hits = [i for i in keep if pe[i][1] < 100]
+    keep = [i for i in keep if pe[i][1] >= 100]
     lat = [rows[i]["latency_s"] for i in keep]
     ptok = [pe[i][1] for i in keep]; pms = [pe[i][0] for i in keep]
     gtok = [ev[i][1] for i in keep]; gms = [ev[i][0] for i in keep]
     out.append({
-        "model": label, "n": len(keep),
+        "model": label, "n": len(keep), "excluded_cache_hits": len(hits),
         "latency_median_s": round(st.median(lat), 2), "latency_mean_s": round(st.mean(lat), 2),
         "latency_min_max_s": [round(min(lat), 2), round(max(lat), 2)],
         "prompt_tokens_median": int(st.median(ptok)), "prompt_s_median": round(st.median(pms) / 1000, 2),
@@ -40,9 +44,9 @@ for name, label in [("v4", "LFM3 v4 (ours)"), ("guiowl", "GUI-Owl-1.5-2B"), ("ma
 print(json.dumps(out, indent=1))
 if md:
     with open(md, "w") as f:
-        f.write("| model | step latency median (min-max) | prompt tokens | prompt time | prompt tok/s | output tokens | "
-                "output time | output tok/s | server RSS |\n|---|---|---|---|---|---|---|---|---|\n")
+        f.write("| model | n | step latency median (min-max) | prompt tokens | prompt time | prompt tok/s | output tokens | "
+                "output time | output tok/s | server RSS |\n|---|---|---|---|---|---|---|---|---|---|\n")
         for o in out:
-            f.write(f"| {o['model']} | {o['latency_median_s']} s ({o['latency_min_max_s'][0]}-{o['latency_min_max_s'][1]}) | "
+            f.write(f"| {o['model']} | {o['n']} | {o['latency_median_s']} s ({o['latency_min_max_s'][0]}-{o['latency_min_max_s'][1]}) | "
                     f"{o['prompt_tokens_median']} | {o['prompt_s_median']} s | {o['prompt_tok_per_s']} | {o['gen_tokens_median']} | "
                     f"{o['gen_s_median']} s | {o['gen_tok_per_s']} | {o['server_rss_mb']} MB |\n")
