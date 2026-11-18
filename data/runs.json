@@ -1,0 +1,1198 @@
+{
+ "generated_from": "lfm3-android @ c0a6abb",
+ "training": [
+  {
+   "id": "lfm3vl2b-v1",
+   "label": "LFM3-VL-2B v1 (AndroidControl)",
+   "model": "LiquidAI/LFM3-VL-2B",
+   "train_data": "experimentalmachines/AndroidControl-screen-agent-sft@train",
+   "steps": 1250,
+   "lr": 0.0002,
+   "batch": 32,
+   "lora_r": 64,
+   "lora_alpha": 128,
+   "max_pixels": 774400,
+   "train_rows": 99216,
+   "epochs_seen": 0.403,
+   "train_loss": 0.2846,
+   "eval_loss": 0.2875,
+   "wall_h": 1.14,
+   "peak_gpu_gb": 11.0,
+   "hub_ckpt": "experimentalmachines/LFM3-VL-2B-AndroidControl-LoRA-ckpt",
+   "source": "results/training/lfm3vl2b/modal_resume",
+   "notes": "Modal; a first attempt reached step 200 (results/training/lfm3vl2b/train_log.jsonl), this is the resumed run"
+  },
+  {
+   "id": "lfm25vl450m-v1",
+   "label": "LFM2.5-VL-450M v1 (AndroidControl)",
+   "model": "LiquidAI/LFM2.5-VL-450M",
+   "train_data": "experimentalmachines/AndroidControl-screen-agent-sft@train",
+   "steps": "1 epoch (1875 steps)",
+   "lr": 0.0001,
+   "batch": 32,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "max_pixels": 0,
+   "train_rows": 60000,
+   "epochs_seen": 1.0,
+   "train_loss": 0.4689,
+   "eval_loss": 0.375,
+   "wall_h": 0.96,
+   "peak_gpu_gb": 8.5,
+   "hub_ckpt": "experimentalmachines/LFM2.5-VL-450M-AndroidControl-LoRA-ckpt",
+   "source": "results/training/lfm25vl450m",
+   "notes": "Modal"
+  },
+  {
+   "id": "qwen35-2b-v1",
+   "label": "Qwen3.5-2B v1 (AndroidControl)",
+   "model": "Qwen/Qwen3.5-2B",
+   "train_data": "experimentalmachines/AndroidControl-screen-agent-sft@train",
+   "steps": 1250,
+   "lr": 0.0002,
+   "batch": 32,
+   "lora_r": 64,
+   "lora_alpha": 128,
+   "max_pixels": 774400,
+   "train_rows": 99216,
+   "epochs_seen": 0.403,
+   "train_loss": 0.2393,
+   "eval_loss": 0.2396,
+   "wall_h": 0.86,
+   "peak_gpu_gb": 10.8,
+   "hub_ckpt": "experimentalmachines/Qwen3.5-2B-AndroidControl-LoRA-ckpt",
+   "source": "results/training/qwen35_2b",
+   "notes": ""
+  },
+  {
+   "id": "qwen35-08b-v1",
+   "label": "Qwen3.5-0.8B v1 (AndroidControl)",
+   "model": "Qwen/Qwen3.5-0.8B",
+   "train_data": "experimentalmachines/AndroidControl-screen-agent-sft@train",
+   "steps": "1 epoch (1875 steps)",
+   "lr": 0.0001,
+   "batch": 32,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "max_pixels": 774400,
+   "train_rows": 60000,
+   "epochs_seen": 1.0,
+   "train_loss": 0.3811,
+   "eval_loss": 0.2756,
+   "wall_h": 0.6,
+   "peak_gpu_gb": 8.3,
+   "hub_ckpt": "experimentalmachines/Qwen3.5-0.8B-AndroidControl-LoRA-ckpt",
+   "source": "results/training/qwen35_08b",
+   "notes": ""
+  },
+  {
+   "id": "lfm3vl2b-v2",
+   "label": "LFM3-VL-2B v2 (AC + GUI-Odyssey + AMEX + ScreenQA)",
+   "model": "LiquidAI/LFM3-VL-2B",
+   "train_data": "experimentalmachines/AndroidAgent-SFT-v2@train#42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+   "steps": 1250,
+   "lr": 0.0002,
+   "batch": 32,
+   "lora_r": 64,
+   "lora_alpha": 128,
+   "max_pixels": 774400,
+   "train_rows": 78982,
+   "epochs_seen": 0.507,
+   "train_loss": 0.2048,
+   "eval_loss": 0.2994,
+   "wall_h": 1.63,
+   "peak_gpu_gb": 10.2,
+   "hub_ckpt": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v2-LoRA-ckpt",
+   "source": "results/training/lfm3vl2b_v2",
+   "notes": ""
+  },
+  {
+   "id": "qwen35-2b-v2",
+   "label": "Qwen3.5-2B v2 (same mix)",
+   "model": "Qwen/Qwen3.5-2B",
+   "train_data": "experimentalmachines/AndroidAgent-SFT-v2@train#42f7f763649d4d2c73eeb99ff5f0bc33bd15a16a",
+   "steps": 1250,
+   "lr": 0.0002,
+   "batch": 32,
+   "lora_r": 64,
+   "lora_alpha": 128,
+   "max_pixels": 774400,
+   "train_rows": 78982,
+   "epochs_seen": 0.507,
+   "train_loss": 0.1684,
+   "eval_loss": 0.2501,
+   "wall_h": 1.61,
+   "peak_gpu_gb": 10.0,
+   "hub_ckpt": "alpharomercoma/Qwen3.5-2B-AndroidAgent-v2-LoRA-ckpt",
+   "source": "results/training/qwen35_2b_v2",
+   "notes": ""
+  },
+  {
+   "id": "lfm3vl2b-v3",
+   "label": "LFM3-VL-2B v3 (v2 mix, every intent filled)",
+   "model": "LiquidAI/LFM3-VL-2B",
+   "train_data": "alpharomercoma/AndroidAgent-SFT-v3@train#565ba76c4b10b6733549151f0fece1f70bc33b9c",
+   "steps": 1250,
+   "lr": 0.0002,
+   "batch": 32,
+   "lora_r": 64,
+   "lora_alpha": 128,
+   "max_pixels": 774400,
+   "train_rows": 78952,
+   "epochs_seen": 0.507,
+   "train_loss": 0.3849,
+   "eval_loss": 0.2999,
+   "wall_h": 1.23,
+   "peak_gpu_gb": 11.0,
+   "hub_ckpt": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v3-LoRA-ckpt",
+   "source": "results/training/lfm3vl2b_v3",
+   "notes": "Modal"
+  },
+  {
+   "id": "lfm3vl2b-v4b",
+   "label": "LFM3-VL-2B v4 (v4b data: v3 + navigate-then-answer + app list)",
+   "model": "LiquidAI/LFM3-VL-2B",
+   "train_data": "alpharomercoma/AndroidAgent-SFT-v4@train#337553984ee970a767dceb21adc6343f3d613602",
+   "steps": 1250,
+   "lr": 0.0002,
+   "batch": 32,
+   "lora_r": 64,
+   "lora_alpha": 128,
+   "max_pixels": 774400,
+   "train_rows": 92229,
+   "epochs_seen": 0.434,
+   "train_loss": 0.3363,
+   "eval_loss": 0.306,
+   "wall_h": 1.99,
+   "peak_gpu_gb": 11.5,
+   "hub_ckpt": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v4b-LoRA-ckpt",
+   "source": "results/v4_dev/hub/training_logs",
+   "notes": "Colab A100; VM lost at step 353 and resumed from the step-350 hub checkpoint: wall h = the resumed segment (steps 351-1250)"
+  },
+  {
+   "id": "lfm3vl2b-v4rl",
+   "label": "LFM3-VL-2B v4-RL (static-screenshot GRPO from v4)",
+   "model": "v4 merged",
+   "train_data": "alpharomercoma/AndroidAgent-RL-v4@9ba36d90 (2,000 states: 700 answer, 500 complete, 300 other, 500 click)",
+   "steps": 200,
+   "lr": 1e-05,
+   "batch": null,
+   "lora_r": 16,
+   "lora_alpha": 32,
+   "max_pixels": 774400,
+   "train_rows": 2000,
+   "epochs_seen": null,
+   "train_loss": null,
+   "eval_loss": null,
+   "wall_h": 0.95,
+   "peak_gpu_gb": 13.4,
+   "hub_ckpt": "alpharomercoma/LFM3-VL-2B-AndroidAgent-v4-RL-ckpt",
+   "reward_first20": 0.714,
+   "reward_last20": 0.765,
+   "source": "models/hf_local/v4rl_lora/rl_log.jsonl, results/v4rl_dev/logs_v4rl_train.log",
+   "notes": "GRPO (TRL), 4 samples/state, KL beta 0.001, LoRA r16; NOT promoted (results/v4rl_promotion_offline.json)"
+  }
+ ],
+ "androidcontrol_test": [
+  {
+   "model": "LFM3-VL-2B base",
+   "file": "results/androidcontrol/lfm3vl2b-ac-lora_base.metrics.json",
+   "high": {
+    "step_sr": 0.3134,
+    "episode_sr": 0.0272
+   },
+   "low": {
+    "step_sr": 0.6336,
+    "episode_sr": 0.1732
+   }
+  },
+  {
+   "model": "LFM3-VL-2B v1",
+   "file": "results/androidcontrol/lfm3vl2b-ac-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.7148,
+    "episode_sr": 0.2826
+   },
+   "low": {
+    "step_sr": 0.9476,
+    "episode_sr": 0.7827
+   }
+  },
+  {
+   "model": "LFM3-VL-2B v2",
+   "file": "results/androidcontrol/lfm3vl2b-v2mix-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.7159,
+    "episode_sr": 0.2806
+   },
+   "low": {
+    "step_sr": 0.8932,
+    "episode_sr": 0.6109
+   }
+  },
+  {
+   "model": "LFM3-VL-2B v3",
+   "file": "results/androidcontrol/lfm3vl2b-v3mix-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.7225,
+    "episode_sr": 0.2871
+   },
+   "low": {
+    "step_sr": 0.902,
+    "episode_sr": 0.6401
+   }
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "file": "results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.7281,
+    "episode_sr": 0.2897
+   },
+   "low": {
+    "step_sr": 0.9077,
+    "episode_sr": 0.655
+   }
+  },
+  {
+   "model": "LFM3-VL-2B v4-RL",
+   "file": "results/v4rl_dev/lfm3vl2b-v4rl_ft.metrics.json",
+   "high": {
+    "step_sr": 0.6672,
+    "episode_sr": 0.2495
+   },
+   "low": {
+    "step_sr": 0.8385,
+    "episode_sr": 0.5298
+   }
+  },
+  {
+   "model": "LFM2.5-VL-450M base",
+   "file": "results/androidcontrol/lfm25vl450m-ac-lora_base.metrics.json",
+   "high": {
+    "step_sr": 0.0085,
+    "episode_sr": 0.0
+   },
+   "low": {
+    "step_sr": 0.0242,
+    "episode_sr": 0.0
+   }
+  },
+  {
+   "model": "LFM2.5-VL-450M v1",
+   "file": "results/androidcontrol/lfm25vl450m-ac-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.5365,
+    "episode_sr": 0.1283
+   },
+   "low": {
+    "step_sr": 0.8618,
+    "episode_sr": 0.5208
+   }
+  },
+  {
+   "model": "Qwen3.5-2B base",
+   "file": "results/androidcontrol/qwen35-2b-ac-lora_base.metrics.json",
+   "high": {
+    "step_sr": 0.3841,
+    "episode_sr": 0.048
+   },
+   "low": {
+    "step_sr": 0.5901,
+    "episode_sr": 0.1342
+   }
+  },
+  {
+   "model": "Qwen3.5-2B v1",
+   "file": "results/androidcontrol/qwen35-2b-ac-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.7335,
+    "episode_sr": 0.3091
+   },
+   "low": {
+    "step_sr": 0.9492,
+    "episode_sr": 0.7912
+   }
+  },
+  {
+   "model": "Qwen3.5-2B v2",
+   "file": "results/androidcontrol/qwen35-2b-v2mix-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.7385,
+    "episode_sr": 0.3182
+   },
+   "low": {
+    "step_sr": 0.9065,
+    "episode_sr": 0.6511
+   }
+  },
+  {
+   "model": "Qwen3.5-0.8B base",
+   "file": "results/androidcontrol/qwen35-08b-ac-lora_base.metrics.json",
+   "high": {
+    "step_sr": 0.3916,
+    "episode_sr": 0.0823
+   },
+   "low": {
+    "step_sr": 0.7373,
+    "episode_sr": 0.2717
+   }
+  },
+  {
+   "model": "Qwen3.5-0.8B v1",
+   "file": "results/androidcontrol/qwen35-08b-ac-lora_ft.metrics.json",
+   "high": {
+    "step_sr": 0.6936,
+    "episode_sr": 0.2534
+   },
+   "low": {
+    "step_sr": 0.9423,
+    "episode_sr": 0.7626
+   }
+  }
+ ],
+ "general_retention": [
+  {
+   "model": "LFM3-VL-2B base",
+   "file": "results/general/lfm3vl2b-ac-lora_base_general_logprob.summary.json",
+   "mmstar": 0.5213,
+   "mmlu": 0.489
+  },
+  {
+   "model": "LFM3-VL-2B v1",
+   "file": "results/general/lfm3vl2b-ac-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.5713,
+   "mmlu": 0.495
+  },
+  {
+   "model": "LFM3-VL-2B v2",
+   "file": "results/general/lfm3vl2b-v2mix-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.546,
+   "mmlu": 0.509
+  },
+  {
+   "model": "LFM3-VL-2B v3",
+   "file": "results/general/lfm3vl2b-v3mix-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.5533,
+   "mmlu": 0.5
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "file": "results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.5287,
+   "mmlu": 0.504
+  },
+  {
+   "model": "Qwen3.5-2B base",
+   "file": "results/general/qwen35-2b-ac-lora_base_general_logprob.summary.json",
+   "mmstar": 0.4927,
+   "mmlu": 0.555
+  },
+  {
+   "model": "Qwen3.5-2B v1",
+   "file": "results/general/qwen35-2b-ac-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.5733,
+   "mmlu": 0.537
+  },
+  {
+   "model": "Qwen3.5-2B v2",
+   "file": "results/general/qwen35-2b-v2mix-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.54,
+   "mmlu": 0.56
+  },
+  {
+   "model": "Qwen3.5-0.8B base",
+   "file": "results/general/qwen35-08b-ac-lora_base_general_logprob.summary.json",
+   "mmstar": 0.424,
+   "mmlu": 0.439
+  },
+  {
+   "model": "Qwen3.5-0.8B v1",
+   "file": "results/general/qwen35-08b-ac-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.4887,
+   "mmlu": 0.452
+  },
+  {
+   "model": "LFM2.5-VL-450M base",
+   "file": "results/general/lfm25vl450m-ac-lora_base_general_logprob.summary.json",
+   "mmstar": 0.3847,
+   "mmlu": 0.399
+  },
+  {
+   "model": "LFM2.5-VL-450M v1",
+   "file": "results/general/lfm25vl450m-ac-lora_ft_general_logprob.summary.json",
+   "mmstar": 0.3927,
+   "mmlu": 0.392
+  }
+ ],
+ "dev_splits": [
+  {
+   "model": "LFM3-VL-2B v2",
+   "split": "dev_odyssey",
+   "n": 1000,
+   "step_sr": 0.644,
+   "type_match": 0.84,
+   "answer_f1": null,
+   "file": "results/v2_dev/lfm3_v2_dev_odyssey.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v2",
+   "split": "dev_amex",
+   "n": 468,
+   "step_sr": 0.735,
+   "type_match": 0.9338,
+   "answer_f1": null,
+   "file": "results/v2_dev/lfm3_v2_dev_amex.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v2",
+   "split": "dev_screenqa",
+   "n": 500,
+   "step_sr": 0.764,
+   "type_match": 1.0,
+   "answer_f1": 0.6894233360924235,
+   "file": "results/v2_dev/lfm3_v2_dev_screenqa.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v3",
+   "split": "dev_odyssey",
+   "n": 1000,
+   "step_sr": 0.662,
+   "type_match": 0.862,
+   "answer_f1": null,
+   "file": "results/v3_dev/lfm3_v3_dev_odyssey.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v3",
+   "split": "dev_amex",
+   "n": 468,
+   "step_sr": 0.7415,
+   "type_match": 0.9274,
+   "answer_f1": null,
+   "file": "results/v3_dev/lfm3_v3_dev_amex.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v3",
+   "split": "dev_screenqa",
+   "n": 500,
+   "step_sr": 0.724,
+   "type_match": 1.0,
+   "answer_f1": 0.661670737490106,
+   "file": "results/v3_dev/lfm3_v3_dev_screenqa.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "split": "dev_odyssey",
+   "n": 1000,
+   "step_sr": 0.637,
+   "type_match": 0.856,
+   "answer_f1": null,
+   "file": "results/v4_dev/hub/eval/lfm3_v4_dev_odyssey.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "split": "dev_amex",
+   "n": 468,
+   "step_sr": 0.7308,
+   "type_match": 0.9103,
+   "answer_f1": null,
+   "file": "results/v4_dev/hub/eval/lfm3_v4_dev_amex.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "split": "dev_screenqa",
+   "n": 500,
+   "step_sr": 0.79,
+   "type_match": 1.0,
+   "answer_f1": 0.7035510704374546,
+   "file": "results/v4_dev/hub/eval/lfm3_v4_dev_screenqa.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "split": "dev_answer",
+   "n": 136,
+   "step_sr": 0.8897,
+   "type_match": 0.9559,
+   "answer_f1": 0.8647058823529411,
+   "file": "results/v4_dev/hub/eval/lfm3_v4_dev_answer.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4",
+   "split": "dev_complete",
+   "n": 80,
+   "step_sr": 0.7625,
+   "type_match": 0.7625,
+   "answer_f1": null,
+   "file": "results/v4_dev/hub/eval/lfm3_v4_dev_complete.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4-RL",
+   "split": "dev_odyssey",
+   "n": 1000,
+   "step_sr": 0.638,
+   "type_match": 0.853,
+   "answer_f1": null,
+   "file": "results/v4rl_dev/lfm3_v4rl_dev_odyssey.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4-RL",
+   "split": "dev_amex",
+   "n": 468,
+   "step_sr": 0.7329,
+   "type_match": 0.9145,
+   "answer_f1": null,
+   "file": "results/v4rl_dev/lfm3_v4rl_dev_amex.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4-RL",
+   "split": "dev_screenqa",
+   "n": 500,
+   "step_sr": 0.786,
+   "type_match": 1.0,
+   "answer_f1": 0.7013981882319408,
+   "file": "results/v4rl_dev/lfm3_v4rl_dev_screenqa.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4-RL",
+   "split": "dev_answer",
+   "n": 136,
+   "step_sr": 0.9118,
+   "type_match": 1.0,
+   "answer_f1": 0.8846638655462185,
+   "file": "results/v4rl_dev/lfm3_v4rl_dev_answer.metrics.json"
+  },
+  {
+   "model": "LFM3-VL-2B v4-RL",
+   "split": "dev_complete",
+   "n": 80,
+   "step_sr": 0.9625,
+   "type_match": 0.9625,
+   "answer_f1": null,
+   "file": "results/v4rl_dev/lfm3_v4rl_dev_complete.metrics.json"
+  }
+ ],
+ "v4rl_promotion_offline": {
+  "setting": [
+   "v4:9dffb9ee9259",
+   774400,
+   256
+  ],
+  "v4": {
+   "dev_answer_emitted": 0.9558823529411765,
+   "dev_answer_gate": 0.8676470588235294,
+   "dev_answer_same_answer": 0.8823529411764706,
+   "dev_complete_false_answer": 0.0,
+   "ac_high_step_sr": 0.7280909521553766
+  },
+  "v4rl": {
+   "dev_answer_emitted": 1.0,
+   "dev_answer_gate": 0.8897058823529411,
+   "dev_answer_same_answer": 0.9044117647058824,
+   "dev_complete_false_answer": 0.0,
+   "ac_high_step_sr": 0.6672193273330175
+  },
+  "criteria": {
+   "a_dev_answer_gate_delta>=+0.05": false,
+   "b_dev_complete_false_answer<=0.03": true,
+   "c_ac_high_step_sr_delta>=-0.02": false
+  },
+  "offline_pass": false,
+  "note": "offline part only; (d) AndroidWorld seed 30 is required as well"
+ },
+ "androidworld_seed30": [
+  {
+   "id": "lfm3vl2b_base_nothink",
+   "label": "LFM3-VL-2B base (no thinking)",
+   "run_dir": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T190932199444/",
+   "agent": "lfm3vl2b_base_nothink_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 1,
+   "answer_task_successes": 0,
+   "action_task_successes": 1,
+   "exceptions": 2,
+   "median_steps": 12,
+   "median_step_latency_s": 2.13
+  },
+  {
+   "id": "lfm3vl2b_ft",
+   "label": "LFM3-VL-2B v1",
+   "run_dir": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/",
+   "agent": "lfm3vl2b_ft_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 15,
+   "answer_task_successes": 0,
+   "action_task_successes": 15,
+   "exceptions": 2,
+   "median_steps": 10,
+   "median_step_latency_s": 2.66
+  },
+  {
+   "id": "lfm3vl2b_ft_runtimefb",
+   "label": "LFM3-VL-2B v1 + runtime feedback (ablation)",
+   "run_dir": "results/androidworld/lfm3vl2b_ft_runtimefb/run_20261117T112723045785/",
+   "agent": "lfm3vl2b_ft_q4km_runtimefb",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 10,
+   "answer_task_successes": 0,
+   "action_task_successes": 10,
+   "exceptions": 7,
+   "median_steps": 10,
+   "median_step_latency_s": 2.85
+  },
+  {
+   "id": "lfm3vl2b_v2",
+   "label": "LFM3-VL-2B v2",
+   "run_dir": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/",
+   "agent": "lfm3vl2b_v2_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 3,
+   "answer_task_successes": 0,
+   "action_task_successes": 3,
+   "exceptions": 5,
+   "median_steps": 10,
+   "median_step_latency_s": 2.61
+  },
+  {
+   "id": "lfm3vl2b_v2_forcethink",
+   "label": "LFM3-VL-2B v2 + forced intent (inference ablation)",
+   "run_dir": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/",
+   "agent": "lfm3vl2b_v2_q4km_forcethink",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 6,
+   "answer_task_successes": 0,
+   "action_task_successes": 6,
+   "exceptions": 4,
+   "median_steps": 10,
+   "median_step_latency_s": 2.68
+  },
+  {
+   "id": "lfm3vl2b_v3",
+   "label": "LFM3-VL-2B v3",
+   "run_dir": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/",
+   "agent": "lfm3vl2b_v3_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 13,
+   "answer_task_successes": 0,
+   "action_task_successes": 13,
+   "exceptions": 3,
+   "median_steps": 10,
+   "median_step_latency_s": 2.61
+  },
+  {
+   "id": "lfm3vl2b_v4",
+   "label": "LFM3-VL-2B v4 (frozen final)",
+   "run_dir": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/",
+   "agent": "lfm3vl2b_v4_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 18,
+   "answer_task_successes": 6,
+   "action_task_successes": 12,
+   "exceptions": 4,
+   "median_steps": 10,
+   "median_step_latency_s": 2.96
+  },
+  {
+   "id": "guiowl15_2b_matched",
+   "label": "GUI-Owl-1.5-2B (matched: 1 screenshot, Q4_K_M)",
+   "run_dir": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/",
+   "agent": "guiowl15_2b_matched1img_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 23,
+   "answer_task_successes": 10,
+   "action_task_successes": 13,
+   "exceptions": 0,
+   "median_steps": 12,
+   "median_step_latency_s": 7.0
+  },
+  {
+   "id": "qwen35_2b_ft",
+   "label": "Qwen3.5-2B v1",
+   "run_dir": "results/androidworld/qwen35_2b_ft/run_20261117T111259609427/",
+   "agent": "qwen35_2b_ft_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 16,
+   "answer_task_successes": 0,
+   "action_task_successes": 16,
+   "exceptions": 2,
+   "median_steps": 9,
+   "median_step_latency_s": 4.2
+  },
+  {
+   "id": "qwen35_08b_ft",
+   "label": "Qwen3.5-0.8B v1",
+   "run_dir": "results/androidworld/qwen35_08b_ft/run_20261117T152004373700/",
+   "agent": "qwen35_08b_ft_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 12,
+   "answer_task_successes": 0,
+   "action_task_successes": 12,
+   "exceptions": 1,
+   "median_steps": 10,
+   "median_step_latency_s": 2.0
+  },
+  {
+   "id": "lfm25vl450m_base",
+   "label": "LFM2.5-VL-450M base",
+   "run_dir": "results/androidworld/lfm25vl450m_base/run_20261117T062246232259/",
+   "agent": "lfm25vl450m_base_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 0,
+   "answer_task_successes": 0,
+   "action_task_successes": 0,
+   "exceptions": 3,
+   "median_steps": 12,
+   "median_step_latency_s": 2.21
+  },
+  {
+   "id": "lfm25vl450m_ft",
+   "label": "LFM2.5-VL-450M v1",
+   "run_dir": "results/androidworld/lfm25vl450m_ft/run_20261117T022926194002/",
+   "agent": "lfm25vl450m_ft_q4km",
+   "seed": 1206130099,
+   "episodes": 116,
+   "successes": 2,
+   "answer_task_successes": 0,
+   "action_task_successes": 2,
+   "exceptions": 4,
+   "median_steps": 12,
+   "median_step_latency_s": 1.14
+  }
+ ],
+ "androidworld_seed30_pairs": [
+  {
+   "a": "lfm3vl2b_v4",
+   "b": "guiowl15_2b_matched",
+   "a_only": 6,
+   "b_only": 11,
+   "p_exact_mcnemar": 0.332
+  },
+  {
+   "a": "lfm3vl2b_v4",
+   "b": "lfm3vl2b_v3",
+   "a_only": 10,
+   "b_only": 5,
+   "p_exact_mcnemar": 0.302
+  },
+  {
+   "a": "lfm3vl2b_v4",
+   "b": "lfm3vl2b_ft",
+   "a_only": 9,
+   "b_only": 6,
+   "p_exact_mcnemar": 0.607
+  },
+  {
+   "a": "lfm3vl2b_v3",
+   "b": "lfm3vl2b_ft",
+   "a_only": 4,
+   "b_only": 6,
+   "p_exact_mcnemar": 0.754
+  },
+  {
+   "a": "lfm3vl2b_v2",
+   "b": "lfm3vl2b_ft",
+   "a_only": 0,
+   "b_only": 12,
+   "p_exact_mcnemar": "4.9e-04"
+  },
+  {
+   "a": "lfm3vl2b_ft",
+   "b": "guiowl15_2b_matched",
+   "a_only": 8,
+   "b_only": 16,
+   "p_exact_mcnemar": 0.152
+  },
+  {
+   "a": "qwen35_2b_ft",
+   "b": "lfm3vl2b_ft",
+   "a_only": 6,
+   "b_only": 5,
+   "p_exact_mcnemar": 1.0
+  }
+ ],
+ "androidworld_sealed_counts_only": [
+  {
+   "arm": "guiowl_seed1234",
+   "episode_files": 33,
+   "of": 116
+  },
+  {
+   "arm": "guiowl_seed7",
+   "episode_files": 116,
+   "of": 116
+  },
+  {
+   "arm": "v1_seed1234",
+   "episode_files": 116,
+   "of": 116
+  },
+  {
+   "arm": "v1_seed7",
+   "episode_files": 116,
+   "of": 116
+  },
+  {
+   "arm": "v4_seed7",
+   "episode_files": 22,
+   "of": 116
+  }
+ ],
+ "speed_cpu_t8": [
+  {
+   "model": "LFM3 v4 (ours)",
+   "n": 14,
+   "excluded_cache_hits": 0,
+   "latency_median_s": 6.4,
+   "latency_mean_s": 6.64,
+   "latency_min_max_s": [
+    6.18,
+    7.62
+   ],
+   "prompt_tokens_median": 803,
+   "prompt_s_median": 5.59,
+   "prompt_tok_per_s": 149.3,
+   "gen_tokens_median": 28,
+   "gen_s_median": 0.64,
+   "gen_tok_per_s": 43.4,
+   "server_rss_mb": 2803
+  },
+  {
+   "model": "GUI-Owl-1.5-2B",
+   "n": 4,
+   "excluded_cache_hits": 10,
+   "latency_median_s": 58.0,
+   "latency_mean_s": 58.02,
+   "latency_min_max_s": [
+    57.72,
+    58.35
+   ],
+   "prompt_tokens_median": 2570,
+   "prompt_s_median": 55.16,
+   "prompt_tok_per_s": 46.6,
+   "gen_tokens_median": 47,
+   "gen_s_median": 2.13,
+   "gen_tok_per_s": 22.1,
+   "server_rss_mb": 7502
+  },
+  {
+   "model": "MAI-UI-2B",
+   "n": 4,
+   "excluded_cache_hits": 10,
+   "latency_median_s": 58.18,
+   "latency_mean_s": 58.13,
+   "latency_min_max_s": [
+    56.47,
+    59.68
+   ],
+   "prompt_tokens_median": 2575,
+   "prompt_s_median": 54.37,
+   "prompt_tok_per_s": 47.5,
+   "gen_tokens_median": 90,
+   "gen_s_median": 3.84,
+   "gen_tok_per_s": 23.2,
+   "server_rss_mb": 7415
+  }
+ ],
+ "gguf_sizes_gb": {
+  "LFM3 v4": 1.303,
+  "GUI-Owl-1.5-2B": 1.552,
+  "MAI-UI-2B": 1.552
+ },
+ "mobileworld_snapshot": {
+  "snapshot_time": "2026-11-18 14:12 PST",
+  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max 50 steps, step_wait 3 s, auto_retry 3",
+  "runs": {
+   "lfm3_v4": {
+    "host": "AWS c8i.4xlarge us-west-2, model on CPU (8 threads)",
+    "agent": "eval/mobileworld/lfm3_mw_agent.py (v4 prompt)",
+    "finished": 49,
+    "successes": 5,
+    "tasks": [
+     {
+      "task": "AcceptMeetingTask",
+      "score": 0.0,
+      "steps": 6
+     },
+     {
+      "task": "AdjustBrightnessMaximumTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "AdjustBrightnessMinimumTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "AdjustFontIconMaximumTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "AdjustFontIconMinimumTask",
+      "score": 1.0,
+      "steps": 50
+     },
+     {
+      "task": "CancelMeetingTask",
+      "score": 0.0,
+      "steps": 5
+     },
+     {
+      "task": "ChangeWallpaperTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "CheckConferenceDurationTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "CheckDeduplicatedEventsTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "CheckEventTimeTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "CheckSetMeetTimeTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "ChromeSearchBeijingWeatherTask",
+      "score": 0.0,
+      "steps": 8
+     },
+     {
+      "task": "CloseFlightModeTask",
+      "score": 1.0,
+      "steps": 4
+     },
+     {
+      "task": "MastodonAddBookmarkTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonAddFeaturedHashtagsTask",
+      "score": 0.0,
+      "steps": 9
+     },
+     {
+      "task": "MastodonAdjustTootsTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonChangeHeaderTask",
+      "score": 0.0,
+      "steps": 14
+     },
+     {
+      "task": "MastodonChangeLanguageTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonConditionalFavoTask",
+      "score": 0.0,
+      "steps": 10
+     },
+     {
+      "task": "MastodonCreateListTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonExportFollowsTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonFavoriteTootsTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonFilterLanguageTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonFollowTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonImportMutedUsersTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonInviteTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonManageHashtagsTask",
+      "score": 0.0,
+      "steps": 4
+     },
+     {
+      "task": "MastodonNewPostTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonPinTootsTask",
+      "score": 0.0,
+      "steps": 4
+     },
+     {
+      "task": "MastodonPostEditedPhotoTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonRemoveBookmarkTask",
+      "score": 0.0,
+      "steps": 7
+     },
+     {
+      "task": "MastodonReplyTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonRevisePollTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonSavePhotosTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonShareLocationTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MastodonUnfollowTask",
+      "score": 0.0,
+      "steps": 17
+     },
+     {
+      "task": "MattermostCreateChannelTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MattermostReplyToMessageTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "MattermostSendFileTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "OpenFlightModeTask",
+      "score": 1.0,
+      "steps": 4
+     },
+     {
+      "task": "ReadQwen3PaperTask2",
+      "score": 0.0,
+      "steps": 44
+     },
+     {
+      "task": "ScheduleLunchViaSmsTask",
+      "score": 0.0,
+      "steps": 12
+     },
+     {
+      "task": "SendInterviewEmailTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "SendInterviewInvitationTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "SendWaiverTask",
+      "score": 1.0,
+      "steps": 11
+     },
+     {
+      "task": "SetAlarmTask",
+      "score": 0.0,
+      "steps": 50
+     },
+     {
+      "task": "SharePhotosTask",
+      "score": 0.0,
+      "steps": 16
+     },
+     {
+      "task": "TakeSelfieTask",
+      "score": 1.0,
+      "steps": 50
+     },
+     {
+      "task": "TextArrivalTimeTask",
+      "score": 0.0,
+      "steps": 6
+     }
+    ]
+   },
+   "guiowl15_2b": {
+    "host": "GCP n2-standard-16 us-west1, model on Colab T4 via tunnel",
+    "agent": "MobileWorld gui_owl_1_5 (history_n=1)",
+    "finished": 4,
+    "successes": 4,
+    "tasks": [
+     {
+      "task": "AdjustBrightnessMaximumTask",
+      "score": 1.0,
+      "steps": 6
+     },
+     {
+      "task": "AdjustBrightnessMinimumTask",
+      "score": 1.0,
+      "steps": 13
+     },
+     {
+      "task": "CloseFlightModeTask",
+      "score": 1.0,
+      "steps": 4
+     },
+     {
+      "task": "OpenFlightModeTask",
+      "score": 1.0,
+      "steps": 4
+     }
+    ]
+   }
+  }
+ }
+}
