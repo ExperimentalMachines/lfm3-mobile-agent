@@ -142,3 +142,5 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-18 22:03 | `9a25340` | Live snapshot: MobileWorld counts, QDC phone report (22:03) |
 | 2026-11-18 22:33 | `1636541` | Live snapshot: MobileWorld counts, QDC phone report (22:33) |
 | 2026-11-18 23:03 | `7034ebe` | Live snapshot: MobileWorld counts, QDC phone report (23:03) |
+| 2026-11-18 23:34 | `bc6db30` | Live snapshot: MobileWorld counts, QDC phone report (23:34) |
+| 2026-11-18 23:40 | `f0129a2` | MAI-UI-2B (Q8_0, matched 1 screenshot) AndroidWorld seed 30 finished: summary (116/116 episodes, 1 exception) |

@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ 7034ebe",
+ "generated_from": "lfm3-android @ f0129a2",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -823,7 +823,12 @@
  "androidworld_sealed_counts_only": [
   {
    "arm": "guiowl_seed1234",
-   "episode_files": 97,
+   "episode_files": 114,
+   "of": 116
+  },
+  {
+   "arm": "guiowl_seed2026",
+   "episode_files": 6,
    "of": 116
   },
   {
@@ -998,7 +1003,7 @@
   "MAI-UI-2B Q8_0": 2.279
  },
  "mobileworld_snapshot": {
-  "snapshot_time": "2026-11-18 23:33",
+  "snapshot_time": "2026-11-19 00:04",
   "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
   "runs": {
    "v4 run 1 (AWS c8i, CPU server)": {
@@ -1018,22 +1023,22 @@
    "GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0)": {
     "host": "GCP n2-standard-16 + Colab T4",
     "agent": "MobileWorld official gui_owl_1_5",
-    "finished": 62,
-    "successes": 20,
+    "finished": 67,
+    "successes": 21,
     "status": "in progress"
    },
    "v4 run 2 (GCP + Colab T4, fixed adapter)": {
     "host": "GCP n2-standard-16 + Colab T4",
     "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step; known limits: a text action on step 50 loses its Enter, empty text gets an HTTP 500 no-op; Codex round2_audit M1/M2)",
-    "finished": 52,
-    "successes": 5,
+    "finished": 59,
+    "successes": 6,
     "status": "in progress"
    }
   },
   "paired_so_far": {
-   "tasks_finished_by_both": 46,
-   "v4_successes": 5,
-   "guiowl_successes": 16
+   "tasks_finished_by_both": 52,
+   "v4_successes": 6,
+   "guiowl_successes": 18
   }
  }
 }
