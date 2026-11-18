@@ -21,20 +21,22 @@ running (llama.cpp Metal):
 |---|---|---|---|---|---|
 | **v4 (ours)** | Q4_K_M | 1,706 | **2.96** (1.7–4.6) | 1,303 | 22 |
 | GUI-Owl-1.5-2B | Q4_K_M | 2,228 | 7.00 (4.6–10.4) | 2,106 | 47 |
-| MAI-UI-2B (run in progress: 76 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,645 | 8.99 (6.0–13.4) | 2,236 | 51 |
+| MAI-UI-2B (run in progress: 77 of 116 episodes) | Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md) | 1,655 | 9.00 (6.0–13.4) | 2,226 | 51 |
 
 
 ## Real phone: Snapdragon 8 Elite Extreme Gen 6 (Qualcomm Device Cloud)
 
 Device: Qualcomm reference phone "Art for arm64" (SM8975, Snapdragon 8 Elite Extreme Gen 6), Android SDK 37, 11474320 kB RAM. Models run ON the phone's CPU (llama.cpp b12110 = `cd959bae9`, official Android arm64 build, 4 threads, no prompt cache); the Mac only sends the same screenshots and goals through each model's own agent code and records every response.
 
+**Headline (same phone, same clock):** v4's evaluation image budget is 1,024 tokens, so its option-2 runs are also its evaluation setting; they ran at the same sampled ~2.65 GHz as GUI-Owl's and MAI-UI's option-1 runs. As evaluated, one step takes **~39.0 s for v4** vs 1100 s for GUI-Owl and 1063 s for MAI-UI (~28× and ~27×). At the same 1,024-token image budget for all three (option 2), GUI-Owl and MAI-UI take ~5.1× and ~4.7× v4's time. Option 1's v4 row ran earlier at the full 4.03 GHz, so it is not the like-for-like number.
+
 **Option 1: each model at its evaluation image budget** (v4 1,024 image tokens; GUI-Owl and MAI-UI 2,600), flash attention on for all, MAI-UI at Q8_0 (its Q4_K_M output degenerates), 2 screenshots after a warm-up call:
 
-| Model | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally |
-|---|---|---|---|---|---|---|---|---|
-| **v4 (ours)** | 2 | **27.7** (27.4–27.9) | 25.6 s | 1,088 | 25.0 s | 28 | 50 | 2/2 |
-| GUI-Owl-1.5-2B | 2 | 1099.8 (1099.5–1100.2) | 1097.8 s | 2,567 | 1096.0 s | 43 | 24 | 2/2 |
-| MAI-UI-2B | 2 | 1063.1 (1062.8–1063.4) | 1061.0 s | 2,570 | 1058.4 s | 58 | 22 | 2/2 |
+| Model | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally | Fastest core, sampled GHz |
+|---|---|---|---|---|---|---|---|---|---|
+| **v4 (ours)** | 2 | **27.7** (27.4–27.9) | 25.6 s | 1,088 | 25.0 s | 28 | 50 | 2/2 | 4.03 |
+| GUI-Owl-1.5-2B | 2 | 1099.8 (1099.5–1100.2) | 1097.8 s | 2,567 | 1096.0 s | 43 | 24 | 2/2 | 2.65 |
+| MAI-UI-2B | 2 | 1063.1 (1062.8–1063.4) | 1061.0 s | 2,570 | 1058.4 s | 58 | 22 | 2/2 | 2.65 |
 
 **Option 2: all three at the same 1,024-token image budget** (a speed comparison at equal image size; GUI-Owl's and MAI-UI's accuracy at this budget was not measured), 5 screenshots, pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed:
 
