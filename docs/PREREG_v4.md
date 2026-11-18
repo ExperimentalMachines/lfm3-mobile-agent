@@ -125,3 +125,11 @@ exposure to AndroidWorld is undisclosed by its authors.
   stopped. Emulator 2 runs scripts/local_emu2_fill_v4.sh: after the v4 seed-30 pass it applies the gate mechanically
   (PASS -> sealed v4 seed 7; FAIL -> sealed v3 seed 7, v1 seed 7 being done; input error -> none) and then resumes the
   sealed GUI-Owl seed-1234 arm.
+* 2026-11-18 13:22 (seed 30 only; no sealed outcome read): the v4 development gate PASSES (results/v4_gate_seed30.txt):
+  seed 30 = 18/116 (6 answer-task + 12 action-task successes; v3 13 = 0 + 13; v1 15; GUI-Owl matched 23 = 10 + 13);
+  dev_answer gate_answer 0.868, emitted 0.956; dev_complete false answers 0/80. v4 is frozen as "LFM3 final"
+  (models/lfm3vl2b_v4-GGUF, manifest results/v4_local_export_manifest.json) and its sealed seed-7 arm started
+  automatically on emulator 2 (scripts/local_emu2_fill_v4.sh). Four seed-30 v4 episodes ended in infrastructure
+  exceptions with no recorded steps (adb output polluted by a gRPC fork warning: SimpleSmsSend,
+  SimpleSmsSendClipboardContent, MarkorCreateNoteAndSms; app-data reset failure: SimpleCalendarNextEvent); they count as
+  failures here and do not change the gate. Codex's adversarial review: results/codex/v4_seed30_audit/.
