@@ -1,0 +1,83 @@
+{
+  "qdc_renderer_exact": {
+    "/Users/alpha/lfm3-android/results/qdc/speed_qdc_v6.json": true,
+    "/Users/alpha/lfm3-android/results/qdc/speed_qdc_v6.md": true
+  },
+  "input_identities": {
+    "v4_pass1_pass2": true,
+    "guiowl_pass1_pass2": true,
+    "maiui_pass1_pass2": true,
+    "opt1_eval_guiowl_maiui_images": true,
+    "opt2_pass1_guiowl_maiui_images": true,
+    "opt2_pass2_guiowl_maiui_images": true,
+    "adapter_copy": true,
+    "format_copy": true
+  },
+  "pixel": {
+    "device": {
+      "ro.product.model": "Pixel 9",
+      "ro.product.device": "tokay",
+      "ro.build.fingerprint": "google/tokay/tokay:16/CP1A.260505.005/15081906:user/release-keys",
+      "ro.build.version.sdk": "36",
+      "ro.soc.model": "Tensor G4",
+      "ro.soc.manufacturer": "Google",
+      "mem": "MemTotal: 11848700 kB",
+      "cpus": "1950000 1950000 1950000 1950000 2600000 2600000 2600000 3105000 ",
+      "serial": "localhost:60148",
+      "idx": 0,
+      "order": "v4 guiowl maiui"
+    },
+    "calls": 11,
+    "latency_median": 74.407,
+    "latency_range": [
+      43.127,
+      91.193
+    ],
+    "last_latency": 66.698,
+    "fourth_timed": 74.407,
+    "fourth_timed_prompt_tok_s": 15.018923148489801,
+    "thermal_transition": [
+      {
+        "line": 21,
+        "t": 1794987484,
+        "battery_temp_dC": "362",
+        "thermal": "Thermal Status: 0",
+        "cur_freq_khz": "820000 820000 820000 820000 2367000 2367000 2367000 2970000 "
+      },
+      {
+        "line": 22,
+        "t": 1794987495,
+        "battery_temp_dC": "362",
+        "thermal": "Thermal Status: 0",
+        "cur_freq_khz": "820000 820000 820000 820000 1795000 1795000 1795000 2687000 "
+      },
+      {
+        "line": 23,
+        "t": 1794987506,
+        "battery_temp_dC": "362",
+        "thermal": "Thermal Status: 0",
+        "cur_freq_khz": "820000 820000 820000 820000 1795000 1795000 1795000 2147000 "
+      },
+      {
+        "line": 24,
+        "t": 1794987518,
+        "battery_temp_dC": "373",
+        "thermal": "Thermal Status: 0",
+        "cur_freq_khz": "820000 820000 820000 820000 1795000 1795000 1795000 1885000 "
+      },
+      {
+        "line": 25,
+        "t": 1794987529,
+        "battery_temp_dC": "373",
+        "thermal": "Thermal Status: 0",
+        "cur_freq_khz": "820000 820000 820000 820000 1795000 1795000 1795000 1396000 "
+      }
+    ]
+  },
+  "model_sizes_gb": {
+    "LFM3 v4": 1.303,
+    "GUI-Owl-1.5-2B": 1.552,
+    "MAI-UI-2B": 1.552,
+    "MAI-UI-2B Q8_0": 2.279
+  }
+}

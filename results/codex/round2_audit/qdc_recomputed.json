@@ -1,0 +1,5393 @@
+{
+  "parts": {
+    "opt1_eval": {
+      "settings": {
+        "order": "v4 guiowl maiui",
+        "extra_flags": "-fa on",
+        "img_tokens_override": "",
+        "maiui_quant": "Q8_0",
+        "shots": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png ",
+        "reps": 1,
+        "client_timeout": 3600,
+        "threads": 4,
+        "cache_ram": 0,
+        "flags_v4": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+        "files_v4": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+        "flags_guiowl": "-c 20480 --image-max-tokens 2600 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+        "files_guiowl": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+        "flags_maiui": "-c 20480 --image-max-tokens 2600 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+        "files_maiui": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+        "llama": "b12110 cd959bae9 android-arm64 CPU"
+      },
+      "device": {
+        "ro.product.model": "Art for arm64",
+        "ro.product.device": "art",
+        "ro.build.fingerprint": "qti/art/art:17/CQ2A.260820.002-CP2A.260605.016/eng.lnxbui:userdebug/test-keys",
+        "ro.build.version.sdk": "37",
+        "ro.soc.model": "SM8975",
+        "ro.soc.manufacturer": "QTI",
+        "mem": "MemTotal: 11474320 kB",
+        "cpus": "3744000 3744000 3744000 4032000 4032000 4032000 5011200 5011200 ",
+        "serial": "c4fef9df",
+        "idx": 0,
+        "order": "v4 guiowl maiui"
+      },
+      "version": "version: 0.9.0-dev (build 12110, commit cd959bae9)\nbuilt with Clang 21.0.0 for Android aarch64\n",
+      "models": {
+        "v4": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 27.205,
+              "client_latency_s": 28.245,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 30,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 73,
+                "y": 209
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "a74745fe853b558a037ebe82a9466647a0fa57c4dd8eaf72bdc2b1e6398dcbed",
+                  "bytes": 43266,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1794996573.0647948,
+              "request_end": 1794996600.269312
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 27.406,
+              "client_latency_s": 27.756,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 26,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 889,
+                "y": 523
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "402b636287cfe657f6dc55eb3dcc532f95aaa5915ce27bc09bf38de0773793be",
+                  "bytes": 43103,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1794996600.73086,
+              "request_end": 1794996628.137171
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 27.91,
+              "client_latency_s": 28.052,
+              "prompt_total": 1085,
+              "prompt_processed": 1085,
+              "cached": 0,
+              "output": 31,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 964,
+                "y": 214
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "1eb0b060184cff79a1bfb5b6a756236dd14b1a8ebefb56254afbf2e6f008c165",
+                  "bytes": 143563,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1348,
+              "request_start": 1794996628.2711291,
+              "request_end": 1794996656.180714
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 2,
+            "e2e_median_s": 27.7,
+            "e2e_min_max_s": [
+              27.4,
+              27.9
+            ],
+            "phone_median_s": 25.6,
+            "prompt_s_median": 25.0,
+            "prompt_tokens_median": 1088,
+            "prompt_tok_s": 43.5,
+            "gen_tokens_median": 28,
+            "gen_tok_s_llamacpp_median": 50.0,
+            "finished_normally": "2/2",
+            "fastest_core_ghz_median_sampled": 4.03
+          },
+          "exact_medians": {
+            "proxy_latency_s": 27.658,
+            "client_latency_s": 27.904,
+            "prompt_processed": 1088.0,
+            "prompt_total": 1088.0,
+            "cached": 0.0,
+            "output": 28.5
+          },
+          "thermal": {
+            "sample_count": 4,
+            "first_line": 6,
+            "last_line": 9,
+            "max_freq_counts": {
+              "4032000": 4
+            },
+            "per_core_median_khz": [
+              1036800.0,
+              1209600.0,
+              1209600.0,
+              4032000.0,
+              4032000.0,
+              4032000.0,
+              3859200.0,
+              3859200.0
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 0"
+            ]
+          }
+        },
+        "guiowl": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 1034.61,
+              "client_latency_s": 1035.102,
+              "prompt_total": 3557,
+              "prompt_processed": 3557,
+              "cached": 0,
+              "output": 41,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 195,
+                "y": 529
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "0e3cf173bb3c08e202adaff013ad4dfff627149d6a019ed130192660f3c47556",
+                  "bytes": 60425,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4065,
+              "request_start": 1794996770.4357529,
+              "request_end": 1794997805.045904
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 1099.502,
+              "client_latency_s": 1099.715,
+              "prompt_total": 3557,
+              "prompt_processed": 2556,
+              "cached": 1001,
+              "output": 41,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 880,
+                "y": 521
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "614b9347c0c5556d6b86708d3e4d2f13da1fcb1b3797abee23a11e92883f9f07",
+                  "bytes": 60518,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4065,
+              "request_start": 1794997805.401599,
+              "request_end": 1794998904.903378
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 1100.155,
+              "client_latency_s": 1100.44,
+              "prompt_total": 3552,
+              "prompt_processed": 2579,
+              "cached": 973,
+              "output": 45,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 227,
+                "y": 1482
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "ea83e29cab921a9b594e12ca9a408e0a43d66a6a29066c6f518888475f477e07",
+                  "bytes": 170630,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4062,
+              "request_start": 1794998905.2840042,
+              "request_end": 1795000005.439295
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 2,
+            "e2e_median_s": 1099.8,
+            "e2e_min_max_s": [
+              1099.5,
+              1100.2
+            ],
+            "phone_median_s": 1097.8,
+            "prompt_s_median": 1096.0,
+            "prompt_tokens_median": 2567,
+            "prompt_tok_s": 2.3,
+            "gen_tokens_median": 43,
+            "gen_tok_s_llamacpp_median": 23.6,
+            "finished_normally": "2/2",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 1099.8285,
+            "client_latency_s": 1100.0774999999999,
+            "prompt_processed": 2567.5,
+            "prompt_total": 3554.5,
+            "cached": 987.0,
+            "output": 43.0
+          },
+          "thermal": {
+            "sample_count": 141,
+            "first_line": 84,
+            "last_line": 224,
+            "max_freq_counts": {
+              "2649600": 141
+            },
+            "per_core_median_khz": [
+              2534400,
+              2534400,
+              2534400,
+              1036800,
+              1036800,
+              1036800,
+              2649600,
+              2649600
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 0"
+            ]
+          }
+        },
+        "maiui": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 1050.138,
+              "client_latency_s": 1050.874,
+              "prompt_total": 3035,
+              "prompt_processed": 3035,
+              "cached": 0,
+              "output": 53,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 193,
+                "y": 530
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "0e3cf173bb3c08e202adaff013ad4dfff627149d6a019ed130192660f3c47556",
+                  "bytes": 60425,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1749,
+              "request_start": 1795000237.456643,
+              "request_end": 1795001287.594252
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 1062.777,
+              "client_latency_s": 1063.165,
+              "prompt_total": 3035,
+              "prompt_processed": 2556,
+              "cached": 479,
+              "output": 56,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 899,
+                "y": 523
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "614b9347c0c5556d6b86708d3e4d2f13da1fcb1b3797abee23a11e92883f9f07",
+                  "bytes": 60518,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1749,
+              "request_start": 1795001288.2052941,
+              "request_end": 1795002350.982186
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 1063.362,
+              "client_latency_s": 1063.747,
+              "prompt_total": 3030,
+              "prompt_processed": 2584,
+              "cached": 446,
+              "output": 60,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 540,
+                "y": 343
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "ea83e29cab921a9b594e12ca9a408e0a43d66a6a29066c6f518888475f477e07",
+                  "bytes": 170630,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1746,
+              "request_start": 1795002351.4070919,
+              "request_end": 1795003414.769194
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 2,
+            "e2e_median_s": 1063.1,
+            "e2e_min_max_s": [
+              1062.8,
+              1063.4
+            ],
+            "phone_median_s": 1061.0,
+            "prompt_s_median": 1058.4,
+            "prompt_tokens_median": 2570,
+            "prompt_tok_s": 2.4,
+            "gen_tokens_median": 58,
+            "gen_tok_s_llamacpp_median": 22.5,
+            "finished_normally": "2/2",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 1063.0695,
+            "client_latency_s": 1063.4560000000001,
+            "prompt_processed": 2570.0,
+            "prompt_total": 3032.5,
+            "cached": 462.5,
+            "output": 58.0
+          },
+          "thermal": {
+            "sample_count": 136,
+            "first_line": 311,
+            "last_line": 446,
+            "max_freq_counts": {
+              "2649600": 135,
+              "921600": 1
+            },
+            "per_core_median_khz": [
+              2534400.0,
+              2534400.0,
+              2534400.0,
+              1036800.0,
+              1036800.0,
+              1036800.0,
+              2649600.0,
+              2649600.0
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 0",
+              "Thermal Status: 1"
+            ]
+          }
+        }
+      },
+      "frequency_timeline": [
+        {
+          "line": 1,
+          "t": 1794996529,
+          "max_khz": 921600
+        },
+        {
+          "line": 2,
+          "t": 1794996544,
+          "max_khz": 921600
+        },
+        {
+          "line": 3,
+          "t": 1794996559,
+          "max_khz": 1152000
+        },
+        {
+          "line": 4,
+          "t": 1794996574,
+          "max_khz": 4032000
+        },
+        {
+          "line": 5,
+          "t": 1794996589,
+          "max_khz": 4032000
+        },
+        {
+          "line": 6,
+          "t": 1794996603,
+          "max_khz": 4032000
+        },
+        {
+          "line": 7,
+          "t": 1794996618,
+          "max_khz": 4032000
+        },
+        {
+          "line": 8,
+          "t": 1794996633,
+          "max_khz": 4032000
+        },
+        {
+          "line": 9,
+          "t": 1794996647,
+          "max_khz": 4032000
+        },
+        {
+          "line": 10,
+          "t": 1794996663,
+          "max_khz": 921600
+        },
+        {
+          "line": 11,
+          "t": 1794996679,
+          "max_khz": 1497600
+        },
+        {
+          "line": 12,
+          "t": 1794996694,
+          "max_khz": 921600
+        },
+        {
+          "line": 13,
+          "t": 1794996709,
+          "max_khz": 921600
+        },
+        {
+          "line": 14,
+          "t": 1794996724,
+          "max_khz": 921600
+        },
+        {
+          "line": 15,
+          "t": 1794996739,
+          "max_khz": 921600
+        },
+        {
+          "line": 16,
+          "t": 1794996754,
+          "max_khz": 921600
+        },
+        {
+          "line": 17,
+          "t": 1794996769,
+          "max_khz": 4032000
+        },
+        {
+          "line": 18,
+          "t": 1794996784,
+          "max_khz": 4032000
+        },
+        {
+          "line": 19,
+          "t": 1794996799,
+          "max_khz": 4032000
+        },
+        {
+          "line": 20,
+          "t": 1794996814,
+          "max_khz": 4032000
+        },
+        {
+          "line": 21,
+          "t": 1794996829,
+          "max_khz": 4032000
+        },
+        {
+          "line": 22,
+          "t": 1794996843,
+          "max_khz": 4032000
+        },
+        {
+          "line": 23,
+          "t": 1794996858,
+          "max_khz": 4032000
+        },
+        {
+          "line": 24,
+          "t": 1794996873,
+          "max_khz": 4032000
+        },
+        {
+          "line": 25,
+          "t": 1794996888,
+          "max_khz": 4032000
+        },
+        {
+          "line": 26,
+          "t": 1794996903,
+          "max_khz": 4032000
+        },
+        {
+          "line": 27,
+          "t": 1794996918,
+          "max_khz": 4032000
+        },
+        {
+          "line": 28,
+          "t": 1794996933,
+          "max_khz": 4032000
+        },
+        {
+          "line": 29,
+          "t": 1794996947,
+          "max_khz": 3340800
+        },
+        {
+          "line": 30,
+          "t": 1794996962,
+          "max_khz": 2649600
+        },
+        {
+          "line": 31,
+          "t": 1794996977,
+          "max_khz": 3801600
+        },
+        {
+          "line": 32,
+          "t": 1794996992,
+          "max_khz": 3916800
+        },
+        {
+          "line": 33,
+          "t": 1794997007,
+          "max_khz": 2649600
+        },
+        {
+          "line": 34,
+          "t": 1794997022,
+          "max_khz": 2649600
+        },
+        {
+          "line": 35,
+          "t": 1794997037,
+          "max_khz": 2649600
+        },
+        {
+          "line": 36,
+          "t": 1794997052,
+          "max_khz": 3110400
+        },
+        {
+          "line": 37,
+          "t": 1794997067,
+          "max_khz": 3571200
+        },
+        {
+          "line": 38,
+          "t": 1794997081,
+          "max_khz": 2649600
+        },
+        {
+          "line": 39,
+          "t": 1794997096,
+          "max_khz": 2649600
+        },
+        {
+          "line": 40,
+          "t": 1794997110,
+          "max_khz": 2649600
+        },
+        {
+          "line": 41,
+          "t": 1794997125,
+          "max_khz": 2649600
+        },
+        {
+          "line": 42,
+          "t": 1794997139,
+          "max_khz": 2649600
+        },
+        {
+          "line": 43,
+          "t": 1794997154,
+          "max_khz": 2649600
+        },
+        {
+          "line": 44,
+          "t": 1794997169,
+          "max_khz": 2649600
+        },
+        {
+          "line": 45,
+          "t": 1794997184,
+          "max_khz": 2649600
+        },
+        {
+          "line": 46,
+          "t": 1794997199,
+          "max_khz": 2649600
+        },
+        {
+          "line": 47,
+          "t": 1794997215,
+          "max_khz": 2649600
+        },
+        {
+          "line": 48,
+          "t": 1794997231,
+          "max_khz": 2649600
+        },
+        {
+          "line": 49,
+          "t": 1794997246,
+          "max_khz": 2649600
+        },
+        {
+          "line": 50,
+          "t": 1794997262,
+          "max_khz": 2649600
+        },
+        {
+          "line": 51,
+          "t": 1794997280,
+          "max_khz": 2649600
+        },
+        {
+          "line": 52,
+          "t": 1794997300,
+          "max_khz": 2880000
+        },
+        {
+          "line": 53,
+          "t": 1794997318,
+          "max_khz": 2649600
+        },
+        {
+          "line": 54,
+          "t": 1794997333,
+          "max_khz": 2649600
+        },
+        {
+          "line": 55,
+          "t": 1794997348,
+          "max_khz": 2649600
+        },
+        {
+          "line": 56,
+          "t": 1794997362,
+          "max_khz": 2649600
+        },
+        {
+          "line": 57,
+          "t": 1794997377,
+          "max_khz": 2649600
+        },
+        {
+          "line": 58,
+          "t": 1794997392,
+          "max_khz": 2649600
+        },
+        {
+          "line": 59,
+          "t": 1794997407,
+          "max_khz": 2649600
+        },
+        {
+          "line": 60,
+          "t": 1794997422,
+          "max_khz": 2649600
+        },
+        {
+          "line": 61,
+          "t": 1794997437,
+          "max_khz": 2649600
+        },
+        {
+          "line": 62,
+          "t": 1794997452,
+          "max_khz": 2649600
+        },
+        {
+          "line": 63,
+          "t": 1794997468,
+          "max_khz": 2649600
+        },
+        {
+          "line": 64,
+          "t": 1794997483,
+          "max_khz": 2649600
+        },
+        {
+          "line": 65,
+          "t": 1794997498,
+          "max_khz": 2649600
+        },
+        {
+          "line": 66,
+          "t": 1794997514,
+          "max_khz": 2649600
+        },
+        {
+          "line": 67,
+          "t": 1794997531,
+          "max_khz": 2649600
+        },
+        {
+          "line": 68,
+          "t": 1794997550,
+          "max_khz": 2649600
+        },
+        {
+          "line": 69,
+          "t": 1794997566,
+          "max_khz": 2649600
+        },
+        {
+          "line": 70,
+          "t": 1794997581,
+          "max_khz": 2649600
+        },
+        {
+          "line": 71,
+          "t": 1794997596,
+          "max_khz": 2649600
+        },
+        {
+          "line": 72,
+          "t": 1794997612,
+          "max_khz": 2649600
+        },
+        {
+          "line": 73,
+          "t": 1794997631,
+          "max_khz": 2649600
+        },
+        {
+          "line": 74,
+          "t": 1794997651,
+          "max_khz": 2649600
+        },
+        {
+          "line": 75,
+          "t": 1794997666,
+          "max_khz": 2649600
+        },
+        {
+          "line": 76,
+          "t": 1794997682,
+          "max_khz": 2649600
+        },
+        {
+          "line": 77,
+          "t": 1794997701,
+          "max_khz": 2649600
+        },
+        {
+          "line": 78,
+          "t": 1794997717,
+          "max_khz": 2649600
+        },
+        {
+          "line": 79,
+          "t": 1794997736,
+          "max_khz": 2649600
+        },
+        {
+          "line": 80,
+          "t": 1794997753,
+          "max_khz": 2649600
+        },
+        {
+          "line": 81,
+          "t": 1794997768,
+          "max_khz": 2649600
+        },
+        {
+          "line": 82,
+          "t": 1794997786,
+          "max_khz": 2649600
+        },
+        {
+          "line": 83,
+          "t": 1794997803,
+          "max_khz": 2649600
+        },
+        {
+          "line": 84,
+          "t": 1794997818,
+          "max_khz": 2649600
+        },
+        {
+          "line": 85,
+          "t": 1794997835,
+          "max_khz": 2649600
+        },
+        {
+          "line": 86,
+          "t": 1794997851,
+          "max_khz": 2649600
+        },
+        {
+          "line": 87,
+          "t": 1794997866,
+          "max_khz": 2649600
+        },
+        {
+          "line": 88,
+          "t": 1794997881,
+          "max_khz": 2649600
+        },
+        {
+          "line": 89,
+          "t": 1794997896,
+          "max_khz": 2649600
+        },
+        {
+          "line": 90,
+          "t": 1794997911,
+          "max_khz": 2649600
+        },
+        {
+          "line": 91,
+          "t": 1794997928,
+          "max_khz": 2649600
+        },
+        {
+          "line": 92,
+          "t": 1794997947,
+          "max_khz": 2649600
+        },
+        {
+          "line": 93,
+          "t": 1794997963,
+          "max_khz": 2649600
+        },
+        {
+          "line": 94,
+          "t": 1794997979,
+          "max_khz": 2649600
+        },
+        {
+          "line": 95,
+          "t": 1794997997,
+          "max_khz": 2649600
+        },
+        {
+          "line": 96,
+          "t": 1794998017,
+          "max_khz": 2649600
+        },
+        {
+          "line": 97,
+          "t": 1794998037,
+          "max_khz": 2649600
+        },
+        {
+          "line": 98,
+          "t": 1794998057,
+          "max_khz": 2649600
+        },
+        {
+          "line": 99,
+          "t": 1794998076,
+          "max_khz": 2649600
+        },
+        {
+          "line": 100,
+          "t": 1794998094,
+          "max_khz": 2649600
+        },
+        {
+          "line": 101,
+          "t": 1794998111,
+          "max_khz": 2649600
+        },
+        {
+          "line": 102,
+          "t": 1794998127,
+          "max_khz": 2649600
+        },
+        {
+          "line": 103,
+          "t": 1794998147,
+          "max_khz": 2649600
+        },
+        {
+          "line": 104,
+          "t": 1794998162,
+          "max_khz": 2649600
+        },
+        {
+          "line": 105,
+          "t": 1794998177,
+          "max_khz": 2649600
+        },
+        {
+          "line": 106,
+          "t": 1794998194,
+          "max_khz": 2649600
+        },
+        {
+          "line": 107,
+          "t": 1794998210,
+          "max_khz": 2649600
+        },
+        {
+          "line": 108,
+          "t": 1794998226,
+          "max_khz": 2649600
+        },
+        {
+          "line": 109,
+          "t": 1794998243,
+          "max_khz": 2649600
+        },
+        {
+          "line": 110,
+          "t": 1794998262,
+          "max_khz": 2649600
+        },
+        {
+          "line": 111,
+          "t": 1794998279,
+          "max_khz": 2649600
+        },
+        {
+          "line": 112,
+          "t": 1794998296,
+          "max_khz": 2649600
+        },
+        {
+          "line": 113,
+          "t": 1794998313,
+          "max_khz": 2649600
+        },
+        {
+          "line": 114,
+          "t": 1794998328,
+          "max_khz": 2649600
+        },
+        {
+          "line": 115,
+          "t": 1794998343,
+          "max_khz": 2649600
+        },
+        {
+          "line": 116,
+          "t": 1794998358,
+          "max_khz": 2649600
+        },
+        {
+          "line": 117,
+          "t": 1794998372,
+          "max_khz": 2649600
+        },
+        {
+          "line": 118,
+          "t": 1794998388,
+          "max_khz": 2649600
+        },
+        {
+          "line": 119,
+          "t": 1794998403,
+          "max_khz": 2649600
+        },
+        {
+          "line": 120,
+          "t": 1794998418,
+          "max_khz": 2649600
+        },
+        {
+          "line": 121,
+          "t": 1794998434,
+          "max_khz": 2649600
+        },
+        {
+          "line": 122,
+          "t": 1794998450,
+          "max_khz": 2649600
+        },
+        {
+          "line": 123,
+          "t": 1794998466,
+          "max_khz": 2649600
+        },
+        {
+          "line": 124,
+          "t": 1794998481,
+          "max_khz": 2649600
+        },
+        {
+          "line": 125,
+          "t": 1794998496,
+          "max_khz": 2649600
+        },
+        {
+          "line": 126,
+          "t": 1794998512,
+          "max_khz": 2649600
+        },
+        {
+          "line": 127,
+          "t": 1794998526,
+          "max_khz": 2649600
+        },
+        {
+          "line": 128,
+          "t": 1794998542,
+          "max_khz": 2649600
+        },
+        {
+          "line": 129,
+          "t": 1794998558,
+          "max_khz": 2649600
+        },
+        {
+          "line": 130,
+          "t": 1794998573,
+          "max_khz": 2649600
+        },
+        {
+          "line": 131,
+          "t": 1794998588,
+          "max_khz": 2649600
+        },
+        {
+          "line": 132,
+          "t": 1794998604,
+          "max_khz": 2649600
+        },
+        {
+          "line": 133,
+          "t": 1794998619,
+          "max_khz": 2649600
+        },
+        {
+          "line": 134,
+          "t": 1794998633,
+          "max_khz": 2649600
+        },
+        {
+          "line": 135,
+          "t": 1794998648,
+          "max_khz": 2649600
+        },
+        {
+          "line": 136,
+          "t": 1794998663,
+          "max_khz": 2649600
+        },
+        {
+          "line": 137,
+          "t": 1794998678,
+          "max_khz": 2649600
+        },
+        {
+          "line": 138,
+          "t": 1794998693,
+          "max_khz": 2649600
+        },
+        {
+          "line": 139,
+          "t": 1794998707,
+          "max_khz": 2649600
+        },
+        {
+          "line": 140,
+          "t": 1794998722,
+          "max_khz": 2649600
+        },
+        {
+          "line": 141,
+          "t": 1794998737,
+          "max_khz": 2649600
+        },
+        {
+          "line": 142,
+          "t": 1794998753,
+          "max_khz": 2649600
+        },
+        {
+          "line": 143,
+          "t": 1794998767,
+          "max_khz": 2649600
+        },
+        {
+          "line": 144,
+          "t": 1794998782,
+          "max_khz": 2649600
+        },
+        {
+          "line": 145,
+          "t": 1794998797,
+          "max_khz": 2649600
+        },
+        {
+          "line": 146,
+          "t": 1794998812,
+          "max_khz": 2649600
+        },
+        {
+          "line": 147,
+          "t": 1794998826,
+          "max_khz": 2649600
+        },
+        {
+          "line": 148,
+          "t": 1794998841,
+          "max_khz": 2649600
+        },
+        {
+          "line": 149,
+          "t": 1794998855,
+          "max_khz": 2649600
+        },
+        {
+          "line": 150,
+          "t": 1794998870,
+          "max_khz": 2649600
+        },
+        {
+          "line": 151,
+          "t": 1794998885,
+          "max_khz": 2649600
+        },
+        {
+          "line": 152,
+          "t": 1794998900,
+          "max_khz": 2649600
+        },
+        {
+          "line": 153,
+          "t": 1794998914,
+          "max_khz": 2649600
+        },
+        {
+          "line": 154,
+          "t": 1794998929,
+          "max_khz": 2649600
+        },
+        {
+          "line": 155,
+          "t": 1794998944,
+          "max_khz": 2649600
+        },
+        {
+          "line": 156,
+          "t": 1794998958,
+          "max_khz": 2649600
+        },
+        {
+          "line": 157,
+          "t": 1794998973,
+          "max_khz": 2649600
+        },
+        {
+          "line": 158,
+          "t": 1794998987,
+          "max_khz": 2649600
+        },
+        {
+          "line": 159,
+          "t": 1794999002,
+          "max_khz": 2649600
+        },
+        {
+          "line": 160,
+          "t": 1794999017,
+          "max_khz": 2649600
+        },
+        {
+          "line": 161,
+          "t": 1794999031,
+          "max_khz": 2649600
+        },
+        {
+          "line": 162,
+          "t": 1794999046,
+          "max_khz": 2649600
+        },
+        {
+          "line": 163,
+          "t": 1794999061,
+          "max_khz": 2649600
+        },
+        {
+          "line": 164,
+          "t": 1794999076,
+          "max_khz": 2649600
+        },
+        {
+          "line": 165,
+          "t": 1794999090,
+          "max_khz": 2649600
+        },
+        {
+          "line": 166,
+          "t": 1794999105,
+          "max_khz": 2649600
+        },
+        {
+          "line": 167,
+          "t": 1794999120,
+          "max_khz": 2649600
+        },
+        {
+          "line": 168,
+          "t": 1794999135,
+          "max_khz": 2649600
+        },
+        {
+          "line": 169,
+          "t": 1794999150,
+          "max_khz": 2649600
+        },
+        {
+          "line": 170,
+          "t": 1794999165,
+          "max_khz": 2649600
+        },
+        {
+          "line": 171,
+          "t": 1794999179,
+          "max_khz": 2649600
+        },
+        {
+          "line": 172,
+          "t": 1794999194,
+          "max_khz": 2649600
+        },
+        {
+          "line": 173,
+          "t": 1794999209,
+          "max_khz": 2649600
+        },
+        {
+          "line": 174,
+          "t": 1794999224,
+          "max_khz": 2649600
+        },
+        {
+          "line": 175,
+          "t": 1794999239,
+          "max_khz": 2649600
+        },
+        {
+          "line": 176,
+          "t": 1794999253,
+          "max_khz": 2649600
+        },
+        {
+          "line": 177,
+          "t": 1794999270,
+          "max_khz": 2649600
+        },
+        {
+          "line": 178,
+          "t": 1794999285,
+          "max_khz": 2649600
+        },
+        {
+          "line": 179,
+          "t": 1794999300,
+          "max_khz": 2649600
+        },
+        {
+          "line": 180,
+          "t": 1794999315,
+          "max_khz": 2649600
+        },
+        {
+          "line": 181,
+          "t": 1794999329,
+          "max_khz": 2649600
+        },
+        {
+          "line": 182,
+          "t": 1794999344,
+          "max_khz": 2649600
+        },
+        {
+          "line": 183,
+          "t": 1794999359,
+          "max_khz": 2649600
+        },
+        {
+          "line": 184,
+          "t": 1794999374,
+          "max_khz": 2649600
+        },
+        {
+          "line": 185,
+          "t": 1794999389,
+          "max_khz": 2649600
+        },
+        {
+          "line": 186,
+          "t": 1794999404,
+          "max_khz": 2649600
+        },
+        {
+          "line": 187,
+          "t": 1794999419,
+          "max_khz": 2649600
+        },
+        {
+          "line": 188,
+          "t": 1794999434,
+          "max_khz": 2649600
+        },
+        {
+          "line": 189,
+          "t": 1794999449,
+          "max_khz": 2649600
+        },
+        {
+          "line": 190,
+          "t": 1794999463,
+          "max_khz": 2649600
+        },
+        {
+          "line": 191,
+          "t": 1794999478,
+          "max_khz": 2649600
+        },
+        {
+          "line": 192,
+          "t": 1794999499,
+          "max_khz": 2649600
+        },
+        {
+          "line": 193,
+          "t": 1794999516,
+          "max_khz": 2649600
+        },
+        {
+          "line": 194,
+          "t": 1794999531,
+          "max_khz": 2649600
+        },
+        {
+          "line": 195,
+          "t": 1794999548,
+          "max_khz": 2649600
+        },
+        {
+          "line": 196,
+          "t": 1794999563,
+          "max_khz": 2649600
+        },
+        {
+          "line": 197,
+          "t": 1794999578,
+          "max_khz": 2649600
+        },
+        {
+          "line": 198,
+          "t": 1794999593,
+          "max_khz": 2649600
+        },
+        {
+          "line": 199,
+          "t": 1794999608,
+          "max_khz": 2649600
+        },
+        {
+          "line": 200,
+          "t": 1794999625,
+          "max_khz": 2649600
+        },
+        {
+          "line": 201,
+          "t": 1794999641,
+          "max_khz": 2649600
+        },
+        {
+          "line": 202,
+          "t": 1794999656,
+          "max_khz": 2649600
+        },
+        {
+          "line": 203,
+          "t": 1794999671,
+          "max_khz": 2649600
+        },
+        {
+          "line": 204,
+          "t": 1794999691,
+          "max_khz": 2649600
+        },
+        {
+          "line": 205,
+          "t": 1794999709,
+          "max_khz": 2649600
+        },
+        {
+          "line": 206,
+          "t": 1794999724,
+          "max_khz": 2649600
+        },
+        {
+          "line": 207,
+          "t": 1794999741,
+          "max_khz": 2649600
+        },
+        {
+          "line": 208,
+          "t": 1794999756,
+          "max_khz": 2649600
+        },
+        {
+          "line": 209,
+          "t": 1794999772,
+          "max_khz": 2649600
+        },
+        {
+          "line": 210,
+          "t": 1794999788,
+          "max_khz": 2649600
+        },
+        {
+          "line": 211,
+          "t": 1794999804,
+          "max_khz": 2649600
+        },
+        {
+          "line": 212,
+          "t": 1794999820,
+          "max_khz": 2649600
+        },
+        {
+          "line": 213,
+          "t": 1794999835,
+          "max_khz": 2649600
+        },
+        {
+          "line": 214,
+          "t": 1794999850,
+          "max_khz": 2649600
+        },
+        {
+          "line": 215,
+          "t": 1794999865,
+          "max_khz": 2649600
+        },
+        {
+          "line": 216,
+          "t": 1794999880,
+          "max_khz": 2649600
+        },
+        {
+          "line": 217,
+          "t": 1794999894,
+          "max_khz": 2649600
+        },
+        {
+          "line": 218,
+          "t": 1794999909,
+          "max_khz": 2649600
+        },
+        {
+          "line": 219,
+          "t": 1794999924,
+          "max_khz": 2649600
+        },
+        {
+          "line": 220,
+          "t": 1794999938,
+          "max_khz": 2649600
+        },
+        {
+          "line": 221,
+          "t": 1794999953,
+          "max_khz": 2649600
+        },
+        {
+          "line": 222,
+          "t": 1794999967,
+          "max_khz": 2649600
+        },
+        {
+          "line": 223,
+          "t": 1794999982,
+          "max_khz": 2649600
+        },
+        {
+          "line": 224,
+          "t": 1794999997,
+          "max_khz": 2649600
+        },
+        {
+          "line": 225,
+          "t": 1795000011,
+          "max_khz": 921600
+        },
+        {
+          "line": 226,
+          "t": 1795000026,
+          "max_khz": 921600
+        },
+        {
+          "line": 227,
+          "t": 1795000041,
+          "max_khz": 921600
+        },
+        {
+          "line": 228,
+          "t": 1795000055,
+          "max_khz": 921600
+        },
+        {
+          "line": 229,
+          "t": 1795000070,
+          "max_khz": 1152000
+        },
+        {
+          "line": 230,
+          "t": 1795000085,
+          "max_khz": 921600
+        },
+        {
+          "line": 231,
+          "t": 1795000099,
+          "max_khz": 921600
+        },
+        {
+          "line": 232,
+          "t": 1795000114,
+          "max_khz": 1152000
+        },
+        {
+          "line": 233,
+          "t": 1795000129,
+          "max_khz": 921600
+        },
+        {
+          "line": 234,
+          "t": 1795000143,
+          "max_khz": 1267200
+        },
+        {
+          "line": 235,
+          "t": 1795000158,
+          "max_khz": 921600
+        },
+        {
+          "line": 236,
+          "t": 1795000173,
+          "max_khz": 921600
+        },
+        {
+          "line": 237,
+          "t": 1795000188,
+          "max_khz": 921600
+        },
+        {
+          "line": 238,
+          "t": 1795000203,
+          "max_khz": 1497600
+        },
+        {
+          "line": 239,
+          "t": 1795000218,
+          "max_khz": 921600
+        },
+        {
+          "line": 240,
+          "t": 1795000232,
+          "max_khz": 921600
+        },
+        {
+          "line": 241,
+          "t": 1795000247,
+          "max_khz": 4032000
+        },
+        {
+          "line": 242,
+          "t": 1795000262,
+          "max_khz": 4147200
+        },
+        {
+          "line": 243,
+          "t": 1795000277,
+          "max_khz": 3686400
+        },
+        {
+          "line": 244,
+          "t": 1795000291,
+          "max_khz": 2649600
+        },
+        {
+          "line": 245,
+          "t": 1795000306,
+          "max_khz": 2649600
+        },
+        {
+          "line": 246,
+          "t": 1795000320,
+          "max_khz": 2649600
+        },
+        {
+          "line": 247,
+          "t": 1795000335,
+          "max_khz": 2649600
+        },
+        {
+          "line": 248,
+          "t": 1795000349,
+          "max_khz": 2649600
+        },
+        {
+          "line": 249,
+          "t": 1795000364,
+          "max_khz": 2649600
+        },
+        {
+          "line": 250,
+          "t": 1795000379,
+          "max_khz": 2649600
+        },
+        {
+          "line": 251,
+          "t": 1795000393,
+          "max_khz": 2649600
+        },
+        {
+          "line": 252,
+          "t": 1795000408,
+          "max_khz": 2649600
+        },
+        {
+          "line": 253,
+          "t": 1795000423,
+          "max_khz": 2649600
+        },
+        {
+          "line": 254,
+          "t": 1795000437,
+          "max_khz": 2649600
+        },
+        {
+          "line": 255,
+          "t": 1795000453,
+          "max_khz": 2649600
+        },
+        {
+          "line": 256,
+          "t": 1795000467,
+          "max_khz": 2649600
+        },
+        {
+          "line": 257,
+          "t": 1795000482,
+          "max_khz": 2649600
+        },
+        {
+          "line": 258,
+          "t": 1795000496,
+          "max_khz": 2649600
+        },
+        {
+          "line": 259,
+          "t": 1795000511,
+          "max_khz": 2649600
+        },
+        {
+          "line": 260,
+          "t": 1795000527,
+          "max_khz": 2649600
+        },
+        {
+          "line": 261,
+          "t": 1795000545,
+          "max_khz": 2649600
+        },
+        {
+          "line": 262,
+          "t": 1795000561,
+          "max_khz": 2649600
+        },
+        {
+          "line": 263,
+          "t": 1795000579,
+          "max_khz": 2649600
+        },
+        {
+          "line": 264,
+          "t": 1795000593,
+          "max_khz": 2649600
+        },
+        {
+          "line": 265,
+          "t": 1795000609,
+          "max_khz": 2649600
+        },
+        {
+          "line": 266,
+          "t": 1795000626,
+          "max_khz": 2649600
+        },
+        {
+          "line": 267,
+          "t": 1795000641,
+          "max_khz": 2649600
+        },
+        {
+          "line": 268,
+          "t": 1795000656,
+          "max_khz": 2649600
+        },
+        {
+          "line": 269,
+          "t": 1795000670,
+          "max_khz": 2649600
+        },
+        {
+          "line": 270,
+          "t": 1795000685,
+          "max_khz": 2649600
+        },
+        {
+          "line": 271,
+          "t": 1795000699,
+          "max_khz": 2649600
+        },
+        {
+          "line": 272,
+          "t": 1795000715,
+          "max_khz": 2649600
+        },
+        {
+          "line": 273,
+          "t": 1795000730,
+          "max_khz": 2649600
+        },
+        {
+          "line": 274,
+          "t": 1795000745,
+          "max_khz": 2649600
+        },
+        {
+          "line": 275,
+          "t": 1795000760,
+          "max_khz": 2649600
+        },
+        {
+          "line": 276,
+          "t": 1795000775,
+          "max_khz": 2649600
+        },
+        {
+          "line": 277,
+          "t": 1795000789,
+          "max_khz": 2649600
+        },
+        {
+          "line": 278,
+          "t": 1795000804,
+          "max_khz": 2649600
+        },
+        {
+          "line": 279,
+          "t": 1795000820,
+          "max_khz": 2649600
+        },
+        {
+          "line": 280,
+          "t": 1795000835,
+          "max_khz": 2649600
+        },
+        {
+          "line": 281,
+          "t": 1795000850,
+          "max_khz": 2649600
+        },
+        {
+          "line": 282,
+          "t": 1795000864,
+          "max_khz": 2649600
+        },
+        {
+          "line": 283,
+          "t": 1795000879,
+          "max_khz": 2649600
+        },
+        {
+          "line": 284,
+          "t": 1795000894,
+          "max_khz": 2649600
+        },
+        {
+          "line": 285,
+          "t": 1795000909,
+          "max_khz": 2649600
+        },
+        {
+          "line": 286,
+          "t": 1795000923,
+          "max_khz": 2649600
+        },
+        {
+          "line": 287,
+          "t": 1795000939,
+          "max_khz": 2649600
+        },
+        {
+          "line": 288,
+          "t": 1795000953,
+          "max_khz": 2649600
+        },
+        {
+          "line": 289,
+          "t": 1795000968,
+          "max_khz": 2649600
+        },
+        {
+          "line": 290,
+          "t": 1795000983,
+          "max_khz": 2649600
+        },
+        {
+          "line": 291,
+          "t": 1795000998,
+          "max_khz": 2649600
+        },
+        {
+          "line": 292,
+          "t": 1795001013,
+          "max_khz": 2649600
+        },
+        {
+          "line": 293,
+          "t": 1795001027,
+          "max_khz": 2649600
+        },
+        {
+          "line": 294,
+          "t": 1795001042,
+          "max_khz": 2649600
+        },
+        {
+          "line": 295,
+          "t": 1795001057,
+          "max_khz": 2649600
+        },
+        {
+          "line": 296,
+          "t": 1795001072,
+          "max_khz": 2649600
+        },
+        {
+          "line": 297,
+          "t": 1795001087,
+          "max_khz": 2649600
+        },
+        {
+          "line": 298,
+          "t": 1795001101,
+          "max_khz": 2649600
+        },
+        {
+          "line": 299,
+          "t": 1795001116,
+          "max_khz": 2649600
+        },
+        {
+          "line": 300,
+          "t": 1795001131,
+          "max_khz": 2649600
+        },
+        {
+          "line": 301,
+          "t": 1795001146,
+          "max_khz": 2649600
+        },
+        {
+          "line": 302,
+          "t": 1795001161,
+          "max_khz": 2649600
+        },
+        {
+          "line": 303,
+          "t": 1795001176,
+          "max_khz": 2649600
+        },
+        {
+          "line": 304,
+          "t": 1795001191,
+          "max_khz": 2649600
+        },
+        {
+          "line": 305,
+          "t": 1795001205,
+          "max_khz": 2649600
+        },
+        {
+          "line": 306,
+          "t": 1795001220,
+          "max_khz": 2649600
+        },
+        {
+          "line": 307,
+          "t": 1795001235,
+          "max_khz": 2649600
+        },
+        {
+          "line": 308,
+          "t": 1795001249,
+          "max_khz": 2649600
+        },
+        {
+          "line": 309,
+          "t": 1795001264,
+          "max_khz": 2649600
+        },
+        {
+          "line": 310,
+          "t": 1795001279,
+          "max_khz": 2649600
+        },
+        {
+          "line": 311,
+          "t": 1795001293,
+          "max_khz": 2649600
+        },
+        {
+          "line": 312,
+          "t": 1795001308,
+          "max_khz": 2649600
+        },
+        {
+          "line": 313,
+          "t": 1795001322,
+          "max_khz": 2649600
+        },
+        {
+          "line": 314,
+          "t": 1795001337,
+          "max_khz": 2649600
+        },
+        {
+          "line": 315,
+          "t": 1795001352,
+          "max_khz": 2649600
+        },
+        {
+          "line": 316,
+          "t": 1795001368,
+          "max_khz": 2649600
+        },
+        {
+          "line": 317,
+          "t": 1795001384,
+          "max_khz": 2649600
+        },
+        {
+          "line": 318,
+          "t": 1795001399,
+          "max_khz": 2649600
+        },
+        {
+          "line": 319,
+          "t": 1795001415,
+          "max_khz": 2649600
+        },
+        {
+          "line": 320,
+          "t": 1795001429,
+          "max_khz": 2649600
+        },
+        {
+          "line": 321,
+          "t": 1795001444,
+          "max_khz": 2649600
+        },
+        {
+          "line": 322,
+          "t": 1795001459,
+          "max_khz": 2649600
+        },
+        {
+          "line": 323,
+          "t": 1795001473,
+          "max_khz": 2649600
+        },
+        {
+          "line": 324,
+          "t": 1795001488,
+          "max_khz": 2649600
+        },
+        {
+          "line": 325,
+          "t": 1795001503,
+          "max_khz": 2649600
+        },
+        {
+          "line": 326,
+          "t": 1795001518,
+          "max_khz": 2649600
+        },
+        {
+          "line": 327,
+          "t": 1795001532,
+          "max_khz": 2649600
+        },
+        {
+          "line": 328,
+          "t": 1795001547,
+          "max_khz": 2649600
+        },
+        {
+          "line": 329,
+          "t": 1795001562,
+          "max_khz": 2649600
+        },
+        {
+          "line": 330,
+          "t": 1795001577,
+          "max_khz": 2649600
+        },
+        {
+          "line": 331,
+          "t": 1795001592,
+          "max_khz": 2649600
+        },
+        {
+          "line": 332,
+          "t": 1795001607,
+          "max_khz": 2649600
+        },
+        {
+          "line": 333,
+          "t": 1795001621,
+          "max_khz": 2649600
+        },
+        {
+          "line": 334,
+          "t": 1795001636,
+          "max_khz": 2649600
+        },
+        {
+          "line": 335,
+          "t": 1795001653,
+          "max_khz": 2649600
+        },
+        {
+          "line": 336,
+          "t": 1795001669,
+          "max_khz": 2649600
+        },
+        {
+          "line": 337,
+          "t": 1795001686,
+          "max_khz": 2649600
+        },
+        {
+          "line": 338,
+          "t": 1795001701,
+          "max_khz": 2649600
+        },
+        {
+          "line": 339,
+          "t": 1795001716,
+          "max_khz": 2649600
+        },
+        {
+          "line": 340,
+          "t": 1795001731,
+          "max_khz": 2649600
+        },
+        {
+          "line": 341,
+          "t": 1795001746,
+          "max_khz": 2649600
+        },
+        {
+          "line": 342,
+          "t": 1795001761,
+          "max_khz": 2649600
+        },
+        {
+          "line": 343,
+          "t": 1795001776,
+          "max_khz": 2649600
+        },
+        {
+          "line": 344,
+          "t": 1795001791,
+          "max_khz": 2649600
+        },
+        {
+          "line": 345,
+          "t": 1795001806,
+          "max_khz": 2649600
+        },
+        {
+          "line": 346,
+          "t": 1795001821,
+          "max_khz": 2649600
+        },
+        {
+          "line": 347,
+          "t": 1795001836,
+          "max_khz": 2649600
+        },
+        {
+          "line": 348,
+          "t": 1795001851,
+          "max_khz": 2649600
+        },
+        {
+          "line": 349,
+          "t": 1795001867,
+          "max_khz": 2649600
+        },
+        {
+          "line": 350,
+          "t": 1795001882,
+          "max_khz": 2649600
+        },
+        {
+          "line": 351,
+          "t": 1795001898,
+          "max_khz": 2649600
+        },
+        {
+          "line": 352,
+          "t": 1795001913,
+          "max_khz": 2649600
+        },
+        {
+          "line": 353,
+          "t": 1795001928,
+          "max_khz": 2649600
+        },
+        {
+          "line": 354,
+          "t": 1795001945,
+          "max_khz": 2649600
+        },
+        {
+          "line": 355,
+          "t": 1795001960,
+          "max_khz": 2649600
+        },
+        {
+          "line": 356,
+          "t": 1795001977,
+          "max_khz": 2649600
+        },
+        {
+          "line": 357,
+          "t": 1795001994,
+          "max_khz": 2649600
+        },
+        {
+          "line": 358,
+          "t": 1795002009,
+          "max_khz": 2649600
+        },
+        {
+          "line": 359,
+          "t": 1795002027,
+          "max_khz": 2649600
+        },
+        {
+          "line": 360,
+          "t": 1795002043,
+          "max_khz": 2649600
+        },
+        {
+          "line": 361,
+          "t": 1795002059,
+          "max_khz": 2649600
+        },
+        {
+          "line": 362,
+          "t": 1795002075,
+          "max_khz": 2649600
+        },
+        {
+          "line": 363,
+          "t": 1795002090,
+          "max_khz": 2649600
+        },
+        {
+          "line": 364,
+          "t": 1795002105,
+          "max_khz": 2649600
+        },
+        {
+          "line": 365,
+          "t": 1795002120,
+          "max_khz": 2649600
+        },
+        {
+          "line": 366,
+          "t": 1795002138,
+          "max_khz": 2649600
+        },
+        {
+          "line": 367,
+          "t": 1795002153,
+          "max_khz": 2649600
+        },
+        {
+          "line": 368,
+          "t": 1795002168,
+          "max_khz": 2649600
+        },
+        {
+          "line": 369,
+          "t": 1795002183,
+          "max_khz": 2649600
+        },
+        {
+          "line": 370,
+          "t": 1795002198,
+          "max_khz": 2649600
+        },
+        {
+          "line": 371,
+          "t": 1795002214,
+          "max_khz": 2649600
+        },
+        {
+          "line": 372,
+          "t": 1795002230,
+          "max_khz": 2649600
+        },
+        {
+          "line": 373,
+          "t": 1795002246,
+          "max_khz": 2649600
+        },
+        {
+          "line": 374,
+          "t": 1795002263,
+          "max_khz": 2649600
+        },
+        {
+          "line": 375,
+          "t": 1795002279,
+          "max_khz": 2649600
+        },
+        {
+          "line": 376,
+          "t": 1795002294,
+          "max_khz": 2649600
+        },
+        {
+          "line": 377,
+          "t": 1795002310,
+          "max_khz": 2649600
+        },
+        {
+          "line": 378,
+          "t": 1795002325,
+          "max_khz": 2649600
+        },
+        {
+          "line": 379,
+          "t": 1795002340,
+          "max_khz": 2649600
+        },
+        {
+          "line": 380,
+          "t": 1795002357,
+          "max_khz": 2649600
+        },
+        {
+          "line": 381,
+          "t": 1795002375,
+          "max_khz": 2649600
+        },
+        {
+          "line": 382,
+          "t": 1795002391,
+          "max_khz": 2649600
+        },
+        {
+          "line": 383,
+          "t": 1795002407,
+          "max_khz": 2649600
+        },
+        {
+          "line": 384,
+          "t": 1795002424,
+          "max_khz": 2649600
+        },
+        {
+          "line": 385,
+          "t": 1795002440,
+          "max_khz": 2649600
+        },
+        {
+          "line": 386,
+          "t": 1795002457,
+          "max_khz": 2649600
+        },
+        {
+          "line": 387,
+          "t": 1795002478,
+          "max_khz": 2649600
+        },
+        {
+          "line": 388,
+          "t": 1795002495,
+          "max_khz": 2649600
+        },
+        {
+          "line": 389,
+          "t": 1795002515,
+          "max_khz": 2649600
+        },
+        {
+          "line": 390,
+          "t": 1795002532,
+          "max_khz": 2649600
+        },
+        {
+          "line": 391,
+          "t": 1795002547,
+          "max_khz": 2649600
+        },
+        {
+          "line": 392,
+          "t": 1795002563,
+          "max_khz": 2649600
+        },
+        {
+          "line": 393,
+          "t": 1795002578,
+          "max_khz": 2649600
+        },
+        {
+          "line": 394,
+          "t": 1795002593,
+          "max_khz": 2649600
+        },
+        {
+          "line": 395,
+          "t": 1795002609,
+          "max_khz": 2649600
+        },
+        {
+          "line": 396,
+          "t": 1795002624,
+          "max_khz": 2649600
+        },
+        {
+          "line": 397,
+          "t": 1795002639,
+          "max_khz": 2649600
+        },
+        {
+          "line": 398,
+          "t": 1795002656,
+          "max_khz": 2649600
+        },
+        {
+          "line": 399,
+          "t": 1795002671,
+          "max_khz": 2649600
+        },
+        {
+          "line": 400,
+          "t": 1795002686,
+          "max_khz": 2649600
+        },
+        {
+          "line": 401,
+          "t": 1795002701,
+          "max_khz": 2649600
+        },
+        {
+          "line": 402,
+          "t": 1795002717,
+          "max_khz": 2649600
+        },
+        {
+          "line": 403,
+          "t": 1795002732,
+          "max_khz": 2649600
+        },
+        {
+          "line": 404,
+          "t": 1795002748,
+          "max_khz": 2649600
+        },
+        {
+          "line": 405,
+          "t": 1795002765,
+          "max_khz": 2649600
+        },
+        {
+          "line": 406,
+          "t": 1795002785,
+          "max_khz": 2649600
+        },
+        {
+          "line": 407,
+          "t": 1795002801,
+          "max_khz": 2649600
+        },
+        {
+          "line": 408,
+          "t": 1795002816,
+          "max_khz": 2649600
+        },
+        {
+          "line": 409,
+          "t": 1795002830,
+          "max_khz": 2649600
+        },
+        {
+          "line": 410,
+          "t": 1795002845,
+          "max_khz": 2649600
+        },
+        {
+          "line": 411,
+          "t": 1795002861,
+          "max_khz": 2649600
+        },
+        {
+          "line": 412,
+          "t": 1795002876,
+          "max_khz": 2649600
+        },
+        {
+          "line": 413,
+          "t": 1795002891,
+          "max_khz": 2649600
+        },
+        {
+          "line": 414,
+          "t": 1795002907,
+          "max_khz": 2649600
+        },
+        {
+          "line": 415,
+          "t": 1795002924,
+          "max_khz": 2649600
+        },
+        {
+          "line": 416,
+          "t": 1795002941,
+          "max_khz": 2649600
+        },
+        {
+          "line": 417,
+          "t": 1795002956,
+          "max_khz": 2649600
+        },
+        {
+          "line": 418,
+          "t": 1795002971,
+          "max_khz": 2649600
+        },
+        {
+          "line": 419,
+          "t": 1795002986,
+          "max_khz": 2649600
+        },
+        {
+          "line": 420,
+          "t": 1795003003,
+          "max_khz": 2649600
+        },
+        {
+          "line": 421,
+          "t": 1795003018,
+          "max_khz": 2649600
+        },
+        {
+          "line": 422,
+          "t": 1795003033,
+          "max_khz": 2649600
+        },
+        {
+          "line": 423,
+          "t": 1795003048,
+          "max_khz": 2649600
+        },
+        {
+          "line": 424,
+          "t": 1795003063,
+          "max_khz": 2649600
+        },
+        {
+          "line": 425,
+          "t": 1795003078,
+          "max_khz": 2649600
+        },
+        {
+          "line": 426,
+          "t": 1795003094,
+          "max_khz": 2649600
+        },
+        {
+          "line": 427,
+          "t": 1795003109,
+          "max_khz": 2649600
+        },
+        {
+          "line": 428,
+          "t": 1795003124,
+          "max_khz": 2649600
+        },
+        {
+          "line": 429,
+          "t": 1795003139,
+          "max_khz": 2649600
+        },
+        {
+          "line": 430,
+          "t": 1795003155,
+          "max_khz": 2649600
+        },
+        {
+          "line": 431,
+          "t": 1795003170,
+          "max_khz": 2649600
+        },
+        {
+          "line": 432,
+          "t": 1795003186,
+          "max_khz": 2649600
+        },
+        {
+          "line": 433,
+          "t": 1795003201,
+          "max_khz": 2649600
+        },
+        {
+          "line": 434,
+          "t": 1795003216,
+          "max_khz": 2649600
+        },
+        {
+          "line": 435,
+          "t": 1795003235,
+          "max_khz": 2649600
+        },
+        {
+          "line": 436,
+          "t": 1795003252,
+          "max_khz": 2649600
+        },
+        {
+          "line": 437,
+          "t": 1795003270,
+          "max_khz": 2649600
+        },
+        {
+          "line": 438,
+          "t": 1795003288,
+          "max_khz": 2649600
+        },
+        {
+          "line": 439,
+          "t": 1795003305,
+          "max_khz": 2649600
+        },
+        {
+          "line": 440,
+          "t": 1795003322,
+          "max_khz": 2649600
+        },
+        {
+          "line": 441,
+          "t": 1795003337,
+          "max_khz": 2649600
+        },
+        {
+          "line": 442,
+          "t": 1795003352,
+          "max_khz": 2649600
+        },
+        {
+          "line": 443,
+          "t": 1795003367,
+          "max_khz": 2649600
+        },
+        {
+          "line": 444,
+          "t": 1795003382,
+          "max_khz": 2649600
+        },
+        {
+          "line": 445,
+          "t": 1795003397,
+          "max_khz": 2649600
+        },
+        {
+          "line": 446,
+          "t": 1795003412,
+          "max_khz": 921600
+        }
+      ]
+    },
+    "opt2_pass1": {
+      "settings": {
+        "order": "v4 guiowl maiui",
+        "extra_flags": "-fa on",
+        "img_tokens_override": "1024",
+        "maiui_quant": "Q8_0",
+        "shots": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png MastodonChangeLanguageTask-0-3.png MastodonManageHashtagsTask-0-3.png OpenFlightModeTask-0-3.png ",
+        "reps": 1,
+        "client_timeout": 3600,
+        "threads": 4,
+        "cache_ram": 0,
+        "flags_v4": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+        "files_v4": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+        "flags_guiowl": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+        "files_guiowl": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+        "flags_maiui": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+        "files_maiui": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+        "llama": "b12110 cd959bae9 android-arm64 CPU"
+      },
+      "device": {
+        "ro.product.model": "Art for arm64",
+        "ro.product.device": "art",
+        "ro.build.fingerprint": "qti/art/art:17/CQ2A.260820.002-CP2A.260605.016/eng.lnxbui:userdebug/test-keys",
+        "ro.build.version.sdk": "37",
+        "ro.soc.model": "SM8975",
+        "ro.soc.manufacturer": "QTI",
+        "mem": "MemTotal: 11474320 kB",
+        "cpus": "3744000 3744000 3744000 4032000 4032000 4032000 5011200 5011200 ",
+        "serial": "c4fef9df",
+        "idx": 0,
+        "order": "v4 guiowl maiui"
+      },
+      "version": "version: 0.9.0-dev (build 12110, commit cd959bae9)\nbuilt with Clang 21.0.0 for Android aarch64\n",
+      "models": {
+        "v4": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 35.584,
+              "client_latency_s": 35.651,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 30,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 73,
+                "y": 209
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "a74745fe853b558a037ebe82a9466647a0fa57c4dd8eaf72bdc2b1e6398dcbed",
+                  "bytes": 43266,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1795003481.831722,
+              "request_end": 1795003517.4153159
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 38.789,
+              "client_latency_s": 38.817,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 26,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 889,
+                "y": 523
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "402b636287cfe657f6dc55eb3dcc532f95aaa5915ce27bc09bf38de0773793be",
+                  "bytes": 43103,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1795003517.458642,
+              "request_end": 1795003556.24795
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 39.201,
+              "client_latency_s": 39.306,
+              "prompt_total": 1085,
+              "prompt_processed": 1085,
+              "cached": 0,
+              "output": 31,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 964,
+                "y": 214
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "1eb0b060184cff79a1bfb5b6a756236dd14b1a8ebefb56254afbf2e6f008c165",
+                  "bytes": 143563,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1348,
+              "request_start": 1795003556.3191261,
+              "request_end": 1795003595.520066
+            },
+            {
+              "record": 4,
+              "task": "MastodonChangeLanguageTask",
+              "rep": 1,
+              "latency_s": 41.277,
+              "client_latency_s": 41.907,
+              "prompt_total": 1080,
+              "prompt_processed": 1080,
+              "cached": 0,
+              "output": 31,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 944,
+                "y": 2231
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "389cd98adcb24b1b8ca07ab532f17341e8b3ca9e6295f1354a1f18176b1f691c",
+                  "bytes": 213887,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1329,
+              "request_start": 1795003596.168108,
+              "request_end": 1795003637.445581
+            },
+            {
+              "record": 5,
+              "task": "MastodonManageHashtagsTask",
+              "rep": 1,
+              "latency_s": 39.479,
+              "client_latency_s": 40.245,
+              "prompt_total": 1081,
+              "prompt_processed": 1081,
+              "cached": 0,
+              "output": 28,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 1015,
+                "y": 1459
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "a4d9373bddbd460de476480302f2b2e1a1fa28b8452c5522d09787382adf8bac",
+                  "bytes": 206493,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1334,
+              "request_start": 1795003638.21645,
+              "request_end": 1795003677.695748
+            },
+            {
+              "record": 6,
+              "task": "OpenFlightModeTask",
+              "rep": 1,
+              "latency_s": 38.253,
+              "client_latency_s": 38.586,
+              "prompt_total": 1071,
+              "prompt_processed": 1071,
+              "cached": 0,
+              "output": 25,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 964,
+                "y": 1298
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "d1d934946bf6d468b7c14830e9090e4bf1370623247714343f5d9e85349a57d2",
+                  "bytes": 94653,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1288,
+              "request_start": 1795003678.0557592,
+              "request_end": 1795003716.30899
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 5,
+            "e2e_median_s": 39.2,
+            "e2e_min_max_s": [
+              38.3,
+              41.3
+            ],
+            "phone_median_s": 36.9,
+            "prompt_s_median": 36.2,
+            "prompt_tokens_median": 1081,
+            "prompt_tok_s": 30.0,
+            "gen_tokens_median": 28,
+            "gen_tok_s_llamacpp_median": 41.1,
+            "finished_normally": "5/5",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 39.201,
+            "client_latency_s": 39.306,
+            "prompt_processed": 1081,
+            "prompt_total": 1081,
+            "cached": 0,
+            "output": 28
+          },
+          "thermal": {
+            "sample_count": 12,
+            "first_line": 6,
+            "last_line": 17,
+            "max_freq_counts": {
+              "2649600": 11,
+              "921600": 1
+            },
+            "per_core_median_khz": [
+              2534400.0,
+              2534400.0,
+              2534400.0,
+              1036800.0,
+              1036800.0,
+              1036800.0,
+              2649600.0,
+              2649600.0
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 0"
+            ]
+          }
+        },
+        "guiowl": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 211.369,
+              "client_latency_s": 212.388,
+              "prompt_total": 1994,
+              "prompt_processed": 1994,
+              "cached": 0,
+              "output": 46,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 199,
+                "y": 521
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "0e3cf173bb3c08e202adaff013ad4dfff627149d6a019ed130192660f3c47556",
+                  "bytes": 60425,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4065,
+              "request_start": 1795003776.014462,
+              "request_end": 1795003987.383627
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 197.03,
+              "client_latency_s": 197.127,
+              "prompt_total": 1994,
+              "prompt_processed": 993,
+              "cached": 1001,
+              "output": 41,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 878,
+                "y": 519
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "614b9347c0c5556d6b86708d3e4d2f13da1fcb1b3797abee23a11e92883f9f07",
+                  "bytes": 60518,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4065,
+              "request_start": 1795003987.564173,
+              "request_end": 1795004184.5939012
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 198.501,
+              "client_latency_s": 199.189,
+              "prompt_total": 1989,
+              "prompt_processed": 1016,
+              "cached": 973,
+              "output": 42,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 597,
+                "y": 346
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "ea83e29cab921a9b594e12ca9a408e0a43d66a6a29066c6f518888475f477e07",
+                  "bytes": 170630,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4062,
+              "request_start": 1795004185.381973,
+              "request_end": 1795004383.883307
+            },
+            {
+              "record": 4,
+              "task": "MastodonChangeLanguageTask",
+              "rep": 1,
+              "latency_s": 197.808,
+              "client_latency_s": 198.351,
+              "prompt_total": 1982,
+              "prompt_processed": 1009,
+              "cached": 973,
+              "output": 44,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 986,
+                "y": 1059
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "85291039c1edb508e0dd31f45c268396dded0d2a168ba3608274da2777c00da6",
+                  "bytes": 400998,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4043,
+              "request_start": 1795004384.440646,
+              "request_end": 1795004582.248524
+            },
+            {
+              "record": 5,
+              "task": "MastodonManageHashtagsTask",
+              "rep": 1,
+              "latency_s": 197.78,
+              "client_latency_s": 198.166,
+              "prompt_total": 1982,
+              "prompt_processed": 1005,
+              "cached": 977,
+              "output": 50,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 786,
+                "y": 947
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "aa65ad2fec2f2ffb5d83b11c98d350f4122a13c9112959950d000c44525f691f",
+                  "bytes": 277080,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4048,
+              "request_start": 1795004582.57302,
+              "request_end": 1795004780.352683
+            },
+            {
+              "record": 6,
+              "task": "OpenFlightModeTask",
+              "rep": 1,
+              "latency_s": 197.434,
+              "client_latency_s": 197.703,
+              "prompt_total": 1972,
+              "prompt_processed": 999,
+              "cached": 973,
+              "output": 49,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 961,
+                "y": 1300
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "11641cb21958b9846cd1d5670b34d8d10f24fb77f7ec7b9b9a1e70e537bb2bfb",
+                  "bytes": 122999,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4002,
+              "request_start": 1795004780.82192,
+              "request_end": 1795004978.2564101
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 5,
+            "e2e_median_s": 197.8,
+            "e2e_min_max_s": [
+              197.0,
+              198.5
+            ],
+            "phone_median_s": 195.4,
+            "prompt_s_median": 193.9,
+            "prompt_tokens_median": 1005,
+            "prompt_tok_s": 5.2,
+            "gen_tokens_median": 44,
+            "gen_tok_s_llamacpp_median": 30.8,
+            "finished_normally": "5/5",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 197.78,
+            "client_latency_s": 198.166,
+            "prompt_processed": 1005,
+            "prompt_total": 1982,
+            "cached": 973,
+            "output": 44
+          },
+          "thermal": {
+            "sample_count": 65,
+            "first_line": 35,
+            "last_line": 99,
+            "max_freq_counts": {
+              "2649600": 65
+            },
+            "per_core_median_khz": [
+              2534400,
+              2534400,
+              2534400,
+              1036800,
+              1036800,
+              1036800,
+              2649600,
+              2649600
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 0",
+              "Thermal Status: 1"
+            ]
+          }
+        },
+        "maiui": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 190.486,
+              "client_latency_s": 191.103,
+              "prompt_total": 1472,
+              "prompt_processed": 1472,
+              "cached": 0,
+              "output": 53,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 193,
+                "y": 530
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "0e3cf173bb3c08e202adaff013ad4dfff627149d6a019ed130192660f3c47556",
+                  "bytes": 60425,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1749,
+              "request_start": 1795005018.466261,
+              "request_end": 1795005208.952042
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 182.979,
+              "client_latency_s": 183.165,
+              "prompt_total": 1472,
+              "prompt_processed": 993,
+              "cached": 479,
+              "output": 55,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 899,
+                "y": 526
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "614b9347c0c5556d6b86708d3e4d2f13da1fcb1b3797abee23a11e92883f9f07",
+                  "bytes": 60518,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1749,
+              "request_start": 1795005209.36424,
+              "request_end": 1795005392.3431098
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 183.267,
+              "client_latency_s": 183.456,
+              "prompt_total": 1467,
+              "prompt_processed": 1021,
+              "cached": 446,
+              "output": 60,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 540,
+                "y": 343
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "ea83e29cab921a9b594e12ca9a408e0a43d66a6a29066c6f518888475f477e07",
+                  "bytes": 170630,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1746,
+              "request_start": 1795005392.56944,
+              "request_end": 1795005575.836128
+            },
+            {
+              "record": 4,
+              "task": "MastodonChangeLanguageTask",
+              "rep": 1,
+              "latency_s": 182.912,
+              "client_latency_s": 183.107,
+              "prompt_total": 1460,
+              "prompt_processed": 1014,
+              "cached": 446,
+              "output": 54,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 989,
+                "y": 2210
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "85291039c1edb508e0dd31f45c268396dded0d2a168ba3608274da2777c00da6",
+                  "bytes": 400998,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1727,
+              "request_start": 1795005576.058778,
+              "request_end": 1795005758.971072
+            },
+            {
+              "record": 5,
+              "task": "MastodonManageHashtagsTask",
+              "rep": 1,
+              "latency_s": 183.161,
+              "client_latency_s": 183.328,
+              "prompt_total": 1460,
+              "prompt_processed": 1010,
+              "cached": 450,
+              "output": 62,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 407,
+                "y": 2227
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "aa65ad2fec2f2ffb5d83b11c98d350f4122a13c9112959950d000c44525f691f",
+                  "bytes": 277080,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1732,
+              "request_start": 1795005759.2387578,
+              "request_end": 1795005942.3993359
+            },
+            {
+              "record": 6,
+              "task": "OpenFlightModeTask",
+              "rep": 1,
+              "latency_s": 183.995,
+              "client_latency_s": 184.076,
+              "prompt_total": 1450,
+              "prompt_processed": 1004,
+              "cached": 446,
+              "output": 85,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 969,
+                "y": 1302
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "11641cb21958b9846cd1d5670b34d8d10f24fb77f7ec7b9b9a1e70e537bb2bfb",
+                  "bytes": 122999,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1686,
+              "request_start": 1795005942.487351,
+              "request_end": 1795006126.482831
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 5,
+            "e2e_median_s": 183.2,
+            "e2e_min_max_s": [
+              182.9,
+              184.0
+            ],
+            "phone_median_s": 181.2,
+            "prompt_s_median": 179.0,
+            "prompt_tokens_median": 1010,
+            "prompt_tok_s": 5.6,
+            "gen_tokens_median": 60,
+            "gen_tok_s_llamacpp_median": 28.3,
+            "finished_normally": "5/5",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 183.161,
+            "client_latency_s": 183.328,
+            "prompt_processed": 1010,
+            "prompt_total": 1460,
+            "cached": 446,
+            "output": 60
+          },
+          "thermal": {
+            "sample_count": 61,
+            "first_line": 116,
+            "last_line": 176,
+            "max_freq_counts": {
+              "2649600": 59,
+              "1152000": 2
+            },
+            "per_core_median_khz": [
+              2534400,
+              2534400,
+              2534400,
+              1036800,
+              1036800,
+              1036800,
+              2649600,
+              2649600
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 1",
+              "Thermal Status: 2"
+            ]
+          }
+        }
+      }
+    },
+    "opt2_pass2": {
+      "settings": {
+        "order": "maiui guiowl v4",
+        "extra_flags": "-fa on",
+        "img_tokens_override": "1024",
+        "maiui_quant": "Q8_0",
+        "shots": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png MastodonChangeLanguageTask-0-3.png MastodonManageHashtagsTask-0-3.png OpenFlightModeTask-0-3.png ",
+        "reps": 1,
+        "client_timeout": 3600,
+        "threads": 4,
+        "cache_ram": 0,
+        "flags_maiui": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+        "files_maiui": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+        "flags_guiowl": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+        "files_guiowl": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+        "flags_v4": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+        "files_v4": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+        "llama": "b12110 cd959bae9 android-arm64 CPU"
+      },
+      "device": {
+        "ro.product.model": "Art for arm64",
+        "ro.product.device": "art",
+        "ro.build.fingerprint": "qti/art/art:17/CQ2A.260820.002-CP2A.260605.016/eng.lnxbui:userdebug/test-keys",
+        "ro.build.version.sdk": "37",
+        "ro.soc.model": "SM8975",
+        "ro.soc.manufacturer": "QTI",
+        "mem": "MemTotal: 11474320 kB",
+        "cpus": "3744000 3744000 3744000 4032000 4032000 4032000 5011200 5011200 ",
+        "serial": "c4fef9df",
+        "idx": 0,
+        "order": "maiui guiowl v4"
+      },
+      "version": "version: 0.9.0-dev (build 12110, commit cd959bae9)\nbuilt with Clang 21.0.0 for Android aarch64\n",
+      "models": {
+        "v4": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 38.881,
+              "client_latency_s": 38.989,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 30,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 73,
+                "y": 209
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "a74745fe853b558a037ebe82a9466647a0fa57c4dd8eaf72bdc2b1e6398dcbed",
+                  "bytes": 43266,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1795008571.926233,
+              "request_end": 1795008610.806937
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 38.622,
+              "client_latency_s": 38.664,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 26,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 889,
+                "y": 523
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "402b636287cfe657f6dc55eb3dcc532f95aaa5915ce27bc09bf38de0773793be",
+                  "bytes": 43103,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1795008610.8890848,
+              "request_end": 1795008649.510696
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 38.969,
+              "client_latency_s": 39.07,
+              "prompt_total": 1085,
+              "prompt_processed": 1085,
+              "cached": 0,
+              "output": 31,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 964,
+                "y": 214
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "1eb0b060184cff79a1bfb5b6a756236dd14b1a8ebefb56254afbf2e6f008c165",
+                  "bytes": 143563,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1348,
+              "request_start": 1795008649.6173382,
+              "request_end": 1795008688.5860538
+            },
+            {
+              "record": 4,
+              "task": "MastodonChangeLanguageTask",
+              "rep": 1,
+              "latency_s": 38.757,
+              "client_latency_s": 38.825,
+              "prompt_total": 1080,
+              "prompt_processed": 1080,
+              "cached": 0,
+              "output": 31,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 944,
+                "y": 2231
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "389cd98adcb24b1b8ca07ab532f17341e8b3ca9e6295f1354a1f18176b1f691c",
+                  "bytes": 213887,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1329,
+              "request_start": 1795008688.650839,
+              "request_end": 1795008727.407924
+            },
+            {
+              "record": 5,
+              "task": "MastodonManageHashtagsTask",
+              "rep": 1,
+              "latency_s": 38.784,
+              "client_latency_s": 38.823,
+              "prompt_total": 1081,
+              "prompt_processed": 1081,
+              "cached": 0,
+              "output": 28,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 1015,
+                "y": 1459
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "a4d9373bddbd460de476480302f2b2e1a1fa28b8452c5522d09787382adf8bac",
+                  "bytes": 206493,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1334,
+              "request_start": 1795008727.458957,
+              "request_end": 1795008766.242531
+            },
+            {
+              "record": 6,
+              "task": "OpenFlightModeTask",
+              "rep": 1,
+              "latency_s": 37.653,
+              "client_latency_s": 37.707,
+              "prompt_total": 1071,
+              "prompt_processed": 1071,
+              "cached": 0,
+              "output": 25,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 964,
+                "y": 1298
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "d1d934946bf6d468b7c14830e9090e4bf1370623247714343f5d9e85349a57d2",
+                  "bytes": 94653,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1288,
+              "request_start": 1795008766.295905,
+              "request_end": 1795008803.948545
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 5,
+            "e2e_median_s": 38.8,
+            "e2e_min_max_s": [
+              37.7,
+              39.0
+            ],
+            "phone_median_s": 36.9,
+            "prompt_s_median": 36.2,
+            "prompt_tokens_median": 1081,
+            "prompt_tok_s": 30.0,
+            "gen_tokens_median": 28,
+            "gen_tok_s_llamacpp_median": 41.5,
+            "finished_normally": "5/5",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 38.757,
+            "client_latency_s": 38.823,
+            "prompt_processed": 1081,
+            "prompt_total": 1081,
+            "cached": 0,
+            "output": 28
+          },
+          "thermal": {
+            "sample_count": 13,
+            "first_line": 167,
+            "last_line": 179,
+            "max_freq_counts": {
+              "2649600": 13
+            },
+            "per_core_median_khz": [
+              2534400,
+              2534400,
+              2534400,
+              1036800,
+              1036800,
+              1036800,
+              2649600,
+              2649600
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 1"
+            ]
+          }
+        },
+        "guiowl": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 216.991,
+              "client_latency_s": 217.412,
+              "prompt_total": 1994,
+              "prompt_processed": 1994,
+              "cached": 0,
+              "output": 46,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 199,
+                "y": 521
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "0e3cf173bb3c08e202adaff013ad4dfff627149d6a019ed130192660f3c47556",
+                  "bytes": 60425,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4065,
+              "request_start": 1795007338.47464,
+              "request_end": 1795007555.4659579
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 197.137,
+              "client_latency_s": 197.218,
+              "prompt_total": 1994,
+              "prompt_processed": 993,
+              "cached": 1001,
+              "output": 41,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 878,
+                "y": 519
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "614b9347c0c5556d6b86708d3e4d2f13da1fcb1b3797abee23a11e92883f9f07",
+                  "bytes": 60518,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4065,
+              "request_start": 1795007555.543175,
+              "request_end": 1795007752.679955
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 197.449,
+              "client_latency_s": 197.557,
+              "prompt_total": 1989,
+              "prompt_processed": 1016,
+              "cached": 973,
+              "output": 42,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 597,
+                "y": 346
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "ea83e29cab921a9b594e12ca9a408e0a43d66a6a29066c6f518888475f477e07",
+                  "bytes": 170630,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4062,
+              "request_start": 1795007752.864469,
+              "request_end": 1795007950.313333
+            },
+            {
+              "record": 4,
+              "task": "MastodonChangeLanguageTask",
+              "rep": 1,
+              "latency_s": 197.365,
+              "client_latency_s": 197.467,
+              "prompt_total": 1982,
+              "prompt_processed": 1009,
+              "cached": 973,
+              "output": 44,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 986,
+                "y": 1059
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "85291039c1edb508e0dd31f45c268396dded0d2a168ba3608274da2777c00da6",
+                  "bytes": 400998,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4043,
+              "request_start": 1795007950.4127948,
+              "request_end": 1795008147.7777228
+            },
+            {
+              "record": 5,
+              "task": "MastodonManageHashtagsTask",
+              "rep": 1,
+              "latency_s": 197.457,
+              "client_latency_s": 197.666,
+              "prompt_total": 1982,
+              "prompt_processed": 1005,
+              "cached": 977,
+              "output": 50,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 786,
+                "y": 947
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "aa65ad2fec2f2ffb5d83b11c98d350f4122a13c9112959950d000c44525f691f",
+                  "bytes": 277080,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4048,
+              "request_start": 1795008147.926199,
+              "request_end": 1795008345.382925
+            },
+            {
+              "record": 6,
+              "task": "OpenFlightModeTask",
+              "rep": 1,
+              "latency_s": 197.277,
+              "client_latency_s": 197.499,
+              "prompt_total": 1972,
+              "prompt_processed": 999,
+              "cached": 973,
+              "output": 49,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 961,
+                "y": 1300
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "11641cb21958b9846cd1d5670b34d8d10f24fb77f7ec7b9b9a1e70e537bb2bfb",
+                  "bytes": 122999,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 4002,
+              "request_start": 1795008345.7070148,
+              "request_end": 1795008542.9841878
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 5,
+            "e2e_median_s": 197.4,
+            "e2e_min_max_s": [
+              197.1,
+              197.5
+            ],
+            "phone_median_s": 195.4,
+            "prompt_s_median": 193.9,
+            "prompt_tokens_median": 1005,
+            "prompt_tok_s": 5.2,
+            "gen_tokens_median": 44,
+            "gen_tok_s_llamacpp_median": 30.7,
+            "finished_normally": "5/5",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 197.365,
+            "client_latency_s": 197.499,
+            "prompt_processed": 1005,
+            "prompt_total": 1982,
+            "cached": 973,
+            "output": 44
+          },
+          "thermal": {
+            "sample_count": 68,
+            "first_line": 95,
+            "last_line": 162,
+            "max_freq_counts": {
+              "2649600": 65,
+              "1152000": 1,
+              "1036800": 1,
+              "921600": 1
+            },
+            "per_core_median_khz": [
+              2534400.0,
+              2534400.0,
+              2534400.0,
+              1036800.0,
+              1036800.0,
+              1036800.0,
+              2649600.0,
+              2649600.0
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 1"
+            ]
+          }
+        },
+        "maiui": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 188.334,
+              "client_latency_s": 188.786,
+              "prompt_total": 1472,
+              "prompt_processed": 1472,
+              "cached": 0,
+              "output": 53,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 193,
+                "y": 530
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "0e3cf173bb3c08e202adaff013ad4dfff627149d6a019ed130192660f3c47556",
+                  "bytes": 60425,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1749,
+              "request_start": 1795006189.1960142,
+              "request_end": 1795006377.530122
+            },
+            {
+              "record": 2,
+              "task": "AcceptMeetingTask",
+              "rep": 1,
+              "latency_s": 182.72,
+              "client_latency_s": 182.777,
+              "prompt_total": 1472,
+              "prompt_processed": 993,
+              "cached": 479,
+              "output": 55,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 899,
+                "y": 526
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "614b9347c0c5556d6b86708d3e4d2f13da1fcb1b3797abee23a11e92883f9f07",
+                  "bytes": 60518,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1749,
+              "request_start": 1795006377.68489,
+              "request_end": 1795006560.4050639
+            },
+            {
+              "record": 3,
+              "task": "CheckDeduplicatedEventsTask",
+              "rep": 1,
+              "latency_s": 183.276,
+              "client_latency_s": 183.424,
+              "prompt_total": 1467,
+              "prompt_processed": 1021,
+              "cached": 446,
+              "output": 60,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 540,
+                "y": 343
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "ea83e29cab921a9b594e12ca9a408e0a43d66a6a29066c6f518888475f477e07",
+                  "bytes": 170630,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1746,
+              "request_start": 1795006560.486471,
+              "request_end": 1795006743.7625248
+            },
+            {
+              "record": 4,
+              "task": "MastodonChangeLanguageTask",
+              "rep": 1,
+              "latency_s": 183.114,
+              "client_latency_s": 183.398,
+              "prompt_total": 1460,
+              "prompt_processed": 1014,
+              "cached": 446,
+              "output": 54,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 989,
+                "y": 2210
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "85291039c1edb508e0dd31f45c268396dded0d2a168ba3608274da2777c00da6",
+                  "bytes": 400998,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1727,
+              "request_start": 1795006744.134763,
+              "request_end": 1795006927.248368
+            },
+            {
+              "record": 5,
+              "task": "MastodonManageHashtagsTask",
+              "rep": 1,
+              "latency_s": 183.499,
+              "client_latency_s": 183.91,
+              "prompt_total": 1460,
+              "prompt_processed": 1010,
+              "cached": 450,
+              "output": 62,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 407,
+                "y": 2227
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "aa65ad2fec2f2ffb5d83b11c98d350f4122a13c9112959950d000c44525f691f",
+                  "bytes": 277080,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1732,
+              "request_start": 1795006927.5798452,
+              "request_end": 1795007111.079272
+            },
+            {
+              "record": 6,
+              "task": "OpenFlightModeTask",
+              "rep": 1,
+              "latency_s": 184.311,
+              "client_latency_s": 184.661,
+              "prompt_total": 1450,
+              "prompt_processed": 1004,
+              "cached": 446,
+              "output": 85,
+              "cap": 2048,
+              "action": {
+                "action_type": "click",
+                "x": 969,
+                "y": 1302
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "11641cb21958b9846cd1d5670b34d8d10f24fb77f7ec7b9b9a1e70e537bb2bfb",
+                  "bytes": 122999,
+                  "w": 1080,
+                  "h": 2400
+                }
+              ],
+              "text_chars": 1686,
+              "request_start": 1795007111.691649,
+              "request_end": 1795007296.002513
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": [],
+          "summary": {
+            "calls": 5,
+            "e2e_median_s": 183.3,
+            "e2e_min_max_s": [
+              182.7,
+              184.3
+            ],
+            "phone_median_s": 181.3,
+            "prompt_s_median": 179.2,
+            "prompt_tokens_median": 1010,
+            "prompt_tok_s": 5.6,
+            "gen_tokens_median": 60,
+            "gen_tok_s_llamacpp_median": 28.2,
+            "finished_normally": "5/5",
+            "fastest_core_ghz_median_sampled": 2.65
+          },
+          "exact_medians": {
+            "proxy_latency_s": 183.276,
+            "client_latency_s": 183.424,
+            "prompt_processed": 1010,
+            "prompt_total": 1460,
+            "cached": 446,
+            "output": 60
+          },
+          "thermal": {
+            "sample_count": 61,
+            "first_line": 17,
+            "last_line": 77,
+            "max_freq_counts": {
+              "2649600": 61
+            },
+            "per_core_median_khz": [
+              2534400,
+              2534400,
+              2534400,
+              1036800,
+              1036800,
+              1036800,
+              2649600,
+              2649600
+            ],
+            "battery_temp_dC": [
+              "380"
+            ],
+            "status": [
+              "Thermal Status: 1"
+            ]
+          }
+        }
+      }
+    },
+    "smoke_v6_1806": {
+      "settings": {
+        "order": "v4",
+        "extra_flags": "-fa on",
+        "img_tokens_override": "",
+        "maiui_quant": "Q4_K_M",
+        "shots": "AcceptMeetingTask-0-3.png ",
+        "reps": 0,
+        "client_timeout": 3600,
+        "threads": 4,
+        "cache_ram": 0,
+        "flags_v4": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+        "files_v4": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+        "llama": "b12110 cd959bae9 android-arm64 CPU"
+      },
+      "device": {
+        "ro.product.model": "Art for arm64",
+        "ro.product.device": "art",
+        "ro.build.fingerprint": "qti/art/art:17/CQ2A.260820.002-CP2A.260605.016/eng.lnxbui:userdebug/test-keys",
+        "ro.build.version.sdk": "37",
+        "ro.soc.model": "SM8975",
+        "ro.soc.manufacturer": "QTI",
+        "mem": "MemTotal: 11474320 kB",
+        "cpus": "3744000 3744000 3744000 4032000 4032000 4032000 5011200 5011200 ",
+        "serial": "c4fef9df",
+        "idx": 0,
+        "order": "v4"
+      },
+      "version": "version: 0.9.0-dev (build 12110, commit cd959bae9)\nbuilt with Clang 21.0.0 for Android aarch64\n",
+      "models": {
+        "v4": {
+          "rows": [
+            {
+              "record": 1,
+              "task": "AcceptMeetingTask",
+              "rep": 0,
+              "latency_s": 26.422,
+              "client_latency_s": 26.795,
+              "prompt_total": 1091,
+              "prompt_processed": 1091,
+              "cached": 0,
+              "output": 30,
+              "cap": 512,
+              "action": {
+                "action_type": "click",
+                "x": 73,
+                "y": 209
+              },
+              "image": [
+                {
+                  "role": "user",
+                  "image_sha256": "a74745fe853b558a037ebe82a9466647a0fa57c4dd8eaf72bdc2b1e6398dcbed",
+                  "bytes": 43266,
+                  "w": 576,
+                  "h": 1280
+                }
+              ],
+              "text_chars": 1351,
+              "request_start": 1794996449.362922,
+              "request_end": 1794996475.784757
+            }
+          ],
+          "all_successful": true,
+          "ordered_one_proxy_record_per_predict": true,
+          "server_timing_and_completion_count_match": true,
+          "explicit_FA_lines": [],
+          "explicit_image_counts": [],
+          "retry_error_lines": []
+        }
+      }
+    }
+  },
+  "headline": {
+    "generator_v4_mean_of_rounded_pass_medians": 39.0,
+    "pooled_option2_medians": {
+      "v4": 38.786500000000004,
+      "guiowl": 197.44150000000002,
+      "maiui": 183.214
+    },
+    "pooled_option2_ratios": {
+      "guiowl": 5.090469622162351,
+      "maiui": 4.7236538486329005
+    },
+    "paired_case_ratios": {
+      "guiowl": [
+        5.079532857253345,
+        5.0636718451059926,
+        4.792208736100007,
+        5.009752020061298,
+        5.161268397249889,
+        5.104266998083993,
+        5.066822345967307,
+        5.09237041050649,
+        5.091197400990099,
+        5.239343478607283
+      ],
+      "maiui": [
+        4.7172909845574775,
+        4.675059309711487,
+        4.431329796254573,
+        4.639453886876567,
+        4.809949546440802,
+        4.7309823416705505,
+        4.703122995201314,
+        4.724669092034987,
+        4.731306724422442,
+        4.894988447135686
+      ]
+    },
+    "option1_vs_v4_option2": {
+      "guiowl": 28.20073076923077,
+      "maiui": 27.25819230769231
+    },
+    "v4_two_shared_screens": {
+      "opt1_eval": 27.658,
+      "opt2_pass1": 38.995000000000005,
+      "opt2_pass2": 38.795500000000004
+    }
+  },
+  "checks": [
+    {
+      "path": "opt1_eval.settings.order",
+      "computed": "v4 guiowl maiui",
+      "saved": "v4 guiowl maiui",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.extra_flags",
+      "computed": "-fa on",
+      "saved": "-fa on",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.img_tokens_override",
+      "computed": "",
+      "saved": "",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.maiui_quant",
+      "computed": "Q8_0",
+      "saved": "Q8_0",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.shots",
+      "computed": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png ",
+      "saved": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png ",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.reps",
+      "computed": 1,
+      "saved": 1,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.client_timeout",
+      "computed": 3600,
+      "saved": 3600,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.threads",
+      "computed": 4,
+      "saved": 4,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.cache_ram",
+      "computed": 0,
+      "saved": 0,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.flags_v4",
+      "computed": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.files_v4",
+      "computed": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+      "saved": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.flags_guiowl",
+      "computed": "-c 20480 --image-max-tokens 2600 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 20480 --image-max-tokens 2600 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.files_guiowl",
+      "computed": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+      "saved": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.flags_maiui",
+      "computed": "-c 20480 --image-max-tokens 2600 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 20480 --image-max-tokens 2600 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.files_maiui",
+      "computed": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+      "saved": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.settings.llama",
+      "computed": "b12110 cd959bae9 android-arm64 CPU",
+      "saved": "b12110 cd959bae9 android-arm64 CPU",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.calls",
+      "computed": 2,
+      "saved": 2,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.e2e_median_s",
+      "computed": 27.7,
+      "saved": 27.7,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.e2e_min_max_s[0]",
+      "computed": 27.4,
+      "saved": 27.4,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.e2e_min_max_s[1]",
+      "computed": 27.9,
+      "saved": 27.9,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.phone_median_s",
+      "computed": 25.6,
+      "saved": 25.6,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.prompt_s_median",
+      "computed": 25.0,
+      "saved": 25.0,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.prompt_tokens_median",
+      "computed": 1088,
+      "saved": 1088,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.prompt_tok_s",
+      "computed": 43.5,
+      "saved": 43.5,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.gen_tokens_median",
+      "computed": 28,
+      "saved": 28,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.gen_tok_s_llamacpp_median",
+      "computed": 50.0,
+      "saved": 50.0,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.finished_normally",
+      "computed": "2/2",
+      "saved": "2/2",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.v4.fastest_core_ghz_median_sampled",
+      "computed": 4.03,
+      "saved": 4.03,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.calls",
+      "computed": 2,
+      "saved": 2,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.e2e_median_s",
+      "computed": 1099.8,
+      "saved": 1099.8,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.e2e_min_max_s[0]",
+      "computed": 1099.5,
+      "saved": 1099.5,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.e2e_min_max_s[1]",
+      "computed": 1100.2,
+      "saved": 1100.2,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.phone_median_s",
+      "computed": 1097.8,
+      "saved": 1097.8,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.prompt_s_median",
+      "computed": 1096.0,
+      "saved": 1096.0,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.prompt_tokens_median",
+      "computed": 2567,
+      "saved": 2567,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.prompt_tok_s",
+      "computed": 2.3,
+      "saved": 2.3,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.gen_tokens_median",
+      "computed": 43,
+      "saved": 43,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.gen_tok_s_llamacpp_median",
+      "computed": 23.6,
+      "saved": 23.6,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.finished_normally",
+      "computed": "2/2",
+      "saved": "2/2",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.guiowl.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.calls",
+      "computed": 2,
+      "saved": 2,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.e2e_median_s",
+      "computed": 1063.1,
+      "saved": 1063.1,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.e2e_min_max_s[0]",
+      "computed": 1062.8,
+      "saved": 1062.8,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.e2e_min_max_s[1]",
+      "computed": 1063.4,
+      "saved": 1063.4,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.phone_median_s",
+      "computed": 1061.0,
+      "saved": 1061.0,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.prompt_s_median",
+      "computed": 1058.4,
+      "saved": 1058.4,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.prompt_tokens_median",
+      "computed": 2570,
+      "saved": 2570,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.prompt_tok_s",
+      "computed": 2.4,
+      "saved": 2.4,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.gen_tokens_median",
+      "computed": 58,
+      "saved": 58,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.gen_tok_s_llamacpp_median",
+      "computed": 22.5,
+      "saved": 22.5,
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.finished_normally",
+      "computed": "2/2",
+      "saved": "2/2",
+      "match": true
+    },
+    {
+      "path": "opt1_eval.maiui.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.order",
+      "computed": "v4 guiowl maiui",
+      "saved": "v4 guiowl maiui",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.extra_flags",
+      "computed": "-fa on",
+      "saved": "-fa on",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.img_tokens_override",
+      "computed": "1024",
+      "saved": "1024",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.maiui_quant",
+      "computed": "Q8_0",
+      "saved": "Q8_0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.shots",
+      "computed": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png MastodonChangeLanguageTask-0-3.png MastodonManageHashtagsTask-0-3.png OpenFlightModeTask-0-3.png ",
+      "saved": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png MastodonChangeLanguageTask-0-3.png MastodonManageHashtagsTask-0-3.png OpenFlightModeTask-0-3.png ",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.reps",
+      "computed": 1,
+      "saved": 1,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.client_timeout",
+      "computed": 3600,
+      "saved": 3600,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.threads",
+      "computed": 4,
+      "saved": 4,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.cache_ram",
+      "computed": 0,
+      "saved": 0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.flags_v4",
+      "computed": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.files_v4",
+      "computed": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+      "saved": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.flags_guiowl",
+      "computed": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.files_guiowl",
+      "computed": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+      "saved": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.flags_maiui",
+      "computed": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.files_maiui",
+      "computed": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+      "saved": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.settings.llama",
+      "computed": "b12110 cd959bae9 android-arm64 CPU",
+      "saved": "b12110 cd959bae9 android-arm64 CPU",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.calls",
+      "computed": 5,
+      "saved": 5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.e2e_median_s",
+      "computed": 39.2,
+      "saved": 39.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.e2e_min_max_s[0]",
+      "computed": 38.3,
+      "saved": 38.3,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.e2e_min_max_s[1]",
+      "computed": 41.3,
+      "saved": 41.3,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.phone_median_s",
+      "computed": 36.9,
+      "saved": 36.9,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.prompt_s_median",
+      "computed": 36.2,
+      "saved": 36.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.prompt_tokens_median",
+      "computed": 1081,
+      "saved": 1081,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.prompt_tok_s",
+      "computed": 30.0,
+      "saved": 30.0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.gen_tokens_median",
+      "computed": 28,
+      "saved": 28,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.gen_tok_s_llamacpp_median",
+      "computed": 41.1,
+      "saved": 41.1,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.finished_normally",
+      "computed": "5/5",
+      "saved": "5/5",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.v4.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.calls",
+      "computed": 5,
+      "saved": 5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.e2e_median_s",
+      "computed": 197.8,
+      "saved": 197.8,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.e2e_min_max_s[0]",
+      "computed": 197.0,
+      "saved": 197.0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.e2e_min_max_s[1]",
+      "computed": 198.5,
+      "saved": 198.5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.phone_median_s",
+      "computed": 195.4,
+      "saved": 195.4,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.prompt_s_median",
+      "computed": 193.9,
+      "saved": 193.9,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.prompt_tokens_median",
+      "computed": 1005,
+      "saved": 1005,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.prompt_tok_s",
+      "computed": 5.2,
+      "saved": 5.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.gen_tokens_median",
+      "computed": 44,
+      "saved": 44,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.gen_tok_s_llamacpp_median",
+      "computed": 30.8,
+      "saved": 30.8,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.finished_normally",
+      "computed": "5/5",
+      "saved": "5/5",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.guiowl.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.calls",
+      "computed": 5,
+      "saved": 5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.e2e_median_s",
+      "computed": 183.2,
+      "saved": 183.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.e2e_min_max_s[0]",
+      "computed": 182.9,
+      "saved": 182.9,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.e2e_min_max_s[1]",
+      "computed": 184.0,
+      "saved": 184.0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.phone_median_s",
+      "computed": 181.2,
+      "saved": 181.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.prompt_s_median",
+      "computed": 179.0,
+      "saved": 179.0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.prompt_tokens_median",
+      "computed": 1010,
+      "saved": 1010,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.prompt_tok_s",
+      "computed": 5.6,
+      "saved": 5.6,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.gen_tokens_median",
+      "computed": 60,
+      "saved": 60,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.gen_tok_s_llamacpp_median",
+      "computed": 28.3,
+      "saved": 28.3,
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.finished_normally",
+      "computed": "5/5",
+      "saved": "5/5",
+      "match": true
+    },
+    {
+      "path": "opt2_pass1.maiui.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.order",
+      "computed": "maiui guiowl v4",
+      "saved": "maiui guiowl v4",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.extra_flags",
+      "computed": "-fa on",
+      "saved": "-fa on",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.img_tokens_override",
+      "computed": "1024",
+      "saved": "1024",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.maiui_quant",
+      "computed": "Q8_0",
+      "saved": "Q8_0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.shots",
+      "computed": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png MastodonChangeLanguageTask-0-3.png MastodonManageHashtagsTask-0-3.png OpenFlightModeTask-0-3.png ",
+      "saved": "AcceptMeetingTask-0-3.png CheckDeduplicatedEventsTask-0-3.png MastodonChangeLanguageTask-0-3.png MastodonManageHashtagsTask-0-3.png OpenFlightModeTask-0-3.png ",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.reps",
+      "computed": 1,
+      "saved": 1,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.client_timeout",
+      "computed": 3600,
+      "saved": 3600,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.threads",
+      "computed": 4,
+      "saved": 4,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.cache_ram",
+      "computed": 0,
+      "saved": 0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.flags_maiui",
+      "computed": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.files_maiui",
+      "computed": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+      "saved": "models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.flags_guiowl",
+      "computed": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 20480 --image-max-tokens 1024 --jinja -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.files_guiowl",
+      "computed": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+      "saved": "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.flags_v4",
+      "computed": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+      "saved": "-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -fa on -np 1 -t 4 --cache-ram 0",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.files_v4",
+      "computed": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+      "saved": "models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.settings.llama",
+      "computed": "b12110 cd959bae9 android-arm64 CPU",
+      "saved": "b12110 cd959bae9 android-arm64 CPU",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.calls",
+      "computed": 5,
+      "saved": 5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.e2e_median_s",
+      "computed": 38.8,
+      "saved": 38.8,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.e2e_min_max_s[0]",
+      "computed": 37.7,
+      "saved": 37.7,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.e2e_min_max_s[1]",
+      "computed": 39.0,
+      "saved": 39.0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.phone_median_s",
+      "computed": 36.9,
+      "saved": 36.9,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.prompt_s_median",
+      "computed": 36.2,
+      "saved": 36.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.prompt_tokens_median",
+      "computed": 1081,
+      "saved": 1081,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.prompt_tok_s",
+      "computed": 30.0,
+      "saved": 30.0,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.gen_tokens_median",
+      "computed": 28,
+      "saved": 28,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.gen_tok_s_llamacpp_median",
+      "computed": 41.5,
+      "saved": 41.5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.finished_normally",
+      "computed": "5/5",
+      "saved": "5/5",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.v4.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.calls",
+      "computed": 5,
+      "saved": 5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.e2e_median_s",
+      "computed": 197.4,
+      "saved": 197.4,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.e2e_min_max_s[0]",
+      "computed": 197.1,
+      "saved": 197.1,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.e2e_min_max_s[1]",
+      "computed": 197.5,
+      "saved": 197.5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.phone_median_s",
+      "computed": 195.4,
+      "saved": 195.4,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.prompt_s_median",
+      "computed": 193.9,
+      "saved": 193.9,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.prompt_tokens_median",
+      "computed": 1005,
+      "saved": 1005,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.prompt_tok_s",
+      "computed": 5.2,
+      "saved": 5.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.gen_tokens_median",
+      "computed": 44,
+      "saved": 44,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.gen_tok_s_llamacpp_median",
+      "computed": 30.7,
+      "saved": 30.7,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.finished_normally",
+      "computed": "5/5",
+      "saved": "5/5",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.guiowl.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.calls",
+      "computed": 5,
+      "saved": 5,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.e2e_median_s",
+      "computed": 183.3,
+      "saved": 183.3,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.e2e_min_max_s[0]",
+      "computed": 182.7,
+      "saved": 182.7,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.e2e_min_max_s[1]",
+      "computed": 184.3,
+      "saved": 184.3,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.phone_median_s",
+      "computed": 181.3,
+      "saved": 181.3,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.prompt_s_median",
+      "computed": 179.2,
+      "saved": 179.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.prompt_tokens_median",
+      "computed": 1010,
+      "saved": 1010,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.prompt_tok_s",
+      "computed": 5.6,
+      "saved": 5.6,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.gen_tokens_median",
+      "computed": 60,
+      "saved": 60,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.gen_tok_s_llamacpp_median",
+      "computed": 28.2,
+      "saved": 28.2,
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.finished_normally",
+      "computed": "5/5",
+      "saved": "5/5",
+      "match": true
+    },
+    {
+      "path": "opt2_pass2.maiui.fastest_core_ghz_median_sampled",
+      "computed": 2.65,
+      "saved": 2.65,
+      "match": true
+    },
+    {
+      "path": "round1.v4.calls",
+      "computed": 15,
+      "saved": 15,
+      "match": true
+    },
+    {
+      "path": "round1.v4.e2e_median_s",
+      "computed": 28.8,
+      "saved": 28.8,
+      "match": true
+    },
+    {
+      "path": "round1.v4.e2e_min_max_s[0]",
+      "computed": 27.0,
+      "saved": 27.0,
+      "match": true
+    },
+    {
+      "path": "round1.v4.e2e_min_max_s[1]",
+      "computed": 38.9,
+      "saved": 38.9,
+      "match": true
+    },
+    {
+      "path": "round1.v4.phone_median_s",
+      "computed": 26.9,
+      "saved": 26.9,
+      "match": true
+    },
+    {
+      "path": "round1.v4.prompt_s_median",
+      "computed": 26.3,
+      "saved": 26.3,
+      "match": true
+    },
+    {
+      "path": "round1.v4.prompt_tokens_median",
+      "computed": 1081,
+      "saved": 1081,
+      "match": true
+    },
+    {
+      "path": "round1.v4.prompt_tok_s",
+      "computed": 38.9,
+      "saved": 38.9,
+      "match": true
+    },
+    {
+      "path": "round1.v4.gen_tokens_median",
+      "computed": 28,
+      "saved": 28,
+      "match": true
+    },
+    {
+      "path": "round1.v4.gen_tok_s_llamacpp_median",
+      "computed": 47.7,
+      "saved": 47.7,
+      "match": true
+    },
+    {
+      "path": "round1.v4.finished_normally",
+      "computed": "15/15",
+      "saved": "15/15",
+      "match": true
+    },
+    {
+      "path": "round1.probe.e2e_s",
+      "computed": 1176.1,
+      "saved": 1176.1,
+      "match": true
+    },
+    {
+      "path": "round1.probe.prompt_s",
+      "computed": 1066.2,
+      "saved": 1066.2,
+      "match": true
+    },
+    {
+      "path": "round1.probe.gen_tokens",
+      "computed": 2048,
+      "saved": 2048,
+      "match": true
+    },
+    {
+      "path": "round1.probe.finish_reason",
+      "computed": "length",
+      "saved": "length",
+      "match": true
+    },
+    {
+      "path": "device.ro.product.model",
+      "computed": "Art for arm64",
+      "saved": "Art for arm64",
+      "match": true
+    },
+    {
+      "path": "device.ro.product.device",
+      "computed": "art",
+      "saved": "art",
+      "match": true
+    },
+    {
+      "path": "device.ro.build.fingerprint",
+      "computed": "qti/art/art:17/CQ2A.260820.002-CP2A.260605.016/eng.lnxbui:userdebug/test-keys",
+      "saved": "qti/art/art:17/CQ2A.260820.002-CP2A.260605.016/eng.lnxbui:userdebug/test-keys",
+      "match": true
+    },
+    {
+      "path": "device.ro.build.version.sdk",
+      "computed": "37",
+      "saved": "37",
+      "match": true
+    },
+    {
+      "path": "device.ro.soc.model",
+      "computed": "SM8975",
+      "saved": "SM8975",
+      "match": true
+    },
+    {
+      "path": "device.ro.soc.manufacturer",
+      "computed": "QTI",
+      "saved": "QTI",
+      "match": true
+    },
+    {
+      "path": "device.mem",
+      "computed": "MemTotal: 11474320 kB",
+      "saved": "MemTotal: 11474320 kB",
+      "match": true
+    },
+    {
+      "path": "device.cpus",
+      "computed": "3744000 3744000 3744000 4032000 4032000 4032000 5011200 5011200 ",
+      "saved": "3744000 3744000 3744000 4032000 4032000 4032000 5011200 5011200 ",
+      "match": true
+    },
+    {
+      "path": "device.serial",
+      "computed": "c4fef9df",
+      "saved": "c4fef9df",
+      "match": true
+    },
+    {
+      "path": "device.idx",
+      "computed": 0,
+      "saved": 0,
+      "match": true
+    },
+    {
+      "path": "device.order",
+      "computed": "v4 guiowl maiui",
+      "saved": "v4 guiowl maiui",
+      "match": true
+    }
+  ],
+  "mismatches": []
+}

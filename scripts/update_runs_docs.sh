@@ -15,6 +15,8 @@ for f in results/qdc/speed_qdc_v6.md results/qdc/speed_qdc_v6.json results/seale
   [ -f "$f" ] && cp "$f" "$R/results/"
 done
 python3 "$R/data/render_docs.py"
+python3 scripts/gen_timeline_audits.py "$R"
+cp scripts/gen_timeline_audits.py "$R/data/"
 ( cd "$R" && grep -rlE "hf_[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|PRIVATE KEY" . --exclude-dir=.git && { echo "secret-like string found; not pushing"; exit 1; } || true
   git add -A && git commit -q -m "Refresh run log ($(date '+%Y-%m-%d %H:%M'))" && \
   git -c credential.helper= -c credential.helper='!gh auth git-credential' push -q origin main && git log --oneline -1 )

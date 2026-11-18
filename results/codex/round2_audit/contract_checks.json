@@ -1,0 +1,509 @@
+{
+  "scroll": [
+    {
+      "size": [
+        1080,
+        2400
+      ],
+      "direction": "up",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "540",
+          "2400",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 540 2400 400"
+      ]
+    },
+    {
+      "size": [
+        1080,
+        2400
+      ],
+      "direction": "down",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "540",
+          "0",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 540 0 400"
+      ]
+    },
+    {
+      "size": [
+        1080,
+        2400
+      ],
+      "direction": "left",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "1080",
+          "1200",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 1080 1200 400"
+      ]
+    },
+    {
+      "size": [
+        1080,
+        2400
+      ],
+      "direction": "right",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "0",
+          "1200",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 0 1200 400"
+      ]
+    },
+    {
+      "size": [
+        1081,
+        2401
+      ],
+      "direction": "up",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "540",
+          "2401",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 540 2401 400"
+      ]
+    },
+    {
+      "size": [
+        1081,
+        2401
+      ],
+      "direction": "down",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "540",
+          "0",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 540 0 400"
+      ]
+    },
+    {
+      "size": [
+        1081,
+        2401
+      ],
+      "direction": "left",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "1081",
+          "1200",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 1081 1200 400"
+      ]
+    },
+    {
+      "size": [
+        1081,
+        2401
+      ],
+      "direction": "right",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "0",
+          "1200",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 0 1200 400"
+      ]
+    },
+    {
+      "size": [
+        2400,
+        1080
+      ],
+      "direction": "up",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "1200",
+          "540",
+          "1200",
+          "1080",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 1200 540 1200 1080 400"
+      ]
+    },
+    {
+      "size": [
+        2400,
+        1080
+      ],
+      "direction": "down",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "1200",
+          "540",
+          "1200",
+          "0",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 1200 540 1200 0 400"
+      ]
+    },
+    {
+      "size": [
+        2400,
+        1080
+      ],
+      "direction": "left",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "1200",
+          "540",
+          "2400",
+          "540",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 1200 540 2400 540 400"
+      ]
+    },
+    {
+      "size": [
+        2400,
+        1080
+      ],
+      "direction": "right",
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "1200",
+          "540",
+          "0",
+          "540",
+          ""
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 1200 540 0 540 400"
+      ]
+    }
+  ],
+  "deferred_enter": {
+    "answer": {
+      "actions": [
+        {
+          "action_type": "input_text",
+          "text": "hello"
+        },
+        {
+          "action_type": "keyboard_enter"
+        },
+        {
+          "action_type": "answer",
+          "text": "42"
+        }
+      ],
+      "query_count": 2,
+      "history_unchanged_during_enter": true,
+      "history_seen_by_next_query": [
+        [
+          "intent",
+          "{\"action_type\":\"input_text\",\"text\":\"hello\"}"
+        ]
+      ],
+      "commands": [
+        "adb -s OFFLINE_RECORDING_ONLY shell am broadcast -a ADB_INPUT_B64 --es msg 'aGVsbG8='",
+        "adb -s OFFLINE_RECORDING_ONLY shell input keyevent KEYCODE_ENTER"
+      ]
+    },
+    "status": {
+      "actions": [
+        {
+          "action_type": "input_text",
+          "text": "hello"
+        },
+        {
+          "action_type": "keyboard_enter"
+        },
+        {
+          "action_type": "finished",
+          "goal_status": "complete"
+        }
+      ],
+      "query_count": 2,
+      "history_unchanged_during_enter": true,
+      "history_seen_by_next_query": [
+        [
+          "intent",
+          "{\"action_type\":\"input_text\",\"text\":\"hello\"}"
+        ]
+      ],
+      "commands": [
+        "adb -s OFFLINE_RECORDING_ONLY shell am broadcast -a ADB_INPUT_B64 --es msg 'aGVsbG8='",
+        "adb -s OFFLINE_RECORDING_ONLY shell input keyevent KEYCODE_ENTER"
+      ]
+    }
+  },
+  "empty_text": {
+    "mapped": {
+      "action_type": "input_text",
+      "text": ""
+    },
+    "pending_enter": false,
+    "androidworld_events": [],
+    "mobileworld_status": 500,
+    "error": "cannot access local variable 'ret' where it is not associated with a value"
+  },
+  "reset_methods_clear_pending_and_history": [
+    "reset",
+    "initialize_hook",
+    "initialize",
+    "done"
+  ],
+  "other_actions": {
+    "long_press": {
+      "androidworld": [
+        [
+          "shell",
+          "input",
+          "swipe",
+          "540",
+          "1200",
+          "540",
+          "1200",
+          "1000"
+        ]
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input swipe 540 1200 540 1200 1000"
+      ]
+    },
+    "navigate_back": {
+      "androidworld": [
+        {
+          "key": "KEYCODE_BACK"
+        }
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input keyevent KEYCODE_BACK"
+      ]
+    },
+    "navigate_home": {
+      "androidworld": [
+        {
+          "key": "KEYCODE_HOME"
+        }
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input keyevent KEYCODE_HOME"
+      ]
+    },
+    "keyboard_enter": {
+      "androidworld": [
+        {
+          "key": "KEYCODE_ENTER"
+        }
+      ],
+      "mobileworld": [
+        "adb -s OFFLINE_RECORDING_ONLY shell input keyevent KEYCODE_ENTER"
+      ]
+    }
+  },
+  "all_advertised_apps_resolve": true,
+  "budget_25_text_actions": {
+    "environment_steps": 50,
+    "model_queries": 25,
+    "executed": [
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter",
+      "input_text",
+      "keyboard_enter"
+    ],
+    "type_count": 25,
+    "enter_count": 25
+  },
+  "budget_text_at_step50": {
+    "environment_steps": 50,
+    "model_queries": 50,
+    "executed": [
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "wait",
+      "input_text"
+    ],
+    "type_count": 1,
+    "enter_count": 0
+  },
+  "outer_sends_despite_sdk_retries_zero": 3,
+  "proxy_records_before_transport_completes": 0,
+  "real_network_device_or_process_calls": 0
+}
