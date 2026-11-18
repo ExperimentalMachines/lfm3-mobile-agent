@@ -1,0 +1,72 @@
+{
+  "dev_sidecar_mismatch": {
+    "accepted": true,
+    "all_row_hashes_differ_from_sidecar": true
+  },
+  "ac_wrong_model_metrics": {
+    "accepted_step_sr": 0.7280909521553766,
+    "claimed_model": "/content/runs/v4rl/merged",
+    "actual_metrics_models": [
+      "/content/runs/lfm3vl2b-v4bmix-lora/merged"
+    ]
+  },
+  "promotion_cli": {
+    "returncode": 1,
+    "last_line": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/alpha/lfm3-android/results/v4rl_dev/lfm3vl2b-v4rl_ft.metrics.json'"
+  },
+  "failed_server_start": {
+    "probe_exit": 91,
+    "stdout": "PROBE STOP: still polling after failed startup; no production timeout/PID check"
+  },
+  "unowned_health_endpoint": {
+    "probe_exit": 0,
+    "stdout": "[10:24:10] server :8117 up; starting SEALED synthetic_probe (seed 7) on emulator 5558"
+  },
+  "filler_branches": [
+    {
+      "scenario": "pass",
+      "returncode": 0,
+      "calls": [
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh v4 7 5558 8558 8117",
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture"
+      ]
+    },
+    {
+      "scenario": "fail",
+      "returncode": 0,
+      "calls": [
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh v3 7 5558 8558 8118",
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture"
+      ]
+    },
+    {
+      "scenario": "input_error",
+      "returncode": 0,
+      "calls": [
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture"
+      ]
+    },
+    {
+      "scenario": "other_error",
+      "returncode": 0,
+      "calls": [
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture"
+      ]
+    },
+    {
+      "scenario": "incomplete",
+      "returncode": 0,
+      "calls": [
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture"
+      ]
+    },
+    {
+      "scenario": "child_failure",
+      "returncode": 0,
+      "calls": [
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh v4 7 5558 8558 8117",
+        "MOCK CHILD scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture"
+      ]
+    }
+  ]
+}

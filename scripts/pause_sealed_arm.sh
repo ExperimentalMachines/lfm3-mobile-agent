@@ -5,7 +5,7 @@
 # Usage: bash scripts/pause_sealed_arm.sh <arm> <seed> <server_port> [--dry-run]
 set -u
 ARM=$1; SEED=$2; PORT=$3; DRY=${4:-}
-L=$(pgrep -f "^bash scripts/local_sealed_aw(_v2)?.sh $ARM $SEED ")
+L=$(pgrep -f "^bash scripts/local_sealed_aw(_v[23])?.sh $ARM $SEED ")
 R=$(pgrep -f "[r]un_aw.py.*--output_path=results/androidworld_sealed/${ARM}_seed${SEED} ")
 S=$(pgrep -f "[l]lama-server.*--port $PORT ")
 echo "launcher: ${L:-none} run_aw: ${R:-none} server: ${S:-none}"

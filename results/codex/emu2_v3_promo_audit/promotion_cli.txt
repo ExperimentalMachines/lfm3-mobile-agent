@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/scripts/v4rl_promotion.py", line 73, in <module>
+    rl["ac_high_step_sr"] = ac(os.path.join(a.rl_dir, "lfm3vl2b-v4rl_ft.metrics.json"), a.rl_model)
+                            ~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/scripts/v4rl_promotion.py", line 58, in ac
+    m = json.load(open(path))
+                  ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/alpha/lfm3-android/results/v4rl_dev/lfm3vl2b-v4rl_ft.metrics.json'

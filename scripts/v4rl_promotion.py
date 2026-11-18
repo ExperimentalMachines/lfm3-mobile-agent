@@ -39,6 +39,8 @@ def preds(path, split, model):
             (model, want_data, len(want), False, 1):
         raise SystemExit(f"INPUT ERROR: {path}.manifest.json is not greedy thinking-mode {model} on {want_data}: {man}")
     SETTINGS.add((man.get("prompt"), man.get("max_pixels"), man.get("max_new_tokens")))
+    if any(r.get("config_hash", man.get("config_hash")) != man.get("config_hash") for r in rows):
+        raise SystemExit(f"INPUT ERROR: {path}: rows' config_hash differs from the manifest's")
     if any(r.get("model") != model or r.get("split", split) != split for r in rows):
         raise SystemExit(f"INPUT ERROR: {path}: rows from another model/split")
     return rows, [af.parse_action(r["output"], strict=True) for r in rows]
@@ -62,6 +64,11 @@ def ac(path, model):
     if (man.get("data"), man.get("n_rows")) != ("experimentalmachines/AndroidControl-screen-agent-sft@test", 18415):
         raise SystemExit(f"INPUT ERROR: {path}: not the full AndroidControl test split: {man}")
     SETTINGS.add((man.get("prompt"), man.get("max_pixels"), man.get("max_new_tokens")))
+    integ = m.get("integrity") or {}
+    if integ.get("manifest") != man or integ.get("row_models") != [model] or integ.get("problems") or \
+            any(integ.get(k) for k in ("duplicate_keys", "missing", "extra")):
+        raise SystemExit(f"INPUT ERROR: {path}: embedded integrity does not match its manifest/model: "
+                         f"{ {k: integ.get(k) for k in ('row_models', 'problems', 'duplicate_keys', 'missing', 'extra')} }")
     hi = m["high"]["overall"]
     if hi["n_steps"] != 8444 or hi["n_episodes"] != 1543:
         raise SystemExit(f"INPUT ERROR: {path}: incomplete AndroidControl test ({hi['n_steps']} steps)")

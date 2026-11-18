@@ -1,0 +1,22 @@
+**Verdict: FIX — two P2 findings.**
+
+1. **P2 — Failed server startup can leave GUI-Owl paused forever.** `scripts/local_sealed_aw_v2.sh:34-35`, called synchronously at `scripts/local_emu2_fill_v3.sh:42`: if the new server exits during model loading/binding, the unbounded health loop never returns, so the GUI-Owl resume at line 48 is unreachable. Conversely, another process becoming healthy on that port is accepted without checking the launched PID, allowing the wrong server to supply the sealed arm. Both paths reproduced with mocked commands. Capture the child PID, bound health requests/startup, verify endpoint ownership, and return failure so the filler can resume GUI-Owl.
+
+2. **P2 — Promotion scores are not bound to their claimed generation.** `scripts/v4rl_promotion.py:59-68` accepts AndroidControl metrics using a separate manifest but ignores the metrics' embedded `integrity.manifest`, `row_models`, and `problems`. A fixture containing the real **v4** metrics plus a sidecar claiming **v4-RL** was accepted as RL. Likewise, `:38-44` accepts dev rows whose `config_hash` disagrees with the sidecar; a changed pixel-setting manifest passed. Compare embedded/row identities with the sidecars and enforce consistent model fingerprints/settings. Current dev artifacts have matching identities; this defect does not explain their measured rejection.
+
+The arm mapping is **correct** against `docs/PREREG_v4.md:13-15,33-37,76-78,96-99`: exit 0 → v4 seed 7; exit 3 → v3 seed 7 alongside v1; every other exit → neither final arm, then resume GUI-Owl. Mocked branches confirmed this, including incomplete development inputs and a final-arm child returning failure. The 116-episode log precondition is backed by the gate's independent validation of 116 unique matching tasks, agent identities, and the pinned v3 run (`scripts/v4_gate.py:90-101`). The actual v4 gate was **not** run in this audit.
+
+Ports 8117/8118 are distinct from 8114/8115/8116. The listener snapshot showed 8114 and 8116 occupied, with 8115/8117/8118 free. For the specified single-filler handoff, `local_v4_to_aw_v2.sh:72-79` emits completion after its runner pipeline returns; its explicit early-release paths precede runner startup. No overlap with that lane was found. Open-script inventory showed v3 filler PID 90254 and no old v2 filler; `ps` was sandbox-denied. This is not a singleton guarantee: separate duplicate fillers can race the non-atomic `busy()` checks (`local_emu2_fill_v3.sh:25,46`), so replacement must leave only one watcher.
+
+Independent recomputation with `parse_action(strict=True)` and `gate_answer`:
+
+| Metric | v4 | v4-RL |
+|---|---:|---:|
+| Strict dev_answer | 118/136 = 0.867647 | 121/136 = 0.889706 |
+| dev_complete false answers | 0/80 | 0/80 |
+
+Delta **3/136 = 0.022059 < 0.05**: criterion (a) fails. The script's directions and thresholds are correct. Item 10 is conjunctive; **no preregistered promotion-candidate interpretation permits AndroidWorld performance to rescue this failure**, including if v4 fails its own gate. An exploratory development run is possible, but cannot make this checkpoint eligible. The full CLI currently exits 1 because `results/v4rl_dev/lfm3vl2b-v4rl_ft.metrics.json` is absent; the cited `results/v4rl_promotion_offline.json` is also absent. Criterion (a) alone establishes rejection.
+
+Local export/tokenizer verdict: **OK**. Re-running `check_local_merge.py` against local v4 + `v4rl_lora` passed: 142 merged targets, 282 unchanged tensors, scale 2, zero relative error/ULPs/mismatches. Both manifests' complete file sets/hashes and the adapter hash match. All 14 non-weight files equal v4's. Original tokenizer differences are only `padding: {BatchLongest, Left, pad_id:124893, ...} → null` and `is_local: true → false`; vocabulary and 865 unpadded test encodings match. Training/evaluation explicitly set left padding (`train/grpo_vlm.py:49`, `eval/androidcontrol/generate.py:65`). Restoring v4's files for this export is justified.
+
+Evidence: `offline_recompute.json`, `merge_check.txt`, `manifest_tokenizer_check.json`, `tokenization_check.json`, `reproduction_results.json`; isolated probes in `reproduce.py`. Sealed access was limited to episode-file counts (v1 seed 7: 116; GUI-Owl seed 1234: 33). No prohibited logs or v4/sealed episode contents were opened; no AndroidWorld, emulator, or llama-server was executed, and no processes were signalled. All audit writes are under this directory.
