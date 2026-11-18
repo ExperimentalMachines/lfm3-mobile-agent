@@ -1,49 +1,48 @@
 # Speed: v4 vs GUI-Owl-1.5-2B vs MAI-UI-2B
 
-## 1. Controlled benchmark (CPU, identical inputs)
+## CPU: Intel Xeon 2.8 GHz, 8 threads, idle GCP VM
 
-* Host: GCP n2-standard-16 (Intel Xeon @ 2.80 GHz), idle apart from two idle MobileWorld containers; llama.cpp
-  `cd959bae9` built with `GGML_NATIVE`, `llama-server -np 1 -t 8`.
-* Models: Q4_K_M language model + Q8_0 vision projector for all three (LFM3 v4 1.303 GB, GUI-Owl-1.5-2B 1.552 GB, MAI-UI-2B 1.552 GB).
-* Server flags as in the evaluations: v4 `-c 8192 --image-max-tokens 1024 --reasoning-format deepseek`;
-  GUI-Owl / MAI-UI `-c 20480 --image-max-tokens 2600 --jinja`.
-* Inputs: 5 real 1080×2400 MobileWorld screenshots with their tasks' goals, each the first step of a fresh episode,
-  driven through each model's **evaluation agent code** (LFM3 agent with the v4 prompt; MobileWorld's official GUI-Owl
-  agent; MobileWorld's official MAI-UI agent with one screenshot). One warm-up call, then 3 passes.
-* Latency = wall time of `agent.predict()` (prompt building, PNG/base64 encoding, HTTP, model, parsing). Prompt and
-  output timings come from the server's per-request log.
+Same 5 real 1080×2400 screenshots and goals for every model, run through each model's actual evaluation agent code,
+4-bit models served by llama.cpp (`cd959bae9`, `llama-server -np 1 -t 8`, same flags as in the evaluations):
 
-| model | calls | median s/step (min–max) | prompt tokens | prompt s | prompt tok/s | output tokens | output s | output tok/s |
-|---|---|---|---|---|---|---|---|---|
-| LFM3 v4 (ours) | 14 | **6.4** (6.18–7.62) | 803 | 5.59 | 149.3 | 28 | 0.64 | 43.4 |
-| GUI-Owl-1.5-2B | 4 | **58.0** (57.72–58.35) | 2570 | 55.16 | 46.6 | 47 | 2.13 | 22.1 |
-| MAI-UI-2B | 4 | **58.18** (56.47–59.68) | 2575 | 54.37 | 47.5 | 90 | 3.84 | 23.2 |
+| Model | Seconds per step (median) | Prompt tokens | Prompt time | Prompt tokens/s | Output tokens | Output tokens/s | Model files |
+|---|---|---|---|---|---|---|---|
+| **v4 (ours)** | **6.4** (6.2–7.6) | 803 | 5.6 s | 149 | 28 | 43 | 1.30 GB |
+| GUI-Owl-1.5-2B | 58.0 (57.7–58.4) | 2,570 | 55.2 s | 47 | 47 | 22 | 1.55 GB |
+| MAI-UI-2B | 58.2 (56.5–59.7) | 2,575 | 54.4 s | 48 | 90 | 23 | 1.55 GB |
 
 
-**Caveat — prompt cache.** This llama.cpp build keeps a RAM prompt cache (`--cache-ram`, 8 GB default), so GUI-Owl's
-and MAI-UI's repeated screenshots in passes 2–3 were served from cache (1 prompt token processed). Only calls whose
-prompt was actually processed are kept (v4 14, GUI-Owl 4, MAI-UI 4 — the kept calls are tightly clustered). The
-same cache inflated GUI-Owl/MAI-UI server memory (~7.5 GB RSS), so memory is reported as model file size; v4's server
-RSS was 2.8 GB.
+## Apple M5 GPU, from the real AndroidWorld seed-30 runs
 
-**Why v4 is faster.** Prompt processing (including the vision encoder) dominates on CPU: v4 sends ~800 prompt tokens
-per step (~750 image tokens) against ~2,570 for GUI-Owl/MAI-UI, and processes them ~3× faster per token on this CPU
-(149 vs ~47 tok/s; LFM3 is a hybrid convolution/attention model). v4 also writes shorter outputs (28 vs 47/90 tokens)
-and generates ~2× faster.
+Median model latency per step over every step of each run, measured while the emulators and other model servers were
+running (llama.cpp Metal):
 
-## 2. In real AndroidWorld runs (Apple M5, Metal)
+| Model | Quantization | Steps | Seconds per step, median (10th–90th percentile) | Prompt tokens | Output tokens |
+|---|---|---|---|---|---|
+| **v4 (ours)** | Q4_K_M | 1,706 | **2.96** (1.7–4.6) | 1,303 | 22 |
+| GUI-Owl-1.5-2B | Q4_K_M | 2,228 | 7.00 (4.6–10.4) | 2,106 | 47 |
 
-Median model latency per step over every step of the seed-30 runs (emulators and other servers running at the
-same time; MAI-UI pending):
 
-| model | steps | median s/step (p10–p90) | median prompt tokens | median output tokens |
-|---|---|---|---|---|
-| v4 | 1,706 | **2.96** (1.74–4.63) | 1,303 | 22 |
-| GUI-Owl-1.5-2B (matched) | 2,228 | 7.00 (4.56–10.40) | 2,106 | 47 |
+## How it was measured
 
-## 3. Notes
+* **CPU benchmark.** Host: GCP n2-standard-16 (Intel Xeon @ 2.80 GHz), otherwise idle. Each call is the first step of a
+  fresh episode on one of the 5 screenshots with that task's real goal, driven through the evaluation agent code (LFM3
+  agent with the v4 prompt; MobileWorld's official GUI-Owl agent; MobileWorld's official MAI-UI agent with one
+  screenshot). One warm-up call, then 3 passes. Latency = wall time of `agent.predict()` (prompt building, image
+  encoding, HTTP, model, parsing); prompt/output timings come from the server's per-request log.
+* **Prompt cache.** This llama.cpp build keeps a RAM prompt cache (`--cache-ram`, 8 GB default), so GUI-Owl's and
+  MAI-UI's repeated screenshots in passes 2–3 were served from cache. Only calls whose prompt was actually processed
+  are kept (v4 14, GUI-Owl 4, MAI-UI 4; the kept calls are tightly clustered). The cache also inflated GUI-Owl/MAI-UI
+  server memory (~7.5 GB RSS), so memory is shown as model file size; v4's server used 2.8 GB.
+* **MAI-UI on the M5 runs at Q8_0.** At Q4_K_M MAI-UI-2B's output collapses into empty `<thinking>` loops on
+  AndroidWorld screens ([evidence](results/maiui_quant_check.md)); its AndroidWorld arm therefore uses the 8-bit file
+  (1.83 GB + 0.45 GB projector), which is also somewhat slower per token than Q4_K_M. Its CPU row above is Q4_K_M
+  (on the MobileWorld screenshots used there its output was well-formed).
 
-* The speed advantage partly reflects a smaller image budget, which also limits what v4 can read on dense screens;
-  GUI-Owl's higher accuracy on seed 30 (23 vs 18) comes with ~2.4× (M5 GPU) to ~9× (CPU) more time per step.
-* A phone CPU/NPU will be slower in absolute terms; the ratios are the useful part.
-* MobileWorld runs add T4-GPU timings for GUI-Owl and MAI-UI (served through an SSH tunnel) when they finish.
+## Why v4 is faster
+
+Prompt processing (including the vision encoder) dominates on CPU: v4 sends ~800 prompt tokens per step (~750 image
+tokens) against ~2,570 for GUI-Owl/MAI-UI, and processes them ~3× faster per token on this CPU (149 vs ~47 tok/s; LFM3
+is a hybrid convolution/attention model). v4 also writes shorter outputs (28 vs 47/90 tokens) and generates ~2× faster.
+The smaller image budget is part of the trade-off: GUI-Owl's higher seed-30 accuracy (23 vs 18) costs ~2.4× (M5 GPU) to
+~9× (CPU) more time per step. A phone CPU/NPU will be slower in absolute terms; the ratios are the useful part.

@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ c0a6abb",
+ "generated_from": "lfm3-android @ 202d60b",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -843,7 +843,7 @@
   },
   {
    "arm": "v4_seed7",
-   "episode_files": 22,
+   "episode_files": 33,
    "of": 116
   }
  ],
@@ -903,10 +903,37 @@
    "server_rss_mb": 7415
   }
  ],
+ "speed_m5_in_run": [
+  {
+   "model": "v4 (ours)",
+   "quant": "Q4_K_M",
+   "episodes": 116,
+   "steps": 1706,
+   "median_s": 2.96,
+   "p10_s": 1.74,
+   "p90_s": 4.63,
+   "prompt_tokens_median": 1303,
+   "output_tokens_median": 22,
+   "run_dir": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/"
+  },
+  {
+   "model": "GUI-Owl-1.5-2B",
+   "quant": "Q4_K_M",
+   "episodes": 116,
+   "steps": 2228,
+   "median_s": 7.0,
+   "p10_s": 4.56,
+   "p90_s": 10.4,
+   "prompt_tokens_median": 2106,
+   "output_tokens_median": 47,
+   "run_dir": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/"
+  }
+ ],
  "gguf_sizes_gb": {
   "LFM3 v4": 1.303,
   "GUI-Owl-1.5-2B": 1.552,
-  "MAI-UI-2B": 1.552
+  "MAI-UI-2B": 1.552,
+  "MAI-UI-2B Q8_0": 2.279
  },
  "mobileworld_snapshot": {
   "snapshot_time": "2026-11-18 14:12 PST",

@@ -150,7 +150,7 @@ finished; only episode-file counts are reported:
 | guiowl_seed7 | 116 | 116 |
 | v1_seed1234 | 116 | 116 |
 | v1_seed7 | 116 | 116 |
-| v4_seed7 | 22 | 116 |
+| v4_seed7 | 33 | 116 |
 
 
 Arms: GUI-Owl-1.5-2B matched (1 screenshot, Q4_K_M, installed-app list), LFM3 v1 (reference), LFM3 v4 (final).
