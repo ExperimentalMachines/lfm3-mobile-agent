@@ -160,7 +160,7 @@ exposure to AndroidWorld is undisclosed by its authors.
   preemption, or never reached, is run. Not re-run (counted as failures, disclosed): an action the runtime rejects
   (GUI-Owl's double_tap), output the official agent cannot parse after its own retries, and ask_user, whose simulated
   user needs an LLM API key this setup does not have. Replaced task folders are kept under traj_logs/_interrupted/ and
-  every decision is logged (traj_logs/_retry_manifest_<run>.jsonl). Known before this rule: GUI-Owl's container had 5
+  every decision is logged (traj_logs/_retry_manifest_<run>.jsonl). Known before this rule: GUI-Owl's container had 4
   setup and 2 scoring failures (mostly Mastodon tasks); v4's container had none. Tasks that did produce a result in
   that container may also have been affected; not corrected, disclosed. The VM's IP is reserved so a restart keeps the
   model tunnels.
