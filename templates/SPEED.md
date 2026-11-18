@@ -31,12 +31,17 @@ running (llama.cpp Metal):
   server memory (~7.5 GB RSS), so memory is shown as model file size; v4's server used 2.8 GB.
 * **Phones.** The model runs ON the phone: llama.cpp b12110 (official Android arm64 build = `cd959bae9`), CPU,
   `-t 4 -np 1 --cache-ram 0`, the evaluation flags of each model; model files downloaded on the phone and SHA-256-checked
-  against the files used everywhere else; the same 5 screenshots and agent code as the CPU benchmark, driven from the
-  Mac. Each request went through a recording proxy that wrote the phone-side llama.cpp timings to disk as it
-  completed. Order: pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed; the first call of each model in each pass is a
-  warm-up on a mirrored screenshot and is excluded. Phone-side prompt time counts every prompt token (no prefix reuse on
-  the phone), unlike the CPU table where llama.cpp reused the cached system prompt. End-to-end latency includes the
-  SSH/adb tunnel to the device lab (~2–3 s).
+  against the files used everywhere else; the same screenshots and goals through each model's own agent code, driven
+  from the Mac. Each completed request was written to disk with the phone-side llama.cpp timings. `--cache-ram 0`
+  disables only the RAM prompt cache: the server still reuses the matching prefix held in its slot, so GUI-Owl and
+  MAI-UI reused ~460–990 cached prompt tokens per call (their identical system prompt), while v4 reused none
+  (`cache_n = 0`); this favours GUI-Owl and MAI-UI. Inputs differ by design: v4's agent sends a 576×1280 screenshot,
+  GUI-Owl's and MAI-UI's agents send 1080×2400; the effective image-token count and flash-attention state are not
+  printed in the saved server logs (`-fa on` was requested for all). Output caps: v4 512 tokens, the others 2,048
+  (none reached). Client timeouts: GUI-Owl/MAI-UI's OpenAI client 3,600 s with SDK re-sends off (MobileWorld's helper
+  could still retry and GUI-Owl may re-query after a parse error), v4's client 300 s; in round 2 every call completed on
+  its first request with no parse retry. End-to-end latency includes the SSH/adb tunnel (~2–3 s). Frequencies are
+  medians of sampled maximum core frequencies, not controlled clocks.
 * **MAI-UI on the M5 runs at Q8_0.** At Q4_K_M MAI-UI-2B's output collapses into empty `<thinking>` loops on
   AndroidWorld screens ([evidence](results/maiui_quant_check.md)); its AndroidWorld arm therefore uses the 8-bit file
   (1.83 GB + 0.45 GB projector), which is also somewhat slower per token than Q4_K_M. Its CPU row above is Q4_K_M

@@ -26,32 +26,32 @@ running (llama.cpp Metal):
 
 ## Real phone: Snapdragon 8 Elite Extreme Gen 6 (Qualcomm Device Cloud)
 
-Device: Qualcomm reference phone "Art for arm64" (SM8975, Snapdragon 8 Elite Extreme Gen 6), Android SDK 37, 11474320 kB RAM. Models run ON the phone's CPU (llama.cpp b12110 = `cd959bae9`, official Android arm64 build, 4 threads, no prompt cache); the Mac only sends the same screenshots and goals through each model's own agent code and records every response.
+Device: Qualcomm reference phone "Art for arm64" (SM8975, Snapdragon 8 Elite Extreme Gen 6), Android SDK 37, 11474320 kB RAM. Models run ON the phone's CPU (llama.cpp b12110 = `cd959bae9`, official Android arm64 build, 4 threads, `--cache-ram 0`); the Mac only sends the same screenshots and goals through each model's own agent code and records every completed response. Prompt tokens below are the full prompt; GUI-Owl and MAI-UI reused ~460–990 of them per call from the server slot (identical system prompt), v4 none, which favours GUI-Owl and MAI-UI (see How it was measured).
 
-**Headline (same phone, same clock):** v4's evaluation image budget is 1,024 tokens, so its option-2 runs are also its evaluation setting; they ran at the same sampled ~2.65 GHz as GUI-Owl's and MAI-UI's option-1 runs. As evaluated, one step takes **~39.0 s for v4** vs 1100 s for GUI-Owl and 1063 s for MAI-UI (~28× and ~27×). At the same 1,024-token image budget for all three (option 2), GUI-Owl and MAI-UI take ~5.1× and ~4.7× v4's time. Option 1's v4 row ran earlier at the full 4.03 GHz, so it is not the like-for-like number.
+**Headline (same phone, same median sampled maximum core frequency, ~2.65 GHz):** v4's evaluation image ceiling is 1,024 tokens, so its option-2 runs are also its evaluation setting, and they ran at the same median sampled maximum frequency as GUI-Owl's and MAI-UI's option-1 runs. As evaluated, one step takes **~39.0 s for v4** vs 1100 s for GUI-Owl and 1063 s for MAI-UI (~28× and ~27×). At the same 1,024-token image budget for all three (option 2), GUI-Owl and MAI-UI take ~5.1× and ~4.7× v4's time. Option 1's v4 row ran earlier, when the sampled maximum was 4.03 GHz, so it is not the like-for-like number.
 
 **Option 1: each model at its evaluation image budget** (v4 1,024 image tokens; GUI-Owl and MAI-UI 2,600), flash attention on for all, MAI-UI at Q8_0 (its Q4_K_M output degenerates), 2 screenshots after a warm-up call:
 
 | Model | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally | Fastest core, sampled GHz |
 |---|---|---|---|---|---|---|---|---|---|
-| **v4 (ours)** | 2 | **27.7** (27.4–27.9) | 25.6 s | 1,088 | 25.0 s | 28 | 50 | 2/2 | 4.03 |
-| GUI-Owl-1.5-2B | 2 | 1099.8 (1099.5–1100.2) | 1097.8 s | 2,567 | 1096.0 s | 43 | 24 | 2/2 | 2.65 |
-| MAI-UI-2B | 2 | 1063.1 (1062.8–1063.4) | 1061.0 s | 2,570 | 1058.4 s | 58 | 22 | 2/2 | 2.65 |
+| **v4 (ours)** | 2 | **27.7** (27.4–27.9) | 25.6 s | 1,088 (0 cached) | 25.0 s | 28 | 50 | 2/2 | 4.03 |
+| GUI-Owl-1.5-2B | 2 | 1099.8 (1099.5–1100.2) | 1097.8 s | 3,554 (987 cached) | 1096.0 s | 43 | 24 | 2/2 | 2.65 |
+| MAI-UI-2B | 2 | 1063.1 (1062.8–1063.4) | 1061.0 s | 3,032 (462 cached) | 1058.4 s | 58 | 22 | 2/2 | 2.65 |
 
-**Option 2: all three at the same 1,024-token image budget** (a speed comparison at equal image size; GUI-Owl's and MAI-UI's accuracy at this budget was not measured), 5 screenshots, pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed:
+**Option 2: all three with the same configured 1,024-token image ceiling** (a speed comparison at an equal ceiling, not verified equal image tokens; GUI-Owl's and MAI-UI's accuracy at this budget was not measured), 5 screenshots, pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed:
 
 | Model (pass) | Timed calls | Seconds per step, end-to-end (median, range) | On the phone (median) | Prompt tokens | Prompt time on the phone (incl. image encoding) | Output tokens | Output tokens/s | Finished normally | Fastest core, sampled GHz |
 |---|---|---|---|---|---|---|---|---|---|
-| **v4 (ours)** (1) | 5 | **39.2** (38.3–41.3) | 36.9 s | 1,081 | 36.2 s | 28 | 41 | 5/5 | 2.65 |
-| GUI-Owl-1.5-2B (1) | 5 | 197.8 (197.0–198.5) | 195.4 s | 1,005 | 193.9 s | 44 | 31 | 5/5 | 2.65 |
-| MAI-UI-2B (1) | 5 | 183.2 (182.9–184.0) | 181.2 s | 1,010 | 179.0 s | 60 | 28 | 5/5 | 2.65 |
-| **v4 (ours)** (2) | 5 | **38.8** (37.7–39.0) | 36.9 s | 1,081 | 36.2 s | 28 | 42 | 5/5 | 2.65 |
-| GUI-Owl-1.5-2B (2) | 5 | 197.4 (197.1–197.5) | 195.4 s | 1,005 | 193.9 s | 44 | 31 | 5/5 | 2.65 |
-| MAI-UI-2B (2) | 5 | 183.3 (182.7–184.3) | 181.3 s | 1,010 | 179.2 s | 60 | 28 | 5/5 | 2.65 |
+| **v4 (ours)** (1) | 5 | **39.2** (38.3–41.3) | 36.9 s | 1,081 (0 cached) | 36.2 s | 28 | 41 | 5/5 | 2.65 |
+| GUI-Owl-1.5-2B (1) | 5 | 197.8 (197.0–198.5) | 195.4 s | 1,982 (973 cached) | 193.9 s | 44 | 31 | 5/5 | 2.65 |
+| MAI-UI-2B (1) | 5 | 183.2 (182.9–184.0) | 181.2 s | 1,460 (446 cached) | 179.0 s | 60 | 28 | 5/5 | 2.65 |
+| **v4 (ours)** (2) | 5 | **38.8** (37.7–39.0) | 36.9 s | 1,081 (0 cached) | 36.2 s | 28 | 42 | 5/5 | 2.65 |
+| GUI-Owl-1.5-2B (2) | 5 | 197.4 (197.1–197.5) | 195.4 s | 1,982 (973 cached) | 193.9 s | 44 | 31 | 5/5 | 2.65 |
+| MAI-UI-2B (2) | 5 | 183.3 (182.7–184.3) | 181.3 s | 1,460 (446 cached) | 179.2 s | 60 | 28 | 5/5 | 2.65 |
 
-Round 1 (earlier the same day, default flash-attention setting, 3 timed passes): v4 completed all 15 timed calls, median 28.8 s end-to-end (26.9 s on the phone). GUI-Owl's and MAI-UI's first calls never completed before their client gave up (MobileWorld's 120 s timeout plus re-sends), so round 2 used one long timeout without re-sends for every model. A single MAI-UI Q4_K_M probe with flash attention took 1176.1 s (1066.2 s on the prompt) and ended in a 2048-token degenerate output (finish reason `length`).
+Round 1 (earlier the same day, default flash-attention setting, 3 timed passes): v4 completed all 15 timed calls, median 28.8 s end-to-end (26.9 s on the phone). GUI-Owl's and MAI-UI's first calls never completed before their client gave up (MobileWorld's 120 s timeout plus re-sends), so round 2 raised the OpenAI client timeout to 3,600 s with SDK re-sends off (v4's own client: 300 s); every round-2 call completed on its first request. A single MAI-UI Q4_K_M probe with flash attention took 1176.1 s (1066.2 s on the prompt) and ended in a 2048-token degenerate output (finish reason `length`).
 
-The phone slowed under sustained load: after about two hours the sampled fastest-core frequency had fallen from 4.03 GHz to about 2.65 GHz and v4's same screenshots went from ~27 s to ~38 s; that is why option 2 runs the models in both orders. Raw requests, thermal samples and server logs: working repo `results/qdc/`.
+The phone slowed under sustained load: after about two hours the sampled fastest-core frequency had fallen from 4.03 GHz to about 2.65 GHz (medians of sampled maxima, not controlled clocks) and v4's same screenshots went from ~27 s to ~38 s; that is why option 2 runs the models in both orders. Raw requests, thermal samples and server logs: working repo `results/qdc/`.
 
 Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android Device Streaming, stopped after v4 when we switched to Qualcomm Device Cloud: v4 median 74.4 s/step over 11 calls, rising from 43.1 to 91.2 s (not monotonically; the last call took 66.7 s). From the 5th request (4th timed call) the sampled frequencies of the three performance cores (CPU 4–6, max 2.6 GHz) fell to ~1.8 GHz and the prime core (CPU 7, max 3.1 GHz) slowed and varied (down to 1.4 GHz and lower), while the battery warmed from 27 to ~36 °C and prompt speed fell from ~26 to ~15 tok/s; Android's thermal status still read 0. These are sampled current frequencies, not recorded caps (raw data and thermal log in the working repo, `results/devstream/`).
 
@@ -69,12 +69,17 @@ Earlier attempt on a Pixel 9 (Tensor G4, Android 16) through Firebase Android De
   server memory (~7.5 GB RSS), so memory is shown as model file size; v4's server used 2.8 GB.
 * **Phones.** The model runs ON the phone: llama.cpp b12110 (official Android arm64 build = `cd959bae9`), CPU,
   `-t 4 -np 1 --cache-ram 0`, the evaluation flags of each model; model files downloaded on the phone and SHA-256-checked
-  against the files used everywhere else; the same 5 screenshots and agent code as the CPU benchmark, driven from the
-  Mac. Each request went through a recording proxy that wrote the phone-side llama.cpp timings to disk as it
-  completed. Order: pass 1 v4 → GUI-Owl → MAI-UI, pass 2 reversed; the first call of each model in each pass is a
-  warm-up on a mirrored screenshot and is excluded. Phone-side prompt time counts every prompt token (no prefix reuse on
-  the phone), unlike the CPU table where llama.cpp reused the cached system prompt. End-to-end latency includes the
-  SSH/adb tunnel to the device lab (~2–3 s).
+  against the files used everywhere else; the same screenshots and goals through each model's own agent code, driven
+  from the Mac. Each completed request was written to disk with the phone-side llama.cpp timings. `--cache-ram 0`
+  disables only the RAM prompt cache: the server still reuses the matching prefix held in its slot, so GUI-Owl and
+  MAI-UI reused ~460–990 cached prompt tokens per call (their identical system prompt), while v4 reused none
+  (`cache_n = 0`); this favours GUI-Owl and MAI-UI. Inputs differ by design: v4's agent sends a 576×1280 screenshot,
+  GUI-Owl's and MAI-UI's agents send 1080×2400; the effective image-token count and flash-attention state are not
+  printed in the saved server logs (`-fa on` was requested for all). Output caps: v4 512 tokens, the others 2,048
+  (none reached). Client timeouts: GUI-Owl/MAI-UI's OpenAI client 3,600 s with SDK re-sends off (MobileWorld's helper
+  could still retry and GUI-Owl may re-query after a parse error), v4's client 300 s; in round 2 every call completed on
+  its first request with no parse retry. End-to-end latency includes the SSH/adb tunnel (~2–3 s). Frequencies are
+  medians of sampled maximum core frequencies, not controlled clocks.
 * **MAI-UI on the M5 runs at Q8_0.** At Q4_K_M MAI-UI-2B's output collapses into empty `<thinking>` loops on
   AndroidWorld screens ([evidence](results/maiui_quant_check.md)); its AndroidWorld arm therefore uses the 8-bit file
   (1.83 GB + 0.45 GB projector), which is also somewhat slower per token than Q4_K_M. Its CPU row above is Q4_K_M

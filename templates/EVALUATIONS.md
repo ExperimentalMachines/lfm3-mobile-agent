@@ -72,6 +72,7 @@ non-inferiority margin 8 tasks per 116.
 
 ## 7. MAI-UI-2B on AndroidWorld (extra development arm, in progress)
 
-Converted to Q4_K_M + Q8_0 mmproj exactly like GUI-Owl's files; agent ported from the official MAI-UI repo
+Runs at **Q8_0** (+ Q8_0 mmproj): at Q4_K_M, MAI-UI-2B's output collapsed into empty `<thinking>` loops on AndroidWorld
+screens (evidence: `results/maiui_quant_check.md` in the working repo), unlike GUI-Owl, which runs at Q4_K_M. Agent ported from the official MAI-UI repo
 (navigation prompt, history format); matched budget: one screenshot at ≤ 1,048,576 px, temperature 0. Runs on
 emulator 1 on seed 30; see `scripts/local_maiui_aw.sh` in the working repo. Results will be added when the run finishes.
