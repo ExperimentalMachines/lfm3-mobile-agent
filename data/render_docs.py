@@ -84,8 +84,32 @@ qdc_txt = (phs.get("qdc_v6_md") or qdc or "_Run in progress._\n") + (
     f"(raw data and thermal log in the working repo, `results/devstream/`).\n" if fbv4 else "")
 s7 = reg.get("seed7_analysis_md")
 seed7_txt = (f"Status: **{reg.get('seed7_status')}**.\n\n" + s7.split("\n", 1)[1]) if s7 else "_Seed 7 not yet unsealed._\n"
+latest = []
+if s7:
+    import re as _re
+    m = _re.search(r"\| v4_minus_guiowl \(PRIMARY\) \| ([-0-9.]+) \| \[([-0-9.]+), ([-0-9.]+)\] \| ([0-9.]+)", s7)
+    rows = {a: _re.search(rf"\| {_re.escape(lbl)} \(seed 7\) \| (\d+)/116", s7) for a, lbl in
+            (("v4", "LFM3 v4 (final)"), ("guiowl", "GUI-Owl-1.5-2B matched"), ("v1", "LFM3 v1 (reference)"))}
+    if m and all(rows.values()):
+        latest.append(f"* **Held-out AndroidWorld seed 7** ({reg.get('seed7_status')}): v4 **{rows['v4'].group(1)}/116**, GUI-Owl matched "
+                      f"{rows['guiowl'].group(1)}/116, v1 {rows['v1'].group(1)}/116; v4 − GUI-Owl = {m.group(1)} points (95% CI {m.group(2)} to "
+                      f"{m.group(3)}, p = {m.group(4)}). One seed: preliminary by the preregistration; seeds 1234 and 2026 are still sealed "
+                      "([details](EVALUATIONS.md#held-out-seed-7-unsealed-after-all-three-arms-finished)).")
+q = phs.get("qdc_v6_md") or ""
+hm = __import__("re").search(r"\*\*Headline \(same phone, same clock\):\*\* (.*)", q)
+if hm:
+    latest.append("* **On a real phone** (Snapdragon 8 Elite Extreme Gen 6, CPU, Qualcomm Device Cloud): " + hm.group(1) + " ([SPEED](SPEED.md)).")
+latest.append("* **Speed on CPU** (8 threads): one step takes **6.4 s for v4 vs ~58 s for GUI-Owl-1.5-2B and MAI-UI-2B**; Apple M5 GPU "
+              "in real AndroidWorld runs: see [SPEED](SPEED.md).")
+ps = mw.get("paired_so_far") or {}
+runs2 = {k: v for k, v in (mw.get("runs") or {}).items() if "run 2" in k}
+if runs2:
+    latest.append("* **MobileWorld** (105 English GUI-only tasks; " + "; ".join(f"{k.split(' (')[0]}: {v['successes']}/{v['finished']} finished tasks solved, {v.get('status')}" for k, v in runs2.items())
+                  + (f"; on the {ps['tasks_finished_by_both']} tasks both have finished: v4 {ps['v4_successes']} vs GUI-Owl {ps['guiowl_successes']}" if ps else "")
+                  + "). v4's first MobileWorld run (5/105) is not counted: its adapter changed v4's scroll and Enter behaviour "
+                  "([status](EVALUATIONS.md)).")
 sub = {"generated_from": reg["generated_from"], "now": time.strftime("%Y-%m-%d %H:%M"), "headline": head, "rl_details": rl_details,
-       "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt, "sealed_seed7": seed7_txt}
+       "gate": gate, "mobileworld": mwt, "speed_table": spt, "sizes": sizes, "speed_cpu": cpu, "speed_m5": m5, "speed_qdc": qdc_txt, "sealed_seed7": seed7_txt, "latest": "\n".join(latest)}
 for k in ["training", "ac", "gen", "dev", "aw", "pairs", "sealed"]:
     sub[f"table_{k}"] = T(k)
 for f in os.listdir(os.path.join(R, "templates")):

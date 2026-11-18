@@ -19,9 +19,11 @@ nothing is typed in by hand. Snapshot: {{generated_from}}, {{now}}.
   harness (18 vs 23, exact McNemar p = 0.33 on one seed; GUI-Owl's seed-30 run did not receive the installed-app list
   v4 gets — the sealed runs give both models the list).
 * Seed 30 was used to choose between versions: these are **development** numbers. The pre-registered comparison uses
-  sealed seeds 7 / 1234 / 2026 ([status](EVALUATIONS.md#sealed-held-out-runs)); no sealed outcome is reported here.
-* Speed: on an 8-thread CPU, one agent step takes **6.4 s for v4 vs ~58 s for GUI-Owl-1.5-2B and MAI-UI-2B**
-  ([SPEED](SPEED.md)).
+  sealed seeds 7 / 1234 / 2026 ([status](EVALUATIONS.md#sealed-held-out-runs)).
+
+## Latest results
+
+{{latest}}
 
 ## Contents
 
