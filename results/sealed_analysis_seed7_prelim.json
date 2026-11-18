@@ -1,0 +1,181 @@
+{
+ "seeds": [
+  7
+ ],
+ "arms": {
+  "v4": {
+   "label": "LFM3 v4 (final)",
+   "per_seed": {
+    "7": {
+     "successes": 18,
+     "of": 116,
+     "pct": 15.5,
+     "wilson95": [
+      10.0,
+      23.2
+     ],
+     "answer_tasks": "6/25",
+     "action_tasks": "12/91",
+     "seed_varying": "10/76",
+     "exceptions": 4,
+     "exception_templates": [
+      "MarkorCreateNoteFromClipboard",
+      "RecipeDeleteMultipleRecipes",
+      "SimpleSmsSend",
+      "TasksDueNextWeek"
+     ],
+     "by_difficulty": {
+      "easy": "17/61",
+      "medium": "0/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "18/112 = 16.1%"
+    }
+   },
+   "total": "18/116",
+   "pct": 15.5,
+   "wilson95": [
+    10.0,
+    23.2
+   ]
+  },
+  "guiowl": {
+   "label": "GUI-Owl-1.5-2B matched",
+   "per_seed": {
+    "7": {
+     "successes": 15,
+     "of": 116,
+     "pct": 12.9,
+     "wilson95": [
+      8.0,
+      20.2
+     ],
+     "answer_tasks": "7/25",
+     "action_tasks": "8/91",
+     "seed_varying": "13/76",
+     "exceptions": 1,
+     "exception_templates": [
+      "SimpleSmsResend"
+     ],
+     "by_difficulty": {
+      "easy": "9/61",
+      "medium": "5/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "15/115 = 13.0%"
+    }
+   },
+   "total": "15/116",
+   "pct": 12.9,
+   "wilson95": [
+    8.0,
+    20.2
+   ]
+  },
+  "v1": {
+   "label": "LFM3 v1 (reference)",
+   "per_seed": {
+    "7": {
+     "successes": 11,
+     "of": 116,
+     "pct": 9.5,
+     "wilson95": [
+      5.4,
+      16.2
+     ],
+     "answer_tasks": "0/25",
+     "action_tasks": "11/91",
+     "seed_varying": "4/76",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "10/61",
+      "medium": "0/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "11/116 = 9.5%"
+    }
+   },
+   "total": "11/116",
+   "pct": 9.5,
+   "wilson95": [
+    5.4,
+    16.2
+   ]
+  }
+ },
+ "comparisons": {
+  "v4_minus_guiowl (PRIMARY)": {
+   "mean_diff_pp": 2.6,
+   "signflip_p_two_sided": 0.707,
+   "ci95_pp_test_inversion": [
+    -6.2,
+    11.4
+   ],
+   "per_seed": {
+    "7": {
+     "v4_only": 15,
+     "guiowl_only": 12,
+     "both": 3,
+     "mcnemar_exact_p": 0.7011
+    }
+   },
+   "n_instances": 116,
+   "n_clusters": 116,
+   "non_inferiority_margin_pp": -6.9,
+   "non_inferior": true
+  },
+  "v4_vs_guiowl_secondary_exceptions_dropped": {
+   "7": {
+    "pairs_without_exceptions": 111,
+    "v4_only": 15,
+    "guiowl_only": 10,
+    "mcnemar_exact_p": 0.4244
+   }
+  },
+  "v1_minus_guiowl": {
+   "mean_diff_pp": -3.4,
+   "signflip_p_two_sided": 0.5216,
+   "ci95_pp_test_inversion": [
+    -11.5,
+    4.6
+   ],
+   "per_seed": {
+    "7": {
+     "v1_only": 9,
+     "guiowl_only": 13,
+     "both": 2,
+     "mcnemar_exact_p": 0.5235
+    }
+   },
+   "n_instances": 116,
+   "n_clusters": 116
+  },
+  "v4_minus_v1": {
+   "mean_diff_pp": 6.0,
+   "signflip_p_two_sided": 0.1171,
+   "ci95_pp_test_inversion": [
+    0.0,
+    12.5
+   ],
+   "per_seed": {
+    "7": {
+     "v4_only": 11,
+     "v1_only": 4,
+     "both": 7,
+     "mcnemar_exact_p": 0.1185
+    }
+   },
+   "n_instances": 116,
+   "n_clusters": 116
+  }
+ },
+ "notes": [
+  "Exceptions without a re-run directory yet (check eligibility; preregistered single re-run pending): v4 seed 7: ['MarkorCreateNoteFromClipboard', 'RecipeDeleteMultipleRecipes', 'SimpleSmsSend', 'TasksDueNextWeek']; guiowl seed 7: ['SimpleSmsResend']",
+  "One held-out seed only: PRELIMINARY (preregistered label; detectable gap ~14 tasks)."
+ ],
+ "seed_varying_counts": {
+  "7": 76
+ },
+ "reruns_applied": []
+}

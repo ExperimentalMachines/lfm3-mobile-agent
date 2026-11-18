@@ -146,7 +146,7 @@ finished; only episode-file counts are reported:
 
 | sealed arm | episode files present | of |
 |---|---|---|
-| guiowl_seed1234 | 57 | 116 |
+| guiowl_seed1234 | 58 | 116 |
 | guiowl_seed7 | 116 | 116 |
 | v1_seed1234 | 116 | 116 |
 | v1_seed7 | 116 | 116 |
@@ -191,7 +191,7 @@ non-inferiority margin 8 tasks per 116.
 
 ## 6. MobileWorld (secondary benchmark, in progress)
 
-Status 2026-11-18 21:02; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
+Status 2026-11-18 21:03; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
 
 | run | host | agent | finished | successes | status |
 |---|---|---|---|---|---|

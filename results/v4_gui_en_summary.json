@@ -1,0 +1,541 @@
+{
+ "model": "LFM3-VL-2B-AndroidAgent-v4 (Q4_K_M, llama.cpp cd959bae9, CPU server on the env host)",
+ "suite": "MobileWorld a026188, 105 English GUI-only tasks",
+ "settings": "max_round 50, step_wait 3 s, auto_retry 3 (crash-only re-runs), 1 screenshot, v4 prompt",
+ "host": "AWS c8i.4xlarge us-west-2 (nested virt)",
+ "elapsed_s": 22860,
+ "n_tasks": 105,
+ "with_result": 104,
+ "successes": 5.0,
+ "success_rate": 0.0476,
+ "no_result_counted_as_failure": [
+  "ThanksgivingPrepTask"
+ ],
+ "tasks": {
+  "TakeSelfieTask": {
+   "score": 1.0,
+   "has_result": true,
+   "result": "score: 1.0\nreason: Photo taken successfully (22 new photo(s))"
+  },
+  "OpenFlightModeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "result": "score: 1.0\nreason: Success"
+  },
+  "CloseFlightModeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "result": "score: 1.0\nreason: Success"
+  },
+  "AdjustBrightnessMaximumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Brightness is not at maximum level, current: 21/255"
+  },
+  "AdjustBrightnessMinimumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Brightness is not at minimum level, current: 21/1"
+  },
+  "MastodonFavoriteTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No favorites found for user 'test'"
+  },
+  "MastodonChangeLanguageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: User language mismatch: actual_language=en != expected_language=zh-CN"
+  },
+  "AdjustFontIconMaximumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Font and display size are not at maximum settings, current font scale: 1.0, current density: 540"
+  },
+  "AdjustFontIconMinimumTask": {
+   "score": 1.0,
+   "has_result": true,
+   "result": "score: 1.0\nreason: Success"
+  },
+  "MastodonManageHashtagsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected no followed hashtags dogs found in followed hashtags ['hummus', 'chinesecuisine', 'cats', 'flavorburst', 'foodperfection', 'foodgoals', 'careertransition', 'careergrowth', 'newbeginnings', 'newgoals', 'lookingahead', 'professionalgrowth', 'projectsuccess', 'dogs']"
+  },
+  "ChangeWallpaperTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Wallpaper has not changed"
+  },
+  "MastodonRemoveBookmarkTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected status id {115410836820181445, 115410818912936581} found in bookmarks for user 'test'"
+  },
+  "MastodonAddBookmarkTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected status id {115359670141158913, 115342692663348018} not found in bookmarks for user 'test'"
+  },
+  "MastodonExportFollowsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Export file 'my_following.csv' not found in /storage/emulated/0/Download"
+  },
+  "MastodonNewPostTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected content not found in the latest toot: Hello from AI agent!"
+  },
+  "MastodonFollowTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Target username rainbow123 not found in following users for test"
+  },
+  "SetAlarmTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No alarm found at 8:25 AM"
+  },
+  "MastodonChangeHeaderTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Perceptual hash does not match, image not matched"
+  },
+  "MastodonPinTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected toots {115338428767107750} not found in pinned toots for user 'test'"
+  },
+  "MastodonAdjustTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected status ids are still in bookmarks. Still bookmarked: {115410836820181445, 115348102480027134, 115410818912936581}"
+  },
+  "MattermostReadingGroupTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Paper not mentioned or MMMU_Pro score not mentioned"
+  },
+  "CheckDeduplicatedEventsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Incorrect answer , expected 9"
+  },
+  "AcceptMeetingTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Wrong body"
+  },
+  "MastodonFilterLanguageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Chosen languages for user test not found"
+  },
+  "CheckEventTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No alarm found at 6:00 PM"
+  },
+  "MastodonSavePhotosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Image not found on device: 0a03609b5e81fa09.jpg"
+  },
+  "SendWaiverTask": {
+   "score": 1.0,
+   "has_result": true,
+   "result": "score: 1.0\nreason: success"
+  },
+  "MastodonUnfollowTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Following list mismatch. Unexpected users: {'jack', 'alice', 'alex', 'emma', 'olivia'}."
+  },
+  "CancelMeetingTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Wrong body"
+  },
+  "MastodonImportMutedUsersTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No muted users found for user 'test'"
+  },
+  "ChromeSearchBeijingWeatherTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Invalid answer: '44\u00b0'. Please answer with a integer number."
+  },
+  "MastodonCreateListTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Lists not found for user 'test'"
+  },
+  "MastodonInviteTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS content mismatch."
+  },
+  "CheckConferenceDurationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Incorrect answer , expected 12"
+  },
+  "SendInterviewEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: no email found"
+  },
+  "CheckSetMeetTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: incorrect calendar event"
+  },
+  "MastodonReplyTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: In reply to ID mismatch: in_reply_to_id=None != expected_toot_id=115342681979737543"
+  },
+  "ScheduleLunchViaSmsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS reply 'OK' to Marry (+15051234567) not found"
+  },
+  "MattermostReplyToMessageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Message not replied to harry's own earlier message"
+  },
+  "MastodonAddFeaturedHashtagsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Featured tags for user test not found"
+  },
+  "SendInterviewInvitationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to 15551234567 with correct content not found"
+  },
+  "MastodonPostEditedPhotoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No images found for toot: 115433627788463436"
+  },
+  "SharePhotosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email sent"
+  },
+  "MattermostSendFileTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Message not sent to alex privately"
+  },
+  "MastodonRevisePollTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Expected 3 options, but found 4"
+  },
+  "ReadQwen3PaperTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: incorrect. Expected: 60, Got: 6.0"
+  },
+  "TextArrivalTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No reason provided for TextArrivalTimeTask"
+  },
+  "MattermostCreateChannelTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Channel not created"
+  },
+  "MastodonConditionalFavoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No favorites found for user 'test'"
+  },
+  "MastodonShareLocationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: URL mismatch: Which country has the largest land area? does not contain https://maps.app.goo.gl/xxxxxx"
+  },
+  "MastodonGetServerInfoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: The database size info not correct, expected: 15.6 MB, actual: Hello from Owner \ud83d\udc4b"
+  },
+  "CartInfoNotificationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to 13800138888 with order number not found"
+  },
+  "GoogleMapsAlibabaPhoneContactTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: contact verification failed"
+  },
+  "GoogleMapsAlibabaSouthNeighborTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: no answer provided"
+  },
+  "MastodonReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: The report info for toot 115383686318250006 is not found"
+  },
+  "PhotoManagementTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Paris or Tokyo folder is not found"
+  },
+  "CheckInvoiceTask3": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No SMS found to Mia Scott (14058298746) with correct answer: 0"
+  },
+  "CheckDepartTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to 34567843456 with correct content not found"
+  },
+  "CheckRegistrationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email found"
+  },
+  "ReadQwen3PaperTask4": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: could not parse answer as number: 256M"
+  },
+  "MastodonOpenAutomatedDeletionTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No automated post deletions setting found for user: test"
+  },
+  "CheckInterviewTimesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: incorrect calendar events"
+  },
+  "CheckCartPriceTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Incorrect answer: 2197 (expected: 13186)"
+  },
+  "RequestCarpoolingTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to 3522228876 with correct content not found"
+  },
+  "LocalFileManagementTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Other files are deleted: ['']"
+  },
+  "MattermostEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email sent: None"
+  },
+  "MastodonRevisePhotoAltTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Author Monet not found in the image ALT(first line): Impression, Sunrise presents a peaceful harbor scene at dawn, with the sea gently illuminated by the soft glow of the rising sun. The warm light filters through a layer of mist, creating an almost magical atmosphere. This early "
+  },
+  "SMSManagement": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Spam message found!"
+  },
+  "MastodonNewFilterTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Filter not found: phrase=Anti-Spoiler-BCS, username=test"
+  },
+  "MastodonCreateMemoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Event not found: 1761318000 - 1761323400"
+  },
+  "CheckConferenceAndSendSmsTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to +14058298746 with correct dates not found"
+  },
+  "CheckConferenceAndSendSmsTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to +14058298746 with correct dates not found"
+  },
+  "ReadQwen3PaperTask5": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: incorrect. Expected: vie Latn,khm Khmr, Got:"
+  },
+  "ReadQwen3PaperTask3": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: could not parse answer as number: three"
+  },
+  "SuggestPaperTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No pdf found"
+  },
+  "CountFileLinesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Invalid answer format:  (expected integer)"
+  },
+  "DownloadSendReceiptTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email found"
+  },
+  "SumFileLinesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Invalid answer format:  (expected integer)"
+  },
+  "MastodonPostPollTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No tags found for toot: 115433627788463436"
+  },
+  "ReadQwen3PaperTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: could not parse answer as number:"
+  },
+  "MastodonMattermostPostNoticeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Toot text mismatch: Which country has the largest land area? != Security: rotated API keys; check 1Password vault for updated entries."
+  },
+  "SendFormsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email found"
+  },
+  "MastodonMultiInviteTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Leonard's invite not found or doesn't match expected parameters."
+  },
+  "ScheduleCoffeeTimeViaSmsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS reply 'Not available in this time slot' to Marry (+15051234567) not found"
+  },
+  "CheckInvoiceTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email sent"
+  },
+  "CheckConferenceLocationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS to 4456547865 with correct content not found"
+  },
+  "LocalFileManagementTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: old_files.zip is not in the download folder"
+  },
+  "CheckInvoiceTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: could not parse answer as number: $1020.00"
+  },
+  "MastodonServerInfoReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email found"
+  },
+  "MastodonUpdateContactsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Phone number mismatch: [{'number': '+1-427-778-3563', 'label': 'MOBILE'}] != 5551234567"
+  },
+  "MattermostProjectHandoverTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Alex has not been added to the phoenix channel"
+  },
+  "MastodonCalendarMultiMemosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Event not found: 1761318000 - 1761323400"
+  },
+  "ThanksgivingPrepTask": {
+   "score": 0.0,
+   "has_result": false,
+   "result": ""
+  },
+  "CheckGithubInfoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email found"
+  },
+  "MastodonManageMultiListTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Failed to retrieve lists for user 'test'"
+  },
+  "MattermostCustomerFeedbackAnalysisTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No summary email sent"
+  },
+  "MattermostShiftCoverageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Did not find denial reply in channel"
+  },
+  "MattermostVisualInstructionResponseTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Contact 'Dr. Smith' not found"
+  },
+  "MattermostIncidentEscalationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Incident channel 'incident-ticket-500' not found"
+  },
+  "GraduationMassEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email found"
+  },
+  "MattermostResourceConflictResolutionTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email sent"
+  },
+  "MattermostBudgetApprovalPipelineTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: Budget summary table not posted in channel (missing departments, ROI info, or table format)"
+  },
+  "MattermostTechnicalDebtTriageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: SMS not sent to Sarah (14737474173) with PaymentProcessor info"
+  },
+  "MattermostDeadlineReconciliationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email sent"
+  },
+  "MattermostProjectStatusReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "result": "score: 0.0\nreason: No email sent"
+  }
+ }
+}
