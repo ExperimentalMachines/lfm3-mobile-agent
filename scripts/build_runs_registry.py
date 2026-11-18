@@ -187,16 +187,49 @@ for d in sorted(glob.glob("results/androidworld_sealed/*/")):
 
 # ---------------------------------------------------------------- speed
 speed = J("results/speed/speed_t8.json")
+
+
+def aw_speed(d):  # per-step model latency and token counts over every saved step of a run (partial runs allowed)
+    runs = sorted(glob.glob(f"{d}/run_*/"))
+    if not runs:
+        return None
+    L, P, G = [], [], []
+    files = glob.glob(runs[-1] + "*.pkl.gz")
+    n_eps = len(files)  # progress = episode files (exception episodes have no step data but still count)
+    for f in files:
+        e = pickle.loads(gzip.decompress(open(f, "rb").read()))[0]  # our own harness output (trusted)
+        dd = e.get("episode_data")
+        if not isinstance(dd, dict):
+            continue
+        L += [x for x in (dd.get("latency_s") or []) if isinstance(x, (int, float)) and x == x]
+        for u in dd.get("usage") or []:
+            if isinstance(u, dict) and u.get("prompt_tokens"):
+                P.append(u["prompt_tokens"]); G.append(u.get("completion_tokens", 0))
+    if not L:
+        return None
+    q = sorted(L)
+    return {"episodes": n_eps, "steps": len(L), "median_s": round(st.median(L), 2), "p10_s": round(q[len(q) // 10], 2),
+            "p90_s": round(q[9 * len(q) // 10], 2), "prompt_tokens_median": int(st.median(P)) if P else None,
+            "output_tokens_median": int(st.median(G)) if G else None, "run_dir": runs[-1]}
+
+
+speed_m5 = []
+for k, lab, note in [("lfm3vl2b_v4", "v4 (ours)", "Q4_K_M"), ("guiowl15_2b_matched", "GUI-Owl-1.5-2B", "Q4_K_M"),
+                     ("maiui_2b_matched_q8_0", "MAI-UI-2B", "Q8_0 (Q4_K_M breaks its output: results/maiui_quant_check.md)")]:
+    s_ = aw_speed(f"results/androidworld/{k}")
+    if s_:
+        speed_m5.append({"model": lab, "quant": note, **s_})
 sizes = {}
 for lab, files in [("LFM3 v4", ["models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf", "models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf"]),
                    ("GUI-Owl-1.5-2B", ["models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf", "models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf"]),
-                   ("MAI-UI-2B", ["models/MAI-UI-2B-GGUF/MAI-UI-2B-Q4_K_M.gguf", "models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf"])]:
+                   ("MAI-UI-2B", ["models/MAI-UI-2B-GGUF/MAI-UI-2B-Q4_K_M.gguf", "models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf"]),
+                   ("MAI-UI-2B Q8_0", ["models/MAI-UI-2B-GGUF/MAI-UI-2B-Q8_0.gguf", "models/MAI-UI-2B-GGUF/mmproj-MAI-UI-2B-Q8_0.gguf"])]:
     sizes[lab] = round(sum(os.path.getsize(f) for f in files if os.path.exists(f)) / 1e9, 3)
 
 reg = {"generated_from": "lfm3-android @ " + os.popen("git rev-parse --short HEAD").read().strip(),
        "training": train_rows, "androidcontrol_test": ac_rows, "general_retention": gen_rows, "dev_splits": DEV,
        "v4rl_promotion_offline": gate, "androidworld_seed30": aw_rows, "androidworld_seed30_pairs": pairs,
-       "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "gguf_sizes_gb": sizes,
+       "androidworld_sealed_counts_only": sealed, "speed_cpu_t8": speed, "speed_m5_in_run": speed_m5, "gguf_sizes_gb": sizes,
        "mobileworld_snapshot": J(MW) if MW else None}
 json.dump(reg, open(os.path.join(OUT, "data", "runs.json"), "w"), indent=1, default=str)
 

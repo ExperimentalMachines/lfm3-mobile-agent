@@ -19,6 +19,7 @@ import base64
 import copy
 import io
 import json
+import os
 import re
 import sys
 import time
@@ -125,9 +126,12 @@ class MAIUIAgent(base_agent.EnvironmentInteractingAgent):
         attempts, parsed, reply, out = [], None, "", {}
         for _ in range(self.max_attempts):
             t0 = time.time()
-            r = requests.post(f"{self.server_url}/v1/chat/completions", json={
-                "messages": msgs, "temperature": self.temperature, "top_p": 1.0, "max_tokens": self.max_tokens,
-                "seed": 42}, timeout=900)
+            payload = {"messages": msgs, "temperature": self.temperature, "top_p": 1.0, "max_tokens": self.max_tokens, "seed": 42}
+            if os.environ.get("MAIUI_DUMP_DIR"):  # debugging aid: keep the exact request bodies
+                os.makedirs(os.environ["MAIUI_DUMP_DIR"], exist_ok=True)
+                with open(os.path.join(os.environ["MAIUI_DUMP_DIR"], f"req_{int(time.time() * 1000)}.json"), "w") as fh:
+                    json.dump(payload, fh)
+            r = requests.post(f"{self.server_url}/v1/chat/completions", json=payload, timeout=900)
             r.raise_for_status()
             out = r.json()
             reply = (out["choices"][0]["message"].get("content") or "").strip()
