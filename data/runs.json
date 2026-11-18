@@ -1024,7 +1024,7 @@
    },
    "v4 run 2 (GCP + Colab T4, fixed adapter)": {
     "host": "GCP n2-standard-16 + Colab T4",
-    "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step)",
+    "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step; known limits: a text action on step 50 loses its Enter, empty text gets an HTTP 500 no-op; Codex round2_audit M1/M2)",
     "finished": 25,
     "successes": 4,
     "status": "in progress"

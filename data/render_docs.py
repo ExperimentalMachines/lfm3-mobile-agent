@@ -96,9 +96,10 @@ if s7:
                       f"{m.group(3)}, p = {m.group(4)}). One seed: preliminary by the preregistration; seeds 1234 and 2026 are still sealed "
                       "([details](EVALUATIONS.md#held-out-seed-7-unsealed-after-all-three-arms-finished)).")
 q = phs.get("qdc_v6_md") or ""
-hm = __import__("re").search(r"\*\*Headline \(same phone, same clock\):\*\* (.*)", q)
+hm = __import__("re").search(r"\*\*Headline \(([^)]*)\):\*\* (.*)", q)
 if hm:
-    latest.append("* **On a real phone** (Snapdragon 8 Elite Extreme Gen 6, CPU, Qualcomm Device Cloud): " + hm.group(1) + " ([SPEED](SPEED.md)).")
+    latest.append("* **On a real phone** (Snapdragon 8 Elite Extreme Gen 6, CPU, Qualcomm Device Cloud; " + hm.group(1) + "): "
+                  + hm.group(2) + " ([SPEED](SPEED.md)).")
 latest.append("* **Speed on CPU** (8 threads): one step takes **6.4 s for v4 vs ~58 s for GUI-Owl-1.5-2B and MAI-UI-2B**; Apple M5 GPU "
               "in real AndroidWorld runs: see [SPEED](SPEED.md).")
 ps = mw.get("paired_so_far") or {}
