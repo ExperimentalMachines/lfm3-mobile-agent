@@ -1,5 +1,5 @@
 {
- "generated_from": "lfm3-android @ c0043b4",
+ "generated_from": "lfm3-android @ 24e133a",
  "training": [
   {
    "id": "lfm3vl2b-v1",
@@ -856,7 +856,7 @@
   },
   {
    "arm": "guiowl_seed2026",
-   "episode_files": 81,
+   "episode_files": 101,
    "of": 116
   },
   {
@@ -881,7 +881,7 @@
   },
   {
    "arm": "v4_seed1234",
-   "episode_files": 54,
+   "episode_files": 61,
    "of": 116
   },
   {
@@ -1046,7 +1046,7 @@
   "MAI-UI-2B Q8_0": 2.279
  },
  "mobileworld_snapshot": {
-  "snapshot_time": "2026-11-19 04:05",
+  "snapshot_time": "2026-11-19 04:35",
   "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
   "runs": {
    "v4 run 1 (AWS c8i, CPU server)": {
@@ -1066,7 +1066,7 @@
    "GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0)": {
     "host": "GCP n2-standard-16 + Colab T4",
     "agent": "MobileWorld official gui_owl_1_5",
-    "finished": 98,
+    "finished": 100,
     "successes": 22,
     "status": "in progress"
    },
@@ -1079,7 +1079,7 @@
    }
   },
   "paired_so_far": {
-   "tasks_finished_by_both": 98,
+   "tasks_finished_by_both": 100,
    "v4_successes": 6,
    "guiowl_successes": 22
   }
