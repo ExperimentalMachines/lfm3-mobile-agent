@@ -4,9 +4,11 @@
 #   - SSH only from this machine's current public IP; key kept in ~/.ssh (never in the repo)
 #   - cost guard: the instance powers itself off after MAX_H hours (shutdown behaviour = stop, so the disk is kept)
 # Usage: bash scripts/aws_mw_launch.sh            (prints the instance id and public IP; state in logs/aws_mw_instance.env)
+#        SPOT=1 NAME=lfm3-mobileworld-2 STATE=logs/aws_mw_instance2.env bash scripts/aws_mw_launch.sh   (spot, second instance)
 set -euo pipefail
 cd "$(dirname "$0")/.."
-R=${REGION:-us-west-2}; TYPE=${TYPE:-c8i.4xlarge}; KEY=lfm3-mw; SG_NAME=lfm3-mw-ssh; MAX_H=${MAX_H:-12}
+R=${REGION:-us-west-2}; TYPE=${TYPE:-c8i.4xlarge}; KEY=lfm3-mw; SG_NAME=lfm3-mw-ssh; MAX_H=${MAX_H:-12}; NAME=${NAME:-lfm3-mobileworld-smoke}; STATE=${STATE:-logs/aws_mw_instance.env}
+MARKET=(); [ "${SPOT:-0}" = 1 ] && MARKET=(--instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=one-time,InstanceInterruptionBehavior=terminate}")
 PEM=$HOME/.ssh/$KEY.pem
 A() { aws --region "$R" "$@"; }
 if [ ! -s "$PEM" ]; then
@@ -30,12 +32,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sudo -u ubuntu sh
 touch /home/ubuntu/bootstrap_done
 EOF
 IID=$(A ec2 run-instances --image-id "$AMI" --instance-type "$TYPE" --key-name $KEY --security-group-ids "$SG" \
-  --cpu-options "NestedVirtualization=enabled" --instance-initiated-shutdown-behavior stop \
+  --cpu-options "NestedVirtualization=enabled" ${MARKET[@]+"${MARKET[@]}"} \
+  --instance-initiated-shutdown-behavior $([ "${SPOT:-0}" = 1 ] && echo terminate || echo stop) \
   --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"VolumeSize":200,"VolumeType":"gp3","DeleteOnTermination":true}}]' \
   --user-data file:///tmp/lfm3_mw_userdata.sh \
-  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=lfm3-mobileworld-smoke},{Key=project,Value=lfm3-android}]' \
+  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$NAME},{Key=project,Value=lfm3-android}]" \
   --query 'Instances[0].InstanceId' --output text)
 A ec2 wait instance-running --instance-ids "$IID"
 IP=$(A ec2 describe-instances --instance-ids "$IID" --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
-printf "REGION=%s\nIID=%s\nIP=%s\nPEM=%s\nTYPE=%s\n" "$R" "$IID" "$IP" "$PEM" "$TYPE" > logs/aws_mw_instance.env
+printf "REGION=%s\nIID=%s\nIP=%s\nPEM=%s\nTYPE=%s\n" "$R" "$IID" "$IP" "$PEM" "$TYPE" > "$STATE"
 echo "launched $IID ($TYPE, $R) at $IP; auto power-off in ${MAX_H} h"
