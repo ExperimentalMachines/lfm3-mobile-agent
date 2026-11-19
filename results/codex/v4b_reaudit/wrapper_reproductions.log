@@ -1,0 +1,22 @@
+{
+  "gate_fabricated_correct": {
+    "exit": 0,
+    "stdout": "{\n \"aw_episodes_v4\": 116,\n \"aw_answer_task_successes_v4\": 3,\n \"aw_action_task_successes_v4\": 113,\n \"aw_action_task_successes_v3\": 113,\n \"dev_answer_emitted\": 1.0,\n \"dev_answer_exact\": 1.0,\n \"dev_complete_false_answer\": 0.0,\n \"dev_complete_status\": 1.0,\n \"gate\": {\n  \"1_answers\": true,\n  \"2_no_false_answers\": true,\n  \"3_aw\": true\n },\n \"PASS\": true\n}\n"
+  },
+  "gate_zero_correct": {
+    "exit": 3,
+    "stdout": "{\n \"aw_episodes_v4\": 116,\n \"aw_answer_task_successes_v4\": 3,\n \"aw_action_task_successes_v4\": 113,\n \"aw_action_task_successes_v3\": 113,\n \"dev_answer_emitted\": 1.0,\n \"dev_answer_exact\": 0.0,\n \"dev_complete_false_answer\": 0.0,\n \"dev_complete_status\": 1.0,\n \"gate\": {\n  \"1_answers\": false,\n  \"2_no_false_answers\": true,\n  \"3_aw\": true\n },\n \"PASS\": false\n}\n"
+  },
+  "sealed_v2": {
+    "exit": 1,
+    "stdout": "[04:11:22] server :8111 up; starting SEALED v1_seed7 (seed 7) on emulator 5558\n[04:11:22] SEALED v1_seed7 AndroidWorld FAILED (exit 42, 0/116 episodes)\n"
+  },
+  "development": {
+    "exit": 0,
+    "stdout": "[04:11:23] waiting for merged weights in SYNTHETIC_MODEL\n[04:11:23] merged weights on hub; exporting\n[04:11:23] exported; pausing the sealed v1 seed-7 arm on emulator 5558 (resumed afterwards from its checkpoint)\n[04:11:23] server :8114 up; starting v4 seed-30 development pass on emulator 5558\n[04:11:23] v4 AndroidWorld seed-30 finished\n"
+  },
+  "rl_evals_and_uploads_fail": {
+    "exit": 1,
+    "stdout": "[04:11:23] rl: smoke on base model\n[04:11:24] rl: smoke timing 120 s/step (measured next to SFT; an upper bound)\n[04:11:24] rl: waiting for the v4 pipeline to finish\n[04:11:24] rl: main GRPO from v4: 10 steps\n[04:11:24] rl: FAILED: upload merged\n[04:11:24] rl: offline evals\n[04:11:24] rl: FAILED: dev dev_answer\n[04:11:24] rl: FAILED: dev dev_complete\n[04:11:24] rl: FAILED: dev dev_screenqa\n[04:11:24] rl: FAILED: dev dev_odyssey\n[04:11:24] rl: FAILED: dev dev_amex\n[04:11:24] rl: FAILED: AC test\n[04:11:24] rl: FAILED: strict metrics\n[04:11:24] rl: FAILED: strict metrics v4\n[04:11:24] rl: FAILED: upload evals\n[04:11:24] rl: RL PIPELINE FINISHED WITH 10 FAILURES\n"
+  }
+}

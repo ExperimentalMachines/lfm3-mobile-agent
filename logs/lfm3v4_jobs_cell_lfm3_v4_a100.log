@@ -1,0 +1,60 @@
+started lfm3_v4 pid=4393
+started rl_hook pid=4394
+[heartbeat 21:56:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 21:57:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 21:58:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 21:59:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 22:00:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 22:01:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 22:02:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+......[heartbeat 22:03:57] {'lfm3_v4': 'running', 'rl_hook': 'running'}
+....╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/commands/execution.py:266 in exec_command                     │
+│                                                                              │
+│   263 │   │   │   )                                                          │
+│   264 │   │   │   state.store.add(s)                                         │
+│   265 │   │   │                                                              │
+│ ❱ 266 │   │   │   outputs = runtime.execute_code(                            │
+│   267 │   │   │   │   code,                                                  │
+│   268 │   │   │   │   output_hook=lambda o: display_output(o, output_image), │
+│   269 │   │   │   │   timeout=timeout,                                       │
+│                                                                              │
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/runtime.py:259 in execute_code                                │
+│                                                                              │
+│   256 │   │   │   │   │   │   if idx < len(outputs):                         │
+│   257 │   │   │   │   │   │   │   output_hook(outputs[idx])                  │
+│   258 │   │   │                                                              │
+│ ❱ 259 │   │   │   reply = self._execute_streaming(code, wrapped_output_hook, │
+│       timeout)                                                               │
+│   260 │   │   │   reply_content = reply["content"] if reply else {"status":  │
+│       "error"}                                                               │
+│   261 │   │                                                                  │
+│   262 │   │   # If there's an error status but no error in outputs,          │
+│       synthesize one                                                         │
+│                                                                              │
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/runtime.py:329 in _execute_streaming                          │
+│                                                                              │
+│   326 │   │   │   │   │   return msg                                         │
+│   327 │   │                                                                  │
+│   328 │   │   while True:                                                    │
+│ ❱ 329 │   │   │   msg = next_message(client.get_iopub_msg, "output")         │
+│   330 │   │   │   output_hook(msg)                                           │
+│   331 │   │   │   if (                                                       │
+│   332 │   │   │   │   msg["header"]["msg_type"] == "status"                  │
+│                                                                              │
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/runtime.py:305 in next_message                                │
+│                                                                              │
+│   302 │   │   │   deadline = (time.monotonic() + timeout) if timeout is not  │
+│       None else None                                                         │
+│   303 │   │   │   while True:                                                │
+│   304 │   │   │   │   if not client.connection_ready.is_set():               │
+│ ❱ 305 │   │   │   │   │   raise RuntimeError("Connection was lost.")         │
+│   306 │   │   │   │   wait = _WAIT_SLICE_SEC                                 │
+│   307 │   │   │   │   if deadline is not None:                               │
+│   308 │   │   │   │   │   left = deadline - time.monotonic()                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RuntimeError: Connection was lost.

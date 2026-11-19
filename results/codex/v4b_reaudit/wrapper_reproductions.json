@@ -1,0 +1,85 @@
+{
+  "scope": "All inputs below are synthetic; no genuine sealed outcomes were read.",
+  "gate_fabricated_correct": {
+    "command": [
+      "/Users/alpha/lfm3-android/.venv-data/bin/python",
+      "-B",
+      "/Users/alpha/lfm3-android/scripts/v4_gate.py",
+      "--v4",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/v4",
+      "--v3",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/v3",
+      "--dev_answer",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/fabricated_correct.jsonl",
+      "--dev_complete",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/complete.jsonl",
+      "--n_answer",
+      "136",
+      "--n_complete",
+      "80"
+    ],
+    "exit": 0,
+    "stdout": "{\n \"aw_episodes_v4\": 116,\n \"aw_answer_task_successes_v4\": 3,\n \"aw_action_task_successes_v4\": 113,\n \"aw_action_task_successes_v3\": 113,\n \"dev_answer_emitted\": 1.0,\n \"dev_answer_exact\": 1.0,\n \"dev_complete_false_answer\": 0.0,\n \"dev_complete_status\": 1.0,\n \"gate\": {\n  \"1_answers\": true,\n  \"2_no_false_answers\": true,\n  \"3_aw\": true\n },\n \"PASS\": true\n}\n",
+    "stderr": ""
+  },
+  "gate_zero_correct": {
+    "command": [
+      "/Users/alpha/lfm3-android/.venv-data/bin/python",
+      "-B",
+      "/Users/alpha/lfm3-android/scripts/v4_gate.py",
+      "--v4",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/v4",
+      "--v3",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/v3",
+      "--dev_answer",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/zero_correct.jsonl",
+      "--dev_complete",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/gate/complete.jsonl",
+      "--n_answer",
+      "136",
+      "--n_complete",
+      "80"
+    ],
+    "exit": 3,
+    "stdout": "{\n \"aw_episodes_v4\": 116,\n \"aw_answer_task_successes_v4\": 3,\n \"aw_action_task_successes_v4\": 113,\n \"aw_action_task_successes_v3\": 113,\n \"dev_answer_emitted\": 1.0,\n \"dev_answer_exact\": 0.0,\n \"dev_complete_false_answer\": 0.0,\n \"dev_complete_status\": 1.0,\n \"gate\": {\n  \"1_answers\": false,\n  \"2_no_false_answers\": true,\n  \"3_aw\": true\n },\n \"PASS\": false\n}\n",
+    "stderr": ""
+  },
+  "sealed_v2": {
+    "command": [
+      "/bin/bash",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/sealed_v2/wrapper.sh",
+      "v1",
+      "7",
+      "5558",
+      "8558",
+      "8111"
+    ],
+    "exit": 1,
+    "stdout": "[04:11:22] server :8111 up; starting SEALED v1_seed7 (seed 7) on emulator 5558\n[04:11:22] SEALED v1_seed7 AndroidWorld FAILED (exit 42, 0/116 episodes)\n",
+    "stderr": "",
+    "only_script_change": "Literal workspace root rewritten into this isolated fixture.",
+    "synthetic_outcome_in_sealed_log": true,
+    "synthetic_outcome_in_stdout": false
+  },
+  "development": {
+    "command": [
+      "/bin/bash",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/development/wrapper.sh",
+      "SYNTHETIC_MODEL"
+    ],
+    "exit": 0,
+    "stdout": "[04:11:23] waiting for merged weights in SYNTHETIC_MODEL\n[04:11:23] merged weights on hub; exporting\n[04:11:23] exported; pausing the sealed v1 seed-7 arm on emulator 5558 (resumed afterwards from its checkpoint)\n[04:11:23] server :8114 up; starting v4 seed-30 development pass on emulator 5558\n[04:11:23] v4 AndroidWorld seed-30 finished\n",
+    "stderr": "",
+    "only_script_change": "Literal workspace root rewritten into this isolated fixture."
+  },
+  "rl_evals_and_uploads_fail": {
+    "command": [
+      "/bin/bash",
+      "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/wrapper_fixtures/rl/wrapper.sh"
+    ],
+    "exit": 1,
+    "stdout": "[04:11:23] rl: smoke on base model\n[04:11:24] rl: smoke timing 120 s/step (measured next to SFT; an upper bound)\n[04:11:24] rl: waiting for the v4 pipeline to finish\n[04:11:24] rl: main GRPO from v4: 10 steps\n[04:11:24] rl: FAILED: upload merged\n[04:11:24] rl: offline evals\n[04:11:24] rl: FAILED: dev dev_answer\n[04:11:24] rl: FAILED: dev dev_complete\n[04:11:24] rl: FAILED: dev dev_screenqa\n[04:11:24] rl: FAILED: dev dev_odyssey\n[04:11:24] rl: FAILED: dev dev_amex\n[04:11:24] rl: FAILED: AC test\n[04:11:24] rl: FAILED: strict metrics\n[04:11:24] rl: FAILED: strict metrics v4\n[04:11:24] rl: FAILED: upload evals\n[04:11:24] rl: RL PIPELINE FINISHED WITH 10 FAILURES\n",
+    "stderr": "SYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\nSYNTHETIC upload or evaluation failure\n",
+    "only_script_change": "Literal /content root rewritten; launcher placeholders __V4_RUN__=SYNTHETIC_V4 and __SKIP_SMOKE__=0 filled. All dependencies are stubs."
+  }
+}

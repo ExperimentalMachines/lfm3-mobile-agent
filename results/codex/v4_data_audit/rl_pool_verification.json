@@ -1,0 +1,20 @@
+{
+  "snapshot": "/Users/alpha/.cache/huggingface/hub/datasets--alpharomercoma--AndroidAgent-RL-v4/snapshots/586c241b8b454a89f1803cf523d18d514cd34b08",
+  "source_file": "/Users/alpha/.cache/huggingface/hub/datasets--alpharomercoma--AndroidAgent-RL-v4/snapshots/586c241b8b454a89f1803cf523d18d514cd34b08/data/train-00000-of-00001.parquet",
+  "real_path": "/Users/alpha/.cache/huggingface/hub/blobs/16/16e01d10afb72060c31317606b077fb625149ed100daa6256cd1040c2cc37e3d",
+  "sha256": "fa4e9c2ad630cdd0077f3673ec0da7dc3a793a863f02b4c9dc7a70534f34e8ae",
+  "expected_content_sha256": "16e01d10afb72060c31317606b077fb625149ed100daa6256cd1040c2cc37e3d",
+  "rows": 2000,
+  "counts": {
+    "qa_final": 700,
+    "click": 500,
+    "complete": 500,
+    "other": 300
+  },
+  "expected_rows": 2000,
+  "membership_mismatches": [],
+  "missing_expected": [],
+  "duplicate_fingerprints": 0,
+  "schema": "image: struct<bytes: binary, path: string>\n  child 0, bytes: binary\n  child 1, path: string\nprompt: list<element: struct<role: string, content: string>>\n  child 0, element: struct<role: string, content: string>\n      child 0, role: string\n      child 1, content: string\ngt_action: string\nkind: string\nepisode_id: string\n-- schema metadata --\nhuggingface: '{\"info\": {\"features\": {\"image\": {\"_type\": \"Image\"}, \"prompt' + 285",
+  "live_hub_recheck": "Unavailable: restricted shell DNS; audited cached pinned commit."
+}

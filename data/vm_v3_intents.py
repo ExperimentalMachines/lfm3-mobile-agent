@@ -177,7 +177,11 @@ samples = [{"row": i, "source": train[i]["source"], "action": acts[i], "intent":
 print(json.dumps(st), flush=True)
 out = DatasetDict({"train": new_train, **{k: v for k, v in dd.items() if k != "train"}})
 api.create_repo(a.out_repo, repo_type="dataset", private=True, exist_ok=True)
-out.push_to_hub(a.out_repo, private=True, max_shard_size="500MB", num_proc=8)
+# single process: push_to_hub(num_proc>1) spawns workers that re-run this whole top-level script (that is what
+# OOM'd the H100 - every worker loaded the teacher - and broke the CPU rebuild). xet high-performance does the speed.
+t_up = time.time()
+out.push_to_hub(a.out_repo, private=True, max_shard_size="500MB")
+print(f"pushed shards in {time.time() - t_up:.0f}s", flush=True)
 os.makedirs("/content/eval", exist_ok=True)
 json.dump({"stats": st, "src": f"{a.src}@{a.rev}", "teacher": a.teacher, "samples": samples},
           open("/content/eval/v3_intents_stats.json", "w"), indent=1)

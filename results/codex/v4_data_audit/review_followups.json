@@ -1,0 +1,19 @@
+{
+ "overrides": {
+  "qa52": {"answer_error":true,"question_ambiguous":true,"note":"Full-size PNG confirms Out of Stock labels only under the neighboring black/red colourways. Selected green colourway has no such label. Gold overgeneralizes their status; rationale falsely claims each image is labeled Out of Stock."},
+  "qa19": {"note":"Full-size PNG confirms tiny inserted Hi text beside blue caret; gold is visible, but supplied in the goal."}
+ },
+ "supplemental_reviews": [
+  {"id":"screenqa_price_1","answer_error":false,"note":"Budget $0.00 is visible; shortened $0 preserves value."},
+  {"id":"screenqa_price_2","answer_error":false,"note":"Credit on Wednesday 01 Feb 2017 is $12,345.00."},
+  {"id":"screenqa_price_3","answer_error":false,"note":"Rental details total is $30.72; optional waiver 29.99/day is a separate amount."},
+  {"id":"dev_time_1","answer_error":false,"note":"21.6M monthly listeners visible; lexical stratifier classified monthly as date/time, but actual answer type is number."},
+  {"id":"dev_time_2","answer_error":false,"note":"Ready in 3 minutes visible in oats infographic; correct duration, extra Ready in despite just-time format."},
+  {"id":"dev_time_3","answer_error":false,"note":"Published by HarperCollins Publishers 2008 is visible; other publication/copyright years refer to other editions/material."},
+  {"id":"dev_phrase_1","answer_error":false,"goal_leak":true,"note":"First task Things to buy in future is visible and repeats the substance of the goal. TickTick is a task app, despite type guard."},
+  {"id":"dev_phrase_2","answer_error":false,"note":"Username userawezez is distinct from changed display name Global; correct field."},
+  {"id":"dev_phrase_3","answer_error":false,"note":"Present continuous is expanded above Hindi verb examples; correct topic."}
+ ],
+ "sample_method_note":"Primary audit: 60 unique QA endpoints, 6 drawn randomly per original-kind x lexical-answer-type stratum; 30 shortened ScreenQA and 20 dev_answer simple random rows. Fixed seed 20261118. Nine extra draws cover missing price, duration/date, and phrase strata, seed 20261119; excluded from primary error-rate denominators. Answer types are lexical prospective strata, with semantic corrections noted per image.",
+ "image_review":"All 110 primary PNGs and 9 supplementary PNGs were viewed via view_image contact sheets, with original PNG follow-ups for qa19, qa49 and qa52. All prompts and rolling histories were read alongside the images."
+}

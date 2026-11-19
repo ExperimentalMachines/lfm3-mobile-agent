@@ -1,0 +1,139 @@
+{
+  "reward_cases": [
+    {
+      "gold": "12M",
+      "candidate": "12",
+      "reward": 0.0
+    },
+    {
+      "gold": "22K",
+      "candidate": "22",
+      "reward": 0.0
+    },
+    {
+      "gold": "Oct 4",
+      "candidate": "4",
+      "reward": 0.0
+    },
+    {
+      "gold": "9:30 PM",
+      "candidate": "9:30",
+      "reward": 0.0
+    },
+    {
+      "gold": "45%",
+      "candidate": "45",
+      "reward": 0.0
+    },
+    {
+      "gold": "4 GB",
+      "candidate": "4",
+      "reward": 0.0
+    },
+    {
+      "gold": "no alerts",
+      "candidate": "alerts",
+      "reward": 0.0
+    },
+    {
+      "gold": "$10",
+      "candidate": "\u20ac10",
+      "reward": 0.0
+    },
+    {
+      "gold": "-5",
+      "candidate": "5",
+      "reward": 0.0
+    },
+    {
+      "gold": "12M",
+      "candidate": "12M is incorrect",
+      "reward": 1.0
+    },
+    {
+      "gold": "INR8,109.08",
+      "candidate": "\u20ac8,109.08",
+      "reward": 1.0
+    },
+    {
+      "gold": "C$43.00",
+      "candidate": "\u20ac43.00",
+      "reward": 0.0
+    },
+    {
+      "gold": "5:00p",
+      "candidate": "5:00",
+      "reward": 1.0
+    },
+    {
+      "gold": "1.5",
+      "candidate": "1.50",
+      "reward": 0.0
+    },
+    {
+      "gold": "1lbs-0.92oz, 480g",
+      "candidate": "1lbs-0.92, 480",
+      "reward": 1.0
+    },
+    {
+      "gold": "6,000+ results",
+      "candidate": "6,000 results",
+      "reward": 1.0
+    }
+  ],
+  "metrics": {
+    "one_malformed_and_infeasible": {
+      "command": [
+        "/Users/alpha/lfm3-android/.venv-data/bin/python",
+        "-B",
+        "/Users/alpha/lfm3-android/scripts/strict_dev_metrics.py",
+        "--answer",
+        "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/metric_fixtures/malformed_answer.jsonl",
+        "--complete",
+        "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/metric_fixtures/infeasible_complete.jsonl",
+        "--out",
+        "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/metric_fixtures/one_malformed_and_infeasible.json"
+      ],
+      "exit": 0,
+      "stdout": "{\"n_answer\": 1, \"n_complete\": 1, \"answer_emitted\": 1.0, \"answer_exact_strict\": 1.0, \"complete_false_answer\": 0.0, \"complete_status\": 1.0}\n",
+      "stderr": ""
+    },
+    "empty_splits": {
+      "command": [
+        "/Users/alpha/lfm3-android/.venv-data/bin/python",
+        "-B",
+        "/Users/alpha/lfm3-android/scripts/strict_dev_metrics.py",
+        "--answer",
+        "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/metric_fixtures/empty_answer.jsonl",
+        "--complete",
+        "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/metric_fixtures/empty_complete.jsonl",
+        "--out",
+        "/Users/alpha/lfm3-android/results/codex/v4b_reaudit/metric_fixtures/empty_splits.json"
+      ],
+      "exit": 0,
+      "stdout": "{\"n_answer\": 0, \"n_complete\": 0, \"answer_emitted\": 0.0, \"answer_exact_strict\": 0.0, \"complete_false_answer\": 0.0, \"complete_status\": 0.0}\n",
+      "stderr": ""
+    },
+    "strict_reward_rejects_same_malformed_answer": 0.0,
+    "step_budget_examples": [
+      {
+        "budget_s": 1,
+        "smoke_s_per_step": 120,
+        "steps": 10,
+        "estimated_optimisation_s": 1200
+      },
+      {
+        "budget_s": 100,
+        "smoke_s_per_step": 120,
+        "steps": 10,
+        "estimated_optimisation_s": 1200
+      },
+      {
+        "budget_s": 16200,
+        "smoke_s_per_step": 2000,
+        "steps": 10,
+        "estimated_optimisation_s": 20000
+      }
+    ]
+  }
+}

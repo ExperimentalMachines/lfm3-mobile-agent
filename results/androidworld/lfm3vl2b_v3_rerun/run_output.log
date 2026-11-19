@@ -1,0 +1,989 @@
+I1118 23:36:43.797721 8645066624 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1118 23:36:43.797937 8645066624 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5556'"
+I1118 23:36:43.797981 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 23:36:43.798040 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1118 23:36:43.798075 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1118 23:36:44.011751 8645066624 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1118 23:36:44.012052 8645066624 coordinator.py:80] Starting the simulator...
+I1118 23:36:44.012084 8645066624 coordinator.py:135] Simulator launch attempt 1 of 3
+I1118 23:36:44.012231 8645066624 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5556')
+I1118 23:36:44.012279 8645066624 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8556
+I1118 23:36:44.019447 8645066624 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8556
+I1118 23:36:44.024161 8645066624 emulator_simulator.py:374] Waiting for emulator ('emulator-5556') to start... (136456359ms)
+I1118 23:36:44.024204 8645066624 emulator_simulator.py:386] Done booting the emulator (in 0.004496 seconds).
+I1118 23:36:44.024255 8645066624 emulator_simulator.py:387] ********** Emulator logs **********
+I1118 23:36:44.024270 8645066624 emulator_simulator.py:389] Logfile does not exist: None.
+I1118 23:36:44.024280 8645066624 emulator_simulator.py:390] ******* End of emulator logs *******
+I1118 23:36:44.024290 8645066624 emulator_simulator.py:391] See the full emulator logs at None
+I1118 23:36:44.024321 8645066624 emulator_simulator.py:249] Done booting the Android Emulator.
+I1118 23:36:44.024335 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 23:36:44.024387 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1118 23:36:44.024426 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 23:36:44.024463 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1118 23:36:44.037724 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:36:44.037864 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system show_touches 1]
+I1118 23:36:44.038140 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:36:44.064535 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:36:44.064706 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 1]
+I1118 23:36:44.092750 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:36:44.124705 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:36:44.124861 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global policy_control immersive.full=*]
+I1118 23:36:44.125170 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:36:44.196391 10338769 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:36:44.202797 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 23:36:44.203549 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 23:36:44.203994 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1118 23:36:44.204440 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 23:36:44.204602 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1118 23:36:44.205477 8645066624 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1118 23:36:44.214115 8645066624 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1118 23:36:44.214702 8645066624 android_world_controller.py:330] Setting up AndroidWorldController.
+I1118 23:36:44.215313 8645066624 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1118 23:36:44.297139 6139785216 adb_log_stream.py:42] clear_buffer_output: b'I1118 23:36:44.205678 10338785 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)\n'
+I1118 23:36:44.303856 10338815 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)
+I1118 23:36:45.890252 8645066624 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1118 23:36:45.890561 8645066624 adb_call_parser.py:269] location_type: blob
+I1118 23:36:45.892186 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp9odf47yk.apk]
+I1118 23:36:46.440100 10338944 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)
+I1118 23:36:59.095762 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:36:59.096065 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1118 23:36:59.099134 10339550 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)
+I1118 23:37:02.139247 8645066624 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1118 23:37:02.139467 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1118 23:37:02.142065 10339715 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)
+I1118 23:37:02.182705 8645066624 a11y_grpc_wrapper.py:138] Using port 49197
+I1118 23:37:02.183439 8645066624 a11y_grpc_wrapper.py:141] Starting server
+I1118 23:37:02.184761 8645066624 a11y_grpc_wrapper.py:143] Server now running.
+I1118 23:37:02.185077 8645066624 environment.py:69] Resetting AndroidEnv...
+I1118 23:37:02.185816 8645066624 log_stream.py:54] Pausing LogStream.
+I1118 23:37:02.185861 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 23:37:02.185937 8645066624 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1118 23:37:02.185961 8645066624 adb_call_parser.py:491] Getting orientation...
+I1118 23:37:02.186009 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input]
+I1118 23:37:02.186253 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:02.188726 10339740 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:02.221893 8645066624 adb_call_parser.py:523] Done getting orientation: '0'
+I1118 23:37:02.244625 8645066624 environment.py:85] Done resetting AndroidEnv.
+I1118 23:37:02.244728 8645066624 environment.py:86] ************* NEW EPISODE *************
+I1118 23:37:02.244879 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:02.244934 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global no_proxy 10.0.2.2:49197]
+I1118 23:37:02.280810 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:02.283828 10339766 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:02.311646 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:02.311803 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global airplane_mode_on 0]
+I1118 23:37:02.341023 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:02.343624 10339790 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:03.372982 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:03.373142 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell svc wifi enable]
+I1118 23:37:03.373366 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:03.376632 10339879 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:04.410132 8645066624 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1118 23:37:04.410408 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 49197 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1118 23:37:04.410841 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.414640 10339913 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:04.461631 8645066624 env_launcher.py:92] Freezing datetime.
+I1118 23:37:04.461797 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.461839 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 23:37:04.462079 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.464481 10339937 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:04.484954 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:04.485100 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1118 23:37:04.485308 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.487727 10339962 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:04.513295 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:04.513601 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1118 23:37:04.514042 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.517109 10339989 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:04.542527 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:04.542650 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1118 23:37:04.542845 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.544926 10340013 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.564828 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.564953 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1118 23:37:04.565157 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.567257 10340039 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+Writing to results/androidworld/lfm3vl2b_v3_rerun/run_20261118T233704657581
+I1118 23:37:04.657897 8645066624 suite_utils.py:74] Running task: SimpleSmsSend
+===========================
+I1118 23:37:04.657984 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.658012 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 23:37:04.658280 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.660696 10340063 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.678820 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:04.678991 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1118 23:37:04.679212 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.681282 10340090 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.700919 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:04.701061 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1118 23:37:04.701262 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.703296 10340114 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.723950 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 23:37:04.724083 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1118 23:37:04.724325 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.726167 10340138 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.746810 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.746985 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1118 23:37:04.747245 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.749492 10340164 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.768207 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.768325 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 23:37:04.796125 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.798332 10340187 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.817533 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.817662 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date 1015153423.00]
+I1118 23:37:04.817886 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.820108 10340217 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.838727 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.838871 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.smsmessenger]
+I1118 23:37:04.839057 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.841319 10340243 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.868687 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.868809 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.simplemobiletools.smsmessenger" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1118 23:37:04.869138 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.871596 10340268 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+W1118 23:37:04.893131 8645066624 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.simplemobiletools.smsmessenger.
+I1118 23:37:04.893413 8645066624 task_eval.py:148] Initializing SimpleSmsSend
+I1118 23:37:04.893501 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.893530 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global airplane_mode_on 0]
+I1118 23:37:04.893862 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.896813 10340293 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.934832 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.935002 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 23:37:04.935290 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:04.937830 10340317 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:04.974771 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:04.974929 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell sqlite3 /data/data/com.android.providers.telephony/databases/mmssms.db "DELETE FROM sms;"]
+I1118 23:37:05.004112 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:05.006740 10340342 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:05.061468 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:05.061655 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 23:37:05.061971 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:05.064836 10340379 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:05.095843 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:05.096059 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell sqlite3 /data/data/com.android.providers.telephony/databases/mmssms.db "DELETE FROM threads;"]
+I1118 23:37:05.096486 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:05.099397 10340407 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:05.138887 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:05.139108 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date +%s]
+I1118 23:37:05.159742 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:05.162778 10340430 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:05.207581 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:05.207815 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell content query --uri content://sms/sent]
+I1118 23:37:05.208255 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:05.211891 10340456 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:11.896112 8645066624 sms_validators.py:242] During initialize_task, messages: []
+I1118 23:37:11.897667 8645066624 suite_utils.py:74] Running task SimpleSmsSend with goal "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+I1118 23:37:11.897902 8645066624 adb_utils.py:370] Attempting to press the HOME button
+I1118 23:37:11.898161 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 23:37:11.898265 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1118 23:37:11.898912 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:11.904261 10340840 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:12.092898 8645066624 environment.py:69] Resetting AndroidEnv...
+I1118 23:37:12.096343 8645066624 log_stream.py:54] Pausing LogStream.
+I1118 23:37:12.096706 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 23:37:12.172453 8645066624 environment.py:85] Done resetting AndroidEnv.
+I1118 23:37:12.172980 8645066624 environment.py:86] ************* NEW EPISODE *************
+I1118 23:37:12.175225 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:12.175730 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:12.179983 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:12.261307 10340867 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:12.549070 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:12.549423 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 0]
+I1118 23:37:12.549912 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:12.555497 10340893 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:12.833187 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:37:12.940456 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:12.940922 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:12.942628 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:13.072565 10340922 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:13.477069 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:13.477354 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:13.478143 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:13.487231 10340946 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:14.027991 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:14.028467 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:14.030555 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:14.104922 10340970 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:14.514746 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:14.515166 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:14.516555 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:14.533412 10340996 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:14.995716 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:14.995993 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:14.996473 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:15.002953 10341097 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:15.471617 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:15.471839 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:15.585847 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:15.590194 10341123 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:15.967397 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:15.967519 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:15.967854 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:15.971244 10341151 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:16.003198 8645066624 base_agent.py:107] Fetched after 3.2 seconds.
+I1118 23:37:17.975260 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:17.975604 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:17.976425 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:18.031159 10341502 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:18.157955 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:18.158222 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:37:18.158664 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:18.163847 10341542 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:18.263781 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:18.264026 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS Messenger 1]
+I1118 23:37:18.265249 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:18.271136 10341568 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+E1118 23:37:18.784996 8645066624 adb_controller.py:138] Failed to execute ADB command (try 1 of 3): [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS Messenger 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5556', 'shell', 'monkey', '--pct-syskeys', '0', '-p', 'SimpleSMS Messenger', '1']' returned non-zero exit status 255.
+E1118 23:37:18.787880 8645066624 adb_controller.py:142] **stdout**:
+E1118 23:37:18.787941 8645066624 adb_controller.py:144]     b'  bash arg: --pct-syskeys'
+E1118 23:37:18.787971 8645066624 adb_controller.py:144]     b'  bash arg: 0'
+E1118 23:37:18.787992 8645066624 adb_controller.py:144]     b'  bash arg: -p'
+E1118 23:37:18.788009 8645066624 adb_controller.py:144]     b'  bash arg: SimpleSMS'
+E1118 23:37:18.788028 8645066624 adb_controller.py:144]     b'  bash arg: Messenger'
+E1118 23:37:18.788046 8645066624 adb_controller.py:144]     b'  bash arg: 1'
+E1118 23:37:18.788063 8645066624 adb_controller.py:144]     b'args: [--pct-syskeys, 0, -p, SimpleSMS, Messenger, 1]'
+E1118 23:37:18.788080 8645066624 adb_controller.py:144]     b' arg: "--pct-syskeys"'
+E1118 23:37:18.788097 8645066624 adb_controller.py:144]     b' arg: "0"'
+E1118 23:37:18.788111 8645066624 adb_controller.py:144]     b' arg: "-p"'
+E1118 23:37:18.788127 8645066624 adb_controller.py:144]     b' arg: "SimpleSMS"'
+E1118 23:37:18.788143 8645066624 adb_controller.py:144]     b' arg: "Messenger"'
+E1118 23:37:18.788158 8645066624 adb_controller.py:144]     b' arg: "1"'
+E1118 23:37:18.788174 8645066624 adb_controller.py:144]     b'arg="--pct-syskeys" mCurArgData="null" mNextArg=1 argwas="--pct-syskeys" nextarg="0"'
+E1118 23:37:18.788231 8645066624 adb_controller.py:144]     b'data="0"'
+E1118 23:37:18.788370 8645066624 adb_controller.py:144]     b'data="SimpleSMS"'
+E1118 23:37:18.788442 8645066624 adb_controller.py:144]     b'** Error: Count is not a number: "Messenger"'
+E1118 23:37:18.788472 8645066624 adb_controller.py:144]     b'usage: monkey [-p ALLOWED_PACKAGE [-p ALLOWED_PACKAGE] ...]'
+E1118 23:37:18.788494 8645066624 adb_controller.py:144]     b'              [-c MAIN_CATEGORY [-c MAIN_CATEGORY] ...]'
+E1118 23:37:18.788514 8645066624 adb_controller.py:144]     b'              [--ignore-crashes] [--ignore-timeouts]'
+E1118 23:37:18.788532 8645066624 adb_controller.py:144]     b'              [--ignore-security-exceptions]'
+E1118 23:37:18.788549 8645066624 adb_controller.py:144]     b'              [--monitor-native-crashes] [--ignore-native-crashes]'
+E1118 23:37:18.788567 8645066624 adb_controller.py:144]     b'              [--kill-process-after-error] [--hprof]'
+E1118 23:37:18.788583 8645066624 adb_controller.py:144]     b'              [--match-description TEXT]'
+E1118 23:37:18.788601 8645066624 adb_controller.py:144]     b'              [--pct-touch PERCENT] [--pct-motion PERCENT]'
+E1118 23:37:18.788618 8645066624 adb_controller.py:144]     b'              [--pct-trackball PERCENT] [--pct-syskeys PERCENT]'
+E1118 23:37:18.788635 8645066624 adb_controller.py:144]     b'              [--pct-nav PERCENT] [--pct-majornav PERCENT]'
+E1118 23:37:18.788653 8645066624 adb_controller.py:144]     b'              [--pct-appswitch PERCENT] [--pct-flip PERCENT]'
+E1118 23:37:18.788670 8645066624 adb_controller.py:144]     b'              [--pct-anyevent PERCENT] [--pct-pinchzoom PERCENT]'
+E1118 23:37:18.788686 8645066624 adb_controller.py:144]     b'              [--pct-permission PERCENT]'
+E1118 23:37:18.788702 8645066624 adb_controller.py:144]     b'              [--pkg-blacklist-file PACKAGE_BLACKLIST_FILE]'
+E1118 23:37:18.788717 8645066624 adb_controller.py:144]     b'              [--pkg-whitelist-file PACKAGE_WHITELIST_FILE]'
+E1118 23:37:18.788731 8645066624 adb_controller.py:144]     b'              [--wait-dbg] [--dbg-no-events]'
+E1118 23:37:18.788747 8645066624 adb_controller.py:144]     b'              [--setup scriptfile] [-f scriptfile [-f scriptfile] ...]'
+E1118 23:37:18.788762 8645066624 adb_controller.py:144]     b'              [--port port]'
+E1118 23:37:18.788779 8645066624 adb_controller.py:144]     b'              [-s SEED] [-v [-v] ...]'
+E1118 23:37:18.788794 8645066624 adb_controller.py:144]     b'              [--throttle MILLISEC] [--randomize-throttle]'
+E1118 23:37:18.788810 8645066624 adb_controller.py:144]     b'              [--profile-wait MILLISEC]'
+E1118 23:37:18.788825 8645066624 adb_controller.py:144]     b'              [--device-sleep-time MILLISEC]'
+E1118 23:37:18.788841 8645066624 adb_controller.py:144]     b'              [--randomize-script]'
+E1118 23:37:18.788856 8645066624 adb_controller.py:144]     b'              [--script-log]'
+E1118 23:37:18.788870 8645066624 adb_controller.py:144]     b'              [--bugreport]'
+E1118 23:37:18.788886 8645066624 adb_controller.py:144]     b'              [--periodic-bugreport]'
+E1118 23:37:18.788901 8645066624 adb_controller.py:144]     b'              [--permission-target-system]'
+E1118 23:37:18.788917 8645066624 adb_controller.py:144]     b'              COUNT'
+E1118 23:37:18.788932 8645066624 adb_controller.py:144]     b''
+I1118 23:37:18.788969 8645066624 adb_controller.py:85] Skipping adb kill-server (shared server); waiting and retrying.
+I1118 23:37:20.790012 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1118 23:37:20.790427 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:20.794256 10341960 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:20.811674 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS Messenger 1]
+I1118 23:37:20.812105 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:20.815004 10341986 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+E1118 23:37:21.046613 8645066624 adb_controller.py:138] Failed to execute ADB command (try 2 of 3): [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS Messenger 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5556', 'shell', 'monkey', '--pct-syskeys', '0', '-p', 'SimpleSMS Messenger', '1']' returned non-zero exit status 255.
+E1118 23:37:21.047317 8645066624 adb_controller.py:142] **stdout**:
+E1118 23:37:21.047361 8645066624 adb_controller.py:144]     b'  bash arg: --pct-syskeys'
+E1118 23:37:21.047384 8645066624 adb_controller.py:144]     b'  bash arg: 0'
+E1118 23:37:21.047403 8645066624 adb_controller.py:144]     b'  bash arg: -p'
+E1118 23:37:21.047418 8645066624 adb_controller.py:144]     b'  bash arg: SimpleSMS'
+E1118 23:37:21.047434 8645066624 adb_controller.py:144]     b'  bash arg: Messenger'
+E1118 23:37:21.047449 8645066624 adb_controller.py:144]     b'  bash arg: 1'
+E1118 23:37:21.047464 8645066624 adb_controller.py:144]     b'args: [--pct-syskeys, 0, -p, SimpleSMS, Messenger, 1]'
+E1118 23:37:21.047477 8645066624 adb_controller.py:144]     b' arg: "--pct-syskeys"'
+E1118 23:37:21.047490 8645066624 adb_controller.py:144]     b' arg: "0"'
+E1118 23:37:21.047502 8645066624 adb_controller.py:144]     b' arg: "-p"'
+E1118 23:37:21.047514 8645066624 adb_controller.py:144]     b' arg: "SimpleSMS"'
+E1118 23:37:21.047526 8645066624 adb_controller.py:144]     b' arg: "Messenger"'
+E1118 23:37:21.047539 8645066624 adb_controller.py:144]     b' arg: "1"'
+E1118 23:37:21.047553 8645066624 adb_controller.py:144]     b'arg="--pct-syskeys" mCurArgData="null" mNextArg=1 argwas="--pct-syskeys" nextarg="0"'
+E1118 23:37:21.047566 8645066624 adb_controller.py:144]     b'data="0"'
+E1118 23:37:21.047578 8645066624 adb_controller.py:144]     b'data="SimpleSMS"'
+E1118 23:37:21.047590 8645066624 adb_controller.py:144]     b'** Error: Count is not a number: "Messenger"'
+E1118 23:37:21.047602 8645066624 adb_controller.py:144]     b'usage: monkey [-p ALLOWED_PACKAGE [-p ALLOWED_PACKAGE] ...]'
+E1118 23:37:21.047615 8645066624 adb_controller.py:144]     b'              [-c MAIN_CATEGORY [-c MAIN_CATEGORY] ...]'
+E1118 23:37:21.047627 8645066624 adb_controller.py:144]     b'              [--ignore-crashes] [--ignore-timeouts]'
+E1118 23:37:21.047642 8645066624 adb_controller.py:144]     b'              [--ignore-security-exceptions]'
+E1118 23:37:21.047657 8645066624 adb_controller.py:144]     b'              [--monitor-native-crashes] [--ignore-native-crashes]'
+E1118 23:37:21.047670 8645066624 adb_controller.py:144]     b'              [--kill-process-after-error] [--hprof]'
+E1118 23:37:21.047682 8645066624 adb_controller.py:144]     b'              [--match-description TEXT]'
+E1118 23:37:21.047693 8645066624 adb_controller.py:144]     b'              [--pct-touch PERCENT] [--pct-motion PERCENT]'
+E1118 23:37:21.047705 8645066624 adb_controller.py:144]     b'              [--pct-trackball PERCENT] [--pct-syskeys PERCENT]'
+E1118 23:37:21.047717 8645066624 adb_controller.py:144]     b'              [--pct-nav PERCENT] [--pct-majornav PERCENT]'
+E1118 23:37:21.047728 8645066624 adb_controller.py:144]     b'              [--pct-appswitch PERCENT] [--pct-flip PERCENT]'
+E1118 23:37:21.047740 8645066624 adb_controller.py:144]     b'              [--pct-anyevent PERCENT] [--pct-pinchzoom PERCENT]'
+E1118 23:37:21.047764 8645066624 adb_controller.py:144]     b'              [--pct-permission PERCENT]'
+E1118 23:37:21.047776 8645066624 adb_controller.py:144]     b'              [--pkg-blacklist-file PACKAGE_BLACKLIST_FILE]'
+E1118 23:37:21.047790 8645066624 adb_controller.py:144]     b'              [--pkg-whitelist-file PACKAGE_WHITELIST_FILE]'
+E1118 23:37:21.047803 8645066624 adb_controller.py:144]     b'              [--wait-dbg] [--dbg-no-events]'
+E1118 23:37:21.047816 8645066624 adb_controller.py:144]     b'              [--setup scriptfile] [-f scriptfile [-f scriptfile] ...]'
+E1118 23:37:21.047827 8645066624 adb_controller.py:144]     b'              [--port port]'
+E1118 23:37:21.047840 8645066624 adb_controller.py:144]     b'              [-s SEED] [-v [-v] ...]'
+E1118 23:37:21.047852 8645066624 adb_controller.py:144]     b'              [--throttle MILLISEC] [--randomize-throttle]'
+E1118 23:37:21.047863 8645066624 adb_controller.py:144]     b'              [--profile-wait MILLISEC]'
+E1118 23:37:21.047875 8645066624 adb_controller.py:144]     b'              [--device-sleep-time MILLISEC]'
+E1118 23:37:21.047887 8645066624 adb_controller.py:144]     b'              [--randomize-script]'
+E1118 23:37:21.047898 8645066624 adb_controller.py:144]     b'              [--script-log]'
+E1118 23:37:21.047909 8645066624 adb_controller.py:144]     b'              [--bugreport]'
+E1118 23:37:21.047921 8645066624 adb_controller.py:144]     b'              [--periodic-bugreport]'
+E1118 23:37:21.047932 8645066624 adb_controller.py:144]     b'              [--permission-target-system]'
+E1118 23:37:21.047945 8645066624 adb_controller.py:144]     b'              COUNT'
+E1118 23:37:21.047956 8645066624 adb_controller.py:144]     b''
+I1118 23:37:22.056603 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:37:22.737625 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:22.738106 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:22.749432 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:22.976195 10342038 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:23.195996 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:23.196375 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:23.197986 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:23.229927 10342079 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:23.607197 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:23.607439 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:23.607877 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:24.109350 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:24.109634 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:24.110177 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:24.600867 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:24.601037 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:24.601322 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:24.605868 10342163 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:25.103897 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:25.104074 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:25.104516 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:25.108776 10342215 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:25.609699 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:25.609893 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:25.610389 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:25.623620 10342393 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:26.182087 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:26.182362 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:26.182855 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:26.189212 10342541 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:26.619620 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:26.619800 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:26.643492 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:26.648226 10342568 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:27.169354 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:27.170043 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:27.172707 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:27.183357 10342596 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:27.685165 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:27.685481 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:27.715725 10342628 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:28.060923 8645066624 base_agent.py:107] Fetched after 6.0 seconds.
+I1118 23:37:31.748202 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:31.749675 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:31.750864 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:31.765768 10342692 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:31.937361 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:31.938316 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:37:32.032198 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:32.075498 10342714 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:34.365231 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:37:34.389082 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:34.389194 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:34.408485 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:34.412491 10342771 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:34.893590 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:34.893756 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:34.901014 10342823 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:35.386923 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:35.387066 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:35.387331 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:35.390332 10342876 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:35.897431 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:35.897610 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:35.897992 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:35.909397 10342924 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:36.466700 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:36.467377 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:36.468377 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:36.479840 10342959 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:36.996486 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:36.997055 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:36.999274 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:37.311809 10342993 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:37.902432 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:37.902900 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:37.907731 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:37.963742 10343020 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:38.378589 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:38.378874 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:38.379405 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:38.414337 10343044 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:38.900660 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:38.901092 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:38.901633 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:38.910907 10343070 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:39.444113 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:39.444517 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:39.445212 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:39.456426 10343107 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:39.885469 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:39.885831 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:39.898349 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:39.912777 10343156 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:40.368357 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:40.368574 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:40.369017 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:40.374298 10343235 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:40.426337 8645066624 base_agent.py:107] Fetched after 6.1 seconds.
+I1118 23:37:41.899611 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:41.899765 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:41.900216 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:41.906974 10343358 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:41.949975 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:41.950199 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:37:41.950575 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:41.955672 10343385 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:44.022392 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:37:44.055818 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:44.056006 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:44.098270 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:44.107031 10343421 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:44.553768 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:44.554023 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:44.554546 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:44.562574 10343451 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:45.054723 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:45.054997 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:45.055475 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:45.062445 10343469 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:45.560133 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:45.560419 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:45.560928 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:45.568533 10343505 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:46.068404 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:46.068651 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:46.069142 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:46.076034 10343582 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:46.556027 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:46.556209 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:46.556534 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:46.560579 10343632 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:47.054892 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:47.055010 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:47.055276 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:47.058397 10343659 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:47.556655 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:47.556776 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:47.556993 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:47.560423 10343709 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:48.059385 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:48.059509 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:48.059773 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:48.063360 10343760 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:48.564419 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:48.564536 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:48.587475 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:48.591788 10343828 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:49.069612 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:49.069775 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:49.111584 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:49.115991 10343943 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:49.572982 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:49.573141 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:49.573443 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:49.578583 10343990 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:50.025942 8645066624 base_agent.py:107] Fetched after 6.0 seconds.
+I1118 23:37:53.187319 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:53.187494 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:53.209954 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:53.227493 10344104 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:37:53.287791 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:53.288080 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:37:53.288771 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:53.296035 10344128 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:53.343369 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:53.343647 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS 1]
+I1118 23:37:53.344049 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:53.350993 10344154 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+E1118 23:37:54.005635 8645066624 adb_controller.py:138] Failed to execute ADB command (try 1 of 3): [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5556', 'shell', 'monkey', '--pct-syskeys', '0', '-p', 'SimpleSMS', '1']' returned non-zero exit status 252.
+E1118 23:37:54.007658 8645066624 adb_controller.py:142] **stdout**:
+E1118 23:37:54.007836 8645066624 adb_controller.py:144]     b'  bash arg: --pct-syskeys'
+E1118 23:37:54.007951 8645066624 adb_controller.py:144]     b'  bash arg: 0'
+E1118 23:37:54.007999 8645066624 adb_controller.py:144]     b'  bash arg: -p'
+E1118 23:37:54.008036 8645066624 adb_controller.py:144]     b'  bash arg: SimpleSMS'
+E1118 23:37:54.008067 8645066624 adb_controller.py:144]     b'  bash arg: 1'
+E1118 23:37:54.008093 8645066624 adb_controller.py:144]     b'args: [--pct-syskeys, 0, -p, SimpleSMS, 1]'
+E1118 23:37:54.008122 8645066624 adb_controller.py:144]     b' arg: "--pct-syskeys"'
+E1118 23:37:54.008147 8645066624 adb_controller.py:144]     b' arg: "0"'
+E1118 23:37:54.008172 8645066624 adb_controller.py:144]     b' arg: "-p"'
+E1118 23:37:54.008196 8645066624 adb_controller.py:144]     b' arg: "SimpleSMS"'
+E1118 23:37:54.008221 8645066624 adb_controller.py:144]     b' arg: "1"'
+E1118 23:37:54.008249 8645066624 adb_controller.py:144]     b'arg="--pct-syskeys" mCurArgData="null" mNextArg=1 argwas="--pct-syskeys" nextarg="0"'
+E1118 23:37:54.008275 8645066624 adb_controller.py:144]     b'data="0"'
+E1118 23:37:54.008297 8645066624 adb_controller.py:144]     b'data="SimpleSMS"'
+E1118 23:37:54.008321 8645066624 adb_controller.py:144]     b'** No activities found to run, monkey aborted.'
+I1118 23:37:54.008404 8645066624 adb_controller.py:85] Skipping adb kill-server (shared server); waiting and retrying.
+I1118 23:37:56.010359 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1118 23:37:56.010933 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:56.026618 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS 1]
+I1118 23:37:56.046182 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:56.049629 10344306 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+E1118 23:37:56.213560 8645066624 adb_controller.py:138] Failed to execute ADB command (try 2 of 3): [adb -P 5037 -s emulator-5556 shell monkey --pct-syskeys 0 -p SimpleSMS 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5556', 'shell', 'monkey', '--pct-syskeys', '0', '-p', 'SimpleSMS', '1']' returned non-zero exit status 252.
+E1118 23:37:56.214202 8645066624 adb_controller.py:142] **stdout**:
+E1118 23:37:56.214266 8645066624 adb_controller.py:144]     b'  bash arg: --pct-syskeys'
+E1118 23:37:56.214363 8645066624 adb_controller.py:144]     b'  bash arg: 0'
+E1118 23:37:56.214396 8645066624 adb_controller.py:144]     b'  bash arg: -p'
+E1118 23:37:56.214436 8645066624 adb_controller.py:144]     b'  bash arg: SimpleSMS'
+E1118 23:37:56.214448 8645066624 adb_controller.py:144]     b'  bash arg: 1'
+E1118 23:37:56.214474 8645066624 adb_controller.py:144]     b'args: [--pct-syskeys, 0, -p, SimpleSMS, 1]'
+E1118 23:37:56.214490 8645066624 adb_controller.py:144]     b' arg: "--pct-syskeys"'
+E1118 23:37:56.214498 8645066624 adb_controller.py:144]     b' arg: "0"'
+E1118 23:37:56.214507 8645066624 adb_controller.py:144]     b' arg: "-p"'
+E1118 23:37:56.214547 8645066624 adb_controller.py:144]     b' arg: "SimpleSMS"'
+E1118 23:37:56.214578 8645066624 adb_controller.py:144]     b' arg: "1"'
+E1118 23:37:56.214587 8645066624 adb_controller.py:144]     b'arg="--pct-syskeys" mCurArgData="null" mNextArg=1 argwas="--pct-syskeys" nextarg="0"'
+E1118 23:37:56.214615 8645066624 adb_controller.py:144]     b'data="0"'
+E1118 23:37:56.214640 8645066624 adb_controller.py:144]     b'data="SimpleSMS"'
+E1118 23:37:56.214704 8645066624 adb_controller.py:144]     b'** No activities found to run, monkey aborted.'
+I1118 23:37:57.218389 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:37:57.236746 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:57.236843 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:57.237042 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:57.240188 10344336 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:57.738538 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:57.738733 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:57.739082 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:57.745141 10344362 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:58.243089 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:58.243301 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:58.310917 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:58.316761 10344391 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:58.741128 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:58.741284 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:58.764235 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:58.769216 10344416 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:59.261621 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:59.261819 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:59.262179 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:59.266804 10344447 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:37:59.755243 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:37:59.755496 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:37:59.755931 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:37:59.761766 10344475 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:00.332333 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:00.332643 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:00.333931 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:00.344920 10344511 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:00.775975 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:00.776450 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:00.777603 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:00.789887 10344566 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:01.274284 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:01.274499 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:01.274898 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:01.281195 10344596 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:01.759225 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:01.759370 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:01.759672 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:01.763594 10344624 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:02.268450 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:02.268686 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:02.269074 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:02.272783 10344650 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:02.776664 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:02.776805 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:02.777091 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:02.781118 10344725 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:03.222200 8645066624 base_agent.py:107] Fetched after 6.0 seconds.
+I1118 23:38:07.886732 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:07.886945 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:07.906925 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:07.917946 10344837 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:07.994341 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:07.994616 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:07.995036 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:08.000416 10344864 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:10.113672 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:10.131308 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:10.131386 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:10.131741 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:10.136918 10345284 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:10.629802 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:10.629967 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:10.721524 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:11.129791 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:11.129976 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:11.130234 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:11.133312 10345425 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:11.647197 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:11.647433 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:11.647674 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:11.652130 10345466 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:12.140391 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:12.140606 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:12.140982 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:12.145852 10345501 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:12.644928 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:12.645139 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:12.668356 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:12.675162 10345532 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:13.152258 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:13.152496 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:13.153003 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:13.159223 10345567 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:13.652877 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:13.653061 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:13.653400 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:13.658144 10345592 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:14.155643 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:14.155838 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:14.156199 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:14.161254 10345621 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:14.661164 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:14.661338 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:14.661702 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:14.669113 10345657 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:15.163758 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:15.163927 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:15.186774 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:15.192089 10345686 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:15.665399 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:15.665589 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:15.756183 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:15.761503 10345708 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:16.119112 8645066624 base_agent.py:107] Fetched after 6.0 seconds.
+I1118 23:38:19.613925 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:19.614137 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:19.670017 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:19.685604 10345919 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:19.906677 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:19.907176 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:19.996226 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:20.006669 10345964 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:20.424541 8645066624 adb_utils.py:294] Attempting to tap the screen at (413, 1958)
+I1118 23:38:20.426301 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 23:38:20.428184 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 413 1958]
+I1118 23:38:20.538381 10346077 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:38:21.727138 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:21.808071 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:21.808275 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:21.835255 10346119 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:38:22.332093 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:22.332620 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:22.335643 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:22.362088 10346144 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:38:22.973841 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:22.974355 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:22.975336 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:23.011159 10346171 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:23.228175 8645066624 base_agent.py:107] Fetched after 1.5 seconds.
+I1118 23:38:25.766849 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:25.767144 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:25.767854 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:25.781111 10346264 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:25.990095 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:25.990331 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:25.990735 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:25.997768 10346306 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:26.066319 8645066624 adb_utils.py:294] Attempting to tap the screen at (413, 1958)
+I1118 23:38:26.066630 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 23:38:26.066716 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 413 1958]
+I1118 23:38:26.067174 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:26.073045 10346331 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:27.137948 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:27.196001 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:27.196255 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:27.197000 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:27.201248 10346438 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:27.770224 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:27.770565 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:27.771050 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:27.789696 10346466 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:28.289390 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:28.289816 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:28.292511 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:28.310042 10346494 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(10, generation: 1)
+I1118 23:38:28.716531 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:28.717018 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:28.717831 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:28.730318 10346524 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:29.328591 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:29.331535 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:29.332270 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:29.351913 10346557 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:29.737836 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:29.738157 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:29.738697 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:29.748977 10346582 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:30.217633 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:30.222110 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:30.242470 10346617 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:30.324792 8645066624 base_agent.py:107] Fetched after 3.2 seconds.
+I1118 23:38:33.109829 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:33.110042 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:33.110542 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:33.198879 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:33.199164 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:33.199603 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:33.204288 10346748 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:35.321175 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:35.338023 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:35.338141 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:35.338407 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:35.342087 10346807 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:35.841474 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:35.841654 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:35.844092 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:35.848061 10347236 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:35.883782 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 23:38:38.065167 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:38.065486 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:38.166860 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:38.273508 10347373 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:38.441066 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:38.441555 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:38.442205 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:38.464322 10347404 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:38.574254 8645066624 adb_utils.py:294] Attempting to tap the screen at (540, 1521)
+I1118 23:38:38.574635 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 23:38:38.574743 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 540 1521]
+I1118 23:38:38.575482 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:38.591059 10347439 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:39.769148 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:39.829725 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:39.829905 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:39.836119 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:39.850839 10347563 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:40.336527 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:40.336717 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:40.337887 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:40.344168 10347620 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:40.838373 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:40.838554 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:40.838925 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:40.847066 10347706 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:41.319194 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:41.319429 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:41.319834 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:41.324080 10347749 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:41.848207 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:41.848392 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:41.848755 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:41.854384 10347889 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:42.311316 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:42.311545 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:42.333390 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:42.477344 8645066624 base_agent.py:107] Fetched after 2.7 seconds.
+I1118 23:38:44.895838 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:44.896511 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:44.899886 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:44.914233 10348004 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:45.057432 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:45.058089 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:45.128442 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:45.137437 10348064 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:45.235104 8645066624 adb_utils.py:294] Attempting to tap the screen at (602, 1615)
+I1118 23:38:45.235517 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 23:38:45.235632 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 602 1615]
+I1118 23:38:45.237623 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:46.321099 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:46.379832 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:46.379981 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:46.425397 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:46.430681 10348151 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:46.858618 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:46.858846 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:46.907311 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:46.911527 10348177 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:47.363602 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:47.363783 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:47.370941 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:47.375842 10348230 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:47.446336 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 23:38:49.396227 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:49.396468 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:49.397118 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:49.409926 10348271 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:49.530508 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:49.530966 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:49.531603 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:49.540156 10348299 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:51.631974 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 23:38:51.658775 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:51.658910 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:51.659333 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:51.665236 10348477 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:52.155398 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:52.155648 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:52.156066 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:52.160364 10348506 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:52.205853 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 23:38:54.144078 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:54.144292 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:38:54.145191 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:54.158658 10348675 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:54.266026 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:54.266412 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 23:38:54.266988 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:54.275033 10348699 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:54.352267 8645066624 adb_utils.py:294] Attempting to tap the screen at (540, 1521)
+I1118 23:38:54.352662 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 23:38:54.352776 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 540 1521]
+I1118 23:38:54.393994 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:54.402595 10348726 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:38:55.503993 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:38:55.504207 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell content query --uri content://sms/sent]
+I1118 23:38:55.504636 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:38:55.508556 10348760 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.056156 8645066624 sms_validators.py:259] During is_successful, messages: []
+I1118 23:39:03.056581 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.056639 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date +%s]
+I1118 23:39:03.056978 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.058469 10349077 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.090607 8645066624 adb_call_parser.py:98] AdbRequest command type: get_current_activity
+I1118 23:39:03.090750 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack list | grep -E visible=true]
+I1118 23:39:03.090963 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.092312 10349099 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.150891 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.151031 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 23:39:03.151296 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.154058 10349129 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.175665 8645066624 suite_utils.py:74] Task Failed ❌;  Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder.
+I1118 23:39:03.175928 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.175963 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.smsmessenger]
+I1118 23:39:03.176141 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.177864 10349152 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.204679 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.204811 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.simplemobiletools.smsmessenger" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1118 23:39:03.205116 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.207297 10349175 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+W1118 23:39:03.230188 8645066624 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.simplemobiletools.smsmessenger.
+I1118 23:39:03.230320 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.230351 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys activity recents]
+I1118 23:39:03.230508 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.232215 10349198 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.250325 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.250436 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 10151]
+I1118 23:39:03.273287 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.274848 10349231 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.296051 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.296186 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 23:39:03.296463 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.298475 10349251 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.318756 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.318906 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1118 23:39:03.319122 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.320942 10349278 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.340793 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.340905 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 23:39:03.341070 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.342755 10349301 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.366229 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 23:39:03.366348 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1461]
+I1118 23:39:03.366572 10338604 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I1118 23:39:03.368452 10349323 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(16, generation: 1)
+I1118 23:39:03.456994 8645066624 task_eval.py:190] Tearing down SimpleSmsSend
+I1118 23:39:03.462945 8645066624 checkpointer.py:135] Wrote task episodes for SimpleSmsSend_0 to results/androidworld/lfm3vl2b_v3_rerun/run_20261118T233704657581/SimpleSmsSend_0.pkl.gz
+I1118 23:39:03.477375 8645066624 suite_utils.py:74] 
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+SimpleSmsSend                       0                  1.0                0.0                 12.0            118.5              0.0
+========= Average =========         0                  1.0                0.0                 12.0            118.5              0.0
+I1118 23:39:03.494636 8645066624 suite_utils.py:74] 
+
+              mean_success_rate
+difficulty               medium
+tags                           
+parameterized               0.0
+Running task: SimpleSmsSend
+===========================
+Running task SimpleSmsSend with goal "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder."
+Completed step 1.
+Completed step 2.
+Completed step 3.
+Completed step 4.
+Completed step 5.
+Completed step 6.
+Completed step 7.
+Completed step 8.
+Completed step 9.
+Completed step 10.
+Completed step 11.
+Completed step 12.
+Agent did not indicate task is done. Reached max number of steps.
+Task Failed ❌;  Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder.
+
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+SimpleSmsSend                       0                  1.0                0.0                 12.0            118.5              0.0
+========= Average =========         0                  1.0                0.0                 12.0            118.5              0.0
+
+
+              mean_success_rate
+difficulty               medium
+tags                           
+parameterized               0.0
+
+Done. Results in results/androidworld/lfm3vl2b_v3_rerun/run_20261118T233704657581
+I1118 23:39:03.495770 8645066624 a11y_grpc_wrapper.py:234] gRPC server stopped
+I1118 23:39:03.495826 8645066624 environment.py:119] Cleaning up AndroidEnv...
+I1118 23:39:03.497303 8645066624 environment.py:122] Done cleaning up AndroidEnv.

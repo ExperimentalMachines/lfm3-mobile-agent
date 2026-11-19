@@ -1,0 +1,55 @@
+{
+  "split_counts": {
+    "dev_amex": 468,
+    "dev_answer": 136,
+    "dev_complete": 80,
+    "dev_odyssey": 1000,
+    "dev_screenqa": 500,
+    "train": 92229
+  },
+  "checks": {
+    "system_checked": 94413,
+    "roles_checked": 94413,
+    "app_line_checked": 94413,
+    "json_checked": 94413,
+    "reasoning_string_checked": 94413,
+    "reasoning_no_think_tags_checked": 94413,
+    "qa_agreement_checked": 14354,
+    "qa_final_text_checked": 5584,
+    "qa_final_terminal_checked": 5584,
+    "qa_no_status_checked": 14354,
+    "shortened": 1233
+  },
+  "failures": {},
+  "unstable_app_lists": {},
+  "train_dev_episode_overlap": [],
+  "dev_img_sha_overlap": {
+    "dev_amex": [],
+    "dev_answer": [],
+    "dev_complete": [],
+    "dev_odyssey": [],
+    "dev_screenqa": []
+  },
+  "qa_unique": 2386,
+  "qa_weighted": 5448,
+  "duplication_errors": [],
+  "qa_strata": {
+    "compound/date/time": 283,
+    "compound/number": 902,
+    "question/date/time": 36,
+    "compound/price": 653,
+    "compound/phrase": 96,
+    "question/price": 117,
+    "compound/name": 114,
+    "question/number": 163,
+    "question/phrase": 9,
+    "question/name": 13
+  },
+  "qa_effective_kind": {
+    "compound": 2066,
+    "question": 320
+  },
+  "dev_complete_kinds": {
+    "compound": 80
+  }
+}

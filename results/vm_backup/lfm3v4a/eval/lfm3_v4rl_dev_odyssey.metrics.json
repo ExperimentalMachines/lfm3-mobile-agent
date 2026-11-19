@@ -1,0 +1,47 @@
+{
+ "n_steps": 1000,
+ "n_episodes": 1000,
+ "parse_rate": 0.998,
+ "type_match": 0.853,
+ "step_sr": 0.638,
+ "episode_sr": 0.638,
+ "per_type": {
+  "click": {
+   "n": 686,
+   "type_match": 0.8892128279883382,
+   "step_sr": 0.6545189504373178
+  },
+  "input_text": {
+   "n": 142,
+   "type_match": 0.9507042253521126,
+   "step_sr": 0.5985915492957746
+  },
+  "long_press": {
+   "n": 6,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 3,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_home": {
+   "n": 92,
+   "type_match": 0.7391304347826086,
+   "step_sr": 0.7391304347826086
+  },
+  "scroll": {
+   "n": 71,
+   "type_match": 0.5633802816901409,
+   "step_sr": 0.5070422535211268
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 1000,
+  "expected": 1000,
+  "model": "/content/runs/v4rl/merged"
+ }
+}

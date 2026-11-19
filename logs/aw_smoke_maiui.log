@@ -1,0 +1,659 @@
+I1118 14:41:45.732262 8645066624 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1118 14:41:45.732465 8645066624 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5556'"
+I1118 14:41:45.732566 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 14:41:45.732809 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1118 14:41:45.960076 8645066624 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1118 14:41:45.960712 8645066624 coordinator.py:80] Starting the simulator...
+I1118 14:41:45.960806 8645066624 coordinator.py:135] Simulator launch attempt 1 of 3
+I1118 14:41:45.960903 8645066624 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5556')
+I1118 14:41:45.960937 8645066624 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8556
+I1118 14:41:45.979403 8645066624 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8556
+I1118 14:41:45.983318 8645066624 emulator_simulator.py:374] Waiting for emulator ('emulator-5556') to start... (104358495ms)
+I1118 14:41:45.983426 8645066624 emulator_simulator.py:386] Done booting the emulator (in 0.003570 seconds).
+I1118 14:41:45.983577 8645066624 emulator_simulator.py:387] ********** Emulator logs **********
+I1118 14:41:45.983609 8645066624 emulator_simulator.py:389] Logfile does not exist: None.
+I1118 14:41:45.983628 8645066624 emulator_simulator.py:390] ******* End of emulator logs *******
+I1118 14:41:45.983649 8645066624 emulator_simulator.py:391] See the full emulator logs at None
+I1118 14:41:45.983721 8645066624 emulator_simulator.py:249] Done booting the Android Emulator.
+I1118 14:41:45.983756 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 14:41:45.983974 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 14:41:46.012661 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:41:46.012784 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system show_touches 1]
+I1118 14:41:46.086612 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:41:46.086809 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 1]
+I1118 14:41:46.140738 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:41:46.141038 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global policy_control immersive.full=*]
+I1118 14:41:46.259315 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 14:41:46.259764 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 14:41:46.260607 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1118 14:41:46.261903 8645066624 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1118 14:41:46.269778 8645066624 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1118 14:41:46.270015 8645066624 android_world_controller.py:330] Setting up AndroidWorldController.
+I1118 14:41:46.270129 8645066624 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1118 14:41:46.369584 6155317248 adb_log_stream.py:42] clear_buffer_output: b''
+I1118 14:41:46.775579 8645066624 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1118 14:41:46.775820 8645066624 adb_call_parser.py:269] location_type: blob
+I1118 14:41:46.781547 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpoyf14tcd.apk]
+I1118 14:42:00.222558 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:00.222823 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1118 14:42:03.262707 8645066624 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1118 14:42:03.262923 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1118 14:42:03.317617 8645066624 a11y_grpc_wrapper.py:138] Using port 53851
+I1118 14:42:03.318863 8645066624 a11y_grpc_wrapper.py:141] Starting server
+I1118 14:42:03.320298 8645066624 a11y_grpc_wrapper.py:143] Server now running.
+I1118 14:42:03.320686 8645066624 environment.py:69] Resetting AndroidEnv...
+I1118 14:42:03.321775 8645066624 log_stream.py:54] Pausing LogStream.
+I1118 14:42:03.321845 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 14:42:03.322006 8645066624 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1118 14:42:03.322043 8645066624 adb_call_parser.py:491] Getting orientation...
+I1118 14:42:03.322108 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input]
+I1118 14:42:03.420045 8645066624 adb_call_parser.py:523] Done getting orientation: '0'
+I1118 14:42:03.444287 8645066624 environment.py:85] Done resetting AndroidEnv.
+I1118 14:42:03.444360 8645066624 environment.py:86] ************* NEW EPISODE *************
+I1118 14:42:03.444514 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:03.444573 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global no_proxy 10.0.2.2:53851]
+I1118 14:42:03.499855 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:03.500080 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global airplane_mode_on 0]
+I1118 14:42:04.678429 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:04.679043 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell svc wifi enable]
+I1118 14:42:05.783674 8645066624 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1118 14:42:05.783856 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 53851 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1118 14:42:05.825074 8645066624 env_launcher.py:92] Freezing datetime.
+I1118 14:42:05.825264 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:05.825311 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 14:42:05.854701 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:05.854846 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1118 14:42:05.885581 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:05.885733 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1118 14:42:05.916615 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:05.916769 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1118 14:42:05.950023 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:05.950168 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+Writing to results/androidworld/_smoke_maiui_2b_matched_q8_0/run_20261118T144206078693
+I1118 14:42:06.079152 8645066624 suite_utils.py:74] Running task: ContactsAddContact
+================================
+I1118 14:42:06.079260 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.079293 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 14:42:06.132507 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:06.132651 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1118 14:42:06.196261 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:06.196408 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1118 14:42:06.237406 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:42:06.237595 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1118 14:42:06.283791 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.283982 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1118 14:42:06.322640 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.322803 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 14:42:06.359852 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.360016 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date 1015153423.00]
+I1118 14:42:06.406191 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.406372 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.google.android.contacts]
+I1118 14:42:06.500122 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.500309 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.google.android.contacts" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1118 14:42:06.543374 8645066624 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.google.android.contacts.
+I1118 14:42:06.543814 8645066624 task_eval.py:148] Initializing ContactsAddContact
+I1118 14:42:06.543953 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.544008 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell pm clear com.android.providers.contacts]
+I1118 14:42:06.707239 8645066624 suite_utils.py:74] Running task ContactsAddContact with goal "Create a new contact for Hugo Pereira. Their number is +13920741751."
+I1118 14:42:06.707505 8645066624 adb_utils.py:370] Attempting to press the HOME button
+I1118 14:42:06.707579 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 14:42:06.707634 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1118 14:42:06.778846 8645066624 environment.py:69] Resetting AndroidEnv...
+I1118 14:42:06.780976 8645066624 log_stream.py:54] Pausing LogStream.
+I1118 14:42:06.781144 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 14:42:06.823158 8645066624 environment.py:85] Done resetting AndroidEnv.
+I1118 14:42:06.823276 8645066624 environment.py:86] ************* NEW EPISODE *************
+I1118 14:42:06.823964 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:06.824102 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:07.412547 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:07.413037 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 0]
+I1118 14:42:07.892442 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:42:08.249912 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:08.250132 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:08.453398 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:08.453647 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:08.942798 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:08.942965 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:09.440032 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:09.440208 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:09.942896 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:09.943010 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:10.452499 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:10.452613 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:10.957341 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:10.957581 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:11.522301 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:11.522826 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:12.411717 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:12.412088 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:13.240457 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:13.241379 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:13.577291 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:13.577548 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:14.072129 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:14.072278 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:14.420865 8645066624 base_agent.py:107] Fetched after 6.5 seconds.
+I1118 14:42:23.581768 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:23.581968 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:23.720504 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:23.721023 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:42:23.889528 8645066624 adb_utils.py:228] Attempting to launch 'com.google.android.contacts/com.android.contacts.activities.PeopleActivity'
+I1118 14:42:23.889780 8645066624 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1118 14:42:23.889844 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.google.android.contacts/com.android.contacts.activities.PeopleActivity]
+I1118 14:42:28.791280 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:42:28.850691 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:28.850789 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:29.444763 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:29.445079 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:30.033553 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:30.033905 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:30.619768 8645066624 base_agent.py:107] Fetched after 1.8 seconds.
+I1118 14:42:39.518645 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:39.518929 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:39.622339 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:39.622637 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:42:39.719316 8645066624 adb_utils.py:294] Attempting to tap the screen at (942, 2010)
+I1118 14:42:39.719816 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:42:39.719947 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 942 2010]
+I1118 14:42:40.821245 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:42:40.873883 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:40.873974 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:41.353458 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:41.353599 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:41.869107 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:41.869257 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:42.357180 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:42.357443 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:42.861720 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:42.861882 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:42.919480 8645066624 base_agent.py:107] Fetched after 2.1 seconds.
+I1118 14:42:52.550522 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:52.550832 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:52.813996 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:52.814285 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:42:52.919018 8645066624 adb_utils.py:294] Attempting to tap the screen at (464, 936)
+I1118 14:42:52.919348 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:42:52.919463 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 464 936]
+I1118 14:42:54.119856 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:42:54.152857 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:54.152981 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:54.670405 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:54.670654 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:55.152613 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:55.152765 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:55.661154 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:55.661387 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:56.261493 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:42:56.261859 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:42:57.076488 8645066624 base_agent.py:107] Fetched after 3.0 seconds.
+I1118 14:43:05.968966 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:05.969343 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:06.221770 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:06.222079 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:43:06.321203 8645066624 adb_utils.py:536] Attempting to type word: 'Hugo'
+I1118 14:43:06.321596 8645066624 adb_call_parser.py:98] AdbRequest command type: input_text
+I1118 14:43:06.321683 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input text Hugo]
+I1118 14:43:06.874860 8645066624 adb_utils.py:427] Attemting to press the ENTER button
+I1118 14:43:06.875092 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 14:43:06.875158 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_ENTER]
+I1118 14:43:08.054537 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:43:08.095880 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:08.096014 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:08.608487 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:08.608626 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:09.128133 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:09.128816 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:09.537055 8645066624 base_agent.py:107] Fetched after 1.5 seconds.
+I1118 14:43:19.187242 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:19.187415 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:19.382726 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:19.384432 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:43:19.508138 8645066624 adb_utils.py:294] Attempting to tap the screen at (534, 1119)
+I1118 14:43:19.508517 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:43:19.508635 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 534 1119]
+I1118 14:43:20.667229 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:43:20.689120 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:20.689228 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:21.191151 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:21.191317 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:21.235254 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 14:43:30.042736 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:30.043127 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:30.171871 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:30.172075 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:43:30.242321 8645066624 adb_utils.py:536] Attempting to type word: 'Pereira'
+I1118 14:43:30.242660 8645066624 adb_call_parser.py:98] AdbRequest command type: input_text
+I1118 14:43:30.242742 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input text Pereira]
+I1118 14:43:31.135617 8645066624 adb_utils.py:427] Attemting to press the ENTER button
+I1118 14:43:31.135883 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 14:43:31.135953 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_ENTER]
+I1118 14:43:32.281517 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:43:32.452478 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:32.452640 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:33.227019 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:33.227641 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:33.699049 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:33.699337 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:33.771341 8645066624 base_agent.py:107] Fetched after 1.5 seconds.
+I1118 14:43:42.749987 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:42.750176 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:42.898545 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:42.898880 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:43:43.030452 8645066624 adb_utils.py:294] Attempting to tap the screen at (537, 1494)
+I1118 14:43:43.030992 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:43:43.031111 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 537 1494]
+I1118 14:43:44.155107 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:43:44.183408 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:44.183482 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:44.689377 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:44.689507 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:45.202687 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:45.202826 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:45.247800 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:43:52.537496 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:52.537684 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:52.638262 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:52.638530 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:43:53.014321 8645066624 adb_utils.py:536] Attempting to type word: '+13920741751'
+I1118 14:43:53.014730 8645066624 adb_call_parser.py:98] AdbRequest command type: input_text
+I1118 14:43:53.014848 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input text +13920741751]
+I1118 14:43:55.021888 8645066624 adb_utils.py:427] Attemting to press the ENTER button
+I1118 14:43:55.022149 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 14:43:55.022218 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_ENTER]
+I1118 14:43:56.178595 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:43:56.197901 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:56.197998 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:56.700786 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:56.700913 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:57.202209 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:43:57.202320 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:43:57.233067 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:44:06.676213 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:06.676394 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:06.909210 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:06.909518 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:44:06.999823 8645066624 adb_utils.py:294] Attempting to tap the screen at (1012, 1261)
+I1118 14:44:07.000044 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:44:07.000117 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 1012 1261]
+I1118 14:44:08.127868 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:44:08.323630 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:08.323858 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:08.810968 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:08.811357 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:09.171488 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:09.171694 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:09.668488 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:09.668627 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:10.171489 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:10.171619 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:10.205263 8645066624 base_agent.py:107] Fetched after 2.1 seconds.
+I1118 14:44:19.095048 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:19.095396 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:19.215455 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:19.216018 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:44:19.293914 8645066624 adb_utils.py:294] Attempting to tap the screen at (537, 1278)
+I1118 14:44:19.294114 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:44:19.294178 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 537 1278]
+I1118 14:44:20.402756 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:44:20.454209 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:20.454351 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:20.956315 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:20.956595 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:21.454298 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:21.454607 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:21.533116 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:44:30.325664 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:30.326017 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:30.531469 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:30.531841 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:44:30.695382 8645066624 adb_utils.py:536] Attempting to type word: '+13920741751'
+I1118 14:44:30.695692 8645066624 adb_call_parser.py:98] AdbRequest command type: input_text
+I1118 14:44:30.695759 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input text +13920741751]
+I1118 14:44:32.129614 8645066624 adb_utils.py:427] Attemting to press the ENTER button
+I1118 14:44:32.129901 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 14:44:32.129988 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_ENTER]
+I1118 14:44:33.405051 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:44:33.524976 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:33.525177 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:33.986716 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:33.987112 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:34.457741 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:34.457951 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:34.951707 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:34.951881 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:35.021466 8645066624 base_agent.py:107] Fetched after 1.6 seconds.
+I1118 14:44:43.707509 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:43.708044 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:43.865158 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:43.865466 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:44:43.948956 8645066624 adb_utils.py:349] Attempting to long press the screen at (341, 1278)
+I1118 14:44:43.949222 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:43.949294 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 341 1278 341 1278 1000]
+I1118 14:44:46.231523 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:46.231811 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell content query --uri content://contacts/phones/ --projection display_name:number]
+I1118 14:44:48.634798 8645066624 suite_utils.py:74] Task Failed ❌;  Create a new contact for Hugo Pereira. Their number is +13920741751.
+I1118 14:44:48.635046 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:48.635085 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.google.android.contacts]
+I1118 14:44:48.701039 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:48.701146 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.google.android.contacts" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1118 14:44:48.762572 8645066624 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.google.android.contacts.
+I1118 14:44:48.762840 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:48.762881 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys activity recents]
+I1118 14:44:48.881848 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:48.881986 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 10151]
+I1118 14:44:48.999674 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:48.999790 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 14:44:49.161055 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:49.161237 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 14:44:49.351993 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:49.352187 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1118 14:44:49.554527 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:49.554853 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 14:44:49.709426 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:49.709996 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1283]
+I1118 14:44:50.773602 8645066624 task_eval.py:190] Tearing down ContactsAddContact
+I1118 14:44:50.788703 8645066624 checkpointer.py:135] Wrote task episodes for ContactsAddContact_0 to results/androidworld/_smoke_maiui_2b_matched_q8_0/run_20261118T144206078693/ContactsAddContact_0.pkl.gz
+I1118 14:44:50.920088 8645066624 suite_utils.py:74] 
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+ContactsAddContact                  0                  1.0                0.0                 12.0            162.6              0.0
+========= Average =========         0                  1.0                0.0                 12.0            162.6              0.0
+I1118 14:44:50.938136 8645066624 suite_utils.py:74] 
+
+              mean_success_rate
+difficulty                 easy
+tags                           
+data_entry                  0.0
+parameterized               0.0
+I1118 14:44:50.938426 8645066624 suite_utils.py:74] Running task: SystemBrightnessMax
+=================================
+I1118 14:44:50.938703 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:50.938765 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 14:44:51.128773 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:44:51.129027 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1118 14:44:51.289349 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:44:51.289715 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1118 14:44:51.514337 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1118 14:44:51.514793 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1118 14:44:51.615043 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:51.615406 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1118 14:44:51.724586 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:51.724849 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1118 14:44:51.774966 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:51.775185 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date 1015153423.00]
+I1118 14:44:51.825651 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:51.825856 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.android.settings]
+I1118 14:44:51.891347 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:51.891554 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.android.settings" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1118 14:44:51.982352 8645066624 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.android.settings.
+I1118 14:44:51.982565 8645066624 task_eval.py:148] Initializing SystemBrightnessMax
+I1118 14:44:51.982714 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:51.982762 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system screen_brightness 1]
+I1118 14:44:52.068198 8645066624 suite_utils.py:74] Running task SystemBrightnessMax with goal "Turn brightness to the max value."
+I1118 14:44:52.068504 8645066624 adb_utils.py:370] Attempting to press the HOME button
+I1118 14:44:52.068592 8645066624 adb_call_parser.py:98] AdbRequest command type: press_button
+I1118 14:44:52.068654 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1118 14:44:52.172675 8645066624 environment.py:69] Resetting AndroidEnv...
+I1118 14:44:52.173877 8645066624 log_stream.py:54] Pausing LogStream.
+I1118 14:44:52.173974 8645066624 log_stream.py:59] Resuming LogStream.
+I1118 14:44:52.224663 8645066624 environment.py:85] Done resetting AndroidEnv.
+I1118 14:44:52.224882 8645066624 environment.py:86] ************* NEW EPISODE *************
+I1118 14:44:52.233521 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:52.233667 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:52.405372 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:52.405647 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 0]
+I1118 14:44:52.531770 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:44:52.558057 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:52.558160 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:53.054292 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:53.054424 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:53.557387 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:53.557510 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:54.062756 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:54.062958 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:54.591851 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:54.592077 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:55.172429 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:55.172731 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:55.816545 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:55.817012 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:56.290253 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:44:56.290688 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:44:56.741906 8645066624 base_agent.py:107] Fetched after 4.2 seconds.
+I1118 14:45:06.354181 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:06.354677 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:06.586385 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:06.586819 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:45:06.724207 8645066624 adb_utils.py:228] Attempting to launch 'com.android.settings/.Settings'
+I1118 14:45:06.724544 8645066624 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1118 14:45:06.724623 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.android.settings/.Settings]
+I1118 14:45:11.860838 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:45:11.889492 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:11.889597 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:12.385801 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:12.385920 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:12.879658 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:12.879759 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:12.911442 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:45:21.440326 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:21.440534 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:45:23.136720 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:45:23.198277 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:23.198458 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:23.670023 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:23.670253 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:24.187257 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:24.187516 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:24.254611 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:45:32.026107 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:32.027140 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:32.160237 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:32.160772 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:45:32.283919 8645066624 adb_utils.py:294] Attempting to tap the screen at (278, 2106)
+I1118 14:45:32.284281 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:45:32.284381 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 278 2106]
+I1118 14:45:33.391846 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:45:33.556135 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:33.556517 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:34.388419 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:34.388715 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:35.261753 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:35.262142 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:35.973232 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:35.973450 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:36.129249 8645066624 base_agent.py:107] Fetched after 2.7 seconds.
+I1118 14:45:44.683622 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:44.684058 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:44.833905 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:44.834254 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1118 14:45:44.924464 8645066624 adb_utils.py:294] Attempting to tap the screen at (278, 2106)
+I1118 14:45:44.924829 8645066624 adb_call_parser.py:98] AdbRequest command type: tap
+I1118 14:45:44.924976 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input tap 278 2106]
+I1118 14:45:46.019546 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:45:46.052005 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:46.052107 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:46.553819 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:46.553957 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:46.667407 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 14:45:55.130913 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:55.131191 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:45:57.039216 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:45:57.078807 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:57.079119 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:57.582119 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:57.582340 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:58.075762 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:45:58.075967 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:45:58.148122 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:46:07.074712 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:07.075645 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:46:08.857903 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:46:08.890996 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:08.891121 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:09.389260 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:09.389475 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:09.459105 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 14:46:19.345380 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:19.345670 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:46:21.107944 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:46:21.140126 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:21.140244 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:21.640290 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:21.640446 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:21.700618 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 14:46:30.458546 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:30.458932 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:46:32.206100 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:46:32.274364 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:32.274580 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:32.755129 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:32.755470 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:33.242788 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:33.242959 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:33.302530 8645066624 base_agent.py:107] Fetched after 1.1 seconds.
+I1118 14:46:41.651913 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:41.652446 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:46:44.018239 8645066624 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1118 14:46:44.109383 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:44.109534 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:44.557490 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:44.557755 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1118 14:46:44.639525 8645066624 base_agent.py:107] Fetched after 0.6 seconds.
+I1118 14:46:52.507452 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:52.507658 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1921 540 1489 500]
+I1118 14:46:54.171749 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:54.172132 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get system screen_brightness]
+I1118 14:46:54.277605 8645066624 suite_utils.py:74] Task Failed ❌;  Turn brightness to the max value.
+I1118 14:46:54.278128 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:54.278239 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.android.settings]
+I1118 14:46:54.741472 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:54.741986 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.android.settings" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1118 14:46:54.900268 8645066624 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.android.settings.
+I1118 14:46:54.900709 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:54.900817 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys activity recents]
+I1118 14:46:55.467347 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:55.467840 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 10151]
+I1118 14:46:55.804924 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:55.805405 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 14:46:56.002660 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:56.002892 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1118 14:46:56.180137 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:56.180482 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 14:46:56.483049 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:56.483249 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1118 14:46:56.545501 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:56.545758 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1118 14:46:56.661934 8645066624 adb_call_parser.py:98] AdbRequest command type: generic
+I1118 14:46:56.662202 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1284]
+I1118 14:46:56.764127 8645066624 task_eval.py:190] Tearing down SystemBrightnessMax
+I1118 14:46:56.771264 8645066624 checkpointer.py:135] Wrote task episodes for SystemBrightnessMax_0 to results/androidworld/_smoke_maiui_2b_matched_q8_0/run_20261118T144206078693/SystemBrightnessMax_0.pkl.gz
+I1118 14:46:56.785483 8645066624 suite_utils.py:74] 
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+ContactsAddContact                  0                  1.0                0.0                 12.0           162.60              0.0
+SystemBrightnessMax                 1                  1.0                0.0                 10.0           123.30              0.0
+========= Average =========         0                  1.0                0.0                 11.0           142.95              0.0
+I1118 14:46:56.793701 8645066624 suite_utils.py:74] 
+
+              mean_success_rate
+difficulty                 easy
+tags                           
+data_entry                  0.0
+parameterized               0.0
+untagged                    0.0
+Running task: ContactsAddContact
+================================
+Running task ContactsAddContact with goal "Create a new contact for Hugo Pereira. Their number is +13920741751."
+Completed step 1.
+Completed step 2.
+Completed step 3.
+Completed step 4.
+Completed step 5.
+Completed step 6.
+Completed step 7.
+Completed step 8.
+Completed step 9.
+Completed step 10.
+Completed step 11.
+Completed step 12.
+Agent did not indicate task is done. Reached max number of steps.
+Task Failed ❌;  Create a new contact for Hugo Pereira. Their number is +13920741751.
+
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+ContactsAddContact                  0                  1.0                0.0                 12.0            162.6              0.0
+========= Average =========         0                  1.0                0.0                 12.0            162.6              0.0
+
+
+              mean_success_rate
+difficulty                 easy
+tags                           
+data_entry                  0.0
+parameterized               0.0
+
+Running task: SystemBrightnessMax
+=================================
+Running task SystemBrightnessMax with goal "Turn brightness to the max value."
+Completed step 1.
+Completed step 2.
+Completed step 3.
+Completed step 4.
+Completed step 5.
+Completed step 6.
+Completed step 7.
+Completed step 8.
+Completed step 9.
+Completed step 10.
+Agent did not indicate task is done. Reached max number of steps.
+Task Failed ❌;  Turn brightness to the max value.
+
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+ContactsAddContact                  0                  1.0                0.0                 12.0           162.60              0.0
+SystemBrightnessMax                 1                  1.0                0.0                 10.0           123.30              0.0
+========= Average =========         0                  1.0                0.0                 11.0           142.95              0.0
+
+
+              mean_success_rate
+difficulty                 easy
+tags                           
+data_entry                  0.0
+parameterized               0.0
+untagged                    0.0
+
+Done. Results in results/androidworld/_smoke_maiui_2b_matched_q8_0/run_20261118T144206078693
+I1118 14:46:56.794992 8645066624 a11y_grpc_wrapper.py:234] gRPC server stopped
+I1118 14:46:56.795055 8645066624 environment.py:119] Cleaning up AndroidEnv...
+I1118 14:46:56.796895 8645066624 environment.py:122] Done cleaning up AndroidEnv.

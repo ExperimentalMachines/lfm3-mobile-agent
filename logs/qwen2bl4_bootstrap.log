@@ -1,0 +1,32 @@
+dirs ok
+[colab] Uploaded 'train/sft_vlm.py' to '/content/work/sft_vlm.py'
+[colab] Uploaded 'train/agent_format.py' to '/content/work/agent_format.py'
+[colab] Uploaded 'train/qwen35_chat_template_gen.jinja' to '/content/work/qwen35_chat_template_gen.jinja'
+[colab] Uploaded 'scripts/vm_train_eval_push.sh' to '/content/work/vm_train_eval_push.sh'
+[colab] Uploaded 'eval/androidcontrol/generate.py' to '/content/work/generate.py'
+[colab] Uploaded 'eval/androidcontrol/score.py' to '/content/work/score.py'
+[colab] Uploaded 'eval/general/eval_general.py' to '/content/work/eval_general.py'
+[colab] Uploaded 'data/build_general_replay.py' to '/content/work/build_general_replay.py'
+[colab] Uploaded 'scripts/vm_450m_pipeline.sh' to '/content/work/vm_450m_pipeline.sh'
+[colab] Uploaded 'scripts/vm_model_pipeline.sh' to '/content/work/vm_model_pipeline.sh'
+[colab] Uploaded 'scripts/vm_train.sh' to '/content/work/vm_train.sh'
+[colab] Uploaded 'scripts/colab_bootstrap.py' to '/content/work/colab_bootstrap.py'
+[colab] Uploaded '/Users/alpha/.cache/huggingface/token' to '/content/.hf_token'
++ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
+name, memory.total [MiB], driver_version
+NVIDIA L4, 23034 MiB, 580.82.07
+ 
++ nproc; free -g | head -2; df -h /content | tail -1; ls -la /dev/kvm 2>&1
+12
+               total        used        free      shared  buff/cache   available
+Mem:              52           1          48           0           3          51
+overlay         113G   83M  113G   1% /
+ls: cannot access '/dev/kvm': No such file or directory
+ 
++ pip install -q "torch==2.14.1" "torchvision==0.29.1" "torchao==0.18.0" "trl==1.16.0" "transformers==5.20.2" "peft==0.21.2" "accelerate==1.15.0" "datasets==5.1.0" "huggingface-hub==2.3.0" "tokenizers==0.23.3" "safetensors==0.8.0" "tensorboard" "pillow" "pyarrow"
+ ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+cudf-cu13 26.6.0 requires pyarrow<24,>=19.0.0, but you have pyarrow 26.0.1 which is incompatible.
+
+pip rc 0
+HF user: alpharomercoma
+versions 2.14.1+cu130 5.20.2 1.16.0 0.21.2 cuda True NVIDIA L4

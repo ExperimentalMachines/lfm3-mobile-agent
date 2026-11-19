@@ -1,0 +1,83 @@
+{
+  "counts": {
+    "original_rows": 78011,
+    "short": 97,
+    "qa_rows": 16933,
+    "qa_prefix": 13333,
+    "qa_final": 3600
+  },
+  "failures": [],
+  "full_expected_qa_keys_match": true,
+  "new_dev_counts": {
+    "dev_answer": 200,
+    "dev_complete": 200
+  },
+  "image_checks": {
+    "source": {
+      "rows": 4934,
+      "img_sha_byte_mismatches": 0,
+      "image_dimensions": {
+        "(576, 1280)": 4009,
+        "(640, 1152)": 390,
+        "(576, 1312)": 140,
+        "(576, 1248)": 159,
+        "(608, 1216)": 30,
+        "(544, 960)": 87,
+        "(608, 1248)": 119
+      }
+    },
+    "rerun": {
+      "rows": 5964,
+      "img_sha_byte_mismatches": 0,
+      "image_dimensions": {
+        "(576, 1280)": 5037,
+        "(640, 1152)": 390,
+        "(576, 1312)": 140,
+        "(576, 1248)": 159,
+        "(608, 1216)": 32,
+        "(544, 960)": 87,
+        "(608, 1248)": 119
+      }
+    }
+  },
+  "newline_teacher_goal_exception": "ValueError: unexpected user text layout",
+  "app_display_resolver_checks": true,
+  "simulated_device_names": [
+    "Audio Recorder",
+    "Broccoli",
+    "Camera",
+    "Chrome",
+    "Clock",
+    "Contacts",
+    "Drive",
+    "Files",
+    "Gmail",
+    "Google",
+    "Google Calendar",
+    "Google Play",
+    "Joplin",
+    "Maps",
+    "Markor",
+    "Messages",
+    "OpenTracks",
+    "OsmAnd",
+    "Phone",
+    "Photos",
+    "Pro Expense",
+    "Retro Music",
+    "Settings",
+    "Simple Calendar Pro",
+    "Simple Draw Pro",
+    "Simple Gallery Pro",
+    "Simple SMS Messenger",
+    "Tasks",
+    "VLC",
+    "YouTube"
+  ],
+  "actual_device_queried": false,
+  "teacher_smoke_40_shards": 15,
+  "teacher_smoke_40_split_counts": {
+    "dev": 39,
+    "train": 1
+  }
+}

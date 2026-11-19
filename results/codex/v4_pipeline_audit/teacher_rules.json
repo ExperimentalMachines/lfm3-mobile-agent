@@ -1,0 +1,111 @@
+{
+  "agree": [
+    {
+      "x": "1.5",
+      "y": "15",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "$10",
+      "y": "€10",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "-5",
+      "y": "5",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "1:30",
+      "y": "13:0",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "100",
+      "y": "1000",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "available",
+      "y": "unavailable",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "12 kg",
+      "y": "112 kg",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "US",
+      "y": "us",
+      "want": false,
+      "got": true
+    },
+    {
+      "x": "Rs 1,299",
+      "y": "₹1,299",
+      "want": true,
+      "got": false
+    },
+    {
+      "x": "1,299",
+      "y": "1299",
+      "want": true,
+      "got": true
+    },
+    {
+      "x": "Alice",
+      "y": "alice",
+      "want": true,
+      "got": true
+    },
+    {
+      "x": "None",
+      "y": "None",
+      "want": false,
+      "got": false
+    }
+  ],
+  "shorten": [
+    {
+      "original": "The price is $1.50.",
+      "short": "$150",
+      "teacher_accepts": true,
+      "builder_accepts": false
+    },
+    {
+      "original": "It is unavailable.",
+      "short": "available",
+      "teacher_accepts": true,
+      "builder_accepts": true
+    },
+    {
+      "original": "There are 1000 items.",
+      "short": "100",
+      "teacher_accepts": true,
+      "builder_accepts": true
+    },
+    {
+      "original": "The name is Smith, Jr.",
+      "short": "Smith Jr",
+      "teacher_accepts": true,
+      "builder_accepts": false
+    }
+  ],
+  "parse_json": {
+    "fenced": {
+      "answer": "3"
+    },
+    "two_objects": null,
+    "duplicate_keys": {
+      "answer": "4"
+    }
+  }
+}

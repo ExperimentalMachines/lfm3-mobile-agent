@@ -1,0 +1,96 @@
+dev_amex-00000-of-00001.parquet 468
+dev_answer-00000-of-00001.parquet 162
+dev_complete-00000-of-00001.parquet 135
+dev_odyssey-00000-of-00001.parquet 1000
+dev_screenqa-00000-of-00001.parquet 500
+train-00000-of-00016.parquet 5965
+train-00001-of-00016.parquet 5859
+train-00002-of-00016.parquet 5918
+train-00003-of-00016.parquet 5884
+train-00004-of-00016.parquet 5930
+train-00005-of-00016.parquet 5928
+train-00006-of-00016.parquet 5923
+train-00007-of-00016.parquet 5943
+train-00008-of-00016.parquet 5920
+train-00009-of-00016.parquet 6013
+train-00010-of-00016.parquet 5924
+train-00011-of-00016.parquet 5924
+train-00012-of-00016.parquet 5938
+train-00013-of-00016.parquet 5919
+train-00014-of-00016.parquet 5956
+train-00015-of-00016.parquet 5917
+images checked dev_amex-00000-of-00001.parquet 468
+images checked dev_answer-00000-of-00001.parquet 162
+images checked dev_complete-00000-of-00001.parquet 135
+images checked dev_odyssey-00000-of-00001.parquet 1000
+images checked dev_screenqa-00000-of-00001.parquet 500
+images checked train-00000-of-00016.parquet 5965
+images checked train-00001-of-00016.parquet 5859
+images checked train-00002-of-00016.parquet 5918
+images checked train-00003-of-00016.parquet 5884
+images checked train-00004-of-00016.parquet 5930
+images checked train-00005-of-00016.parquet 5928
+images checked train-00006-of-00016.parquet 5923
+images checked train-00007-of-00016.parquet 5943
+images checked train-00008-of-00016.parquet 5920
+images checked train-00009-of-00016.parquet 6013
+images checked train-00010-of-00016.parquet 5924
+images checked train-00011-of-00016.parquet 5924
+images checked train-00012-of-00016.parquet 5938
+images checked train-00013-of-00016.parquet 5919
+images checked train-00014-of-00016.parquet 5956
+images checked train-00015-of-00016.parquet 5917
+{
+  "split_counts": {
+    "dev_amex": 468,
+    "dev_answer": 162,
+    "dev_complete": 135,
+    "dev_odyssey": 1000,
+    "dev_screenqa": 500,
+    "train": 94861
+  },
+  "checks": {
+    "system_checked": 97126,
+    "roles_checked": 97126,
+    "app_line_checked": 97126,
+    "json_checked": 97126,
+    "reasoning_string_checked": 97126,
+    "reasoning_no_think_tags_checked": 97126,
+    "qa_agreement_checked": 17012,
+    "qa_final_text_checked": 6580,
+    "qa_final_terminal_checked": 6580,
+    "qa_no_status_checked": 17012,
+    "shortened": 1233
+  },
+  "unstable_app_lists": {},
+  "train_dev_episode_overlap": [],
+  "dev_img_sha_overlap": {
+    "dev_amex": [],
+    "dev_answer": [],
+    "dev_complete": [],
+    "dev_odyssey": [],
+    "dev_screenqa": []
+  },
+  "qa_unique": 2835,
+  "qa_weighted": 6418,
+  "duplication_errors": [],
+  "qa_strata": {
+    "compound/date/time": 351,
+    "compound/number": 1066,
+    "question/date/time": 45,
+    "compound/price": 692,
+    "compound/name": 217,
+    "compound/phrase": 135,
+    "question/price": 124,
+    "question/number": 181,
+    "question/phrase": 9,
+    "question/name": 15
+  },
+  "qa_effective_kind": {
+    "compound": 2483,
+    "question": 352
+  },
+  "dev_complete_kinds": {
+    "compound": 135
+  }
+}

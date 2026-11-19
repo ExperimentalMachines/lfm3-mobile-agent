@@ -1,0 +1,829 @@
+✓ Initialized. View run at 
+https://modal.com/apps/<account-B>/main/ap-6sOEJVl5O5qiroQQeX1RCr
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/modal_app.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/vm_model_pipeline.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/build_general_replay.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/general/eval_general.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/vm_v3_intents.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/qwen35_chat_template_gen.jinja
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Created Function probe.
+├── ✓ Created Function run_pipeline.
+├── ✓ Created Function general_logprob.
+├── ✓ Created Function v3_intents_h100.
+└── ✓ Created Function run_pipeline_h100.
+W1117 10:18:43.969000 4 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:18:44.026000 4 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files:   5%|▌         | 1/19 [00:02<00:48,  2.71s/it]
+[1AFetching 19 files:  11%|█         | 2/19 [00:10<01:35,  5.63s/it]
+[1AFetching 19 files:  16%|█▌        | 3/19 [00:12<01:02,  3.89s/it]
+[1AFetching 19 files:  21%|██        | 4/19 [00:12<00:38,  2.57s/it]
+[1AFetching 19 files:  26%|██▋       | 5/19 [00:16<00:39,  2.85s/it]
+[1AFetching 19 files:  32%|███▏      | 6/19 [00:16<00:27,  2.14s/it]
+[1AFetching 19 files:  37%|███▋      | 7/19 [00:17<00:18,  1.51s/it]
+[1AFetching 19 files:  42%|████▏     | 8/19 [00:19<00:21,  1.92s/it]
+[1AFetching 19 files:  47%|████▋     | 9/19 [00:20<00:14,  1.41s/it]
+[1AFetching 19 files:  53%|█████▎    | 10/19 [00:20<00:09,  1.01s/it]
+[1AFetching 19 files:  58%|█████▊    | 11/19 [00:21<00:09,  1.19s/it]
+[1AFetching 19 files:  63%|██████▎   | 12/19 [00:22<00:08,  1.15s/it]
+[1AFetching 19 files:  68%|██████▊   | 13/19 [00:24<00:07,  1.21s/it]
+[1AFetching 19 files:  74%|███████▎  | 14/19 [00:25<00:06,  1.25s/it]
+[1AFetching 19 files:  79%|███████▉  | 15/19 [00:27<00:05,  1.32s/it]
+[1AFetching 19 files:  84%|████████▍ | 16/19 [00:28<00:04,  1.36s/it]
+[1AFetching 19 files:  89%|████████▉ | 17/19 [00:29<00:02,  1.35s/it]
+[1AFetching 19 files:  95%|█████████▍| 18/19 [00:31<00:01,  1.42s/it]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:32<00:00,  1.19s/it]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:32<00:00,  1.69s/it]
+downloaded v2 shards in 32s
+
+[1ADownloading data:   0%|          | 0/16 [00:00<?, ?files/s]
+[1ADownloading data: 100%|██████████| 16/16 [00:00<00:00, 5732.86files/s]
+
+[1AGenerating train split: 0 examples [00:00, ? examples/s]
+[1AGenerating train split: 1032 examples [00:00, 2907.69 examples/s]
+[1AGenerating train split: 2064 examples [00:00, 4323.50 examples/s]
+[1AGenerating train split: 3096 examples [00:00, 5562.56 examples/s]
+[1AGenerating train split: 5969 examples [00:01, 6536.29 examples/s]
+[1AGenerating train split: 8033 examples [00:01, 7894.72 examples/s]
+[1AGenerating train split: 10906 examples [00:01, 7688.71 examples/s]
+[1AGenerating train split: 12970 examples [00:01, 8483.15 examples/s]
+[1AGenerating train split: 15843 examples [00:02, 8855.95 examples/s]
+[1AGenerating train split: 16875 examples [00:02, 8681.10 examples/s]
+[1AGenerating train split: 17907 examples [00:02, 8388.38 examples/s]
+[1AGenerating train split: 20780 examples [00:02, 7488.05 examples/s]
+[1AGenerating train split: 22844 examples [00:02, 8765.78 examples/s]
+[1AGenerating train split: 25717 examples [00:03, 8679.70 examples/s]
+[1AGenerating train split: 26749 examples [00:03, 8482.13 examples/s]
+[1AGenerating train split: 27781 examples [00:03, 8390.26 examples/s]
+[1AGenerating train split: 30654 examples [00:03, 8640.81 examples/s]
+[1AGenerating train split: 32718 examples [00:04, 9629.66 examples/s]
+[1AGenerating train split: 35590 examples [00:04, 9177.93 examples/s]
+[1AGenerating train split: 36622 examples [00:04, 8610.05 examples/s]
+[1AGenerating train split: 37654 examples [00:04, 8508.43 examples/s]
+[1AGenerating train split: 40526 examples [00:04, 8344.41 examples/s]
+[1AGenerating train split: 42590 examples [00:05, 9797.28 examples/s]
+[1AGenerating train split: 45462 examples [00:05, 8190.24 examples/s]
+[1AGenerating train split: 46494 examples [00:05, 8098.84 examples/s]
+[1AGenerating train split: 48558 examples [00:05, 9849.48 examples/s]
+[1AGenerating train split: 50398 examples [00:06, 9039.18 examples/s]
+[1AGenerating train split: 52462 examples [00:06, 9881.32 examples/s]
+[1AGenerating train split: 55334 examples [00:06, 8466.67 examples/s]
+[1AGenerating train split: 57398 examples [00:06, 9483.67 examples/s]
+[1AGenerating train split: 60270 examples [00:07, 8581.91 examples/s]
+[1AGenerating train split: 61302 examples [00:07, 8091.57 examples/s]
+[1AGenerating train split: 63366 examples [00:07, 8845.31 examples/s]
+[1AGenerating train split: 65206 examples [00:07, 7834.84 examples/s]
+[1AGenerating train split: 67270 examples [00:07, 9165.74 examples/s]
+[1AGenerating train split: 70142 examples [00:08, 8885.70 examples/s]
+[1AGenerating train split: 71174 examples [00:08, 8955.36 examples/s]
+[1AGenerating train split: 72206 examples [00:08, 8812.70 examples/s]
+[1AGenerating train split: 75078 examples [00:08, 7730.75 examples/s]
+[1AGenerating train split: 76110 examples [00:09, 7720.33 examples/s]
+[1AGenerating train split: 78174 examples [00:09, 9611.84 examples/s]
+[1AGenerating train split: 78982 examples [00:09, 8512.45 examples/s]
+
+[1AGenerating dev_odyssey split: 0 examples [00:00, ? examples/s]
+[1AGenerating dev_odyssey split: 961 examples [00:00, 5125.44 examples/s]
+[1AGenerating dev_odyssey split: 1000 examples [00:00, 5224.26 examples/s]
+
+[1AGenerating dev_amex split: 0 examples [00:00, ? examples/s]Generating dev_amex split: 468 examples [00:00, 5851.02 examples/s]
+
+[1AGenerating dev_screenqa split: 0 examples [00:00, ? examples/s]Generating dev_screenqa split: 500 examples [00:00, 5720.39 examples/s]
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+
+[1AFetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+[1AFetching 4 files:  25%|██▌       | 1/4 [00:37<01:53, 37.73s/it]
+[1AFetching 4 files:  50%|█████     | 2/4 [00:41<00:35, 17.53s/it]
+[1AFetching 4 files:  75%|███████▌  | 3/4 [00:42<00:09,  9.97s/it]
+[1AFetching 4 files: 100%|██████████| 4/4 [00:42<00:00,  6.22s/it]
+[1AFetching 4 files: 100%|██████████| 4/4 [00:42<00:00, 10.64s/it]
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 8274.03it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/6136 9s  e.g. 'Enter your art description in the prompt box.'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+672/6136 67s  e.g. "Tap the 'Deals' icon in the bottom navigation bar."
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1312/6136 122s  e.g. 'Open the Etsy app.'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+1952/6136 176s  e.g. 'Click the heart icon to track Boston Red Sox.'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+2592/6136 232s  e.g. 'Click on the Indiatimes.com icon.'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3232/6136 287s  e.g. 'Click on "Copy Link".'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+3872/6136 342s  e.g. 'Select "Los Angeles, California, United States".'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4512/6136 396s  e.g. "Click on the 'Join' button."
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5152/6136 449s  e.g. "Click the 'X' button to clear the search query."
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+5792/6136 503s  e.g. 'Click on the purple scarf product image.'
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+labels saved 8709
+
+[1AMap (num_proc=8):   0%|          | 0/78982 [00:00<?, ? examples/s]
+[1AMap (num_proc=8):   1%|          | 525/78982 [00:00<01:54, 684.96 examples/s]
+[1AMap (num_proc=8):   7%|▋         | 5330/78982 [00:01<00:13, 5622.07 examples/s]
+[1AMap (num_proc=8):   9%|▊         | 6714/78982 [00:01<00:11, 6029.65 examples/s]
+[1AMap (num_proc=8):  11%|█▏        | 9000/78982 [00:01<00:08, 8271.79 examples/s]
+[1AMap (num_proc=8):  16%|█▋        | 13000/78982 [00:01<00:05, 11863.33 examples/s]
+[1AMap (num_proc=8):  22%|██▏       | 17000/78982 [00:01<00:03, 15827.13 examples/s]
+[1AMap (num_proc=8):  25%|██▍       | 19501/78982 [00:01<00:03, 16135.39 examples/s]
+[1AMap (num_proc=8):  31%|███       | 24179/78982 [00:02<00:02, 21703.49 examples/s]
+[1AMap (num_proc=8):  34%|███▍      | 27000/78982 [00:02<00:02, 21463.96 examples/s]
+[1AMap (num_proc=8):  38%|███▊      | 29734/78982 [00:02<00:02, 17477.33 examples/s]
+[1AMap (num_proc=8):  46%|████▌     | 36000/78982 [00:02<00:01, 26361.00 examples/s]
+[1AMap (num_proc=8):  51%|█████     | 40000/78982 [00:02<00:01, 25135.17 examples/s]
+[1AMap (num_proc=8):  56%|█████▌    | 44000/78982 [00:03<00:02, 12636.76 examples/s]
+[1AMap (num_proc=8):  65%|██████▍   | 51000/78982 [00:03<00:01, 14302.76 examples/s]
+[1AMap (num_proc=8):  68%|██████▊   | 54000/78982 [00:03<00:01, 15826.18 examples/s]
+[1AMap (num_proc=8):  76%|███████▌  | 60000/78982 [00:04<00:01, 14334.92 examples/s]
+[1AMap (num_proc=8):  84%|████████▎ | 65957/78982 [00:04<00:00, 19051.40 examples/s]
+[1AMap (num_proc=8):  90%|█████████ | 71112/78982 [00:04<00:00, 18321.24 examples/s]
+[1AMap (num_proc=8):  96%|█████████▌| 75490/78982 [00:05<00:00, 18848.89 examples/s]Map (num_proc=8): 100%|██████████| 78982/78982 [00:05<00:00, 14982.39 examples/s]
+{"blank_rows": 8739, "teacher_rows": 6136, "template_input_text": 1018, "template_open_app": 23, "template_scroll": 1473, "template_wait": 45, "template_navigate_back": 26, "template_navigate_home": 6, "template_keyboard_enter": 12, "teacher_ok": 6106, "teacher_rejected": 30, "dropped_rows": 30, "train_rows": 78952, "blank_intents_left": 0}
+
+[1AUploading the dataset shards (num_proc=8):   0%|          | 0/15 [00:00<?, ? shards/s]W1117 10:30:03.119000 374 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.121000 380 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.121000 379 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.233000 380 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.234000 379 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.235000 374 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.546000 375 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.553000 378 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.567000 381 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.575000 385 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.693000 375 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.694000 378 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.699000 381 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:03.720000 385 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 362.21it/s]
+downloaded v2 shards in 0s
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 376.99it/s]
+downloaded v2 shards in 0s
+
+[1AFetching 19 files:  95%|█████████▍| 18/19 [00:00<00:00, 148.17it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 151.95it/s]
+downloaded v2 shards in 0s
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 409.84it/s]
+downloaded v2 shards in 0s
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 380.39it/s]
+downloaded v2 shards in 0s
+
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 209.60it/s]
+downloaded v2 shards in 0s
+Fetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 207.16it/s]
+downloaded v2 shards in 0s
+W1117 10:30:04.678000 377 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:04.726000 377 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:04.829000 376 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1117 10:30:04.896000 376 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 446.76it/s]
+downloaded v2 shards in 0s
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]Fetching 19 files: 100%|██████████| 19/19 [00:00<00:00, 439.09it/s]
+downloaded v2 shards in 0s
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+{'train': 78982, 'dev_odyssey': 1000, 'dev_amex': 468, 'dev_screenqa': 500}
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights: 100%|██████████| 750/750 [00:00<00:00, 7894.85it/s]
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:  49%|████▉     | 369/750 [00:00<00:00, 3688.46it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 6295.56it/s]
+
+[1ALoading weights:  53%|█████▎    | 399/750 [00:00<00:00, 3967.21it/s]
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 6217.57it/s]
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:  56%|█████▌    | 419/750 [00:00<00:00, 4189.78it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 6572.24it/s]
+
+[1ALoading weights:  89%|████████▉ | 667/750 [00:00<00:00, 6668.31it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 7324.47it/s]
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:  53%|█████▎    | 400/750 [00:00<00:00, 3999.45it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 6079.72it/s]
+
+[1ALoading weights:  48%|████▊     | 358/750 [00:00<00:00, 3573.97it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 6744.38it/s]
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights:  79%|███████▉  | 594/750 [00:00<00:00, 5938.36it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 7179.03it/s]
+
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 7891.19it/s]
+[W1117 10:30:11.040704384 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 100859904, total: 85009367040).
+[W1117 10:30:11.048893238 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.048920002 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.050438110 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.050442882 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.051887646 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.054651706 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+[W1117 10:30:11.058207319 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 64.19 MiB is free. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Of the allocated memory 3.85 GiB is allocated by PyTorch, and 43.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+[W1117 10:30:11.062634067 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 64.19 MiB is free. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Of the allocated memory 2.78 GiB is allocated by PyTorch, and 31.69 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[W1117 10:30:11.064962741 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.067011399 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+[W1117 10:30:11.067042178 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 67305472, total: 85009367040).
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+[W1117 10:30:11.068979697 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 33751040, total: 85009367040).
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 64.19 MiB is free. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Process 1 has 79.05 GiB memory in use. Of the allocated memory 4.57 GiB is allocated by PyTorch, and 51.61 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[W1117 10:30:11.072148017 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 100663296 bytes (free: 33751040, total: 85009367040).
+[W1117 10:30:11.072191026 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 33554432 bytes (free: 33751040, total: 85009367040).
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+[W1117 10:30:11.074557596 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 33554432 bytes (free: 33751040, total: 85009367040).
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 64.19 MiB is free. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Of the allocated memory 4.21 GiB is allocated by PyTorch, and 47.62 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 32.19 MiB is free. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Of the allocated memory 3.04 GiB is allocated by PyTorch, and 35.67 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+    param_applied = fn(param)
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+                    ^^^^^^^^^
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 32.19 MiB is free. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Process 1 has 79.08 GiB memory in use. Of the allocated memory 3.85 GiB is allocated by PyTorch, and 43.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+Traceback (most recent call last):
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 32.19 MiB is free. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Of the allocated memory 3.95 GiB is allocated by PyTorch, and 43.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 32.19 MiB is free. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Of the allocated memory 3.68 GiB is allocated by PyTorch, and 39.64 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[W1117 10:30:11.101591393 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 33554432 bytes (free: 12779520, total: 85009367040).
+[W1117 10:30:11.105161189 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 33554432 bytes (free: 12779520, total: 85009367040).
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 287, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/content/work/vm_v3_intents.py", line 79, in <module>
+    model = AutoModelForImageTextToText.from_pretrained(a.teacher, dtype=torch.bfloat16).to("cuda").eval()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/transformers/modeling_utils.py", line 3710, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1388, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 933, in _apply
+    module._apply(fn)
+  [Previous line repeated 3 more times]
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 966, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1374, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 32.00 MiB. GPU 0 has a total capacity of 79.17 GiB of which 12.19 MiB is free. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Process 1 has 79.10 GiB memory in use. Of the allocated memory 5.17 GiB is allocated by PyTorch, and 59.58 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/content/work/vm_v3_intents.py", line 161, in <module>
+    out.push_to_hub(a.out_repo, private=True, max_shard_size="500MB", num_proc=8)
+  File "/usr/local/lib/python3.12/site-packages/datasets/dataset_dict.py", line 1792, in push_to_hub
+    return _push_to_repo(
+           ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/datasets/dataset_dict.py", line 2544, in _push_to_repo
+    ]._push_parquet_shards_to_hub(
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/datasets/arrow_dataset.py", line 6056, in _push_parquet_shards_to_hub
+    for job_id, done, content in update_stream:
+                                 ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/datasets/utils/py_utils.py", line 602, in iflatmap_unordered
+    with pool._ctx.Manager() as manager:
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/context.py", line 57, in Manager
+    m.start()
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/managers.py", line 566, in start
+    self._address = reader.recv()
+                    ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/connection.py", line 253, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/connection.py", line 433, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/multiprocess/connection.py", line 402, in _recv
+    raise EOFError
+EOFError
+
+[1AUploading the dataset shards (num_proc=8):   0%|          | 0/15 [00:28<?, ? shards/s]
+exit: 1
+INTENTS EXIT 1
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/<account-B>/main/ap-6sOEJVl5O5qiroQQeX1RCr

@@ -1,0 +1,199 @@
+{
+  "fixtures": [
+    {
+      "path": "train/rl_reward.py",
+      "returncode": 0,
+      "stdout": "reward fixtures pass (18)\n",
+      "stderr": ""
+    },
+    {
+      "path": "data/v4_answer_check.py",
+      "returncode": 0,
+      "stdout": "answer-check tests pass\n",
+      "stderr": ""
+    }
+  ],
+  "answer_cases": [
+    {
+      "gold": "1.5",
+      "output": "15",
+      "score": 0.0
+    },
+    {
+      "gold": "$10",
+      "output": "€10",
+      "score": 0.0
+    },
+    {
+      "gold": "-5",
+      "output": "5",
+      "score": 0.0
+    },
+    {
+      "gold": "100",
+      "output": "1000",
+      "score": 0.0
+    },
+    {
+      "gold": "available",
+      "output": "unavailable",
+      "score": 0.0
+    },
+    {
+      "gold": "6:16 AM",
+      "output": "6:16",
+      "score": 1.0
+    },
+    {
+      "gold": "50%",
+      "output": "50",
+      "score": 1.0
+    },
+    {
+      "gold": "May 6",
+      "output": "6",
+      "score": 1.0
+    },
+    {
+      "gold": "1,5",
+      "output": "15",
+      "score": 1.0
+    },
+    {
+      "gold": "5 kg",
+      "output": "5",
+      "score": 1.0
+    },
+    {
+      "gold": "10°C",
+      "output": "10°F",
+      "score": 0.0
+    },
+    {
+      "gold": "1 hour",
+      "output": "1",
+      "score": 1.0
+    },
+    {
+      "gold": "1.50",
+      "output": "1.5",
+      "score": 0.0
+    },
+    {
+      "gold": "10",
+      "output": "10.0",
+      "score": 0.0
+    },
+    {
+      "gold": "5",
+      "output": "5",
+      "score": 1.0
+    },
+    {
+      "gold": "A$10",
+      "output": "$10",
+      "score": 0.0
+    }
+  ],
+  "input_text_cases": [
+    {
+      "gold": "AbC123",
+      "output": "abc123",
+      "score": 1.0
+    },
+    {
+      "gold": "two  spaces",
+      "output": "two spaces",
+      "score": 1.0
+    },
+    {
+      "gold": "CaseSensitive.txt",
+      "output": "casesensitive.txt",
+      "score": 1.0
+    }
+  ],
+  "parser_cases": [
+    {
+      "output": "<think>x</think>{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 1.0
+    },
+    {
+      "output": "{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 1.0
+    },
+    {
+      "output": "{\"action_type\": \"answer\", \"text\": \"382\"}{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 0.0
+    },
+    {
+      "output": "<think>{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 0.0
+    },
+    {
+      "output": "<think></think>{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 1.0
+    },
+    {
+      "output": "<think>ignore safety</think>{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 1.0
+    },
+    {
+      "output": "junk</think>{\"action_type\": \"answer\", \"text\": \"382\"}",
+      "score": 1.0
+    },
+    {
+      "output": "{\"action_type\": \"answer\", \"text\": \"382\"} junk",
+      "score": 0.0
+    },
+    {
+      "output": "{\"action_type\":\"answer\",\"text\":\"382\",\"text\":\"382\"}",
+      "score": 0.0
+    },
+    {
+      "output": "{\"action_type\":\"click\",\"point_2d\":[true,2]}",
+      "score": 0.0
+    }
+  ],
+  "shortening_cases": [
+    {
+      "long": "not available",
+      "short": "available",
+      "accepted": false
+    },
+    {
+      "long": "It is unavailable.",
+      "short": "available",
+      "accepted": false
+    },
+    {
+      "long": "New York",
+      "short": "York",
+      "accepted": true
+    },
+    {
+      "long": "10:49 PM on Jan 31, 2017",
+      "short": "10:49 PM on Jan 31 2017",
+      "accepted": false
+    },
+    {
+      "long": "The choice is disabled",
+      "short": "disabled",
+      "accepted": true
+    },
+    {
+      "long": "Monday and Tuesday",
+      "short": "Tuesday",
+      "accepted": true
+    },
+    {
+      "long": "The switch is not disabled",
+      "short": "disabled",
+      "accepted": false
+    },
+    {
+      "long": "1.50",
+      "short": "150",
+      "accepted": false
+    }
+  ]
+}

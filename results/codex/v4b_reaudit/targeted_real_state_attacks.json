@@ -1,0 +1,239 @@
+{
+  "scope": "States selected by exact deterministic v4b pool replay; published RL revision unavailable at time of execution.",
+  "attacks": [
+    {
+      "row": 428,
+      "episode_id": "5046#qa",
+      "kind": "qa_final",
+      "sha": "7dc757af8905a86e4936a4bc264438fb43760c854e346ccf5cc86c46eae0bb92",
+      "gt": {
+        "action_type": "answer",
+        "text": "5:00p"
+      },
+      "goal": "I have a vacation planned to Lorton, so I'm pondering travelling to Sanford as well. Use the Amtrak app to look up the train schedules from Lorton to Sanford for September 18, 2023 and answer this question: What is the departure time from Lorton? Reply with just the time.",
+      "history": "6. Select the first search result -> {\"action_type\":\"click\",\"point_2d\":[477,260]}\n7. Click on the Arrival station section -> {\"action_type\":\"click\",\"point_2d\":[477,312]}\n8. Go back to the previous page -> {\"action_type\":\"navigate_back\"}\n9. Click on the date section -> {\"action_type\":\"click\",\"point_2d\":[550,394]}\n10. Select the date 18th September 2023 -> {\"action_type\":\"click\",\"point_2d\":[226,463]}\n11. Click on the Done button at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[919,87]}\n12. Click on the Find Trains button at the bottom of the screen -> {\"action_type\":\"click\",\"point_2d\":[502,875]}\n13. Click on the Find Trains button at the bottom of the screen -> {\"action_type\":\"wait\"}",
+      "source_file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "source_row": 4970,
+      "signature": "337f5def073c931bbe8163e6bce6019aa52c51f337975fc4b2a6d99d71c2b835",
+      "attack": "drop_meridiem_abbrev",
+      "candidate": "5:00",
+      "reward": 1.0
+    },
+    {
+      "row": 517,
+      "episode_id": "18586#qa",
+      "kind": "qa_final",
+      "sha": "4f34b0977c4b6faf433c473aaf4a787d52c5bc854304ae9f6994b820d1f81b2c",
+      "gt": {
+        "action_type": "answer",
+        "text": "6,500+"
+      },
+      "goal": "How many results are shown in the eBay app for sofa bed? Reply with just the number.",
+      "history": "1. Open eBay app. -> {\"action_type\":\"open_app\",\"app_name\":\"eBay\"}\n2. Click on the search bar on the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[382,158]}\n3. Click on the sofa on the screen. -> {\"action_type\":\"click\",\"point_2d\":[500,228]}",
+      "source_file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "source_row": 5682,
+      "signature": "7ced7ba19319682ff78da47e2ddaf75e6b73c5d6ef3d6824cf96558333e5761a",
+      "attack": "drop_lower_bound",
+      "candidate": "6,500",
+      "reward": 1.0
+    },
+    {
+      "row": 597,
+      "episode_id": "19950#qa",
+      "kind": "qa_final",
+      "sha": "664dafe0ead382dcdd1bbb5cdfac058befd1b048635894a260ffee45dada0e82",
+      "gt": {
+        "action_type": "answer",
+        "text": "12M"
+      },
+      "goal": "I want to watch the eyes closed Video by Netsky,play the video for me, then answer: How many views does this video have? Reply with just the number.",
+      "history": "1. Swipe up to view the eyes closed -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\n2. Swipe up to view the eyes closed -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\n3. Swipe up to view the eyes closed -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\n4. Tap on the eyes closed video -> {\"action_type\":\"click\",\"point_2d\":[500,429]}\n5. Tap on the eyes closed video -> {\"action_type\":\"wait\"}",
+      "source_file": "data/v4work/build/out/data/train-00014-of-00016.parquet",
+      "source_row": 5524,
+      "signature": "25a1c91fee9d8401b2d05d53eee1adee4793d103ccd5e6dc8c2165fb5e22045b",
+      "attack": "old_magnitude_loss",
+      "candidate": "12",
+      "reward": 0.0
+    },
+    {
+      "row": 597,
+      "episode_id": "19950#qa",
+      "kind": "qa_final",
+      "sha": "664dafe0ead382dcdd1bbb5cdfac058befd1b048635894a260ffee45dada0e82",
+      "gt": {
+        "action_type": "answer",
+        "text": "12M"
+      },
+      "goal": "I want to watch the eyes closed Video by Netsky,play the video for me, then answer: How many views does this video have? Reply with just the number.",
+      "history": "1. Swipe up to view the eyes closed -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\n2. Swipe up to view the eyes closed -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\n3. Swipe up to view the eyes closed -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\n4. Tap on the eyes closed video -> {\"action_type\":\"click\",\"point_2d\":[500,429]}\n5. Tap on the eyes closed video -> {\"action_type\":\"wait\"}",
+      "source_file": "data/v4work/build/out/data/train-00014-of-00016.parquet",
+      "source_row": 5524,
+      "signature": "25a1c91fee9d8401b2d05d53eee1adee4793d103ccd5e6dc8c2165fb5e22045b",
+      "attack": "explicitly_deny_gold",
+      "candidate": "12M is incorrect",
+      "reward": 1.0
+    },
+    {
+      "row": 708,
+      "episode_id": "19601#qa",
+      "kind": "qa_final",
+      "sha": "467458aae7ac529c190c55c2724ead1698e3f1b66a4f772a2b2e11dc5c6d504f",
+      "gt": {
+        "action_type": "answer",
+        "text": "Rp908.650"
+      },
+      "goal": "I hope to see additional shoe types from the same manufacturer that are similar. Use the Lazada app to compare the prices of numerous comparable Nike models and answer this question: What is the price of the Nike Men's Court V? Reply with just the price.",
+      "history": "1. swipe down -> {\"action_type\":\"scroll\",\"direction\":\"up\"}\n2. swipe left the shoes to compare price -> {\"action_type\":\"scroll\",\"direction\":\"right\"}\n3. swipe left the shoes to compare price -> {\"action_type\":\"scroll\",\"direction\":\"right\"}",
+      "source_file": "data/v4work/build/out/data/train-00005-of-00016.parquet",
+      "source_row": 5136,
+      "signature": "d99438936318e81cfa7bd7954e3bd8762f3048ba44a0d31ac93036cd3238621c",
+      "attack": "wrong_currency",
+      "candidate": "€908.650",
+      "reward": 1.0
+    },
+    {
+      "row": 842,
+      "episode_id": "17656#qa",
+      "kind": "qa_final",
+      "sha": "13f80917d2d2f433119ade00f2d421aef4185513c91a7e365e5f9ff46f9fd48c",
+      "gt": {
+        "action_type": "answer",
+        "text": "$58.50+"
+      },
+      "goal": "The second product on the list appears to be suitable for me and to meet my usage requirements, so I'd like to add it to my wishlist, then answer: What is the current sale price? Reply with just the price.",
+      "history": "1. click on the second product -> {\"action_type\":\"click\",\"point_2d\":[796,256]}\n2. click on the second product -> {\"action_type\":\"wait\"}\n3. click on the heart icon to add this in wishlist -> {\"action_type\":\"click\",\"point_2d\":[936,88]}\n4. click on create new collection -> {\"action_type\":\"click\",\"point_2d\":[87,783]}\n5. type favorite -> {\"action_type\":\"input_text\",\"text\":\"favorite\"}\n6. click on tick icon -> {\"action_type\":\"click\",\"point_2d\":[920,899]}\n7. click on create collection option -> {\"action_type\":\"click\",\"point_2d\":[799,278]}",
+      "source_file": "data/v4work/build/out/data/train-00001-of-00016.parquet",
+      "source_row": 5220,
+      "signature": "1e31545e06707d2126ad43c28ddd8cbf2d47f91d542f7ea9b96d506473398bca",
+      "attack": "drop_lower_bound",
+      "candidate": "$58.50",
+      "reward": 1.0
+    },
+    {
+      "row": 859,
+      "episode_id": "3067#qa",
+      "kind": "qa_final",
+      "sha": "22e03161d3f67e97c17f8ecf66c3e6db2d952a8cdaa211c1a7023bd8309dddc5",
+      "gt": {
+        "action_type": "answer",
+        "text": "INR 3577.00"
+      },
+      "goal": "I want to look for a Spanner set on the Ubuy app since I need to fix my window. After that, tell me: What is the price of the first product? Reply with just the price.",
+      "history": "1. Click on the search bar top at the bottom -> {\"action_type\":\"click\",\"point_2d\":[531,143]}\n2. Search for spanner set -> {\"action_type\":\"input_text\",\"text\":\"Spanner set\"}\n3. Click on first suggestion -> {\"action_type\":\"click\",\"point_2d\":[499,228]}",
+      "source_file": "data/v4work/build/out/data/train-00013-of-00016.parquet",
+      "source_row": 5332,
+      "signature": "bf065286a57e4e11a0cf599a4de2bc05e7ed1b0ce555b21f105bf5bac0586b16",
+      "attack": "wrong_currency",
+      "candidate": "€3577.00",
+      "reward": 0.0
+    },
+    {
+      "row": 947,
+      "episode_id": "13874#qa",
+      "kind": "qa_final",
+      "sha": "36e55d9950496a237bb3d17850a83185332909c30157c76279ae893323bc7501",
+      "gt": {
+        "action_type": "answer",
+        "text": "6,000+ results"
+      },
+      "goal": "How many results are shown on eBay for hiking boots women? Reply with just the number.",
+      "history": "1. Click on the filter option at the top-right of products. -> {\"action_type\":\"click\",\"point_2d\":[892,162]}\n2. Click on the Category tab. -> {\"action_type\":\"click\",\"point_2d\":[625,452]}\n3. Click on the Women's Shoes tab. -> {\"action_type\":\"click\",\"point_2d\":[684,315]}\n4. Click on the show result at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[700,930]}",
+      "source_file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "source_row": 5553,
+      "signature": "b2b7547563c7b60ce50de7f3405cbd464068fb8509c33312909fd52260aa194d",
+      "attack": "drop_lower_bound",
+      "candidate": "6,000 results",
+      "reward": 1.0
+    },
+    {
+      "row": 1134,
+      "episode_id": "16125#qa",
+      "kind": "qa_final",
+      "sha": "752ac27e3c2577b57c54ed9b8d3e4add8f1c45aab75e43926a78d295e89abb8e",
+      "gt": {
+        "action_type": "answer",
+        "text": "22K"
+      },
+      "goal": "Play a quick video of what's cooking by OuYeah! having twenty-two thousand views and was released on July 2013 for knorr asia identity on the Vimeo app, then answer: How many views does this video have? Reply with just the number.",
+      "history": "1. Click on the cross icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[34,83]}\n2. Click on the arrow icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[69,80]}\n3. Click on watch at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[900,943]}\n4. Click on the search icon at the top right side of the screen. -> {\"action_type\":\"click\",\"point_2d\":[824,80]}\n5. Click on Cooking in the recent searches section. -> {\"action_type\":\"click\",\"point_2d\":[110,272]}\n6. Click on Cooking in the recent searches section. -> {\"action_type\":\"wait\"}\n7. Click on the first video at the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[309,336]}",
+      "source_file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "source_row": 5484,
+      "signature": "669ea6e1fd8a876a1af1644bfdc531640f0511cbdf89018dbe24ba745fd7d4e8",
+      "attack": "old_magnitude_loss",
+      "candidate": "22",
+      "reward": 0.0
+    },
+    {
+      "row": 1134,
+      "episode_id": "16125#qa",
+      "kind": "qa_final",
+      "sha": "752ac27e3c2577b57c54ed9b8d3e4add8f1c45aab75e43926a78d295e89abb8e",
+      "gt": {
+        "action_type": "answer",
+        "text": "22K"
+      },
+      "goal": "Play a quick video of what's cooking by OuYeah! having twenty-two thousand views and was released on July 2013 for knorr asia identity on the Vimeo app, then answer: How many views does this video have? Reply with just the number.",
+      "history": "1. Click on the cross icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[34,83]}\n2. Click on the arrow icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[69,80]}\n3. Click on watch at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[900,943]}\n4. Click on the search icon at the top right side of the screen. -> {\"action_type\":\"click\",\"point_2d\":[824,80]}\n5. Click on Cooking in the recent searches section. -> {\"action_type\":\"click\",\"point_2d\":[110,272]}\n6. Click on Cooking in the recent searches section. -> {\"action_type\":\"wait\"}\n7. Click on the first video at the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[309,336]}",
+      "source_file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "source_row": 5484,
+      "signature": "669ea6e1fd8a876a1af1644bfdc531640f0511cbdf89018dbe24ba745fd7d4e8",
+      "attack": "explicitly_deny_gold",
+      "candidate": "22K is incorrect",
+      "reward": 1.0
+    },
+    {
+      "row": 1285,
+      "episode_id": "6564#qa",
+      "kind": "qa_final",
+      "sha": "e32774f9fd4c44fe731b69360332ead4fe48cc29215c16164faaccf383077b33",
+      "gt": {
+        "action_type": "answer",
+        "text": "INR8,109.08"
+      },
+      "goal": "In the Abercrombie & Fitch app, what is the price of the 90s Straight Jean? Reply with just the price.",
+      "history": "1. Open the Abercrombie & Fitch app -> {\"action_type\":\"open_app\",\"app_name\":\"Abercrombie\"}\n2. Open the Abercrombie & Fitch app -> {\"action_type\":\"wait\"}\n3. Go to the search icon -> {\"action_type\":\"click\",\"point_2d\":[819,118]}\n4. Search for Straight Jean -> {\"action_type\":\"input_text\",\"text\":\"Straight Jean\"}\n5. Select the first suggested result -> {\"action_type\":\"click\",\"point_2d\":[475,215]}\n6. Select the first suggested result -> {\"action_type\":\"wait\"}",
+      "source_file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "source_row": 4873,
+      "signature": "524d57692f1a21748ac17c0215778d3c37dd6ceeff2361ec3231decd598574d3",
+      "attack": "wrong_currency",
+      "candidate": "€8,109.08",
+      "reward": 1.0
+    },
+    {
+      "row": 1632,
+      "episode_id": "3505#qa",
+      "kind": "qa_final",
+      "sha": "9feb82450a177b83030d3a292c68e2c7b10aef379785baecf3be311804dff64a",
+      "gt": {
+        "action_type": "answer",
+        "text": "260,000+"
+      },
+      "goal": "I want to participate in the Ultimate frisbee tournament happening in the office, but I left with no cleats. Search for cleats in the eBay app and answer this question: How many results are shown? Reply with just the number.",
+      "history": "1. Launch the eBay app -> {\"action_type\":\"open_app\",\"app_name\":\"eBay\"}\n2. Go to the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[382,162]}\n3. Type Cleats in the search bar -> {\"action_type\":\"input_text\",\"text\":\"Cleats\"}\n4. Click on the search button in the keyboard -> {\"action_type\":\"click\",\"point_2d\":[920,899]}",
+      "source_file": "data/v4work/build/out/data/train-00013-of-00016.parquet",
+      "source_row": 5314,
+      "signature": "705446e94c19f0243937a9c0c9b0385e9ea678ba497d48decd434be44d2b6342",
+      "attack": "drop_lower_bound",
+      "candidate": "260,000",
+      "reward": 1.0
+    },
+    {
+      "row": 1954,
+      "episode_id": "4298#qa",
+      "kind": "qa_final",
+      "sha": "2b61111927f4f20cc0265fe369c66814bfc9aae6ef9db6a1c64ced557160fb18",
+      "gt": {
+        "action_type": "answer",
+        "text": "Rp172.000"
+      },
+      "goal": "I would like to take a few factors into consideration when selecting which drill machine to buy. Look for Drills under the Bor & Obeng Elektrik Kategori on the Lazada app, then answer: What is the price of the Makita drill? Reply with just the price.",
+      "history": "1. go back to the previous page -> {\"action_type\":\"navigate_back\"}\n2. go back to the previous page -> {\"action_type\":\"navigate_back\"}\n3. Click on the Saring option -> {\"action_type\":\"click\",\"point_2d\":[925,189]}\n4. Click on Bor & Obeng Elektrik from Kategori -> {\"action_type\":\"click\",\"point_2d\":[367,777]}\n5. Click on Selesai option at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[706,941]}",
+      "source_file": "data/v4work/build/out/data/train-00010-of-00016.parquet",
+      "source_row": 5213,
+      "signature": "5e6816a736226fea506038c132f1895679bbd271cafc76786431486ec913bc7a",
+      "attack": "wrong_currency",
+      "candidate": "€172.000",
+      "reward": 1.0
+    }
+  ]
+}

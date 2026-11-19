@@ -1,0 +1,732 @@
+{
+  "aw_candidate_split_counts": {
+    "train": 226,
+    "dev_answer": 15
+  },
+  "aw_train_per_pattern": {
+    "Gmail": 157,
+    "Drive": 23,
+    "Maps": 15,
+    "Calendar type": 17,
+    "Clock type": 4,
+    "YouTube": 11
+  },
+  "aw_candidates_in_rl_qa": [
+    {
+      "row": 6,
+      "episode_id": "19080#qa",
+      "kind": "qa_final",
+      "sha": "d47ca9b296ad9a240bbc12257f71100a12dc221414697c57835e84218a3bbe50",
+      "gt": {
+        "action_type": "answer",
+        "text": "https://vimeo.com/474292648"
+      },
+      "goal": "Goal: Go to the Vimeo app and click on the share button of the video \"7 Rings by Ariana Grande\" and choose the Gmail option, then answer: What is the Vimeo video link? Reply with just the URL.",
+      "source_file": "data/v4work/build/out/data/train-00003-of-00016.parquet",
+      "source_row": 5358
+    },
+    {
+      "row": 45,
+      "episode_id": "12939#qa",
+      "kind": "qa_final",
+      "sha": "e6a35990b9204914716bc941a75cf5f4ebb8a4653afe99699489ecc917acf637",
+      "gt": {
+        "action_type": "answer",
+        "text": "26.49 kB"
+      },
+      "goal": "Goal: Open the Moon+Reader app and share 'Alice's Adventures in Wonderland'  file using Gmail and answer this question: What is the file size of Alice_en? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00015-of-00016.parquet",
+      "source_row": 5901
+    },
+    {
+      "row": 53,
+      "episode_id": "13707#qa",
+      "kind": "qa_final",
+      "sha": "fa4c87d1571d18f723b97ebdd1d1166105eef6edf720ef8e3c44bd13941efd2c",
+      "gt": {
+        "action_type": "answer",
+        "text": "7:54 AM"
+      },
+      "goal": "Goal: Share train schedule information with my friend Amelia Miller on her gmail account, amelia.miller2709@gmail.com. After that, tell me: What is the train's departure time? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00014-of-00016.parquet",
+      "source_row": 5441
+    },
+    {
+      "row": 151,
+      "episode_id": "17354#qa",
+      "kind": "qa_final",
+      "sha": "7956f334688089f8a7a792318ccfa895c8b7dac10025d875c7c7cd1f6b836191",
+      "gt": {
+        "action_type": "answer",
+        "text": "56 min"
+      },
+      "goal": "Goal: Share the location with dbwscratch.test.id10@gmail.com through the Gmail app. After that, tell me: How long can people see the location? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00010-of-00016.parquet",
+      "source_row": 5373
+    },
+    {
+      "row": 160,
+      "episode_id": "3029#qa",
+      "kind": "qa_final",
+      "sha": "685cc7d064c516f388345e115765f408a622936f378b86c2a5eef6b2748bd072",
+      "gt": {
+        "action_type": "answer",
+        "text": "33.94 kB"
+      },
+      "goal": "Goal: I'd want to send the \"Essay Business\" file to Marco Rossi at marco.rossi@rossoday.com so she can review it's contents. After that, tell me: What is the file size of the essay? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00010-of-00016.parquet",
+      "source_row": 5016
+    },
+    {
+      "row": 171,
+      "episode_id": "10720#qa",
+      "kind": "qa_final",
+      "sha": "327be6bfa6c47d9f0a53f567db15fb89a8700b2b38dcaf5d68cdb516ee56a5eb",
+      "gt": {
+        "action_type": "answer",
+        "text": "9:17 AM"
+      },
+      "goal": "Goal: Use the gmail address karin.iversen@example.com to send Karin information about the bus that leaves at 9:17 a.m. After that, tell me: What is the next bus departure time? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00004-of-00016.parquet",
+      "source_row": 5404
+    },
+    {
+      "row": 191,
+      "episode_id": "7736#qa",
+      "kind": "qa_final",
+      "sha": "e7d5cf30d869b293c79d3bc13dfc26c83f2a82fca0320a1bac03c4394e1f15b5",
+      "gt": {
+        "action_type": "answer",
+        "text": "My Doc"
+      },
+      "goal": "Goal: My friend Marco asked me for the file My Doc, so I'd like to send it to him over gmail at marco.rossi@rossoday.com, then answer: What is the name of the document? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "source_row": 5933
+    },
+    {
+      "row": 226,
+      "episode_id": "12084#qa",
+      "kind": "qa_final",
+      "sha": "5c690e8f2316582a9580a4b762b6e300ea96dd55d1f39446a05cfee85d913c5f",
+      "gt": {
+        "action_type": "answer",
+        "text": "527K"
+      },
+      "goal": "Goal: This video by fashion trend minsha is really good; it gave me a lot of ideas about how I want my daughters to dress and make up for her wedding. In the YouTube app, subscribe to fashion trends by minsha. After that, tell me: How many views does this video have? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00004-of-00016.parquet",
+      "source_row": 5125
+    },
+    {
+      "row": 240,
+      "episode_id": "7113#qa",
+      "kind": "qa_final",
+      "sha": "cf8230c0dc984675316a64634a2fc68449998883c666fef34c9779e764e9a512",
+      "gt": {
+        "action_type": "answer",
+        "text": "34s"
+      },
+      "goal": "Goal: Mike, my gym trainer, wants to see my general improvement, thus I'd want to share my tracking activity progress to his email address, mike.waggoner@hotwater.com, via gmail and answer this question: How long was the active time? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "source_row": 4931
+    },
+    {
+      "row": 357,
+      "episode_id": "19777#qa",
+      "kind": "qa_final",
+      "sha": "743373d35f25b9fbff885cf51432d3a10f036dab456804f1a3516d9b44139c9b",
+      "gt": {
+        "action_type": "answer",
+        "text": "3_Jaap_Sahib_[Roman&Gurmukhi].pdf"
+      },
+      "goal": "Goal: Share Jaap file on gmail and answer this question: What is the file name? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00010-of-00016.parquet",
+      "source_row": 5648
+    },
+    {
+      "row": 419,
+      "episode_id": "11230#qa",
+      "kind": "qa_final",
+      "sha": "5a04b07c18bbe871e982dadcb159b4429185e2f3a5aa23fb0e4106f3a6da3acc",
+      "gt": {
+        "action_type": "answer",
+        "text": "★★★★☆"
+      },
+      "goal": "Goal: Use the gmail address karin.iversen@example.com to send Karin information about the bus that leaves at 8:10 a.m, then answer: What is the bus rating? Reply with just the rating.",
+      "source_file": "data/v4work/build/out/data/train-00012-of-00016.parquet",
+      "source_row": 5196
+    },
+    {
+      "row": 442,
+      "episode_id": "5388#qa",
+      "kind": "qa_final",
+      "sha": "5c6f1f9835e8f3356f047ca4abc20ded79a460e1ce995967dbf1605598052165",
+      "gt": {
+        "action_type": "answer",
+        "text": "14m 43s"
+      },
+      "goal": "Goal: Maria wants to get started the same but she is a little bit confused about the results , share the progress with Maria at Maria.rossi1993@gmail.com, then answer: How long was the active time? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "source_row": 5339
+    },
+    {
+      "row": 505,
+      "episode_id": "15482#qa",
+      "kind": "qa_final",
+      "sha": "1770805b483e268ed98939b1bb39d3173f2f2c7160931920766470386d0bc3a0",
+      "gt": {
+        "action_type": "answer",
+        "text": "₹35,981"
+      },
+      "goal": "Goal: I am planning a family trip to Vancouver, so find an economy class flight for me for a one-way trip from Toronto Pearson International to Vancouver International Airport on December 15 for 3 adults on the MakeMyTrip app, then answer: What is the cheapest flight price? Reply with just the price.",
+      "source_file": "data/v4work/build/out/data/train-00014-of-00016.parquet",
+      "source_row": 5704
+    },
+    {
+      "row": 530,
+      "episode_id": "15112#qa",
+      "kind": "qa_final",
+      "sha": "3bb2dc7a4363dbe6ff0470536dd48ea2280fb878a3331cafd75994b9ebc4646a",
+      "gt": {
+        "action_type": "answer",
+        "text": "About 1 notification per day"
+      },
+      "goal": "Goal: I am not receiving updates on new emails. In the Gmail app, enable the notifications, then answer: How many notifications per day for fabioteixeira00123@gmail.com? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "source_row": 5141
+    },
+    {
+      "row": 550,
+      "episode_id": "6452#qa",
+      "kind": "qa_final",
+      "sha": "fe992388d4fc0a2288542fec55ebdac6895e625f44dd8d942737fba05e2c92e8",
+      "gt": {
+        "action_type": "answer",
+        "text": "Solar Panels"
+      },
+      "goal": "Goal: Share the current sketch with my colleague Cerebra Research on his office gmail account: dbwscratch.test.id4@gmail.com from the Sketchbook app. After that, tell me: What is the title of this sketch? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00006-of-00016.parquet",
+      "source_row": 5235
+    },
+    {
+      "row": 568,
+      "episode_id": "8552#qa",
+      "kind": "qa_final",
+      "sha": "5d4e82edd4a411ef1d41e58ea8db18787140639275b4b7854c62498019e0a5c0",
+      "gt": {
+        "action_type": "answer",
+        "text": "1"
+      },
+      "goal": "Goal: Create a playlist with the name \"Tito Puente songs\" on the YouTube app. After that, tell me: How many videos are in the Watch later playlist? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00003-of-00016.parquet",
+      "source_row": 5795
+    },
+    {
+      "row": 571,
+      "episode_id": "389#qa",
+      "kind": "qa_final",
+      "sha": "0d93094b6b1d9a444d4ba893474df306839e83a78a21ba34ddb873796295e6bc",
+      "gt": {
+        "action_type": "answer",
+        "text": "00:00"
+      },
+      "goal": "Goal: Delete the pop music titled Track 6 from the Dolby On app because it is no longer needed and answer this question: What is the current timer reading? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00003-of-00016.parquet",
+      "source_row": 5733
+    },
+    {
+      "row": 696,
+      "episode_id": "18024#qa",
+      "kind": "qa_final",
+      "sha": "ab3710323e5bf2401088158de25c61204c7e129b3c2daff075976cecaab0a447",
+      "gt": {
+        "action_type": "answer",
+        "text": "355076128691"
+      },
+      "goal": "Goal: My friend is renovating his house and wants to buy the chair that I'm looking for on the eBay app, therefore he has asked me to share the antique wood chair on his gmail account, coledbwpersonatest@gmail.com. After that, tell me: What is the item number of the chair? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00012-of-00016.parquet",
+      "source_row": 5505
+    },
+    {
+      "row": 708,
+      "episode_id": "6634#qa",
+      "kind": "qa_final",
+      "sha": "cf4df1d872d5add1af72b74ee6e106e4349de961066a5956450e67638a08a0a9",
+      "gt": {
+        "action_type": "answer",
+        "text": "New car.pdf"
+      },
+      "goal": "Goal: Share the new car file with my personal email address and answer this question: What is the file name? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00009-of-00016.parquet",
+      "source_row": 5341
+    },
+    {
+      "row": 710,
+      "episode_id": "11182#qa",
+      "kind": "qa_final",
+      "sha": "1c05d898452da0087b777c617d090ebd980cc16af9ccf7633dc7ee74531c764d",
+      "gt": {
+        "action_type": "answer",
+        "text": "PVD"
+      },
+      "goal": "Goal: Share the PVD document file with my friend Cerebra Research at dbwscratch.test.id4@gmail.com via Gmail in the Google Docs app, then answer: What is the name of the second document? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "source_row": 5533
+    },
+    {
+      "row": 747,
+      "episode_id": "18923#qa",
+      "kind": "qa_final",
+      "sha": "54f09a0b52f26f101dfdc3e0e993d7a5f72a008ea7b2ecb497f52a47aa8401bb",
+      "gt": {
+        "action_type": "answer",
+        "text": "40 min"
+      },
+      "goal": "Goal: Go to Google Maps and find directions to Brighton Beach for this Saturday and save the address as Escape de ville and answer this question: What is the estimated travel time? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "source_row": 5255
+    },
+    {
+      "row": 786,
+      "episode_id": "9409#qa",
+      "kind": "qa_final",
+      "sha": "a99fc17bdb3955f5e74ad11a9818a6bfdda69a6f3232ee495bacd6d1853623b3",
+      "gt": {
+        "action_type": "answer",
+        "text": "3.9"
+      },
+      "goal": "Goal: What is Ramagya School's rating in Google Maps? Reply with just the rating.",
+      "source_file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "source_row": 5542
+    },
+    {
+      "row": 809,
+      "episode_id": "4679#qa",
+      "kind": "qa_final",
+      "sha": "31ca538cedee2deb9c3d001540987c4893ceda6016fb6aa54ce75dfefa762b05",
+      "gt": {
+        "action_type": "answer",
+        "text": "1"
+      },
+      "goal": "Goal: Unread the latest email from eBay in the Gmail app. After that, tell me: How many emails are selected? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00012-of-00016.parquet",
+      "source_row": 5704
+    },
+    {
+      "row": 887,
+      "episode_id": "267#qa",
+      "kind": "qa_final",
+      "sha": "c27fa36763eb68fc07737d491ae5f0b1aa3fb00a028f1f3fd7403df76340b14d",
+      "gt": {
+        "action_type": "answer",
+        "text": "1"
+      },
+      "goal": "Goal: Mark the latest email from eBay as read in the Gmail app and answer this question: How many emails are selected? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "source_row": 5584
+    },
+    {
+      "row": 897,
+      "episode_id": "2259#qa",
+      "kind": "qa_final",
+      "sha": "c28f7b2e307ac8aea554f43acbddef073e1d74c142eaf76652ce565785c9dd50",
+      "gt": {
+        "action_type": "answer",
+        "text": "11:04"
+      },
+      "goal": "Goal: Go to the Rail Planner app and Search for the train between London St Pancras Intl and NE on August 16. After that, tell me: What is the earliest departure time? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "source_row": 5696
+    },
+    {
+      "row": 907,
+      "episode_id": "4899#qa",
+      "kind": "qa_final",
+      "sha": "7b641a88fdcba4d621c46fa851bbda7c6941cdb232faa0a251038f7907cf5e60",
+      "gt": {
+        "action_type": "answer",
+        "text": "23 min"
+      },
+      "goal": "Goal: What's the biking time from Grays Ferry Crescent to Philadelphia in Google Maps? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "source_row": 5343
+    },
+    {
+      "row": 1018,
+      "episode_id": "17964#qa",
+      "kind": "qa_final",
+      "sha": "4db74efee405a2822570a2209d60e8414f6ebfb5cb5f7497618f6957d80efd36",
+      "gt": {
+        "action_type": "answer",
+        "text": "Main Characters"
+      },
+      "goal": "Goal: I would like to see the Book Report.pptx file for study in the Google Drive app and answer this question: What is the title of this section? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00013-of-00016.parquet",
+      "source_row": 4926
+    },
+    {
+      "row": 1108,
+      "episode_id": "11174#qa",
+      "kind": "qa_final",
+      "sha": "bf407ba1df06da46afa34623651a1ef0e68b5f16ae749c987e2900bf0773892a",
+      "gt": {
+        "action_type": "answer",
+        "text": "2:21"
+      },
+      "goal": "Goal: Watch a musical video in the background on the YouTube app, then answer: What is the video's duration? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00013-of-00016.parquet",
+      "source_row": 4981
+    },
+    {
+      "row": 1164,
+      "episode_id": "1797#qa",
+      "kind": "qa_final",
+      "sha": "b6f88b7dc4c134de15f43bed50afe4c24480dce3b438ccf4583ed48ea20af2f3",
+      "gt": {
+        "action_type": "answer",
+        "text": "11:00 AM"
+      },
+      "goal": "Goal: I want to include Cole in the \"Yoga session event\" ,share the event to coledbwpersonatest@gmail.com and answer this question: What is the event start time? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00004-of-00016.parquet",
+      "source_row": 5686
+    },
+    {
+      "row": 1207,
+      "episode_id": "17605#qa",
+      "kind": "qa_final",
+      "sha": "9e705d1a519f8b9fdedf89ec2bf04a2e8f53358ae2b12ed4bbac2924d78ecd10",
+      "gt": {
+        "action_type": "answer",
+        "text": "8:48 PM"
+      },
+      "goal": "Goal: In the Gmail app, I wish to reply to the most recent email from Fabio by writing, \"Okay, I'll be there for the meeting.\". After that, tell me: What time was the reply sent? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00015-of-00016.parquet",
+      "source_row": 5866
+    },
+    {
+      "row": 1224,
+      "episode_id": "1575#qa",
+      "kind": "qa_final",
+      "sha": "61efed2b9f24836303f72c01c125d7bdd17550b5e9e5cb81f7e41954e344d8d9",
+      "gt": {
+        "action_type": "answer",
+        "text": "03"
+      },
+      "goal": "Goal: Share my report with my friend Rick Weinstein to his mail id rick.weinstein@dayrep.com and answer this question: What is the section number shown? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00010-of-00016.parquet",
+      "source_row": 5615
+    },
+    {
+      "row": 1241,
+      "episode_id": "9189#qa",
+      "kind": "qa_final",
+      "sha": "2a22fb9740c261bfa7dcaddac59ee2d8e5cf472aff9ddf942b101d31765ce88c",
+      "gt": {
+        "action_type": "answer",
+        "text": "3"
+      },
+      "goal": "Goal: I'd like to send this presentation slide to my colleague Eva via email at EvaCook@dayrep.com so she can review it and provide feedback and answer this question: What is the current slide number? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "source_row": 5827
+    },
+    {
+      "row": 1252,
+      "episode_id": "13488#qa",
+      "kind": "qa_final",
+      "sha": "834cf21626d616fc9d746aaeb01aeee65be38420b896261c5718b00a6ee3a699",
+      "gt": {
+        "action_type": "answer",
+        "text": "500"
+      },
+      "goal": "Goal: In the Yums app, how many Yums will I earn by sharing my code? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00008-of-00016.parquet",
+      "source_row": 5121
+    },
+    {
+      "row": 1253,
+      "episode_id": "11639#qa",
+      "kind": "qa_final",
+      "sha": "c54d3b22574470e8ac1e3727a81e994472c91f2880fd46b2ec139449136002af",
+      "gt": {
+        "action_type": "answer",
+        "text": "4.5"
+      },
+      "goal": "Goal: Save the Pete's Kitchen location in the Google Maps app under favorites because I frequently go there and answer this question: What is Pete's Kitchen rating? Reply with just the rating.",
+      "source_file": "data/v4work/build/out/data/train-00013-of-00016.parquet",
+      "source_row": 5792
+    },
+    {
+      "row": 1268,
+      "episode_id": "5663#qa",
+      "kind": "qa_final",
+      "sha": "f80e797bca0638618937048aa55ff7b006761157639f9f50063fc968dd330de4",
+      "gt": {
+        "action_type": "answer",
+        "text": "154"
+      },
+      "goal": "Goal: Play short videos related to my favorite artist on the YouTube app. After that, tell me: How many likes does this video have? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00004-of-00016.parquet",
+      "source_row": 4926
+    },
+    {
+      "row": 1274,
+      "episode_id": "4509#qa",
+      "kind": "qa_final",
+      "sha": "ff0dc2a3cd6530c324fe0900992d9d58cfe23727df07871a87ef845654d120ec",
+      "gt": {
+        "action_type": "answer",
+        "text": "4.82 MB"
+      },
+      "goal": "Goal: I want to share the \"List of essential medicines pdf\" file from the Google file app to mike at mike.waggoner@hotwater.com and answer this question: What is the file size of the PDF? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00009-of-00016.parquet",
+      "source_row": 5786
+    },
+    {
+      "row": 1283,
+      "episode_id": "4530#qa",
+      "kind": "qa_final",
+      "sha": "67bd47b197ead3c917055b4f89146a990522ed2d92840d6fb9038dbaecf17786",
+      "gt": {
+        "action_type": "answer",
+        "text": "1"
+      },
+      "goal": "Goal: Please send information regarding the trains departing at 14:19 hours to 15:30 hours at karin.iversen@example.com via Gmail, then answer: How many journeys are listed? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00001-of-00016.parquet",
+      "source_row": 5476
+    },
+    {
+      "row": 1285,
+      "episode_id": "12608#qa",
+      "kind": "qa_final",
+      "sha": "24d71d5b3f2db6fbe34f878965a730bc3d641ab5fd44af1c44d4a36cb69f58f8",
+      "gt": {
+        "action_type": "answer",
+        "text": "1"
+      },
+      "goal": "Goal: \"Unread the school annual function mail in the gmail app since I accidentally saw it without viewing the required mail text. \", then answer: How many emails are marked as unread? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00006-of-00016.parquet",
+      "source_row": 5209
+    },
+    {
+      "row": 1353,
+      "episode_id": "15529#qa",
+      "kind": "qa_final",
+      "sha": "2274770f9e26513912b6f33c3b96791d038614dc4011c600eb5ef1fc278eb87c",
+      "gt": {
+        "action_type": "answer",
+        "text": "1"
+      },
+      "goal": "Goal: I need to make changes to landscape design I uploaded on the Google Drive app, thus I want to download the file and answer this question: How many items will be downloaded? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00009-of-00016.parquet",
+      "source_row": 4898
+    },
+    {
+      "row": 1373,
+      "episode_id": "18098#qa",
+      "kind": "qa_final",
+      "sha": "5d78b94cd5764b41b677593a7bb643a7c51ea808c317a9aa719ce4ebcc211894",
+      "gt": {
+        "action_type": "answer",
+        "text": "https://surveyheart.com/form/6593c082a81c1c0d71ba02c5"
+      },
+      "goal": "Goal: My wife is also interested and wants to fill this form and asked me to share this form with her, so share this form with my wife at clarawagner98b@gmail.com on the Gmail app. After that, tell me: What is the form's URL? Reply with just the URL.",
+      "source_file": "data/v4work/build/out/data/train-00008-of-00016.parquet",
+      "source_row": 5363
+    },
+    {
+      "row": 1378,
+      "episode_id": "9096#qa",
+      "kind": "qa_final",
+      "sha": "384fe03b157e78a3827207b115a60af243de811e846f4ad39fa5dbb26b41b91f",
+      "gt": {
+        "action_type": "answer",
+        "text": "19 min"
+      },
+      "goal": "Goal: My friend Rick wants to go with me to my relative's house. Share this bus schedule information to his mail id :rick.weinstein@dayrep.com and answer this question: How long is the walk? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00005-of-00016.parquet",
+      "source_row": 5542
+    },
+    {
+      "row": 1574,
+      "episode_id": "3072#qa",
+      "kind": "qa_final",
+      "sha": "e001bb94506102ed02a63f087c43be5459a61eaced19d100b81464e2dba87bd8",
+      "gt": {
+        "action_type": "answer",
+        "text": "92"
+      },
+      "goal": "Goal: In the HealthifyMe app, Share your activity data with dbwscratch.test.id2@gmail.com via gmail and answer this question: How many steps did you take? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00015-of-00016.parquet",
+      "source_row": 5561
+    },
+    {
+      "row": 1597,
+      "episode_id": "14016#qa",
+      "kind": "qa_final",
+      "sha": "b028e88defb56d75cf44761d1adb4c8965116169a91dfccd51b0aae911c22311",
+      "gt": {
+        "action_type": "answer",
+        "text": "Movie Name.m4a"
+      },
+      "goal": "Goal: I want to share the Movie name of my favourite movie All about eve audio to my friend Naomi  Rousseau on her Gmail id naomi.rousseau@example.com and answer this question: What is the file name of the recording? Reply with just the name.",
+      "source_file": "data/v4work/build/out/data/train-00003-of-00016.parquet",
+      "source_row": 5411
+    },
+    {
+      "row": 1642,
+      "episode_id": "7885#qa",
+      "kind": "qa_final",
+      "sha": "8239240b89502b85e7b7620da83eeba785d2af192e7431ec85a9b31e9751d524",
+      "gt": {
+        "action_type": "answer",
+        "text": "Oct 20"
+      },
+      "goal": "Goal: When was the email from Cerebra Research received in Gmail? Reply with just the date.",
+      "source_file": "data/v4work/build/out/data/train-00001-of-00016.parquet",
+      "source_row": 5021
+    },
+    {
+      "row": 1643,
+      "episode_id": "3997#qa",
+      "kind": "qa_final",
+      "sha": "01d2b098a96a91ae9ce4c60ea37709e94b38f72a2dfec01f09856977da182cc0",
+      "gt": {
+        "action_type": "answer",
+        "text": "48"
+      },
+      "goal": "Goal: In the Strava app, Share your tracking data with dbwscratch.test.id2@gmail.com via gmail and answer this question: How many steps were taken in the morning walk? Reply with just the number.",
+      "source_file": "data/v4work/build/out/data/train-00015-of-00016.parquet",
+      "source_row": 5095
+    },
+    {
+      "row": 1670,
+      "episode_id": "2580#qa",
+      "kind": "qa_final",
+      "sha": "e4a212604a95b0a1325a76ffb799ad6003b6b93b90b5147cefb7b17de4ae50e3",
+      "gt": {
+        "action_type": "answer",
+        "text": "4.1 Good"
+      },
+      "goal": "Goal: I wish to use Gmail to refer my friend karin.iversen@example.com to this eatery. After that, tell me: What is the rating of this eatery? Reply with just the rating.",
+      "source_file": "data/v4work/build/out/data/train-00005-of-00016.parquet",
+      "source_row": 5761
+    },
+    {
+      "row": 1686,
+      "episode_id": "1537#qa",
+      "kind": "qa_final",
+      "sha": "04ae8e01668d4528841c729200aa180ac616f7a025aacc88ab52d3583ca084a4",
+      "gt": {
+        "action_type": "answer",
+        "text": "5 hr 46 min"
+      },
+      "goal": "Goal: My wife also ask me to share the train schedule information with her, so share the train schedule from the Rome2Rio app with her at clarawagner98b@gmail.com on the Gmail app, then answer: What is the total travel time? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00009-of-00016.parquet",
+      "source_row": 5641
+    },
+    {
+      "row": 1756,
+      "episode_id": "12917#qa",
+      "kind": "qa_final",
+      "sha": "e5abf4802733263693064aab17a574e267b329cab058dcc5cdc5b434675c00ee",
+      "gt": {
+        "action_type": "answer",
+        "text": "$10"
+      },
+      "goal": "Goal: Share the link to the Grubhub app with my friend Natlalie Larson over Gmail at id-natalie.larson19998@gmail.com so that I can get $10 off the referral. After that, tell me: How much discount do I get? Reply with just the price.",
+      "source_file": "data/v4work/build/out/data/train-00002-of-00016.parquet",
+      "source_row": 5843
+    },
+    {
+      "row": 1770,
+      "episode_id": "5746#qa",
+      "kind": "qa_final",
+      "sha": "8e894c30f0b467d5a9ff805287a76f8b3c8ef8d2a5f6035bd234992dbb6f7b64",
+      "gt": {
+        "action_type": "answer",
+        "text": "14:20"
+      },
+      "goal": "Goal: Use the gmail address karin.iversen@example.com to send Karin information about the bus that leaves at 13:32 p.m. After that, tell me: What is the arrival time at Brussels Airport? Reply with just the time.",
+      "source_file": "data/v4work/build/out/data/train-00014-of-00016.parquet",
+      "source_row": 5402
+    },
+    {
+      "row": 1834,
+      "episode_id": "10450#qa",
+      "kind": "qa_final",
+      "sha": "9612411b7b06dbfc4bf6406c3ab1f6e0701f2b26fdabebb5ef2368cd74025493",
+      "gt": {
+        "action_type": "answer",
+        "text": "File will be made available offline"
+      },
+      "goal": "Goal: In the event that I ever lose internet connectivity, I want to make the Presentation_sample.pdf file accessible offline in Google Drive, then answer: What message confirms offline availability? Reply with just the text.",
+      "source_file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "source_row": 5475
+    },
+    {
+      "row": 1896,
+      "episode_id": "10445#qa",
+      "kind": "qa_final",
+      "sha": "9f986a09c849025e0fb8daf84e74ae559c770cb02a2dbff2aafa3ce93f19eb72",
+      "gt": {
+        "action_type": "answer",
+        "text": "4.8"
+      },
+      "goal": "Goal: What is the rating of the Golden Gate Bridge on Google Maps? Reply with just the rating.",
+      "source_file": "data/v4work/build/out/data/train-00002-of-00016.parquet",
+      "source_row": 5250
+    }
+  ],
+  "primary_visual_bad_answer_in_rl": [
+    {
+      "sample_id": "qa05",
+      "pool_rows": [
+        426
+      ]
+    },
+    {
+      "sample_id": "qa06",
+      "pool_rows": [
+        1504
+      ]
+    },
+    {
+      "sample_id": "qa49",
+      "pool_rows": [
+        879
+      ]
+    },
+    {
+      "sample_id": "qa52",
+      "pool_rows": [
+        957
+      ]
+    },
+    {
+      "sample_id": "screenqa09",
+      "pool_rows": []
+    },
+    {
+      "sample_id": "screenqa27",
+      "pool_rows": []
+    }
+  ],
+  "pool_action_counts": {
+    "answer": 700,
+    "click": 499,
+    "status": 500,
+    "open_app": 38,
+    "scroll": 112,
+    "wait": 46,
+    "navigate_back": 24,
+    "input_text": 72,
+    "navigate_home": 8,
+    "long_press": 1
+  },
+  "missing_app_episode_counts": {
+    "dev_answer/qa": 62,
+    "dev_complete/original": 52,
+    "dev_odyssey/original": 126,
+    "train/original": 4864,
+    "train/qa": 988
+  }
+}

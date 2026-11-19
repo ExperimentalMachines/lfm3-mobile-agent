@@ -1,0 +1,1037 @@
+{
+  "stats": {
+    "ac_episodes": 13074,
+    "drop_no_terminal": 6447,
+    "drop_aw_app_guard": 1117,
+    "drop_too_short": 629,
+    "pool": 4881,
+    "pool_question": 522,
+    "dev": 200,
+    "train": 3600,
+    "dev_question": 33
+  },
+  "metadata_rows": 78952,
+  "candidate_split_source_counts": {
+    "train": 941
+  },
+  "dev_episode_count": 200,
+  "dev_train_img_sha_overlap": 0,
+  "selector_two_runs_equal": true,
+  "selector_matches_committed_candidates": true,
+  "sampled_episodes_not_contiguous": 2971,
+  "sampled_examples": [
+    {
+      "key": "androidcontrol/14864",
+      "steps": [
+        0,
+        1,
+        5
+      ],
+      "n_steps": 6
+    },
+    {
+      "key": "androidcontrol/16032",
+      "steps": [
+        2,
+        3,
+        4
+      ],
+      "n_steps": 5
+    },
+    {
+      "key": "androidcontrol/7055",
+      "steps": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        14,
+        16,
+        17,
+        18,
+        21,
+        23
+      ],
+      "n_steps": 24
+    },
+    {
+      "key": "androidcontrol/5705",
+      "steps": [
+        0,
+        1,
+        4
+      ],
+      "n_steps": 5
+    },
+    {
+      "key": "androidcontrol/6658",
+      "steps": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "n_steps": 8
+    },
+    {
+      "key": "androidcontrol/13443",
+      "steps": [
+        0,
+        2,
+        3
+      ],
+      "n_steps": 4
+    },
+    {
+      "key": "androidcontrol/14143",
+      "steps": [
+        0,
+        2,
+        3
+      ],
+      "n_steps": 4
+    },
+    {
+      "key": "androidcontrol/7024",
+      "steps": [
+        2,
+        3,
+        4
+      ],
+      "n_steps": 5
+    }
+  ],
+  "final_prompt_not_full_history": 544,
+  "history_examples": [
+    {
+      "key": "androidcontrol/7055",
+      "step_idx": 23,
+      "nums": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "key": "androidcontrol/16016",
+      "step_idx": 9,
+      "nums": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "key": "androidcontrol/4084",
+      "step_idx": 9,
+      "nums": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "key": "androidcontrol/16676",
+      "step_idx": 12,
+      "nums": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "key": "androidcontrol/477",
+      "step_idx": 16,
+      "nums": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "key": "androidcontrol/15054",
+      "step_idx": 18,
+      "nums": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "key": "androidcontrol/18153",
+      "step_idx": 12,
+      "nums": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "key": "androidcontrol/16511",
+      "step_idx": 14,
+      "nums": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  ],
+  "history_aw_guard_leaks": 4,
+  "history_aw_examples": [
+    {
+      "key": "androidcontrol/815",
+      "goal": "I want to view my google pixel 7 phone build number",
+      "selected_apps": [],
+      "history_apps": [
+        "Settings"
+      ]
+    },
+    {
+      "key": "androidcontrol/18012",
+      "goal": "I want to view the build number of my device.",
+      "selected_apps": [],
+      "history_apps": [
+        "Settings"
+      ]
+    },
+    {
+      "key": "androidcontrol/2080",
+      "goal": "Find out the phone build number",
+      "selected_apps": [],
+      "history_apps": [
+        "Settings"
+      ]
+    },
+    {
+      "key": "androidcontrol/13527",
+      "goal": "Find out the phone build number",
+      "selected_apps": [],
+      "history_apps": [
+        "Settings"
+      ]
+    }
+  ],
+  "device_display_names_unmatched_by_guard": [
+    "Drive",
+    "Gmail",
+    "Google",
+    "Google Play",
+    "Maps",
+    "Phone",
+    "YouTube"
+  ],
+  "selected_with_unmatched_device_names": 87,
+  "selected_device_examples": [
+    {
+      "key": "androidcontrol/16016",
+      "goal": "I want to compose a letter to my friend Amilea Miller, asking her to come to a party.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/12887",
+      "goal": "Search for the Globalisation file by using the Google Drive app.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/7795",
+      "goal": "Go to library section and create playlist  \"Feel the soul\" and add video Arjit singh song 2021  to the created playlist",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/12621",
+      "goal": "Open the Gmail App, Go to the Profile Icon and Remove Account for Sign Out.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/19294",
+      "goal": "Open the Google Maps app and send a report of construction on the road.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/14235",
+      "goal": "Sometime ago, unfortunately, I deleted my important file from the drive, so I want to restore it.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/6146",
+      "goal": "Compose a mail in gmail app and send to Rick Weinstein gmail id rick.weinstein@dayrep.com that \"Your wife Credit card request is approved now you can collect card at the branch\" with subject \"Credit card approval done\".",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/17795",
+      "goal": "Open Google Maps, Enable traffic updates in your Jantar Mantar new delhi trip",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/15131",
+      "goal": "In Google maps, launch the explore tab and click the first place above 4.5 stars",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/11518",
+      "goal": "Open the Google Maps app and share ETA to the dbwscratch.test.id2@gmail.com",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/1404",
+      "goal": "Open the Gmail App, Go to the search bar and Search for the Redeployment Event.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/19168",
+      "goal": "Go to Google Maps and find directions to Rockaway Beach and Boardwalk for this Saturday and save the address as \"Escape de ville\"",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/6611",
+      "goal": "Open Google Maps app, Share your current route ETA on dbwscratch.test.id6@gmail.com",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/3585",
+      "goal": "All of the business with the Babylon client is over, hence I need to delete the Client_Babylon-GO201 File from Google Drive.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/11788",
+      "goal": "Go to the Google Maps app & set the direction to the place Leisure Valley Park",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/18712",
+      "goal": "Open the Google Drive app and share the beach waves video to dbwscratch.test.id10@gmail.com",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/5941",
+      "goal": "In Google maps, launch the explore tab and click the first place above 4.6 stars",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/1604",
+      "goal": "On the Drive app, search for the pdf name Typhoon to know if the file is available or not in my drive storage.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/50",
+      "goal": "View the cycling data in the Google Drive app and examine the document for clarity when it needs to be updated.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/18853",
+      "goal": "Open the Gmail App, Toggle on the switch for notification and set the notification on 1 week before at 9 AM of Task Feedback Meeting Event.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/17320",
+      "goal": "I want to create a shortcut to the Home Screen for the Presentation_sample.pdf file in the Google Drive app because the client meeting is approaching quickly.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/1143",
+      "goal": "Compose a mail to id-dbwscratch.test.id4@gmail.com for the official weekend party.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/12032",
+      "goal": "Open Google Maps , Get direction from your current location to Jantar Mantar new delhi and start to navigate",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/7164",
+      "goal": "Open Youtube and search for video how to install window 11 on new pc move forward the video by 10 seconds and pause the video. Add the video to the watch later playlist.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/6723",
+      "goal": "As for the proceeding with the request of Jane , Forward the Jane's latest mail with subject please accept my request to Cerebra Research at dbwscratch.test.id2@gmail.com",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/5793",
+      "goal": "Launch Youtube and play How to fold a paper Airplanes that flies far , make sure to turn on subtitles and set playback to 1.5x",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/14407",
+      "goal": "Open the Gmail App, Share the Birthday Celebration Event to the dbwscratch.test.id4@gmail.com.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/14119",
+      "goal": "To free up additional space, I must download the Backup_reminder file from Google Drive.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/18700",
+      "goal": "Play the Luciano Pavarotti and James Brown song It's A Man's Man's Man's World (Stereo) on the YouTube app.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/7990",
+      "goal": "Open the Gmail app",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/12330",
+      "goal": "I was at home alone and bored, so I decided to listen to some Martin Garrix music on the YouTube app",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/558",
+      "goal": "Open the Google Maps app and check the traffic condition of your route",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/2436",
+      "goal": "The video is of poor quality, which causes discomfort to my eyes. The video that is presently playing in the YouTube app should have its video quality changed to 1080p60.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/17879",
+      "goal": "Compose an email to Thomas mentioning that the brother liked all the goods sent by you, especially the sports equipment for motivation, with the title Thank you for the Gift at Thomas123@gmail.com in the Gmail app.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/5495",
+      "goal": "On the Drive app, I want to upload the Eiffel Tower file to my Drive in case it gets accidentally deleted from my phone storage but will remain saved on Google Drive, so upload an Eiffel Tower image file.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/18443",
+      "goal": "I am a fan of Luciano Pavarotti.I love to listen to him. Subscrine this channel in the YouTube app",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/5190",
+      "goal": "To make it simple for me to view the Dinner-veg pdf file in the future, upload it to the Google Drive app.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/4920",
+      "goal": "Finds attaractions near my Home town \"Dawson Creek, Canada\" on the Maps app.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/18345",
+      "goal": "Open the Gmail App, Go to the search bar to search for the Google Community Team.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/7532",
+      "goal": "Open Google maps app, Search for the nearest park to 98104 and make sure it has a rating of above 4.5 starts",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/75",
+      "goal": "On the Drive app,can you upload the file typhoon-mcm-obooko.pdf to my drive in case it gets deleted by mistake from my phone storage?",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/17898",
+      "goal": "Open the Google Maps app and then search for Diamond crown banquet and start navigation",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/7964",
+      "goal": "I am liking the video and wish to listen to it in the future with the latest updates. Subscribe to the AlexrainbirdMusic channel for the latest updates in the YouTube app.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/4003",
+      "goal": "Open the YouTube app and search for videos related to my favorite music artist. I want to play George Bizet videos, and I also want to play my favorite classical genre videos, so play videos like this.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/19209",
+      "goal": "I'm driving to my workplace, and I would like to watch a Justin bieber pop song on the YouTube app.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/5674",
+      "goal": "One of my friends Maria Rossi wants a few songs recommendation from my end , Share the KALEO - way Down We Go official music video to maria.rossi1993@gmail.com from my playlist in the YouTube app",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/17236",
+      "goal": "I've marked an email from Hiiker as unread after reading it, so I want to mark it as read.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/1488",
+      "goal": "In Google maps, launch the explore tab and click the first place above 4.8 stars",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/19603",
+      "goal": "Open Google maps app, Search for the nearest park to 98105 and make sure it has a rating of above 4.5 stars",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/14765",
+      "goal": "Open YouTube and search for Queen music videos because I always like them and I always recommend them to my friends.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/3455",
+      "goal": "Open the Google Maps app and share the ETA for Bean and The Bear Cafe with dbwscratch.test.id10@gmail.com.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/10434",
+      "goal": "Open the Google maps app and search for attractions point and view the gwal pahari selfie point",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/18595",
+      "goal": "Upload the \"ipsum_20231004_113118.txt\" file to the Google Drive app so I can easily access it in the future.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/19857",
+      "goal": "I want to see the bike route from my home to Museum Gouda on the google maps app.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/8285",
+      "goal": "Show all the saved places in google maps app",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/14394",
+      "goal": "Compose an email to Cole with the text \"We are organizing an event called \"Yoga Session\" at New York School and I'm requesting you to join the event\" and the subject \"Yoga Event\" to coledbwpersonatest@gmail.com through the Gmail app.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/18420",
+      "goal": "Open Google Maps app, Get direction from GlobalLogic Technologies Limited to Pacific Mall Tagore Garden",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/14160",
+      "goal": "I loved hiking. I saw a baby deer when i was hiking. show me shorts of little girl friends with a baby deer in the YouTube app",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/12402",
+      "goal": "Open the Google Maps app and change your route to an alternative route for Bean and The Bear Cafe.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/2135",
+      "goal": "I received an email from Aakash Gahlot with the Subject Urgent Document, and I'd like to respond to it and acknowledge it.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/18965",
+      "goal": "Open the Gmail App, select Nimbus Team Mail, and mark the mail as read.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/3123",
+      "goal": "I am getting Promotional mails of Expedia.com in my primary folder of the Gmail app , Move the mail of Expedia from the primary folder to Promotional folder .",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/6745",
+      "goal": "Read a review of the attraction on Google Maps.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/18912",
+      "goal": "The email, which was started by me I want to unstar this",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/11933",
+      "goal": "Open Google maps then view the direction from your current location to Pullman Aerocity and navigate the direction",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/15827",
+      "goal": "I am organizing the Book fair event on 15th October at 12:00 PM, So i want to invite my best friend Naomi Rousseau Via mail, So i want to to add the recipient naomi.rousseau@example.com, Subject will be Join us for a Book fair event to Dear Namoi and the body of mail is “ I wanted to share some exciting news with you. There’s an upcoming book fair in town, on the Gmail app",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/4533",
+      "goal": "Open the Gmail App, Go to profile, Select the Manage your Account, go to the drop down icon and remove sign out the account.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/18646",
+      "goal": "Look up Coldplay's One World song in full 4K, live from Sao Paulo, Brazil, on the YouTube app for entertainment. Coldplay is a British rock band that was founded in London in 1997.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/15695",
+      "goal": "create an event as yoga session for relief the  strees on 1st september 2023 at park",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/15357",
+      "goal": "In Gmail, write a new email to my acquaintance Cerebra Research about an upcoming concert and a continuing education seminar.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/5711",
+      "goal": "Open youtube app, Launch my Jazz music play list and play it in order",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/1373",
+      "goal": "Open the Gmail App, Delete an event titled as Skip connect on August 7, 2023, from 1:30 p.m. to 2:30 p.m.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/17921",
+      "goal": "This video channel This American Life content is appealing to me. That's why I want to subscribe to the channel so that I may view all of the latest videos released on this channel.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/14679",
+      "goal": "I'm walking to the Roman Theater, Use the Maps app to choose an appropriate walking route.",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/10446",
+      "goal": "It's a rainy day and I would like to listen to Luciano Pavarotti songs. Search It's A Man's Man's Man's World (Stereo) song by Luciano Pavarotti & James Brown in the YouTube app.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/17400",
+      "goal": "The processing of Jane's request has been stopped as Jane got another opportunity at his nearby location , Unstar an email from Jane in the Email app",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/16091",
+      "goal": "Open the Gmail App, Select the Official Weekend Party Mail and unmark an Email as read.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/2319",
+      "goal": "Open the Gmail App, Compose a mail to dbwscratch.test.id8@gmail.com about Leave Approval with the body Approve my three days leave and send it.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/8609",
+      "goal": "Open the Tableu_Blueprint file, as I want to study from it, in the Google Drive app.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/20017",
+      "goal": "Star the latest email from Google community Team, as it is an important mail for me.",
+      "apps": [
+        "Gmail"
+      ]
+    },
+    {
+      "key": "androidcontrol/4994",
+      "goal": "I want to search my appointment data in the Google Drive app in order to check the schedule.",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/9366",
+      "goal": "Go to the the youtube app and open the Weekends meditation playlist",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/2020",
+      "goal": "View the place saved in favorites category",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/12095",
+      "goal": "Go to Google Drive and upload the image of the pink flower",
+      "apps": [
+        "Drive"
+      ]
+    },
+    {
+      "key": "androidcontrol/5669",
+      "goal": "Open Google Maps app & find the attraction place Leisure Valley Park",
+      "apps": [
+        "Maps"
+      ]
+    },
+    {
+      "key": "androidcontrol/15884",
+      "goal": "I want to change the YouTube video quality setting to Higher picture quality so that I may watch videos in better quality.",
+      "apps": [
+        "YouTube"
+      ]
+    },
+    {
+      "key": "androidcontrol/922",
+      "goal": "Open the Google Maps app and search for Aerocity, then start navigation.",
+      "apps": [
+        "Maps"
+      ]
+    }
+  ],
+  "substring_guard_matches": 470,
+  "substring_guard_examples": [
+    {
+      "key": "androidcontrol/17021",
+      "goal": "In the sketchbook app, save the current drawing by art1 name in downloads",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/17730",
+      "goal": "For later usage, I would want to save my drawing.",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/19304",
+      "goal": "I have an upcoming house party, and I need to invite people from the list that I created in my notes. Search for the notes of the house party members.",
+      "matched": "note"
+    },
+    {
+      "key": "androidcontrol/12147",
+      "goal": "Open the ClockBuddy app and delete the current timer.",
+      "matched": "Clock"
+    },
+    {
+      "key": "androidcontrol/18160",
+      "goal": "Browse for chicken recipes .",
+      "matched": "recipe"
+    },
+    {
+      "key": "androidcontrol/11818",
+      "goal": "I want to create a reminder to buy new Balance hiking shoes on the ToDodo app with a due date of December 23.",
+      "matched": "ToDo"
+    },
+    {
+      "key": "androidcontrol/9300",
+      "goal": "In the Keep Notes app, search for the note you shared with your mother about things to buy in the future.",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/4913",
+      "goal": "open the todoist app and create a task for the womer empowerment on 29th august 2023 @1 pm",
+      "matched": "todo"
+    },
+    {
+      "key": "androidcontrol/1766",
+      "goal": "In the Keep Notes app,create  Ujee´s birthday reminder and add a note as ´Happy birthday to you Ujee´ on August 17 at 12:00 a.m.",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/15667",
+      "goal": "I want to view my contacts which are added in my family group, so view the family group contacts in the Phonebook app.",
+      "matched": "contact"
+    },
+    {
+      "key": "androidcontrol/2616",
+      "goal": "Browse for breakfast dish recipes.",
+      "matched": "recipe"
+    },
+    {
+      "key": "androidcontrol/11586",
+      "goal": "Open the Google Contacts App to add a new number, the contact's name, email address, or other information, and then save it.",
+      "matched": "Contact"
+    },
+    {
+      "key": "androidcontrol/6587",
+      "goal": "Open Drawing Pad for Everyone app , Set the canvas size  Tablet 7-inch of drawing digital sheet",
+      "matched": "Draw"
+    },
+    {
+      "key": "androidcontrol/15811",
+      "goal": "In the Keep Notes app, set the Zumba Session reminder to repeat.",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/5360",
+      "goal": "My son wants to add color to the background of his drawing, so fill the yellow color in the background on the Sketchbook app.",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/10072",
+      "goal": "I want to view all contacts saved in my contact list, so view all saved contacts in my contact list in the Contacts app.",
+      "matched": "contact"
+    },
+    {
+      "key": "androidcontrol/11051",
+      "goal": "Some of my gardening tools got broken, so I am creating a list to buy new tools in the Notes app, which includes an axe, sickle, spade, and shovel.",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/1792",
+      "goal": "I want to save the phone number (112 720 1234) of my friend Amelia Miller in my Contacts app.",
+      "matched": "Contact"
+    },
+    {
+      "key": "androidcontrol/9576",
+      "goal": "In the Houzz app, I would like to continue with fourth kitchen drawer so I can read the reviews.",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/9797",
+      "goal": "I want to create a rectangle shape in the drawing using the Picsart Al Photo Editer App.",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/13926",
+      "goal": "I want to search for my grocery list to see the list of things I need to buy on the Notein app.",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/10785",
+      "goal": "Open the Easy Notes app and Make a new note with the title of  fundamental unit of life and enter about Fundamental unit of life  in the notes body",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/13453",
+      "goal": "I want to search for wooden kitchen drawers on the Houzz app since I need to renovate the kitchen.",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/4241",
+      "goal": "Exports all the contacts for me from the Contacts app.",
+      "matched": "contact"
+    },
+    {
+      "key": "androidcontrol/5501",
+      "goal": "My friend recommended the excellent movie Shutter Island that he saw yesterday, thus I want to record it in the Keep Notes app.",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/1767",
+      "goal": "As I am a daytime reader, change the theme of the lunch recipes app from system default to light.",
+      "matched": "recipe"
+    },
+    {
+      "key": "androidcontrol/11938",
+      "goal": "Open the Evernote app and share the Tiger note to dbwscratch.test.id3@gmail.com through gmail",
+      "matched": "note"
+    },
+    {
+      "key": "androidcontrol/3156",
+      "goal": "Open the NoteBook app and Make a new note with the title Places and enter Japan in the note body",
+      "matched": "Note"
+    },
+    {
+      "key": "androidcontrol/8845",
+      "goal": "I want to create a drawing with the Name of “A Lecture on Dutch History” in the Sketchbook app because I want to create it for my office presentation",
+      "matched": "draw"
+    },
+    {
+      "key": "androidcontrol/10784",
+      "goal": "In the Keep Notes app, delete the note named grocery because I have already bought all the groceries needed.",
+      "matched": "Note"
+    }
+  ],
+  "candidate_episodes_spanning_shards": 3591,
+  "only_final_sampled": 176
+}

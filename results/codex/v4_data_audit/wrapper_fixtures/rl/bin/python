@@ -1,0 +1,16 @@
+#!/Users/alpha/lfm3-android/.venv-data/bin/python -B
+import sys
+args=sys.argv[1:]
+if args and args[0]=='grpo_vlm.py':
+    print('SYNTHETIC training success; RL DONE')
+    sys.exit(0)
+if args and args[0]=='-c':
+    print(10 if 'max(10' in args[1] else 162)
+    sys.exit(0)
+if args and args[0]=='-':
+    code=sys.stdin.read()
+    if 'elapsed_s' in code:
+        print(120)
+        sys.exit(0)
+print('SYNTHETIC upload or evaluation failure',file=sys.stderr)
+sys.exit(42)

@@ -1,0 +1,351 @@
+{
+  "template_count": 57,
+  "goal_count": 26750,
+  "exact_template_matches": [],
+  "eight_word_literal_overlaps": [],
+  "templates": [
+    {
+      "file": "android_world/android_world/task_evals/composite/markor_sms.py",
+      "line": 39,
+      "class": "MarkorCreateNoteAndSms",
+      "template": "Create a new note in Markor named {file_name} with the following text: {text}. Share the entire content of the note with the phone number {number} via SMS using Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/composite/system.py",
+      "line": 32,
+      "class": "TurnOnWifiAndOpenApp",
+      "template": "Turn on Wifi, then open the {app_name} app"
+    },
+    {
+      "file": "android_world/android_world/task_evals/composite/system.py",
+      "line": 70,
+      "class": "TurnOffWifiAndTurnOnBluetooth",
+      "template": "Turn off WiFi, then enable bluetooth"
+    },
+    {
+      "file": "android_world/android_world/task_evals/miniwob/miniwob_base.py",
+      "line": 94,
+      "class": "MiniWoBTask",
+      "template": "Follow the instructions shown on the top of the screen: {utterance}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/audio_recorder.py",
+      "line": 44,
+      "class": "AudioRecorderRecordAudio",
+      "template": "Record an audio clip using Audio Recorder app and save it."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/audio_recorder.py",
+      "line": 90,
+      "class": "AudioRecorderRecordAudioWithFileName",
+      "template": "Record an audio clip and save it with name \"{file_name}\" using Audio Recorder app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 95,
+      "class": "SimpleCalendarAddOneEvent",
+      "template": "In Simple Calendar Pro, create a calendar event on {year}-{month}-{day} at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 152,
+      "class": "SimpleCalendarAddOneEventRelativeDay",
+      "template": "In Simple Calendar Pro, create a calendar event for this {day_of_week} at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 186,
+      "class": "SimpleCalendarAddOneEventTomorrow",
+      "template": "In Simple Calendar Pro, create a calendar event for tomorrow at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 206,
+      "class": "SimpleCalendarAddOneEventInTwoWeeks",
+      "template": "In Simple Calendar Pro, create a calendar event in two weeks from today at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 225,
+      "class": "SimpleCalendarAddRepeatingEvent",
+      "template": "In Simple Calendar Pro, create a recurring calendar event titled '{event_title}' starting on {year}-{month}-{day} at {hour}h. The event recurs {repeat_rule}, forever, and lasts for {duration_mins} minutes each occurrence. The event description should be '{event_description}'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 275,
+      "class": "SimpleCalendarDeleteEvents",
+      "template": "In Simple Calendar Pro, delete all the calendar events on {year}-{month}-{day}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 331,
+      "class": "SimpleCalendarDeleteOneEvent",
+      "template": "In Simple Calendar Pro, delete the calendar event on {year}-{month}-{day} at {hour}h with the title '{event_title}'"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 378,
+      "class": "SimpleCalendarDeleteEventsOnRelativeDay",
+      "template": "In Simple Calendar Pro, delete all events scheduled for this {day_of_week}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/camera.py",
+      "line": 55,
+      "class": "CameraTakeVideo",
+      "template": "Take one video."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/camera.py",
+      "line": 101,
+      "class": "CameraTakePhoto",
+      "template": "Take one photo."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/clock.py",
+      "line": 138,
+      "class": "ClockTimerEntry",
+      "template": "Create a timer with {hours} hours, {minutes} minutes, and {seconds} seconds. Do not start the timer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/clock.py",
+      "line": 192,
+      "class": "ClockStopWatchPausedVerify",
+      "template": "Pause the stopwatch."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/clock.py",
+      "line": 229,
+      "class": "ClockStopWatchRunning",
+      "template": "Run the stopwatch."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/contacts.py",
+      "line": 32,
+      "class": "ContactsAddContact",
+      "template": "Create a new contact for {name}. Their number is {number}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/contacts.py",
+      "line": 156,
+      "class": "ContactsNewContactDraft",
+      "template": "Go to the new contact screen and enter the following details: First Name: {first}, Last Name: {last}, Phone: {phone}, Phone Label: {phone_label}. Do NOT hit save."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/files.py",
+      "line": 34,
+      "class": "FilesMoveFile",
+      "template": "Move the file {file_name} from {source_folder} within the sdk_gphone_x86_64 storage area to the {destination_folder} within the same sdk_gphone_x86_64 storage area in the Android filesystem."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/files.py",
+      "line": 89,
+      "class": "FilesDeleteFile",
+      "template": "Delete the file {file_name} from the Android filesystem located in the {subfolder} folder within the sdk_gphone_x86_64 storage area."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 74,
+      "class": "MarkorMoveNote",
+      "template": "In Markor, move the note {file_name} from {source_folder} to {destination_folder}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 136,
+      "class": "MarkorCreateFolder",
+      "template": "Create a new folder in Markor named {folder_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 290,
+      "class": "MarkorDeleteNote",
+      "template": "Delete the note in Markor named {file_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 322,
+      "class": "MarkorDeleteNewestNote",
+      "template": "Delete the newest note in Markor."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 384,
+      "class": "MarkorDeleteAllNotes",
+      "template": "Delete all my notes in Markor."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 421,
+      "class": "MarkorCreateNote",
+      "template": "Create a new note in Markor named {file_name} with the following text: {text}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 465,
+      "class": "MarkorCreateNoteFromClipboard",
+      "template": "Create a note in Markor named {file_name}. Perform a paste operation in the note and save the note."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 535,
+      "class": "MarkorMergeNotes",
+      "template": "Merge the contents of Markor notes {file1_name}, {file2_name} and {file3_name} (in the same order) into a new Markor note named {new_file_name} and save it. Add a new line between the content of each note."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 666,
+      "class": "MarkorChangeNoteContent",
+      "template": "Update the content of {original_name} to \"{updated_content}\" in Markor and change its name to {new_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 748,
+      "class": "MarkorAddNoteHeader",
+      "template": "Update the Markor note {original_name} by adding the following text, along with a new blank line before the existing content: \"{header}\", and rename it to {new_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 829,
+      "class": "MarkorTranscribeReceipt",
+      "template": "Create a file in Markor, called receipt.md with the transactions from the receipt.png. Use Simple Gallery to view the receipt. Please enter transactions in csv format including the header \"Date, Item, Amount\"."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 884,
+      "class": "MarkorTranscribeVideo",
+      "template": "Transcribe the contents of video {video_name} by watching it in VLC player (located in Download) and writing the sequence of strings shown on each frame to the text file {file_name} in Markor as a comma separated list. For example, if the first frame shows the text \"edna\" and the second frame shows the text \"pineapple\", then the text file should contain only the following text: \"edna, pineapple\"."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/osmand.py",
+      "line": 219,
+      "class": "OsmAndFavorite",
+      "template": "Add a favorite location marker for {location} in the OsmAnd maps app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/osmand.py",
+      "line": 297,
+      "class": "OsmAndMarker",
+      "template": "Add a location marker for {location} in the OsmAnd maps app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 48,
+      "class": "MarkorCallApartment",
+      "template": "Call the number for the apartment name {name}. The number is in apartments.md file in Markor. Ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 78,
+      "class": "PhoneMakeCall",
+      "template": "Make a phone call to the number {phone_number} and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 91,
+      "class": "PhoneReturnMissedCall",
+      "template": "Return the call I just missed and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 110,
+      "class": "PhoneRedialNumber",
+      "template": "Re-dial the number I was just talking to and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 130,
+      "class": "PhoneCallTextSender",
+      "template": "Call the number that just texted me and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 151,
+      "class": "PhoneAnswerCall",
+      "template": "Answer the incoming phone call and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/simple_draw_pro.py",
+      "line": 33,
+      "class": "SimpleDrawProCreateDrawing",
+      "template": "Create a new drawing in Simple Draw Pro. Name it {file_name}. Save it in the Pictures folder within the sdk_gphone_x86_64 storage area."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/simple_gallery_pro.py",
+      "line": 34,
+      "class": "SaveCopyOfReceiptTaskEval",
+      "template": "In Simple Gallery Pro, copy {file_name} in DCIM and save a copy with the same name in Download"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 31,
+      "class": "SimpleSmsSend",
+      "template": "Send a text message using Simple SMS Messenger to {number} with message: {message}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 44,
+      "class": "SimpleSmsSendAfterCall",
+      "template": "Send a text message using Simple SMS Messenger to the number I just missed a call from with message: {message}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 60,
+      "class": "SimpleSmsReplyMostRecent",
+      "template": "Reply to the most recent text message using Simple SMS Messenger with message: {message}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 119,
+      "class": "SimpleSmsReply",
+      "template": "Reply to {number} with message: {message} in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 163,
+      "class": "SimpleSmsSendClipboardContent",
+      "template": "Send a message to {number} with the clipboard content in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 177,
+      "class": "SimpleSmsSendReceivedAddress",
+      "template": "Text the address of the event to {name1} that {name2} just sent me in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 250,
+      "class": "SimpleSmsResend",
+      "template": "Resend the message I just sent to {name} in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 39,
+      "class": "_SystemBrightnessToggle",
+      "template": "Turn brightness to the {max_or_min} value."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 129,
+      "class": "_SystemWifiToggle",
+      "template": "Turn wifi {on_or_off}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 221,
+      "class": "_SystemBluetoothToggle",
+      "template": "Turn bluetooth {on_or_off}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 310,
+      "class": "SystemCopyToClipboard",
+      "template": "Copy the following text to the clipboard: {clipboard_content}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 474,
+      "class": "OpenAppTaskEval",
+      "template": "Open the {app_name} app. Clear any pop-ups that may appear by granting all permissions that are required."
+    }
+  ],
+  "scope": "Literal class template strings and 8-word fixed spans; not proof against paraphrase, dynamic goal builders, or upstream exposure."
+}

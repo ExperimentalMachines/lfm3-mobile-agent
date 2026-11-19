@@ -1,0 +1,40 @@
+{
+  "accepted_unverified_direct_question": {
+    "synthetic/1": {
+      "question": "What is the destination?",
+      "direct_question": "In the WRONG app, is the destination Lyon?",
+      "answer": "Lyon",
+      "evidence": "The destination is Lyon.",
+      "format": "Reply with the name.",
+      "verify_answer": "Lyon"
+    }
+  },
+  "verification_prompt": "Answer the question using only text visible on this phone screenshot.\nQuestion: What is the destination? Reply with the name.\nReply with only the answer copied exactly from the screen. If the answer is not visible, reply NONE.",
+  "save_snapshots_with_save_every_1": [
+    {
+      "qa": 1,
+      "short": 0,
+      "final": false
+    },
+    {
+      "qa": 1,
+      "short": 0,
+      "final": false
+    },
+    {
+      "qa": 1,
+      "short": 8,
+      "final": true
+    }
+  ],
+  "accepted_decimal_corruption": {
+    "row/0": "150",
+    "row/1": "150",
+    "row/2": "150",
+    "row/3": "150",
+    "row/4": "150",
+    "row/5": "150",
+    "row/6": "150",
+    "row/7": "150"
+  }
+}

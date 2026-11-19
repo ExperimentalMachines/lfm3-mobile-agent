@@ -1,0 +1,3 @@
+**FIX FIRST.** [Audit report](/Users/alpha/lfm3-android/results/codex/v4_local_lane_audit/codex_v4_local_lane_audit.md) contains six findings, including valid bf16 merges failing on 12/153 targets and sealed-arm resume defects.
+
+Saved inside the permitted directory because the requested sibling path was outside your write restriction. No services launched, processes killed, or sealed contents opened.

@@ -1,0 +1,1495 @@
+I1116 22:53:29.824563 8303869824 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1116 22:53:29.824658 8303869824 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5556'"
+I1116 22:53:29.824693 8303869824 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1116 22:53:29.824772 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1116 22:53:30.048122 8303869824 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1116 22:53:30.048635 8303869824 coordinator.py:80] Starting the simulator...
+I1116 22:53:30.048675 8303869824 coordinator.py:135] Simulator launch attempt 1 of 3
+I1116 22:53:30.048731 8303869824 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5556')
+I1116 22:53:30.048753 8303869824 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8556
+I1116 22:53:30.062489 8303869824 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8556
+I1116 22:53:30.073701 8303869824 emulator_simulator.py:374] Waiting for emulator ('emulator-5556') to start... (17788359ms)
+I1116 22:53:30.073794 8303869824 emulator_simulator.py:386] Done booting the emulator (in 0.010731 seconds).
+I1116 22:53:30.073878 8303869824 emulator_simulator.py:387] ********** Emulator logs **********
+I1116 22:53:30.073896 8303869824 emulator_simulator.py:389] Logfile does not exist: None.
+I1116 22:53:30.073906 8303869824 emulator_simulator.py:390] ******* End of emulator logs *******
+I1116 22:53:30.073915 8303869824 emulator_simulator.py:391] See the full emulator logs at None
+I1116 22:53:30.073946 8303869824 emulator_simulator.py:249] Done booting the Android Emulator.
+I1116 22:53:30.073966 8303869824 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1116 22:53:30.074074 8303869824 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1116 22:53:30.092850 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:30.092926 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system show_touches 1]
+I1116 22:53:30.184594 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:30.184693 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 1]
+I1116 22:53:30.209020 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:30.209134 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global policy_control immersive.full=*]
+I1116 22:53:30.245198 8303869824 log_stream.py:59] Resuming LogStream.
+I1116 22:53:30.245296 8303869824 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1116 22:53:30.245510 8303869824 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5556')
+I1116 22:53:30.245839 8303869824 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1116 22:53:30.249634 8303869824 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1116 22:53:30.249679 8303869824 android_world_controller.py:330] Setting up AndroidWorldController.
+I1116 22:53:30.249720 8303869824 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1116 22:53:30.924284 8303869824 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1116 22:53:30.924485 8303869824 adb_call_parser.py:269] location_type: blob
+I1116 22:53:30.926799 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmproqrznfr.apk]
+I1116 22:53:41.397342 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:41.397711 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1116 22:53:44.455055 8303869824 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1116 22:53:44.455435 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1116 22:53:44.512033 8303869824 a11y_grpc_wrapper.py:138] Using port 55007
+I1116 22:53:44.512538 8303869824 a11y_grpc_wrapper.py:141] Starting server
+I1116 22:53:44.513972 8303869824 a11y_grpc_wrapper.py:143] Server now running.
+I1116 22:53:44.514206 8303869824 environment.py:69] Resetting AndroidEnv...
+I1116 22:53:44.515100 8303869824 log_stream.py:54] Pausing LogStream.
+I1116 22:53:44.515125 8303869824 log_stream.py:59] Resuming LogStream.
+I1116 22:53:44.515372 8303869824 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1116 22:53:44.515392 8303869824 adb_call_parser.py:491] Getting orientation...
+I1116 22:53:44.515427 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input]
+I1116 22:53:44.542065 8303869824 adb_call_parser.py:523] Done getting orientation: '0'
+I1116 22:53:44.555988 8303869824 environment.py:85] Done resetting AndroidEnv.
+I1116 22:53:44.556041 8303869824 environment.py:86] ************* NEW EPISODE *************
+I1116 22:53:44.556149 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:44.556186 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global no_proxy 10.0.2.2:55007]
+I1116 22:53:44.582717 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:44.582839 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global airplane_mode_on 0]
+I1116 22:53:45.645617 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:45.646008 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell svc wifi enable]
+I1116 22:53:46.704986 8303869824 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1116 22:53:46.705321 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 55007 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1116 22:53:46.758622 8303869824 env_launcher.py:92] Freezing datetime.
+I1116 22:53:46.758827 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:46.758874 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:46.789061 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:46.789206 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1116 22:53:46.817460 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:46.817606 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1116 22:53:46.875770 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:46.875888 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1116 22:53:46.901333 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:46.901473 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+Writing to results/androidworld/lfm3vl2b_base_nothink_answerrule/run_20261116T225347046222
+I1116 22:53:47.049018 8303869824 suite_utils.py:74] Running task: SimpleCalendarEventsInNextWeek
+============================================
+I1116 22:53:47.049102 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.049129 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:47.135710 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:47.135831 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1116 22:53:47.159760 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:47.159857 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1116 22:53:47.183681 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:53:47.183781 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1116 22:53:47.206984 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.207086 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1116 22:53:47.226845 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.226936 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:47.246928 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.247019 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date 1015153423.00]
+I1116 22:53:47.268429 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.268528 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:53:47.338994 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.339087 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.simplemobiletools.calendar.pro" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1116 22:53:47.403087 8303869824 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.simplemobiletools.calendar.pro.
+I1116 22:53:47.403409 8303869824 task_eval.py:148] Initializing SimpleCalendarEventsInNextWeek
+I1116 22:53:47.404190 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmppp8ykr2h
+I1116 22:53:47.404226 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.404247 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:47.426978 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.427090 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.446905 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.447005 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.471375 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.471546 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:53:47.503849 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:53:47.504266 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmprfhe1usi'.
+I1116 22:53:47.504317 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmprfhe1usi]
+I1116 22:53:47.565875 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpvxkmd1ke
+I1116 22:53:47.565968 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.566007 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:47.588101 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.588233 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.613815 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.613913 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.634083 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.634196 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:53:47.656077 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:53:47.656332 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp221ed5t5'.
+I1116 22:53:47.656353 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp221ed5t5]
+I1116 22:53:47.681451 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.681558 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.699128 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.699237 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:53:47.743052 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.743162 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/com.simplemobiletools.calendar.pro/databases/*]
+I1116 22:53:47.767124 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.767227 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:53:47.803296 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:53:47.803616 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpmnb_huhw' to '/data/data/com.simplemobiletools.calendar.pro/databases/events.db'.
+I1116 22:53:47.803641 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpmnb_huhw /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:53:47.822365 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.822485 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:53:47.847053 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.847147 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:53:47.877942 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpgftkp7jm
+I1116 22:53:47.878049 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.878085 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:47.898810 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.898925 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.919462 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.919578 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:47.937800 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.938003 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:53:47.961787 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:53:47.962027 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpeige4wex'.
+I1116 22:53:47.962049 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpeige4wex]
+I1116 22:53:47.982738 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpgpxs1wx_
+I1116 22:53:47.982806 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:47.982836 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:53:48.002864 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.002975 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:48.022250 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.022367 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:48.043902 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.044080 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:53:48.095098 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:53:48.095455 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmph62gbve2'.
+I1116 22:53:48.095489 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmph62gbve2]
+I1116 22:53:48.138773 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.138901 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:53:48.156938 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.157029 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:53:48.179394 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.179504 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/com.simplemobiletools.calendar.pro/databases/*]
+I1116 22:53:48.203628 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.203726 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:53:48.225755 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:53:48.226269 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpat60i5p7' to '/data/data/com.simplemobiletools.calendar.pro/databases/events.db'.
+I1116 22:53:48.226309 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpat60i5p7 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:53:48.247554 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.247665 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:53:48.271042 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.271143 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:53:48.312265 8303869824 suite_utils.py:74] Running task SimpleCalendarEventsInNextWeek with goal "What events do I have in the next week in Simple Calendar Pro? Assume the week starts from Monday. Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+I1116 22:53:48.312388 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:53:48.312427 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:53:48.312454 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:53:48.347121 8303869824 environment.py:69] Resetting AndroidEnv...
+I1116 22:53:48.347968 8303869824 log_stream.py:54] Pausing LogStream.
+I1116 22:53:48.348007 8303869824 log_stream.py:59] Resuming LogStream.
+I1116 22:53:48.362764 8303869824 environment.py:85] Done resetting AndroidEnv.
+I1116 22:53:48.362810 8303869824 environment.py:86] ************* NEW EPISODE *************
+I1116 22:53:48.363054 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:48.363130 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+W1116 22:53:48.401604 8303869824 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1116 22:53:49.408805 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:49.408880 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 0]
+I1116 22:53:49.435322 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:53:49.462320 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:49.462373 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:49.514933 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:49.515034 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:50.027345 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:50.027473 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:50.064838 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:53:51.094000 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:51.094076 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:51.131248 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:51.131371 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:53:51.165812 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:53:51.165952 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:53:51.165996 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:53:52.230077 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:53:52.245966 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:52.246040 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:52.751652 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:52.751770 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:52.780452 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:53:53.654819 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:53.654896 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:53.683687 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:53.683824 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:53:53.709378 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:53:53.709519 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:53:53.709547 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:53:55.300547 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:53:55.335968 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:55.336081 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:55.832165 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:55.832329 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:56.330127 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:56.330265 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:56.390639 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:53:57.771653 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:57.771858 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:57.869997 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:57.870296 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:53:57.945487 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:57.945714 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1200 540 0 ]
+I1116 22:53:59.332608 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:53:59.349150 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:59.349225 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:59.854110 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:53:59.854228 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:53:59.940177 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:01.012099 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:01.012166 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:01.045540 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:01.045670 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:01.073499 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:01.073621 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1200 540 2400 ]
+I1116 22:54:02.421574 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:02.437688 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:02.437769 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:02.945041 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:02.945184 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:02.981056 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:03.796069 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:03.796141 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:03.826337 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:03.826451 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:03.882179 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:03.882297 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1200 540 0 ]
+I1116 22:54:05.231356 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:05.248204 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:05.248281 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:05.759375 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:05.759521 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:05.793992 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:06.594253 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:06.594329 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:06.689040 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:06.689179 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:06.714685 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:06.714810 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1200 540 2400 ]
+I1116 22:54:08.053200 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:08.072382 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:08.072461 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:08.579475 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:08.579596 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:08.609812 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:09.450245 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:09.450356 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:09.496155 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:09.496334 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:09.578951 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:09.579107 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1200 540 0 ]
+I1116 22:54:10.928519 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:10.957508 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:10.957637 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:11.454181 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:11.454319 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:11.498891 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:12.734180 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:12.734285 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:12.789031 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:12.789203 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:12.835934 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:12.836118 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 540 1200 540 0 ]
+I1116 22:54:14.208381 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:14.226818 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:14.226895 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:14.732388 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:14.732538 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:14.771532 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:15.689285 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:15.689335 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:15.718437 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:15.718553 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:15.744252 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:54:15.744379 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:54:15.744410 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:54:16.819197 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:16.856722 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:16.856863 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:17.391072 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:17.391322 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:17.888913 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:17.889065 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:18.356590 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:18.356752 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:18.394129 8303869824 base_agent.py:107] Fetched after 1.6 seconds.
+I1116 22:54:19.535055 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:19.535119 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:19.571322 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:19.571455 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:19.601735 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:54:19.601877 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:54:19.601908 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:54:20.775993 8303869824 suite_utils.py:74] Task Failed ❌;  What events do I have in the next week in Simple Calendar Pro? Assume the week starts from Monday. Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.
+I1116 22:54:20.776799 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp3191wps6
+I1116 22:54:20.776890 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:20.776980 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:20.874950 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:20.875165 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:20.929291 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:20.929491 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:20.977413 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:20.977627 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:21.043731 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:21.044468 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmplgr7ei91'.
+I1116 22:54:21.044549 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmplgr7ei91]
+I1116 22:54:21.097481 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:21.098232 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmprlkmtwrd'.
+I1116 22:54:21.098351 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmprlkmtwrd]
+I1116 22:54:21.139657 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:21.140254 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpdyd4g5rx'.
+I1116 22:54:21.140328 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpdyd4g5rx]
+I1116 22:54:21.197741 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpkgjzdp0y
+I1116 22:54:21.197890 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.197960 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:21.240556 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.240730 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 root]
+I1116 22:54:21.274183 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.274413 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:21.319298 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.319451 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:21.358103 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.358258 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:21.424964 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:21.427884 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpzpxgc6ht'.
+I1116 22:54:21.427962 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpzpxgc6ht]
+I1116 22:54:21.568195 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:21.569039 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpb3_zxdui'.
+I1116 22:54:21.569114 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpb3_zxdui]
+I1116 22:54:21.607397 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:21.607708 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpg7n3o4vf'.
+I1116 22:54:21.607756 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpg7n3o4vf]
+I1116 22:54:21.645946 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.646104 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:21.691668 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.691824 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:54:21.742496 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.742661 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/com.simplemobiletools.calendar.pro/databases/*]
+I1116 22:54:21.804129 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.804297 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:54:21.842480 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:54:21.842934 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpsenfd9tx' to '/data/data/com.simplemobiletools.calendar.pro/databases/events.db'.
+I1116 22:54:21.842980 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpsenfd9tx /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:54:21.873893 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.874063 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:54:21.908621 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.908763 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:54:21.970446 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpubyl1dzp
+I1116 22:54:21.970592 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:21.970649 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:22.018733 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.018919 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:22.079782 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.079957 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:22.141387 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.141526 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:22.206093 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:22.206482 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp51ubjnx1'.
+I1116 22:54:22.206517 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp51ubjnx1]
+I1116 22:54:22.245017 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.245156 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:54:22.300036 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.300176 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.simplemobiletools.calendar.pro" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1116 22:54:22.340085 8303869824 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.simplemobiletools.calendar.pro.
+I1116 22:54:22.340303 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.340350 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys activity recents]
+I1116 22:54:22.400512 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.400660 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 10151]
+I1116 22:54:22.464316 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.464460 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:54:22.516402 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.516553 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:54:22.569635 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.569774 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1116 22:54:22.628104 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.628259 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:54:22.676409 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.676573 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 191]
+I1116 22:54:22.760930 8303869824 task_eval.py:190] Tearing down SimpleCalendarEventsInNextWeek
+I1116 22:54:22.764410 8303869824 checkpointer.py:129] Wrote task episodes for SimpleCalendarEventsInNextWeek_0 to results/androidworld/lfm3vl2b_base_nothink_answerrule/run_20261116T225347046222/SimpleCalendarEventsInNextWeek_0.pkl.gz
+I1116 22:54:22.790842 8303869824 suite_utils.py:74] 
+
+                                task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                   
+SimpleCalendarEventsInNextWeek         0                  1.0                0.0                 10.0             33.7              0.0
+========= Average =========            0                  1.0                0.0                 10.0             33.7              0.0
+I1116 22:54:22.800807 8303869824 suite_utils.py:74] 
+
+              mean_success_rate
+difficulty                 easy
+tags                           
+data_entry                  0.0
+parameterized               0.0
+I1116 22:54:22.800926 8303869824 suite_utils.py:74] Running task: SimpleCalendarNextEvent
+=====================================
+I1116 22:54:22.801015 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.801057 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:22.838657 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:54:22.838843 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1116 22:54:22.877876 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:54:22.878042 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1116 22:54:22.932853 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:54:22.933001 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1116 22:54:22.977199 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:22.977357 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1116 22:54:23.029509 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.029684 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:23.072437 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.072559 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date 1015153423.00]
+I1116 22:54:23.107409 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.107543 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:54:23.201105 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.201241 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.simplemobiletools.calendar.pro" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1116 22:54:23.235526 8303869824 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.simplemobiletools.calendar.pro.
+I1116 22:54:23.235710 8303869824 task_eval.py:148] Initializing SimpleCalendarNextEvent
+I1116 22:54:23.236300 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp8tmiq8mn
+I1116 22:54:23.236348 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.236388 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:23.278695 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.278857 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:23.312201 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.312379 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:23.353724 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.353899 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:23.393882 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:23.394520 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptff0wwiw'.
+I1116 22:54:23.394582 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptff0wwiw]
+I1116 22:54:23.437302 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpbuinyyxf
+I1116 22:54:23.437441 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.437502 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:23.510078 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.510279 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:23.561454 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.561619 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:23.600388 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.600557 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:23.646546 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:23.646919 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp3egwmfjt'.
+I1116 22:54:23.646955 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp3egwmfjt]
+I1116 22:54:23.680748 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.680909 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:23.721374 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.721527 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:54:23.755418 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.755578 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/com.simplemobiletools.calendar.pro/databases/*]
+I1116 22:54:23.791831 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.791984 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:54:23.831021 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:54:23.831449 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp09u_aiyn' to '/data/data/com.simplemobiletools.calendar.pro/databases/events.db'.
+I1116 22:54:23.831486 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp09u_aiyn /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:54:23.862015 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.862171 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:54:23.897943 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.898087 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:54:23.946071 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptgvnit4t
+I1116 22:54:23.946200 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.946252 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:23.978900 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:23.979053 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:24.005571 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.005739 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:24.034789 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.034973 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:24.102323 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:24.102714 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp5psj9eze'.
+I1116 22:54:24.102750 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp5psj9eze]
+I1116 22:54:24.134717 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmplonyhaag
+I1116 22:54:24.134822 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.134878 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:54:24.163836 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.163976 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:24.189007 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.189141 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:24.216125 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.216282 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:54:24.247369 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:54:24.247866 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpgpt5j5dz'.
+I1116 22:54:24.247912 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpgpt5j5dz]
+I1116 22:54:24.272711 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.272840 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:54:24.307251 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.307415 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:54:24.339397 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.339529 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/com.simplemobiletools.calendar.pro/databases/*]
+I1116 22:54:24.405638 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.405827 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:54:24.497069 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:54:24.497584 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptwjr4olj' to '/data/data/com.simplemobiletools.calendar.pro/databases/events.db'.
+I1116 22:54:24.497626 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptwjr4olj /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:54:24.526505 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.526652 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:54:24.593986 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.594138 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:54:24.636902 8303869824 suite_utils.py:74] Running task SimpleCalendarNextEvent with goal "What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+I1116 22:54:24.637099 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:54:24.637155 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:54:24.637202 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:54:24.697967 8303869824 environment.py:69] Resetting AndroidEnv...
+I1116 22:54:24.698834 8303869824 log_stream.py:54] Pausing LogStream.
+I1116 22:54:24.698909 8303869824 log_stream.py:59] Resuming LogStream.
+I1116 22:54:24.733987 8303869824 environment.py:85] Done resetting AndroidEnv.
+I1116 22:54:24.734050 8303869824 environment.py:86] ************* NEW EPISODE *************
+I1116 22:54:24.738193 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.738282 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:24.802576 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.802800 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 0]
+I1116 22:54:24.848421 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:24.870023 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:24.870108 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:25.366962 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:25.367081 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:25.399976 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:54:26.859235 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:26.859440 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:27.183357 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:27.184325 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:27.545771 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:54:27.546238 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:54:27.546327 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:54:30.294027 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:30.355916 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:30.356106 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:30.837276 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:30.837478 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:31.328851 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:31.328998 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:31.830285 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:31.830420 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:31.870349 8303869824 base_agent.py:107] Fetched after 1.6 seconds.
+I1116 22:54:33.244389 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:33.244493 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:33.296103 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:33.296271 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:33.343573 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:54:33.343770 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:54:33.343832 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:54:34.405421 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:34.463948 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:34.464068 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:34.968048 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:34.968197 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:35.453577 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:35.453719 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:35.962867 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:35.962996 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:36.041475 8303869824 base_agent.py:107] Fetched after 1.6 seconds.
+I1116 22:54:37.291728 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:37.291836 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:37.342512 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:37.342714 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:37.431456 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:54:37.431742 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:54:37.431807 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:54:38.820297 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:38.856153 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:38.856260 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:39.353167 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:39.353302 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:39.846357 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:39.846496 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:39.889733 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:54:41.243210 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:41.243437 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:41.322065 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:41.322419 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:41.394237 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:54:41.394661 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:54:41.394773 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:54:42.485756 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:42.530663 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:42.530792 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:43.019842 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:43.020035 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:43.516252 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:43.516386 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:43.577854 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:54:45.251482 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:45.251703 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:45.353085 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:45.353471 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:45.437504 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:54:45.437828 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:54:45.437893 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:54:46.961462 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:47.001756 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:47.001861 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:47.502330 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:47.502491 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:48.041686 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:48.041906 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:48.395140 8303869824 base_agent.py:107] Fetched after 1.4 seconds.
+I1116 22:54:50.521264 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:50.521509 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:50.639542 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:50.640089 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:50.728088 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:54:50.728381 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:54:50.728477 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:54:51.824453 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:51.878350 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:51.878470 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:52.382174 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:52.382340 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:52.865337 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:52.865507 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:52.930405 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:54:54.703239 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:54.703424 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:54.822185 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:54.822987 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:54.906635 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:54:54.907190 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:54:54.907315 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:54:56.635821 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:54:56.664850 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:56.664940 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:57.169477 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:57.169651 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:57.671600 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:57.671749 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:57.712196 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:54:59.654039 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:59.654245 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:54:59.795714 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:54:59.796032 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:54:59.859980 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:54:59.860255 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:54:59.860346 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:55:00.947276 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:00.998053 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:00.998978 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:01.490092 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:01.490234 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:01.977143 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:01.977277 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:02.025343 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:55:03.867410 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:03.867580 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:03.944411 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:03.944679 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:55:04.011775 8303869824 adb_utils.py:228] Attempting to launch 'com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity'
+I1116 22:55:04.012205 8303869824 adb_call_parser.py:98] AdbRequest command type: start_activity
+I1116 22:55:04.012278 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am start  -W -n com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity]
+I1116 22:55:05.495920 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:05.515941 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:05.516036 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:06.024013 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:06.024155 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:06.527973 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:06.528105 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:06.570250 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:55:07.821259 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:07.821390 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am broadcast -a com.example.ACTION_UPDATE_OVERLAY --es task_type_string "Agent answered:" --es goal_string "Call with Appointment"]
+I1116 22:55:08.892274 8303869824 suite_utils.py:74] Task Failed ❌;  What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list.
+I1116 22:55:08.894474 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpiwxp_w_i
+I1116 22:55:08.894661 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:08.894873 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:09.077825 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.078352 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:09.267462 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.267866 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:09.397047 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.399202 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:55:09.574234 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:09.574837 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpz8p2cur6'.
+I1116 22:55:09.574906 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpz8p2cur6]
+I1116 22:55:09.658341 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:09.659080 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpry2onq2i'.
+I1116 22:55:09.659156 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpry2onq2i]
+I1116 22:55:09.703982 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:09.704520 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmph_u5jzhb'.
+I1116 22:55:09.704579 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmph_u5jzhb]
+I1116 22:55:09.747919 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp_rcpy8_n
+I1116 22:55:09.748196 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.748320 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:09.806356 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.806574 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:09.853316 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.853523 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:09.897453 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:09.897741 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:55:09.971731 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:09.972401 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp6plozjhw'.
+I1116 22:55:09.972470 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp6plozjhw]
+I1116 22:55:10.007568 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:10.008239 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpfiwxgcbe'.
+I1116 22:55:10.008310 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-shm /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpfiwxgcbe]
+I1116 22:55:10.045227 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:10.046169 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpb5lp9b9m'.
+I1116 22:55:10.046318 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db-wal /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpb5lp9b9m]
+I1116 22:55:10.083796 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.083983 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:10.151874 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.152086 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:55:10.200268 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.200443 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/com.simplemobiletools.calendar.pro/databases/*]
+I1116 22:55:10.258260 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.258534 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/com.simplemobiletools.calendar.pro/databases]
+I1116 22:55:10.307862 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:55:10.308588 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpq9mpip9i' to '/data/data/com.simplemobiletools.calendar.pro/databases/events.db'.
+I1116 22:55:10.308640 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpq9mpip9i /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:55:10.350629 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.350832 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/com.simplemobiletools.calendar.pro/databases/events.db]
+I1116 22:55:10.407104 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.407267 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:55:10.524616 8303869824 file_utils.py:336] Copying /data/data/com.simplemobiletools.calendar.pro/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpvns4xa7m
+I1116 22:55:10.524871 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.524956 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:10.590970 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.591156 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:10.689594 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.689828 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/com.simplemobiletools.calendar.pro/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:10.745849 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.746037 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/com.simplemobiletools.calendar.pro/databases -ll -au]
+I1116 22:55:10.817348 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:10.817842 8303869824 adb_call_parser.py:587] Downloading '/data/data/com.simplemobiletools.calendar.pro/databases/events.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpjzhaso9b'.
+I1116 22:55:10.817896 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/com.simplemobiletools.calendar.pro/databases/events.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpjzhaso9b]
+I1116 22:55:10.876026 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.876232 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop com.simplemobiletools.calendar.pro]
+I1116 22:55:10.978826 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:10.979012 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/com.simplemobiletools.calendar.pro" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1116 22:55:11.052542 8303869824 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.simplemobiletools.calendar.pro.
+I1116 22:55:11.052781 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.052834 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys activity recents]
+I1116 22:55:11.178701 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.179044 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 10151]
+I1116 22:55:11.266371 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.266630 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:55:11.374009 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.374225 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:55:11.464703 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.464912 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1116 22:55:11.576596 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.576757 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:55:11.662977 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.663244 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 192]
+I1116 22:55:11.753799 8303869824 task_eval.py:190] Tearing down SimpleCalendarNextEvent
+I1116 22:55:11.768886 8303869824 checkpointer.py:129] Wrote task episodes for SimpleCalendarNextEvent_0 to results/androidworld/lfm3vl2b_base_nothink_answerrule/run_20261116T225347046222/SimpleCalendarNextEvent_0.pkl.gz
+I1116 22:55:11.790514 8303869824 suite_utils.py:74] 
+
+                                task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                   
+SimpleCalendarEventsInNextWeek         0                  1.0                0.0                 10.0             33.7              0.0
+SimpleCalendarNextEvent                1                  1.0                0.0                 10.0             46.1              0.0
+========= Average =========            0                  1.0                0.0                 10.0             39.9              0.0
+I1116 22:55:11.800957 8303869824 suite_utils.py:74] 
+
+                         mean_success_rate
+difficulty                            easy
+tags                                      
+complex_ui_understanding               0.0
+data_entry                             0.0
+information_retrieval                  0.0
+parameterized                          0.0
+screen_reading                         0.0
+I1116 22:55:11.801162 8303869824 suite_utils.py:74] Running task: SportsTrackerActivityDuration
+===========================================
+I1116 22:55:11.801357 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:11.801426 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:11.877912 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:55:11.878190 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time 0]
+I1116 22:55:11.961584 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:55:11.961827 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put global auto_time_zone 0]
+I1116 22:55:12.045413 8303869824 adb_call_parser.py:98] AdbRequest command type: settings
+I1116 22:55:12.045633 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system time_12_24 24]
+I1116 22:55:12.144129 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.144365 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell service call alarm 3 s16 UTC]
+I1116 22:55:12.265673 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.265867 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:12.335355 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.335557 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell date 1015153423.00]
+I1116 22:55:12.420213 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.420407 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:55:12.551367 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.551748 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/de.dennisguse.opentracks" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1116 22:55:12.593715 8303869824 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/de.dennisguse.opentracks.
+I1116 22:55:12.593960 8303869824 task_eval.py:148] Initializing SportsTrackerActivityDuration
+I1116 22:55:12.595088 8303869824 file_utils.py:336] Copying /data/data/de.dennisguse.opentracks/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpbgswrdxz
+I1116 22:55:12.595160 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.595218 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:12.644580 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.644795 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:12.687971 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.688179 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:12.730525 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.730860 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/de.dennisguse.opentracks/databases -ll -au]
+I1116 22:55:12.781825 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:12.782232 8303869824 adb_call_parser.py:587] Downloading '/data/data/de.dennisguse.opentracks/databases/database.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpodvmc64s'.
+I1116 22:55:12.782279 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/de.dennisguse.opentracks/databases/database.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpodvmc64s]
+I1116 22:55:12.821485 8303869824 file_utils.py:336] Copying /data/data/de.dennisguse.opentracks/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpii7mw6bu
+I1116 22:55:12.821733 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.821828 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:12.865643 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.865834 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:12.901986 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.902202 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:12.940123 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:12.940368 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/de.dennisguse.opentracks/databases -ll -au]
+I1116 22:55:12.997928 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:12.998438 8303869824 adb_call_parser.py:587] Downloading '/data/data/de.dennisguse.opentracks/databases/database.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmputvy27qi'.
+I1116 22:55:12.998559 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/de.dennisguse.opentracks/databases/database.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmputvy27qi]
+I1116 22:55:13.038995 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.039204 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:13.084994 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.085245 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/de.dennisguse.opentracks/databases]
+I1116 22:55:13.139408 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.139610 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/de.dennisguse.opentracks/databases/*]
+I1116 22:55:13.199115 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.199312 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/de.dennisguse.opentracks/databases]
+I1116 22:55:13.250341 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:55:13.250895 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp6u_l93xq' to '/data/data/de.dennisguse.opentracks/databases/database.db'.
+I1116 22:55:13.250949 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp6u_l93xq /data/data/de.dennisguse.opentracks/databases/database.db]
+I1116 22:55:13.291657 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.291920 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/de.dennisguse.opentracks/databases/database.db]
+I1116 22:55:13.348495 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.348746 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:55:13.478617 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.478810 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:55:13.529487 8303869824 file_utils.py:336] Copying /data/data/de.dennisguse.opentracks/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmps4uog3sh
+I1116 22:55:13.529628 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.529701 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:55:13.573708 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.573944 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:13.618716 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.618970 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:13.672405 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.672602 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/de.dennisguse.opentracks/databases -ll -au]
+I1116 22:55:13.722349 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:55:13.722849 8303869824 adb_call_parser.py:587] Downloading '/data/data/de.dennisguse.opentracks/databases/database.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptdzyl8u_'.
+I1116 22:55:13.722903 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/de.dennisguse.opentracks/databases/database.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmptdzyl8u_]
+I1116 22:55:13.761231 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.761417 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:55:13.798653 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.798850 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/de.dennisguse.opentracks/databases]
+I1116 22:55:13.840464 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.840731 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/de.dennisguse.opentracks/databases/*]
+I1116 22:55:13.893019 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.893187 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/de.dennisguse.opentracks/databases]
+I1116 22:55:13.940758 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:55:13.941386 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpcjrff1_p' to '/data/data/de.dennisguse.opentracks/databases/database.db'.
+I1116 22:55:13.941452 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpcjrff1_p /data/data/de.dennisguse.opentracks/databases/database.db]
+I1116 22:55:13.982106 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:13.982280 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/de.dennisguse.opentracks/databases/database.db]
+I1116 22:55:14.038812 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:14.039028 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:55:14.106170 8303869824 suite_utils.py:74] Running task SportsTrackerActivityDuration with goal "How long was my skiing activity October 12 2023 in the OpenTracks app? Express your answer in minutes as a single integer."
+I1116 22:55:14.106550 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:55:14.106647 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:55:14.106714 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:55:14.182684 8303869824 environment.py:69] Resetting AndroidEnv...
+I1116 22:55:14.184201 8303869824 log_stream.py:54] Pausing LogStream.
+I1116 22:55:14.184353 8303869824 log_stream.py:59] Resuming LogStream.
+I1116 22:55:14.228015 8303869824 environment.py:85] Done resetting AndroidEnv.
+I1116 22:55:14.228197 8303869824 environment.py:86] ************* NEW EPISODE *************
+I1116 22:55:14.230546 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:14.230654 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:14.328307 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:14.328510 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings put system pointer_location 0]
+I1116 22:55:14.386996 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:14.414054 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:14.414195 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:14.915318 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:14.915518 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:15.418524 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:15.418682 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:15.559220 8303869824 base_agent.py:107] Fetched after 1.2 seconds.
+I1116 22:55:18.194317 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:18.194473 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:18.309205 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:18.309549 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:55:18.431214 8303869824 adb_utils.py:349] Attempting to long press the screen at (915, 1962)
+I1116 22:55:18.431589 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:18.431675 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 915 1962 915 1962 1000]
+I1116 22:55:20.523072 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:20.539521 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:20.539614 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:21.055572 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:21.055714 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:21.557924 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:21.558059 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:21.589457 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:55:22.765744 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:22.765810 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:23.006338 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:23.006529 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:55:23.044352 8303869824 adb_utils.py:370] Attempting to press the HOME button
+I1116 22:55:23.044518 8303869824 adb_call_parser.py:98] AdbRequest command type: press_button
+I1116 22:55:23.044563 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input keyevent KEYCODE_HOME]
+I1116 22:55:24.112585 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:24.133658 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:24.133776 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:24.636551 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:24.636690 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:25.131210 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:25.131339 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:25.192373 8303869824 base_agent.py:107] Fetched after 1.1 seconds.
+I1116 22:55:28.429812 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:28.445490 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:28.445561 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:28.956784 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:28.956928 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:29.010080 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:55:32.953598 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:33.022513 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:33.022778 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:33.493511 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:33.493738 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:33.590591 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:55:35.392242 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:35.392637 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:35.476859 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:35.477617 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:55:35.555172 8303869824 adb_utils.py:349] Attempting to long press the screen at (915, 1962)
+I1116 22:55:35.555493 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:35.555567 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 915 1962 915 1962 1000]
+I1116 22:55:37.662451 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:37.682608 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:37.682699 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:38.195050 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:38.195188 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:38.697229 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:38.697340 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:39.206234 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:39.206357 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:39.712967 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:39.713099 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:39.743002 8303869824 base_agent.py:107] Fetched after 2.1 seconds.
+I1116 22:55:42.097824 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:42.097939 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:42.148736 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:42.148916 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:55:42.201551 8303869824 adb_utils.py:349] Attempting to long press the screen at (915, 1962)
+I1116 22:55:42.201794 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:42.201857 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 915 1962 915 1962 1000]
+I1116 22:55:44.278821 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:44.296811 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:44.296899 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:44.800441 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:44.800580 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:44.836889 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:55:48.745838 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:48.772458 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:48.772584 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:49.267277 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:49.267412 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:49.306356 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:55:50.794930 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:50.795083 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:50.883461 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:50.883725 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:55:51.012181 8303869824 adb_utils.py:349] Attempting to long press the screen at (915, 1962)
+I1116 22:55:51.012480 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:51.012563 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 915 1962 915 1962 1000]
+I1116 22:55:53.115471 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:53.134773 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:53.134869 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:53.638728 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:53.638859 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:53.672186 8303869824 base_agent.py:107] Fetched after 0.6 seconds.
+I1116 22:55:58.044232 8303869824 base_agent.py:104] Waiting for screen to stabilize before grabbing state...
+I1116 22:55:58.090919 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:58.091161 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:58.572067 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:55:58.572270 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:55:58.834978 8303869824 base_agent.py:107] Fetched after 0.8 seconds.
+I1116 22:56:00.656851 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:00.657114 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell settings get global airplane_mode_on]
+I1116 22:56:00.746639 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:00.747029 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys input | grep logicalFrame]
+I1116 22:56:00.847043 8303869824 adb_utils.py:349] Attempting to long press the screen at (915, 1962)
+I1116 22:56:00.847514 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:00.847626 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell input swipe 915 1962 915 1962 1000]
+I1116 22:56:02.981693 8303869824 suite_utils.py:74] Task Failed ❌;  How long was my skiing activity October 12 2023 in the OpenTracks app? Express your answer in minutes as a single integer.
+I1116 22:56:02.982301 8303869824 file_utils.py:336] Copying /data/data/de.dennisguse.opentracks/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpyu60vv1f
+I1116 22:56:02.982391 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:02.982468 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:56:03.026461 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.026641 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:56:03.093211 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.093391 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:56:03.132423 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.132618 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/de.dennisguse.opentracks/databases -ll -au]
+I1116 22:56:03.182461 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:56:03.182945 8303869824 adb_call_parser.py:587] Downloading '/data/data/de.dennisguse.opentracks/databases/database.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpi6lfgmdo'.
+I1116 22:56:03.182992 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/de.dennisguse.opentracks/databases/database.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpi6lfgmdo]
+I1116 22:56:03.246192 8303869824 file_utils.py:336] Copying /data/data/de.dennisguse.opentracks/databases directory to local tmp /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpkgsrgdhw
+I1116 22:56:03.246343 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.246411 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell whoami]
+I1116 22:56:03.285786 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.286023 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:56:03.319034 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.319185 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:56:03.349375 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.349546 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls /data/data/de.dennisguse.opentracks/databases -ll -au]
+I1116 22:56:03.385838 8303869824 adb_call_parser.py:98] AdbRequest command type: pull
+I1116 22:56:03.386208 8303869824 adb_call_parser.py:587] Downloading '/data/data/de.dennisguse.opentracks/databases/database.db' to '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpe8vanxvb'.
+I1116 22:56:03.386245 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 pull /data/data/de.dennisguse.opentracks/databases/database.db /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpe8vanxvb]
+I1116 22:56:03.414638 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.414778 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/de.dennisguse.opentracks/databases" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1116 22:56:03.443429 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.443567 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/de.dennisguse.opentracks/databases]
+I1116 22:56:03.473989 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.474149 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell rm -rf /data/data/de.dennisguse.opentracks/databases/*]
+I1116 22:56:03.506169 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.506341 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell ls -1 /data/data/de.dennisguse.opentracks/databases]
+I1116 22:56:03.539129 8303869824 adb_call_parser.py:98] AdbRequest command type: push
+I1116 22:56:03.539578 8303869824 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpgnmym3if' to '/data/data/de.dennisguse.opentracks/databases/database.db'.
+I1116 22:56:03.539614 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpgnmym3if /data/data/de.dennisguse.opentracks/databases/database.db]
+I1116 22:56:03.566088 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.566226 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell chmod 777 /data/data/de.dennisguse.opentracks/databases/database.db]
+I1116 22:56:03.598076 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.598214 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:56:03.676841 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.676984 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:56:03.711891 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.712015 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am force-stop de.dennisguse.opentracks]
+I1116 22:56:03.745120 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.745245 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell 
+  if [ -d "/data/data/android_world/snapshots/de.dennisguse.opentracks" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1116 22:56:03.770622 8303869824 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/de.dennisguse.opentracks.
+I1116 22:56:03.770796 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.770830 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell dumpsys activity recents]
+I1116 22:56:03.798384 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.798514 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 10151]
+I1116 22:56:03.829882 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.830031 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:56:03.861185 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.861283 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 1000]
+I1116 22:56:03.891764 8303869824 adb_call_parser.py:98] AdbRequest command type: generic
+I1116 22:56:03.891888 8303869824 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5556 shell am stack remove 0]
+I1116 22:56:03.950547 8303869824 task_eval.py:190] Tearing down SportsTrackerActivityDuration
+I1116 22:56:03.955487 8303869824 checkpointer.py:129] Wrote task episodes for SportsTrackerActivityDuration_0 to results/androidworld/lfm3vl2b_base_nothink_answerrule/run_20261116T225347046222/SportsTrackerActivityDuration_0.pkl.gz
+I1116 22:56:03.963834 8303869824 suite_utils.py:74] 
+
+                                task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                   
+SimpleCalendarEventsInNextWeek         0                  1.0                0.0                 10.0            33.70              0.0
+SimpleCalendarNextEvent                1                  1.0                0.0                 10.0            46.10              0.0
+SportsTrackerActivityDuration          2                  1.0                0.0                 10.0            51.20              0.0
+========= Average =========            0                  1.0                0.0                 10.0            43.67              0.0
+I1116 22:56:03.968161 8303869824 suite_utils.py:74] 
+
+                         mean_success_rate
+difficulty                            easy
+tags                                      
+complex_ui_understanding               0.0
+data_entry                             0.0
+information_retrieval                  0.0
+parameterized                          0.0
+screen_reading                         0.0
+Running task: SimpleCalendarEventsInNextWeek
+============================================
+Running task SimpleCalendarEventsInNextWeek with goal "What events do I have in the next week in Simple Calendar Pro? Assume the week starts from Monday. Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+Completed step 1.
+Completed step 2.
+Completed step 3.
+Completed step 4.
+Completed step 5.
+Completed step 6.
+Completed step 7.
+Completed step 8.
+Completed step 9.
+Completed step 10.
+Agent did not indicate task is done. Reached max number of steps.
+Task Failed ❌;  What events do I have in the next week in Simple Calendar Pro? Assume the week starts from Monday. Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.
+
+
+                                task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                   
+SimpleCalendarEventsInNextWeek         0                  1.0                0.0                 10.0             33.7              0.0
+========= Average =========            0                  1.0                0.0                 10.0             33.7              0.0
+
+
+              mean_success_rate
+difficulty                 easy
+tags                           
+data_entry                  0.0
+parameterized               0.0
+
+Running task: SimpleCalendarNextEvent
+=====================================
+Running task SimpleCalendarNextEvent with goal "What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+Completed step 1.
+Completed step 2.
+Completed step 3.
+Completed step 4.
+Completed step 5.
+Completed step 6.
+Completed step 7.
+Completed step 8.
+Completed step 9.
+Completed step 10.
+Agent indicates task is done.
+Task Failed ❌;  What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list.
+
+
+                                task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                   
+SimpleCalendarEventsInNextWeek         0                  1.0                0.0                 10.0             33.7              0.0
+SimpleCalendarNextEvent                1                  1.0                0.0                 10.0             46.1              0.0
+========= Average =========            0                  1.0                0.0                 10.0             39.9              0.0
+
+
+                         mean_success_rate
+difficulty                            easy
+tags                                      
+complex_ui_understanding               0.0
+data_entry                             0.0
+information_retrieval                  0.0
+parameterized                          0.0
+screen_reading                         0.0
+
+Running task: SportsTrackerActivityDuration
+===========================================
+Running task SportsTrackerActivityDuration with goal "How long was my skiing activity October 12 2023 in the OpenTracks app? Express your answer in minutes as a single integer."
+Completed step 1.
+Completed step 2.
+Completed step 3.
+Completed step 4.
+Completed step 5.
+Completed step 6.
+Completed step 7.
+Completed step 8.
+Completed step 9.
+Completed step 10.
+Agent did not indicate task is done. Reached max number of steps.
+Task Failed ❌;  How long was my skiing activity October 12 2023 in the OpenTracks app? Express your answer in minutes as a single integer.
+
+
+                                task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                   
+SimpleCalendarEventsInNextWeek         0                  1.0                0.0                 10.0            33.70              0.0
+SimpleCalendarNextEvent                1                  1.0                0.0                 10.0            46.10              0.0
+SportsTrackerActivityDuration          2                  1.0                0.0                 10.0            51.20              0.0
+========= Average =========            0                  1.0                0.0                 10.0            43.67              0.0
+
+
+                         mean_success_rate
+difficulty                            easy
+tags                                      
+complex_ui_understanding               0.0
+data_entry                             0.0
+information_retrieval                  0.0
+parameterized                          0.0
+screen_reading                         0.0
+
+Done. Results in results/androidworld/lfm3vl2b_base_nothink_answerrule/run_20261116T225347046222
+I1116 22:56:03.969542 8303869824 a11y_grpc_wrapper.py:234] gRPC server stopped
+I1116 22:56:03.969584 8303869824 environment.py:119] Cleaning up AndroidEnv...
+I1116 22:56:03.971129 8303869824 environment.py:122] Done cleaning up AndroidEnv.

@@ -1,0 +1,7 @@
+labels: 3800 qa (3600 train, 200 dev), 97 screenqa short; 200 dev episodes held out
+downloaded 1 train + 3 dev shards (0s)
+data/train-00000-of-00016.parquet: 4934 -> 5964 rows (1081 qa copies) (16s)
+{"rows_in": 4934, "rows_out": 5964, "qa_rows": 1081, "qa_final": 226, "dev_removed": 51, "sqa_short": 97, "dev_answer": 11, "dev_complete": 11, "train_qa_episodes": 903}
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 1032 examples [00:01, 684.50 examples/s]Generating train split: 2064 examples [00:01, 1205.22 examples/s]Generating train split: 3096 examples [00:02, 1805.62 examples/s]Generating train split: 4128 examples [00:02, 2479.03 examples/s]Generating train split: 5160 examples [00:02, 2736.79 examples/s]Generating train split: 5964 examples [00:02, 2196.86 examples/s]
+local load OK: 5964 rows; qa final answers 226; complete rows 365 (26s)
+DRY RUN: not uploading

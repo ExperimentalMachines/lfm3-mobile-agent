@@ -1,0 +1,33 @@
+{
+ "schema": ["id", "answer_error", "question_ambiguous", "goal_leak", "navigation_problem", "note"],
+ "rows": [
+ ["qa33",false,false,false,true,"1 hr 12 min is visible in Google Maps. Goal requests public transit but screen is turn-by-turn road navigation with km/h; history selected a map layer rather than route mode. Compound fallback has number-only format but multiunit gold."],
+ ["qa34",false,false,false,false,"Outlook Training Meeting shows 2:00 PM-4:00 PM; start time correct."],
+ ["qa35",false,false,false,false,"09:55 is the Amsterdam departure on Thu 26 Oct. Direct rewrite correctly asks train although original said bus."],
+ ["qa36",false,false,false,false,"Dawson_Creek row shows 03:58 AM; history adds the right city."],
+ ["qa37",false,false,false,false,"THE PROLOGUE is visible and rolling history scrolls through the book. Effective compound fallback despite question kind."],
+ ["qa38",false,false,false,false,"Slide title Spanish Quiz flash cards is visible; history opens Flash cards. Drive/Slides UI exposure missed by app provenance."],
+ ["qa39",false,false,false,false,"Texas, USA is visible on matching event search result; Google Calendar UI."],
+ ["qa40",false,false,true,false,"Google Community Team visible as sender, already supplied in original goal. Direct-question rejection fell back to a compound that still leaks. Gmail explicit in history/UI."],
+ ["qa41",false,false,false,false,"First recommended product is M-Classic Oat Rings; oats query and history agree."],
+ ["qa42",false,false,false,false,"Bhiwadi, India is visible. City is partly suggested by station name, but country is additional information."],
+ ["qa43",false,false,false,false,"14 RESULTS is visible. Number-only requested format conflicts with gold suffix RESULTS."],
+ ["qa44",false,false,false,false,"Oct 28, 2023 table cell reads 0.87225 for EUR/GBP; correct date and direction."],
+ ["qa45",false,false,false,true,"221 items is visible, but rewritten goal names Myntra while printer-shopping UI has a red shopping-bag m logo (Moglix). Original never named Myntra; follow-up provenance check required."],
+ ["qa46",false,false,false,false,"Selected bicycle mode shows 3 min for Home to Takai Sushi. Google Maps exposure; number-only format includes min."],
+ ["qa47",false,false,false,false,"249 PRODUCTS is visible under MENS RUNNING SHOES; history matches."],
+ ["qa48",false,false,false,false,"Mumbai International Airport distance is 1,370 km. Number-only format includes km; vague rewritten app name loses original under-50-lacs search constraint."],
+ ["qa49",true,false,false,false,"UK labels the sizing system, not a selected shoe size. No size box is selected; gold UK does not answer what size is selected."],
+ ["qa50",false,false,false,false,"Image Credit: Brit Cruise is visible. True answer type name, not heuristic phrase."],
+ ["qa51",false,false,true,false,"Text says colourway inspired by picturesque Lake Bled. Core answer Lake Bled is already in the named shoe in the goal; exact-string leakage check misses adjective variation."],
+ ["qa52",false,true,false,false,"Out of Stock appears under neighboring colour thumbnails, while the selected middle variant lacks that label. Generic product-level stock question is ambiguous; full-size follow-up needed."],
+ ["qa53",false,false,false,false,"Watered is the latest care operation at 12:09; the later 12:11 row is a note about adding a care action, not a later care operation."],
+ ["qa54",false,false,false,false,"First listed synonym under rampant is epidemic; history and goal agree."],
+ ["qa55",false,false,false,false,"2020 Honda City listing shows 9.82 Lakh rupees; generic car listing app named but current history is compatible."],
+ ["qa56",false,false,false,false,"First TERREX shoe is discounted to $220.00; screenshot category and history align."],
+ ["qa57",false,false,false,false,"Nike Air Force 1 '07 Fresh shows 140 euros; matching product navigation."],
+ ["qa58",false,false,false,false,"Dorami Taj Round 65mm card shows discounted 185 rupees; other lock is 368 and not confused."],
+ ["qa59",false,false,false,false,"120.00 is visible on matching Vogel's product; no currency shown so none invented."],
+ ["qa60",false,false,false,false,"First APL screw product shows 443 rupees per piece; filter history matches." ]
+ ]
+}

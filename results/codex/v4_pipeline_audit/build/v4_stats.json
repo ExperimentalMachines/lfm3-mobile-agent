@@ -1,0 +1,1218 @@
+{
+ "stats": {
+  "rows_in": 4934,
+  "rows_out": 5964,
+  "qa_rows": 1081,
+  "qa_final": 226,
+  "dev_removed": 51,
+  "sqa_short": 97,
+  "dev_answer": 11,
+  "dev_complete": 11,
+  "train_qa_episodes": 903
+ },
+ "src": "alpharomercoma/AndroidAgent-SFT-v3@565ba76c4b10b6733549151f0fece1f70bc33b9c",
+ "teacher": "FAKE",
+ "teacher_stats": {},
+ "examples": [
+  {
+   "key": "androidcontrol/10000",
+   "goal": "Open the adidas app & search for Superstar Shoes then add it to wishlist and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10007",
+   "goal": "Open the Windy.app Weather app, Configure the current location in the app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10016",
+   "goal": "I want to increase the font size to read the book easily and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10023",
+   "goal": "My current Apple phone broke, so I want to get a new one.Use the Amazon app to look for a new iPhone, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10027",
+   "goal": "In the Audiomack app, play Morning Train song from the Folk playlist in the Country genre and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10039",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1004",
+   "goal": "On the DailyCart USA app, I want to go to Cart and view the pomegranate fruit and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10044",
+   "goal": "In DMart App search for Toblerone milk chocolate and view the details of the product. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10047",
+   "goal": "In the reminder app set Teja\u00b4s birthday reminder for 25th june at 8pm and add a description Happy birthday to you Teju. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10055",
+   "goal": "I would prefer to see similar screwdriver sets like Tools Titan 25-In-1 Screwdriver Set 10 in the Jio Mart app so that pricing may be compared. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1006",
+   "goal": "The font is currently too small, so I want to resize it, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1007",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10073",
+   "goal": "Open the TickTick app and create a task for French Class today at 5:15 PM and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10077",
+   "goal": "Learn any topic related to physics in the Khan Academy app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10079",
+   "goal": "Open the Home workout app, I want to track my workout progress since I need to review the results of the routine exercise I've been performing. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1008",
+   "goal": "I want to buy shoes for myself because I have a few meetings, so I utilize the Shopclues app to look for formal shoes. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10084",
+   "goal": "I need to download the shopping list file from Google Drive. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10102",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10105",
+   "goal": "In the Adidas app, look for the Shoes with the Stretch filter for better style. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10109",
+   "goal": "I shall start the work out from tomorrow and in need of Trackpants , Search for trackpants in the ebay app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10112",
+   "goal": "Go to the Kitchen stories app and toggle the notifications setting, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10114",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1012",
+   "goal": "Open the Asos app, I would like to browse for Partywear for my wife as she will join the bussiness party with me, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10123",
+   "goal": "In the Houzz app, I would like to continue with HK Designs  so I want to read the reviews and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10135",
+   "goal": "On the Drive app, create a copy of the pdf of A Voyage to the Moon by Cyrano de Bergera in the folder named Collections and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10151",
+   "goal": "I have some work deadlines, so I have to postpone my trip to Florence; therefore, save the property in the Immobiliare app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10152",
+   "goal": "Share bus schedule information with my friend Amelia Miller on her gmail account, amelia.miller2709@gmail.com from the Citymapper app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10155",
+   "goal": "Open the Google meet app and Schedule a meeting for 22nd July at 2:00 PM with the title name as Transport, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10179",
+   "goal": "I want to give a 2-seat recliner on the occasion of my friend's wedding. Search for a 2-seater recliner in the Pepperfry app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1018",
+   "goal": "Because there are so many shoes on the market, I'd want to compare nike shoes based on their costs and ratings. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10184",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10190",
+   "goal": "In the To Do Reminder app Set the cycling event reminder to repeat every two hours, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10198",
+   "goal": "My wife told me to view the comparison of New Look plain formal derby Shoes with others before purchasing them, so compare these shoes with others in the ASOS app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10201",
+   "goal": "The Pinaka Mod pi-2261600W looks good. View the details of the Pinaka Mod pi-2261600W  in the Moglix  app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10204",
+   "goal": "Edit the document with the Title as Blank template, Change the pharse simple meeting with a client in Tokyo regarding designs at 9:00 am in the morning in the Word Office and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10208",
+   "goal": "The double-sided belted jacket looks good and will suit her very well, but the price seems to be a little high compared to the prices of similar products. You can find a better deal in the Zara app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10229",
+   "goal": "I'd want to read the reviews of TOOLBX 14 Gauge Copper wire for better clarity and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1023",
+   "goal": "Open the Mojarto app and Add the ghat of spirituality-xii painting then add the show painting to the cart, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10230",
+   "goal": "In the Xodo app, Add \"Hi\" in the first page on the  test pdf, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10233",
+   "goal": "I spent a lot of time sitting in a chair. I want to go for a walk right now. Monitor my walking progress. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10234",
+   "goal": "Create a new slide in the Madison theme for a customer meeting at the workplace using the PowerPoint app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10236",
+   "goal": "Open the Blinkit app ,lookup for  sundrop peanut butter , swipe pictures of it to and also view more details like price , weight , and contents, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10243",
+   "goal": "Export all the reminders in the google drive app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10244",
+   "goal": "Open Adidas app and search for Ultraboost Light Running Shoes. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10250",
+   "goal": "Share the bosch lp6-sl mini pendant speaker set of 2 with gmail id dbwscratch.test.id4@gmail.com and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10254",
+   "goal": "Open the side chef app and give the review, That was a delicious  for Rustic Fruit trat, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10263",
+   "goal": "I'd want to read about this plant's soil suggestions so it can grow faster in the Plantum app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10266",
+   "goal": "Slip On Breathe Mesh Walking Shoes are looking good for me. View the details of the same in TEMU app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10283",
+   "goal": "For saving these types of classical songs in one place I want to create a playlist to save these songs, so create a playlist named Classical Music in the SoundHound app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10285",
+   "goal": "I would like to replace my Kitchen Cabinet as they are not looking good, Search for Kitchen cabinets in the Shopsy app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10286",
+   "goal": "This PDTO Fluorescent Steel Tape Measure Dark Night tape looks good in quality, and I want to add this measuring tape to my collection, so add this PDTO Fluorescent Steel Tape Measure Dark Night tape to my collection in the Joom app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10287",
+   "goal": "I want to order burger buns from the InstaShop app because we are having a family reunion on Friday and have chosen to prepare hamburgers for lunch. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1029",
+   "goal": "As my shoe size is 9 , look for the walking shoes with the size 9 filter in the TEMU app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10293",
+   "goal": "I want to open the Movie name in my existing docs which i was saved in as a doc and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10297",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/103",
+   "goal": "Go to the HelloTalk app & start the grammar chapter, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1030",
+   "goal": "In the Office Suite Pro app, share a skill training document as a PDF attachment using Gmail. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10301",
+   "goal": "I want to suggest one of my favorite books Qualityland to my friend Thomas on Thomas123@gmail.com and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10304",
+   "goal": "I want to share my 'Wonderful Town' recording with my friend Natalie Larson at natalie.larson1998@gmail.com. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1031",
+   "goal": "Open the Simple Calculator app & perform the Divide operation between two numbers 88 & 33 then show the result. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10315",
+   "goal": "I want to analyze the weather map and temperature of my city and nearby lands, so take a look at the weather map of my city in the ExaWeather app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10341",
+   "goal": "Open Microsoft To Do app and share the Fun time task on dbwscratch.test.id_6@gmail.com through Gmail. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10344",
+   "goal": "I want to compare the prices of apple i phone 15 (blue 256 GB), then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1035",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10350",
+   "goal": "I want to watch some travelling short videos on Vimeo to unwind for a bit, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10352",
+   "goal": "I want to look for men's shorts on the Adidas app because I need new shorts for my gym activity. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1036",
+   "goal": "Go to the Kindle app and search for spiritual books and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10362",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10364",
+   "goal": "I want to view the details of Clarks women shoes about the quality, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10370",
+   "goal": "Open the Fitness Coach app, I want to keep track of my workout progress since I need to evaluate the outcomes of the regular exercises I've been doing. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10377",
+   "goal": "I want to view the highly rated shoes first, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10379",
+   "goal": "Browse for a king size bed on the eBay app since I intend to purchase a new bed for my room. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10383",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10385",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10386",
+   "goal": "I would want to know the ILS to JOD historical exchange rates for the last year using the Currency Converter app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10389",
+   "goal": "I want some help for my daughter Hanna Iversen homework of number lines questions so i want to play a video tutorial of number lines questions and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10398",
+   "goal": "Go to the Rapidbox app and open the RapidBox white sneakers then view its information and details. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1040",
+   "goal": "In the Nike app, I want to shop\u00a0for basketball shoes in a size 5 for myself. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10405",
+   "goal": "Download any podcast on the Tunein Radio app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10406",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10418",
+   "goal": "I'd like to read the care guides post for inspiration and suggestions. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10431",
+   "goal": "Since dark blue is my favorite color, I want to view the dark blue striped shirt and compare the shirt with similar shirts in the Shoppers Stop app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10434",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10436",
+   "goal": "In the Myntra app, look for Girls printed Tops with Trousers as a present for my niece's fourth birthday. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10439",
+   "goal": "To receive updates for new videos of Henrique e Juliano, follow Unic Film Producoes on Vimeo and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10445",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10446",
+   "goal": "It's a rainy day and I would like to listen to Luciano Pavarotti songs. Search It's A Man's Man's Man's World (Stereo) song by Luciano Pavarotti & James Brown in the YouTube app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10450",
+   "goal": "In the event that I ever lose internet connectivity, I want to make the Presentation_sample.pdf file accessible offline in Google Drive, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10451",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10455",
+   "goal": "I'm planning a vacation to Paris with my sister and mom, so I open the Booking.com app and search for tickets from New York to Paris on September 19th, 2023, returning on September 25th, 2023 in economy class. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10457",
+   "goal": "I need to search in the To Do Reminder app for Peloton and Soul Cycle membership reminders to find out when the next upgrade date comes. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10459",
+   "goal": "I will forward the shopping list email to my son, Evan Kramer, so that he can book this order. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10463",
+   "goal": "As i am finding suitable to be gifted View the details of the skechers women's Arch comfort sneaker waking  Shoes in the ebay app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10473",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10475",
+   "goal": "After filling this form I want to save this form, so submit this filled form in the Jotform app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10479",
+   "goal": "Add the 8 in 1 Screwdriver toolkit Set to my wishlist via the Shopclues app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10480",
+   "goal": "I want to view my cart to check the bill. Open my cart in the Albertsons app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10481",
+   "goal": "I have to go to Brussels Central for work-related reasons. Use the Omio app to locate a train leaving Aalst to Brussels-Centraal on November 28 after 7:00 AM, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10485",
+   "goal": "Because of the stress at my job, I've been experiencing a lot of stress, and I want to try meditation to assist. Using the Idanim\u00a0app, have a guided meditation session. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10486",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10500",
+   "goal": "Open the Bewakoof App, Type in a search bar and search for Bewakoof Men's Jet Black Vest. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10511",
+   "goal": "I want to know how much time I have spent on meditation and how many sessions I have completed, so track my progress on the waking up app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10516",
+   "goal": "I want to know the care tips for this plant because I don't know how to take care of it, so get the plant care tips for Travelers Palm plant from the Plantora app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1052",
+   "goal": "In the Peter England app, I would want to learn about new trends so that I may get inspiration for men's formal apparel styles, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10521",
+   "goal": "I want to search for my reminder to buy New Balance hiking shoes on the Schedule Planner app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10535",
+   "goal": "Once I had listened to the sound of nature, which is very relaxing, I wanted to listen to the calm lake sound in the mindfulness app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10556",
+   "goal": "In the Amazon app, add the Daawat Pulav and Long Grains Basmati Rice to the cart, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10565",
+   "goal": "Create a shortcut to the private file folder at the drive app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10569",
+   "goal": "Open the Red Cross emergency app and select the heart attack emergency service and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10576",
+   "goal": "I desire a change because I had previously used campus shoes. Use the Amazon app to find Adidas Shoes that have a star rating greater than 4, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1058",
+   "goal": "As I have to buy groceries every day, I want to make a daily repeat reminder in the \"Buy Groceries\" reminder, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10588",
+   "goal": "Add a  sized 10 HIGH RISE TRF STRAIGHT LEG CARGO PANTS  to cart on ZARA app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1059",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10591",
+   "goal": "I don't want to skip my friend Thomas'birthday. In the reminder app, set the Thomas'birthday reminder to repeat every year. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10592",
+   "goal": "I want to save the existing presentation with the title Importance of hiking, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10594",
+   "goal": "Before ordering oats from the Blinkit app, I want to know about the ingredients that are used in oats, so view the details of \"saffola classic masala oats\u201d for me, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/106",
+   "goal": "Shop for  RDY shoes in the Adidas app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10603",
+   "goal": "It's time to change, as I am fed up with the old styles. Look for Men's Loafers and Moccasins in the YOOX app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10604",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10613",
+   "goal": "Go to the TickTick app and mark rent is due as completed, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10616",
+   "goal": "I want to check my progress, where I have reached, and how much I will take time to learn and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10621",
+   "goal": "I am planning to visit an attraction near my home town, Dawson Creek, for one day, but for now, save the Kiskatinaw Bridge on the Dawson Creek Itinerary tab on the Trip.com app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10627",
+   "goal": "If there are any deals or discounts available for the product, use them, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10644",
+   "goal": "Open Spotify app and Launch my Jazz music 2 playlist and play it in order. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10647",
+   "goal": "Start the first lesson right now because There is no perfect time like the present, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1065",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10653",
+   "goal": "Reply to Cerebra Research mail with Acknowledged in the Gmail app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10654",
+   "goal": "My wife asked me to share this document with her on the Gmail app, so share this document from the Word app with my wife at clarawagner98b@gmail.com in the Gmail app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10656",
+   "goal": "In the Audiomack app ,Play the Shayad Soul Strike Song from the Electronic Genre Playlist, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10664",
+   "goal": "Play the \"WTF with Marc Maron podcasts\" in the comedy genre for me on the TuneIn Radio app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10666",
+   "goal": "I want to fix the problem of the loose bolt on my bathroom tap, but I don't have any wrench to tighten these bolts, so search for a wrench tool for me in the ShopClues app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10669",
+   "goal": "Repeat the reminder Health checkup for every month & save it and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1067",
+   "goal": "I want to send the Dinner-veg pdf to Thomas123@gmail.com via the Gmail app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10671",
+   "goal": "Open the ShipAtlas app and search for the American Spirit ship, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10682",
+   "goal": "Due to time constraints, I was unable to take breaks, therefore the plan had to be rescheduled. Save the Rome property you want to stay at with the Rentalia app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10684",
+   "goal": "I needed formal pants for my office, so browse for \"black formal pants for women\" on the  Myntra app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10686",
+   "goal": "I thought the rest time was shorter after my first workout of the day. Customise the workout plan using the Workout Planner app by extending the rest periods by 10 seconds to make my workout a little simpler and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1069",
+   "goal": "I want to purchase the Collared neck full sleeve knit shirt  . I've fallen in love with the Rareism app I'm therefore adding it to my cart before making a decision. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10692",
+   "goal": "I came to Berlin for important work to meet my son, who lives here, but now I want to go back to my home in Ulm, so search for the schedule of trains from Berlin to Ulm on November 5th in the INFOBUS app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10705",
+   "goal": "On the Traveloka app, show me the travel tips. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10706",
+   "goal": "In the Sleep monitor app, In order to improve my meditation, I would like to listen to the Gentle Night Rain in the Soundscape category and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10713",
+   "goal": "Start tracking walking activity and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10716",
+   "goal": "It seems to lack something in the first photo of My Favorite Trip folder, so I want to edit this photo and apply a vivid filter to it, because after applying this filter the image will become attractive and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10720",
+   "goal": "Use the gmail address karin.iversen@example.com to send Karin information about the bus that leaves at 9:17 a.m. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10721",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10734",
+   "goal": "I want to buy a formal shirt for myself. Search for formal shirts in the H&M app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10736",
+   "goal": "This year, Christmas and New Year, I want to celebrate in Paris with my family from December 24th to December 31st, 2023. So I am looking for hotels in Paris for 7-day stays. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10740",
+   "goal": "I want to add this black dress to my Wishlist. I will buy it later. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10741",
+   "goal": "I would like to view the same shoe in a different colour from the same brand. Compare the price of other shoes in the Amazon app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10746",
+   "goal": "I have a plant photo that my friend Andrew Reed requested two days ago, so I want to share it with him via gmail at andrewreed@dayrep.com and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10747",
+   "goal": "Repeat the reminder Friends for every week & save it in the reminder app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10750",
+   "goal": "I would like to see the EPFO file in the Dropbox app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10755",
+   "goal": "I would like to use math tests  app to help my child with their homework , thus i want to view  on multiplying and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10756",
+   "goal": "I believe that the word fynplantguide-web.pdf file is appropriate for use. Rename the fynplantguide-web.pdf file to landscape design. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10775",
+   "goal": "I don't have a hammer in my tool kit, and I need them for my projects, so I decided to buy a hammer from the Visko brand, so search for the Visko hammer in the Shopclues app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10776",
+   "goal": "I need a new Nike shoes because I have a badminton match next week, so I want to check it out on the Amazon app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1078",
+   "goal": "I want to check every reminder to see if it's necessary because I can't remember how many I've set, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10791",
+   "goal": "I want to add my office image to my Office document 2023, so edit the file and add an image to it on the Docs app and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10796",
+   "goal": "Remove the Nerf Elite 2.0 Commander RD-6 Blaster Blue from the cart on FirstCry and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10798",
+   "goal": "I am planning a family trip to Vancouver, so find an economy class flight for me for a one-way trip from Toronto Pearson International to Vancouver International Airport on December 15 for 3 adults on the Kayak app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10802",
+   "goal": "Open the reminder app and search the keyword birthday. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10806",
+   "goal": "There is a folder named pdf that I deleted yesterday. Restore that folder from the trash on the Drive app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10817",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10822",
+   "goal": "I would like to create a new  blank slide for a presentation about the YMCA's charity event using WPS app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10826",
+   "goal": "I would like to add my favorite book, Just Mercy, to the cart to buy it later. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10836",
+   "goal": "Open the Google Fit app and sign in to your account. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10849",
+   "goal": "I want to buy the Dior perfume for myself in a 50-ml bottle. Search for the Dior women's perfume on the Nykaa app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10855",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10859",
+   "goal": "open the Any .do app and create a task for Yoga session on 29th july 2023 @ 10 am and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1086",
+   "goal": "This product appeals to me, and my size is also available, thus I'd like to add it to my favorite and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10879",
+   "goal": "I want to open the Untitled Doucument in the Google docs app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1088",
+   "goal": "I want to look at the specifics of the men's athletic shoes on the Etsy app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10881",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10882",
+   "goal": "I've done examining the footwear. Using the Shopclues app, add Puma Escaper SL Idp Sports Shoes to my wishlist. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10884",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10888",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10894",
+   "goal": "I'm looking for a hotel in Seattle for two adults staying in the same room with check-in and check-out dates of October 12, 2023, and October 16, 2023 using the Kayak app. I want to use filters over 4.5 ratings with a minimum of five hotel reviews. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/109",
+   "goal": "In the moira Cosmetics app, I want to explore eyeshadow sticks since my wife asked me to purchase her one, thus I would want to offer her some small present, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10903",
+   "goal": "I want to add the Nike Go Women Firm-Support High Waisted Leggings with pockets to the cart in the nike app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10906",
+   "goal": "On the Redfin app, search properties in Philadelphia to verify if the property to be purchased has any sort of impeccable title. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10913",
+   "goal": "I want to View the globalisation file and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10916",
+   "goal": "Add the skechers women's Arch comfort sneaker walking  Shoes to the wishlist in the ebay  app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10921",
+   "goal": "I am looking for a new smart phone for me, so browse for the \"iPhone 15 Pro Max (256GB) in Blue Titanium\" on the Amazon app, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10926",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1093",
+   "goal": "Enter the starting location \"Roxy Hotel New York and the train station, World Trade Center, and track the direction by bicycle and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10933",
+   "goal": "I'd like to read customer reviews on the DHgate app so that I can make an informed decision on the Juicer New Electric portable blender juicer wirless, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10935",
+   "goal": "The stress at work is keeping me up at night. Try the Idanim app's sleep meditation, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10957",
+   "goal": "I would like to add the Nike Precision 6 to the wishlist. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10959",
+   "goal": "I am looking for  running shoes in the size \u201c38(EUR)\u201d so apply the Size Filter and view the running Shoes on the shopclues app. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10972",
+   "goal": "Open the Zoho Show app and add the first image from the recent image and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10980",
+   "goal": "I like the second hotel from the list, Live Aqua Urban Resort Mexico, because it has a higher rating and reviews, and I'd like to learn more about it and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/10987",
+   "goal": "In the Amazon app, since it seems like a wonderful deal, I want to save the One SKy Winter Wear Track Pants for Men product so I won't lose track of it and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1100",
+   "goal": "Sort the shoe styles according to their popularity and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/11002",
+   "goal": "I would want to identify the plants by snapping a picture of them on the Leaf Snap app to learn about which species they are, then answer: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/11006",
+   "goal": "I want to read the \"Wolf Hall\" book as it seems fantastic from the cover and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/11008",
+   "goal": "Go to withings app tap on the activities and view the activity data and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1102",
+   "goal": "I want to edit a document and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/1103",
+   "goal": "I want to test whether the survey form that I have created is working properly or not, so preview the \"Employment Fair Survey\" form for me and test it by filling out the answer yes to the question asked in the form and answer this question: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/11030",
+   "goal": "My best friend Naomi Rousseau wants to read one of my favorite collections, the-diary-of-anne-frank file, so I wanted to share it on her Gmail, naomi.rousseau@example.com. After that, tell me: What is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  },
+  {
+   "key": "androidcontrol/11032",
+   "goal": "In the app, what is shown? Reply with just the name.",
+   "answer": "Fake Answer",
+   "evidence": "The screen shows Fake Answer."
+  }
+ ]
+}

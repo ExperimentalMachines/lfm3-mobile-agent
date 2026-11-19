@@ -1,0 +1,200 @@
+{
+  "statistics": {
+    "qa": {
+      "n": 60,
+      "answer_error": {
+        "count": 4,
+        "rate": 0.06666666666666667,
+        "wilson_95": [
+          0.026228698724506214,
+          0.1592535731319717
+        ]
+      },
+      "question_ambiguous": {
+        "count": 2,
+        "rate": 0.03333333333333333,
+        "wilson_95": [
+          0.009189319256197877,
+          0.113637742743086
+        ]
+      },
+      "goal_leak": {
+        "count": 9,
+        "rate": 0.15,
+        "wilson_95": [
+          0.08097440580167739,
+          0.2611458906977855
+        ]
+      },
+      "navigation_problem": {
+        "count": 7,
+        "rate": 0.11666666666666667,
+        "wilson_95": [
+          0.0576772064005603,
+          0.2217878802417086
+        ]
+      },
+      "any_quality_problem": {
+        "count": 20,
+        "rate": 0.3333333333333333,
+        "wilson_95": [
+          0.2272926152352268,
+          0.4594313354788031
+        ]
+      }
+    },
+    "screenqa": {
+      "n": 30,
+      "answer_error": {
+        "count": 2,
+        "rate": 0.06666666666666667,
+        "wilson_95": [
+          0.018477023791270378,
+          0.2132345836261692
+        ]
+      },
+      "question_ambiguous": {
+        "count": 2,
+        "rate": 0.06666666666666667,
+        "wilson_95": [
+          0.018477023791270378,
+          0.2132345836261692
+        ]
+      },
+      "goal_leak": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson_95": [
+          0,
+          0.11351339317396876
+        ]
+      },
+      "navigation_problem": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson_95": [
+          0,
+          0.11351339317396876
+        ]
+      },
+      "any_quality_problem": {
+        "count": 4,
+        "rate": 0.13333333333333333,
+        "wilson_95": [
+          0.053096554840547455,
+          0.296813266820363
+        ]
+      }
+    },
+    "dev": {
+      "n": 20,
+      "answer_error": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson_95": [
+          0,
+          0.16112515805281938
+        ]
+      },
+      "question_ambiguous": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson_95": [
+          0,
+          0.16112515805281938
+        ]
+      },
+      "goal_leak": {
+        "count": 0,
+        "rate": 0.0,
+        "wilson_95": [
+          0,
+          0.16112515805281938
+        ]
+      },
+      "navigation_problem": {
+        "count": 1,
+        "rate": 0.05,
+        "wilson_95": [
+          0.008881448800795402,
+          0.23613119344674205
+        ]
+      },
+      "any_quality_problem": {
+        "count": 1,
+        "rate": 0.05,
+        "wilson_95": [
+          0.008881448800795402,
+          0.23613119344674205
+        ]
+      }
+    }
+  },
+  "weighted": {
+    "answer_error": {
+      "rate": 0.042328042328042326,
+      "approximate_stratified_mover_95": [
+        0.013029796887725272,
+        0.22907705872188508
+      ]
+    },
+    "goal_leak": {
+      "rate": 0.13403880070546736,
+      "approximate_stratified_mover_95": [
+        0.07509247414369635,
+        0.32304425430842487
+      ]
+    },
+    "navigation_problem": {
+      "rate": 0.2205761316872428,
+      "approximate_stratified_mover_95": [
+        0.12076240653386097,
+        0.40132462715134043
+      ]
+    },
+    "any_quality_problem": {
+      "rate": 0.3890652557319224,
+      "approximate_stratified_mover_95": [
+        0.2554792771728671,
+        0.5497171000212281
+      ]
+    }
+  },
+  "builder": {
+    "raw": 3255,
+    "strict_rejected": 89,
+    "guard_v2_rejected": 169,
+    "expected_accepted": 2997,
+    "actual_unique_train_and_dev": 2997,
+    "missing": [],
+    "unexpected": [],
+    "all_qa_rows": 17012,
+    "goal_mismatches": [],
+    "direct_answer2_mismatches": [],
+    "candidate_image_mismatches": [],
+    "prior_named_settings_cases": {
+      "androidcontrol/815": {
+        "built_qa": false,
+        "strict_label_present": true,
+        "guard_v2_flagged": true
+      },
+      "androidcontrol/18012": {
+        "built_qa": false,
+        "strict_label_present": true,
+        "guard_v2_flagged": true
+      },
+      "androidcontrol/2080": {
+        "built_qa": false,
+        "strict_label_present": true,
+        "guard_v2_flagged": true
+      },
+      "androidcontrol/13527": {
+        "built_qa": false,
+        "strict_label_present": true,
+        "guard_v2_flagged": true
+      }
+    },
+    "direct_goals": 377,
+    "question_fallbacks": 24
+  }
+}

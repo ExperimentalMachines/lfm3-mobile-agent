@@ -1,0 +1,356 @@
+I1119 08:06:40.097995 8645066624 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1119 08:06:40.098328 8645066624 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5558'"
+I1119 08:06:40.098409 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1119 08:06:40.098518 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1119 08:06:40.098584 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1119 08:06:40.327234 8645066624 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1119 08:06:40.327717 8645066624 coordinator.py:80] Starting the simulator...
+I1119 08:06:40.327781 8645066624 coordinator.py:135] Simulator launch attempt 1 of 3
+I1119 08:06:40.327862 8645066624 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5558')
+I1119 08:06:40.327894 8645066624 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1119 08:06:40.339086 8645066624 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1119 08:06:40.347684 8645066624 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (167007592ms)
+I1119 08:06:40.347747 8645066624 emulator_simulator.py:386] Done booting the emulator (in 0.008258 seconds).
+I1119 08:06:40.347830 8645066624 emulator_simulator.py:387] ********** Emulator logs **********
+I1119 08:06:40.347857 8645066624 emulator_simulator.py:389] Logfile does not exist: None.
+I1119 08:06:40.347877 8645066624 emulator_simulator.py:390] ******* End of emulator logs *******
+I1119 08:06:40.347897 8645066624 emulator_simulator.py:391] See the full emulator logs at None
+I1119 08:06:40.347952 8645066624 emulator_simulator.py:249] Done booting the Android Emulator.
+I1119 08:06:40.347980 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1119 08:06:40.348070 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1119 08:06:40.348133 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1119 08:06:40.348205 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1119 08:06:40.376352 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1119 08:06:40.376464 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1119 08:06:40.414377 12153246 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+E1119 08:08:40.424892 8645066624 adb_controller.py:138] Failed to execute ADB command (try 1 of 3): [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+E1119 08:08:40.430412 8645066624 adb_controller.py:142] **stdout**:
+E1119 08:08:40.430463 8645066624 adb_controller.py:144]     b'I1119 08:06:40.418951 12153296 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)'
+I1119 08:08:40.430628 8645066624 adb_controller.py:85] Skipping adb kill-server (shared server); waiting and retrying.
+I1119 08:08:42.432250 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1119 08:08:42.455779 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+E1119 08:10:42.464071 8645066624 adb_controller.py:138] Failed to execute ADB command (try 2 of 3): [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+E1119 08:10:42.464931 8645066624 adb_controller.py:142] **stdout**:
+E1119 08:10:42.464978 8645066624 adb_controller.py:144]     b'I1119 08:08:42.458730 12154675 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)'
+E1119 08:10:42.465072 8645066624 coordinator.py:148] device_settings.update() failed.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/coordinator.py", line 146, in _launch_simulator
+    self._device_settings.update(self._config.device_settings)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/device_settings.py", line 63, in update
+    self._set_show_touches(config.show_touches)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/device_settings.py", line 100, in _set_show_touches
+    self._adb_call_parser.parse(
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 111, in parse
+    return self._handlers[command_type](request, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 697, in _handle_settings
+    response, command_output = self._execute_command(
+                               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 81, in _execute_command
+    command_output = self._adb_controller.execute_command(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 154, in execute_command
+    raise errors.AdbControllerError(
+android_env.components.errors.AdbControllerError: Error executing adb command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Caused by: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+adb stdout: [b'I1119 08:08:42.458730 12154675 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)\n']
+adb stderr: [None]
+I1119 08:10:42.472320 8645066624 coordinator.py:135] Simulator launch attempt 2 of 3
+I1119 08:10:42.472440 8645066624 emulator_simulator.py:215] Attempt 2 at launching the Android Emulator ('emulator-5558')
+I1119 08:10:42.472476 8645066624 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1119 08:10:42.474591 8645066624 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1119 08:10:42.477375 8645066624 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (167249725ms)
+I1119 08:10:42.477456 8645066624 emulator_simulator.py:386] Done booting the emulator (in 0.002260 seconds).
+I1119 08:10:42.477506 8645066624 emulator_simulator.py:387] ********** Emulator logs **********
+I1119 08:10:42.477640 8645066624 emulator_simulator.py:389] Logfile does not exist: None.
+I1119 08:10:42.477777 8645066624 emulator_simulator.py:390] ******* End of emulator logs *******
+I1119 08:10:42.477843 8645066624 emulator_simulator.py:391] See the full emulator logs at None
+I1119 08:10:42.477896 8645066624 emulator_simulator.py:249] Done booting the Android Emulator.
+I1119 08:10:42.477952 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1119 08:10:42.478251 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1119 08:10:42.502912 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1119 08:10:42.503076 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1119 08:10:42.556086 12153246 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+E1119 08:12:42.564990 8645066624 adb_controller.py:138] Failed to execute ADB command (try 1 of 3): [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+E1119 08:12:42.565647 8645066624 adb_controller.py:142] **stdout**:
+E1119 08:12:42.565682 8645066624 adb_controller.py:144]     b'I1119 08:10:42.559517 12155840 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(8, generation: 1)'
+I1119 08:12:42.565721 8645066624 adb_controller.py:85] Skipping adb kill-server (shared server); waiting and retrying.
+I1119 08:12:44.569991 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1119 08:12:44.590850 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+E1119 08:14:44.599133 8645066624 adb_controller.py:138] Failed to execute ADB command (try 2 of 3): [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+E1119 08:14:44.599596 8645066624 adb_controller.py:142] **stdout**:
+E1119 08:14:44.599631 8645066624 adb_controller.py:144]     b'I1119 08:12:44.594099 12156652 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(8, generation: 1)'
+E1119 08:14:44.599688 8645066624 coordinator.py:148] device_settings.update() failed.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/coordinator.py", line 146, in _launch_simulator
+    self._device_settings.update(self._config.device_settings)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/device_settings.py", line 63, in update
+    self._set_show_touches(config.show_touches)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/device_settings.py", line 100, in _set_show_touches
+    self._adb_call_parser.parse(
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 111, in parse
+    return self._handlers[command_type](request, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 697, in _handle_settings
+    response, command_output = self._execute_command(
+                               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 81, in _execute_command
+    command_output = self._adb_controller.execute_command(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 154, in execute_command
+    raise errors.AdbControllerError(
+android_env.components.errors.AdbControllerError: Error executing adb command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Caused by: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+adb stdout: [b'I1119 08:12:44.594099 12156652 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(8, generation: 1)\n']
+adb stderr: [None]
+I1119 08:14:44.600039 8645066624 coordinator.py:135] Simulator launch attempt 3 of 3
+I1119 08:14:44.600095 8645066624 emulator_simulator.py:215] Attempt 3 at launching the Android Emulator ('emulator-5558')
+I1119 08:14:44.600116 8645066624 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1119 08:14:44.601294 8645066624 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1119 08:14:44.602463 8645066624 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (167491850ms)
+I1119 08:14:44.602494 8645066624 emulator_simulator.py:386] Done booting the emulator (in 0.000938 seconds).
+I1119 08:14:44.602512 8645066624 emulator_simulator.py:387] ********** Emulator logs **********
+I1119 08:14:44.602532 8645066624 emulator_simulator.py:389] Logfile does not exist: None.
+I1119 08:14:44.602550 8645066624 emulator_simulator.py:390] ******* End of emulator logs *******
+I1119 08:14:44.602560 8645066624 emulator_simulator.py:391] See the full emulator logs at None
+I1119 08:14:44.602573 8645066624 emulator_simulator.py:249] Done booting the Android Emulator.
+I1119 08:14:44.602589 8645066624 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1119 08:14:44.602658 8645066624 adb_controller.py:48] self._os_env_vars: {'NVM_INC': '/Users/alpha/.nvm/versions/node/v24.18.0/include/node', 'CLAUDE_CODE_MESSAGING_TOKEN': '<redacted>', 'NoDefaultCurrentDirectoryInExePath': '1', 'TERM_PROGRAM': 'Apple_Terminal', 'CLAUDE_CODE_ENTRYPOINT': 'cli', 'CLAUDE_EFFORT': 'xhigh', 'NVM_CD_FLAGS': '-q', 'SHELL': '/bin/zsh', 'TERM': 'xterm-256color', 'TMPDIR': '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/', 'HOMEBREW_REPOSITORY': '/opt/homebrew', 'CLAUDE_CODE_CHILD_SESSION': '1', 'CLAUDE_PID': '18068', 'TERM_PROGRAM_VERSION': '488', 'FPATH': '/opt/homebrew/share/zsh/site-functions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.9/functions', 'OLDPWD': '/Users/alpha/lfm3-android', 'TERM_SESSION_ID': '6A00F42B-C47E-4024-B8BF-188E706A976F', 'HERETIC_API_KEY': '<redacted>', 'VERCEL_PLUGIN_SETUP_MODE': '1', 'AI_AGENT': 'claude-code_2-1-326_agent', 'GIT_EDITOR': 'true', 'USER': 'alpha', 'NVM_DIR': '/Users/alpha/.nvm', 'SSH_AUTH_SOCK': '/var/run/com.apple.launchd.GWcf3rBier/Listeners', 'VERCEL_PLUGIN_BOOTSTRAP_HINTS': 'greenfield', 'PATH': '/Users/alpha/.qoder/entry:/Users/alpha/.local/bin:/Users/alpha/.bun/bin:/Users/alpha/Downloads/google-cloud-sdk/bin:/Users/alpha/.local/bin:/Users/alpha/.nebius/bin:/Users/alpha/.nvm/versions/node/v24.18.0/bin:/Users/alpha/.local/bin:/Users/alpha/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin', 'LaunchInstanceID': '2BC2E1D8-1002-4BEC-8D6F-32CABC888704', '__CFBundleIdentifier': 'com.apple.Terminal', 'PWD': '/Users/alpha/lfm3-android', 'LANG': 'en_PH.UTF-8', 'XPC_FLAGS': '0x0', 'CLAUDE_CODE_SESSION_ATTENDED': '1', 'XPC_SERVICE_NAME': '0', 'SHLVL': '4', 'HOME': '/Users/alpha', 'CLAUDE_CODE_EXECPATH': '/Users/alpha/.local/share/claude/versions/2.1.326', 'HOMEBREW_PREFIX': '/opt/homebrew', 'LOGNAME': 'alpha', 'COREPACK_ENABLE_AUTO_PIN': '0', 'NVM_BIN': '/Users/alpha/.nvm/versions/node/v24.18.0/bin', 'BUN_INSTALL': '/Users/alpha/.bun', 'HOMEBREW_CELLAR': '/opt/homebrew/Cellar', 'INFOPATH': '/opt/homebrew/share/info:', 'CLAUDE_CODE_SESSION_ID': '4efa3977-532d-411f-ad28-f4737438aa00', 'OSLogRateLimit': '64', 'SECURITYSESSIONID': '186a3', 'CLAUDE_CODE_MESSAGING_SOCKET': '/tmp/cc-socks/18068.sock', 'CLAUDECODE': '1', 'COLORTERM': 'truecolor', '_': '.venv-aw/bin/python', '__CF_USER_TEXT_ENCODING': '0x1F5:0x0:0x0', 'LD_LIBRARY_PATH': '/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/cv2/../../lib:', 'GRPC_VERBOSITY': 'ERROR'}
+I1119 08:14:44.621998 8645066624 adb_call_parser.py:98] AdbRequest command type: settings
+I1119 08:14:44.622099 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1119 08:14:44.622353 12153246 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+E1119 08:16:44.629128 8645066624 adb_controller.py:138] Failed to execute ADB command (try 1 of 3): [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+E1119 08:16:44.629556 8645066624 adb_controller.py:142] **stdout**:
+E1119 08:16:44.629580 8645066624 adb_controller.py:144]     b'I1119 08:14:44.624673 12157425 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)'
+I1119 08:16:44.629610 8645066624 adb_controller.py:85] Skipping adb kill-server (shared server); waiting and retrying.
+I1119 08:16:46.637706 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1119 08:16:46.651200 8645066624 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+E1119 08:18:46.655802 8645066624 adb_controller.py:138] Failed to execute ADB command (try 2 of 3): [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+E1119 08:18:46.656275 8645066624 adb_controller.py:142] **stdout**:
+E1119 08:18:46.656301 8645066624 adb_controller.py:144]     b'I1119 08:16:46.653002 12158365 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)'
+E1119 08:18:46.656359 8645066624 coordinator.py:148] device_settings.update() failed.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 129, in execute_command
+    cmd_output = subprocess.check_output(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 2116, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Users/alpha/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/subprocess.py", line 1253, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/coordinator.py", line 146, in _launch_simulator
+    self._device_settings.update(self._config.device_settings)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/device_settings.py", line 63, in update
+    self._set_show_touches(config.show_touches)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/device_settings.py", line 100, in _set_show_touches
+    self._adb_call_parser.parse(
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 111, in parse
+    return self._handlers[command_type](request, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 697, in _handle_settings
+    response, command_output = self._execute_command(
+                               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_call_parser.py", line 81, in _execute_command
+    command_output = self._adb_controller.execute_command(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/adb_controller.py", line 154, in execute_command
+    raise errors.AdbControllerError(
+android_env.components.errors.AdbControllerError: Error executing adb command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+Caused by: Command '['/opt/homebrew/bin/adb', '-P', '5037', '-s', 'emulator-5558', 'shell', 'settings', 'put', 'system', 'show_touches', '1']' timed out after 120.0 seconds
+adb stdout: [b'I1119 08:16:46.653002 12158365 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(7, generation: 1)\n']
+adb stderr: [None]
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/eval/androidworld/run_aw.py", line 95, in <module>
+    app.run(main)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+             ^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/eval/androidworld/run_aw.py", line 60, in main
+    env = env_launcher.load_and_setup_env(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/env_launcher.py", line 125, in load_and_setup_env
+    env = _get_env(console_port, adb_path, grpc_port)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/env_launcher.py", line 35, in _get_env
+    controller = android_world_controller.get_controller(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 329, in get_controller
+    android_env_instance = loader.load(config)
+                           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/loader.py", line 63, in load
+    coordinator = coordinator_lib.Coordinator(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/coordinator.py", line 81, in __init__
+    self._launch_simulator()
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/components/coordinator.py", line 132, in _launch_simulator
+    raise errors.TooManyRestartsError(
+android_env.components.errors.TooManyRestartsError: Maximum number of restart attempts reached.

@@ -1,0 +1,23 @@
+labels: 3800 qa (3600 train, 200 dev), 97 screenqa short; 200 dev episodes held out
+downloaded 16 train + 3 dev shards (0s)
+data/train-00000-of-00016.parquet: 4934 -> 5964 rows (1081 qa copies) (2s)
+data/train-00001-of-00016.parquet: 4931 -> 5880 rows (1007 qa copies) (5s)
+data/train-00002-of-00016.parquet: 4937 -> 5939 rows (1055 qa copies) (11s)
+data/train-00003-of-00016.parquet: 4937 -> 5896 rows (1028 qa copies) (14s)
+data/train-00004-of-00016.parquet: 4937 -> 5953 rows (1083 qa copies) (17s)
+data/train-00005-of-00016.parquet: 4936 -> 5906 rows (1035 qa copies) (26s)
+data/train-00006-of-00016.parquet: 4936 -> 5899 rows (1034 qa copies) (29s)
+data/train-00007-of-00016.parquet: 4935 -> 5935 rows (1070 qa copies) (31s)
+data/train-00008-of-00016.parquet: 4932 -> 5958 rows (1087 qa copies) (35s)
+data/train-00009-of-00016.parquet: 4934 -> 5984 rows (1113 qa copies) (41s)
+data/train-00010-of-00016.parquet: 4934 -> 5931 rows (1059 qa copies) (43s)
+data/train-00011-of-00016.parquet: 4936 -> 5940 rows (1052 qa copies) (50s)
+data/train-00012-of-00016.parquet: 4933 -> 5932 rows (1048 qa copies) (53s)
+data/train-00013-of-00016.parquet: 4935 -> 5955 rows (1077 qa copies) (62s)
+data/train-00014-of-00016.parquet: 4932 -> 5943 rows (1061 qa copies) (64s)
+data/train-00015-of-00016.parquet: 4933 -> 5929 rows (1043 qa copies) (73s)
+{"rows_in": 78952, "rows_out": 94944, "qa_rows": 16933, "qa_final": 3600, "dev_removed": 941, "sqa_short": 97, "dev_answer": 200, "dev_complete": 200, "train_qa_episodes": 3600}
+Downloading data:   0%|          | 0/16 [00:00<?, ?files/s]Downloading data: 100%|██████████| 16/16 [00:00<00:00, 2415.81files/s]
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 10092 examples [00:00, 88877.00 examples/s]Generating train split: 23808 examples [00:00, 114849.42 examples/s]Generating train split: 35538 examples [00:00, 115271.04 examples/s]Generating train split: 49952 examples [00:00, 120482.29 examples/s]Generating train split: 64861 examples [00:00, 129453.97 examples/s]Generating train split: 84620 examples [00:00, 125351.62 examples/s]Generating train split: 94944 examples [00:00, 124774.44 examples/s]
+local load OK: 94944 rows; qa final answers 3600; complete rows 5798 (90s)
+DRY RUN: not uploading

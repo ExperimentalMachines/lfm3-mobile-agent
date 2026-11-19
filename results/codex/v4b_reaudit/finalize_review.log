@@ -1,0 +1,72 @@
+{
+  "statistics": {
+    "answer_error": {
+      "k": 4,
+      "n": 40,
+      "rate": 0.1,
+      "wilson_95": [
+        0.03957952868260638,
+        0.23051775227522298
+      ]
+    },
+    "goal_leak": {
+      "k": 2,
+      "n": 40,
+      "rate": 0.05,
+      "wilson_95": [
+        0.013820667386148344,
+        0.16503877369140962
+      ]
+    },
+    "navigation_problem": {
+      "k": 1,
+      "n": 40,
+      "rate": 0.025,
+      "wilson_95": [
+        0.0044268315026814095,
+        0.1288136896347409
+      ]
+    }
+  },
+  "weighted": {
+    "answer_error": {
+      "rate": 0.13704945515507125,
+      "approximate_stratified_wilson_mover_95": [
+        0.05546900634187363,
+        0.36570835701461735
+      ]
+    },
+    "goal_leak": {
+      "rate": 0.0023051131601005866,
+      "approximate_stratified_wilson_mover_95": [
+        0.0009505242275873651,
+        0.24385632079646288
+      ]
+    },
+    "navigation_problem": {
+      "rate": 0.017078792958927076,
+      "approximate_stratified_wilson_mover_95": [
+        0.003114301555733943,
+        0.2582654118795211
+      ]
+    }
+  },
+  "builder": {
+    "raw_labels": 3255,
+    "strict_rejected": 99,
+    "guard_rejected": 500,
+    "literal_leak_rejected": 134,
+    "expected_accepted": 2522,
+    "actual_unique_train_dev_qa": 2522,
+    "missing": [],
+    "unexpected": [],
+    "qa_goal_mismatches": [],
+    "candidate_image_mismatches": [],
+    "direct_answer2_mismatches": [
+      "androidcontrol/396"
+    ],
+    "dev_complete_expected": 80,
+    "dev_complete_set_mismatch": [],
+    "old_information_controls_absent": true
+  }
+}

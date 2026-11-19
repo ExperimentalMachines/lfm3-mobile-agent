@@ -1,0 +1,83 @@
+[
+  {
+    "arm": "v4",
+    "task": "MarkorCreateNoteAndSms",
+    "file": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/MarkorCreateNoteAndSms_0.pkl.gz",
+    "run_time": 9.056843996047974,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 245, in _run_task\n    task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/composite/markor_sms.py\", line 58, in initialize_task\n    self.sms_task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 238, in initialize_task\n    android_time = self.get_android_time(env.controller)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 232, in get_android_time\n    return int(adb_output.generic.output.strip()) * 1000\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: b'I1118 10:36:16.399909 6914497 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(57, generation: 1)\\n1697384041'\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v4",
+    "task": "SimpleCalendarNextEvent",
+    "file": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/SimpleCalendarNextEvent_0.pkl.gz",
+    "run_time": 6.846548080444336,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 245, in _run_task\n    task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/information_retrieval/information_retrieval.py\", line 95, in initialize_task\n    calendar_utils_ir.setup_task_state(\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/information_retrieval/calendar_utils.py\", line 155, in setup_task_state\n    utils.add_events(events, env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/calendar/calendar_utils.py\", line 67, in add_events\n    sqlite_utils.insert_rows_to_remote_db(\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/utils/sqlite_utils.py\", line 211, in insert_rows_to_remote_db\n    env.controller.push_file(local_db_path, remote_db_file_path, timeout_sec)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py\", line 283, in push_file\n    file_utils.clear_directory(remote_db_directory, self)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/utils/file_utils.py\", line 136, in clear_directory\n    raise RuntimeError(f\"Failed to clear directory {directory_path} (verified non-empty).\")\nRuntimeError: Failed to clear directory /data/data/com.simplemobiletools.calendar.pro/databases (verified non-empty).\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v4",
+    "task": "SimpleSmsSendClipboardContent",
+    "file": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/SimpleSmsSendClipboardContent_0.pkl.gz",
+    "run_time": 86.08188104629517,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 130, in was_sent\n    msg_number = fields[\"address\"].replace(\"-\", \"\").replace(\" \", \"\")\n                 ~~~~~~^^^^^^^^^^^\nKeyError: 'address'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 248, in _run_task\n    task_successful = task.is_successful(env)\n                      ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 260, in is_successful\n    sms_was_sent = was_sent(\n                   ^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 134, in was_sent\n    raise ValueError(\nValueError: Could not find the address, body, and date fields for message: I1118 12:43:09.545961 7673341 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(33, generation: 1)\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v4",
+    "task": "SimpleSmsSend",
+    "file": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/SimpleSmsSend_0.pkl.gz",
+    "run_time": 89.85618185997009,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 248, in _run_task\n    task_successful = task.is_successful(env)\n                      ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 264, in is_successful\n    current_time_ms=self.get_android_time(env.controller),\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 232, in get_android_time\n    return int(adb_output.generic.output.strip()) * 1000\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: b'I1118 12:41:50.943249 7666085 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(22, generation: 1)\\n1697384129'\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v3",
+    "task": "RetroCreatePlaylist",
+    "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/RetroCreatePlaylist_0.pkl.gz",
+    "run_time": 4.555361986160278,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 245, in _run_task\n    task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/retro_music.py\", line 153, in initialize_task\n    user_data_generation.write_mp3_file_to_device(\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/utils/user_data_generation.py\", line 345, in write_mp3_file_to_device\n    _create_test_mp3(\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/utils/user_data_generation.py\", line 322, in _create_test_mp3\n    _ = tone.export(\n        ^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/pydub/audio_segment.py\", line 970, in export\n    raise CouldntEncodeError(\npydub.exceptions.CouldntEncodeError: Encoding failed. ffmpeg/avlib returned error code: -5\n\nCommand:['ffmpeg', '-y', '-f', 'wav', '-i', '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpiz11eelb', '-metadata', 'artist=Charlotte', '-metadata', 'title=Waves of Change', '-id3v2_version', '4', '-f', 'mp3', '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpin0s2b5t']\n\nOutput from ffmpeg/avlib:\n\n\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v3",
+    "task": "SimpleSmsSendReceivedAddress",
+    "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleSmsSendReceivedAddress_0.pkl.gz",
+    "run_time": 150.0403950214386,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 130, in was_sent\n    msg_number = fields[\"address\"].replace(\"-\", \"\").replace(\" \", \"\")\n                 ~~~~~~^^^^^^^^^^^\nKeyError: 'address'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 248, in _run_task\n    task_successful = task.is_successful(env)\n                      ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 260, in is_successful\n    sms_was_sent = was_sent(\n                   ^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 134, in was_sent\n    raise ValueError(\nValueError: Could not find the address, body, and date fields for message: I1118 00:33:59.586717 4648060 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(70, generation: 1)\nNo result found.\n\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v3",
+    "task": "SimpleSmsSend",
+    "file": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/SimpleSmsSend_0.pkl.gz",
+    "run_time": 7.2088048458099365,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 130, in was_sent\n    msg_number = fields[\"address\"].replace(\"-\", \"\").replace(\" \", \"\")\n                 ~~~~~~^^^^^^^^^^^\nKeyError: 'address'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 245, in _run_task\n    task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 243, in initialize_task\n    if was_sent(\n       ^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 134, in was_sent\n    raise ValueError(\nValueError: Could not find the address, body, and date fields for message: I1118 00:29:22.874509 4634696 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(60, generation: 1)\nNo result found.\n\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v1",
+    "task": "RetroPlayingQueue",
+    "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/RetroPlayingQueue_0.pkl.gz",
+    "run_time": 224.87194514274597,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 248, in _run_task\n    task_successful = task.is_successful(env)\n                      ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/retro_music.py\", line 204, in is_successful\n    queue = _get_playing_queue(env)\n            ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/retro_music.py\", line 92, in _get_playing_queue\n    result = sqlite_utils.execute_query(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/utils/sqlite_utils.py\", line 43, in execute_query\n    raw_rows = cursor.execute(query).fetchall()\n               ^^^^^^^^^^^^^^^^^^^^^\nsqlite3.OperationalError: no such table: playing_queue\n",
+    "seed": null,
+    "episode_length": null
+  },
+  {
+    "arm": "v1",
+    "task": "SimpleSmsSendClipboardContent",
+    "file": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/SimpleSmsSendClipboardContent_0.pkl.gz",
+    "run_time": 1.7142200469970703,
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py\", line 245, in _run_task\n    task.initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/single/sms.py\", line 169, in initialize_task\n    super().initialize_task(env)\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 238, in initialize_task\n    android_time = self.get_android_time(env.controller)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alpha/lfm3-android/android_world/android_world/task_evals/common_validators/sms_validators.py\", line 232, in get_android_time\n    return int(adb_output.generic.output.strip()) * 1000\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: b'I1117 05:46:38.687837 5689461 ev_poll_posix.cc:588] FD from fork parent still in poll list: fd(56, generation: 1)\\n1697384040'\n",
+    "seed": null,
+    "episode_length": null
+  }
+]

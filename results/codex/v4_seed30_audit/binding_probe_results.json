@@ -1,0 +1,30 @@
+{
+  "actual_manifest_hash_consistent": true,
+  "actual_row_hashes_consistent": true,
+  "probes": [
+    {
+      "field": "prompt",
+      "original": "v4:9dffb9ee9259",
+      "probe": "v1",
+      "accepted_by_gate_prediction_validator": true
+    },
+    {
+      "field": "max_pixels",
+      "original": 774400,
+      "probe": 65536,
+      "accepted_by_gate_prediction_validator": true
+    },
+    {
+      "field": "model_fingerprint",
+      "original": "81c38520e749e34b",
+      "probe": "different-weights",
+      "accepted_by_gate_prediction_validator": true
+    },
+    {
+      "field": "config_hash",
+      "original": "8c0b8e6de69a4c6a",
+      "probe": "wrong-config-hash",
+      "accepted_by_gate_prediction_validator": true
+    }
+  ]
+}

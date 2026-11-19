@@ -1,0 +1,68 @@
+{
+  "train_src_rows": 4934,
+  "train_out_rows": 5964,
+  "qa_rows": 1081,
+  "qa_prefix_rows": 855,
+  "qa_prefix_intents_unchanged": 855,
+  "schema_preserved": true,
+  "metadata_preserved": true,
+  "original_dev_img_sha_train_overlap": 0,
+  "new_dev_vs_existing_dev_img_sha_overlap": 0,
+  "qa_final_count": 226,
+  "dev_counts": {
+    "dev_answer": 11,
+    "dev_complete": 11
+  },
+  "train_img_sha_dev_overlap": 0,
+  "dev_pair_same_img_sha": true,
+  "dev_goal_examples": [
+    {
+      "episode_id": "7390",
+      "goal": "Goal: Share the field trip slide with dbwscratch.test.id3@gmail.com via Gmail"
+    },
+    {
+      "episode_id": "4084",
+      "goal": "Goal: Find modes of transportation from Dubai to Hungary."
+    },
+    {
+      "episode_id": "7558",
+      "goal": "Goal: Show me the currency exchange rates of euro and USD in the past week on the Currency Plus app."
+    },
+    {
+      "episode_id": "13959",
+      "goal": "Goal: I want to view the weather observations in detail for Orleans; therefore, check the weather map."
+    },
+    {
+      "episode_id": "7708",
+      "goal": "Goal: I need to make pizza tonight and I'm out of tomato stock, so I'd want to get 500g of tomatoes via the Blinkit app."
+    }
+  ],
+  "qa_prefix_example": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a phone-use agent operating an Android phone to complete the user's goal.\nEach turn you see the goal, the installed apps, your previous steps, and the current screenshot. Reply with ONE next action as JSON.\nCoordinates are integers normalized to 0-1000 (x from left, y from top) of the screenshot.\nActions:\n{\"action_type\":\"click\",\"point_2d\":[x,y]}\n{\"action_type\":\"long_press\",\"point_2d\":[x,y]}\n{\"action_type\":\"input_text\",\"text\":\"...\"}  (types into the focused field)\n{\"action_type\":\"scroll\",\"direction\":\"up|down|left|right\"}  (down = reveal content below)\n{\"action_type\":\"open_app\",\"app_name\":\"...\"}  (app_name must be one of the installed apps)\n{\"action_type\":\"navigate_back\"}\n{\"action_type\":\"navigate_home\"}\n{\"action_type\":\"keyboard_enter\"}\n{\"action_type\":\"wait\"}\n{\"action_type\":\"answer\",\"text\":\"...\"}  (if the goal asks a question: the final reply, as short as possible and in the requested format; ends the task)\n{\"action_type\":\"status\",\"goal_status\":\"complete|infeasible\"}  (finish a goal that asks for no information; never use it instead of answering a question)",
+        "reasoning_content": null
+      },
+      {
+        "role": "user",
+        "content": "Goal: set up an account for me on the FitAI app and enter my details. Gender:female\", height: 155\", weight: \"60kg\", age: \"48 years goal: \"keep Fit\" Name- \"Amelia\" Experience: \"Totally newbie\" Equipment-\"Full Gym\", then answer: What is shown? Reply with just the name.\nInstalled apps: 1Weather, Algeo Calculator, BigOven, Blinkit, Dookanti, DoorDash, eBay, English Dictionary, Fitbit, Groupon, Grubhub, idealista, Klook, Omio, Pizza Hut, PlantIn, Pro 7-Zip, Radio Garden, Simple Radio, Skype, Spendee, Sports Direct, Trovit Homes, Wanderlog\nPrevious steps:\n9. Click on the \"Continue\" Tab at the bottom. -> {\"action_type\":\"click\",\"point_2d\":[500,924]}\n10. Swipe the  Weight Chart to set  weight at \"60 Kg\" -> {\"action_type\":\"scroll\",\"direction\":\"right\"}\n11. Swipe the  Weight Chart to set  weight at \"60 Kg\" -> {\"action_type\":\"wait\"}\n12. Swipe the  Weight Chart to set  weight at \"60 Kg\" -> {\"action_type\":\"scroll\",\"direction\":\"right\"}\n13. Swipe the  Weight Chart to set  weight at \"60 Kg\" -> {\"action_type\":\"scroll\",\"direction\":\"right\"}\n14. Swipe the  Weight Chart to set  weight at \"60 Kg\" -> {\"action_type\":\"scroll\",\"direction\":\"right\"}\n15. Click on the \"Continue\" Tab at the bottom. -> {\"action_type\":\"click\",\"point_2d\":[500,924]}\n16. Swipe up the Age Chart to set the age at \"48\". -> {\"action_type\":\"scroll\",\"direction\":\"down\"}\nWhat is the next action?",
+        "reasoning_content": null
+      },
+      {
+        "role": "assistant",
+        "content": "{\"action_type\":\"scroll\",\"direction\":\"down\"}",
+        "reasoning_content": "Swipe up the Age Chart to set the age at \"48\"."
+      }
+    ],
+    "source": "androidcontrol",
+    "split": "train",
+    "episode_id": "17782#qa",
+    "step_idx": 16,
+    "gt_action": "{\"action_type\": \"scroll\", \"direction\": \"down\"}",
+    "is_terminal": false,
+    "orig_w": 1080,
+    "orig_h": 2400,
+    "img_sha": "551e91d9244d7927a3396db0752b1aa241cfda11f4d91d52c94cdc18b35886f6"
+  }
+}

@@ -1,0 +1,611 @@
+{
+  "static_class_templates": 57,
+  "ir_prompts": 25,
+  "dynamic_goal_literal_templates": 18,
+  "unique_goals": 26750,
+  "exact_matches": [],
+  "eight_word_literal_matches": [],
+  "templates": [
+    {
+      "file": "android_world/android_world/task_evals/composite/markor_sms.py",
+      "line": 39,
+      "class": "MarkorCreateNoteAndSms",
+      "template": "Create a new note in Markor named {file_name} with the following text: {text}. Share the entire content of the note with the phone number {number} via SMS using Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/composite/system.py",
+      "line": 32,
+      "class": "TurnOnWifiAndOpenApp",
+      "template": "Turn on Wifi, then open the {app_name} app"
+    },
+    {
+      "file": "android_world/android_world/task_evals/composite/system.py",
+      "line": 70,
+      "class": "TurnOffWifiAndTurnOnBluetooth",
+      "template": "Turn off WiFi, then enable bluetooth"
+    },
+    {
+      "file": "android_world/android_world/task_evals/miniwob/miniwob_base.py",
+      "line": 94,
+      "class": "MiniWoBTask",
+      "template": "Follow the instructions shown on the top of the screen: {utterance}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/audio_recorder.py",
+      "line": 44,
+      "class": "AudioRecorderRecordAudio",
+      "template": "Record an audio clip using Audio Recorder app and save it."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/audio_recorder.py",
+      "line": 90,
+      "class": "AudioRecorderRecordAudioWithFileName",
+      "template": "Record an audio clip and save it with name \"{file_name}\" using Audio Recorder app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 95,
+      "class": "SimpleCalendarAddOneEvent",
+      "template": "In Simple Calendar Pro, create a calendar event on {year}-{month}-{day} at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 152,
+      "class": "SimpleCalendarAddOneEventRelativeDay",
+      "template": "In Simple Calendar Pro, create a calendar event for this {day_of_week} at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 186,
+      "class": "SimpleCalendarAddOneEventTomorrow",
+      "template": "In Simple Calendar Pro, create a calendar event for tomorrow at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 206,
+      "class": "SimpleCalendarAddOneEventInTwoWeeks",
+      "template": "In Simple Calendar Pro, create a calendar event in two weeks from today at {hour}h with the title '{event_title}' and the description '{event_description}'. The event should last for {duration_mins} mins."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 225,
+      "class": "SimpleCalendarAddRepeatingEvent",
+      "template": "In Simple Calendar Pro, create a recurring calendar event titled '{event_title}' starting on {year}-{month}-{day} at {hour}h. The event recurs {repeat_rule}, forever, and lasts for {duration_mins} minutes each occurrence. The event description should be '{event_description}'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 275,
+      "class": "SimpleCalendarDeleteEvents",
+      "template": "In Simple Calendar Pro, delete all the calendar events on {year}-{month}-{day}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 331,
+      "class": "SimpleCalendarDeleteOneEvent",
+      "template": "In Simple Calendar Pro, delete the calendar event on {year}-{month}-{day} at {hour}h with the title '{event_title}'"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/calendar/calendar.py",
+      "line": 378,
+      "class": "SimpleCalendarDeleteEventsOnRelativeDay",
+      "template": "In Simple Calendar Pro, delete all events scheduled for this {day_of_week}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/camera.py",
+      "line": 55,
+      "class": "CameraTakeVideo",
+      "template": "Take one video."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/camera.py",
+      "line": 101,
+      "class": "CameraTakePhoto",
+      "template": "Take one photo."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/clock.py",
+      "line": 138,
+      "class": "ClockTimerEntry",
+      "template": "Create a timer with {hours} hours, {minutes} minutes, and {seconds} seconds. Do not start the timer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/clock.py",
+      "line": 192,
+      "class": "ClockStopWatchPausedVerify",
+      "template": "Pause the stopwatch."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/clock.py",
+      "line": 229,
+      "class": "ClockStopWatchRunning",
+      "template": "Run the stopwatch."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/contacts.py",
+      "line": 32,
+      "class": "ContactsAddContact",
+      "template": "Create a new contact for {name}. Their number is {number}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/contacts.py",
+      "line": 156,
+      "class": "ContactsNewContactDraft",
+      "template": "Go to the new contact screen and enter the following details: First Name: {first}, Last Name: {last}, Phone: {phone}, Phone Label: {phone_label}. Do NOT hit save."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/files.py",
+      "line": 34,
+      "class": "FilesMoveFile",
+      "template": "Move the file {file_name} from {source_folder} within the sdk_gphone_x86_64 storage area to the {destination_folder} within the same sdk_gphone_x86_64 storage area in the Android filesystem."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/files.py",
+      "line": 89,
+      "class": "FilesDeleteFile",
+      "template": "Delete the file {file_name} from the Android filesystem located in the {subfolder} folder within the sdk_gphone_x86_64 storage area."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 74,
+      "class": "MarkorMoveNote",
+      "template": "In Markor, move the note {file_name} from {source_folder} to {destination_folder}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 136,
+      "class": "MarkorCreateFolder",
+      "template": "Create a new folder in Markor named {folder_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 290,
+      "class": "MarkorDeleteNote",
+      "template": "Delete the note in Markor named {file_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 322,
+      "class": "MarkorDeleteNewestNote",
+      "template": "Delete the newest note in Markor."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 384,
+      "class": "MarkorDeleteAllNotes",
+      "template": "Delete all my notes in Markor."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 421,
+      "class": "MarkorCreateNote",
+      "template": "Create a new note in Markor named {file_name} with the following text: {text}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 465,
+      "class": "MarkorCreateNoteFromClipboard",
+      "template": "Create a note in Markor named {file_name}. Perform a paste operation in the note and save the note."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 535,
+      "class": "MarkorMergeNotes",
+      "template": "Merge the contents of Markor notes {file1_name}, {file2_name} and {file3_name} (in the same order) into a new Markor note named {new_file_name} and save it. Add a new line between the content of each note."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 666,
+      "class": "MarkorChangeNoteContent",
+      "template": "Update the content of {original_name} to \"{updated_content}\" in Markor and change its name to {new_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 748,
+      "class": "MarkorAddNoteHeader",
+      "template": "Update the Markor note {original_name} by adding the following text, along with a new blank line before the existing content: \"{header}\", and rename it to {new_name}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 829,
+      "class": "MarkorTranscribeReceipt",
+      "template": "Create a file in Markor, called receipt.md with the transactions from the receipt.png. Use Simple Gallery to view the receipt. Please enter transactions in csv format including the header \"Date, Item, Amount\"."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/markor.py",
+      "line": 884,
+      "class": "MarkorTranscribeVideo",
+      "template": "Transcribe the contents of video {video_name} by watching it in VLC player (located in Download) and writing the sequence of strings shown on each frame to the text file {file_name} in Markor as a comma separated list. For example, if the first frame shows the text \"edna\" and the second frame shows the text \"pineapple\", then the text file should contain only the following text: \"edna, pineapple\"."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/osmand.py",
+      "line": 219,
+      "class": "OsmAndFavorite",
+      "template": "Add a favorite location marker for {location} in the OsmAnd maps app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/osmand.py",
+      "line": 297,
+      "class": "OsmAndMarker",
+      "template": "Add a location marker for {location} in the OsmAnd maps app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 48,
+      "class": "MarkorCallApartment",
+      "template": "Call the number for the apartment name {name}. The number is in apartments.md file in Markor. Ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 78,
+      "class": "PhoneMakeCall",
+      "template": "Make a phone call to the number {phone_number} and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 91,
+      "class": "PhoneReturnMissedCall",
+      "template": "Return the call I just missed and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 110,
+      "class": "PhoneRedialNumber",
+      "template": "Re-dial the number I was just talking to and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 130,
+      "class": "PhoneCallTextSender",
+      "template": "Call the number that just texted me and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/phone.py",
+      "line": 151,
+      "class": "PhoneAnswerCall",
+      "template": "Answer the incoming phone call and ensure the In-Call UI is displayed with options like 'Hold'."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/simple_draw_pro.py",
+      "line": 33,
+      "class": "SimpleDrawProCreateDrawing",
+      "template": "Create a new drawing in Simple Draw Pro. Name it {file_name}. Save it in the Pictures folder within the sdk_gphone_x86_64 storage area."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/simple_gallery_pro.py",
+      "line": 34,
+      "class": "SaveCopyOfReceiptTaskEval",
+      "template": "In Simple Gallery Pro, copy {file_name} in DCIM and save a copy with the same name in Download"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 31,
+      "class": "SimpleSmsSend",
+      "template": "Send a text message using Simple SMS Messenger to {number} with message: {message}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 44,
+      "class": "SimpleSmsSendAfterCall",
+      "template": "Send a text message using Simple SMS Messenger to the number I just missed a call from with message: {message}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 60,
+      "class": "SimpleSmsReplyMostRecent",
+      "template": "Reply to the most recent text message using Simple SMS Messenger with message: {message}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 119,
+      "class": "SimpleSmsReply",
+      "template": "Reply to {number} with message: {message} in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 163,
+      "class": "SimpleSmsSendClipboardContent",
+      "template": "Send a message to {number} with the clipboard content in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 177,
+      "class": "SimpleSmsSendReceivedAddress",
+      "template": "Text the address of the event to {name1} that {name2} just sent me in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/sms.py",
+      "line": 250,
+      "class": "SimpleSmsResend",
+      "template": "Resend the message I just sent to {name} in Simple SMS Messenger"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 39,
+      "class": "_SystemBrightnessToggle",
+      "template": "Turn brightness to the {max_or_min} value."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 129,
+      "class": "_SystemWifiToggle",
+      "template": "Turn wifi {on_or_off}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 221,
+      "class": "_SystemBluetoothToggle",
+      "template": "Turn bluetooth {on_or_off}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 310,
+      "class": "SystemCopyToClipboard",
+      "template": "Copy the following text to the clipboard: {clipboard_content}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/system.py",
+      "line": 474,
+      "class": "OpenAppTaskEval",
+      "template": "Open the {app_name} app. Clear any pop-ups that may appear by granting all permissions that are required."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 6,
+      "class": "IR prompt",
+      "template": "What events do I have {date} in Simple Calendar Pro? Answer with the titles only. If there are multiple titles, format your answer as a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 127,
+      "class": "IR prompt",
+      "template": "What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 241,
+      "class": "IR prompt",
+      "template": "What is on my schedule for {date} at {time} in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 364,
+      "class": "IR prompt",
+      "template": "Do I have any events {date} in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 476,
+      "class": "IR prompt",
+      "template": "When is my next meeting with {person} in Simple Calendar Pro? Express your answer in the format <month name> <day> <year> <hour in 24-hour format>:<minutes>."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 586,
+      "class": "IR prompt",
+      "template": "What is the location of my {title} event in Simple Calendar Pro? Answer with the location only."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 715,
+      "class": "IR prompt",
+      "template": "What events do I have in the next week in Simple Calendar Pro? Assume the week starts from Monday. Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 859,
+      "class": "IR prompt",
+      "template": "What is my first event after {time} {date} in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 967,
+      "class": "IR prompt",
+      "template": "Do I have any events between {start_time} and 8pm {date} in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1080,
+      "class": "IR prompt",
+      "template": "What tasks do I have due {date} in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1198,
+      "class": "IR prompt",
+      "template": "What are my high priority tasks in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1318,
+      "class": "IR prompt",
+      "template": "Which tasks with high priority are due {date} in the Tasks app? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1399,
+      "class": "IR prompt",
+      "template": "How many tasks do I have due next week in Tasks app? Assume the week starts from Monday. Express your answer as a single integer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1528,
+      "class": "IR prompt",
+      "template": "Which tasks have I completed for {date} in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1675,
+      "class": "IR prompt",
+      "template": "What incomplete tasks do I have still have to do by {date} in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 1827,
+      "class": "IR prompt",
+      "template": "What activities did I do {date} in the OpenTracks app? Answer with the activity type only. If there are multiple types, format your answer in a comma separated list."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 2055,
+      "class": "IR prompt",
+      "template": "How many {category} activities did I do this week in the OpenTracks app? Assume the week starts from Monday. Express your answer as a single integer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 2279,
+      "class": "IR prompt",
+      "template": "How long was my {category} activity {date} in the OpenTracks app? Express your answer in minutes as a single integer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 2489,
+      "class": "IR prompt",
+      "template": "What was the longest distance covered in a {category} activity in the OpenTracks app this week? Assume the week starts from Monday. Express your answer as a single number in meters rounded to the nearest integer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 2710,
+      "class": "IR prompt",
+      "template": "What was the total duration of {category} activities in the OpenTracks app this week? Assume the week starts from Monday. Express your answer in minutes as a single integer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 2933,
+      "class": "IR prompt",
+      "template": "What was the total distance covered for {category} activities in the OpenTracks app from {start_date} to {end_date}? Express your answer as a single number in meters rounded to the nearest integer."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 3171,
+      "class": "IR prompt",
+      "template": "What quantity of {ingredient} do I need for the recipe '{title}' in the Joplin app? Express your answer in the format <amount> <unit> where both the amount and unit exactly match the format in the recipe."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 3262,
+      "class": "IR prompt",
+      "template": "How many attendees were present in the meeting titled '{title}' in the Joplin app? Express your answer as just a single number."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 3361,
+      "class": "IR prompt",
+      "template": "Is the note titled '{title}' in the Joplin app marked as a todo item? Respond with either 'True' if it is a todo or 'False' if not."
+    },
+    {
+      "file": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "line": 3436,
+      "class": "IR prompt",
+      "template": "How many to-dos do I have in the '{folder}' folder in the Joplin app? Express your answer as just a single number."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/expense.py",
+      "line": 82,
+      "class": "dynamic goal literal",
+      "template": "Delete the following expenses from {DYNAMIC}: {DYNAMIC}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/expense.py",
+      "line": 155,
+      "class": "dynamic goal literal",
+      "template": "Delete all but one of any expenses in {DYNAMIC} that are exact duplicates, ensuring at least one instance of each unique expense remains."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/expense.py",
+      "line": 262,
+      "class": "dynamic goal literal",
+      "template": "Add the following expenses into the {DYNAMIC}:\n{DYNAMIC}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/expense.py",
+      "line": 339,
+      "class": "dynamic goal literal",
+      "template": "Go through the transactions in my_expenses.txt in Markor. Log the reimbursable transactions in the {DYNAMIC}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/expense.py",
+      "line": 375,
+      "class": "dynamic goal literal",
+      "template": "Add the expenses from expenses.jpg in Simple Gallery Pro to {DYNAMIC}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/osmand.py",
+      "line": 414,
+      "class": "dynamic goal literal",
+      "template": "Save a track with waypoints {DYNAMIC} in the OsmAnd maps app in the same order as listed."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/recipe.py",
+      "line": 66,
+      "class": "dynamic goal literal",
+      "template": "Delete the following recipes from Broccoli app: {DYNAMIC}."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/recipe.py",
+      "line": 144,
+      "class": "dynamic goal literal",
+      "template": "Delete the recipes from Broccoli app that use {DYNAMIC} in the directions."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/recipe.py",
+      "line": 352,
+      "class": "dynamic goal literal",
+      "template": "Add the following recipes into the Broccoli app:\n{DYNAMIC}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/recipe.py",
+      "line": 470,
+      "class": "dynamic goal literal",
+      "template": "Add the recipes from recipes.txt in Markor that take {DYNAMIC} to prepare into the Broccoli recipe app."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/retro_music.py",
+      "line": 143,
+      "class": "dynamic goal literal",
+      "template": "Create a playlist in Retro Music titled \"{DYNAMIC}\" with the following songs, in order: {DYNAMIC}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/retro_music.py",
+      "line": 199,
+      "class": "dynamic goal literal",
+      "template": "Add the following songs, in order, {DYNAMIC} to my playing queue in Retro music."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/retro_music.py",
+      "line": 219,
+      "class": "dynamic goal literal",
+      "template": "Create a playlist in Retro Music titled \"{DYNAMIC}\" with the following songs, in order: {DYNAMIC}. Then export the playlist to the Downloads directory on the device."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/retro_music.py",
+      "line": 255,
+      "class": "dynamic goal literal",
+      "template": "Create a playlist in Retro Music titled \"{DYNAMIC}\" with a duration between 45 and 50 minutes using the provided songs."
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/vlc.py",
+      "line": 111,
+      "class": "dynamic goal literal",
+      "template": "Create a playlist titled \"{DYNAMIC}\" with the following files in VLC (located in Internal Memory/VLCVideos), in order: {DYNAMIC}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/vlc.py",
+      "line": 205,
+      "class": "dynamic goal literal",
+      "template": "Create a playlist titled \"{DYNAMIC}\" with the following files in VLC (located in Internal Memory/VLCVideos), in order: {DYNAMIC}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/vlc.py",
+      "line": 210,
+      "class": "dynamic goal literal",
+      "template": "create a playlist titled \"{DYNAMIC}\" with the following files in VLC, in order: {DYNAMIC}"
+    },
+    {
+      "file": "android_world/android_world/task_evals/single/vlc.py",
+      "line": 213,
+      "class": "dynamic goal literal",
+      "template": "{DYNAMIC}. And then, {DYNAMIC}."
+    }
+  ],
+  "scope": "Public local task source only. Placeholders matched as wildcards; exact scan requires at least five fixed words. Eight-word literal scan includes shorter dynamic fragments. Cannot exclude paraphrases, all composed runtime prompts, or upstream model exposure."
+}

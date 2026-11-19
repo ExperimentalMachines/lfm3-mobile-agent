@@ -1,0 +1,200 @@
+{
+  "inventory": 1166,
+  "reruns": 122,
+  "exceptions_by_phase": {
+    "setup": 124,
+    "agent": 1,
+    "reset_before_step1": 2,
+    "scoring": 2
+  },
+  "goal_differences": [],
+  "successes_review": 88,
+  "primary": {
+    "mean_diff_pp": 2.0114942528735633,
+    "ci95_pp": [
+      -4.477611940298507,
+      8.51063829787234
+    ],
+    "p_mc": 0.6023397660233977,
+    "p_exact_zero": 0.5981846640461299,
+    "n_instances": 348,
+    "n_clusters": 116,
+    "non_inferior": true,
+    "cluster_se_pp": 3.246977171698515,
+    "cluster_sum_histogram": {
+      "1": 13,
+      "0": 77,
+      "3": 6,
+      "2": 2,
+      "-2": 6,
+      "-3": 2,
+      "-1": 10
+    },
+    "totals": {
+      "v4": 54,
+      "guiowl": 47
+    },
+    "per_seed": {
+      "7": {
+        "n": 116,
+        "first_only": 15,
+        "second_only": 13,
+        "both": 3,
+        "mcnemar_p": 0.8505540192127228
+      },
+      "1234": {
+        "n": 116,
+        "first_only": 13,
+        "second_only": 9,
+        "both": 4,
+        "mcnemar_p": 0.5234670639038086
+      },
+      "2026": {
+        "n": 116,
+        "first_only": 11,
+        "second_only": 10,
+        "both": 8,
+        "mcnemar_p": 1.0
+      }
+    }
+  },
+  "sensitivities": {
+    "B": {
+      "mean_diff_pp": 2.932551319648094,
+      "ci95_pp": [
+        -3.389830508474576,
+        9.289617486338798
+      ],
+      "p_mc": 0.40955904409559046,
+      "p_exact_zero": 0.40756802385658375,
+      "n_instances": 341,
+      "n_clusters": 116,
+      "non_inferior": true,
+      "cluster_se_pp": 3.156741682870639,
+      "cluster_sum_histogram": {
+        "1": 13,
+        "0": 77,
+        "3": 6,
+        "2": 2,
+        "-1": 12,
+        "-2": 5,
+        "-3": 1
+      },
+      "totals": {
+        "v4": 54,
+        "guiowl": 44
+      },
+      "per_seed": {
+        "7": {
+          "n": 116,
+          "first_only": 15,
+          "second_only": 13,
+          "both": 3,
+          "mcnemar_p": 0.8505540192127228
+        },
+        "1234": {
+          "n": 110,
+          "first_only": 13,
+          "second_only": 7,
+          "both": 4,
+          "mcnemar_p": 0.26317596435546875
+        },
+        "2026": {
+          "n": 115,
+          "first_only": 11,
+          "second_only": 9,
+          "both": 8,
+          "mcnemar_p": 0.8238029479980469
+        }
+      }
+    },
+    "C": {
+      "mean_diff_pp": -2.8735632183908044,
+      "ci95_pp": [
+        -8.333333333333332,
+        2.6143790849673203
+      ],
+      "p_mc": 0.3615638436156384,
+      "p_exact_zero": 0.3513043969287537,
+      "n_instances": 348,
+      "n_clusters": 116,
+      "non_inferior": false,
+      "cluster_se_pp": 2.7551827652937666,
+      "cluster_sum_histogram": {
+        "1": 8,
+        "0": 79,
+        "2": 7,
+        "-1": 14,
+        "-2": 6,
+        "-3": 2
+      },
+      "totals": {
+        "v4": 37,
+        "guiowl": 47
+      },
+      "per_seed": {
+        "7": {
+          "n": 116,
+          "first_only": 15,
+          "second_only": 13,
+          "both": 3,
+          "mcnemar_p": 0.8505540192127228
+        },
+        "1234": {
+          "n": 116,
+          "first_only": 0,
+          "second_only": 13,
+          "both": 0,
+          "mcnemar_p": 0.000244140625
+        },
+        "2026": {
+          "n": 116,
+          "first_only": 11,
+          "second_only": 10,
+          "both": 8,
+          "mcnemar_p": 1.0
+        }
+      }
+    },
+    "D": {
+      "mean_diff_pp": 1.293103448275862,
+      "ci95_pp": [
+        -5.769230769230769,
+        8.333333333333332
+      ],
+      "p_mc": 0.8125187481251874,
+      "p_exact_zero": 0.808472261793213,
+      "n_instances": 232,
+      "n_clusters": 116,
+      "non_inferior": true,
+      "cluster_se_pp": 3.5414236890457236,
+      "cluster_sum_histogram": {
+        "1": 11,
+        "0": 79,
+        "2": 7,
+        "-1": 16,
+        "-2": 3
+      },
+      "totals": {
+        "v4": 37,
+        "guiowl": 34
+      },
+      "per_seed": {
+        "7": {
+          "n": 116,
+          "first_only": 15,
+          "second_only": 13,
+          "both": 3,
+          "mcnemar_p": 0.8505540192127228
+        },
+        "2026": {
+          "n": 116,
+          "first_only": 11,
+          "second_only": 10,
+          "both": 8,
+          "mcnemar_p": 1.0
+        }
+      }
+    }
+  }
+}

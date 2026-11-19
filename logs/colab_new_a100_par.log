@@ -1,0 +1,92 @@
+[colab] Creating session 'lfm3a100'...
+--- Logging error ---
+Traceback (most recent call last):
+  File "/Users/alpha/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/logging/__init__.py", line 1164, in emit
+    self.flush()
+  File "/Users/alpha/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/logging/__init__.py", line 1144, in flush
+    self.stream.flush()
+OSError: [Errno 28] No space left on device
+Call stack:
+  File "/Users/alpha/.local/bin/colab", line 10, in <module>
+    sys.exit(main())
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/colab_cli/cli.py", line 157, in main
+    app()
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/main.py", line 1126, in __call__
+    return get_command(self)(*args, **kwargs)
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/_click/core.py", line 809, in __call__
+    return self.main(*args, **kwargs)
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/core.py", line 1305, in main
+    return _main(
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/core.py", line 332, in _main
+    rv = self.invoke(ctx)
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/core.py", line 1227, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/_click/core.py", line 748, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/_click/core.py", line 490, in invoke
+    return callback(*args, **kwargs)
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/typer/main.py", line 1445, in wrapper
+    return callback(**use_params)
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/colab_cli/commands/session.py", line 167, in new
+    res = state.client.assign(
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/colab_cli/client.py", line 289, in assign
+    res = self._post_assignment(
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/colab_cli/client.py", line 358, in _post_assignment
+    return self._issue_request(
+  File "/Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-packages/colab_cli/client.py", line 236, in _issue_request
+    self.logger.debug(f"Response Body: {response.text}")
+Message: 'Response Body: <!DOCTYPE html>\n<html lang=en>\n  <meta charset=utf-8>\n  <meta name=viewport content="initial-scale=1, minimum-scale=1, width=device-width">\n  <title>Error 502 (Server Error)!!1</title>\n  <style>\n    *{margin:0;padding:0}html,code{font:15px/22px arial,sans-serif}html{background:#fff;color:#222;padding:15px}body{margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px}* > body{background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px}p{margin:11px 0 22px;overflow:hidden}ins{color:#777;text-decoration:none}a img{border:0}@media screen and (max-width:772px){body{background:none;margin-top:0;max-width:none;padding-right:0}}#logo{background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px}@media only screen and (min-resolution:192dpi){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}}@media only screen and (-webkit-min-device-pixel-ratio:2){#logo{background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%}}#logo{display:inline-block;height:54px;width:150px}\n  </style>\n  <a href=//www.google.com/><span id=l╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/commands/session.py:167 in new                                │
+│                                                                              │
+│   164 │                                                                      │
+│   165 │   typer.echo(f"[colab] Creating session '{name}'...")                │
+│   166 │   try:                                                               │
+│ ❱ 167 │   │   res = state.client.assign(                                     │
+│   168 │   │   │   uuid.uuid4(), variant=variant, accelerator=accelerator,    │
+│       shape=shape                                                            │
+│   169 │   │   )                                                              │
+│   170 │   except TooManyAssignmentsError:                                    │
+│                                                                              │
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/client.py:289 in assign                                       │
+│                                                                              │
+│   286 │   │   backoff = max(0.0, float(os.getenv("COLAB_CLI_RETRY_BACKOFF",  │
+│       "10")))                                                                │
+│   287 │   │   for attempt in range(retries + 1):                             │
+│   288 │   │   │   try:                                                       │
+│ ❱ 289 │   │   │   │   res = self._post_assignment(                           │
+│   290 │   │   │   │   │   notebook_hash, assignment.token, variant,          │
+│       accelerator, shape                                                     │
+│   291 │   │   │   │   )                                                      │
+│   292 │   │   │   │   break                                                  │
+│                                                                              │
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/client.py:358 in _post_assignment                             │
+│                                                                              │
+│   355 │   ) -> PostAssignmentResponse:                                       │
+│   356 │   │   url = self._build_assign_url(notebook_hash, variant,           │
+│       accelerator, shape)                                                    │
+│   357 │   │   headers = {COLAB_XSRF_TOKEN_HEADER["key"]: xsrf_token}         │
+│ ❱ 358 │   │   return self._issue_request(                                    │
+│   359 │   │   │   url, method="POST", headers=headers,                       │
+│       schema=PostAssignmentResponse                                          │
+│   360 │   │   )                                                              │
+│   361                                                                        │
+│                                                                              │
+│ /Users/alpha/.local/share/uv/tools/google-colab-cli/lib/python3.12/site-pack │
+│ ages/colab_cli/client.py:238 in _issue_request                               │
+│                                                                              │
+│   235 │   │   self.logger.debug(f"Response Headers: {response.headers}")     │
+│   236 │   │   self.logger.debug(f"Response Body: {response.text}")           │
+│   237 │   │   if not response.ok:                                            │
+│ ❱ 238 │   │   │   raise ColabRequestError(                   grep: stdout: No space left on device
+                │
+│   239 │   │   │   │   f"Failed to issue request {method} {endpoint}:         │
+│       {response.reason}",                                                    │
+│   240 │   │   │   │   request=response.request,                              │
+│   241 │   │   │   │   response=response,                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ColabRequestError: Failed to issue request POST 
+https://colab.research.google.com/tun/m/assign?nbh=63f05404_278c_4e71_9f53_ac853
+9663a31........&variant=GPU&accelerator=A100: Bad Gateway

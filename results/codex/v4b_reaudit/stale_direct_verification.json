@@ -1,0 +1,36 @@
+{
+  "current_row": {
+    "source": "androidcontrol",
+    "split": "train",
+    "episode_id": "396#qa",
+    "step_idx": 1,
+    "gt_action": "{\"action_type\": \"answer\", \"text\": \"3 hr 28 min\"}",
+    "is_terminal": true,
+    "orig_w": 1080,
+    "orig_h": 2400,
+    "img_sha": "c58542baa19864fabdf15b51f760412ac1dc46b51f3bf4e55660de2872dfba6e",
+    "file": "data/v4work/build/out/data/train-00003-of-00016.parquet",
+    "row": 5623,
+    "partition": "train",
+    "goal": "What's the biking time from Molenstraat to Ghent in Google Maps? Reply with just the time.",
+    "history": "1. Tap on the bicycle option -> {\"action_type\":\"click\",\"point_2d\":[893,197]}",
+    "answer": "3 hr 28 min",
+    "base_key": "androidcontrol/396",
+    "kind": "question",
+    "original_goal": "Please get\u00a0me the\u00a0biking directions from Molenstraat to Ghent.",
+    "question": "How long is the biking route?",
+    "direct_question": "What's the biking time from Molenstraat to Ghent in Google Maps?",
+    "teacher_answer": "3 hr 28 min",
+    "verify_answer": "3 hr 28 min",
+    "format": "Reply with just the time.",
+    "effective_kind": "question",
+    "answer_type": "number"
+  },
+  "direct_verification": {
+    "ok": true,
+    "reason": "verified",
+    "answer2": "3 hr 28"
+  },
+  "current_comparator_accepts": false,
+  "meaning": "Cached DIRECT_OK is consumed without rechecking answer2 under the revised comparator. This does not alone prove the retained gold is visually wrong."
+}

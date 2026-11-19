@@ -1,0 +1,39 @@
+{
+  "real_sqa_original_row": "data/train-00000-of-00016.parquet#219",
+  "original": "10:49 PM on Jan 31, 2017",
+  "short": "10:49 PM on Jan 31 2017",
+  "teacher_accepts": true,
+  "unmodified_builder_exception": "AssertionError: data/train-00000-of-00016.parquet#0",
+  "builder_stdout": "labels: 0 qa (0 train, 0 dev), 1 screenqa short; 0 dev episodes held out\ndownloaded 1 train + 0 dev shards (0s)\n",
+  "history_gap_selector_result": {
+    "rules": "Select AndroidControl train episodes to turn into navigate-then-answer episodes for v4 (runs locally, CPU only).\n\nInput: v3 training metadata (no images) written by the v4 build prep: data/v4work/v3_train_meta.parquet\nOutput: data/v4work/v4_candidates.json  [{key, shard, row_in_shard (final screen), goal, kind, split, n_steps, ...}]\n\nRules (all recorded in the output's \"rules\" block):\n  * AndroidControl only: the only source here with complete, contiguous episodes ending on a final screen\n    (a `status complete` row whose screenshot is the screen after the last action). GUI-Odyssey/AMEX rows are\n    step samples (~3 per episode) and cannot form a navigation prefix.\n  * last row = status complete at step >= 1, and its text history must number up to that step (rows are step samples\n    of the episode; the final row's prompt carries the full history, so it represents the whole navigation).\n  * contamination guard: drop episodes whose goal or any open_app name mentions an AndroidWorld app or app type\n    (names below, plus every launcher name AndroidWorld can resolve); conservative on purpose.\n  * kind = \"question\" if the original goal is information-seeking (check/view/find/...), else \"compound\"\n    (the original task stays in the goal and a question about the final screen is appended).\n  * dev split: 200 episodes held out from v4 training entirely (their original action version is removed too), and\n    their screenshots must not occur anywhere else in the training data (screen-disjoint by img_sha).\n",
+    "seed": 4,
+    "stats": {
+      "ac_episodes": 1,
+      "pool": 1,
+      "pool_question": 1,
+      "dev": 1,
+      "train": 0,
+      "dev_question": 1
+    },
+    "candidates": [
+      {
+        "key": "androidcontrol/synthetic_history_gap",
+        "source": "androidcontrol",
+        "episode_id": "synthetic_history_gap",
+        "shard": "data/train-00000-of-00016.parquet",
+        "row_in_shard": 1,
+        "img_sha": "1",
+        "goal": "Check the train destination in Trainline.",
+        "kind": "question",
+        "n_steps": 4,
+        "rows_present": 2,
+        "apps": [
+          "Trainline"
+        ],
+        "split": "dev"
+      }
+    ]
+  },
+  "teacher_bad_img_sha_asserted": "test"
+}

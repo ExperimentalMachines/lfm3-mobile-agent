@@ -1,0 +1,42 @@
+diff --git a/scripts/sealed_analysis.py b/scripts/sealed_analysis.py
+index 856ecfa..7a9b1c5 100644
+--- a/scripts/sealed_analysis.py
++++ b/scripts/sealed_analysis.py
+@@ -122,7 +122,11 @@ for s in SEEDS:
+     for arm, agent in ARMS.items():
+         data[(arm, s)] = load(f"results/androidworld_sealed/{arm}_seed{s}", agent)
+ # preregistered single re-run of infrastructure crashes before step 1: results/androidworld_sealed/<arm>_seed<s>_rerun
+-# replaces an original episode only if that episode was an exception and the re-run's goal text is identical
++# replaces an original episode only if that episode was an exception and the re-run's goal text is identical.
++# Exception (2026-11-19 16:20 entry in docs/PREREG_v4.md): information-retrieval templates reword their date parameter
++# ("October 22 2023" -> "this Sunday") inside initialize_task AFTER the device setup (android_world/.../information_retrieval
++# .py:85), so an episode that crashed in setup records the raw date. Such a re-run is accepted only if its goal equals
++# the goal of EVERY other arm on the same seed and template (i.e. it is the same paired instance).
+ SUBST = []
+ for s in SEEDS:
+     for arm, agent in ARMS.items():
+@@ -134,9 +138,13 @@ for s in SEEDS:
+         for t in ok2:
+             if not exc[t]:
+                 raise SystemExit(f"INPUT ERROR: re-run of {arm} seed {s} {t}, but the original was not an exception")
++            matched = "original"
+             if goal2[t] != goal[t]:
+-                raise SystemExit(f"INPUT ERROR: re-run goal differs for {arm} seed {s} {t}")
+-            SUBST.append({"arm": arm, "seed": s, "task": t, "rerun_success": ok2[t], "rerun_exception": exc2[t]})
++                if {data[(a, s)][2][t] for a in ARMS if a != arm} != {goal2[t]}:
++                    raise SystemExit(f"INPUT ERROR: re-run goal differs for {arm} seed {s} {t} (and from the other arms)")
++                matched = "other_arms (original crashed before the date rewording)"
++            SUBST.append({"arm": arm, "seed": s, "task": t, "rerun_success": ok2[t], "rerun_exception": exc2[t],
++                          "goal_matched": matched})
+             ok[t], exc[t] = ok2[t], exc2[t]
+ # seed-varying templates: goal text differs between dev seed 30 and each held-out seed (GUI-Owl matched runs)
+ dev = {}
+@@ -155,7 +163,7 @@ res = {"seeds": SEEDS, "arms": {}, "comparisons": {}, "notes": [], "goal_can_var
+ pending = [f"{arm} seed {s}: {sorted(t for t in data[(arm, s)][1] if data[(arm, s)][1][t])}" for s in SEEDS for arm in ARMS
+            if any(data[(arm, s)][1].values()) and not os.path.isdir(f"results/androidworld_sealed/{arm}_seed{s}_rerun")]
+ if pending:
+-    res["notes"].append("Exceptions without a re-run directory yet (check eligibility; preregistered single re-run pending): " + "; ".join(pending))
++    res["notes"].append("Exceptions with no re-run (counted as failures; eligibility per docs/PREREG_v4.md, e.g. the 13:40 entry): " + "; ".join(pending))
+ if len(SEEDS) == 1:
+     res["notes"].append("One held-out seed only: PRELIMINARY (preregistered label; detectable gap ~14 tasks).")
+ for arm in ARMS:

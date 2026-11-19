@@ -1,0 +1,252 @@
+{
+  "arms": {
+    "v4": {
+      "episodes": 116,
+      "successes": 18,
+      "answer_successes": 6,
+      "action_successes": 12,
+      "answer_tasks": 25,
+      "buckets": {
+        "nonterminal_budget_end": 55,
+        "false_complete": 25,
+        "success": 18,
+        "exception": 4,
+        "incorrect_answer": 14
+      },
+      "answer_task_buckets": {
+        "incorrect_answer": 14,
+        "success": 6,
+        "nonterminal_budget_end": 4,
+        "exception": 1
+      },
+      "action_task_buckets": {
+        "nonterminal_budget_end": 51,
+        "false_complete": 25,
+        "success": 12,
+        "exception": 3
+      },
+      "answer_emitting_episodes": 20,
+      "answer_task_never_answer": 4,
+      "retry_steps": 0,
+      "first_parse_failures": 0,
+      "first_strict_failures": 0,
+      "repeated_action_failure_episodes": 33,
+      "two_action_cycle_failure_episodes": 10
+    },
+    "v3": {
+      "episodes": 116,
+      "successes": 13,
+      "answer_successes": 0,
+      "action_successes": 13,
+      "answer_tasks": 25,
+      "buckets": {
+        "nonterminal_budget_end": 61,
+        "false_complete": 39,
+        "success": 13,
+        "exception": 3
+      },
+      "answer_task_buckets": {
+        "false_complete": 17,
+        "nonterminal_budget_end": 8
+      },
+      "action_task_buckets": {
+        "nonterminal_budget_end": 53,
+        "false_complete": 22,
+        "success": 13,
+        "exception": 3
+      },
+      "answer_emitting_episodes": 0,
+      "answer_task_never_answer": 25,
+      "retry_steps": 0,
+      "first_parse_failures": 0,
+      "first_strict_failures": 0,
+      "repeated_action_failure_episodes": 32,
+      "two_action_cycle_failure_episodes": 16
+    },
+    "v1": {
+      "episodes": 116,
+      "successes": 15,
+      "answer_successes": 0,
+      "action_successes": 15,
+      "answer_tasks": 25,
+      "buckets": {
+        "false_complete": 45,
+        "success": 15,
+        "nonterminal_budget_end": 54,
+        "exception": 2
+      },
+      "answer_task_buckets": {
+        "false_complete": 18,
+        "nonterminal_budget_end": 7
+      },
+      "action_task_buckets": {
+        "false_complete": 27,
+        "success": 15,
+        "nonterminal_budget_end": 47,
+        "exception": 2
+      },
+      "answer_emitting_episodes": 0,
+      "answer_task_never_answer": 25,
+      "retry_steps": 0,
+      "first_parse_failures": 0,
+      "first_strict_failures": 0,
+      "repeated_action_failure_episodes": 33,
+      "two_action_cycle_failure_episodes": 7
+    },
+    "guiowl": {
+      "episodes": 116,
+      "successes": 23,
+      "answer_successes": 10,
+      "action_successes": 13,
+      "answer_tasks": 25,
+      "buckets": {
+        "nonterminal_budget_end": 92,
+        "success": 23,
+        "incorrect_answer": 1
+      },
+      "answer_task_buckets": {
+        "nonterminal_budget_end": 14,
+        "success": 10,
+        "incorrect_answer": 1
+      },
+      "action_task_buckets": {
+        "nonterminal_budget_end": 78,
+        "success": 13
+      },
+      "answer_emitting_episodes": 11,
+      "answer_task_never_answer": 14,
+      "retry_steps": 0,
+      "first_parse_failures": 0,
+      "first_strict_failures": 0,
+      "repeated_action_failure_episodes": 20,
+      "two_action_cycle_failure_episodes": 7
+    }
+  },
+  "dev": {
+    "dev_answer": {
+      "n": 136,
+      "counts": {
+        "valid_strict": 136,
+        "answer": 130,
+        "complete": 0,
+        "gate_answer": 118,
+        "same_answer": 120,
+        "exact_answer": 111
+      },
+      "rates": {
+        "valid_strict": 1.0,
+        "answer": 0.9558823529411765,
+        "complete": 0.0,
+        "gate_answer": 0.8676470588235294,
+        "same_answer": 0.8823529411764706,
+        "exact_answer": 0.8161764705882353
+      },
+      "manifest": {
+        "model": "/content/runs/lfm3vl2b-v4bmix-lora/merged",
+        "data": "alpharomercoma/AndroidAgent-SFT-v4@dev_answer#337553984ee970a767dceb21adc6343f3d613602",
+        "n_rows": 136,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "min_pixels": 65536,
+        "prompt": "v4:9dffb9ee9259",
+        "model_fingerprint": "81c38520e749e34b",
+        "config_hash": "8c0b8e6de69a4c6a"
+      },
+      "prediction_sha256": "61d67acc22a826db6b92604e7ac8186c416e744c57937ebadc70be5a5c781712",
+      "model_values": [
+        "/content/runs/lfm3vl2b-v4bmix-lora/merged"
+      ],
+      "config_hash_values": [
+        "8c0b8e6de69a4c6a"
+      ]
+    },
+    "dev_complete": {
+      "n": 80,
+      "counts": {
+        "valid_strict": 80,
+        "answer": 0,
+        "complete": 61
+      },
+      "rates": {
+        "valid_strict": 1.0,
+        "answer": 0.0,
+        "complete": 0.7625
+      },
+      "manifest": {
+        "model": "/content/runs/lfm3vl2b-v4bmix-lora/merged",
+        "data": "alpharomercoma/AndroidAgent-SFT-v4@dev_complete#337553984ee970a767dceb21adc6343f3d613602",
+        "n_rows": 80,
+        "enable_thinking": 1,
+        "max_pixels": 774400,
+        "filter_mode": null,
+        "subsample_episodes": 0,
+        "limit": 0,
+        "max_new_tokens": 256,
+        "do_sample": false,
+        "min_pixels": 65536,
+        "prompt": "v4:9dffb9ee9259",
+        "model_fingerprint": "81c38520e749e34b",
+        "config_hash": "a18aff152d63af4c"
+      },
+      "prediction_sha256": "31a1d93a4ce717ca91d78bb4ec8ec12e0a8fe425a9708bd2a55f7c370761f4c8",
+      "model_values": [
+        "/content/runs/lfm3vl2b-v4bmix-lora/merged"
+      ],
+      "config_hash_values": [
+        "a18aff152d63af4c"
+      ]
+    }
+  },
+  "identity": {
+    "v4": {
+      "same_tasks_as_v3": true,
+      "missing_seeds": [
+        "MarkorCreateNoteAndSms",
+        "SimpleCalendarNextEvent",
+        "SimpleSmsSendClipboardContent",
+        "SimpleSmsSend"
+      ],
+      "wrong_seeds": [],
+      "goal_mismatches": []
+    },
+    "v3": {
+      "same_tasks_as_v3": true,
+      "missing_seeds": [
+        "RetroCreatePlaylist",
+        "SimpleSmsSendReceivedAddress",
+        "SimpleSmsSend"
+      ],
+      "wrong_seeds": [],
+      "goal_mismatches": []
+    },
+    "v1": {
+      "same_tasks_as_v3": true,
+      "missing_seeds": [
+        "RetroPlayingQueue",
+        "SimpleSmsSendClipboardContent"
+      ],
+      "wrong_seeds": [],
+      "goal_mismatches": []
+    },
+    "guiowl": {
+      "same_tasks_as_v3": true,
+      "missing_seeds": [],
+      "wrong_seeds": [],
+      "goal_mismatches": []
+    }
+  },
+  "v3_hashes_match_pin": true,
+  "gate": {
+    "answer_accuracy": true,
+    "answer_emission": true,
+    "false_answer_rate": true,
+    "aw_answers": true,
+    "aw_actions": true
+  },
+  "PASS": true
+}

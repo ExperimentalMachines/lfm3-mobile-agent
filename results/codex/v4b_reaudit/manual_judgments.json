@@ -1,0 +1,290 @@
+[
+  {
+    "id": "qa01",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "First Trip.com flight departs 06:35; route/dates match."
+  },
+  {
+    "id": "qa02",
+    "answer_error": true,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "54:16 is the right-end duration/remaining-time label while the playhead is at the beginning, not grounded as current elapsed playback time."
+  },
+  {
+    "id": "qa03",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Omio selected 2:10 PM bus arrives 3:35 PM."
+  },
+  {
+    "id": "qa04",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "First Brussels-Central to Bruges departure is 12:20 on 30 Nov."
+  },
+  {
+    "id": "qa05",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "question_ambiguous": true,
+    "note": "New car is visible document body heading; acceptable as content title, but no file title is shown. Goal topic new cars does not determine the exact title; history does."
+  },
+  {
+    "id": "qa06",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Gold transcribes visible truncated track title; full untruncated title cannot be checked."
+  },
+  {
+    "id": "qa07",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "question_ambiguous": true,
+    "note": "Japan is the remaining active reminder after Yoga was correctly completed. The follow-up's unqualified reminder is ambiguous; counted as ambiguity, not a confirmed navigation mismatch, consistent with the prior review."
+  },
+  {
+    "id": "qa08",
+    "answer_error": true,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Dummy PDF file is a heading inside the PDF; no filename is displayed. Gold/rationale mistakes document content for file name."
+  },
+  {
+    "id": "qa09",
+    "answer_error": true,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "25,596 sales belongs to seller Tshaj (shop total), not this individual item's sales. Rationale itself points to seller row."
+  },
+  {
+    "id": "qa10",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Correct answer 39 is displayed for 32 + 7."
+  },
+  {
+    "id": "qa11",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Version 1.2.8E is visible. History uses Settings > Share with friends despite the progress-report goal. Shared payload is unavailable, so this suspicion is excluded from the confirmed navigation rate.",
+    "confidence": "moderate for navigation",
+    "suspected_navigation_problem": true
+  },
+  {
+    "id": "qa12",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "CUSTOMER REVIEWS (9) appears in heading."
+  },
+  {
+    "id": "qa13",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Cookpad recipe explicitly says Origin: India."
+  },
+  {
+    "id": "qa14",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "English (US) translation hi is visible."
+  },
+  {
+    "id": "qa15",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "How to grow section is marked Easy for Schefflera."
+  },
+  {
+    "id": "qa16",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "New-word exercise explicitly presents o menino."
+  },
+  {
+    "id": "qa17",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Tiro cargo pants header shows $60.00."
+  },
+  {
+    "id": "qa18",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "FRIHETEN three-seat sleeper sectional is priced $899.00."
+  },
+  {
+    "id": "qa19",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Bella True digital printed yoga mat current price is ₹749."
+  },
+  {
+    "id": "qa20",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Visible Airbnb listing shows $229 total before taxes and Oct 25-27, two guests."
+  },
+  {
+    "id": "qa21",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Grocery reminder time is 06:19 PM."
+  },
+  {
+    "id": "qa22",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Matching The Queen's Gambit-1.pdf result explicitly shows Modified 10/30/23."
+  },
+  {
+    "id": "qa23",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Transport meeting date is Monday, July 24, 2023."
+  },
+  {
+    "id": "qa24",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Travel details show 11:38-12:50 for Via to Amstelpark Amsterdam; bus-only history matches requested route settings."
+  },
+  {
+    "id": "qa25",
+    "answer_error": false,
+    "goal_leak": true,
+    "navigation_problem": false,
+    "note": "Visible pin truncates Catussaba Suites Res..., while full Catussaba Suites Resort is already in goal; literal-span filter misses truncation."
+  },
+  {
+    "id": "qa26",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Displayed section heading is THE PROLOGUE."
+  },
+  {
+    "id": "qa27",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Deck cover says Spanish Quiz flash cards. Rewritten goal explicitly says Drive app; viewer is consistent with Drive. AW exposure missed by prior Google Drive-only regex."
+  },
+  {
+    "id": "qa28",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Station location is Bhiwadi, India. Goal hints Bhiwadi via station name but does not supply India; not counted as full goal leakage."
+  },
+  {
+    "id": "qa29",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "format_problem": true,
+    "note": "26 RESULTS visible; size 8 filter matches. Gold adds RESULTS despite just the number."
+  },
+  {
+    "id": "qa30",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Fitbit Hike details show Steps 86. Embedded Google map is not evidence of Google Maps app exposure."
+  },
+  {
+    "id": "qa31",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": true,
+    "format_problem": true,
+    "note": "23 min is visible on Google Maps driving-navigation UI (speedometer, 12 km, turn guidance), conflicting with public-transit goal/history. Gold also includes min despite just the number."
+  },
+  {
+    "id": "qa32",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "format_problem": true,
+    "note": "6,000+ results appears at bottom. Gold includes results despite number-only format."
+  },
+  {
+    "id": "qa33",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Image Credit: Brit Cruise is legible."
+  },
+  {
+    "id": "qa34",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Most recent explicit care-action row is Watered; later note also says added care action water."
+  },
+  {
+    "id": "qa35",
+    "answer_error": false,
+    "goal_leak": true,
+    "navigation_problem": false,
+    "note": "Gold picturesque Lake Bled is grounded, but core answer Lake Bled appears in the goal; unchanged prior qa51 leakage."
+  },
+  {
+    "id": "qa36",
+    "answer_error": true,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "UK labels the sizing system. Numeric size boxes are unselected; UK is not a selected shoe size. Unchanged prior qa49."
+  },
+  {
+    "id": "qa37",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "90s Straight Jean is priced INR8,109.08."
+  },
+  {
+    "id": "qa38",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "Raymond black shirt header shows ₹1,024."
+  },
+  {
+    "id": "qa39",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "format_problem": true,
+    "note": "Tender Coconut Clean & Peeled price is ₹55.00; rupee marker remains despite number-only instruction."
+  },
+  {
+    "id": "qa40",
+    "answer_error": false,
+    "goal_leak": false,
+    "navigation_problem": false,
+    "note": "First INFOBUS Sao Paulo-Rio route is 18.99 EUR. History selects baggage and rating sort; exact baggage/rating is not independently visible."
+  }
+]

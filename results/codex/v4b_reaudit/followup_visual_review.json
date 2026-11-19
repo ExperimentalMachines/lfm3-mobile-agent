@@ -1,0 +1,148 @@
+{
+  "prior_counterexamples": [
+    {
+      "sample_id": "prior_qa05",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "01:04 is the first itinerary departure; screenshot shows walking and train legs, no bus. Cannot ground the requested first bus departure.",
+      "file": "data/v4work/build/out/data/train-00001-of-00016.parquet",
+      "row": 5025
+    },
+    {
+      "sample_id": "prior_qa06",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Gwalior Jn arrival is 21:00 in the left column; gold 21:02 is departure in the right column.",
+      "file": "data/v4work/build/out/data/train-00000-of-00016.parquet",
+      "row": 5384
+    },
+    {
+      "sample_id": "prior_qa13",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Steps field shows 7,000; goal already requests 7000. Comma normalization is needed to detect leakage.",
+      "file": "data/v4work/build/out/data/train-00005-of-00016.parquet",
+      "row": 4898
+    },
+    {
+      "sample_id": "prior_qa49",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "UK labels the sizing system, not a selected shoe size. No size box is selected; gold UK does not answer what size is selected.",
+      "file": "data/v4work/build/out/data/train-00011-of-00016.parquet",
+      "row": 5400
+    },
+    {
+      "sample_id": "prior_qa51",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Text says colourway inspired by picturesque Lake Bled. Core answer Lake Bled is already in the named shoe in the goal; exact-string leakage check misses adjective variation.",
+      "file": "data/v4work/build/out/data/train-00015-of-00016.parquet",
+      "row": 5575
+    },
+    {
+      "sample_id": "prior_qa52",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Out of Stock appears under neighboring colour thumbnails, while the selected middle variant lacks that label. Generic product-level stock question is ambiguous; full-size follow-up needed. Full-size PNG confirms Out of Stock labels only under the neighboring black/red colourways. Selected green colourway has no such label. Gold overgeneralizes their status; rationale falsely claims each image is labeled Out of Stock.",
+      "file": "data/v4work/build/out/data/train-00013-of-00016.parquet",
+      "row": 5579
+    },
+    {
+      "sample_id": "prior_screenqa09",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Displayed provider value is BANDWIDTH.COM CLEC, LLC - CA. Shortening deletes the provider's regional suffix - CA, which original retained; partial entity.",
+      "file": "data/v4work/build/out/data/train-00004-of-00016.parquet",
+      "row": 298
+    },
+    {
+      "sample_id": "prior_screenqa17",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Online top tab and Deals bottom tab are both selected. Shortening drops Deals from original two-part answer; ambiguity/completeness issue.",
+      "file": "data/v4work/build/out/data/train-00007-of-00016.parquet",
+      "row": 658
+    },
+    {
+      "sample_id": "prior_screenqa18",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Videos bottom tab and POPULAR top tab both selected. Shortening drops POPULAR; ambiguity/completeness issue.",
+      "file": "data/v4work/build/out/data/train-00010-of-00016.parquet",
+      "row": 2271
+    },
+    {
+      "sample_id": "prior_screenqa27",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "Italian dessert screen shows no selected Home menu/tab. Home is not visible; unsupported answer inherited from original, not newly introduced by shortening.",
+      "file": "data/v4work/build/out/data/train-00006-of-00016.parquet",
+      "row": 4118
+    },
+    {
+      "sample_id": "prior_dev16",
+      "present": true,
+      "same_goal": true,
+      "same_gold": true,
+      "same_image_sha": true,
+      "review": "Current extracted screenshot visually rechecked; prior conclusion remains.",
+      "prior_note": "MS Anesha departure is 23:00, but Amigo is the advertisement at bottom, not the cruise app. Teacher invented app identity from ad; original goal did not name Amigo.",
+      "file": "data/v4work/build/out/data/dev_answer-00000-of-00001.parquet",
+      "row": 66
+    }
+  ],
+  "additional": [
+    {
+      "sample_id": "aw_gmail",
+      "conclusion": "Confirmed Gmail inbox; original goal uses lowercase gmail; toast says 1 marked as unread. Guard bypass, not evidence of copied AW task."
+    },
+    {
+      "sample_id": "aw_drive",
+      "conclusion": "Confirmed Google Drive; lower-case original google drive, Search in Drive UI, 1-item download toast."
+    },
+    {
+      "sample_id": "inventory_dropbox",
+      "conclusion": "Goal names Dropbox but screenshot and history identify TeraBox, which IS installed. This lexical census candidate is an original-goal app mismatch, not proof the actual used app is missing."
+    },
+    {
+      "sample_id": "dev_information",
+      "conclusion": "dev_complete row 59 asks to track USD/GBP because curious about actual exchange rate; screenshot is Xe chart, gold status complete. Information-seeking ambiguity persists despite removing old two controls."
+    },
+    {
+      "sample_id": "inventory_adidas",
+      "conclusion": "Adidas BYW Select shoes UI and goal agree; Installed apps list lacks Adidas. This is a direct app-inventory contradiction."
+    }
+  ],
+  "all_excluded_from_primary_rates": true
+}

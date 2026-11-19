@@ -1,0 +1,25 @@
+{
+ "schema": ["id", "answer_error", "question_ambiguous", "goal_leak", "navigation_problem", "note"],
+ "rows": [
+ ["dev01",false,false,false,false,"Nick weight entry at 01:06 PM is 18.76 lbs; number-only instruction conflicts with unit-bearing gold."],
+ ["dev02",false,false,false,false,"Cougar Mountain Loop length is 23.20 mi; correct trail, with unit despite number-only format."],
+ ["dev03",false,false,false,false,"Product details show Item Weight 300 g; correct with unit despite number-only format."],
+ ["dev04",false,false,false,false,"Bonus: $200 coupons banner is visible. This is a general promotion rather than a product specification; number-only instruction retains dollar sign."],
+ ["dev05",false,false,false,false,"Discounted drill price is 3,157 rupees; separate bank offer 2,999 is conditional."],
+ ["dev06",false,false,false,false,"Presentation (1).pptx is the filename in the app header; visible slide still has Edit title, so filename/title terminology is loose but answer supported."],
+ ["dev07",false,false,false,false,"First round-toe shoe is 2,961 rupees; filter visible."],
+ ["dev08",false,false,false,false,"Rotated chart shows 1 USD = 0.807554 GBP."],
+ ["dev09",false,false,false,false,"Total is 74.00 rupees; number-only instruction retains currency."],
+ ["dev10",false,false,false,false,"First hotel Stay Hotel Waikiki is discounted to 9,289 rupees; Honolulu search matches history."],
+ ["dev11",false,false,false,false,"5 Day Lose Weight-Home Plan is visible; number-only instruction includes Day. Three-month forecast is a different field."],
+ ["dev12",false,false,false,false,"Fronx Overall review circle is 4.5; distinct from Exterior/Interior 3.8."],
+ ["dev13",false,false,false,false,"Current rate is 1 GBP = 1.159522 EUR, while 5Y period is selected."],
+ ["dev14",false,false,false,false,"First projector price 59.35 pounds, below 60 filter; delivery excluded as expected."],
+ ["dev15",false,false,false,false,"Visible Miles Davis Kind of Blue card is $2.50; it is a recommendation card at bottom of item page, so relation to initial listing is not proven."],
+ ["dev16",false,false,false,true,"MS Anesha departure is 23:00, but Amigo is the advertisement at bottom, not the cruise app. Teacher invented app identity from ad; original goal did not name Amigo."],
+ ["dev17",false,false,false,false,"Meenakshi review shows five gold stars."],
+ ["dev18",false,false,false,false,"Heart Points shows 1. History uses Gmail; guard v2 bypass."],
+ ["dev19",false,false,false,false,"Bottom cart total 743.40 rupees and add-success toast are visible; number-only instruction retains currency."],
+ ["dev20",false,false,false,false,"First Name field contains Bhavuk, also supplied by prior input_text action. Goal itself does not leak it." ]
+ ]
+}

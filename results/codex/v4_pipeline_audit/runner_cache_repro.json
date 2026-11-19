@@ -1,0 +1,20 @@
+{
+  "sealed": {
+    "unmodified_script": "/Users/alpha/lfm3-android/scripts/local_sealed_aw.sh",
+    "stub_run_aw_exit": 42,
+    "wrapper_exit": 0,
+    "stdout": "[02:11:27] server :9001 up; starting SEALED v1_seed7 (seed 7) on emulator 5558\n[02:11:28] SEALED v1_seed7 AndroidWorld finished\n",
+    "stderr": "",
+    "stored_log": "synthetic runner failure\nSyntheticPass mean_success_rate 1.0\n"
+  },
+  "cache": {
+    "existing_manifest_prompt": "v1",
+    "desired_PROMPT_V4_POOL": "data/v4work/app_pool.json",
+    "ac_skip_check_exit": 0,
+    "ac_stdout": "{\n  \"high\": {\n    \"overall\": {\n      \"n_steps\": 1,\n      \"n_episodes\": 1,\n      \"parse_rate\": 1.0,\n      \"type_match\": 1.0,\n      \"step_sr\": 1.0,\n      \"episode_sr\": 1.0,\n      \"per_type\": {\n        \"answer\": {\n          \"n\": 1,\n          \"type_match\": 1.0,\n          \"step_sr\": 1.0\n        }\n      }\n    },\n    \"overall_strict_parse\": {\n      \"n_steps\": 1,\n      \"n_episodes\": 1,\n      \"parse_rate\": 1.0,\n      \"type_match\": 1.0,\n      \"step_sr\": 1.0,\n      \"episode_sr\": 1.0,\n      \"per_type\": {\n        \"answer\": {\n          \"n\": 1,\n          \"type_match\": 1.0,\n          \"step_sr\": 1.0\n        }\n      }\n    },\n    \"click_bbox_hit_strict\": {\n      \"n\": 0,\n      \"acc\": 0.0\n    }\n  },\n  \"integrity\": {\n    \"n_pred_rows\": 1,\n    \"n_gt_rows\": 1,\n    \"duplicate_keys\": 0,\n    \"missing\": 0,\n    \"extra\": 0,\n    \"row_models\": [\n      \"/content/runs/v4/merged\"\n    ],\n    \"manifest\": {\n      \"model\": \"/content/runs/v4/merged\",\n      \"config_hash\": \"old-v1-prompt\",\n      \"max_pixels\": 774400,\n      \"enable_thinking\": 1,\n      \"prompt\": \"v1\"\n    },\n    \"gt_file\": \"/Users/alpha/lfm3-android/results/codex/v4_pipeline_audit/cache_fixture/gt.jsonl\",\n    \"complete\": true,\n    \"problems\": []\n  }\n}\n",
+    "ac_stderr": "",
+    "dev_skip_check_exit": 0,
+    "dev_stdout": "{\"n_steps\": 1, \"parse_rate\": 1.0, \"type_match\": 1.0, \"step_sr\": 1.0, \"answer_mean_f1\": 1.0}\n",
+    "dev_stderr": ""
+  }
+}
