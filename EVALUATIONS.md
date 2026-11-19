@@ -154,7 +154,7 @@ finished; only episode-file counts are reported:
 | guiowl_seed7 | 116 | 116 |
 | guiowl_seed7_rerun | 1 | 116 |
 | v1_seed1234 | 116 | 116 |
-| v1_seed2026 | 48 | 116 |
+| v1_seed2026 | 62 | 116 |
 | v1_seed7 | 116 | 116 |
 | v4_seed1234 | 116 | 116 |
 | v4_seed2026 | 116 | 116 |
@@ -208,7 +208,7 @@ non-inferiority margin 8 tasks per 116.
 
 ## 6. MobileWorld (secondary benchmark, in progress)
 
-Status 2026-11-19 11:38; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
+Status 2026-11-19 12:08; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
 
 | run | host | agent | finished | successes | status |
 |---|---|---|---|---|---|
