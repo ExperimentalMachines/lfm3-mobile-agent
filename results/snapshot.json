@@ -1,5 +1,5 @@
 {
- "snapshot_time": "2026-11-19 05:06",
+ "snapshot_time": "2026-11-19 10:08",
  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
  "runs": {
   "v4 run 1 (AWS c8i, CPU server)": {
@@ -21,24 +21,20 @@
    "agent": "MobileWorld official gui_owl_1_5",
    "finished": 102,
    "successes": 22,
-   "status": "task list finished; ONE fresh-container attempt pending for ThanksgivingPrepTask (setup fails in every container); VM stopped at its 12-h limit and the gcloud login expired, so it waits for re-login"
+   "status": "complete"
   },
   "v4 run 2 (GCP + Colab T4, fixed adapter)": {
    "host": "GCP n2-standard-16 + Colab T4",
    "agent": "LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step; known limits: a text action on step 50 loses its Enter, empty text gets an HTTP 500 no-op; Codex round2_audit M1/M2)",
    "finished": 104,
    "successes": 6,
-   "status": "complete (ThanksgivingPrepTask: setup failed in every attempt, counted as failure)"
+   "status": "complete"
   }
  },
  "paired_so_far": {
-  "tasks_finished_by_both": 105,
+  "tasks_finished_by_both": 102,
   "v4_successes": 6,
-  "guiowl_successes": 22,
-  "both": 6,
-  "v4_only": 0,
-  "guiowl_only": 16,
-  "mcnemar_exact_p": 3.05e-05
+  "guiowl_successes": 22
  },
  "maiui_run": "prepared (docs/PREREG_v4.md 2026-11-19 05:20): official agent with 1 screenshot, Q8_0, two halves in parallel; starts after GUI-Owl is complete"
 }

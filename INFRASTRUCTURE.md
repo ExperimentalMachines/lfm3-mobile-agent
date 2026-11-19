@@ -13,7 +13,7 @@
 | Speed benchmark | the GCP VM above, before its MobileWorld run |
 | Adversarial audits / research | Codex CLI (gpt-6-astra, max effort) on the Mac |
 
-## Budget snapshot (2026-11-19 09:38)
+## Budget snapshot (2026-11-19 10:08)
 
 * Colab: 100 compute units bought on 2026-11-18 on top of the remaining balance; ≈ 75 left after the A100 run, then a T4 for model serving.
 * Modal: v1/v3 era runs within the account's allowance (see the working repo's `STATUS.md`).

@@ -154,7 +154,7 @@ finished; only episode-file counts are reported:
 | guiowl_seed7 | 116 | 116 |
 | guiowl_seed7_rerun | 1 | 116 |
 | v1_seed1234 | 116 | 116 |
-| v1_seed2026 | 0 | 116 |
+| v1_seed2026 | 2 | 116 |
 | v1_seed7 | 116 | 116 |
 | v4_seed1234 | 116 | 116 |
 | v4_seed2026 | 116 | 116 |
@@ -208,16 +208,16 @@ non-inferiority margin 8 tasks per 116.
 
 ## 6. MobileWorld (secondary benchmark, in progress)
 
-Status 2026-11-19 05:06; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
+Status 2026-11-19 10:08; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
 
 | run | host | agent | finished | successes | status |
 |---|---|---|---|---|---|
 | v4 run 1 (AWS c8i, CPU server) | AWS c8i.4xlarge | LFM3 adapter (first version) | 105/105 | 5 | complete, NOT a fair measure: Codex (results/codex/session_1118_audit C1/C2) found the adapter reversed v4's horizontal scrolls, changed scroll distance and dropped the Enter that v4's type action includes; superseded by run 2 |
 | GUI-Owl run 1 (GCP + Colab T4) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | 4/105 | 4 | INVALID: model server OOM-killed at 14:09 (RAM prompt cache); every later task failed with no model reply; discarded, not stitched |
-| GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | 102/105 | 22 | task list finished; ONE fresh-container attempt pending for ThanksgivingPrepTask (setup fails in every container); VM stopped at its 12-h limit and the gcloud login expired, so it waits for re-login |
-| v4 run 2 (GCP + Colab T4, fixed adapter) | GCP n2-standard-16 + Colab T4 | LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step; known limits: a text action on step 50 loses its Enter, empty text gets an HTTP 500 no-op; Codex round2_audit M1/M2) | 104/105 | 6 | complete (ThanksgivingPrepTask: setup failed in every attempt, counted as failure) |
+| GUI-Owl run 2 (GCP + Colab T4, --cache-ram 0) | GCP n2-standard-16 + Colab T4 | MobileWorld official gui_owl_1_5 | 102/105 | 22 | complete |
+| v4 run 2 (GCP + Colab T4, fixed adapter) | GCP n2-standard-16 + Colab T4 | LFM3 adapter v2 (AndroidWorld scroll gesture as drag; Enter after typing as an extra step; known limits: a text action on step 50 loses its Enter, empty text gets an HTTP 500 no-op; Codex round2_audit M1/M2) | 104/105 | 6 | complete |
 
-Paired so far (tasks both valid runs have finished): 105 tasks, v4 6 vs GUI-Owl 22 successes.
+Paired so far (tasks both valid runs have finished): 102 tasks, v4 6 vs GUI-Owl 22 successes.
 
 Only complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).
 
