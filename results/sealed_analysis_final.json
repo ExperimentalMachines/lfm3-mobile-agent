@@ -1,0 +1,1394 @@
+{
+ "seeds": [
+  7,
+  1234,
+  2026
+ ],
+ "arms": {
+  "v4": {
+   "label": "LFM3 v4 (final)",
+   "per_seed": {
+    "7": {
+     "successes": 18,
+     "of": 116,
+     "pct": 15.5,
+     "wilson95": [
+      10.0,
+      23.2
+     ],
+     "answer_tasks": "6/25",
+     "action_tasks": "12/91",
+     "goal_can_vary": "11/78",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "17/61",
+      "medium": "0/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "18/116 = 15.5%"
+    },
+    "1234": {
+     "successes": 17,
+     "of": 116,
+     "pct": 14.7,
+     "wilson95": [
+      9.4,
+      22.2
+     ],
+     "answer_tasks": "3/25",
+     "action_tasks": "14/91",
+     "goal_can_vary": "10/78",
+     "exceptions": 5,
+     "exception_templates": [
+      "BrowserDraw",
+      "NotesTodoItemCount",
+      "SimpleSmsReplyMostRecent",
+      "VlcCreatePlaylist",
+      "VlcCreateTwoPlaylists"
+     ],
+     "by_difficulty": {
+      "easy": "15/61",
+      "medium": "2/36",
+      "hard": "0/19"
+     },
+     "official_rule_exceptions_dropped": "17/111 = 15.3%"
+    },
+    "2026": {
+     "successes": 19,
+     "of": 116,
+     "pct": 16.4,
+     "wilson95": [
+      10.7,
+      24.2
+     ],
+     "answer_tasks": "4/25",
+     "action_tasks": "15/91",
+     "goal_can_vary": "11/78",
+     "exceptions": 1,
+     "exception_templates": [
+      "SimpleSmsReplyMostRecent"
+     ],
+     "by_difficulty": {
+      "easy": "18/61",
+      "medium": "1/36",
+      "hard": "0/19"
+     },
+     "official_rule_exceptions_dropped": "19/115 = 16.5%"
+    }
+   },
+   "total": "54/348",
+   "pct": 15.5,
+   "wilson95": [
+    12.1,
+    19.7
+   ]
+  },
+  "guiowl": {
+   "label": "GUI-Owl-1.5-2B matched",
+   "per_seed": {
+    "7": {
+     "successes": 16,
+     "of": 116,
+     "pct": 13.8,
+     "wilson95": [
+      8.7,
+      21.2
+     ],
+     "answer_tasks": "7/25",
+     "action_tasks": "9/91",
+     "goal_can_vary": "14/78",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "9/61",
+      "medium": "6/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "16/116 = 13.8%"
+    },
+    "1234": {
+     "successes": 13,
+     "of": 116,
+     "pct": 11.2,
+     "wilson95": [
+      6.7,
+      18.2
+     ],
+     "answer_tasks": "5/25",
+     "action_tasks": "8/91",
+     "goal_can_vary": "7/78",
+     "exceptions": 1,
+     "exception_templates": [
+      "SimpleSmsSendReceivedAddress"
+     ],
+     "by_difficulty": {
+      "easy": "9/61",
+      "medium": "3/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "13/115 = 11.3%"
+    },
+    "2026": {
+     "successes": 18,
+     "of": 116,
+     "pct": 15.5,
+     "wilson95": [
+      10.0,
+      23.2
+     ],
+     "answer_tasks": "7/25",
+     "action_tasks": "11/91",
+     "goal_can_vary": "12/78",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "15/61",
+      "medium": "2/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "18/116 = 15.5%"
+    }
+   },
+   "total": "47/348",
+   "pct": 13.5,
+   "wilson95": [
+    10.3,
+    17.5
+   ]
+  },
+  "v1": {
+   "label": "LFM3 v1 (reference)",
+   "per_seed": {
+    "7": {
+     "successes": 11,
+     "of": 116,
+     "pct": 9.5,
+     "wilson95": [
+      5.4,
+      16.2
+     ],
+     "answer_tasks": "0/25",
+     "action_tasks": "11/91",
+     "goal_can_vary": "5/78",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "10/61",
+      "medium": "0/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "11/116 = 9.5%"
+    },
+    "1234": {
+     "successes": 10,
+     "of": 116,
+     "pct": 8.6,
+     "wilson95": [
+      4.7,
+      15.1
+     ],
+     "answer_tasks": "0/25",
+     "action_tasks": "10/91",
+     "goal_can_vary": "4/78",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "9/61",
+      "medium": "0/36",
+      "hard": "1/19"
+     },
+     "official_rule_exceptions_dropped": "10/116 = 8.6%"
+    },
+    "2026": {
+     "successes": 11,
+     "of": 116,
+     "pct": 9.5,
+     "wilson95": [
+      5.4,
+      16.2
+     ],
+     "answer_tasks": "0/25",
+     "action_tasks": "11/91",
+     "goal_can_vary": "4/78",
+     "exceptions": 0,
+     "exception_templates": [],
+     "by_difficulty": {
+      "easy": "11/61",
+      "medium": "0/36",
+      "hard": "0/19"
+     },
+     "official_rule_exceptions_dropped": "11/116 = 9.5%"
+    }
+   },
+   "total": "32/348",
+   "pct": 9.2,
+   "wilson95": [
+    6.6,
+    12.7
+   ]
+  }
+ },
+ "comparisons": {
+  "v4_minus_guiowl (PRIMARY)": {
+   "mean_diff_pp": 2.0,
+   "signflip_p_two_sided": 0.6023,
+   "ci95_pp_test_inversion": [
+    -4.5,
+    8.6
+   ],
+   "ci95_pp_exact_endpoints": [
+    -4.477612,
+    8.510638
+   ],
+   "per_seed": {
+    "7": {
+     "v4_only": 15,
+     "guiowl_only": 13,
+     "both": 3,
+     "mcnemar_exact_p": 0.8506
+    },
+    "1234": {
+     "v4_only": 13,
+     "guiowl_only": 9,
+     "both": 4,
+     "mcnemar_exact_p": 0.5235
+    },
+    "2026": {
+     "v4_only": 11,
+     "guiowl_only": 10,
+     "both": 8,
+     "mcnemar_exact_p": 1.0
+    }
+   },
+   "n_instances": 348,
+   "n_clusters": 116,
+   "non_inferiority_margin_pp": -6.9,
+   "non_inferior": true
+  },
+  "v4_vs_guiowl_secondary_exceptions_dropped": {
+   "7": {
+    "pairs_without_exceptions": 116,
+    "v4_only": 15,
+    "guiowl_only": 13,
+    "mcnemar_exact_p": 0.8506
+   },
+   "1234": {
+    "pairs_without_exceptions": 110,
+    "v4_only": 13,
+    "guiowl_only": 7,
+    "mcnemar_exact_p": 0.2632
+   },
+   "2026": {
+    "pairs_without_exceptions": 115,
+    "v4_only": 11,
+    "guiowl_only": 9,
+    "mcnemar_exact_p": 0.8238
+   }
+  },
+  "v1_minus_guiowl": {
+   "mean_diff_pp": -4.3,
+   "signflip_p_two_sided": 0.2132,
+   "ci95_pp_test_inversion": [
+    -10.6,
+    1.9
+   ],
+   "ci95_pp_exact_endpoints": [
+    -10.526316,
+    1.886792
+   ],
+   "per_seed": {
+    "7": {
+     "v1_only": 9,
+     "guiowl_only": 14,
+     "both": 2,
+     "mcnemar_exact_p": 0.4049
+    },
+    "1234": {
+     "v1_only": 5,
+     "guiowl_only": 8,
+     "both": 5,
+     "mcnemar_exact_p": 0.5811
+    },
+    "2026": {
+     "v1_only": 9,
+     "guiowl_only": 16,
+     "both": 2,
+     "mcnemar_exact_p": 0.2295
+    }
+   },
+   "n_instances": 348,
+   "n_clusters": 116
+  },
+  "v4_minus_v1": {
+   "mean_diff_pp": 6.3,
+   "signflip_p_two_sided": 0.0197,
+   "ci95_pp_test_inversion": [
+    1.1,
+    11.5
+   ],
+   "ci95_pp_exact_endpoints": [
+    1.190476,
+    11.47541
+   ],
+   "per_seed": {
+    "7": {
+     "v4_only": 11,
+     "v1_only": 4,
+     "both": 7,
+     "mcnemar_exact_p": 0.1185
+    },
+    "1234": {
+     "v4_only": 11,
+     "v1_only": 4,
+     "both": 6,
+     "mcnemar_exact_p": 0.1185
+    },
+    "2026": {
+     "v4_only": 11,
+     "v1_only": 3,
+     "both": 8,
+     "mcnemar_exact_p": 0.0574
+    }
+   },
+   "n_instances": 348,
+   "n_clusters": 116
+  }
+ },
+ "notes": [
+  "Exceptions with no re-run (counted as failures; eligibility per docs/PREREG_v4.md, e.g. the 13:40 entry): v4 seed 2026: ['SimpleSmsReplyMostRecent']"
+ ],
+ "goal_can_vary_templates": 78,
+ "observed_goal_changes_vs_seed30": {
+  "7": 76,
+  "1234": 76,
+  "2026": 75
+ },
+ "reruns_applied": [
+  {
+   "arm": "v4",
+   "seed": 7,
+   "task": "RecipeDeleteMultipleRecipes",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 7,
+   "task": "SimpleSmsSend",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 7,
+   "task": "TasksDueNextWeek",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 7,
+   "task": "MarkorCreateNoteFromClipboard",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "guiowl",
+   "seed": 7,
+   "task": "SimpleSmsResend",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "FilesDeleteFile",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseDeleteDuplicates",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteMultipleRecipes",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleSmsSend",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarFirstEventAfterStartTime",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TasksHighPriorityTasksDueOnDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeAddMultipleRecipesFromImage",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ClockStopWatchPausedVerify",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarAddOneEventInTwoWeeks",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseDeleteMultiple2",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleSmsSendReceivedAddress",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "OsmAndMarker",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TasksDueNextWeek",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RetroPlayingQueue",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SportsTrackerLongestDistanceActivity",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteSingleRecipe",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ContactsAddContact",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseDeleteSingle",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleSmsReplyMostRecent",
+   "rerun_success": false,
+   "rerun_exception": true,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TasksDueOnDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorCreateNoteFromClipboard",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "CameraTakePhoto",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleSmsResend",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseAddMultipleFromGallery",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBluetoothTurnOffVerify",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TurnOffWifiAndTurnOnBluetooth",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleSmsSendClipboardContent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleSmsReply",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBluetoothTurnOff",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteDuplicateRecipes3",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteDuplicateRecipes2",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseAddMultipleFromMarkor",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "NotesTodoItemCount",
+   "rerun_success": false,
+   "rerun_exception": true,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBrightnessMin",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorMoveNote",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RetroCreatePlaylist",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorChangeNoteContent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "VlcCreatePlaylist",
+   "rerun_success": false,
+   "rerun_exception": true,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarDeleteEventsOnRelativeDay",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ContactsNewContactDraft",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemWifiTurnOffVerify",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseDeleteMultiple",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorTranscribeVideo",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TurnOnWifiAndOpenApp",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SportsTrackerActivitiesOnDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarNextEvent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBrightnessMax",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "OsmAndTrack",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorDeleteNote",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemWifiTurnOnVerify",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorDeleteNewestNote",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "NotesIsTodo",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RetroPlaylistDuration",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleDrawProCreateDrawing",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorAddNoteHeader",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TasksHighPriorityTasks",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarAddRepeatingEvent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "OpenAppTaskEval",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseAddSingle",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarDeleteEvents",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBrightnessMaxVerify",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "VlcCreateTwoPlaylists",
+   "rerun_success": false,
+   "rerun_exception": true,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "FilesMoveFile",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemWifiTurnOn",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarEventsInNextWeek",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeAddMultipleRecipesFromMarkor2",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ClockStopWatchRunning",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "NotesMeetingAttendeeCount",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteDuplicateRecipes",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarLocationOfEvent",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteMultipleRecipesWithConstraint",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorEditNote",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RetroSavePlaylist",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarEventOnDateAtTime",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorTranscribeReceipt",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorCreateNoteAndSms",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ClockTimerEntry",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseDeleteDuplicates2",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeAddSingleRecipe",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "BrowserMultiply",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TasksCompletedTasksForDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeAddMultipleRecipesFromMarkor",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarEventsOnDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "ExpenseAddMultiple",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorMergeNotes",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SportsTrackerActivityDuration",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBluetoothTurnOn",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorDeleteAllNotes",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarAnyEventsOnDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarNextMeetingWithPerson",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorCreateNote",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBluetoothTurnOnVerify",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarDeleteOneEvent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemWifiTurnOff",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarEventsInTimeRange",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "other_arms (original crashed before the date rewording)"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SaveCopyOfReceiptTaskEval",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SportsTrackerActivitiesCountForWeek",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "MarkorCreateFolder",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarAddOneEvent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarAddOneEventTomorrow",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "CameraTakeVideo",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "NotesRecipeIngredientCount",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "BrowserMaze",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeAddMultipleRecipes",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemBrightnessMinVerify",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteSingleWithRecipeWithNoise",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "TasksIncompleteTasksOnDate",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SystemCopyToClipboard",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "OsmAndFavorite",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "RecipeDeleteMultipleRecipesWithNoise",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v4",
+   "seed": 1234,
+   "task": "SimpleCalendarAddOneEventRelativeDay",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "guiowl",
+   "seed": 1234,
+   "task": "RecipeDeleteSingleRecipe",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "guiowl",
+   "seed": 2026,
+   "task": "SimpleSmsSendReceivedAddress",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "guiowl",
+   "seed": 2026,
+   "task": "NotesTodoItemCount",
+   "rerun_success": true,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  },
+  {
+   "arm": "v1",
+   "seed": 2026,
+   "task": "SimpleSmsSendClipboardContent",
+   "rerun_success": false,
+   "rerun_exception": false,
+   "goal_matched": "original"
+  }
+ ],
+ "sensitivity_checker_disputes": {
+  "mean_diff_pp": 1.7,
+  "signflip_p_two_sided": 0.664,
+  "ci95_pp_test_inversion": [
+   -4.8,
+   8.3
+  ],
+  "ci95_pp_exact_endpoints": [
+   -4.761905,
+   8.205128
+  ],
+  "per_seed": {
+   "7": {
+    "v4_only": 14,
+    "guiowl_only": 13,
+    "both": 3,
+    "mcnemar_exact_p": 1.0
+   },
+   "1234": {
+    "v4_only": 13,
+    "guiowl_only": 9,
+    "both": 4,
+    "mcnemar_exact_p": 0.5235
+   },
+   "2026": {
+    "v4_only": 11,
+    "guiowl_only": 10,
+    "both": 8,
+    "mcnemar_exact_p": 1.0
+   }
+  },
+  "n_instances": 348,
+  "n_clusters": 116,
+  "non_inferiority_margin_pp": -6.9,
+  "non_inferior": true,
+  "disputed_successes_counted_as_failures": [
+   "v4 seed 7 ClockStopWatchPausedVerify"
+  ],
+  "totals": {
+   "v4": 53,
+   "guiowl": 47,
+   "v1": 32
+  }
+ },
+ "known_limits": [
+  "The primary score is AndroidWorld's checker verdict (preregistered). Every success is also reviewed against its saved trajectory; disputed successes are listed in results/aw_checker_disputes.json and only enter the sensitivity analysis.",
+  "Harness defect affecting all arms: gRPC fork warnings on adb stderr can corrupt adb query output during task setup (android_env's adb controller merges stderr into stdout). Such setup crashes are exceptions and get the preregistered single re-run; the harness is not changed mid-protocol.",
+  "The 95% CI inverts the sign-flip test (10,000 draws, seed 0); it is a nominal interval that assumes the shifted paired differences are symmetric, not an interval with guaranteed exact coverage."
+ ]
+}

@@ -283,3 +283,30 @@ the four others on emulator 2 (5558, restarted 10:05). Each run is guarded by sc
 fails two consecutive 15-s `adb shell` probes, run_aw.py is killed before a crashed episode is recorded; then the
 emulator is restarted and the remaining tasks resume in the same run directory (an interrupted episode is re-run from
 scratch; disclosed). Then: sealed_analysis.py --seeds 7,1234,2026, per-success trajectory review, Codex audit.
+
+### 2026-11-19 16:20 (re-runs complete; goal check narrowed for date rewording; final analysis and sensitivity)
+The v4 seed-1234 re-run finished 113/113 at 16:07 on emulator 1; the guard never fired (logs/aw_emu_guard_5556.log).
+Four re-run episodes crashed again (NotesTodoItemCount and SimpleSmsReplyMostRecent in setup; VlcCreatePlaylist and
+VlcCreateTwoPlaylists in an agent step, "Could not get a11y tree"). The rule allows one re-run, so all four count as
+failures. The four other re-runs (GUI-Owl x3, v1 x1) finished at 13:36 with no exception.
+**Input check narrowed (scripts/sealed_analysis.py), before any score was computed:** the analysis refused 9 of the 113
+v4 re-runs because their goal text differed from the crashed originals (e.g. "...due this Sunday..." vs "...due
+October 22 2023..."). Cause: information-retrieval templates reword their date parameter inside `initialize_task`
+AFTER the device setup (android_world/android_world/task_evals/information_retrieval/information_retrieval.py:85,
+`_maybe_replace_date`, seeded RNG), so an episode that crashed in setup records the raw date parameter. In all 9 the
+re-run's goal is identical to GUI-Owl's and v1's goal for the same seed and template. The check now accepts a differing
+re-run goal only if it equals the goal of every other arm on that seed and template (recorded per re-run as
+`goal_matched` in results/sealed_analysis_final.json); everything else in the analysis is unchanged. A leftover note
+that called SimpleSmsReplyMostRecent (v4 seed 2026) "re-run pending" was reworded: it is a scoring-phase exception and
+counts as a failure (13:40 entry).
+**Result (preregistered primary, results/sealed_analysis_final.md):** v4 54/348 (15.5%), GUI-Owl matched 47/348
+(13.5%), v1 32/348 (9.2%). v4 - GUI-Owl = +2.0 pp, 95% CI [-4.5, 8.6], sign-flip p = 0.60 (116 template clusters):
+non-inferior at the -6.9 pp margin; not superior. v4 - v1 = +6.3 pp [1.1, 11.5], p = 0.02. Checker-dispute
+sensitivity (seed-7 ClockStopWatchPausedVerify): +1.7 pp [-4.8, 8.3], non-inferior.
+**Sensitivity (not preregistered; scripts/sealed_sensitivity.py -> results/sealed_sensitivity_final.md):**
+B, drop the 7 pairs where v4 or GUI-Owl still ends in an exception: +2.9 pp [-3.4, 9.3], non-inferior.
+C, count v4 seed 1234's 113 re-runs as failures (rule not applied): -2.9 pp [-8.4, 2.7], NOT non-inferior.
+D, exclude seed 1234: +1.3 pp [-5.8, 8.4], non-inferior.
+So the non-inferiority conclusion depends on applying the preregistered re-run rule to the 113 emulator-2 crashes
+(variant C is the only one that fails). Next: Codex audit (results/codex/PROMPT_final_heldout_audit.md), including the
+per-success trajectory review for seeds 1234 and 2026; disputes are entered only after review.
