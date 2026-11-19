@@ -26,11 +26,13 @@ Re-runs applied: v4 s7 RecipeDeleteMultipleRecipes -> fail, v4 s7 SimpleSmsSend 
 
 Non-inferiority (lower 95% bound > -6.9 pp): **yes** (lower bound -4.477612 pp).
 
-Sensitivity, disputed checker successes counted as failures (v4 seed 7 ClockStopWatchPausedVerify): v4 53 vs GUI-Owl 47, difference 1.7 pp, 95% CI [-4.8, 8.3], p = 0.664; non-inferior: yes.
+Sensitivity, disputed checker successes counted as failures (v4 seed 7 ClockStopWatchPausedVerify, v1 seed 2026 OpenAppTaskEval): v4 53 vs GUI-Owl 47, difference 1.7 pp, 95% CI [-4.8, 8.3], p = 0.664; non-inferior: yes.
+Same disputes, v4 - v1: v4 53 vs v1 31, difference 6.3 pp, 95% CI [1.2, 11.4], p = 0.0177.
 
 Known limits:
 * The primary score is AndroidWorld's checker verdict (preregistered). Every success is also reviewed against its saved trajectory; disputed successes are listed in results/aw_checker_disputes.json and only enter the sensitivity analysis.
 * Harness defect affecting all arms: gRPC fork warnings on adb stderr can corrupt adb query output during task setup (android_env's adb controller merges stderr into stdout). Such setup crashes are exceptions and get the preregistered single re-run; the harness is not changed mid-protocol.
+* Device state between episodes is not fully controlled (all arms, both emulators): app-snapshot restoration is skipped with 'Snapshot not found' (~263-275 per 116-episode run; task_eval.py catches the error), so state not cleared by a task's own setup can carry over (e.g. a contact created in one episode is present in a later one). Direction and size of any bias are unknown; template clustering does not cover cross-template carryover or episode order (Codex final audit P2-1).
 * The 95% CI inverts the sign-flip test (10,000 draws, seed 0); it is a nominal interval that assumes the shifted paired differences are symmetric, not an interval with guaranteed exact coverage.
 
 Goal can vary: 78 templates in results/aw_template_manifest.json (source-checked); observed goal-text changes versus dev seed 30: seed 7: 76, seed 1234: 76, seed 2026: 75.

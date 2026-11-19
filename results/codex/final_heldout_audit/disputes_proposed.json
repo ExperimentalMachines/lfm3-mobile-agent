@@ -1,0 +1,12 @@
+{
+  "definition": "Proposed checker-scored successes whose saved trajectory contains a material contradiction of the intended task, including destructive unrelated actions. The preregistered primary keeps the checker verdict; proposals affect sensitivity only. This file contains new proposals, not the already recorded seed-7 dispute.",
+  "disputes": [
+    {
+      "seed": 2026,
+      "arm": "v1",
+      "task": "OpenAppTaskEval",
+      "source": "results/codex/final_heldout_audit/report.md (P2-2); success_review.md #80; trajectory_80_1.jpg; results/androidworld_sealed/v1_seed2026/run_20261119T100426801014/OpenAppTaskEval_0.pkl.gz",
+      "reason": "Goal asks only to open Contacts and clear permission pop-ups. Steps 2-5 select all contacts, press trash, and confirm deletion of Thomas Pereira. Final screen says 'No contacts yet' with '1 contact deleted', followed by status(complete). system.py:484-492 checks only foreground package, so accepts the destructive extra action. The open-app subgoal is satisfied, but this is disputed as a user-level success because of the unrelated deletion. Primary remains unchanged."
+    }
+  ]
+}

@@ -1,53 +1,38 @@
-# Status — 2026-11-18 03:25 (Asia/Manila)
+# Status — 2026-11-19 17:05 (Asia/Manila)
 
-Auto-generated table with every model: `results/SUMMARY.md` (`python3 scripts/build_report.py`).
-Codex (gpt-6-astra, max) audits: `results/codex/`. Research: `reports/Small GUI agent training methods.md`,
-`reports/Beating GUI Owl at 2B fairly.md` (notes in `research_notes/`).
+Pre-registration and every dated deviation: `docs/PREREG_v4.md`. Codex (gpt-6-astra, max) audits: `results/codex/`.
+Development-seed (30) table for every model: `results/SUMMARY.md` (`python3 scripts/build_report.py`).
 
-## Running (overnight 2026-11-18)
-| What | Where | Status |
-|---|---|---|
-| v4 training (v3 recipe; data `alpharomercoma/AndroidAgent-SFT-v4` @ 570febb) -> AC test + v4 dev splits | Colab A100-40GB `lfm3v4` (6.73 CU/h) | started 03:15, 7.6 s/step, train done ~05:55, evals ~06:40 |
-| RL pilot (static-screenshot GRPO from merged v4, KL 0.001; Codex research rank 1) | same VM, `vm_rl_hook.sh` | base-model smoke now; main run after the v4 pipeline (<= 4.5 h) |
-| v4 AndroidWorld seed-30 development pass | Mac emulator 2 (`scripts/local_v4_to_aw.sh`) | waits for v4 weights; pauses + later resumes sealed v1 seed 7 |
-| SEALED held-out seed 7: GUI-Owl matched (+ app list) and LFM3 v1 | Mac emulators 1/2 | running since 01:30; outcomes not inspected (docs/PREREG_v4.md) |
-| Codex adversarial audit of the built v4 data + RL pilot | local | running -> `results/codex/codex_v4_data_audit.md` |
+## Final held-out AndroidWorld result (preregistered primary; seeds 7, 1234, 2026; 116 templates each)
+Same harness for all arms: 1 screenshot, Q4_K_M via llama.cpp, same step budget, installed-app list given to both.
 
-v4 = v3 rewritten to the v4 prompt (answer-vs-complete rules + installed-app list) + 2,835 navigate-then-answer copies of
-AndroidControl train episodes (question/answer written by Qwen3-VL-8B from the final screen, verified by a second call and a
-strict typed check; 392 verified direct questions) + 1,233 shortened ScreenQA answers; 162 held-out answer episodes
-(dev_answer) and 135 action-only completion controls (dev_complete). Pre-registration: `docs/PREREG_v4.md` (seeds 7/1234/2026
-sealed; gate; dated deviations). Codex: research `results/codex/codex_overnight_research.md`, pipeline audit
-`results/codex/codex_v4_pipeline_audit.md` (7 P1 fixed before training).
-
-## LFM3-VL-2B versions (same recipe and budget: LoRA r64/α128, lr 2e-4, 1,250 steps × 32 rows)
-| Version | Training data | AC test high / low | Held-out Odyssey / AMEX / ScreenQA | AndroidWorld (116, seed 30, Q4_K_M, 1 screenshot) |
+| Arm | Seed 7 | Seed 1234 | Seed 2026 | Total /348 |
 |---|---|---|---|---|
-| v1 | AndroidControl | 0.715 / 0.948 | 0.269 / 0.306 / 0.000 | **15/116** |
-| v2 | v2 mix (AC + GUI-Odyssey + AMEX + ScreenQA), 8,739 blank intents | 0.716 / 0.893 | 0.644 / 0.735 / 0.764 | 3/116 (vs v1: 0–11, p=0.001) |
-| v2 + forced intent (inference only) | — | — | — | 6/116 (vs v2: 3–0, p=0.25; vs v1: 0–9, p=0.004) |
-| v3 | v2 mix with every intent filled (`alpharomercoma/AndroidAgent-SFT-v3` @ 565ba76c) | 0.723 / 0.902 | 0.662 / 0.741 / 0.724 | 13/116 + 1 half-credit (vs v1: 4–6, p=0.75; vs v2: 10–0, p=0.002) |
+| LFM3-VL-2B v4 (ours) | 18 | 17 | 19 | **54 (15.5%)** |
+| GUI-Owl-1.5-2B, matched harness | 16 | 13 | 18 | 47 (13.5%) |
+| LFM3-VL-2B v1 (reference) | 11 | 10 | 11 | 32 (9.2%) |
 
-Reference: GUI-Owl-1.5-2B under the same harness and budget 23/116 (vs v3: GUI-Owl-only 18, v3-only 8, p=0.076;
-vs v1: 16–8, p=0.15). Its published 67.9% uses its own harness (5 screenshots, full resolution, unquantized) and is
-not comparable. Qwen3.5-2B (v1 recipe) 16/116, Qwen3.5-0.8B 12/116, LFM2.5-VL-450M 2/116.
+- **v4 - GUI-Owl: +2.0 pp, 95% CI [-4.5, 8.6], p = 0.60** (template-clustered sign-flip test): **non-inferior** at
+  the preregistered -6.9 pp margin; superiority not shown. v4 - v1: +6.3 pp [1.1, 11.5], p = 0.02.
+  (`results/sealed_analysis_final.md`)
+- Sensitivity (`results/sealed_sensitivity_final.md`): non-inferior when dropping remaining exceptions (+2.9),
+  dropping the three named templates (+3.2), excluding seed 1234 (+1.3), or counting both disputed successes as failures
+  (+1.7). **Not** non-inferior if v4 seed 1234's 113 re-runs are counted as failures (-2.9 pp [-8.4, 2.7]): the result
+  depends on the preregistered single re-run of setup crashes (emulator 2 hung 00:35-08:06 on 2026-11-19).
+- Codex final audit: **VALID WITH CAVEATS** (`results/codex/final_heldout_audit/report.md`): numbers reproduce; caveats
+  are uncontrolled device state between episodes (snapshot restore skipped, all arms), one v1 checker dispute, and
+  limited power (~57% non-inferiority power at a true difference of 0).
 
-What the AndroidWorld runs show: the matched GUI-Owl lead is the ~25 answer-scored tasks (GUI-Owl 10, LFM3 v1/v3 0 —
-LFM3 never emits `answer` and declares `complete` instead); on the other tasks v1 and GUI-Owl are level. AndroidWorld
-credits a success only if the agent ends the episode (`suite_utils.py`), so false 'complete' (v3: 38) and running out
-of steps both score 0. Offline gains from the v2/v3 data (Odyssey .27→.66, AMEX .31→.74) did not transfer.
-Seed 30 has been used to choose between versions: treat these as development-set numbers.
+## MobileWorld (secondary; 105 English GUI-only tasks, one run per model)
+v4 6/105 (5.7%) vs GUI-Owl-1.5-2B 22/105 (21.0%): -15.2 pp, exact McNemar p = 3.05e-05
+(`results/mobileworld/mw_r2_comparison.md`). GUI-Owl is clearly better here. MAI-UI-2B (optional third arm) is still
+running on the GCP spot VM with its model on Colab: 71/105 scored at 17:05.
 
-## Published (private Hugging Face, alpharomercoma)
-`LFM3-VL-2B-AndroidAgent-v3` (merged + card) and `LFM3-VL-2B-AndroidAgent-v3-GGUF` (Q4_K_M + base mmproj; sizes
-verified); v2 LFM3 / Qwen3.5-2B repos with cards; dataset `AndroidAgent-SFT-v3`. Script: `scripts/publish_v3_hf.py`.
+## Speed (`results/speed/speed_t8.md`)
+CPU only (8 threads, idle GCP n2), median per step: v4 6.4 s, GUI-Owl 58.0 s, MAI-UI 58.2 s (v4 uses ~1/3 of the
+prompt tokens and 2.8 GB vs 7.5 GB server RSS). Apple M5 in-run AndroidWorld medians: v4 2.96 s vs GUI-Owl 7.00 s.
 
-## Next (awaiting go-ahead; plan in `reports/Beating GUI Owl at 2B fairly.md`)
-1. v4 data on the Mac (no GPU): navigate-then-answer episodes from non-AndroidWorld sources, terse answers, explicit
-   answer/complete rules in the prompt, installed-app list (fixes "Marker" vs Markor).
-2. Train v4 once on the Colab G4 (~1.5 of ~2.5 GPU-hours left), same recipe, then AndroidWorld.
-3. Fair comparison: GUI-Owl and LFM3 on ≥3 held-out seeds (~350 paired episodes, sealed), pre-registered margin.
-
-## Budget
-Colab (main account): 125 CU after the user's purchase; A100 6.73 CU/h; ~10 CU used by 03:25. Modal (alpharomercoma): $18.44 of credits used this month,
-allowance to confirm. Modal (old account): within the $26/$28 cap.
+## Open items
+- MAI-UI MobileWorld run: let it finish or stop it (user decision pending); then pull results and delete the GCP VM,
+  disk, static IP and firewall rules, and stop the Colab session.
+- Not run: MAI-UI on the held-out AndroidWorld seeds.

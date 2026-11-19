@@ -7,6 +7,13 @@
    "task": "ClockStopWatchPausedVerify",
    "source": "results/codex/seed7_analysis_audit/report.md (P2-1)",
    "reason": "Goal 'Pause the stopwatch'; actions open Clock, Stopwatch tab, tap Play, status(complete); the final screen shows the stopwatch running (02.99, Pause button). The checker accepts any 'Start' node plus two Stopwatch nodes."
+  },
+  {
+   "seed": 2026,
+   "arm": "v1",
+   "task": "OpenAppTaskEval",
+   "source": "results/codex/final_heldout_audit/report.md (P2-2); success_review.md #80; trajectory_80_1.jpg (confirmed 2026-11-19 16:50)",
+   "reason": "Goal 'Open the contacts app. Clear any pop-ups...'; actions open Contacts, overflow menu, Select all, trash, confirm Delete (Thomas Pereira, carried over from an earlier episode), status(complete); final screen 'No contacts yet', '1 contact deleted'. The checker (system.py:484) checks only the foreground package, so the unrelated destructive deletion is accepted."
   }
  ]
 }

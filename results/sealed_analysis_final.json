@@ -1378,17 +1378,53 @@
   "non_inferiority_margin_pp": -6.9,
   "non_inferior": true,
   "disputed_successes_counted_as_failures": [
-   "v4 seed 7 ClockStopWatchPausedVerify"
+   "v4 seed 7 ClockStopWatchPausedVerify",
+   "v1 seed 2026 OpenAppTaskEval"
   ],
   "totals": {
    "v4": 53,
    "guiowl": 47,
-   "v1": 32
+   "v1": 31
   }
+ },
+ "sensitivity_checker_disputes_v4_minus_v1": {
+  "mean_diff_pp": 6.3,
+  "signflip_p_two_sided": 0.0177,
+  "ci95_pp_test_inversion": [
+   1.2,
+   11.4
+  ],
+  "ci95_pp_exact_endpoints": [
+   1.212121,
+   11.320755
+  ],
+  "per_seed": {
+   "7": {
+    "v4_only": 10,
+    "v1_only": 4,
+    "both": 7,
+    "mcnemar_exact_p": 0.1796
+   },
+   "1234": {
+    "v4_only": 11,
+    "v1_only": 4,
+    "both": 6,
+    "mcnemar_exact_p": 0.1185
+   },
+   "2026": {
+    "v4_only": 11,
+    "v1_only": 2,
+    "both": 8,
+    "mcnemar_exact_p": 0.0225
+   }
+  },
+  "n_instances": 348,
+  "n_clusters": 116
  },
  "known_limits": [
   "The primary score is AndroidWorld's checker verdict (preregistered). Every success is also reviewed against its saved trajectory; disputed successes are listed in results/aw_checker_disputes.json and only enter the sensitivity analysis.",
   "Harness defect affecting all arms: gRPC fork warnings on adb stderr can corrupt adb query output during task setup (android_env's adb controller merges stderr into stdout). Such setup crashes are exceptions and get the preregistered single re-run; the harness is not changed mid-protocol.",
+  "Device state between episodes is not fully controlled (all arms, both emulators): app-snapshot restoration is skipped with 'Snapshot not found' (~263-275 per 116-episode run; task_eval.py catches the error), so state not cleared by a task's own setup can carry over (e.g. a contact created in one episode is present in a later one). Direction and size of any bias are unknown; template clustering does not cover cross-template carryover or episode order (Codex final audit P2-1).",
   "The 95% CI inverts the sign-flip test (10,000 draws, seed 0); it is a nominal interval that assumes the shifted paired differences are symmetric, not an interval with guaranteed exact coverage."
  ]
 }

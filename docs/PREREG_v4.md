@@ -310,3 +310,30 @@ D, exclude seed 1234: +1.3 pp [-5.8, 8.4], non-inferior.
 So the non-inferiority conclusion depends on applying the preregistered re-run rule to the 113 emulator-2 crashes
 (variant C is the only one that fails). Next: Codex audit (results/codex/PROMPT_final_heldout_audit.md), including the
 per-success trajectory review for seeds 1234 and 2026; disputes are entered only after review.
+
+### 2026-11-19 17:00 (Codex final audit: VALID WITH CAVEATS; findings applied; corrections to 13:40 and 16:20)
+Codex (results/codex/final_heldout_audit/report.md) recomputed every number independently (723 checks; primary +2.011 pp,
+CI [-4.478, 8.511], p 0.602), confirmed all 117 newly re-run originals were setup crashes, the three counted failures
+were not, each re-run ran once, the 9 date-reworded goals match both other arms and the correct instance seed (all 9
+fail, so admitting them adds no success), and that the 16:20 script change touched only goal admission. No P1.
+- **P2-1, device state not fully controlled (all arms, disclosed, harness unchanged):** app-snapshot restoration is
+  skipped ("Snapshot not found", ~263-275 per run, caught in task_eval.py), so state that a task's own setup does not
+  clear can carry over between episodes (seen: a contact created in one v1 episode is present in a later one). Bias
+  direction/size unknown; added to the analysis's known limits. Moving the 113 v4 re-runs to emulator 1 is subject to
+  this too. The 13-h delay does not change the benchmark date (setup resets the device clock to 2023-10-15).
+- **P2-2, accepted as a checker dispute (sensitivity only):** v1 seed 2026 OpenAppTaskEval opened Contacts, then
+  selected all and deleted the only contact before `complete` (verified from the saved screens). Added to
+  results/aw_checker_disputes.json. With both disputes: v4 - GUI-Owl +1.7 pp [-4.8, 8.3] (non-inferior); v4 - v1
+  +6.3 pp [1.2, 11.4], p 0.018. The 88 new-seed successes were all reviewed; no other dispute.
+- **P3-1, input checks strengthened (scripts/sealed_analysis.py; output byte-identical):** every episode must be
+  instance 0 and, unless it crashed in setup, store the instance seed AndroidWorld derives from the run's suite seed
+  and template (suite_utils `_get_instance_seed`); a re-run is admitted only if its original's last traceback is task
+  setup (`_run_task -> initialize_task`). Both Codex counterexamples (another seed's episode; altered seed/instance id)
+  are now rejected.
+- **P3-2, corrections:** the two VLC re-run crashes (16:20 entry, "in an agent step") were in `agent.reset` before the
+  step loop; they count as failures either way (re-run already used). The 13:40 entry promised a sensitivity excluding
+  three templates; 16:20's variant B instead dropped 7 pairs. Both are now in results/sealed_sensitivity_final.md:
+  B3 (the three templates on every seed, 339 pairs / 113 templates): +3.2 pp [-3.1, 9.6], non-inferior.
+- **Power (Codex approximation):** cluster SE ~3.25 pp; ~9.1 pp needed for 80% superiority power; ~57% power for
+  non-inferiority if the true difference is zero. The supported claim is non-inferiority in this harness, not
+  equivalence or superiority.

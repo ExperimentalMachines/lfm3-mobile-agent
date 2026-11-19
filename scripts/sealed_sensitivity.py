@@ -6,6 +6,8 @@ which paired instances enter, or how one set of episodes is scored:
   A. primary (reproduced);
   B. drop every (seed, template) pair in which v4 or GUI-Owl still ends in an exception (scoring-phase / after-step-1
      exceptions counted as failures in the primary, and re-runs that crashed again);
+  B3. drop the three templates named in the 13:40 entry (BrowserDraw, SimpleSmsReplyMostRecent,
+     SimpleSmsSendReceivedAddress) on every seed, as that entry literally promised;
   C. v4 seed 1234's 113 re-run episodes counted as failures (as if the re-run rule had not been applied);
   D. seed 1234 excluded entirely (seeds 7 and 2026, clusters = templates across those two seeds).
 Usage: .venv-aw/bin/python scripts/sealed_sensitivity.py  ->  results/sealed_sensitivity_final.{json,md}
@@ -49,6 +51,8 @@ out = {
     "A_primary": paired("v4", "guiowl", S),
     "B_drop_pairs_with_remaining_exceptions": dict(paired("v4", "guiowl", S, keep=lambda s, t: (s, t) not in dropped),
                                                    dropped=[f"seed {s} {t}" for s, t in dropped]),
+    "B3_drop_three_templates_named_1340": paired("v4", "guiowl", S, keep=lambda s, t: t not in {
+        "BrowserDraw", "SimpleSmsReplyMostRecent", "SimpleSmsSendReceivedAddress"}),
     "C_v4_seed1234_reruns_counted_as_failures": dict(paired("v4", "guiowl", S, ok=lambda arm, s, t: False if (
         arm == "v4" and s == 1234 and t in rerun113) else data[(arm, s)][0][t]), n_reruns=len(rerun113)),
     "D_seed1234_excluded": paired("v4", "guiowl", [7, 2026]),

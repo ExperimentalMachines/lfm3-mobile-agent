@@ -16,6 +16,7 @@ Usage: python scripts/sealed_analysis.py --seeds 7 --out results/sealed_analysis
 import argparse
 import glob
 import gzip
+import hashlib
 import json
 import math
 import os
@@ -39,6 +40,11 @@ META = {m["task_name"]: m for m in json.load(open("android_world/android_world/t
 VARY = set(json.load(open("results/aw_template_manifest.json"))["goal_text_can_vary"])
 assert len(VARY) == 78 and VARY <= set(META)
 DISPUTES = json.load(open("results/aw_checker_disputes.json"))["disputes"]
+SETUP = {}  # (run_root, template) -> True if the exception's last traceback is task setup (_run_task -> initialize_task)
+
+
+def instance_seed(suite_seed, t, i=0):  # android_world suite_utils.create_suite._get_instance_seed
+    return int(hashlib.sha256(f"{suite_seed}_{t}_{i}".encode()).hexdigest(), 16) % (2 ** 32)
 
 
 def load(run_root, agent, expect=116, full=True):
@@ -62,6 +68,17 @@ def load(run_root, agent, expect=116, full=True):
             raise SystemExit(f"INPUT ERROR: {f} agent_name {ep.get('agent_name')!r} != {agent!r}")
         r = ep.get("is_successful")
         e = bool(ep.get("exception_info"))
+        # instance identity (Codex final audit P3-1): instance 0 of this template under this run's suite seed. Episodes
+        # that crashed in setup do not store the seed; every other episode must.
+        if ep.get("instance_id") != 0:
+            raise SystemExit(f"INPUT ERROR: {f} instance_id {ep.get('instance_id')!r} != 0")
+        if "seed" in ep or not e:
+            if ep.get("seed") != instance_seed(int(re.search(r"_seed(\d+)", run_root).group(1)), t):
+                raise SystemExit(f"INPUT ERROR: {f} stored seed {ep.get('seed')!r} is not this suite seed's instance seed")
+        if e:
+            frames = re.findall(r'File "[^"]+", line \d+, in (\w+)', str(ep["exception_info"]).split(
+                "Traceback (most recent call last):")[-1])
+            SETUP[(run_root, t)] = frames[:2] == ["_run_task", "initialize_task"]
         ok[t] = isinstance(r, (int, float)) and not math.isnan(r) and r >= 1 and not e
         exc[t] = e
         goal[t] = re.sub(r"\d{8}_\d{6}", "<ts>", ep.get("goal") or "")
@@ -138,6 +155,8 @@ for s in SEEDS:
         for t in ok2:
             if not exc[t]:
                 raise SystemExit(f"INPUT ERROR: re-run of {arm} seed {s} {t}, but the original was not an exception")
+            if not SETUP[(f"results/androidworld_sealed/{arm}_seed{s}", t)]:
+                raise SystemExit(f"INPUT ERROR: re-run of {arm} seed {s} {t}, but the original crashed after task setup")
             matched = "original"
             if goal2[t] != goal[t]:
                 if {data[(a, s)][2][t] for a in ARMS if a != arm} != {goal2[t]}:
@@ -235,12 +254,18 @@ if disp:
     sens["disputed_successes_counted_as_failures"] = [f"{d['arm']} seed {d['seed']} {d['task']}" for d in disp]
     sens["totals"] = {arm: sum(sum(D2[(arm, s)][0].values()) for s in SEEDS) for arm in ARMS}
     res["sensitivity_checker_disputes"] = sens
+    res["sensitivity_checker_disputes_v4_minus_v1"] = compare("v4", "v1", D=D2)
 res["known_limits"] = [
     "The primary score is AndroidWorld's checker verdict (preregistered). Every success is also reviewed against its saved "
     "trajectory; disputed successes are listed in results/aw_checker_disputes.json and only enter the sensitivity analysis.",
     "Harness defect affecting all arms: gRPC fork warnings on adb stderr can corrupt adb query output during task setup "
     "(android_env's adb controller merges stderr into stdout). Such setup crashes are exceptions and get the preregistered "
     "single re-run; the harness is not changed mid-protocol.",
+    "Device state between episodes is not fully controlled (all arms, both emulators): app-snapshot restoration is skipped "
+    "with 'Snapshot not found' (~263-275 per 116-episode run; task_eval.py catches the error), so state not cleared by a "
+    "task's own setup can carry over (e.g. a contact created in one episode is present in a later one). Direction and "
+    "size of any bias are unknown; template clustering does not cover cross-template carryover or episode order "
+    "(Codex final audit P2-1).",
     "The 95% CI inverts the sign-flip test (10,000 draws, seed 0); it is a nominal interval that assumes the shifted paired "
     "differences are symmetric, not an interval with guaranteed exact coverage."]
 json.dump(res, open(a.out + ".json", "w"), indent=1)
@@ -272,6 +297,9 @@ if disp:
     L += ["", f"Sensitivity, disputed checker successes counted as failures ({', '.join(sc['disputed_successes_counted_as_failures'])}): "
           f"v4 {sc['totals']['v4']} vs GUI-Owl {sc['totals']['guiowl']}, difference {sc['mean_diff_pp']} pp, 95% CI {sc['ci95_pp_test_inversion']}, "
           f"p = {sc['signflip_p_two_sided']}; non-inferior: {'yes' if sc['non_inferior'] else 'no'}."]
+    s1 = res["sensitivity_checker_disputes_v4_minus_v1"]
+    L += [f"Same disputes, v4 - v1: v4 {sc['totals']['v4']} vs v1 {sc['totals']['v1']}, difference {s1['mean_diff_pp']} pp, "
+          f"95% CI {s1['ci95_pp_test_inversion']}, p = {s1['signflip_p_two_sided']}."]
 L += ["", "Known limits:"] + [f"* {k}" for k in res["known_limits"]]
 L += ["", f"Goal can vary: {len(VARY)} templates in results/aw_template_manifest.json (source-checked); observed goal-text changes "
       "versus dev seed 30: " + ", ".join(f"seed {s}: {n}" for s, n in res["observed_goal_changes_vs_seed30"].items()) + "."]
