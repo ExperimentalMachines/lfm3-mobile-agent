@@ -246,3 +246,9 @@ for this arm to finish.
   firewall rule (lfm3-mw-ssh-colab2, its /32 on tcp:22 only) admits it. No MAI-UI request is served by it while the
   first session is alive. Which session served each task is recoverable from task start times vs the switchover time,
   which will be logged.
+- 12:45 addendum (infrastructure only): the first Colab session (mwgpu) ended at 12:40:57 (24-h limit); the failover
+  session's tunnel bound 18093/18094 within its retry interval and both ports passed the identity check at 12:40:58.
+  The watcher never stopped a half. Tasks spanning the switch: SharePhotosTask (maiui_a, started 12:39:31): two model
+  requests failed with "Connection error" at 12:40:53 and 12:40:55 and the official agent's third try succeeded (no step
+  lost, no "Planner LLM failed"); MastodonUnfollowTask (maiui_b, 12:29:02-12:41:14): no error. Requests before 12:40:53
+  were served by mwgpu, later ones by mwgpu2 (same files by SHA-256, build, flags, GPU type). No task was re-run.
