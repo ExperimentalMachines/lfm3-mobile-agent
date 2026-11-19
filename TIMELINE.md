@@ -164,3 +164,8 @@ Generated from `git log` of the private working repository (lfm3-android). Times
 | 2026-11-19 05:44 | `b5e7fc8` | MobileWorld: apply Codex mw_r2_audit (VALID WITH CAVEATS) |
 | 2026-11-19 05:44 | `d77c702` | Docs: include MobileWorld run-2 comparison and summaries in the run log |
 | 2026-11-19 10:07 | `f7c9284` | PREREG: v1 seed 2026 relaunched on emulator 1 after emulator 2 hung during setup (0 episodes) |
+| 2026-11-19 10:08 | `009dcb6` | Live snapshot: MobileWorld counts, QDC phone report (10:08) |
+| 2026-11-19 10:15 | `44d95ba` | MobileWorld: GUI-Owl run 2 complete (22/105); model-server-unreachable rule and guard before MAI-UI starts |
+| 2026-11-19 10:18 | `83617ad` | MobileWorld run 2 final: GUI-Owl 22/105 vs v4 6/105; MAI-UI run started |
+| 2026-11-19 10:27 | `3be50ed` | MobileWorld MAI-UI: graceful container restart (stale AVD lock fix); both halves started |
+| 2026-11-19 10:30 | `343fbea` | MobileWorld MAI-UI: failover Colab session scripts (same files by SHA-256, same build/flags; tunnel binds when the first session ends) |

@@ -154,7 +154,7 @@ finished; only episode-file counts are reported:
 | guiowl_seed7 | 116 | 116 |
 | guiowl_seed7_rerun | 1 | 116 |
 | v1_seed1234 | 116 | 116 |
-| v1_seed2026 | 2 | 116 |
+| v1_seed2026 | 14 | 116 |
 | v1_seed7 | 116 | 116 |
 | v4_seed1234 | 116 | 116 |
 | v4_seed2026 | 116 | 116 |
@@ -208,7 +208,7 @@ non-inferiority margin 8 tasks per 116.
 
 ## 6. MobileWorld (secondary benchmark, in progress)
 
-Status 2026-11-19 10:08; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
+Status 2026-11-19 10:38; suite: MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3.
 
 | run | host | agent | finished | successes | status |
 |---|---|---|---|---|---|
@@ -221,12 +221,12 @@ Paired so far (tasks both valid runs have finished): 102 tasks, v4 6 vs GUI-Owl 
 
 Only complete, valid runs are comparable. Per-task results of finished runs are in the working repo (`results/mobileworld/`).
 
-### MobileWorld run 2: v4 vs GUI-Owl-1.5-2B (105 English GUI-only tasks) (PROVISIONAL: GUI-Owl-1.5-2B pending ThanksgivingPrepTask)
+### MobileWorld run 2: v4 vs GUI-Owl-1.5-2B (105 English GUI-only tasks)
 
 | Model | Successes / 105 | Tasks with a result | No result (counted as failure) | Folder-level setup/scoring failures (tasks) | Device-health re-initialisations (tasks) | Task executions |
 |---|---|---|---|---|---|---|
 | LFM3-VL-2B-AndroidAgent-v4 | **6** (5.7%) | 104 | 1: ThanksgivingPrepTask (setup_failed) | 8 (1) | 2 (2) | 114 |
-| GUI-Owl-1.5-2B | **22** (21.0%) | 102 | 3: SendInterviewEmailTask (ask_user_without_simulator), CheckInvoiceTask2 (unsupported_action), ThanksgivingPrepTask (setup_failed) | 12 (8) | 15 (14) | 144 |
+| GUI-Owl-1.5-2B | **22** (21.0%) | 102 | 3: SendInterviewEmailTask (ask_user_without_simulator), CheckInvoiceTask2 (unsupported_action), ThanksgivingPrepTask (setup_failed) | 16 (8) | 15 (14) | 148 |
 
 Paired on the same 105 tasks: both solved 6, v4 only 0, GUI-Owl only 16, neither 83; difference -15.2 pp, exact McNemar p = 3.05e-05 (conditional on these task pairs; one run per model).
 
@@ -235,7 +235,7 @@ Sensitivity (environment): excluding the 8 tasks with a folder-level setup/scori
 Retries and harness events (no score was changed by them):
 
 * LFM3-VL-2B-AndroidAgent-v4: earlier folders ended setup_failed 7; successes after an earlier failed folder: none; successes after a device-health re-initialisation: none.
-* GUI-Owl-1.5-2B: earlier folders ended setup_failed 8, ask_user_without_simulator 6, unsupported_action 5, scoring_failed 3, invalid_model_output 2; successes after an earlier failed folder: none; successes after a device-health re-initialisation: SendWaiverTask.
+* GUI-Owl-1.5-2B: earlier folders ended setup_failed 12, ask_user_without_simulator 6, unsupported_action 5, scoring_failed 3, invalid_model_output 2; successes after an earlier failed folder: none; successes after a device-health re-initialisation: SendWaiverTask.
 * GUI-Owl's official agent returns an `error_env` sentinel after 5 unparseable outputs, which MobileWorld's own action validator rejects (an upstream bug), so instead of ending and being scored the task was re-executed (2 executions); those tasks still scored 0.
 * `ask_user` needs an LLM-backed user simulator this setup does not have: 7 GUI-Owl executions hit it (v4 has no such action). `double_tap` was rejected by GUI-Owl's official action adapter (not by the runtime).
 * v4's adapter completes v4's trained type-then-Enter action with a synthetic Enter on the next environment step (138 synthetic Enters; they count toward the 50-round budget, so v4 made fewer than 50 decisions in 37 of the 85 tasks that reached the budget). When typing was the 50th round the Enter was never sent: MastodonAdjustTootsTask, MastodonUpdateContactsTask, MattermostIncidentEscalationTask (all scored 0; not evidence they would have passed).

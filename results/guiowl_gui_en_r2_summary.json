@@ -6,10 +6,8 @@
  "settings": "max_round 50, step_wait 3 s, auto_retry 3 (MobileWorld built-in), 1 screenshot; completion rule docs/PREREG_v4.md 2026-11-19 01:55 / 05:20 / 05:45",
  "host": "GCP n2-standard-16 (env containers) + Colab T4 (model server, reverse SSH tunnel)",
  "elapsed_s_original_list": 42247,
- "complete": false,
- "pending_eligible_tasks": [
-  "ThanksgivingPrepTask"
- ],
+ "complete": true,
+ "pending_eligible_tasks": [],
  "n_tasks": 105,
  "with_result": 102,
  "successes": 22,
@@ -19,7 +17,7 @@
   "CheckInvoiceTask2": "unsupported_action",
   "ThanksgivingPrepTask": "setup_failed"
  },
- "task_executions": 144,
+ "task_executions": 148,
  "tasks_with_more_than_one_folder": 14,
  "device_unhealthy_reinits": 15,
  "tasks_with_device_unhealthy_reinit": [
@@ -42,10 +40,10 @@
   "ask_user_without_simulator": 6,
   "invalid_model_output": 2,
   "scoring_failed": 3,
-  "setup_failed": 8,
+  "setup_failed": 12,
   "unsupported_action": 5
  },
- "folder_level_environment_errors": 12,
+ "folder_level_environment_errors": 16,
  "tasks_with_folder_level_environment_error": [
   "AdjustFontIconMaximumTask",
   "CheckConferenceDurationTask",
@@ -2006,6 +2004,42 @@
     {
      "kind": "mobileworld_auto_retry",
      "folder": "ThanksgivingPrepTask_backup_20261118_203854",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_021307",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_021314",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_021321",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ThanksgivingPrepTask_20261119_021248",
      "outcome": "error",
      "detail": "setup_failed",
      "device_unhealthy_reinits": 0,
