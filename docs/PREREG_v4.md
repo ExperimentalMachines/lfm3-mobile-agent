@@ -239,3 +239,10 @@ for this arm to finish.
   emulator left its AVD lock files. Container restarts now stop the emulator gracefully (`adb emu kill`), remove
   leftover AVD locks, then `docker restart` (scripts/gcp_mw_maiui_watch.sh restart_ctr). Both halves started cleanly at
   10:25 (maiui_a) and 10:27 (maiui_b); every task was still never_started at launch.
+- 11:40 addendum (infrastructure only): a failover Colab session (mwgpu2, Tesla T4 15 GB, same as the first) is ready:
+  llama.cpp cd959bae9 built with the same CMake flags (b12110-cd959bae9), MAI-UI-2B-Q8_0.gguf and its mmproj uploaded from
+  the Mac and verified by the same SHA-256s, two servers on :8093/:8094 with identical flags (n_ctx 20480). Its reverse
+  tunnel retries every ~11 s and binds VM ports 18093/18094 only after the first session's tunnel is gone; a GCP
+  firewall rule (lfm3-mw-ssh-colab2, its /32 on tcp:22 only) admits it. No MAI-UI request is served by it while the
+  first session is alive. Which session served each task is recoverable from task start times vs the switchover time,
+  which will be logged.
