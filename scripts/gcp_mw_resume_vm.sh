@@ -11,6 +11,9 @@
 #   the model called ask_user, whose simulated user needs an LLM API key this setup does not have ("Step action failed",
 #   401) -> counted as a failure, not re-run (temperature 0 repeats the call); disclosed
 #   any other error -> counted as a failure, not re-run, flagged for manual review
+#   model server unreachable (agent's LLM call failed after its retries with a connection-type error: "Planner LLM
+#   failed" + Connection error/refused/timed out/HTTP 502-504) -> infrastructure, handled like "interrupted" (added
+#   2026-11-19 10:20 before any MAI-UI task ran; never occurred in the GUI-Owl or v4 runs, so their decisions are unchanged)
 # Each replaced folder is moved to traj_logs/_interrupted/<run>/<task>_<timestamp> (kept, never mixed into the run);
 # decisions are appended to traj_logs/_retry_manifest_<run>.jsonl. Task lists are validated; <run>_complete is written
 # (atomically, with every final disposition logged) only when a successfully parsed fresh plan has nothing left to attempt.
@@ -66,9 +69,20 @@ def classify(d):
     txt = "".join(open(f, errors="ignore").read() for f in sorted(glob.glob(d + "/*.log")))
     if "Error executing task" not in txt:
         return "interrupted"
-    seg = txt[txt.rindex("Error executing task"):]
+    i = txt.rindex("Error executing task")
+    seg, pre = txt[i:], txt[max(0, i - 6000):i]
     if "Failed to initialize task" in seg: return "setup_failed"
     if "Failed to get task score" in seg: return "scoring_failed"
+    # the model server itself was unreachable (e.g. the GPU session ended): the agent's LLM call failed after its
+    # retries with a connection-type error, so the model never answered -> infrastructure, handled like "interrupted".
+    # The agent logs its 3 "Error calling OpenAI API: <error>" warnings immediately BEFORE the runner's
+    # "Error executing task" (raised as "Planner LLM failed"), so they are read from `pre`.
+    # Other API errors (e.g. HTTP 400) stay other_error (final failure, manual review).
+    if "Planner LLM failed" in seg and any(s in pre for s in ("Error calling OpenAI API: Connection error",
+            "Error calling OpenAI API: Request timed out", "Connection refused",
+            "Error calling OpenAI API: Error code: 502", "Error calling OpenAI API: Error code: 503",
+            "Error calling OpenAI API: Error code: 504")):
+        return "model_server_unreachable"
     if "Unknown action_type" in seg: return "unsupported_action"
     if "error_env" in seg or "Failed to parse tool_call" in seg: return "invalid_model_output"
     if "Step action failed" in seg and "API key" in seg: return "ask_user_without_simulator"

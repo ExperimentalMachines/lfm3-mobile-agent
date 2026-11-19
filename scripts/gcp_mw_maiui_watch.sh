@@ -9,6 +9,9 @@
 #    wait until healthy and its model server answers, then start mw_resume2.sh for it.
 #  * VM stopped (12-h max-run limit / preemption): start it, start both containers, then as above.
 #  * gcloud unusable (expired login): wait and log every 30 min; nothing is started.
+#  * model-server guard (2026-11-19 10:20): a half is (re)launched only while its tunnel serves MAI-UI Q8_0; a running
+#    half whose server fails two checks 20 s apart has its mw eval stopped (no completion marker is written while any
+#    task still needs an attempt); its unfinished tasks are re-run once the server is back.
 # Exits when maiui_a_complete and maiui_b_complete exist (or after 20 h). Log: logs/gcp_mw_maiui_watch.log
 set -u
 cd /Users/alpha/lfm3-android
@@ -51,7 +54,24 @@ while [ $(( $(date +%s) - T0 )) -lt 72000 ]; do
       if S "test -f ${r}_complete" 2>/dev/null; then continue; fi
       done_all=0
       busy=$(S "if pgrep -f 'mw [e]val.*--env_prefix $(ep $r) --log_file_root /home/ubuntu/traj_logs/maiui_gui_en_r2' >/dev/null || pgrep -f 'mw_resume2[.]sh $r' >/dev/null; then echo busy; else echo idle; fi" 2>/dev/null)
+      if [ "$busy" = busy ]; then
+        # model-server guard: if the half's server (Colab tunnel) fails two checks 20 s apart, stop its mw eval so the
+        # task list is not run against a dead server; tasks it ended are re-run later (planner: model_server_unreachable)
+        if ! S "python3 check_maiui_server.py $(port $r)" > /dev/null 2>&1; then
+          sleep 20
+          if ! S "python3 check_maiui_server.py $(port $r)" > /dev/null 2>&1; then
+            log "$r: model server on $(port $r) failed two checks -> stopping its mw eval (tasks it ended will be re-run)"
+            S "sudo pkill -f 'mw [e]val.*--env_prefix $(ep $r) --log_file_root /home/ubuntu/traj_logs/maiui_gui_en_r2'"
+          fi
+        fi
+        continue
+      fi
       [ "$busy" = idle ] || continue
+      # do not restart a container or launch while the half's model server is down (e.g. Colab session ended)
+      if ! S "python3 check_maiui_server.py $(port $r)" > /dev/null 2>&1; then
+        [ $(( $(date +%s) - ${last_srv_log:-0} )) -ge 1800 ] && { log "$r: model server on $(port $r) not serving MAI-UI Q8_0; waiting"; last_srv_log=$(date +%s); }
+        continue
+      fi
       log "$r: not complete and nothing running -> restart $(ctr $r), then mw_resume2.sh $r"
       S "sudo docker restart $(ctr $r) > /dev/null" && wait_ready $r &&
         S "nohup bash mw_resume2.sh $r > ${r}_resume_\$(date +%H%M).log 2>&1 < /dev/null &" && log "started mw_resume2.sh $r"

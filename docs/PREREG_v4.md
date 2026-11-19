@@ -215,3 +215,22 @@ run_output.SEALED.failed_emu2_0818.log). At 10:04 the arm was relaunched unchang
 emulator 1 (5556), which ran the GUI-Owl and v4 seed-2026 arms and was idle and healthy. Emulator 2 was then restarted
 with its original arguments (adb server untouched) and answers again. Unblinding for seeds 1234 and 2026 still waits
 for this arm to finish.
+
+### 2026-11-19 10:20 (MobileWorld: GUI-Owl final; containers recreated; model-server guard before MAI-UI starts)
+- The gcloud login was renewed about 10:04. The VM (stopped at its 12-h limit at 04:57) was started; both MobileWorld
+  containers were gone because `mw env run` creates them with `docker run --rm`. They were recreated with the same
+  `mw env run` commands, image (ghcr.io/tongyi-mai/mobile_world:latest), names and ports.
+- GUI-Owl's one pending invocation (ThanksgivingPrepTask, fresh container) ran 10:12-10:13: setup failed (/task/init
+  500) in all 4 executions, as for v4. GUI-Owl run 2 is complete: 22/105. No other GUI-Owl or v4 decision changed.
+- Before any MAI-UI task runs, one category is added to the completion rule (scripts/gcp_mw_resume_vm.sh) for every
+  model: **model server unreachable** = the agent's LLM call failed after its retries with a connection-type error
+  ("Planner LLM failed" preceded by "Error calling OpenAI API: Connection error / Request timed out / Connection refused /
+  Error code: 502-504") -> infrastructure, handled like "interrupted" (re-run, at most 2 moved copies per task). Other
+  API errors stay other_error (final failure, manual review). This never occurred in the GUI-Owl or v4 runs (0 of their
+  task logs contain "Planner LLM failed" or "Error calling OpenAI API"), and the old and new planners give identical
+  decisions on their data. Reason: the Colab T4 session serving MAI-UI is about 21 h old and is expected to end near
+  its 24-h limit (~12:50); without this rule, tasks running when the server disappears would be scored as model
+  failures. The MAI-UI watcher also stops a half's `mw eval` when its server fails two checks 20 s apart, and launches a
+  half only while its tunnel serves MAI-UI-2B-Q8_0.gguf / cd959bae9 / n_ctx 20480. If a second Colab session is needed,
+  it must pass the same check (same files by SHA-256, same llama.cpp build and flags); tasks finished in each session
+  will be reported.
