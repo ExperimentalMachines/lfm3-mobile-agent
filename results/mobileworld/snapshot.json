@@ -1,5 +1,5 @@
 {
- "snapshot_time": "2026-11-19 20:30",
+ "snapshot_time": "2026-11-19 21:00",
  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
  "runs": {
   "v4 run 1 (AWS c8i, CPU server)": {
@@ -35,7 +35,7 @@
    "agent": "MobileWorld official mai_ui agent, history_n 1 (eval/mobileworld/maiui_mw_agent.py)",
    "finished": 98,
    "successes": 11,
-   "status": "complete 19:32 (both halves). 5 tasks never had a working device (lfmenv_0 emulator died with a fatal KVM error) and count as failures under the completion rule; see results/mobileworld/mw_r2_comparison.md"
+   "status": "complete 19:32 (both halves). 6 tasks ended without a result after a final setup failure (mixed histories: ask_user without a simulator, then setup failures; repeated emulator KVM crashes in both containers); counted as failures under the completion rule. Codex audit VALID WITH CAVEATS (results/codex/mw_maiui_audit/report.md); see results/mobileworld/mw_r2_comparison.md"
   }
  },
  "paired_final": {

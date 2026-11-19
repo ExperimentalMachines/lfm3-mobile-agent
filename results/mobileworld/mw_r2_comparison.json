@@ -189,14 +189,173 @@
     "mcnemar_exact_p": 0.00738525390625
    }
   },
-  "emulator_crash_tasks": [
-   "ReadQwen3PaperTask1",
-   "ReadQwen3PaperTask3",
-   "ReadQwen3PaperTask4",
-   "ReadQwen3PaperTask5",
-   "SendFormsTask"
-  ],
-  "best_case_if_emulator_crash_tasks_had_succeeded": {
+  "no_result_setup_failed_history": {
+   "ReadQwen3PaperTask1": {
+    "half": "b",
+    "container": "lfmenv_0",
+    "executions": 8,
+    "executions_with_model_actions": 1,
+    "earlier_endings": [
+     "ask_user_without_simulator",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed"
+    ]
+   },
+   "ReadQwen3PaperTask3": {
+    "half": "b",
+    "container": "lfmenv_0",
+    "executions": 8,
+    "executions_with_model_actions": 2,
+    "earlier_endings": [
+     "ask_user_without_simulator",
+     "ask_user_without_simulator",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed"
+    ]
+   },
+   "ReadQwen3PaperTask4": {
+    "half": "b",
+    "container": "lfmenv_0",
+    "executions": 8,
+    "executions_with_model_actions": 3,
+    "earlier_endings": [
+     "ask_user_without_simulator",
+     "ask_user_without_simulator",
+     "setup_failed",
+     "ask_user_without_simulator",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed"
+    ]
+   },
+   "ReadQwen3PaperTask5": {
+    "half": "a",
+    "container": "mobile_world_env_0",
+    "executions": 8,
+    "executions_with_model_actions": 5,
+    "earlier_endings": [
+     "ask_user_without_simulator",
+     "ask_user_without_simulator",
+     "ask_user_without_simulator",
+     "ask_user_without_simulator",
+     "ask_user_without_simulator",
+     "setup_failed",
+     "setup_failed"
+    ]
+   },
+   "SendFormsTask": {
+    "half": "b",
+    "container": "lfmenv_0",
+    "executions": 8,
+    "executions_with_model_actions": 0,
+    "earlier_endings": [
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed"
+    ]
+   },
+   "ThanksgivingPrepTask": {
+    "half": "a",
+    "container": "mobile_world_env_0",
+    "executions": 8,
+    "executions_with_model_actions": 0,
+    "earlier_endings": [
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed",
+     "setup_failed"
+    ]
+   }
+  },
+  "sensitivity_exclude_maiui_env_events": {
+   "tasks": [
+    "CheckInterviewTimesTask",
+    "CountFileLinesTask",
+    "MastodonConditionalFavoTask",
+    "MastodonInviteTask",
+    "MastodonMattermostPostNoticeTask",
+    "MattermostBudgetApprovalPipelineTask",
+    "MattermostCreateChannelTask",
+    "MattermostCustomerFeedbackAnalysisTask",
+    "ReadQwen3PaperTask1",
+    "ReadQwen3PaperTask2",
+    "ReadQwen3PaperTask3",
+    "ReadQwen3PaperTask4",
+    "ReadQwen3PaperTask5",
+    "SendFormsTask",
+    "SuggestPaperTask",
+    "ThanksgivingPrepTask"
+   ],
+   "vs_v4": {
+    "n_tasks": 89,
+    "maiui": 11,
+    "v4": 6,
+    "both": 4,
+    "maiui_only": [
+     "AcceptMeetingTask",
+     "CancelMeetingTask",
+     "ChangeWallpaperTask",
+     "CheckEventTimeTask",
+     "GoogleMapsAlibabaSouthNeighborTask",
+     "MastodonChangeHeaderTask",
+     "MastodonNewPostTask"
+    ],
+    "v4_only": [
+     "AdjustFontIconMinimumTask",
+     "TakeSelfieTask"
+    ],
+    "difference_pp": 5.617977528089888,
+    "mcnemar_exact_p": 0.1796875
+   },
+   "vs_guiowl": {
+    "n_tasks": 89,
+    "maiui": 11,
+    "guiowl": 21,
+    "both": 9,
+    "maiui_only": [
+     "CheckEventTimeTask",
+     "GoogleMapsAlibabaSouthNeighborTask"
+    ],
+    "guiowl_only": [
+     "AdjustBrightnessMaximumTask",
+     "AdjustBrightnessMinimumTask",
+     "AdjustFontIconMinimumTask",
+     "CheckConferenceAndSendSmsTask1",
+     "CheckConferenceLocationTask",
+     "CheckDepartTimeTask",
+     "MastodonChangeLanguageTask",
+     "MastodonRevisePhotoAltTask",
+     "MastodonRevisePollTask",
+     "RequestCarpoolingTask",
+     "SetAlarmTask",
+     "TakeSelfieTask"
+    ],
+    "difference_pp": -11.235955056179776,
+    "mcnemar_exact_p": 0.012939453125
+   }
+  },
+  "conditional_if_five_final_setup_failures_were_successes": {
+   "tasks": [
+    "ReadQwen3PaperTask1",
+    "ReadQwen3PaperTask3",
+    "ReadQwen3PaperTask4",
+    "ReadQwen3PaperTask5",
+    "SendFormsTask"
+   ],
    "vs_v4": {
     "n_tasks": 105,
     "maiui": 16,
@@ -254,7 +413,8 @@
     ],
     "difference_pp": -5.714285714285714,
     "mcnemar_exact_p": 0.26317596435546875
-   }
+   },
+   "note": "a fixed what-if for those five tasks only, not a bound on a run with every environment problem repaired"
   },
   "note": "Optional third arm started after GUI-Owl and v4 finished, on the same two containers (recreated after spot preemptions); Q8_0 because its Q4_K_M output degenerates (results/maiui_quant_check.md)."
  }

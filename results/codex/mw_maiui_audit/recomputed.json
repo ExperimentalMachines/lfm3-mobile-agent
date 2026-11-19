@@ -1,0 +1,486 @@
+{
+  "halves": {
+    "a": 53,
+    "b": 52
+  },
+  "summaries": {
+    "maiui": {
+      "tasks": 105,
+      "results": 98,
+      "successes": 11,
+      "no_result": {
+        "MattermostReadingGroupTask": "ask_user_without_simulator",
+        "ReadQwen3PaperTask1": "setup_failed",
+        "ReadQwen3PaperTask3": "setup_failed",
+        "ReadQwen3PaperTask4": "setup_failed",
+        "ReadQwen3PaperTask5": "setup_failed",
+        "SendFormsTask": "setup_failed",
+        "ThanksgivingPrepTask": "setup_failed"
+      },
+      "folders": 156,
+      "kinds": {
+        "final": 105,
+        "auto_retry": 40,
+        "moved": 11
+      },
+      "earlier_categories": {
+        "setup_failed": 34,
+        "ask_user_without_simulator": 13,
+        "interrupted": 4
+      },
+      "reinits": 19,
+      "executions": 175,
+      "environment_failure_folders": 40,
+      "environment_tasks": [
+        "MattermostCreateChannelTask",
+        "ReadQwen3PaperTask1",
+        "ReadQwen3PaperTask2",
+        "ReadQwen3PaperTask3",
+        "ReadQwen3PaperTask4",
+        "ReadQwen3PaperTask5",
+        "SendFormsTask",
+        "ThanksgivingPrepTask"
+      ],
+      "reinit_tasks": [
+        "CheckInterviewTimesTask",
+        "CountFileLinesTask",
+        "MastodonConditionalFavoTask",
+        "MastodonInviteTask",
+        "MastodonMattermostPostNoticeTask",
+        "MattermostBudgetApprovalPipelineTask",
+        "MattermostCreateChannelTask",
+        "MattermostCustomerFeedbackAnalysisTask",
+        "ReadQwen3PaperTask1",
+        "ReadQwen3PaperTask3",
+        "ReadQwen3PaperTask4",
+        "ReadQwen3PaperTask5",
+        "SendFormsTask",
+        "SuggestPaperTask"
+      ],
+      "unhealthy_after_model_folders": []
+    },
+    "guiowl": {
+      "tasks": 105,
+      "results": 102,
+      "successes": 22,
+      "no_result": {
+        "CheckInvoiceTask2": "unsupported_action",
+        "SendInterviewEmailTask": "ask_user_without_simulator",
+        "ThanksgivingPrepTask": "setup_failed"
+      },
+      "folders": 133,
+      "kinds": {
+        "final": 105,
+        "auto_retry": 27,
+        "moved": 1
+      },
+      "earlier_categories": {
+        "setup_failed": 12,
+        "unsupported_action": 5,
+        "invalid_model_output": 2,
+        "ask_user_without_simulator": 6,
+        "scoring_failed": 3
+      },
+      "reinits": 15,
+      "executions": 148,
+      "environment_failure_folders": 16,
+      "environment_tasks": [
+        "AdjustFontIconMaximumTask",
+        "CheckConferenceDurationTask",
+        "MastodonCreateListTask",
+        "MastodonMultiInviteTask",
+        "MastodonPostEditedPhotoTask",
+        "MattermostResourceConflictResolutionTask",
+        "SendInterviewEmailTask",
+        "ThanksgivingPrepTask"
+      ],
+      "reinit_tasks": [
+        "AdjustFontIconMaximumTask",
+        "CartInfoNotificationTask",
+        "CheckConferenceDurationTask",
+        "CheckInvoiceTask2",
+        "MastodonCreateListTask",
+        "MastodonExportFollowsTask",
+        "MastodonFollowTask",
+        "MastodonManageMultiListTask",
+        "MastodonMattermostPostNoticeTask",
+        "MastodonUpdateContactsTask",
+        "MattermostResourceConflictResolutionTask",
+        "ReadQwen3PaperTask1",
+        "ScheduleCoffeeTimeViaSmsTask",
+        "SendWaiverTask"
+      ],
+      "unhealthy_after_model_folders": []
+    },
+    "v4": {
+      "tasks": 105,
+      "results": 104,
+      "successes": 6,
+      "no_result": {
+        "ThanksgivingPrepTask": "setup_failed"
+      },
+      "folders": 112,
+      "kinds": {
+        "final": 105,
+        "auto_retry": 6,
+        "moved": 1
+      },
+      "earlier_categories": {
+        "setup_failed": 7
+      },
+      "reinits": 2,
+      "executions": 114,
+      "environment_failure_folders": 8,
+      "environment_tasks": [
+        "ThanksgivingPrepTask"
+      ],
+      "reinit_tasks": [
+        "MastodonCreateListTask",
+        "ReadQwen3PaperTask1"
+      ],
+      "unhealthy_after_model_folders": []
+    }
+  },
+  "pairs": [
+    {
+      "n": 105,
+      "a": "v4",
+      "b": "guiowl",
+      "a_successes": 6,
+      "b_successes": 22,
+      "both": 6,
+      "a_only": [],
+      "b_only": [
+        "AcceptMeetingTask",
+        "AdjustBrightnessMaximumTask",
+        "AdjustBrightnessMinimumTask",
+        "CancelMeetingTask",
+        "ChangeWallpaperTask",
+        "CheckConferenceAndSendSmsTask1",
+        "CheckConferenceLocationTask",
+        "CheckDepartTimeTask",
+        "MastodonChangeHeaderTask",
+        "MastodonChangeLanguageTask",
+        "MastodonInviteTask",
+        "MastodonNewPostTask",
+        "MastodonRevisePhotoAltTask",
+        "MastodonRevisePollTask",
+        "RequestCarpoolingTask",
+        "SetAlarmTask"
+      ],
+      "neither": 83,
+      "difference_pp": -15.238095238095237,
+      "exact_mcnemar_p": 3.0517578125e-05
+    },
+    {
+      "n": 105,
+      "a": "maiui",
+      "b": "v4",
+      "a_successes": 11,
+      "b_successes": 6,
+      "both": 4,
+      "a_only": [
+        "AcceptMeetingTask",
+        "CancelMeetingTask",
+        "ChangeWallpaperTask",
+        "CheckEventTimeTask",
+        "GoogleMapsAlibabaSouthNeighborTask",
+        "MastodonChangeHeaderTask",
+        "MastodonNewPostTask"
+      ],
+      "b_only": [
+        "AdjustFontIconMinimumTask",
+        "TakeSelfieTask"
+      ],
+      "neither": 92,
+      "difference_pp": 4.761904761904762,
+      "exact_mcnemar_p": 0.1796875
+    },
+    {
+      "n": 105,
+      "a": "maiui",
+      "b": "guiowl",
+      "a_successes": 11,
+      "b_successes": 22,
+      "both": 9,
+      "a_only": [
+        "CheckEventTimeTask",
+        "GoogleMapsAlibabaSouthNeighborTask"
+      ],
+      "b_only": [
+        "AdjustBrightnessMaximumTask",
+        "AdjustBrightnessMinimumTask",
+        "AdjustFontIconMinimumTask",
+        "CheckConferenceAndSendSmsTask1",
+        "CheckConferenceLocationTask",
+        "CheckDepartTimeTask",
+        "MastodonChangeLanguageTask",
+        "MastodonInviteTask",
+        "MastodonRevisePhotoAltTask",
+        "MastodonRevisePollTask",
+        "RequestCarpoolingTask",
+        "SetAlarmTask",
+        "TakeSelfieTask"
+      ],
+      "neither": 81,
+      "difference_pp": -10.476190476190476,
+      "exact_mcnemar_p": 0.00738525390625
+    }
+  ],
+  "five_task_bound": [
+    {
+      "n": 105,
+      "a": "maiui",
+      "b": "v4",
+      "a_successes": 16,
+      "b_successes": 6,
+      "both": 4,
+      "a_only": [
+        "AcceptMeetingTask",
+        "CancelMeetingTask",
+        "ChangeWallpaperTask",
+        "CheckEventTimeTask",
+        "GoogleMapsAlibabaSouthNeighborTask",
+        "MastodonChangeHeaderTask",
+        "MastodonNewPostTask",
+        "ReadQwen3PaperTask1",
+        "ReadQwen3PaperTask3",
+        "ReadQwen3PaperTask4",
+        "ReadQwen3PaperTask5",
+        "SendFormsTask"
+      ],
+      "b_only": [
+        "AdjustFontIconMinimumTask",
+        "TakeSelfieTask"
+      ],
+      "neither": 87,
+      "difference_pp": 9.523809523809524,
+      "exact_mcnemar_p": 0.012939453125
+    },
+    {
+      "n": 105,
+      "a": "maiui",
+      "b": "guiowl",
+      "a_successes": 16,
+      "b_successes": 22,
+      "both": 9,
+      "a_only": [
+        "CheckEventTimeTask",
+        "GoogleMapsAlibabaSouthNeighborTask",
+        "ReadQwen3PaperTask1",
+        "ReadQwen3PaperTask3",
+        "ReadQwen3PaperTask4",
+        "ReadQwen3PaperTask5",
+        "SendFormsTask"
+      ],
+      "b_only": [
+        "AdjustBrightnessMaximumTask",
+        "AdjustBrightnessMinimumTask",
+        "AdjustFontIconMinimumTask",
+        "CheckConferenceAndSendSmsTask1",
+        "CheckConferenceLocationTask",
+        "CheckDepartTimeTask",
+        "MastodonChangeLanguageTask",
+        "MastodonInviteTask",
+        "MastodonRevisePhotoAltTask",
+        "MastodonRevisePollTask",
+        "RequestCarpoolingTask",
+        "SetAlarmTask",
+        "TakeSelfieTask"
+      ],
+      "neither": 76,
+      "difference_pp": -5.714285714285714,
+      "exact_mcnemar_p": 0.26317596435546875
+    }
+  ],
+  "maiui_sensitivity": {
+    "exclude_final_setup": {
+      "excluded": [
+        "ReadQwen3PaperTask1",
+        "ReadQwen3PaperTask3",
+        "ReadQwen3PaperTask4",
+        "ReadQwen3PaperTask5",
+        "SendFormsTask",
+        "ThanksgivingPrepTask"
+      ],
+      "pairs": [
+        {
+          "n": 99,
+          "a": "maiui",
+          "b": "v4",
+          "a_successes": 11,
+          "b_successes": 6,
+          "both": 4,
+          "a_only": [
+            "AcceptMeetingTask",
+            "CancelMeetingTask",
+            "ChangeWallpaperTask",
+            "CheckEventTimeTask",
+            "GoogleMapsAlibabaSouthNeighborTask",
+            "MastodonChangeHeaderTask",
+            "MastodonNewPostTask"
+          ],
+          "b_only": [
+            "AdjustFontIconMinimumTask",
+            "TakeSelfieTask"
+          ],
+          "neither": 86,
+          "difference_pp": 5.05050505050505,
+          "exact_mcnemar_p": 0.1796875
+        },
+        {
+          "n": 99,
+          "a": "maiui",
+          "b": "guiowl",
+          "a_successes": 11,
+          "b_successes": 22,
+          "both": 9,
+          "a_only": [
+            "CheckEventTimeTask",
+            "GoogleMapsAlibabaSouthNeighborTask"
+          ],
+          "b_only": [
+            "AdjustBrightnessMaximumTask",
+            "AdjustBrightnessMinimumTask",
+            "AdjustFontIconMinimumTask",
+            "CheckConferenceAndSendSmsTask1",
+            "CheckConferenceLocationTask",
+            "CheckDepartTimeTask",
+            "MastodonChangeLanguageTask",
+            "MastodonInviteTask",
+            "MastodonRevisePhotoAltTask",
+            "MastodonRevisePollTask",
+            "RequestCarpoolingTask",
+            "SetAlarmTask",
+            "TakeSelfieTask"
+          ],
+          "neither": 75,
+          "difference_pp": -11.11111111111111,
+          "exact_mcnemar_p": 0.00738525390625
+        }
+      ]
+    },
+    "exclude_maiui_any_environment_event": {
+      "excluded": [
+        "CheckInterviewTimesTask",
+        "CountFileLinesTask",
+        "MastodonConditionalFavoTask",
+        "MastodonInviteTask",
+        "MastodonMattermostPostNoticeTask",
+        "MattermostBudgetApprovalPipelineTask",
+        "MattermostCreateChannelTask",
+        "MattermostCustomerFeedbackAnalysisTask",
+        "ReadQwen3PaperTask1",
+        "ReadQwen3PaperTask2",
+        "ReadQwen3PaperTask3",
+        "ReadQwen3PaperTask4",
+        "ReadQwen3PaperTask5",
+        "SendFormsTask",
+        "SuggestPaperTask",
+        "ThanksgivingPrepTask"
+      ],
+      "pairs": [
+        {
+          "n": 89,
+          "a": "maiui",
+          "b": "v4",
+          "a_successes": 11,
+          "b_successes": 6,
+          "both": 4,
+          "a_only": [
+            "AcceptMeetingTask",
+            "CancelMeetingTask",
+            "ChangeWallpaperTask",
+            "CheckEventTimeTask",
+            "GoogleMapsAlibabaSouthNeighborTask",
+            "MastodonChangeHeaderTask",
+            "MastodonNewPostTask"
+          ],
+          "b_only": [
+            "AdjustFontIconMinimumTask",
+            "TakeSelfieTask"
+          ],
+          "neither": 76,
+          "difference_pp": 5.617977528089888,
+          "exact_mcnemar_p": 0.1796875
+        },
+        {
+          "n": 89,
+          "a": "maiui",
+          "b": "guiowl",
+          "a_successes": 11,
+          "b_successes": 21,
+          "both": 9,
+          "a_only": [
+            "CheckEventTimeTask",
+            "GoogleMapsAlibabaSouthNeighborTask"
+          ],
+          "b_only": [
+            "AdjustBrightnessMaximumTask",
+            "AdjustBrightnessMinimumTask",
+            "AdjustFontIconMinimumTask",
+            "CheckConferenceAndSendSmsTask1",
+            "CheckConferenceLocationTask",
+            "CheckDepartTimeTask",
+            "MastodonChangeLanguageTask",
+            "MastodonRevisePhotoAltTask",
+            "MastodonRevisePollTask",
+            "RequestCarpoolingTask",
+            "SetAlarmTask",
+            "TakeSelfieTask"
+          ],
+          "neither": 66,
+          "difference_pp": -11.235955056179776,
+          "exact_mcnemar_p": 0.012939453125
+        }
+      ]
+    }
+  },
+  "markers_epoch_s": {
+    "go_r2.start": [
+      1794992584
+    ],
+    "guiowl_resume.start": [
+      1795054368
+    ],
+    "maiui_a_complete": [
+      1795084574
+    ],
+    "v4_resume.start": [
+      1795031474
+    ],
+    "maiui_a_resume.start": [
+      1795055144,
+      1795065213,
+      1795070191,
+      1795084302
+    ],
+    "v4_r2.start": [
+      1795002722
+    ],
+    "maiui_b_complete": [
+      1795087923
+    ],
+    "maiui_b_resume.start": [
+      1795055221,
+      1795065373,
+      1795070375,
+      1795087102
+    ],
+    "v4_complete": [
+      1795031504
+    ],
+    "go_r2.end": [
+      1795034831
+    ],
+    "guiowl_complete": [
+      1795054408
+    ],
+    "v4_r2.end": [
+      1795031327
+    ]
+  },
+  "one_image_message_blocks": 4125,
+  "manifest_checks": 249,
+  "issues": []
+}

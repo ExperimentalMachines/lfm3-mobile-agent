@@ -354,3 +354,21 @@ Under the rule they count as failures (ThanksgivingPrepTask fails setup for ever
 these five. Upper bound if MAI-UI had solved all five: 16 vs GUI-Owl 22, -5.7 pp, p = 0.26. So MAI-UI trails GUI-Owl
 in every case, but the significance of that gap depends on these tasks. Not re-run (it would be a further deviation for
 one arm only); it can be, on a healthy container, if wanted. Next: Codex audit of the MAI-UI addition.
+
+### 2026-11-19 21:00 (Codex MAI-UI MobileWorld audit: VALID WITH CAVEATS; correction to the 20:30 entry)
+Codex (results/codex/mw_maiui_audit/report.md) reproduced MAI-UI 11/105 and all three paired comparisons, verified all
+249 retry-manifest decisions (the completion rule was applied to MAI-UI exactly as to GUI-Owl and v4; nothing re-run
+twice, no outcome selection), and found the agent to be the official one apart from the declared `history_n` 1.
+**Correction (P2):** the 20:30 entry's "ReadQwen3PaperTask1/3/4/5 and SendFormsTask never had a working device,
+including the fresh-container attempt" is wrong. ReadQwen3PaperTask5 ran in half a (mobile_world_env_0), not lfmenv_0.
+ReadQwen3PaperTask1/3/4/5 had 1/2/3/5 executions in which MAI-UI acted and then called ask_user (fails without a user
+simulator) before setup failed later; SendFormsTask never got past setup. Half b's last invocation started on a working
+device (ReadQwen3PaperTask2 initialised 11:18 UTC and ran 50 steps); its initialisations failed from about 11:29 UTC.
+The containers' logs, now saved in results/mobileworld/container_logs/ (they start at the 06:30 UTC recreation), show
+the emulator's fatal KVM error 6 times in mobile_world_env_0 and 11 times in lfmenv_0 from 07:14 UTC on; the GUI-Owl
+and v4 runs' container logs no longer exist, so whether they saw the same crashes is unknown. Scores are unchanged.
+The five-task figure (16 vs GUI-Owl 22, p = 0.26) is kept only as a what-if for those five tasks, not as a bound on a
+run with every environment problem repaired. Added sensitivity: excluding all 16 tasks with a folder-level
+setup/scoring failure or device-health re-initialisation in MAI-UI's run, MAI-UI 11 vs v4 6 vs GUI-Owl 21 of 89.
+**P3 (no score change):** repeated pulls left an older execution's log in GUI-Owl's final ThanksgivingPrepTask folder;
+scripts/mw_summarize_r2.py now orders an attempt's logs by modification time. All three summaries are byte-identical.

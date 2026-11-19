@@ -39,7 +39,9 @@ def classify(d):
     if os.path.isfile(f):
         m = re.search(r"score:\s*([0-9.]+)", open(f).read())
         return "result", float(m.group(1)) if m else 0.0
-    txt = "".join(open(x, errors="ignore").read() for x in sorted(glob.glob(d + "/*.log")))
+    # by modification time (rsync keeps it): repeated pulls can leave an older execution's log in a final folder (Codex
+    # mw_maiui_audit P3), and filename order would then take the older execution's last error
+    txt = "".join(open(x, errors="ignore").read() for x in sorted(glob.glob(d + "/*.log"), key=os.path.getmtime))
     if "Error executing task" not in txt:
         return "error", "interrupted"
     i = txt.rindex("Error executing task")
@@ -194,18 +196,31 @@ def pair(a, b, A, B, excl=()):
 
 
 m_no_result_setup = sorted(t for t, x in mu.items() if x["final_category"] == "setup_failed")
+HALF_A = set(json.load(open(os.path.join(R, "mw_gui_en_maiui_a.json"))))
 cmp_["maiui"] = {"complete": summ["maiui"]["complete"], "successes": summ["maiui"]["successes"],
                  "vs_v4": pair("maiui", "v4", mu, v), "vs_guiowl": pair("maiui", "guiowl", mu, g),
                  "no_result_setup_failed": m_no_result_setup,
                  "sensitivity_exclude_maiui_final_setup_failures": {
                      "rule": "exclude tasks whose final MAI-UI folder ended setup_failed (no result) in the MAI-UI run",
                      "vs_v4": pair("maiui", "v4", mu, v, m_no_result_setup), "vs_guiowl": pair("maiui", "guiowl", mu, g, m_no_result_setup)},
-                 # half b's emulator in lfmenv_0 died (fatal KVM error "kvm_user_backed_ram_map: error registering slot: File exists")
-                 # before its last invocation, so these tasks' fresh-container attempt never had a working device; bound the effect
-                 "emulator_crash_tasks": [t for t in m_no_result_setup if t != "ThanksgivingPrepTask"],
-                 "best_case_if_emulator_crash_tasks_had_succeeded": {
+                 # per-task history of those final setup failures (Codex mw_maiui_audit P2: they are mixed, not one dead device)
+                 "no_result_setup_failed_history": {t: {
+                     "half": "a" if t in HALF_A else "b",
+                     "container": "mobile_world_env_0" if t in HALF_A else "lfmenv_0",
+                     "executions": len(mu[t]["attempts"]),
+                     "executions_with_model_actions": sum(len(traj_steps(os.path.join(R, "maiui_gui_en_r2", a["folder"])) if a["kind"] != "moved_by_mw_resume"
+                                                              else traj_steps(next(iter(glob.glob(os.path.join(R, "_interrupted", "maiui_*", a["folder"]))), ""))) > 0
+                                                          for a in mu[t]["attempts"]),
+                     "earlier_endings": [a["detail"] for a in mu[t]["attempts"][:-1]]} for t in m_no_result_setup},
+                 "sensitivity_exclude_maiui_env_events": {
+                     "tasks": sorted(set(summ["maiui"]["tasks_with_folder_level_environment_error"]) | set(summ["maiui"]["tasks_with_device_unhealthy_reinit"])),
+                     "vs_v4": pair("maiui", "v4", mu, v, set(summ["maiui"]["tasks_with_folder_level_environment_error"]) | set(summ["maiui"]["tasks_with_device_unhealthy_reinit"])),
+                     "vs_guiowl": pair("maiui", "guiowl", mu, g, set(summ["maiui"]["tasks_with_folder_level_environment_error"]) | set(summ["maiui"]["tasks_with_device_unhealthy_reinit"]))},
+                 "conditional_if_five_final_setup_failures_were_successes": {
+                     "tasks": [t for t in m_no_result_setup if t != "ThanksgivingPrepTask"],
                      "vs_v4": pair("maiui", "v4", {t: ({"score": 1.0} if t in m_no_result_setup and t != "ThanksgivingPrepTask" else mu[t]) for t in TASKS}, v),
-                     "vs_guiowl": pair("maiui", "guiowl", {t: ({"score": 1.0} if t in m_no_result_setup and t != "ThanksgivingPrepTask" else mu[t]) for t in TASKS}, g)},
+                     "vs_guiowl": pair("maiui", "guiowl", {t: ({"score": 1.0} if t in m_no_result_setup and t != "ThanksgivingPrepTask" else mu[t]) for t in TASKS}, g),
+                     "note": "a fixed what-if for those five tasks only, not a bound on a run with every environment problem repaired"},
                  "note": "Optional third arm started after GUI-Owl and v4 finished, on the same two containers (recreated after spot "
                          "preemptions); Q8_0 because its Q4_K_M output degenerates (results/maiui_quant_check.md)."}
 json.dump(cmp_, open("results/mobileworld/mw_r2_comparison.json", "w"), indent=1)
@@ -247,13 +262,27 @@ L += ["", f"MAI-UI's run ended {len(cm['no_result_setup_failed'])} tasks without
       f"({', '.join(cm['no_result_setup_failed'])}; GUI-Owl and v4: ThanksgivingPrepTask only). Excluding them: MAI-UI "
       f"{se['vs_v4']['maiui']} vs v4 {se['vs_v4']['v4']} vs GUI-Owl {se['vs_guiowl']['guiowl']} of {se['vs_v4']['n_tasks']}. "
       "MAI-UI ran after the other two, on recreated containers after two spot preemptions, so its environment was not identical.", "",
-      f"Infrastructure: {', '.join(cm['emulator_crash_tasks'])} never had a working device. The emulator in container lfmenv_0 (MAI-UI's "
-      "half b) had died with a fatal KVM error (`kvm_user_backed_ram_map: error registering slot: File exists`), so every /task/init "
-      "returned 500, including the one fresh-container attempt the completion rule allows. Under the rule they count as failures. "
-      f"Upper bound if all of them had succeeded: MAI-UI {cmp_['maiui']['best_case_if_emulator_crash_tasks_had_succeeded']['vs_guiowl']['maiui']} vs "
-      f"GUI-Owl 22 ({cmp_['maiui']['best_case_if_emulator_crash_tasks_had_succeeded']['vs_guiowl']['difference_pp']:+.1f} pp, McNemar p = "
-      f"{cmp_['maiui']['best_case_if_emulator_crash_tasks_had_succeeded']['vs_guiowl']['mcnemar_exact_p']:.3g}); GUI-Owl and v4 solved none of these tasks. "
-      "MAI-UI trails GUI-Owl even in that best case, but whether the gap is significant depends on these tasks.", "",
+      "Those final setup failures have mixed histories (per task in mw_r2_comparison.json): "
+      + "; ".join(f"{t} (half {h['half']}, {h['executions']} executions, {h['executions_with_model_actions']} with model actions, earlier: "
+                  f"{fmt_cats({c: h['earlier_endings'].count(c) for c in set(h['earlier_endings'])})})"
+                  for t, h in cm["no_result_setup_failed_history"].items()) + ". "
+      "In the ReadQwen3Paper tasks MAI-UI acted and then called ask_user, which fails without a user simulator, before setup later "
+      "failed. Half b's emulator (lfmenv_0) lost device health during its last invocation: ReadQwen3PaperTask2 initialised at 11:18 "
+      "UTC and ran 50 steps, then initialisations failed from about 11:29 UTC. Half a had separate setup failures around "
+      "10:29-10:36 UTC. The containers' own logs (results/mobileworld/container_logs/, saved before the VM was deleted; they start "
+      "at the containers' recreation after the second preemption, 06:30 UTC) show the emulator dying with a fatal KVM error "
+      "(`kvm_user_backed_ram_map: error registering slot: File exists`) 6 times in mobile_world_env_0 and 11 times in lfmenv_0 "
+      "from 07:14 UTC on. The matching logs of the GUI-Owl and v4 runs no longer exist (those containers were deleted by "
+      "earlier preemptions), so whether they saw the same crashes is unknown. "
+      f"What-if for these five tasks only (not a bound on a run with every environment problem repaired): had they been successes, MAI-UI "
+      f"{cm['conditional_if_five_final_setup_failures_were_successes']['vs_guiowl']['maiui']} vs GUI-Owl 22 "
+      f"({cm['conditional_if_five_final_setup_failures_were_successes']['vs_guiowl']['difference_pp']:+.1f} pp, McNemar p = "
+      f"{cm['conditional_if_five_final_setup_failures_were_successes']['vs_guiowl']['mcnemar_exact_p']:.3g}); GUI-Owl and v4 solved none of them. "
+      f"Excluding all {len(cm['sensitivity_exclude_maiui_env_events']['tasks'])} tasks with a folder-level setup/scoring failure or a "
+      f"device-health re-initialisation in MAI-UI's run: MAI-UI {cm['sensitivity_exclude_maiui_env_events']['vs_v4']['maiui']} vs v4 "
+      f"{cm['sensitivity_exclude_maiui_env_events']['vs_v4']['v4']} vs GUI-Owl {cm['sensitivity_exclude_maiui_env_events']['vs_guiowl']['guiowl']} "
+      f"of {cm['sensitivity_exclude_maiui_env_events']['vs_v4']['n_tasks']}.",
+      "", 
       "Retries and harness events (no score was changed by them):", ""]
 for key in ("v4", "guiowl", "maiui"):
     s = summ[key]
