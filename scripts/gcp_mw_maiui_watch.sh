@@ -30,6 +30,13 @@ wait_ready() {  # $1 = half; container healthy + its model tunnel answering, up 
     sleep 20
   done
 }
+restart_ctr() {  # $1 = container. A plain `docker restart` can SIGKILL the emulator and leave the AVD's
+  # multiinstance.lock / hardware-qemu.ini.lock, after which the emulator refuses to start ("Running multiple emulators
+  # with the same AVD", seen 2026-11-19 10:20). So: stop the emulator gracefully, remove leftover locks, then restart.
+  S "sudo docker exec $1 sh -c 'adb devices | grep emulator | cut -f1 | xargs -r -I{} adb -s {} emu kill' > /dev/null 2>&1;
+     for i in \$(seq 1 30); do sudo docker exec $1 sh -c 'pgrep -f [q]emu-system' > /dev/null || break; sleep 2; done;
+     sudo docker exec $1 sh -c 'rm -f /root/.android/avd/*.avd/*.lock' && sudo docker restart $1 > /dev/null"
+}
 deploy() {  # idempotent: agent wrapper, resume script, server check, the two task halves (validated: 53 + 52, disjoint, = manifest)
   scp -q -o BatchMode=yes -i "$PEM" eval/mobileworld/maiui_mw_agent.py "ubuntu@${IP}:lfm3/maiui_mw_agent.py" &&
   scp -q -o BatchMode=yes -i "$PEM" scripts/gcp_mw_resume_vm.sh "ubuntu@${IP}:mw_resume2.sh" &&
@@ -73,7 +80,7 @@ while [ $(( $(date +%s) - T0 )) -lt 72000 ]; do
         continue
       fi
       log "$r: not complete and nothing running -> restart $(ctr $r), then mw_resume2.sh $r"
-      S "sudo docker restart $(ctr $r) > /dev/null" && wait_ready $r &&
+      restart_ctr $(ctr $r) && wait_ready $r &&
         S "nohup bash mw_resume2.sh $r > ${r}_resume_\$(date +%H%M).log 2>&1 < /dev/null &" && log "started mw_resume2.sh $r"
     done
     [ "$deployed" = 1 ] && [ "$done_all" = 1 ] && { log "both MAI-UI halves complete"; exit 0; }

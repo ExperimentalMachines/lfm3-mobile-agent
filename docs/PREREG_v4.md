@@ -234,3 +234,8 @@ for this arm to finish.
   half only while its tunnel serves MAI-UI-2B-Q8_0.gguf / cd959bae9 / n_ctx 20480. If a second Colab session is needed,
   it must pass the same check (same files by SHA-256, same llama.cpp build and flags); tasks finished in each session
   will be reported.
+- 10:30 addendum (infrastructure only): the first MAI-UI launch attempt did not start any task: after `docker restart`,
+  mobile_world_env_0's emulator refused to boot ("Running multiple emulators with the same AVD") because the killed
+  emulator left its AVD lock files. Container restarts now stop the emulator gracefully (`adb emu kill`), remove
+  leftover AVD locks, then `docker restart` (scripts/gcp_mw_maiui_watch.sh restart_ctr). Both halves started cleanly at
+  10:25 (maiui_a) and 10:27 (maiui_b); every task was still never_started at launch.
