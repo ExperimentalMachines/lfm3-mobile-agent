@@ -252,3 +252,10 @@ for this arm to finish.
   requests failed with "Connection error" at 12:40:53 and 12:40:55 and the official agent's third try succeeded (no step
   lost, no "Planner LLM failed"); MastodonUnfollowTask (maiui_b, 12:29:02-12:41:14): no error. Requests before 12:40:53
   were served by mwgpu, later ones by mwgpu2 (same files by SHA-256, build, flags, GPU type). No task was re-run.
+- 13:20 addendum (infrastructure only): the spot VM was preempted at 12:42:14 (GCP operation compute.instances.preempted)
+  and restarted by the watcher at 12:43:52; its `--rm` containers were deleted, and the watcher (which only restarted
+  existing containers) could not relaunch until 13:09, when it was changed to recreate a missing container with its
+  original `mw env run` command (same image, names, ports) before the graceful restart. The two tasks running at the
+  preemption had no result and no error and were classified `interrupted` -> re-run under the 01:55 rule (folders kept in
+  traj_logs/_interrupted/maiui_a|b): SharePhotosTask (maiui_a), MastodonImportMutedUsersTask (maiui_b). Relaunched 13:13
+  (maiui_a) and 13:16 (maiui_b). About 31 minutes of run time were lost; no completed task was affected.

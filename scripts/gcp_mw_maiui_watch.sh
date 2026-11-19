@@ -30,6 +30,14 @@ wait_ready() {  # $1 = half; container healthy + its model tunnel answering, up 
     sleep 20
   done
 }
+mkctr() {  # $1 = container. `mw env run` starts containers with `docker run --rm`, so a VM stop/preemption deletes them
+  # (seen 10:04 and after the 12:42 preemption). If missing, recreate it with its original command (same image/name/ports).
+  local args="--count 1 --launch-interval 20"
+  [ "$1" = lfmenv_0 ] && args="--count 1 --name-prefix lfmenv --backend-start-port 6810 --viewer-start-port 7870 --vnc-start-port 5810 --adb-start-port 5566 --launch-interval 20"
+  S "sudo docker inspect $1 > /dev/null 2>&1 || { cd MobileWorld && sudo /home/ubuntu/.local/bin/uv run mw env run $args > ../envrun_$1_\$(date +%H%M).log 2>&1; sudo docker inspect $1 > /dev/null 2>&1; }" &&
+    return 0
+  log "$1: missing and could not be recreated"; return 1
+}
 restart_ctr() {  # $1 = container. A plain `docker restart` can SIGKILL the emulator and leave the AVD's
   # multiinstance.lock / hardware-qemu.ini.lock, after which the emulator refuses to start ("Running multiple emulators
   # with the same AVD", seen 2026-11-19 10:20). So: stop the emulator gracefully, remove leftover locks, then restart.
@@ -80,7 +88,7 @@ while [ $(( $(date +%s) - T0 )) -lt 72000 ]; do
         continue
       fi
       log "$r: not complete and nothing running -> restart $(ctr $r), then mw_resume2.sh $r"
-      restart_ctr $(ctr $r) && wait_ready $r &&
+      mkctr $(ctr $r) && restart_ctr $(ctr $r) && wait_ready $r &&
         S "nohup bash mw_resume2.sh $r > ${r}_resume_\$(date +%H%M).log 2>&1 < /dev/null &" && log "started mw_resume2.sh $r"
     done
     [ "$deployed" = 1 ] && [ "$done_all" = 1 ] && { log "both MAI-UI halves complete"; exit 0; }
@@ -90,7 +98,7 @@ while [ $(( $(date +%s) - T0 )) -lt 72000 ]; do
     log "VM is $st -> starting it"
     gcloud compute instances start "$NAME" --zone "$ZONE" --quiet > /dev/null 2>&1 || { log "start failed; retrying in 2 min"; sleep 120; continue; }
     t0=$(date +%s); until S true 2>/dev/null; do sleep 10; [ $(( $(date +%s) - t0 )) -gt 900 ] && break; done
-    S "sudo docker start mobile_world_env_0 lfmenv_0 > /dev/null" && log "VM and containers started"
+    log "VM started (containers are recreated per half if missing)"
     continue
   fi
   sleep 120
