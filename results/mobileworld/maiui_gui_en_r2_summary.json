@@ -1,0 +1,2528 @@
+{
+ "model": "MAI-UI-2B",
+ "agent": "MobileWorld official mai_ui agent with history_n 1 (eval/mobileworld/maiui_mw_agent.py), Q8_0, Colab T4 llama.cpp server",
+ "container": "mobile_world_env_0 (half a) + lfmenv_0 (half b)",
+ "suite": "MobileWorld a026188, 105 English GUI-only tasks (results/mobileworld/mw_gui_en.json)",
+ "settings": "max_round 50, step_wait 3 s, auto_retry 3 (MobileWorld built-in), 1 screenshot; completion rule docs/PREREG_v4.md 2026-11-19 01:55 / 05:20 / 05:45",
+ "host": "GCP n2-standard-16 (env containers) + Colab T4 (model server, reverse SSH tunnel)",
+ "model_server_unreachable_folders": 0,
+ "elapsed_s_original_list": null,
+ "complete": true,
+ "pending_eligible_tasks": [],
+ "n_tasks": 105,
+ "with_result": 98,
+ "successes": 11,
+ "success_rate": 0.10476190476190476,
+ "no_result_counted_as_failure": {
+  "MattermostReadingGroupTask": "ask_user_without_simulator",
+  "ReadQwen3PaperTask4": "setup_failed",
+  "ReadQwen3PaperTask5": "setup_failed",
+  "ReadQwen3PaperTask3": "setup_failed",
+  "ReadQwen3PaperTask1": "setup_failed",
+  "SendFormsTask": "setup_failed",
+  "ThanksgivingPrepTask": "setup_failed"
+ },
+ "task_executions": 175,
+ "tasks_with_more_than_one_folder": 12,
+ "device_unhealthy_reinits": 19,
+ "tasks_with_device_unhealthy_reinit": [
+  "CheckInterviewTimesTask",
+  "CountFileLinesTask",
+  "MastodonConditionalFavoTask",
+  "MastodonInviteTask",
+  "MastodonMattermostPostNoticeTask",
+  "MattermostBudgetApprovalPipelineTask",
+  "MattermostCreateChannelTask",
+  "MattermostCustomerFeedbackAnalysisTask",
+  "ReadQwen3PaperTask1",
+  "ReadQwen3PaperTask3",
+  "ReadQwen3PaperTask4",
+  "ReadQwen3PaperTask5",
+  "SendFormsTask",
+  "SuggestPaperTask"
+ ],
+ "earlier_folder_outcomes": {
+  "ask_user_without_simulator": 13,
+  "interrupted": 4,
+  "setup_failed": 34
+ },
+ "folder_level_environment_errors": 40,
+ "tasks_with_folder_level_environment_error": [
+  "MattermostCreateChannelTask",
+  "ReadQwen3PaperTask1",
+  "ReadQwen3PaperTask2",
+  "ReadQwen3PaperTask3",
+  "ReadQwen3PaperTask4",
+  "ReadQwen3PaperTask5",
+  "SendFormsTask",
+  "ThanksgivingPrepTask"
+ ],
+ "env_fail_sentinel_rejected_executions": 0,
+ "ask_user_without_simulator_executions": 14,
+ "synthetic_enters": 0,
+ "tasks_ending_at_step_budget": 75,
+ "tasks_at_step_budget_with_synthetic_enters": 0,
+ "enter_dropped_at_step_budget": [
+  "MattermostCustomerFeedbackAnalysisTask",
+  "MattermostEmailTask",
+  "MattermostProjectStatusReportTask"
+ ],
+ "successes_after_an_earlier_failed_folder": {},
+ "successes_after_a_device_reinit": [],
+ "tasks": {
+  "TakeSelfieTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "TakeSelfieTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "OpenFlightModeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 4,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "OpenFlightModeTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CloseFlightModeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 4,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CloseFlightModeTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "AdjustBrightnessMaximumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 10,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "AdjustBrightnessMaximumTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "AdjustBrightnessMinimumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "AdjustBrightnessMinimumTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonFavoriteTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonFavoriteTootsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonChangeLanguageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonChangeLanguageTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "AdjustFontIconMaximumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 7,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "AdjustFontIconMaximumTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "AdjustFontIconMinimumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "AdjustFontIconMinimumTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonManageHashtagsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonManageHashtagsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ChangeWallpaperTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 13,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "ChangeWallpaperTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonRemoveBookmarkTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonRemoveBookmarkTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonAddBookmarkTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonAddBookmarkTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonExportFollowsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonExportFollowsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonNewPostTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 6,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonNewPostTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonFollowTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonFollowTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SetAlarmTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 19,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SetAlarmTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonChangeHeaderTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 7,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonChangeHeaderTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonPinTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 5,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonPinTootsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonAdjustTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonAdjustTootsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostReadingGroupTask": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "ask_user_without_simulator",
+   "steps": 6,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostReadingGroupTask",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    }
+   ]
+  },
+  "CheckDeduplicatedEventsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckDeduplicatedEventsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "AcceptMeetingTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 7,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "AcceptMeetingTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonFilterLanguageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonFilterLanguageTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckEventTimeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 17,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckEventTimeTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonSavePhotosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonSavePhotosTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SendWaiverTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 11,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SendWaiverTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonUnfollowTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonUnfollowTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CancelMeetingTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 7,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CancelMeetingTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonImportMutedUsersTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "MastodonImportMutedUsersTask_20261119_051612",
+     "outcome": "error",
+     "detail": "interrupted",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "MastodonImportMutedUsersTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ChromeSearchBeijingWeatherTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "ChromeSearchBeijingWeatherTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonCreateListTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonCreateListTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonInviteTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 12,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonInviteTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckConferenceDurationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckConferenceDurationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SendInterviewEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 13,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SendInterviewEmailTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckSetMeetTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckSetMeetTimeTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonReplyTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonReplyTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ScheduleLunchViaSmsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "ScheduleLunchViaSmsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostReplyToMessageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostReplyToMessageTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonAddFeaturedHashtagsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonAddFeaturedHashtagsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SendInterviewInvitationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SendInterviewInvitationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonPostEditedPhotoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "MastodonPostEditedPhotoTask_20261119_063935",
+     "outcome": "error",
+     "detail": "interrupted",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "MastodonPostEditedPhotoTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SharePhotosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "SharePhotosTask_20261119_051333",
+     "outcome": "error",
+     "detail": "interrupted",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "SharePhotosTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostSendFileTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostSendFileTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonRevisePollTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonRevisePollTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ReadQwen3PaperTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask2_backup_20261119_110122",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask2_backup_20261119_111518",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask2_backup_20261119_111603",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ReadQwen3PaperTask2_20261119_111822",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "ReadQwen3PaperTask2",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "TextArrivalTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 13,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "TextArrivalTimeTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostCreateChannelTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "MattermostCreateChannelTask_backup_20261119_110204",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "MattermostCreateChannelTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonConditionalFavoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonConditionalFavoTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonShareLocationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonShareLocationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonGetServerInfoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonGetServerInfoTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CartInfoNotificationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CartInfoNotificationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "GoogleMapsAlibabaPhoneContactTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 32,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "GoogleMapsAlibabaPhoneContactTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "GoogleMapsAlibabaSouthNeighborTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 8,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "GoogleMapsAlibabaSouthNeighborTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonReportTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "PhotoManagementTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "PhotoManagementTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckInvoiceTask3": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "CheckInvoiceTask3_20261119_063631",
+     "outcome": "error",
+     "detail": "interrupted",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "CheckInvoiceTask3",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckDepartTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckDepartTimeTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckRegistrationTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 13,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckRegistrationTask",
+     "outcome": "result",
+     "detail": 1.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ReadQwen3PaperTask4": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask4_backup_20261119_111152",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask4_backup_20261119_111527",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask4_backup_20261119_111612",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask4_backup_20261119_113014",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask4_backup_20261119_113050",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask4_backup_20261119_113126",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ReadQwen3PaperTask4_20261119_111822",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "ReadQwen3PaperTask4",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonOpenAutomatedDeletionTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonOpenAutomatedDeletionTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckInterviewTimesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckInterviewTimesTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckCartPriceTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 5,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckCartPriceTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "RequestCarpoolingTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 10,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "RequestCarpoolingTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "LocalFileManagementTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "LocalFileManagementTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": true,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostEmailTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonRevisePhotoAltTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonRevisePhotoAltTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SMSManagement": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SMSManagement",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonNewFilterTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonNewFilterTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonCreateMemoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 32,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonCreateMemoTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckConferenceAndSendSmsTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckConferenceAndSendSmsTask2",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckConferenceAndSendSmsTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 13,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckConferenceAndSendSmsTask1",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ReadQwen3PaperTask5": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask5_backup_20261119_102555",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask5_backup_20261119_102655",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask5_backup_20261119_102848",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask5_backup_20261119_103237",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask5_backup_20261119_103440",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask5_backup_20261119_103555",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ReadQwen3PaperTask5_20261119_103142",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "ReadQwen3PaperTask5",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ReadQwen3PaperTask3": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask3_backup_20261119_111225",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask3_backup_20261119_111536",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask3_backup_20261119_111621",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask3_backup_20261119_113023",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask3_backup_20261119_113059",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask3_backup_20261119_113135",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ReadQwen3PaperTask3_20261119_111822",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "ReadQwen3PaperTask3",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SuggestPaperTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SuggestPaperTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CountFileLinesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CountFileLinesTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "DownloadSendReceiptTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "DownloadSendReceiptTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SumFileLinesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "SumFileLinesTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonPostPollTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonPostPollTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ReadQwen3PaperTask1": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask1_backup_20261119_111404",
+     "outcome": "error",
+     "detail": "ask_user_without_simulator",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 1
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask1_backup_20261119_111545",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask1_backup_20261119_111630",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask1_backup_20261119_113032",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask1_backup_20261119_113108",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ReadQwen3PaperTask1_backup_20261119_113144",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ReadQwen3PaperTask1_20261119_111822",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "ReadQwen3PaperTask1",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonMattermostPostNoticeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonMattermostPostNoticeTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "SendFormsTask": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "SendFormsTask_backup_20261119_111509",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "SendFormsTask_backup_20261119_111554",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "SendFormsTask_backup_20261119_111639",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "SendFormsTask_backup_20261119_113041",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "SendFormsTask_backup_20261119_113117",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "SendFormsTask_backup_20261119_113153",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "SendFormsTask_20261119_111822",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "SendFormsTask",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonMultiInviteTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonMultiInviteTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ScheduleCoffeeTimeViaSmsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "ScheduleCoffeeTimeViaSmsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckInvoiceTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckInvoiceTask2",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckConferenceLocationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckConferenceLocationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "LocalFileManagementTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "LocalFileManagementTask2",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckInvoiceTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckInvoiceTask1",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonServerInfoReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonServerInfoReportTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonUpdateContactsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonUpdateContactsTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostProjectHandoverTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostProjectHandoverTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonCalendarMultiMemosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonCalendarMultiMemosTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "ThanksgivingPrepTask": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_102648",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_102841",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_102954",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_103433",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_103546",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "mobileworld_auto_retry",
+     "folder": "ThanksgivingPrepTask_backup_20261119_103604",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "moved_by_mw_resume",
+     "folder": "ThanksgivingPrepTask_20261119_103142",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    },
+    {
+     "kind": "final",
+     "folder": "ThanksgivingPrepTask",
+     "outcome": "error",
+     "detail": "setup_failed",
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "CheckGithubInfoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "CheckGithubInfoTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MastodonManageMultiListTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MastodonManageMultiListTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostCustomerFeedbackAnalysisTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": true,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostCustomerFeedbackAnalysisTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostShiftCoverageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostShiftCoverageTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostVisualInstructionResponseTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostVisualInstructionResponseTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostIncidentEscalationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostIncidentEscalationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "GraduationMassEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "GraduationMassEmailTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostResourceConflictResolutionTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostResourceConflictResolutionTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostBudgetApprovalPipelineTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostBudgetApprovalPipelineTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 1,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostTechnicalDebtTriageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostTechnicalDebtTriageTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostDeadlineReconciliationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": false,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostDeadlineReconciliationTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  },
+  "MattermostProjectStatusReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "synthetic_enters": 0,
+   "enter_dropped_at_step_budget": true,
+   "attempts": [
+    {
+     "kind": "final",
+     "folder": "MattermostProjectStatusReportTask",
+     "outcome": "result",
+     "detail": 0.0,
+     "device_unhealthy_reinits": 0,
+     "env_fail_sentinel_rejected": 0,
+     "ask_user_without_simulator": 0
+    }
+   ]
+  }
+ }
+}

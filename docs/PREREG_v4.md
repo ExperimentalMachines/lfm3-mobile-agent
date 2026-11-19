@@ -337,3 +337,20 @@ fail, so admitting them adds no success), and that the 16:20 script change touch
 - **Power (Codex approximation):** cluster SE ~3.25 pp; ~9.1 pp needed for 80% superiority power; ~57% power for
   non-inferiority if the true difference is zero. The supported claim is non-inferiority in this harness, not
   equivalence or superiority.
+
+### 2026-11-19 20:30 (MobileWorld: MAI-UI-2B run complete; emulator crash in its second container)
+Both MAI-UI halves completed at 19:32 under the 01:55/05:20 completion rule, after a second spot preemption at 14:29
+(the watcher restarted the VM, recreated the containers and resumed; 4 interrupted tasks re-run). Pulled with
+scripts/mw_pull_r2.sh (now including maiui_gui_en_r2 and the half markers) and scored by scripts/mw_summarize_r2.py
+(extended: a third arm whose two halves share one log root; GUI-Owl's and v4's summaries are unchanged except a new
+zero count; the classifier gained the model_server_unreachable category the resume script already used; none occurred).
+**Result (descriptive, one run per model):** MAI-UI-2B 11/105 (10.5%), v4 6/105, GUI-Owl 22/105. MAI-UI - v4 +4.8 pp
+(McNemar p = 0.18); MAI-UI - GUI-Owl -10.5 pp (p = 0.0074).
+**Infrastructure, disclosed:** in MAI-UI's half b, the emulator inside container lfmenv_0 died with a fatal KVM error
+("kvm_user_backed_ram_map: error registering slot: File exists", docker logs 11:29-11:33 UTC), so every /task/init
+returned 500. ReadQwen3PaperTask1/3/4/5 and SendFormsTask therefore never had a working device, including the one
+fresh-container attempt the rule allows (19:17; the container's health check passed although the emulator was dead).
+Under the rule they count as failures (ThanksgivingPrepTask fails setup for every model). GUI-Owl and v4 solved none of
+these five. Upper bound if MAI-UI had solved all five: 16 vs GUI-Owl 22, -5.7 pp, p = 0.26. So MAI-UI trails GUI-Owl
+in every case, but the significance of that gap depends on these tasks. Not re-run (it would be a further deviation for
+one arm only); it can be, on a healthy container, if wanted. Next: Codex audit of the MAI-UI addition.

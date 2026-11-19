@@ -1,5 +1,5 @@
 {
- "snapshot_time": "2026-11-19 12:38",
+ "snapshot_time": "2026-11-19 20:30",
  "suite": "MobileWorld a026188, 105 English GUI-only tasks, max_round 50, step_wait 3 s, auto_retry 3",
  "runs": {
   "v4 run 1 (AWS c8i, CPU server)": {
@@ -29,12 +29,25 @@
    "finished": 104,
    "successes": 6,
    "status": "complete"
+  },
+  "MAI-UI run (GCP + Colab T4, Q8_0, two halves)": {
+   "host": "GCP n2-standard-16 (mobile_world_env_0 + lfmenv_0) + Colab T4",
+   "agent": "MobileWorld official mai_ui agent, history_n 1 (eval/mobileworld/maiui_mw_agent.py)",
+   "finished": 98,
+   "successes": 11,
+   "status": "complete 19:32 (both halves). 5 tasks never had a working device (lfmenv_0 emulator died with a fatal KVM error) and count as failures under the completion rule; see results/mobileworld/mw_r2_comparison.md"
   }
  },
- "paired_so_far": {
-  "tasks_finished_by_both": 102,
+ "paired_final": {
+  "n_tasks": 105,
   "v4_successes": 6,
-  "guiowl_successes": 22
- },
- "maiui_run": "running since 10:15 (docs/PREREG_v4.md 05:20, 10:20): official agent, 1 screenshot, Q8_0, halves of 53/52 tasks in parallel on two fresh containers; model-server guard (Colab session may end ~12:50)"
+  "guiowl_successes": 22,
+  "maiui_successes": 11,
+  "v4_minus_guiowl_pp": -15.2,
+  "v4_vs_guiowl_mcnemar_p": 3.0517578125e-05,
+  "maiui_minus_guiowl_pp": -10.5,
+  "maiui_vs_guiowl_mcnemar_p": 0.00738525390625,
+  "maiui_minus_v4_pp": 4.8,
+  "maiui_vs_v4_mcnemar_p": 0.1796875
+ }
 }

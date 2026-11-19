@@ -1,9 +1,11 @@
-"""Summarise MobileWorld run 2 (GUI-Owl-1.5-2B vs v4, 105 English GUI-only tasks) from results/mobileworld/traj_r2/
+"""Summarise MobileWorld run 2 (GUI-Owl-1.5-2B vs v4, plus MAI-UI-2B as a third arm; 105 English GUI-only tasks) from results/mobileworld/traj_r2/
 (pulled by scripts/mw_pull_r2.sh). Every attempt folder is classified with the same rule as mw_resume.sh (text after the
 runner's last "Error executing task"): MobileWorld's own in-run retries (--auto_retry 3, *_backup_* folders), folders
 moved aside by mw_resume.sh (_interrupted/<run>/), and the final folder. Score = the final folder's result.txt; a task
 without one counts as a failure (docs/PREREG_v4.md, 2026-11-19 01:55).
-Writes results/mobileworld/{guiowl,v4}_gui_en_r2_summary.json and results/mobileworld/mw_r2_comparison.{json,md}.
+MAI-UI ran as two halves (maiui_a / maiui_b, alternate split of the same 105 tasks; docs/PREREG_v4.md 2026-11-19 05:20)
+whose folders share traj_logs/maiui_gui_en_r2; it is complete when both halves are.
+Writes results/mobileworld/{guiowl,v4,maiui}_gui_en_r2_summary.json and results/mobileworld/mw_r2_comparison.{json,md}.
 Usage: python scripts/mw_summarize_r2.py
 """
 import glob
@@ -17,9 +19,18 @@ TASKS = json.load(open("results/mobileworld/mw_gui_en.json"))
 RUNS = {"guiowl": ("guiowl_gui_en_r2", "GUI-Owl-1.5-2B", "MobileWorld official gui_owl_1_5 agent, Q4_K_M, Colab T4 llama.cpp server, --cache-ram 0",
                    "mobile_world_env_0", "go_r2"),
         "v4": ("v4_gui_en_r2", "LFM3-VL-2B-AndroidAgent-v4", "LFM3 adapter (fixed), v4 prompt, Q4_K_M, Colab T4 llama.cpp server",
-               "lfmenv_0", "v4_r2")}
+               "lfmenv_0", "v4_r2"),
+        "maiui": ("maiui_gui_en_r2", "MAI-UI-2B", "MobileWorld official mai_ui agent with history_n 1 (eval/mobileworld/maiui_mw_agent.py), "
+                  "Q8_0, Colab T4 llama.cpp server", "mobile_world_env_0 (half a) + lfmenv_0 (half b)", None)}
+MOVED = {"guiowl": ["guiowl"], "v4": ["v4"], "maiui": ["maiui_a", "maiui_b"]}       # _interrupted/<dir>/ per run
+DONE = {"guiowl": ["guiowl"], "v4": ["v4"], "maiui": ["maiui_a", "maiui_b"]}        # <x>_complete markers per run
 ENV = ("setup_failed", "scoring_failed")
 MODEL = ("unsupported_action", "invalid_model_output", "ask_user_without_simulator", "other_error")
+# model server (Colab tunnel) unreachable: the official agent's 3 LLM retries failed with a connection error; re-run like an
+# interruption (scripts/gcp_mw_resume_vm.sh, docs/PREREG_v4.md 2026-11-19 10:20). Infrastructure, not a model outcome.
+SERVER_DOWN = ("Error calling OpenAI API: Connection error", "Error calling OpenAI API: Request timed out", "Connection refused",
+               "Error calling OpenAI API: Error code: 502", "Error calling OpenAI API: Error code: 503",
+               "Error calling OpenAI API: Error code: 504")
 
 
 def classify(d):
@@ -31,11 +42,14 @@ def classify(d):
     txt = "".join(open(x, errors="ignore").read() for x in sorted(glob.glob(d + "/*.log")))
     if "Error executing task" not in txt:
         return "error", "interrupted"
-    seg = txt[txt.rindex("Error executing task"):]
+    i = txt.rindex("Error executing task")
+    seg, pre = txt[i:], txt[max(0, i - 6000):i]
     for key, cat in (("Failed to initialize task", "setup_failed"), ("Failed to get task score", "scoring_failed"),
                      ("Unknown action_type", "unsupported_action")):
         if key in seg:
             return "error", cat
+    if "Planner LLM failed" in seg and any(x in pre for x in SERVER_DOWN):
+        return "error", "model_server_unreachable"
     if "error_env" in seg or "Failed to parse tool_call" in seg:
         return "error", "invalid_model_output"
     if "Step action failed" in seg and "API key" in seg:
@@ -83,7 +97,7 @@ for key, (root, model, agent, ctr, st) in RUNS.items():
         atts = []
         for d in sorted(glob.glob(os.path.join(base, t + "_backup_*"))):
             atts.append(("mobileworld_auto_retry", d))
-        for d in sorted(glob.glob(os.path.join(R, "_interrupted", key, t + "_2*"))):
+        for d in sorted(x for m in MOVED[key] for x in glob.glob(os.path.join(R, "_interrupted", m, t + "_2*"))):
             atts.append(("moved_by_mw_resume", d))
         fin = os.path.join(base, t)
         atts.append(("final", fin))
@@ -104,16 +118,17 @@ for key, (root, model, agent, ctr, st) in RUNS.items():
     earlier = [a for x in X for a in x["attempts"][:-1]]
     env_tasks = sorted(t for t, x in tasks.items() if any(a["outcome"] == "error" and a["detail"] in ENV for a in x["attempts"]))
     reinit_tasks = sorted(t for t, x in tasks.items() if any(a["device_unhealthy_reinits"] for a in x["attempts"]))
-    moved = {t for t in TASKS if glob.glob(os.path.join(R, "_interrupted", key, t + "_2*"))}
+    moved = {t for t in TASKS if any(glob.glob(os.path.join(R, "_interrupted", m, t + "_2*")) for m in MOVED[key])}
     pending = sorted(t for t, x in tasks.items() if not x["has_result"] and x["final_category"] in ENV + ("interrupted", "never_started")
                      and (x["final_category"] not in ENV or t not in moved))
-    s0, s1 = stamp(st + ".start"), stamp(st + ".end")
+    s0, s1 = (stamp(st + ".start"), stamp(st + ".end")) if st else (None, None)
     out = {"model": model, "agent": agent, "container": ctr,
            "suite": "MobileWorld a026188, 105 English GUI-only tasks (results/mobileworld/mw_gui_en.json)",
            "settings": "max_round 50, step_wait 3 s, auto_retry 3 (MobileWorld built-in), 1 screenshot; completion rule docs/PREREG_v4.md 2026-11-19 01:55 / 05:20 / 05:45",
            "host": "GCP n2-standard-16 (env containers) + Colab T4 (model server, reverse SSH tunnel)",
+           "model_server_unreachable_folders": sum(a["detail"] == "model_server_unreachable" for x in tasks.values() for a in x["attempts"]),
            "elapsed_s_original_list": (s1 - s0) if s0 and s1 else None,
-           "complete": os.path.exists(os.path.join(R, key + "_complete")), "pending_eligible_tasks": pending,
+           "complete": all(os.path.exists(os.path.join(R, m + "_complete")) for m in DONE[key]), "pending_eligible_tasks": pending,
            "n_tasks": len(TASKS), "with_result": sum(x["has_result"] for x in X),
            "successes": len(succ), "success_rate": len(succ) / len(TASKS),
            "no_result_counted_as_failure": {t: x["final_category"] for t, x in tasks.items() if not x["has_result"]},
@@ -163,6 +178,36 @@ cmp_ = {"provisional": provisional,
         "sensitivity_broad": {"rule": "also exclude tasks with a MobileWorld device-health re-initialisation in either run", "tasks": broad, **sens(broad)},
         "note": "Secondary, descriptive benchmark (not preregistered as a primary endpoint); single run per model, temperature 0. "
                 "Compares configured agent pipelines (adapter, prompt, image budget, parsing), not model weights alone."}
+# third arm: MAI-UI-2B, paired against each of the other two on the same 105 tasks (descriptive, one run per model)
+mu = summ["maiui"]["tasks"]
+env_m = sorted(set(summ["maiui"]["tasks_with_folder_level_environment_error"]))
+
+
+def pair(a, b, A, B, excl=()):
+    keep = [t for t in TASKS if t not in excl]
+    ao = sorted(t for t in keep if A[t]["score"] >= 1 and B[t]["score"] < 1)
+    bo = sorted(t for t in keep if B[t]["score"] >= 1 and A[t]["score"] < 1)
+    bt = sum(A[t]["score"] >= 1 and B[t]["score"] >= 1 for t in keep)
+    return {"n_tasks": len(keep), a: sum(A[t]["score"] >= 1 for t in keep), b: sum(B[t]["score"] >= 1 for t in keep),
+            "both": bt, f"{a}_only": ao, f"{b}_only": bo, "difference_pp": 100 * (len(ao) - len(bo)) / len(keep),
+            "mcnemar_exact_p": mcnemar_exact(len(ao), len(bo))}
+
+
+m_no_result_setup = sorted(t for t, x in mu.items() if x["final_category"] == "setup_failed")
+cmp_["maiui"] = {"complete": summ["maiui"]["complete"], "successes": summ["maiui"]["successes"],
+                 "vs_v4": pair("maiui", "v4", mu, v), "vs_guiowl": pair("maiui", "guiowl", mu, g),
+                 "no_result_setup_failed": m_no_result_setup,
+                 "sensitivity_exclude_maiui_final_setup_failures": {
+                     "rule": "exclude tasks whose final MAI-UI folder ended setup_failed (no result) in the MAI-UI run",
+                     "vs_v4": pair("maiui", "v4", mu, v, m_no_result_setup), "vs_guiowl": pair("maiui", "guiowl", mu, g, m_no_result_setup)},
+                 # half b's emulator in lfmenv_0 died (fatal KVM error "kvm_user_backed_ram_map: error registering slot: File exists")
+                 # before its last invocation, so these tasks' fresh-container attempt never had a working device; bound the effect
+                 "emulator_crash_tasks": [t for t in m_no_result_setup if t != "ThanksgivingPrepTask"],
+                 "best_case_if_emulator_crash_tasks_had_succeeded": {
+                     "vs_v4": pair("maiui", "v4", {t: ({"score": 1.0} if t in m_no_result_setup and t != "ThanksgivingPrepTask" else mu[t]) for t in TASKS}, v),
+                     "vs_guiowl": pair("maiui", "guiowl", {t: ({"score": 1.0} if t in m_no_result_setup and t != "ThanksgivingPrepTask" else mu[t]) for t in TASKS}, g)},
+                 "note": "Optional third arm started after GUI-Owl and v4 finished, on the same two containers (recreated after spot "
+                         "preemptions); Q8_0 because its Q4_K_M output degenerates (results/maiui_quant_check.md)."}
 json.dump(cmp_, open("results/mobileworld/mw_r2_comparison.json", "w"), indent=1)
 
 
@@ -176,10 +221,10 @@ def fmt_cats(d):
 
 tag = " (PROVISIONAL: " + "; ".join(f"{summ[k]['model']} pending {', '.join(summ[k]['pending_eligible_tasks'])}"
                                     for k in summ if summ[k]["pending_eligible_tasks"]) + ")" if provisional else ""
-L = [f"# MobileWorld run 2: v4 vs GUI-Owl-1.5-2B (105 English GUI-only tasks){tag}", "",
+L = [f"# MobileWorld run 2: v4 vs GUI-Owl-1.5-2B, with MAI-UI-2B as a third arm (105 English GUI-only tasks){tag}", "",
      "| Model | Successes / 105 | Tasks with a result | No result (counted as failure) | Folder-level setup/scoring failures (tasks) | Device-health re-initialisations (tasks) | Task executions |",
      "|---|---|---|---|---|---|---|"]
-for key in ("v4", "guiowl"):
+for key in ("v4", "guiowl", "maiui"):
     s = summ[key]
     nr = s["no_result_counted_as_failure"]
     L.append(f"| {s['model']} | **{s['successes']}** ({pct(s['successes'])}) | {s['with_result']} | "
@@ -191,9 +236,26 @@ L += ["", f"Paired on the same 105 tasks: both solved {both}, v4 only {len(v_onl
       f"Sensitivity (environment): excluding the {len(narrow)} tasks with a folder-level setup/scoring failure in either run, v4 "
       f"{sn['v4']} vs GUI-Owl {sn['guiowl']} of {sn['n_tasks']}; also excluding tasks with a device-health re-initialisation "
       f"({len(broad)} tasks), v4 {sb['v4']} vs GUI-Owl {sb['guiowl']} of {sb['n_tasks']}. Excluding known errors cannot show that the "
-      "remaining tasks were unaffected; GUI-Owl's container had more environment failures than v4's.", "",
+      "remaining tasks were unaffected; GUI-Owl's container had more environment failures than v4's.", ""]
+cm = cmp_["maiui"]
+for nm, k2 in (("v4", "vs_v4"), ("GUI-Owl", "vs_guiowl")):
+    q = cm[k2]; o = "v4" if nm == "v4" else "guiowl"
+    L.append(f"MAI-UI-2B vs {nm} (paired, 105 tasks): both {q['both']}, MAI-UI only {len(q['maiui_only'])}, {nm} only "
+             f"{len(q[o + '_only'])}; difference {q['difference_pp']:+.1f} pp, exact McNemar p = {q['mcnemar_exact_p']:.3g}.")
+se = cm["sensitivity_exclude_maiui_final_setup_failures"]
+L += ["", f"MAI-UI's run ended {len(cm['no_result_setup_failed'])} tasks without a result after setup failures "
+      f"({', '.join(cm['no_result_setup_failed'])}; GUI-Owl and v4: ThanksgivingPrepTask only). Excluding them: MAI-UI "
+      f"{se['vs_v4']['maiui']} vs v4 {se['vs_v4']['v4']} vs GUI-Owl {se['vs_guiowl']['guiowl']} of {se['vs_v4']['n_tasks']}. "
+      "MAI-UI ran after the other two, on recreated containers after two spot preemptions, so its environment was not identical.", "",
+      f"Infrastructure: {', '.join(cm['emulator_crash_tasks'])} never had a working device. The emulator in container lfmenv_0 (MAI-UI's "
+      "half b) had died with a fatal KVM error (`kvm_user_backed_ram_map: error registering slot: File exists`), so every /task/init "
+      "returned 500, including the one fresh-container attempt the completion rule allows. Under the rule they count as failures. "
+      f"Upper bound if all of them had succeeded: MAI-UI {cmp_['maiui']['best_case_if_emulator_crash_tasks_had_succeeded']['vs_guiowl']['maiui']} vs "
+      f"GUI-Owl 22 ({cmp_['maiui']['best_case_if_emulator_crash_tasks_had_succeeded']['vs_guiowl']['difference_pp']:+.1f} pp, McNemar p = "
+      f"{cmp_['maiui']['best_case_if_emulator_crash_tasks_had_succeeded']['vs_guiowl']['mcnemar_exact_p']:.3g}); GUI-Owl and v4 solved none of these tasks. "
+      "MAI-UI trails GUI-Owl even in that best case, but whether the gap is significant depends on these tasks.", "",
       "Retries and harness events (no score was changed by them):", ""]
-for key in ("v4", "guiowl"):
+for key in ("v4", "guiowl", "maiui"):
     s = summ[key]
     L.append(f"* {s['model']}: earlier folders ended {fmt_cats(s['earlier_folder_outcomes'])}; successes after an earlier failed folder: "
              + (", ".join(s["successes_after_an_earlier_failed_folder"]) or "none")
@@ -203,20 +265,20 @@ L += [f"* GUI-Owl's official agent returns an `error_env` sentinel after 5 unpar
       f"validator rejects (an upstream bug), so instead of ending and being scored the task was re-executed "
       f"({sg['env_fail_sentinel_rejected_executions']} executions); those tasks still scored 0.",
       f"* `ask_user` needs an LLM-backed user simulator this setup does not have: {sg['ask_user_without_simulator_executions']} GUI-Owl "
-      f"executions hit it (v4 has no such action). `double_tap` was rejected by GUI-Owl's official action adapter (not by the runtime).",
+      f"executions and {summ['maiui']['ask_user_without_simulator_executions']} MAI-UI executions hit it (v4 has no such action). `double_tap` was rejected by GUI-Owl's official action adapter (not by the runtime).",
       f"* v4's adapter completes v4's trained type-then-Enter action with a synthetic Enter on the next environment step "
       f"({sv['synthetic_enters']} synthetic Enters; they count toward the 50-round budget, so v4 made fewer than 50 decisions in "
       f"{sv['tasks_at_step_budget_with_synthetic_enters']} of the {sv['tasks_ending_at_step_budget']} tasks that reached the budget). When typing was the 50th round the Enter was never sent: "
       f"{', '.join(sv['enter_dropped_at_step_budget']) or 'none'} (all scored 0; not evidence they would have passed).",
       "* ThanksgivingPrepTask's initialisation failed on every attempt in both containers (and on AWS in v4 run 1): a persistent "
       "task-specific initialisation failure; whether from task code or a shared dependency is not identified.", "",
-      "| Setting | v4 | GUI-Owl (official agent) |", "|---|---|---|",
-      "| Image history | current screenshot | current screenshot (`history_n` 1) |",
-      "| Text history | last 8 intent/action pairs | all previous step conclusions |",
-      "| Image budget | client resize to at most 880x880 pixels of area, server cap 1,024 tokens | full screenshot, server cap 2,600 tokens |",
-      "| Output cap / parse attempts | 512 tokens / up to 2 | 2,048 tokens / up to 5 |",
-      "| Quantisation | Q4_K_M | Q4_K_M |",
-      "| Step budget | 50 environment rounds incl. synthetic Enters | 50 environment rounds |", "",
+      "| Setting | v4 | GUI-Owl (official agent) | MAI-UI (official agent) |", "|---|---|---|---|",
+      "| Image history | current screenshot | current screenshot (`history_n` 1) | current screenshot (`history_n` 1; official default 3) |",
+      "| Text history | last 8 intent/action pairs | all previous step conclusions | official agent's own (unchanged) |",
+      "| Image budget | client resize to at most 880x880 pixels of area, server cap 1,024 tokens | full screenshot, server cap 2,600 tokens | full screenshot, server cap 2,600 tokens |",
+      "| Output cap / parse attempts | 512 tokens / up to 2 | 2,048 tokens / up to 5 | 2,048 tokens / official |",
+      "| Quantisation | Q4_K_M | Q4_K_M | Q8_0 (Q4_K_M degenerates) |",
+      "| Step budget | 50 environment rounds incl. synthetic Enters | 50 environment rounds | 50 environment rounds |", "",
       "MobileWorld's own `--auto_retry 3` (same flag in every run) re-runs a task whose execution ended without a result, whatever "
       "the reason; mw_resume.sh then applied the pre-declared completion rule (docs/PREREG_v4.md 2026-11-19 01:55, clarified "
       "05:45: the fresh-container allowance is one more invocation, inside which `--auto_retry 3` allows up to 4 executions, "

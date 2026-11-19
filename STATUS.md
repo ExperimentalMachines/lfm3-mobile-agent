@@ -1,4 +1,4 @@
-# Status — 2026-11-19 17:05 (Asia/Manila)
+# Status — 2026-11-19 20:30 (Asia/Manila)
 
 Pre-registration and every dated deviation: `docs/PREREG_v4.md`. Codex (gpt-6-astra, max) audits: `results/codex/`.
 Development-seed (30) table for every model: `results/SUMMARY.md` (`python3 scripts/build_report.py`).
@@ -25,14 +25,15 @@ Same harness for all arms: 1 screenshot, Q4_K_M via llama.cpp, same step budget,
 
 ## MobileWorld (secondary; 105 English GUI-only tasks, one run per model)
 v4 6/105 (5.7%) vs GUI-Owl-1.5-2B 22/105 (21.0%): -15.2 pp, exact McNemar p = 3.05e-05
-(`results/mobileworld/mw_r2_comparison.md`). GUI-Owl is clearly better here. MAI-UI-2B (optional third arm) is still
-running on the GCP spot VM with its model on Colab: 71/105 scored at 17:05.
+(`results/mobileworld/mw_r2_comparison.md`). GUI-Owl is clearly better here. MAI-UI-2B (optional third arm, finished
+19:32): 11/105 (10.5%); vs v4 +4.8 pp (p = 0.18), vs GUI-Owl -10.5 pp (p = 0.007). Five MAI-UI tasks never had a working
+device (emulator died with a KVM error) and count as failures; even if all five had succeeded MAI-UI would trail GUI-Owl
+(16 vs 22, p = 0.26).
 
 ## Speed (`results/speed/speed_t8.md`)
 CPU only (8 threads, idle GCP n2), median per step: v4 6.4 s, GUI-Owl 58.0 s, MAI-UI 58.2 s (v4 uses ~1/3 of the
 prompt tokens and 2.8 GB vs 7.5 GB server RSS). Apple M5 in-run AndroidWorld medians: v4 2.96 s vs GUI-Owl 7.00 s.
 
 ## Open items
-- MAI-UI MobileWorld run: let it finish or stop it (user decision pending); then pull results and delete the GCP VM,
-  disk, static IP and firewall rules, and stop the Colab session.
+- Cloud cleanup (awaiting go-ahead): delete the GCP VM, disk, static IP and firewall rules; stop the Colab session.
 - Not run: MAI-UI on the held-out AndroidWorld seeds.
