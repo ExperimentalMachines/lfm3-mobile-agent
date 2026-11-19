@@ -259,3 +259,27 @@ for this arm to finish.
   preemption had no result and no error and were classified `interrupted` -> re-run under the 01:55 rule (folders kept in
   traj_logs/_interrupted/maiui_a|b): SharePhotosTask (maiui_a), MastodonImportMutedUsersTask (maiui_b). Relaunched 13:13
   (maiui_a) and 13:16 (maiui_b). About 31 minutes of run time were lost; no completed task was affected.
+
+### 2026-11-19 13:40 (held-out seeds 1234 and 2026 complete; preregistered infrastructure re-runs before the analysis)
+All nine sealed arms (v4, GUI-Owl matched, v1 x seeds 7, 1234, 2026) finished 116/116 by 13:20:45. Before any score
+for seeds 1234/2026 was computed, only exception episodes were listed (template, episode_length, the phase of the
+outermost traceback). Applying the Protocol rule "infrastructure crash before step 1 (emulator/adb, not model output)
+is re-run once; everything else counts", mechanically by phase:
+- **Re-run once (crash in task setup, `initialize_task`, before step 1; 117 episodes):** v4 seed 1234: 113 templates.
+  Emulator 2's guest stopped answering `adb shell` at about 00:35 (the same hang that later stopped v1 seed 2026's
+  first attempt); every v4 seed-1234 episode from 00:37 to 08:06 crashed in setup after adb timeouts. Overnight
+  monitoring read only episode counts (sealed), which do not show crashes. GUI-Owl seed 1234: RecipeDeleteSingleRecipe;
+  GUI-Owl seed 2026: SimpleSmsSendReceivedAddress, NotesTodoItemCount; v1 seed 2026: SimpleSmsSendClipboardContent.
+- **Counted as failures (not before step 1):** v4 seed 1234 BrowserDraw (emulator hung after the agent's first steps:
+  screens fetched 00:33:57, 00:34:02, 00:34:09); v4 seed 2026 SimpleSmsReplyMostRecent and GUI-Owl seed 1234
+  SimpleSmsSendReceivedAddress (exception inside `is_successful`, i.e. while scoring after the agent finished; gRPC
+  fork noise corrupting adb output). A sensitivity analysis excluding these three templates is reported.
+- v4 seed 1234's two non-crashed episodes (AudioRecorderRecordAudio 12 steps, ...WithFileName 20 steps; 00:31-00:33)
+  ran before the hang with normal screen-fetch times and count as they are. The seed-7 re-runs (00:20-00:30 on the same
+  emulator) also show normal fetch times (max 3.4 s), no exceptions.
+Re-runs use scripts/local_aw_rerun.sh (same model files, server flags, agent flags, seed; goal text checked by the
+analysis) into results/androidworld_sealed/<arm>_seed<s>_rerun: v4 seed 1234 on emulator 1 (5556, healthy all day);
+the four others on emulator 2 (5558, restarted 10:05). Each run is guarded by scripts/aw_emu_guard.sh: if the emulator
+fails two consecutive 15-s `adb shell` probes, run_aw.py is killed before a crashed episode is recorded; then the
+emulator is restarted and the remaining tasks resume in the same run directory (an interrupted episode is re-run from
+scratch; disclosed). Then: sealed_analysis.py --seeds 7,1234,2026, per-success trajectory review, Codex audit.
