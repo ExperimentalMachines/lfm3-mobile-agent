@@ -205,3 +205,13 @@ exposure to AndroidWorld is undisclosed by its authors.
   parsed plan accounting for every task; a half launches only when its tunnel's server reports MAI-UI-2B-Q8_0.gguf,
   llama.cpp cd959bae9, n_ctx 20480 (attested now: logs/colab_maiui_q8_attestation.txt, both SHA-256s match the Mac);
   both GUI-Owl and v4 must be complete before their containers are reused.
+
+### 2026-11-19 10:15 (infrastructure: v1 seed 2026 relaunched on emulator 1)
+The sealed v1 seed-2026 arm started on emulator 2 (5558) at 08:06 and failed at 08:18 with 0/116 episodes: the
+emulator's guest stopped answering `adb shell` (`settings put system show_touches 1` timed out four times during
+AndroidWorld's environment setup; TooManyRestartsError), before any task was sampled or any model action. No outcome
+existed or was seen; only error lines of the failed log were read (it is kept as
+run_output.SEALED.failed_emu2_0818.log). At 10:04 the arm was relaunched unchanged (same script, model, flags, seed) on
+emulator 1 (5556), which ran the GUI-Owl and v4 seed-2026 arms and was idle and healthy. Emulator 2 was then restarted
+with its original arguments (adb server untouched) and answers again. Unblinding for seeds 1234 and 2026 still waits
+for this arm to finish.
