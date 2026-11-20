@@ -1,0 +1,45 @@
+{
+  "time": 0,
+  "processes": {
+    "910003": {
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 8115 --host 127.0.0.1",
+      "alive": true,
+      "mode": "terminate"
+    }
+  },
+  "events": [
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 [0-9]+ [0-9]+ 8115( |$)"
+      ],
+      "time": 0,
+      "selected": [],
+      "rc": 1
+    },
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "[r]un_aw.py.*--server_url=http://127.0.0.1:8115 .*--output_path=results/androidworld_sealed/guiowl_seed1234( |$)"
+      ],
+      "time": 0,
+      "selected": [],
+      "rc": 1
+    },
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "[l]lama-server.*--port 8115( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "910003"
+      ],
+      "rc": 0
+    }
+  ],
+  "resume_rc": 0
+}

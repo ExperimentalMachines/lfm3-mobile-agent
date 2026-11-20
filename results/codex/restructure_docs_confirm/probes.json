@@ -1,0 +1,1934 @@
+{
+  "summary": {
+    "revision": "53f951c",
+    "selector_tests": 86,
+    "selector_failures": 0,
+    "boundary_tests": 24,
+    "boundary_failures": 0,
+    "runtime_cases": 25,
+    "syntax_failures": 0,
+    "mock_only": "pgrep/kill/sleep are inert; kill builtin disabled; no hardware/network command runs"
+  },
+  "patterns": [
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 [0-9]+ [0-9]+ 8115( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "920000",
+        "920001",
+        "920002",
+        "920003",
+        "920004",
+        "920005",
+        "920006",
+        "920007",
+        "920008",
+        "920009",
+        "920010",
+        "920011",
+        "920012",
+        "920013",
+        "920014",
+        "920015",
+        "920016",
+        "920017",
+        "920018",
+        "920019",
+        "920020",
+        "920021",
+        "920022",
+        "920023",
+        "920024",
+        "920025",
+        "920026",
+        "920027",
+        "920028",
+        "920029",
+        "920030",
+        "920031",
+        "920032",
+        "920033",
+        "920034",
+        "920035",
+        "920036",
+        "920037",
+        "920038",
+        "920039",
+        "920040",
+        "920041",
+        "920042",
+        "920043",
+        "920044",
+        "920045",
+        "920046",
+        "920047",
+        "920048",
+        "920049",
+        "920050",
+        "920051",
+        "920052",
+        "920053",
+        "920054",
+        "920055",
+        "920056",
+        "920057",
+        "920058",
+        "920059"
+      ],
+      "rc": 0
+    },
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "[r]un_aw.py.*--server_url=http://127.0.0.1:8115 .*--output_path=results/androidworld_sealed/guiowl_seed1234( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "920068",
+        "920069",
+        "920070"
+      ],
+      "rc": 0
+    },
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "[l]lama-server.*--port 8115( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "920077",
+        "920078"
+      ],
+      "rc": 0
+    }
+  ],
+  "selector_run": {
+    "case": "selector_dry_run",
+    "returncode": 0,
+    "stdout": "launcher: 920000\n920001\n920002\n920003\n920004\n920005\n920006\n920007\n920008\n920009\n920010\n920011\n920012\n920013\n920014\n920015\n920016\n920017\n920018\n920019\n920020\n920021\n920022\n920023\n920024\n920025\n920026\n920027\n920028\n920029\n920030\n920031\n920032\n920033\n920034\n920035\n920036\n920037\n920038\n920039\n920040\n920041\n920042\n920043\n920044\n920045\n920046\n920047\n920048\n920049\n920050\n920051\n920052\n920053\n920054\n920055\n920056\n920057\n920058\n920059 run_aw: 920068\n920069\n920070 server: 920077\n920078\n",
+    "stderr": "",
+    "virtual_seconds": 0,
+    "resumed": null,
+    "remaining": [
+      "920000",
+      "920001",
+      "920002",
+      "920003",
+      "920004",
+      "920005",
+      "920006",
+      "920007",
+      "920008",
+      "920009",
+      "920010",
+      "920011",
+      "920012",
+      "920013",
+      "920014",
+      "920015",
+      "920016",
+      "920017",
+      "920018",
+      "920019",
+      "920020",
+      "920021",
+      "920022",
+      "920023",
+      "920024",
+      "920025",
+      "920026",
+      "920027",
+      "920028",
+      "920029",
+      "920030",
+      "920031",
+      "920032",
+      "920033",
+      "920034",
+      "920035",
+      "920036",
+      "920037",
+      "920038",
+      "920039",
+      "920040",
+      "920041",
+      "920042",
+      "920043",
+      "920044",
+      "920045",
+      "920046",
+      "920047",
+      "920048",
+      "920049",
+      "920050",
+      "920051",
+      "920052",
+      "920053",
+      "920054",
+      "920055",
+      "920056",
+      "920057",
+      "920058",
+      "920059",
+      "920060",
+      "920061",
+      "920062",
+      "920063",
+      "920064",
+      "920065",
+      "920066",
+      "920067",
+      "920068",
+      "920069",
+      "920070",
+      "920071",
+      "920072",
+      "920073",
+      "920074",
+      "920075",
+      "920076",
+      "920077",
+      "920078",
+      "920079",
+      "920080",
+      "920081",
+      "920082",
+      "920083",
+      "920084",
+      "920085"
+    ],
+    "signals": [],
+    "state_file": "mock_sandbox/selector_dry_run/state.json"
+  },
+  "selection": [
+    {
+      "kind": "launcher",
+      "command": "bash scripts/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920000",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920001",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920002",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920003",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920004",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920005",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920006",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920007",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920008",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920009",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920010",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920011",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash ./scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920012",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash ./scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920013",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920014",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920015",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920016",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920017",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920018",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920019",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920020",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920021",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920022",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920023",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920024",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920025",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920026",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920027",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920028",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920029",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920030",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920031",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920032",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920033",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920034",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920035",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920036",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920037",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920038",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920039",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920040",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920041",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920042",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920043",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920044",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920045",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920046",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920047",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920048",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920049",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920050",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920051",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920052",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920053",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920054",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920055",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920056",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920057",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "expected": true,
+      "pid": "920058",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920059",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh v3 1234 5558 8558 8115",
+      "expected": false,
+      "pid": "920060",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowlx 1234 5558 8558 8115",
+      "expected": false,
+      "pid": "920061",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 7 5558 8558 8115",
+      "expected": false,
+      "pid": "920062",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 12340 5558 8558 8115",
+      "expected": false,
+      "pid": "920063",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8117",
+      "expected": false,
+      "pid": "920064",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 81150",
+      "expected": false,
+      "pid": "920065",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115",
+      "expected": false,
+      "pid": "920066",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "bash scripts/androidworld/local_sealed_aw_v4.sh guiowl 1234 5558 8558 8115",
+      "expected": false,
+      "pid": "920067",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": true,
+      "pid": "920068",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": true,
+      "pid": "920069",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --checkpoint_dir=results/androidworld_sealed/guiowl_seed1234/run_fixture",
+      "expected": true,
+      "pid": "920070",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/v3_seed1234",
+      "expected": false,
+      "pid": "920071",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowlx_seed1234",
+      "expected": false,
+      "pid": "920072",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=7 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed7",
+      "expected": false,
+      "pid": "920073",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=12340 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed12340",
+      "expected": false,
+      "pid": "920074",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8117 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "pid": "920075",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:81150 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "pid": "920076",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "server",
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 8115",
+      "expected": true,
+      "pid": "920077",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "server",
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 8115 --host 127.0.0.1",
+      "expected": true,
+      "pid": "920078",
+      "actual": true,
+      "pass": true
+    },
+    {
+      "kind": "server",
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 8117",
+      "expected": false,
+      "pid": "920079",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "server",
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 8117 --host 127.0.0.1",
+      "expected": false,
+      "pid": "920080",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "server",
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 81150",
+      "expected": false,
+      "pid": "920081",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "server",
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 81150 --host 127.0.0.1",
+      "expected": false,
+      "pid": "920082",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "launcher",
+      "command": "python unrelated.py",
+      "expected": false,
+      "pid": "920083",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --other_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "pid": "920084",
+      "actual": false,
+      "pass": true
+    },
+    {
+      "kind": "runner",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --other_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "pid": "920085",
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "boundaries": [
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 21,
+      "regex": "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 5558 ",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 resume_dir",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 21,
+      "regex": "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 5558 ",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115 resume_dir",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 32,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 32,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 32,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 32,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 32,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "line": 32,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh [a-z0-9]+ [0-9]+ 5558 ",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 resume_dir",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "line": 22,
+      "regex": "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh [a-z0-9]+ [0-9]+ 5558 ",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115 resume_dir",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "[r]un_aw.py.*console_port=5558( |$)",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 5558 ",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 resume_dir",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "line": 54,
+      "regex": "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 5558 ",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115 resume_dir",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "cases": [
+    {
+      "case": "no_matches",
+      "returncode": 1,
+      "stdout": "launcher: none run_aw: none server: none\nnothing to pause: no launcher or runner for guiowl_seed1234 on server port 8115\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [],
+      "state_file": "mock_sandbox/no_matches/state.json"
+    },
+    {
+      "case": "no_matches_dry_run",
+      "returncode": 0,
+      "stdout": "launcher: none run_aw: none server: none\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [],
+      "state_file": "mock_sandbox/no_matches_dry_run/state.json"
+    },
+    {
+      "case": "server_only",
+      "returncode": 1,
+      "stdout": "launcher: none run_aw: none server: 910003\nnothing to pause: no launcher or runner for guiowl_seed1234 on server port 8115\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [
+        "910003"
+      ],
+      "signals": [],
+      "state_file": "mock_sandbox/server_only/state.json"
+    },
+    {
+      "case": "normal_pause",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/normal_pause/state.json"
+    },
+    {
+      "case": "launcher_only",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: none server: none\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/launcher_only/state.json"
+    },
+    {
+      "case": "runner_only",
+      "returncode": 0,
+      "stdout": "launcher: none run_aw: 910002 server: none\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/runner_only/state.json"
+    },
+    {
+      "case": "exit_between_selection_and_kill",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "ESRCH",
+          "rc": 1
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/exit_between_selection_and_kill/state.json"
+    },
+    {
+      "case": "exit_between_failed_kill_and_probe",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "simulated_failed_signal",
+          "rc": 1
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/exit_between_failed_kill_and_probe/state.json"
+    },
+    {
+      "case": "failed_kill_launcher",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nkill 910001 failed\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [
+        "910001",
+        "910002",
+        "910003"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "simulated_failed_signal",
+          "rc": 1
+        }
+      ],
+      "state_file": "mock_sandbox/failed_kill_launcher/state.json"
+    },
+    {
+      "case": "surviving_launcher",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nstill running after 30 s: 910001; NOT paused\n",
+      "stderr": "",
+      "virtual_seconds": 30,
+      "resumed": null,
+      "remaining": [
+        "910001"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/surviving_launcher/state.json"
+    },
+    {
+      "case": "failed_kill_runner",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nkill 910002 failed\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [
+        "910002",
+        "910003"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "error": "simulated_failed_signal",
+          "rc": 1
+        }
+      ],
+      "state_file": "mock_sandbox/failed_kill_runner/state.json"
+    },
+    {
+      "case": "surviving_runner",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nstill running after 30 s: 910002; NOT paused\n",
+      "stderr": "",
+      "virtual_seconds": 30,
+      "resumed": null,
+      "remaining": [
+        "910002"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/surviving_runner/state.json"
+    },
+    {
+      "case": "failed_kill_server",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nkill 910003 failed\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [
+        "910003"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "error": "simulated_failed_signal",
+          "rc": 1
+        }
+      ],
+      "state_file": "mock_sandbox/failed_kill_server/state.json"
+    },
+    {
+      "case": "surviving_server",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nstill running after 30 s: 910003; NOT paused\n",
+      "stderr": "",
+      "virtual_seconds": 30,
+      "resumed": null,
+      "remaining": [
+        "910003"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/surviving_server/state.json"
+    },
+    {
+      "case": "delayed_exit_3",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 3,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/delayed_exit_3/state.json"
+    },
+    {
+      "case": "delayed_exit_29",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 29,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/delayed_exit_29/state.json"
+    },
+    {
+      "case": "delayed_exit_30",
+      "returncode": 1,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\nstill running after 30 s: 910001 910002 910003; NOT paused\n",
+      "stderr": "",
+      "virtual_seconds": 30,
+      "resumed": null,
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/delayed_exit_30/state.json"
+    },
+    {
+      "case": "permission_denied",
+      "returncode": 0,
+      "stdout": "launcher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [
+        "910001"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "EPERM",
+          "rc": 1
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/permission_denied/state.json"
+    },
+    {
+      "case": "normal_handoff",
+      "returncode": 0,
+      "stdout": "[13:22:58] emu2 fill v2 (pid 4375): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:22:58] v4 lane ready: pausing guiowl_seed1234\nlauncher: 910001 run_aw: 910002 server: 910003\nlauncher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n[13:22:59] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_20261120_0000); waiting for the v4 seed-30 pass\n[13:22:59] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_20261120_0000\n[13:22:59] arm ended (exit 0): fixture\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": [
+        "guiowl",
+        "1234",
+        "5558",
+        "8558",
+        "8115",
+        "results/androidworld_sealed/guiowl_seed1234/run_20261120_0000"
+      ],
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/normal_handoff/state.json"
+    },
+    {
+      "case": "handoff_resume_failure",
+      "returncode": 7,
+      "stdout": "[13:22:59] emu2 fill v2 (pid 4455): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:22:59] v4 lane ready: pausing guiowl_seed1234\nlauncher: 910001 run_aw: 910002 server: 910003\nlauncher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n[13:22:59] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_20261120_0000); waiting for the v4 seed-30 pass\n[13:22:59] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_20261120_0000\n[13:22:59] arm ended (exit 7): fixture\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": [
+        "guiowl",
+        "1234",
+        "5558",
+        "8558",
+        "8115",
+        "results/androidworld_sealed/guiowl_seed1234/run_20261120_0000"
+      ],
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/handoff_resume_failure/state.json"
+    },
+    {
+      "case": "handoff_failed_kill",
+      "returncode": 1,
+      "stdout": "[13:22:59] emu2 fill v2 (pid 4535): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:22:59] v4 lane ready: pausing guiowl_seed1234\nlauncher: 910001 run_aw: 910002 server: 910003\nlauncher: 910001 run_aw: 910002 server: 910003\nkill 910001 failed\n[13:22:59] pause failed; not resuming\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [
+        "910001",
+        "910002",
+        "910003"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "simulated_failed_signal",
+          "rc": 1
+        }
+      ],
+      "state_file": "mock_sandbox/handoff_failed_kill/state.json"
+    },
+    {
+      "case": "handoff_surviving_server",
+      "returncode": 1,
+      "stdout": "[13:22:59] emu2 fill v2 (pid 4584): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:22:59] v4 lane ready: pausing guiowl_seed1234\nlauncher: 910001 run_aw: 910002 server: 910003\nlauncher: 910001 run_aw: 910002 server: 910003\nstill running after 30 s: 910003; NOT paused\n[13:23:02] pause failed; not resuming\n",
+      "stderr": "",
+      "virtual_seconds": 30,
+      "resumed": null,
+      "remaining": [
+        "910003"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/handoff_surviving_server/state.json"
+    },
+    {
+      "case": "handoff_no_matches",
+      "returncode": 1,
+      "stdout": "[13:23:02] emu2 fill v2 (pid 4755): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:23:02] v4 lane ready: pausing guiowl_seed1234\nlauncher: none run_aw: none server: none\nlauncher: none run_aw: none server: none\nnothing to pause: no launcher or runner for guiowl_seed1234 on server port 8115\n[13:23:02] pause failed; not resuming\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": null,
+      "remaining": [],
+      "signals": [],
+      "state_file": "mock_sandbox/handoff_no_matches/state.json"
+    },
+    {
+      "case": "handoff_race",
+      "returncode": 0,
+      "stdout": "[13:23:02] emu2 fill v2 (pid 4784): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:23:02] v4 lane ready: pausing guiowl_seed1234\nlauncher: 910001 run_aw: 910002 server: 910003\nlauncher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n[13:23:03] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_20261120_0000); waiting for the v4 seed-30 pass\n[13:23:03] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_20261120_0000\n[13:23:03] arm ended (exit 0): fixture\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": [
+        "guiowl",
+        "1234",
+        "5558",
+        "8558",
+        "8115",
+        "results/androidworld_sealed/guiowl_seed1234/run_20261120_0000"
+      ],
+      "remaining": [],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "ESRCH",
+          "rc": 1
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/handoff_race/state.json"
+    },
+    {
+      "case": "handoff_permission_denied",
+      "returncode": 0,
+      "stdout": "[13:23:03] emu2 fill v2 (pid 4867): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:23:03] v4 lane ready: pausing guiowl_seed1234\nlauncher: 910001 run_aw: 910002 server: 910003\nlauncher: 910001 run_aw: 910002 server: 910003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_20261120_0000 (0 episodes saved)\n[13:23:03] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_20261120_0000); waiting for the v4 seed-30 pass\n[13:23:03] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_20261120_0000\n[13:23:03] arm ended (exit 0): fixture\n",
+      "stderr": "",
+      "virtual_seconds": 0,
+      "resumed": [
+        "guiowl",
+        "1234",
+        "5558",
+        "8558",
+        "8115",
+        "results/androidworld_sealed/guiowl_seed1234/run_20261120_0000"
+      ],
+      "remaining": [
+        "910001"
+      ],
+      "signals": [
+        {
+          "op": "kill",
+          "args": [
+            "910001"
+          ],
+          "time": 0,
+          "error": "EPERM",
+          "rc": 1
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910002"
+          ],
+          "time": 0,
+          "rc": 0
+        },
+        {
+          "op": "kill",
+          "args": [
+            "910003"
+          ],
+          "time": 0,
+          "rc": 0
+        }
+      ],
+      "state_file": "mock_sandbox/handoff_permission_denied/state.json"
+    }
+  ],
+  "syntax": [
+    {
+      "file": "pause_sealed_arm.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "local_emu2_fill_v2.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "local_emu2_fill_v4.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "local_v4_to_aw_v2.sh",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ]
+}

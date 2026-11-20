@@ -1,0 +1,20 @@
+Verdict: NOT READY
+
+- **P2 — item 1 remains partly unfixed:** `scripts/androidworld/pause_sealed_arm.sh:15`, `:17` treat every failed `kill -0` as absence. Permission denial also returns nonzero: mock `permission_denied` leaves the selected launcher alive yet reports “paused” and exits 0; `handoff_permission_denied` then resumes. **Exact fix:** replace both existence tests with an errno-aware helper (e.g. Python `os.kill(pid, 0)`): only `ProcessLookupError`/`ESRCH` means gone; `PermissionError`/`EPERM` means alive, and other errors abort. A failed termination must exit 1 unless that helper confirms absence. Preserve the benign exit-before-kill case. [Evidence](probes.json).
+- **P3 — new timeout error:** `scripts/androidworld/pause_sealed_arm.sh:18`, `:20` test stale liveness after the final sleep. Checks occur at virtual seconds 0–29; mock `delayed_exit_30` exits 1 claiming processes remain although all have exited during the last sleep. **Exact fix:** recheck every selected PID after the last sleep before declaring timeout. [Evidence](probes.json).
+- **P3 — new annotation is inaccurate for the requested full diff:** `docs/repository.md:96` says delete + add, but `git diff --name-status -M archive/pre-restructure-2026-11-20 HEAD` reports `R069` from the old pause path to `results/codex/restructure_docs_final_check/handoff_mock/dry_run_failure/scripts/androidworld/pause_sealed_arm.sh`, plus `A` for the runtime destination. The filler similarly pairs with its saved audit copy (`R060`). **Exact fix:** replace the parenthesis with “moved and rewritten; the full archive-to-HEAD diff pairs the old source with its saved audit copy and lists this runtime destination as added”; note the same pairing at line 84. The intended move remains accurate. [Comparison](repository_tables.json), [raw diff](archive_changes.tsv).
+
+| Original item | Confirmation |
+|---|---|
+| 1. Safe pause / handoff | **Partly fixed**, with the two stop-logic findings above. Ordinary termination failures and surviving launcher/runner/server cases now fail; the filler refuses resume. |
+| 2. Wrong-port selection | **Fixed.** Matching launchers/runners pass; wrong arm, seed, server port, seed suffix, `v3Xsh`, and `81150` controls are rejected. |
+| 3. Branch row | **Fixed under the owner's stated merge/push/force-update.** Line 290 is then accurate. Its command can verify both `refs/heads/main` and `refs/heads/lfm3-android` with identical hashes: two lines, one distinct hash. Remote state was not queried. |
+| 4. Reproduction wording | **Fixed.** Coverage is qualified; the manifest contains 18 outputs plus 5 optional MobileWorld outputs. |
+| 5. Move/deletion inventory | **Fixed inventory; annotation correction above remains.** All 136 logical moves and category totals match; the registry-source row is present. No uncovered deletions; grouped counts are 58/224/36. Git's 136 rename pairs include the two audit-copy pairings described above. |
+| 6. Regex boundaries | **Fixed.** Literal `.sh` and console-port boundaries pass their positive and negative controls. |
+
+**Validation:** 86 pause-selector cases, 24 other boundary cases, 25 mocked runtime cases, and four shell syntax checks. A process exiting between selection and termination is correctly accepted despite failed `kill`; normal handoff succeeds and resume status 7 propagates. Dry-run sends no signals; empty/server-only selections fail the actual pause. All process lookup, signals and sleeps were mocked. [Reproducible probe](probe.py), [results](probes.json).
+
+**Blob scan:** all 61 added/modified postimages in `a5e228e..HEAD` (40 unique blobs; 702,729 bytes) yielded no recognized credentials or exact owner-email matches; candidate output is limited to six-character prefixes. [Scan](blob_scan.json).
+
+Reviewed `a5e228e..53f951c`; actual HEAD `8bb3c9f` adds only this confirmation prompt. Tables and blob scan use that HEAD as requested. Tracked files, index and refs are unchanged; all audit writes are inside this directory. No network, real process signals, emulator/adb/cloud commands, commits or ref changes. [State check](final_state.json).

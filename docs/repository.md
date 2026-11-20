@@ -58,6 +58,8 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 - Local launchers now find the repository from their own location instead of a hard-coded path.
 - `scripts/androidworld/local_emu2_fill_v2.sh` was first removed, then restored: `local_v4_to_aw_v2.sh` depends on it
   for the v4 hand-off. It now resumes through the bounded `local_sealed_aw_v3.sh`.
+- For these two rewritten scripts, `git diff -M` against the archive tag pairs the old path with a copy saved in a
+  Codex audit folder; the table below lists their real new location.
 
 <details>
 <summary>Every moved file (old → new)</summary>
@@ -93,7 +95,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `scripts/local_sealed_queue.sh` | `scripts/androidworld/local_sealed_queue.sh` |
 | `scripts/local_v2_to_aw.sh` | `scripts/androidworld/local_v2_to_aw.sh` |
 | `scripts/local_v4_to_aw_v2.sh` | `scripts/androidworld/local_v4_to_aw_v2.sh` |
-| `scripts/pause_sealed_arm.sh` | `scripts/androidworld/pause_sealed_arm.sh` (moved and largely rewritten, so `git diff -M` shows it as delete + add) |
+| `scripts/pause_sealed_arm.sh` | `scripts/androidworld/pause_sealed_arm.sh` (moved and rewritten; `git diff -M` pairs the old path with a copy saved in a Codex audit folder and lists this one as added) |
 | `scripts/aws_mw_launch.sh` | `scripts/mobileworld/aws_mw_launch.sh` |
 | `scripts/aws_mw_setup.sh` | `scripts/mobileworld/aws_mw_setup.sh` |
 | `scripts/check_maiui_server.py` | `scripts/mobileworld/check_maiui_server.py` |

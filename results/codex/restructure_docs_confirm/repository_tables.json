@@ -1,0 +1,150 @@
+{
+  "git_status_counts": {
+    "M": 9,
+    "A": 150,
+    "D": 348,
+    "R": 136
+  },
+  "appendix_count": 136,
+  "category_total": 136,
+  "category_counts_documented": {
+    "analysis/": 11,
+    "scripts/androidworld/": 19,
+    "scripts/mobileworld/": 13,
+    "scripts/training/": 32,
+    "scripts/training/jobs/": 30,
+    "scripts/speed/": 10,
+    "scripts/publish/": 6,
+    "docs/research/": 2,
+    "docs/research/notes/": 11,
+    "docs/": 1,
+    "results/codex/restructure_docs_audit/": 1
+  },
+  "category_counts_appendix": {
+    "analysis/": 11,
+    "scripts/androidworld/": 19,
+    "scripts/mobileworld/": 13,
+    "scripts/training/": 32,
+    "scripts/training/jobs/": 30,
+    "scripts/speed/": 10,
+    "scripts/publish/": 6,
+    "docs/research/": 2,
+    "docs/research/notes/": 11,
+    "docs/": 1,
+    "results/codex/restructure_docs_audit/": 1
+  },
+  "git_renames_missing_from_appendix": [
+    [
+      "scripts/local_emu2_fill_v2.sh",
+      "results/codex/restructure_docs_final_check/handoff_mock/dry_run_failure/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "scripts/pause_sealed_arm.sh",
+      "results/codex/restructure_docs_final_check/handoff_mock/dry_run_failure/scripts/androidworld/pause_sealed_arm.sh"
+    ]
+  ],
+  "appendix_not_git_rename": [
+    {
+      "old": "scripts/local_emu2_fill_v2.sh",
+      "new": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "old_deleted": false,
+      "new_added": true
+    },
+    {
+      "old": "scripts/pause_sealed_arm.sh",
+      "new": "scripts/androidworld/pause_sealed_arm.sh",
+      "old_deleted": false,
+      "new_added": true
+    }
+  ],
+  "removed_rows_not_deleted": [],
+  "uncovered_deletions": [],
+  "group_deletions": {
+    "logs/": 58,
+    "results/codex/datasets_scratch/": 224,
+    "results/vm_backup/": 36
+  },
+  "pause_related_changes": [
+    [
+      "R069",
+      "scripts/pause_sealed_arm.sh",
+      "results/codex/restructure_docs_final_check/handoff_mock/dry_run_failure/scripts/androidworld/pause_sealed_arm.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/explicit_pause_failure/scripts/androidworld/pause_sealed_arm.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/failed_kill_surviving_launcher/scripts/androidworld/pause_sealed_arm.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/normal_handoff/scripts/androidworld/pause_sealed_arm.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/resume_failure/scripts/androidworld/pause_sealed_arm.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/successful_kill_still_alive/scripts/androidworld/pause_sealed_arm.sh"
+    ],
+    [
+      "A",
+      "scripts/androidworld/pause_sealed_arm.sh"
+    ]
+  ],
+  "filler_related_changes": [
+    [
+      "R060",
+      "scripts/local_emu2_fill_v2.sh",
+      "results/codex/restructure_docs_final_check/handoff_mock/dry_run_failure/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/explicit_pause_failure/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/failed_kill_surviving_launcher/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/normal_handoff/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/resume_failure/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "A",
+      "results/codex/restructure_docs_final_check/handoff_mock/successful_kill_still_alive/scripts/androidworld/local_emu2_fill_v2.sh"
+    ],
+    [
+      "A",
+      "scripts/androidworld/local_emu2_fill_v2.sh"
+    ]
+  ],
+  "registry_related_changes": [
+    [
+      "R100",
+      "scripts/build_runs_registry.py",
+      "results/codex/restructure_docs_audit/archived_registry_source.py"
+    ]
+  ],
+  "git_rename_counts_by_destination": {
+    "analysis/": 11,
+    "docs/": 1,
+    "docs/research/": 2,
+    "docs/research/notes/": 11,
+    "results/codex/restructure_docs_audit/": 1,
+    "results/codex/restructure_docs_final_check/": 2,
+    "scripts/androidworld/": 17,
+    "scripts/mobileworld/": 13,
+    "scripts/publish/": 6,
+    "scripts/speed/": 10,
+    "scripts/training/": 32,
+    "scripts/training/jobs/": 30
+  }
+}

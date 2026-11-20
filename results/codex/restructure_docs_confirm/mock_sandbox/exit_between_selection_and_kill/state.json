@@ -1,0 +1,124 @@
+{
+  "time": 0,
+  "processes": {
+    "910001": {
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "alive": false,
+      "mode": "exit_before_kill"
+    },
+    "910002": {
+      "command": ".venv-aw/bin/python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --task_random_seed=1234 --n_task_combinations=1 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "alive": false,
+      "mode": "terminate"
+    },
+    "910003": {
+      "command": "/usr/local/bin/llama-server -m model.gguf --port 8115 --host 127.0.0.1",
+      "alive": false,
+      "mode": "terminate"
+    }
+  },
+  "events": [
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh guiowl 1234 [0-9]+ [0-9]+ 8115( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "910001"
+      ],
+      "rc": 0
+    },
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "[r]un_aw.py.*--server_url=http://127.0.0.1:8115 .*--output_path=results/androidworld_sealed/guiowl_seed1234( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "910002"
+      ],
+      "rc": 0
+    },
+    {
+      "op": "pgrep",
+      "args": [
+        "-f",
+        "[l]lama-server.*--port 8115( |$)"
+      ],
+      "time": 0,
+      "selected": [
+        "910003"
+      ],
+      "rc": 0
+    },
+    {
+      "op": "kill",
+      "args": [
+        "910001"
+      ],
+      "time": 0,
+      "error": "ESRCH",
+      "rc": 1
+    },
+    {
+      "op": "kill",
+      "args": [
+        "-0",
+        "910001"
+      ],
+      "time": 0,
+      "error": "ESRCH",
+      "rc": 1
+    },
+    {
+      "op": "kill",
+      "args": [
+        "910002"
+      ],
+      "time": 0,
+      "rc": 0
+    },
+    {
+      "op": "kill",
+      "args": [
+        "910003"
+      ],
+      "time": 0,
+      "rc": 0
+    },
+    {
+      "op": "kill",
+      "args": [
+        "-0",
+        "910001"
+      ],
+      "time": 0,
+      "error": "ESRCH",
+      "rc": 1
+    },
+    {
+      "op": "kill",
+      "args": [
+        "-0",
+        "910002"
+      ],
+      "time": 0,
+      "error": "ESRCH",
+      "rc": 1
+    },
+    {
+      "op": "kill",
+      "args": [
+        "-0",
+        "910003"
+      ],
+      "time": 0,
+      "error": "ESRCH",
+      "rc": 1
+    }
+  ],
+  "resume_rc": 0
+}
