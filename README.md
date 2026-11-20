@@ -8,7 +8,7 @@ comparing it fairly with **GUI-Owl-1.5-2B** and **MAI-UI-2B**.
 | Final model | **LFM3-VL-2B v4**: LoRA fine-tune, shipped as a 4-bit GGUF (1.30 GB with its image projector) |
 | Main benchmark | AndroidWorld, 3 held-out seeds × 116 tasks, **preregistered** ([docs/PREREG_v4.md](docs/PREREG_v4.md)) |
 | Other benchmarks | MobileWorld (105 tasks), AndroidControl (offline), speed on CPU, Apple M5 and a phone |
-| Status | Complete (2026-11-19). Every result was independently re-checked by Codex ([docs/audits.md](docs/audits.md)) |
+| Status | Complete (2026-11-19). The headline results were independently re-checked by Codex ([docs/audits.md](docs/audits.md)) |
 
 ## Results at a glance
 
@@ -72,14 +72,14 @@ MAI-UI-2B (8-bit, 1 screenshot) scored highest on the development seed but was *
 
 | Document | Read it for |
 |---|---|
-| [docs/results.md](docs/results.md) | Every number, with its source file |
+| [docs/results.md](docs/results.md) | All results, each with its source file |
 | [docs/evaluation.md](docs/evaluation.md) | How each benchmark was run and kept fair |
 | [docs/models.md](docs/models.md) | Model versions v1–v4, training recipe, released artifacts |
 | [docs/datasets.md](docs/datasets.md) | Training data, splits, contamination rule |
 | [docs/PREREG_v4.md](docs/PREREG_v4.md) | The preregistration and every dated deviation (kept unedited) |
 | [docs/audits.md](docs/audits.md) | Every Codex audit and its verdict |
 | [docs/infrastructure.md](docs/infrastructure.md) | Where things ran, incidents and fixes |
-| [docs/reproduce.md](docs/reproduce.md) | How to recompute every number |
+| [docs/reproduce.md](docs/reproduce.md) | How to regenerate the result summaries, and what that covers |
 | [docs/repository.md](docs/repository.md) | Repository layout, what moved, history notes |
 | [docs/research/](docs/research/) | Literature reviews that shaped the plan |
 
@@ -87,7 +87,7 @@ MAI-UI-2B (8-bit, 1 screenshot) scored highest on the development seed but was *
 
 | Path | What it holds |
 |---|---|
-| [`analysis/`](analysis/) | Scripts that compute every reported number from `results/` |
+| [`analysis/`](analysis/) | Scripts that compute the result summaries from `results/` |
 | [`train/`](train/) | Training code: SFT, GRPO, prompt/action format |
 | [`data/`](data/) | Dataset builders and fixed split files |
 | [`eval/`](eval/) | Benchmark harnesses: AndroidControl, AndroidWorld, MobileWorld, general knowledge |

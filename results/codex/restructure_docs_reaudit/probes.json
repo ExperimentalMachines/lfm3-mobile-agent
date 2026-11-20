@@ -1,0 +1,695 @@
+{
+  "seed30_cases": [
+    {
+      "case": "valid_identity",
+      "accepted": true,
+      "successes": 0,
+      "agent": "lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "all_records_wrong_agent",
+      "accepted": true,
+      "successes": 0,
+      "agent": "wrong_agent"
+    },
+    {
+      "case": "all_records_missing_agent",
+      "accepted": true,
+      "successes": 0,
+      "agent": null
+    },
+    {
+      "case": "one_wrong_agent",
+      "accepted": false,
+      "error": "lfm3vl2b_v4: more than one agent"
+    },
+    {
+      "case": "duplicate_template",
+      "accepted": false,
+      "error": "lfm3vl2b_v4: templates differ from task metadata"
+    },
+    {
+      "case": "wrong_seed",
+      "accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio not seed 30"
+    },
+    {
+      "case": "success_and_exception",
+      "accepted": true,
+      "successes": 0,
+      "agent": "lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "missing_instance_id",
+      "accepted": true,
+      "successes": 0,
+      "agent": "lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "missing_seed_without_exception",
+      "accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio not seed 30"
+    },
+    {
+      "case": "after_step_exception_without_seed",
+      "accepted": true,
+      "successes": 0,
+      "agent": "lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "two_episodes_per_file",
+      "accepted": true,
+      "successes": 0,
+      "agent": "lfm3vl2b_v4_q4km"
+    }
+  ],
+  "root_checks": [
+    {
+      "path": "scripts/androidworld/local_450m_base_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_450m_base_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_450m_base_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_lane.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_lane.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_lane.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_queue_v2.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_queue_v2.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_queue_v2.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_rerun.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_rerun.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_aw_rerun.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_forcethink_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_forcethink_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_forcethink_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_launch_450m_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_launch_450m_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_launch_450m_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_lfm3_to_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_lfm3_to_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_lfm3_to_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_maiui_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_maiui_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_maiui_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_qwen_to_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_qwen_to_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_qwen_to_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_runtime_ablation_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_runtime_ablation_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_runtime_ablation_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v2.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v2.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v2.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v3.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v3.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v3.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_queue.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_queue.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_queue.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_v2_to_aw.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_v2_to_aw.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_v2_to_aw.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_maiui_watch.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_maiui_watch.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_maiui_watch.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_resume_watch.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_resume_watch.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_resume_watch.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/speed/android_cli.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/speed/android_cli.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/speed/android_cli.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/move_08b_to_g4.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/move_08b_to_g4.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/move_08b_to_g4.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/move_2b_to_g4.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/move_2b_to_g4.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/move_2b_to_g4.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/v3_modal_chain.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/v3_modal_chain.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/v3_modal_chain.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/v3_train_when_ready.sh",
+      "case": "root-relative",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/v3_train_when_ready.sh",
+      "case": "absolute-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    },
+    {
+      "path": "scripts/training/v3_train_when_ready.sh",
+      "case": "relative-from-other-cwd",
+      "rc": 0,
+      "resolved_root": "/Users/alpha/lfm3-android",
+      "pass": true
+    }
+  ],
+  "process_patterns": [
+    {
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "lane_matches": true,
+      "restored_filler_matches": true
+    },
+    {
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "lane_matches": true,
+      "restored_filler_matches": false
+    },
+    {
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5556 8556 8115",
+      "lane_matches": false,
+      "restored_filler_matches": false
+    },
+    {
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "lane_matches": false,
+      "restored_filler_matches": false
+    },
+    {
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "lane_matches": false,
+      "restored_filler_matches": false
+    }
+  ],
+  "actual_agents": {
+    "lfm3vl2b_v4": [
+      "lfm3vl2b_v4_q4km"
+    ],
+    "maiui_2b_matched_q8_0": [
+      "maiui_2b_matched1img_q8_0"
+    ],
+    "guiowl15_2b_matched": [
+      "guiowl15_2b_matched1img_q4km"
+    ],
+    "qwen35_2b_ft": [
+      "qwen35_2b_ft_q4km"
+    ],
+    "lfm3vl2b_ft": [
+      "lfm3vl2b_ft_q4km"
+    ],
+    "lfm3vl2b_v3": [
+      "lfm3vl2b_v3_q4km"
+    ],
+    "qwen35_08b_ft": [
+      "qwen35_08b_ft_q4km"
+    ],
+    "lfm3vl2b_ft_runtimefb": [
+      "lfm3vl2b_ft_q4km_runtimefb"
+    ],
+    "lfm3vl2b_v2_forcethink": [
+      "lfm3vl2b_v2_q4km_forcethink"
+    ],
+    "lfm3vl2b_v2": [
+      "lfm3vl2b_v2_q4km"
+    ],
+    "lfm25vl450m_ft": [
+      "lfm25vl450m_ft_q4km"
+    ],
+    "lfm3vl2b_base_nothink": [
+      "lfm3vl2b_base_nothink_q4km"
+    ],
+    "lfm25vl450m_base": [
+      "lfm25vl450m_base_q4km"
+    ]
+  },
+  "actual_nonzero_or_missing_instance": [],
+  "actual_missing_seed_nonsetup_exception": [
+    [
+      "lfm3vl2b_v4",
+      "SimpleSmsSend"
+    ],
+    [
+      "lfm3vl2b_v4",
+      "SimpleSmsSendClipboardContent"
+    ],
+    [
+      "qwen35_2b_ft",
+      "MarkorCreateNoteAndSms"
+    ],
+    [
+      "lfm3vl2b_ft",
+      "RetroPlayingQueue"
+    ],
+    [
+      "lfm3vl2b_v3",
+      "SimpleSmsSendReceivedAddress"
+    ],
+    [
+      "lfm3vl2b_ft_runtimefb",
+      "SystemBrightnessMinVerify"
+    ],
+    [
+      "lfm3vl2b_v2_forcethink",
+      "SimpleSmsReplyMostRecent"
+    ],
+    [
+      "lfm3vl2b_v2",
+      "SystemBrightnessMinVerify"
+    ],
+    [
+      "lfm25vl450m_ft",
+      "SimpleSmsSendReceivedAddress"
+    ],
+    [
+      "lfm25vl450m_ft",
+      "RetroPlayingQueue"
+    ],
+    [
+      "lfm3vl2b_base_nothink",
+      "SimpleSmsReplyMostRecent"
+    ],
+    [
+      "lfm3vl2b_base_nothink",
+      "SystemBrightnessMax"
+    ],
+    [
+      "lfm25vl450m_base",
+      "RetroPlayingQueue"
+    ]
+  ]
+}

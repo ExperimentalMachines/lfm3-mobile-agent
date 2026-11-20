@@ -1,0 +1,175 @@
+{
+  "subgroups": {
+    "E_goal_text_can_vary_78_templates": {
+      "templates": 78,
+      "instances": 234,
+      "v4": 32,
+      "guiowl": 33,
+      "difference_pp": -0.42735042735042733,
+      "p": 1.0,
+      "ci95_pp": [
+        -8.108108108108109,
+        7.207207207207207
+      ],
+      "outward_0_1_pp": [
+        -8.2,
+        7.3
+      ]
+    },
+    "F_goal_text_fixed_38_templates": {
+      "templates": 38,
+      "instances": 114,
+      "v4": 22,
+      "guiowl": 14,
+      "difference_pp": 7.017543859649122,
+      "p": 0.31116888311168883,
+      "ci95_pp": [
+        -5.0,
+        19.047619047619047
+      ],
+      "outward_0_1_pp": [
+        -5.0,
+        19.1
+      ]
+    }
+  },
+  "fixed_hidden_setup": 20,
+  "difficulty": {
+    "easy": {
+      "v4": 50,
+      "guiowl": 33,
+      "v1": 30
+    },
+    "medium": {
+      "v4": 3,
+      "guiowl": 11,
+      "v1": 0
+    },
+    "hard": {
+      "v4": 1,
+      "guiowl": 3,
+      "v1": 2
+    }
+  },
+  "gate": {
+    "v4": {
+      "questions": 136,
+      "controls": 80,
+      "answer_emitted": 130,
+      "strict_match": 118,
+      "false_answer": 0
+    },
+    "rl": {
+      "questions": 136,
+      "controls": 80,
+      "answer_emitted": 136,
+      "strict_match": 121,
+      "false_answer": 0
+    }
+  },
+  "rl": {
+    "steps": 200,
+    "mean_zero_variance_fraction": 0.663125,
+    "first20_reward": 0.71352,
+    "last20_reward": 0.765095
+  },
+  "v3_provenance": {
+    "rows_in": 78982,
+    "rows_out": 78952,
+    "filled": 8709,
+    "templ_checked": 2603,
+    "teacher_filled": 6106,
+    "dropped": 30,
+    "blank_left": 0
+  },
+  "forced_intent": {
+    "base": 3,
+    "forced": 6,
+    "wins": 3,
+    "losses": 0,
+    "mcnemar_p": 0.25
+  },
+  "cpu": {
+    "v4": {
+      "n": 14,
+      "median_s": 6.398,
+      "prompt_tokens_s": 149.31523328246618
+    },
+    "guiowl": {
+      "n": 4,
+      "median_s": 57.997,
+      "prompt_tokens_s": 46.62091550037289
+    },
+    "maiui": {
+      "n": 4,
+      "median_s": 58.1785,
+      "prompt_tokens_s": 47.50557236997327
+    }
+  },
+  "phone": {
+    "opt1_eval": {
+      "v4": {
+        "n": 2,
+        "median_s": 27.658,
+        "sampled_fastest_core_ghz_median": 4.032
+      },
+      "guiowl": {
+        "n": 2,
+        "median_s": 1099.8285,
+        "sampled_fastest_core_ghz_median": 2.6496
+      },
+      "maiui": {
+        "n": 2,
+        "median_s": 1063.0695,
+        "sampled_fastest_core_ghz_median": 2.6496
+      }
+    },
+    "opt2_pass1": {
+      "v4": {
+        "n": 5,
+        "median_s": 39.201,
+        "sampled_fastest_core_ghz_median": 2.6496
+      },
+      "guiowl": {
+        "n": 5,
+        "median_s": 197.78,
+        "sampled_fastest_core_ghz_median": 2.6496
+      },
+      "maiui": {
+        "n": 5,
+        "median_s": 183.161,
+        "sampled_fastest_core_ghz_median": 2.6496
+      }
+    },
+    "opt2_pass2": {
+      "v4": {
+        "n": 5,
+        "median_s": 38.757,
+        "sampled_fastest_core_ghz_median": 2.6496
+      },
+      "guiowl": {
+        "n": 5,
+        "median_s": 197.365,
+        "sampled_fastest_core_ghz_median": 2.6496
+      },
+      "maiui": {
+        "n": 5,
+        "median_s": 183.276,
+        "sampled_fastest_core_ghz_median": 2.6496
+      }
+    }
+  },
+  "pixel9": {
+    "n": 11,
+    "median_s": 74.407
+  },
+  "review_coverage": {
+    "seed7": {
+      "v4": 18,
+      "GUI": 16
+    },
+    "later": 88,
+    "later_unique": 88,
+    "total_reviewed": 122
+  }
+}

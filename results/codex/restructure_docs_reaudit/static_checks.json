@@ -1,0 +1,324 @@
+{
+  "move_rows": 136,
+  "git_renames": 137,
+  "unlisted_renames": [
+    [
+      "scripts/build_runs_registry.py",
+      "results/codex/restructure_docs_audit/archived_registry_source.py"
+    ]
+  ],
+  "listed_but_not_git_renames": [],
+  "move_counts": {
+    "analysis/": 11,
+    "docs/": 1,
+    "docs/research/": 2,
+    "docs/research/notes/": 11,
+    "results/codex/restructure_docs_audit/": 1,
+    "scripts/androidworld/": 20,
+    "scripts/mobileworld/": 13,
+    "scripts/publish/": 6,
+    "scripts/speed/": 10,
+    "scripts/training/": 32,
+    "scripts/training/jobs/": 30
+  },
+  "deletion_groups": {
+    "logs/": {
+      "files": 58,
+      "bytes": 1952548
+    },
+    "results/codex/datasets_scratch/": {
+      "files": 224,
+      "bytes": 354445648
+    },
+    "results/vm_backup/": {
+      "files": 36,
+      "bytes": 10966053
+    }
+  },
+  "unlisted_deletions": [],
+  "backup_identity": [
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_amex.jsonl",
+      "blob": "331567b2a80ac0ed1b2618271b05fbc4ee20f08d",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_amex.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_amex.jsonl.manifest.json",
+      "blob": "c73566f40933a260ca60629c6e47f6f19c3be60a",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_amex.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_amex.metrics.json",
+      "blob": "82ecf0c730b4bb26799cc88ff4bb4160388abf4f",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_amex.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_answer.jsonl",
+      "blob": "565b7dea6034759bacb0b1468f7bb8e7147e65a9",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_answer.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_answer.jsonl.manifest.json",
+      "blob": "74b06871a15631b4feaaef61b2c181ea018f7667",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_answer.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_answer.metrics.json",
+      "blob": "be073a3851c66c439328fcefade4527f10d2347a",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_answer.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_complete.jsonl",
+      "blob": "be621c6fd309953e68979027f738f811f3443af7",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_complete.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_complete.jsonl.manifest.json",
+      "blob": "2947b034d1eb4f166168d1cb0daa5b519c510528",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_complete.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_complete.metrics.json",
+      "blob": "ab461b6812c02ef6b9665d4f8ce26ffc0eb3f8fd",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_complete.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_odyssey.jsonl",
+      "blob": "a8a2b01c341e26f3ab25961b9311dca76d164270",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_odyssey.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_odyssey.jsonl.manifest.json",
+      "blob": "ee57098b10e87244e2b34e4df54bf07f2823a80d",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_odyssey.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_odyssey.metrics.json",
+      "blob": "e63642775ed0f8c44acbca8f9ec3d02f7cfaf804",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_odyssey.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_screenqa.jsonl",
+      "blob": "bf923396115c95d59f20d1e63c6ed8c53e0a72da",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_screenqa.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_screenqa.jsonl.manifest.json",
+      "blob": "676ae6a3b11874031588430eb103e8e19e3f5918",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_screenqa.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_dev_screenqa.metrics.json",
+      "blob": "212fcd9187315b249a2b0802e5e6082d906d6536",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3_v4_dev_screenqa.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4_strict.json",
+      "blob": "9abc7ad219ddcfef74e874a3e74c76f8f8a0f8b5",
+      "identical_canonical_paths": [
+        "results/v4_dev/lfm3_v4_strict.json",
+        "results/v4rl_dev/lfm3_v4_strict.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_amex.jsonl",
+      "blob": "8c9b5d6fbebcabb4e403b6cc31c9b435e36229dd",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_amex.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_amex.jsonl.manifest.json",
+      "blob": "28f402e9089eae9a03cc9076b6339899ec11302a",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_amex.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_amex.metrics.json",
+      "blob": "503977b0477a8ed15b8816d062294aee9bdf355d",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_amex.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_answer.jsonl",
+      "blob": "06331c3c64245e00f31ca9cae8fb7cc0f93cf56d",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_answer.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_answer.jsonl.manifest.json",
+      "blob": "679be7866e80843fa5e750fa0685c9953ce924db",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_answer.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_answer.metrics.json",
+      "blob": "ccaa2d261a3d2728fc982d3f188a793ffcb2da04",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_answer.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_complete.jsonl",
+      "blob": "b66ae547ac3adceda9828e708ab89715d548f48a",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_complete.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_complete.jsonl.manifest.json",
+      "blob": "111b959cf55dbb537bc6a800333db1e7e5d40fa6",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_complete.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_complete.metrics.json",
+      "blob": "70e3a4847eb163b731c283d9aa3586d36a25c014",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_complete.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_odyssey.jsonl",
+      "blob": "1988cc6bb58fcde0babb41f0f5c2c7ff4fec254b",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_odyssey.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_odyssey.jsonl.manifest.json",
+      "blob": "a5606bbf89ec4ca48f966f290099ab6e1987c6d7",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_odyssey.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_odyssey.metrics.json",
+      "blob": "727c46bcf0aa2968609784ce20233d6f38e0de14",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_odyssey.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_screenqa.jsonl",
+      "blob": "674ae8107bc495442cd8ce7405cc5b64df472493",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_screenqa.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_screenqa.jsonl.manifest.json",
+      "blob": "7f8bfb8f0adc1913588f1c4bbfc65ccb4667f514",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_screenqa.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_dev_screenqa.metrics.json",
+      "blob": "300bbce794330d7da8a669599a347b901912c903",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_dev_screenqa.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3_v4rl_strict.json",
+      "blob": "e9df3fe5304f5a0b8ff5f37bddd4ef639bbc5a6f",
+      "identical_canonical_paths": [
+        "results/v4rl_dev/lfm3_v4rl_strict.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3vl2b-v4bmix-lora_ft.jsonl",
+      "blob": "b32210a94d46867f59bbd4bb9e2d3c60616be10a",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft.jsonl"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3vl2b-v4bmix-lora_ft.jsonl.manifest.json",
+      "blob": "3134a2d8bc7f488881a36d191d911f38adb0e55a",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft.jsonl.manifest.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3vl2b-v4bmix-lora_ft.metrics.json",
+      "blob": "6ff223c8edaaa81b1f3f05cc04cd91f570690570",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft.metrics.json"
+      ]
+    },
+    {
+      "removed": "results/vm_backup/lfm3v4a/eval/lfm3vl2b-v4bmix-lora_ft_general_logprob.jsonl",
+      "blob": "c3ae7d5351b9a20ca75be7a573867c6d0a5927b1",
+      "identical_canonical_paths": [
+        "results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft_general_logprob.jsonl"
+      ]
+    }
+  ],
+  "remaining_frozen_fixture_copies": [
+    "results/codex/pass3/shell_argr928_/chain_upload_failure/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_argr928_/chain_gone_success/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_argr928_/chain_failed_predecessor/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_argr928_/chain_gone_bootstrap_failure/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_argr928_/chain_background_start_failure/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_argr928_/chain_success/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_argr928_/chain_meta_parent_missing/local/data/meta/androidcontrol_test_gt.jsonl",
+    "results/codex/pass3/shell_km_rkvl1/chain_success/local/data/meta/androidcontrol_test_gt.jsonl"
+  ],
+  "fixture_bytes_each": 3876347,
+  "links_checked": 197,
+  "broken_links": [],
+  "research_rewrites": [
+    {
+      "path": "docs/research/beating-gui-owl-at-2b-fairly.md",
+      "prose_identical_after_link_markup_removed": true,
+      "remaining_absolute_machine_paths": 0
+    },
+    {
+      "path": "docs/research/notes/beating-gui-owl-at-2b-fairly/input_inference_harness.md",
+      "prose_identical_after_link_markup_removed": true,
+      "remaining_absolute_machine_paths": 0
+    },
+    {
+      "path": "docs/research/small-gui-agent-training-methods.md",
+      "prose_identical_after_link_markup_removed": true,
+      "remaining_absolute_machine_paths": 0
+    }
+  ]
+}

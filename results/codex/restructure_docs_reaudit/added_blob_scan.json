@@ -1,0 +1,875 @@
+{
+  "summary": {
+    "base": "ecdebc553e52edcf9162b72d01c1f25695d6bad7",
+    "head": "d76fec421e9a09377e0eae6d96b8522df2884b4f",
+    "postimage_paths": 90,
+    "blobs": 90,
+    "unique_blobs": 89,
+    "gzip_blobs": 0,
+    "scanned_bytes": 7803007,
+    "owner_email_patterns": 1,
+    "candidate_counts": {
+      "credential_assignment": 20
+    },
+    "classifications": {
+      "numeric_metric": 7,
+      "redaction_placeholder": 6,
+      "synthetic_test_value": 7
+    },
+    "owner_hits_by_path": {}
+  },
+  "inventory": [
+    {
+      "path": "README.md",
+      "blob": "b2e08b76edc33b587cc6ed4d9d20d84e7928dd1b",
+      "bytes": 6179,
+      "decoded_bytes": 6179,
+      "gzip": false
+    },
+    {
+      "path": "analysis/README.md",
+      "blob": "1430f756540471c6ea800952897a9b37e9c053f8",
+      "bytes": 1876,
+      "decoded_bytes": 1876,
+      "gzip": false
+    },
+    {
+      "path": "analysis/aw_dev_seed30.py",
+      "blob": "6f59a4024956cc942a7c3465424b2b60839c7cff",
+      "bytes": 6173,
+      "decoded_bytes": 6173,
+      "gzip": false
+    },
+    {
+      "path": "analysis/reproduce.sh",
+      "blob": "41c4f4a7e14a71c8240c228d620f8e409c92cd2d",
+      "bytes": 2933,
+      "decoded_bytes": 2933,
+      "gzip": false
+    },
+    {
+      "path": "analysis/sealed_analysis.py",
+      "blob": "b2fad9593489dc7bb2358b3c7b3ed7ae28d39b12",
+      "bytes": 19781,
+      "decoded_bytes": 19781,
+      "gzip": false
+    },
+    {
+      "path": "analysis/sealed_sensitivity.py",
+      "blob": "11a55318bfc15636657d489d644049bcaeefa741",
+      "bytes": 5034,
+      "decoded_bytes": 5034,
+      "gzip": false
+    },
+    {
+      "path": "data/meta/README.md",
+      "blob": "d2420ac87da5259a7995d5e04a3435e278f53cfb",
+      "bytes": 989,
+      "decoded_bytes": 989,
+      "gzip": false
+    },
+    {
+      "path": "data/meta/androidworld_task_metadata.json",
+      "blob": "3ee67af832b3840fe9fc01fcabdad87b3f019e85",
+      "bytes": 34757,
+      "decoded_bytes": 34757,
+      "gzip": false
+    },
+    {
+      "path": "docs/audits.md",
+      "blob": "d3c059b4652a1100ef9431353c8a09e1e0cfa558",
+      "bytes": 5613,
+      "decoded_bytes": 5613,
+      "gzip": false
+    },
+    {
+      "path": "docs/datasets.md",
+      "blob": "29963357aab2da6cbe3fb3b24b40851858a7e86d",
+      "bytes": 6135,
+      "decoded_bytes": 6135,
+      "gzip": false
+    },
+    {
+      "path": "docs/evaluation.md",
+      "blob": "223ee3591f3f67114c7a46ccb29808b368e6c471",
+      "bytes": 8551,
+      "decoded_bytes": 8551,
+      "gzip": false
+    },
+    {
+      "path": "docs/history-rewrites.md",
+      "blob": "3cfd8156c6eaab45973ea0b58941d79aa4925cd9",
+      "bytes": 6355,
+      "decoded_bytes": 6355,
+      "gzip": false
+    },
+    {
+      "path": "docs/infrastructure.md",
+      "blob": "3235a4022f1b319750cae203c7a3ec791823a4e4",
+      "bytes": 4353,
+      "decoded_bytes": 4353,
+      "gzip": false
+    },
+    {
+      "path": "docs/models.md",
+      "blob": "5174d21caf009aa97ac2f7a09e93fdcd7e1553f3",
+      "bytes": 6860,
+      "decoded_bytes": 6860,
+      "gzip": false
+    },
+    {
+      "path": "docs/repository.md",
+      "blob": "e2ee4fb11b350f17f9d2edee6c15dd18549e7354",
+      "bytes": 20078,
+      "decoded_bytes": 20078,
+      "gzip": false
+    },
+    {
+      "path": "docs/reproduce.md",
+      "blob": "74f3a0188781d137ed7bdfa219cdd7c5160b65b0",
+      "bytes": 3364,
+      "decoded_bytes": 3364,
+      "gzip": false
+    },
+    {
+      "path": "docs/research/beating-gui-owl-at-2b-fairly.md",
+      "blob": "ac7bd855b01027e0ed238af26bb1b6c2497d01b3",
+      "bytes": 40152,
+      "decoded_bytes": 40152,
+      "gzip": false
+    },
+    {
+      "path": "docs/research/notes/beating-gui-owl-at-2b-fairly/input_inference_harness.md",
+      "blob": "8097fd1c4fcb7873d74eef54aa928c80efb73dd1",
+      "bytes": 34294,
+      "decoded_bytes": 34294,
+      "gzip": false
+    },
+    {
+      "path": "docs/research/small-gui-agent-training-methods.md",
+      "blob": "e1217b358c0297517a8b788d3eafbc25dbf359f7",
+      "bytes": 28831,
+      "decoded_bytes": 28831,
+      "gzip": false
+    },
+    {
+      "path": "docs/results.md",
+      "blob": "e50bfc9bc3795d2693a95ddef7717fef9fd0612f",
+      "bytes": 15961,
+      "decoded_bytes": 15961,
+      "gzip": false
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "bytes": 2355123,
+      "decoded_bytes": 2355123,
+      "gzip": false
+    },
+    {
+      "path": "results/README.md",
+      "blob": "af8a74823d4ad33f580509b87a2d54a50825de3b",
+      "bytes": 2712,
+      "decoded_bytes": 2712,
+      "gzip": false
+    },
+    {
+      "path": "results/androidworld/dev_seed30_summary.md",
+      "blob": "263c7ff0b2f1ec31f9a1aa4789ef600f6aaf9dae",
+      "bytes": 1674,
+      "decoded_bytes": 1674,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/PROMPT_restructure_docs_reaudit.md",
+      "blob": "9ec94eb318de93ce7e378304b97cb0751eca09b3",
+      "bytes": 2791,
+      "decoded_bytes": 2791,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/additional_evidence.log",
+      "blob": "99713dad27a56b51e198310555190b14f0f7f7bb",
+      "bytes": 1274,
+      "decoded_bytes": 1274,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/additional_evidence.py",
+      "blob": "f6155ae72600fa3f8f3aed3a4b9d017d78d546af",
+      "bytes": 3987,
+      "decoded_bytes": 3987,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/archived_registry_source.py",
+      "blob": "db764d4a17e4f604541d2cb560eb571f7f69eff7",
+      "bytes": 19327,
+      "decoded_bytes": 19327,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/baseline.json",
+      "blob": "3465b2344f913da980866f39436153135706bf6d",
+      "bytes": 289,
+      "decoded_bytes": 289,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/changes.tsv",
+      "blob": "aa9b340f3813265bc9d1a3c36f3831b4c569a5b4",
+      "bytes": 25780,
+      "decoded_bytes": 25780,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/clean_clone_probe.txt",
+      "blob": "9b0c52a988d5ee90d001e8a30fe5961a20fd18fe",
+      "bytes": 500,
+      "decoded_bytes": 500,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/credential_assignment_scan.json",
+      "blob": "08e3283e9c78e3e83b9a4ae3d2ad1c6ca78333e0",
+      "bytes": 2955312,
+      "decoded_bytes": 2955312,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/credential_assignment_scan.py",
+      "blob": "61ddcde9e25e2eca7c7b018759306f132e1f003b",
+      "bytes": 2979,
+      "decoded_bytes": 2979,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/credential_assignment_scan_progress.log",
+      "blob": "eb0c2bceab11303716782dee1d37dee2b8c44c2e",
+      "bytes": 219,
+      "decoded_bytes": 219,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/filter_probe.json",
+      "blob": "d43f67c0ff4345acb5e718dceeb401f9ff295be2",
+      "bytes": 518,
+      "decoded_bytes": 518,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/final_state.json",
+      "blob": "a244b73b39a82a641dc9ed4c1f5f177239101732",
+      "bytes": 542,
+      "decoded_bytes": 542,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_mapping_checks.json",
+      "blob": "715101294a8adc41015389f64a5e0bc9ef44f2d6",
+      "bytes": 9140,
+      "decoded_bytes": 9140,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_redaction_only_checks.json",
+      "blob": "786174f1b0cfe73b856ade53bd101c1b63641b65",
+      "bytes": 13845,
+      "decoded_bytes": 13845,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_scan.json",
+      "blob": "8d65e069541d983cbda489486c62e625cd6eb3de",
+      "bytes": 811548,
+      "decoded_bytes": 811548,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_scan.py",
+      "blob": "572fdea5c2c6d87eaf5c235ade2d15e05928251d",
+      "bytes": 5431,
+      "decoded_bytes": 5431,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_scan_fast.json",
+      "blob": "ba42c5be2fd431e93981c1f25b3c84ed642c387c",
+      "bytes": 1013500,
+      "decoded_bytes": 1013500,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_scan_fast.py",
+      "blob": "14d68721d268c588f5f7aad6c1d238f232723ab7",
+      "bytes": 5451,
+      "decoded_bytes": 5451,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_scan_fast_progress.log",
+      "blob": "3675ee1947662803bd91d920c5ecfef1a18dfeed",
+      "bytes": 4383,
+      "decoded_bytes": 4383,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/history_scan_progress.log",
+      "blob": "bbb1283c599e145cfc2f00166be48ffdc8a38eab",
+      "bytes": 3149,
+      "decoded_bytes": 3149,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/last_message.md",
+      "blob": "d91ff560857fdf242c09dfc846c669b11cf52181",
+      "bytes": 489,
+      "decoded_bytes": 489,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/legacy_remote_probe.json",
+      "blob": "c70aefdb7e0de00c2a3f2625606c4dca61151eff",
+      "bytes": 442,
+      "decoded_bytes": 442,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/missing_literal_paths.json",
+      "blob": "d050aa8ef334c489f83f7f791573b6f8eacc80b1",
+      "bytes": 3849,
+      "decoded_bytes": 3849,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/mobileworld_independent.json",
+      "blob": "c82ccbf2b97066ca10db99a79149c88d308f550b",
+      "bytes": 3270,
+      "decoded_bytes": 3270,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/owner_email_findings.json",
+      "blob": "3c31cd0a341f782410d3d3ff7974707fc37f98a1",
+      "bytes": 1523,
+      "decoded_bytes": 1523,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/owner_metadata_findings.json",
+      "blob": "08be8b5f178b9c16f320409004f47470cf86675b",
+      "bytes": 22539,
+      "decoded_bytes": 22539,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/partial_gzip_scan.json",
+      "blob": "41918d6de856d4901e5ab7b2b32d83177ddc1474",
+      "bytes": 194,
+      "decoded_bytes": 194,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/process_pattern_probe.json",
+      "blob": "aa27772b6ee7aaf4c34ea25dba37e930947cc5e5",
+      "bytes": 203,
+      "decoded_bytes": 203,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/recompute_evidence.py",
+      "blob": "7b346d9f4722b86849eeacb2abd40823ed1213f6",
+      "bytes": 7716,
+      "decoded_bytes": 7716,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/recomputed_evidence.json",
+      "blob": "511d3a3199c0a713717aae817434afb240c4d796",
+      "bytes": 14949,
+      "decoded_bytes": 14949,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/recomputed_evidence.log",
+      "blob": "bc04b2c3e527f0871de6c8f11e763ed5ee542867",
+      "bytes": 3333,
+      "decoded_bytes": 3333,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/report.md",
+      "blob": "ce532339b9920ec542bcdf6c3fab46755449f3c9",
+      "bytes": 43668,
+      "decoded_bytes": 43668,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/reproduce.log",
+      "blob": "92f4d3d6c3a4cd6d6831fb0730a35e097d2c6c86",
+      "bytes": 1231,
+      "decoded_bytes": 1231,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/scan_classification_summary.json",
+      "blob": "e55f12133c31119b26053b1df277b3a10e778304",
+      "bytes": 1192,
+      "decoded_bytes": 1192,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/seed30_exception_predicate_probe.json",
+      "blob": "86b885d40561f6866237b9bd7974335fa9a59c47",
+      "bytes": 659,
+      "decoded_bytes": 659,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/static_checks.json",
+      "blob": "e3c9bdccc3836c4b71876cd897fb25d9f0bd8a36",
+      "bytes": 120382,
+      "decoded_bytes": 120382,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/static_checks.py",
+      "blob": "25c118211e91cb81836a0b9bbf9d00d7655d60ce",
+      "bytes": 3372,
+      "decoded_bytes": 3372,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/v4_retention.json",
+      "blob": "c21317fde34807dca3970b14fe1d4ffc364a1b96",
+      "bytes": 495,
+      "decoded_bytes": 495,
+      "gzip": false
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/without_local_dependencies/results",
+      "blob": "3f8b81d26c9fd8f148a76a6178a02e5c84dc525a",
+      "bytes": 33,
+      "decoded_bytes": 33,
+      "gzip": false
+    },
+    {
+      "path": "results/general/lfm3vl2b_v4_retention_logprob.json",
+      "blob": "c21317fde34807dca3970b14fe1d4ffc364a1b96",
+      "bytes": 495,
+      "decoded_bytes": 495,
+      "gzip": false
+    },
+    {
+      "path": "results/sealed_sensitivity_final.json",
+      "blob": "153ad1d52c4f56cc68c30510da266f04fb40f3bd",
+      "bytes": 2470,
+      "decoded_bytes": 2470,
+      "gzip": false
+    },
+    {
+      "path": "results/sealed_sensitivity_final.md",
+      "blob": "407b467ae4578514c4fef05a39b1d70a822a8124",
+      "bytes": 1338,
+      "decoded_bytes": 1338,
+      "gzip": false
+    },
+    {
+      "path": "scripts/README.md",
+      "blob": "d172772f26f5aaf7c872cd95064964a35cd286e0",
+      "bytes": 5137,
+      "decoded_bytes": 5137,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_450m_base_aw.sh",
+      "blob": "1a733ab2091215fba8e8c2499abb0453f99791d8",
+      "bytes": 468,
+      "decoded_bytes": 468,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_aw_lane.sh",
+      "blob": "9bff48b0436752d12af71300cef3d820216d79eb",
+      "bytes": 3369,
+      "decoded_bytes": 3369,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_aw_queue_v2.sh",
+      "blob": "0d98fdf5852c90b670870340c9e907bfafd4c920",
+      "bytes": 1940,
+      "decoded_bytes": 1940,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_aw_rerun.sh",
+      "blob": "aa12bc551f41fa55377191fb5691878a2ebec0ee",
+      "bytes": 3844,
+      "decoded_bytes": 3844,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "blob": "9a236956599ac47660da3f4088df2222ef35b4bc",
+      "bytes": 2386,
+      "decoded_bytes": 2386,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "blob": "311635430a1566f0017b621aa670fcf80cbc4da9",
+      "bytes": 3858,
+      "decoded_bytes": 3858,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_forcethink_aw.sh",
+      "blob": "ea48233ffff58a3fbed437f991285435888be4cb",
+      "bytes": 1242,
+      "decoded_bytes": 1242,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_launch_450m_aw.sh",
+      "blob": "399554581eaa1c8b4a17a885f8172d31af704471",
+      "bytes": 478,
+      "decoded_bytes": 478,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_lfm3_to_aw.sh",
+      "blob": "f7044f39b3df4a5fea82bfd2c090d487967700d7",
+      "bytes": 2236,
+      "decoded_bytes": 2236,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_maiui_aw.sh",
+      "blob": "ce51b8f9c7a2ed10d2ab9ac0761859b62aac2fa5",
+      "bytes": 4046,
+      "decoded_bytes": 4046,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_qwen_to_aw.sh",
+      "blob": "4e1108e484a52cbf2337543603d15af3481fb70c",
+      "bytes": 2646,
+      "decoded_bytes": 2646,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_runtime_ablation_aw.sh",
+      "blob": "7f2490dd9e16781f286fa782245e1fe35f89490f",
+      "bytes": 1435,
+      "decoded_bytes": 1435,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v2.sh",
+      "blob": "84d76e4f6f9060cd06f9632f4347a3e6e110d9e3",
+      "bytes": 3450,
+      "decoded_bytes": 3450,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_aw_v3.sh",
+      "blob": "7446ae94b0d3acb074455c9b60ad0a6a53d9748c",
+      "bytes": 4249,
+      "decoded_bytes": 4249,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_sealed_queue.sh",
+      "blob": "afc7f930a77181579b8ef65359eac65efa1e9a08",
+      "bytes": 1550,
+      "decoded_bytes": 1550,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_v2_to_aw.sh",
+      "blob": "06ee3627bf1a763ed354ee51d3dfe1f7de9d4939",
+      "bytes": 2763,
+      "decoded_bytes": 2763,
+      "gzip": false
+    },
+    {
+      "path": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "blob": "81bf0c964f631faecd9254fe5fa13a8788e46144",
+      "bytes": 6166,
+      "decoded_bytes": 6166,
+      "gzip": false
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_maiui_watch.sh",
+      "blob": "bf70b0497d6d2baf8fa6edc0419c24e19ac5a3df",
+      "bytes": 8327,
+      "decoded_bytes": 8327,
+      "gzip": false
+    },
+    {
+      "path": "scripts/mobileworld/gcp_mw_resume_watch.sh",
+      "blob": "afa687cf7597cb6aa2175238972fbe247d517e7e",
+      "bytes": 3448,
+      "decoded_bytes": 3448,
+      "gzip": false
+    },
+    {
+      "path": "scripts/speed/android_cli.sh",
+      "blob": "af34a53ade7d1833f97317f2c8fa4a3e44e002b2",
+      "bytes": 602,
+      "decoded_bytes": 602,
+      "gzip": false
+    },
+    {
+      "path": "scripts/training/move_08b_to_g4.sh",
+      "blob": "acb67f238553f0f01b132f9f72b1be787924a1e3",
+      "bytes": 1456,
+      "decoded_bytes": 1456,
+      "gzip": false
+    },
+    {
+      "path": "scripts/training/move_2b_to_g4.sh",
+      "blob": "6efd24c37cfe9a8062628e3e584476be8edb027b",
+      "bytes": 913,
+      "decoded_bytes": 913,
+      "gzip": false
+    },
+    {
+      "path": "scripts/training/v3_modal_chain.sh",
+      "blob": "7aa4d1a3e9d1a9d02546ccb0711bc0751a51e144",
+      "bytes": 2879,
+      "decoded_bytes": 2879,
+      "gzip": false
+    },
+    {
+      "path": "scripts/training/v3_train_when_ready.sh",
+      "blob": "e0690c0c437f182943447703ed5746db2989e018",
+      "bytes": 2534,
+      "decoded_bytes": 2534,
+      "gzip": false
+    }
+  ],
+  "candidates": [
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16715,
+      "pattern": "credential_assignment",
+      "masked_prefix": "4.024e...",
+      "value_sha256": "571dcafdeeb6d92ad6dfc7d9d3f0dfc3c5e1f62e594a20f61faeb8a079836d69",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16717,
+      "pattern": "credential_assignment",
+      "masked_prefix": "8.051e...",
+      "value_sha256": "bd5686ef24f93d7fcdae8673705e4149c77eeb3e02a8592d0c0a4faaa5933966",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16719,
+      "pattern": "credential_assignment",
+      "masked_prefix": "1.222e...",
+      "value_sha256": "906233e2b490c852e6d9c285a3f17588c54509eb55967457572f3d359a13aba7",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16721,
+      "pattern": "credential_assignment",
+      "masked_prefix": "1.619e...",
+      "value_sha256": "c0cef75042425a99a3127a55c69f9f5cba4e63b3b1d9ff9a26c584726736358d",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16723,
+      "pattern": "credential_assignment",
+      "masked_prefix": "2.023e...",
+      "value_sha256": "ee4d71b4a17a13594c01906e8f9b84ecaf87cc0c68a261ea5deed572c6e05871",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16725,
+      "pattern": "credential_assignment",
+      "masked_prefix": "2.436e...",
+      "value_sha256": "efbcd5a8ab4c04e9d90d19ab1c2797a210bf375a0de8faeb1b5bc72caacf19cb",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 16727,
+      "pattern": "credential_assignment",
+      "masked_prefix": "2.837e...",
+      "value_sha256": "cd84af8bc89e1101585e51d51b4cb9e79740089f7f042658872749f99048c90b",
+      "match_bytes": 9,
+      "gzip": false,
+      "classification": "numeric_metric"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 19256,
+      "pattern": "credential_assignment",
+      "masked_prefix": "<redac...",
+      "value_sha256": "3a2d1afa44d101200100d332f52384e523e7e881b7db0008da228cd94cebdfe1",
+      "match_bytes": 10,
+      "gzip": false,
+      "classification": "redaction_placeholder"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 19268,
+      "pattern": "credential_assignment",
+      "masked_prefix": "<redac...",
+      "value_sha256": "3a2d1afa44d101200100d332f52384e523e7e881b7db0008da228cd94cebdfe1",
+      "match_bytes": 10,
+      "gzip": false,
+      "classification": "redaction_placeholder"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 19268,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 19269,
+      "pattern": "credential_assignment",
+      "masked_prefix": "<redac...",
+      "value_sha256": "3a2d1afa44d101200100d332f52384e523e7e881b7db0008da228cd94cebdfe1",
+      "match_bytes": 10,
+      "gzip": false,
+      "classification": "redaction_placeholder"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 19269,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 23159,
+      "pattern": "credential_assignment",
+      "masked_prefix": "<redac...",
+      "value_sha256": "3a2d1afa44d101200100d332f52384e523e7e881b7db0008da228cd94cebdfe1",
+      "match_bytes": 10,
+      "gzip": false,
+      "classification": "redaction_placeholder"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 23159,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 23160,
+      "pattern": "credential_assignment",
+      "masked_prefix": "<redac...",
+      "value_sha256": "3a2d1afa44d101200100d332f52384e523e7e881b7db0008da228cd94cebdfe1",
+      "match_bytes": 10,
+      "gzip": false,
+      "classification": "redaction_placeholder"
+    },
+    {
+      "path": "logs/codex_restructure_docs_audit.log",
+      "blob": "b82f61aec8a990e84977b52e3837bc1a1df38cc2",
+      "line": 23160,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/filter_probe.json",
+      "blob": "d43f67c0ff4345acb5e718dceeb401f9ff295be2",
+      "line": 4,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/filter_probe.json",
+      "blob": "d43f67c0ff4345acb5e718dceeb401f9ff295be2",
+      "line": 4,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/filter_probe.json",
+      "blob": "d43f67c0ff4345acb5e718dceeb401f9ff295be2",
+      "line": 5,
+      "pattern": "credential_assignment",
+      "masked_prefix": "<redac...",
+      "value_sha256": "3a2d1afa44d101200100d332f52384e523e7e881b7db0008da228cd94cebdfe1",
+      "match_bytes": 10,
+      "gzip": false,
+      "classification": "redaction_placeholder"
+    },
+    {
+      "path": "results/codex/restructure_docs_audit/filter_probe.json",
+      "blob": "d43f67c0ff4345acb5e718dceeb401f9ff295be2",
+      "line": 5,
+      "pattern": "credential_assignment",
+      "masked_prefix": "synthe...",
+      "value_sha256": "c642ad0dc9cb435ca1e3f1a5808f3618e2be7bcc9d58d4a2f7601609725f6129",
+      "match_bytes": 21,
+      "gzip": false,
+      "classification": "synthetic_test_value"
+    }
+  ]
+}

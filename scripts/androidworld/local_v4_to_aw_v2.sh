@@ -51,7 +51,7 @@ bash scripts/publish/local_export_gguf.sh "$SRC" "$OUT" || { log "EXPORT FAILED"
 shasum -a 256 "$GG" "$MM"
 log "exported; pausing the sealed GUI-Owl seed-1234 arm on emulator $CP (scripts/androidworld/local_emu2_fill_v2.sh resumes it afterwards)"
 t0=$(date +%s)
-while pgrep -f "[r]un_aw.py.*console_port=$CP" >/dev/null || pgrep -f "^bash scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 $CP " >/dev/null \
+while pgrep -f "[r]un_aw.py.*console_port=$CP" >/dev/null || pgrep -f "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 $CP " >/dev/null \
       || pgrep -f "[l]lama-server.*--port 8115 " >/dev/null; do
   [ $(( $(date +%s) - t0 )) -gt 1800 ] && release "emulator $CP still busy after 30 min; v4 seed-30 run NOT STARTED"
   sleep 10

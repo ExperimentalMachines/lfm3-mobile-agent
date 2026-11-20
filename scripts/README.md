@@ -13,13 +13,12 @@ Notes:
 | Script | Does |
 |---|---|
 | `local_sealed_aw_v3.sh` | **Runs one held-out arm** (model × seed) with the preregistered flags; results stay sealed |
-| `local_sealed_aw_v2.sh` | The previous launcher (same flags, unbounded server start); ran the sealed arms started on 2026-11-18 |
 | `local_sealed_queue.sh` | Queues the remaining held-out arms on one emulator |
 | `local_aw_rerun.sh` | The preregistered single re-run of setup-crash episodes |
 | `aw_emu_guard.sh` | Kills a run before a crash is recorded if the emulator stops answering |
 | `local_aw_queue_v2.sh`, `local_aw_lane.sh` | Queue / resume one emulator's jobs (e.g. after a reboot) |
 | `pause_sealed_arm.sh` | Pauses a sealed arm so it can resume later |
-| `local_emu2_fill_v2.sh` | Emulator-2 hand-off: pauses the GUI-Owl seed-1234 arm when v4 is exported, resumes it after v4's seed-30 run |
+| `local_emu2_fill_v2.sh` | Emulator-2 hand-off (2026-11-18): pauses the GUI-Owl seed-1234 arm when v4 is exported, resumes it after v4's seed-30 run |
 | `local_emu2_fill_v4.sh` | Emulator-2 schedule after that: v4 seed-30 pass → gate → held-out arm → resume the paused arm |
 | `local_v4_to_aw_v2.sh` | v4 hand-off: merged weights → GGUF → seed-30 run |
 | `local_lfm3_to_aw.sh`, `local_v2_to_aw.sh`, `local_qwen_to_aw.sh` | Earlier models: wait for weights → GGUF → seed-30 run |

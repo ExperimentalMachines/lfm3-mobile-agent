@@ -43,7 +43,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | Destination | What | Files |
 |---|---|---|
 | `analysis/` | Scripts that compute reported numbers | 11 |
-| `scripts/androidworld/` | AndroidWorld launchers, queues, re-runs, guards | 20 |
+| `scripts/androidworld/` | AndroidWorld launchers, queues, re-runs, guards | 19 |
 | `scripts/mobileworld/` | MobileWorld VMs, watchers, model servers | 13 |
 | `scripts/training/` | Colab / Modal training and eval jobs | 32 |
 | `scripts/training/jobs/` | Job configs (`jobs/*.json`) | 30 |
@@ -55,6 +55,8 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 
 - Moved scripts had their internal paths, repository-root detection and process-matching patterns updated.
 - Local launchers now find the repository from their own location instead of a hard-coded path.
+- `scripts/androidworld/local_emu2_fill_v2.sh` was first removed, then restored: `local_v4_to_aw_v2.sh` depends on it
+  for the v4 hand-off. It now resumes through the bounded `local_sealed_aw_v3.sh`.
 
 <details>
 <summary>Every moved file (old → new)</summary>
@@ -86,7 +88,6 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `scripts/local_maiui_aw.sh` | `scripts/androidworld/local_maiui_aw.sh` |
 | `scripts/local_qwen_to_aw.sh` | `scripts/androidworld/local_qwen_to_aw.sh` |
 | `scripts/local_runtime_ablation_aw.sh` | `scripts/androidworld/local_runtime_ablation_aw.sh` |
-| `scripts/local_sealed_aw_v2.sh` | `scripts/androidworld/local_sealed_aw_v2.sh` |
 | `scripts/local_sealed_aw_v3.sh` | `scripts/androidworld/local_sealed_aw_v3.sh` |
 | `scripts/local_sealed_queue.sh` | `scripts/androidworld/local_sealed_queue.sh` |
 | `scripts/local_v2_to_aw.sh` | `scripts/androidworld/local_v2_to_aw.sh` |
@@ -204,7 +205,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 
 | Removed | Why |
 |---|---|
-| `scripts/build_runs_registry.py` | Run-log site generator (replaced by the static docs; its seed-30 computation moved to `analysis/aw_dev_seed30.py`) |
+| `scripts/build_runs_registry.py` | Run-log site generator, retired; its seed-30 computation moved to `analysis/aw_dev_seed30.py` (a copy of its source is Codex audit evidence: `results/codex/restructure_docs_audit/archived_registry_source.py`) |
 | `scripts/colab_keepalive_loop.sh` | Session keep-alive helper |
 | `scripts/colab_poll_fast_gpu.sh` | GPU polling helper |
 | `scripts/colab_watchdog.sh` | Superseded by `scripts/training/colab_watchdog_v2.sh` |
@@ -221,6 +222,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `scripts/local_emu2_fill.sh` | First emulator-2 filler; replaced by `local_emu2_fill_v2.sh` (its resume-directory bug is fixed there) |
 | `scripts/local_emu2_fill_v3.sh` | Superseded by `local_emu2_fill_v4.sh` (identical except the launcher version) |
 | `scripts/local_milestone_poll.sh` | Progress polling helper |
+| `scripts/local_sealed_aw_v2.sh` | Superseded by `local_sealed_aw_v3.sh` (same flags, bounded server start); it ran the sealed arms started on 2026-11-18 before v3 |
 | `scripts/local_sealed_aw.sh` | First sealed launcher (ran the seed-7 v1 and GUI-Owl arms); superseded by v2/v3 |
 | `scripts/local_v4_to_aw.sh` | Superseded by `local_v4_to_aw_v2.sh` (the hub upload it waited for failed) |
 | `scripts/local_watch_base_eval.sh` | One-off watcher (pointed at a temporary session folder) |
@@ -284,6 +286,6 @@ git config filter.redact-env.smudge cat
 | Ref | What |
 |---|---|
 | `main` | This repository |
-| `lfm3-android` | Same commit as `main` (the branch name used while the project ran); its pre-rewrite history was replaced |
+| `lfm3-android` | The branch name used while the project ran. Re-pointed to `main` at the 2026-11-20 merge, so its old commits (which held the expired token) are on no branch |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction) |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |

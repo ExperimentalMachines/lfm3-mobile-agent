@@ -1,0 +1,21 @@
+AndroidWorld, held-out (primary) + sensitivity
+· python3 analysis/sealed_analysis.py --seeds 7,1234,2026 --out results/sealed_analysis_final
+· python3 analysis/sealed_sensitivity.py
+AndroidWorld, development seed 30 + v4 gate
+· python3 analysis/aw_dev_seed30.py
+· analysis/v4_gate.py > results/v4_gate_seed30.txt
+Offline evaluations
+· python3 analysis/strict_dev_metrics.py --answer results/v4_dev/hub/eval/lfm3_v4_dev_answer.jsonl --complete results/v4_dev/hub/eval/lfm3_v4_dev_complete.jsonl --out results/v4_dev/lfm3_v4_strict.json
+· python3 analysis/v4rl_promotion.py --v4_dir results/v4_dev/hub/eval --rl_dir results/v4rl_dev --out results/v4rl_promotion_offline.json
+· python3 eval/general/paired_retention.py results/general/lfm3vl2b-ac-lora_base_general_logprob.jsonl results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft_general_logprob.jsonl results/general/lfm3vl2b_v4_retention_logprob.json
+· python3 analysis/build_report.py
+· analysis/v2_compare.py > results/V2_COMPARISON.md
+Speed
+· analysis/bench_speed_report.py > results/speed/speed_t8.json (+ .md)
+· python3 analysis/qdc_report_v6.py
+· python3 analysis/devstream_report.py results/devstream/run_20261118_1519 --md results/devstream/run_20261118_1519/speed_phone_partial.md --json results/devstream/run_20261118_1519/speed_phone_partial.json
+MobileWorld
+· python3 analysis/mw_summarize_r2.py
+
+Differs from HEAD:
+?? results/mobileworld/traj_r2

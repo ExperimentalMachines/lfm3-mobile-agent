@@ -1,0 +1,111 @@
+{
+  "v2_losses": {
+    "lfm3vl2b_v2": [
+      {
+        "line": 132,
+        "step": 1250,
+        "epoch": 0.5064316823660489,
+        "elapsed_s": 5818.7,
+        "gpu_mem_gb": 10.72,
+        "train_runtime": 5815.4477,
+        "train_samples_per_second": 6.878,
+        "train_steps_per_second": 0.215,
+        "total_flos": 5.052840248022221e+17,
+        "train_loss": 0.3905581356048584
+      },
+      {
+        "line": 135,
+        "step": 1251,
+        "epoch": 0.5068368277119416,
+        "elapsed_s": 41.8,
+        "gpu_mem_gb": 10.17,
+        "train_runtime": 38.6265,
+        "train_samples_per_second": 0.828,
+        "train_steps_per_second": 0.026,
+        "total_flos": 5.056908370402591e+17,
+        "train_loss": 0.20475457608699799
+      }
+    ],
+    "qwen35_2b_v2": [
+      {
+        "line": 132,
+        "step": 1250,
+        "epoch": 0.5064316823660489,
+        "elapsed_s": 5738.7,
+        "gpu_mem_gb": 10.51,
+        "train_runtime": 5735.143,
+        "train_samples_per_second": 6.975,
+        "train_steps_per_second": 0.218,
+        "total_flos": 5.346746722282752e+17,
+        "train_loss": 0.31336562614440916
+      },
+      {
+        "line": 135,
+        "step": 1251,
+        "epoch": 0.5068368277119416,
+        "elapsed_s": 51.5,
+        "gpu_mem_gb": 10.0,
+        "train_runtime": 48.0534,
+        "train_samples_per_second": 0.666,
+        "train_steps_per_second": 0.021,
+        "total_flos": 5.3510387804410675e+17,
+        "train_loss": 0.16837121546268463
+      }
+    ]
+  },
+  "b3_exceptions": [
+    {
+      "arm": "v4",
+      "seed": 1234,
+      "task": "BrowserDraw",
+      "frames": [
+        "_run_task",
+        "run_episode",
+        "run_episode",
+        "step",
+        "get_post_transition_state",
+        "get_state",
+        "_get_stable_state",
+        "_get_state",
+        "step",
+        "_process_timestep",
+        "get_a11y_forest",
+        "_get_a11y_forest",
+        "get_a11y_tree",
+        "wrapper",
+        "check_airplane_mode",
+        "issue_generic_request",
+        "execute_adb_call",
+        "execute_adb_call",
+        "execute_adb_call",
+        "parse",
+        "_handle_generic",
+        "_execute_command",
+        "execute_command"
+      ],
+      "episode_length": null
+    },
+    {
+      "arm": "v4",
+      "seed": 2026,
+      "task": "SimpleSmsReplyMostRecent",
+      "frames": [
+        "_run_task",
+        "is_successful",
+        "get_android_time"
+      ],
+      "episode_length": null
+    },
+    {
+      "arm": "guiowl",
+      "seed": 1234,
+      "task": "SimpleSmsSendReceivedAddress",
+      "frames": [
+        "_run_task",
+        "is_successful",
+        "get_android_time"
+      ],
+      "episode_length": null
+    }
+  ]
+}

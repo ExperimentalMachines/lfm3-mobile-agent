@@ -22,32 +22,35 @@ SUITE_SEED = 30
 
 def instance_seed(t, i=0):  # android_world suite_utils._get_instance_seed
     return int(hashlib.sha256(f"{SUITE_SEED}_{t}_{i}".encode()).hexdigest(), 16) % (2 ** 32)
-RUNS = [  # (results/androidworld/<dir>, label, quantisation)
-    ("lfm3vl2b_v4", "LFM3-VL-2B v4 (final)", "Q4_K_M"),
-    ("maiui_2b_matched_q8_0", "MAI-UI-2B (1 screenshot)", "Q8_0"),
-    ("guiowl15_2b_matched", "GUI-Owl-1.5-2B (1 screenshot)", "Q4_K_M"),
-    ("qwen35_2b_ft", "Qwen3.5-2B v1", "Q4_K_M"),
-    ("lfm3vl2b_ft", "LFM3-VL-2B v1", "Q4_K_M"),
-    ("lfm3vl2b_v3", "LFM3-VL-2B v3", "Q4_K_M"),
-    ("qwen35_08b_ft", "Qwen3.5-0.8B v1", "Q4_K_M"),
-    ("lfm3vl2b_ft_runtimefb", "LFM3-VL-2B v1 + runtime feedback (ablation)", "Q4_K_M"),
-    ("lfm3vl2b_v2_forcethink", "LFM3-VL-2B v2 + forced intent (ablation)", "Q4_K_M"),
-    ("lfm3vl2b_v2", "LFM3-VL-2B v2", "Q4_K_M"),
-    ("lfm25vl450m_ft", "LFM2.5-VL-450M v1", "Q4_K_M"),
-    ("lfm3vl2b_base_nothink", "LFM3-VL-2B base (no thinking)", "Q4_K_M"),
-    ("lfm25vl450m_base", "LFM2.5-VL-450M base", "Q4_K_M"),
+RUNS = [  # (results/androidworld/<dir>, label, quantisation, expected agent_name)
+    ("lfm3vl2b_v4", "LFM3-VL-2B v4 (final)", "Q4_K_M", "lfm3vl2b_v4_q4km"),
+    ("maiui_2b_matched_q8_0", "MAI-UI-2B (1 screenshot)", "Q8_0", "maiui_2b_matched1img_q8_0"),
+    ("guiowl15_2b_matched", "GUI-Owl-1.5-2B (1 screenshot)", "Q4_K_M", "guiowl15_2b_matched1img_q4km"),
+    ("qwen35_2b_ft", "Qwen3.5-2B v1", "Q4_K_M", "qwen35_2b_ft_q4km"),
+    ("lfm3vl2b_ft", "LFM3-VL-2B v1", "Q4_K_M", "lfm3vl2b_ft_q4km"),
+    ("lfm3vl2b_v3", "LFM3-VL-2B v3", "Q4_K_M", "lfm3vl2b_v3_q4km"),
+    ("qwen35_08b_ft", "Qwen3.5-0.8B v1", "Q4_K_M", "qwen35_08b_ft_q4km"),
+    ("lfm3vl2b_ft_runtimefb", "LFM3-VL-2B v1 + runtime feedback (ablation)", "Q4_K_M", "lfm3vl2b_ft_q4km_runtimefb"),
+    ("lfm3vl2b_v2_forcethink", "LFM3-VL-2B v2 + forced intent (ablation)", "Q4_K_M", "lfm3vl2b_v2_q4km_forcethink"),
+    ("lfm3vl2b_v2", "LFM3-VL-2B v2", "Q4_K_M", "lfm3vl2b_v2_q4km"),
+    ("lfm25vl450m_ft", "LFM2.5-VL-450M v1", "Q4_K_M", "lfm25vl450m_ft_q4km"),
+    ("lfm3vl2b_base_nothink", "LFM3-VL-2B base (no thinking)", "Q4_K_M", "lfm3vl2b_base_nothink_q4km"),
+    ("lfm25vl450m_base", "LFM2.5-VL-450M base", "Q4_K_M", "lfm25vl450m_base_q4km"),
 ]
 
 
-def run(d):
+def run(d, agent):
     r = sorted(glob.glob(f"results/androidworld/{d}/run_*/"))[-1]
-    eps = [pickle.loads(gzip.decompress(open(f, "rb").read()))[0] for f in sorted(glob.glob(r + "*.pkl.gz"))]
+    recs = [pickle.loads(gzip.decompress(open(f, "rb").read())) for f in sorted(glob.glob(r + "*.pkl.gz"))]
+    assert all(len(x) == 1 for x in recs), f"{d}: an episode file holds more than one record"
+    eps = [x[0] for x in recs]
     # input checks: the 116 AndroidWorld templates once each, one agent, instance 0 of suite seed 30
     names = [e["task_template"] for e in eps]
     assert len(names) == len(set(names)) and set(names) == TEMPLATES, f"{d}: templates differ from task metadata"
-    assert len({e.get("agent_name") for e in eps}) == 1, f"{d}: more than one agent"
+    assert {e.get("agent_name") for e in eps} == {agent}, f"{d}: agent is not {agent}"
     for e in eps:
-        assert e.get("instance_id", 0) == 0, f"{d}: {e['task_template']} is not instance 0"
+        assert "instance_id" in e and e["instance_id"] == 0, f"{d}: {e['task_template']} is not instance 0"
+        # exception episodes store no seed; they are checked by template identity only
         if e.get("exception_info") is None or "seed" in e:
             assert e.get("seed") == instance_seed(e["task_template"]), f"{d}: {e['task_template']} not seed {SUITE_SEED}"
     # success = checker score >= 1 and no exception (exceptions count as failures)
@@ -77,7 +80,7 @@ def run(d):
             "output_tokens_median": int(st.median(G)) if G else None}
 
 
-rows = [{"id": d, "label": lab, "quant": qt, **run(d)} for d, lab, qt in RUNS]
+rows = [{"id": d, "label": lab, "quant": qt, **run(d, ag)} for d, lab, qt, ag in RUNS]
 assert all(r["episodes"] == 116 for r in rows), [(r["id"], r["episodes"]) for r in rows if r["episodes"] != 116]
 json.dump(rows, open("results/androidworld/dev_seed30_summary.json", "w"), indent=1)
 L = ["# AndroidWorld development seed 30 (116 tasks; development numbers, not the held-out result)", "",

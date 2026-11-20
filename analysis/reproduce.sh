@@ -1,5 +1,5 @@
 #!/bin/bash
-# Regenerate every summary file in results/ from the committed inputs (episode files, request logs, predictions and
+# Regenerate the summary files listed in OUTPUTS below from the committed inputs (episode files, request logs, predictions and
 # per-run metric files), then check each output against the committed version (expected: no change, nothing new).
 # Not covered: re-scoring raw AndroidControl / general-knowledge predictions into their metric files (eval/ scorers),
 # training logs, dataset statistics, and the hand-written docs. MobileWorld is skipped unless its raw trajectories
@@ -11,6 +11,17 @@ PY=${PY:-python3}
 E=results/v4_dev/hub/eval
 D=results/devstream/run_20261118_1519
 run() { echo "· $*"; "$@" > /dev/null; }
+OUTPUTS=(results/sealed_analysis_final.json results/sealed_analysis_final.md results/sealed_sensitivity_final.json
+  results/sealed_sensitivity_final.md results/androidworld/dev_seed30_summary.json results/androidworld/dev_seed30_summary.md
+  results/v4_gate_seed30.txt results/v4_dev/lfm3_v4_strict.json results/v4rl_promotion_offline.json
+  results/general/lfm3vl2b_v4_retention_logprob.json results/SUMMARY.md results/V2_COMPARISON.md
+  results/speed/speed_t8.json results/speed/speed_t8.md results/qdc/speed_qdc_v6.json results/qdc/speed_qdc_v6.md
+  $D/speed_phone_partial.json $D/speed_phone_partial.md)
+MW_OUTPUTS=(results/mobileworld/mw_r2_comparison.json results/mobileworld/mw_r2_comparison.md
+  results/mobileworld/v4_gui_en_r2_summary.json results/mobileworld/guiowl_gui_en_r2_summary.json
+  results/mobileworld/maiui_gui_en_r2_summary.json)
+untracked() { git ls-files --others --exclude-standard -- results | sort; }
+BEFORE=$(untracked)
 
 echo "AndroidWorld, held-out (primary) + sensitivity"
 run "$PY" analysis/sealed_analysis.py --seeds 7,1234,2026 --out results/sealed_analysis_final
@@ -37,14 +48,19 @@ run "$PY" analysis/devstream_report.py $D --md $D/speed_phone_partial.md --json 
 echo "MobileWorld"
 if [ -d results/mobileworld/traj_r2 ]; then
   run "$PY" analysis/mw_summarize_r2.py
+  OUTPUTS+=("${MW_OUTPUTS[@]}")
 else
   echo "· skipped: raw trajectories (results/mobileworld/traj_r2, 8.6 GB) are not in git"
 fi
 find analysis -name __pycache__ -type d -prune -exec rm -rf {} +
 echo
-changes=$(git status --porcelain --untracked-files=all -- results)
-if [ -z "$changes" ] && git diff --quiet HEAD -- results; then
-  echo "OK: every regenerated file is identical to the committed one (HEAD), and no new file appeared."
+fail=0
+for f in "${OUTPUTS[@]}"; do git ls-files --error-unmatch -- "$f" > /dev/null 2>&1 || { echo "not committed: $f"; fail=1; }; done
+git diff --quiet HEAD -- "${OUTPUTS[@]}" || { echo "Differs from HEAD:"; git diff --stat HEAD -- "${OUTPUTS[@]}"; fail=1; }
+NEW=$(comm -13 <(echo "$BEFORE") <(untracked))
+[ -z "$NEW" ] || { echo "New files the scripts wrote under results/:"; echo "$NEW"; fail=1; }
+if [ $fail -eq 0 ]; then
+  echo "OK: all ${#OUTPUTS[@]} regenerated files are identical to the committed ones (HEAD), and no new file appeared."
 else
-  echo "Differs from HEAD:"; echo "$changes"; exit 1
+  exit 1
 fi

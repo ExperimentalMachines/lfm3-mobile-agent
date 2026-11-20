@@ -19,7 +19,7 @@ GO=results/androidworld_sealed/guiowl_seed1234; GOLOG=logs/local_sealed_guiowl_s
 log() { echo "[$(date +%T)] $*"; }
 rundir() { local d; d=$(ls -d "$1"/run_*/ 2>/dev/null | tail -1); echo "${d%/}"; }
 count() { local d; d=$(rundir "$1"); [ -n "$d" ] && ls "$d"/*.pkl.gz 2>/dev/null | wc -l | tr -d ' ' || echo 0; }
-busy() { pgrep -f "[r]un_aw.py.*console_port=$CP" >/dev/null || pgrep -f "^bash scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh [a-z0-9]+ [0-9]+ $CP " >/dev/null; }
+busy() { pgrep -f "[r]un_aw.py.*console_port=$CP" >/dev/null || pgrep -f "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh [a-z0-9]+ [0-9]+ $CP " >/dev/null; }
 RESUME=$(rundir $GO)
 [ -d "$RESUME" ] || { log "no GUI-Owl seed-1234 run dir; exiting"; exit 1; }
 log "emu2 fill v3 (pid $$): GUI-Owl seed 1234 paused at $(count $GO) episodes ($RESUME); waiting for the v4 seed-30 pass"

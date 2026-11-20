@@ -1,7 +1,8 @@
 # logs/
 
-Run logs kept as evidence; they are not edited, except that values looking like keys or tokens are redacted on
-commit (`redact-env` filter, see [docs/repository.md](../docs/repository.md#secrets-and-history-rewrites)).
+Run logs kept as evidence; they are not edited, except for credential redaction. Where the local `redact-env` filter is
+configured, commits redact two formats (AndroidWorld's environment dump and JWT-shaped tokens); other formats are not
+caught ([docs/repository.md](../docs/repository.md#secrets-and-history-rewrites)).
 Operational noise (session launches, keep-alive, polling) was removed on 2026-11-20 and is at tag
 `archive/pre-restructure-2026-11-20`.
 

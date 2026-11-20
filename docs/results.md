@@ -1,6 +1,6 @@
 # Results
 
-Every number below is read from a file in [`results/`](../results/); each section names its source.
+Each section names the file in [`results/`](../results/) its numbers come from.
 To recompute them all, see [reproduce.md](reproduce.md).
 
 **Contents:** [AndroidWorld held-out](#androidworld-held-out-seeds-primary) ·
@@ -280,7 +280,7 @@ Step success rate; history is teacher-forced, so this is an upper bound on close
 - **No significant drop in general knowledge** was detected for any fine-tune that was measured (v4-RL was not).
 - **MMStar:** it rose significantly after fine-tuning for v1, v2, v3 and both Qwen3.5-2B versions. v4's changes
   (+0.7 / +1.5 points) are not significant (McNemar p = 0.52 / 0.23). Paired tests and 95% CIs are in `results/general/`.
-- **v4 vs v1:** v4 is lower on terminal "complete" accuracy (0.716 vs 0.792), the cost of learning to answer.
+- **v4 vs v1:** v4 is lower on terminal "complete" accuracy (0.716 vs 0.792); the cause was not isolated.
 
 ### v4 development gate and v4-RL promotion
 

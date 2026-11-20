@@ -1,18 +1,18 @@
 # Reproduce
 
-## Recompute every reported number (minutes, no GPU)
+## Regenerate the result summaries (minutes, no GPU)
 
 ```bash
 git clone git@github.com:alpharomercoma/lfm3-android-runs.git && cd lfm3-android-runs
 bash analysis/reproduce.sh          # needs Python 3.10+ with numpy; PY=... to pick the interpreter
 ```
 
-The script re-runs every script in [`analysis/`](../analysis/) and checks each output against the committed version.
+The script re-runs the scripts in [`analysis/`](../analysis/) and checks each output it lists against the committed version.
 
 | Covered | Not covered |
 |---|---|
-| Every summary in `results/`, from episode files, request logs, predictions and per-run metric files | Re-scoring raw AndroidControl / general-knowledge predictions into those metric files (use the `eval/` scorers) |
-| AndroidWorld analyses without an AndroidWorld install (task metadata is pinned in `data/meta/`) | Training logs, dataset statistics, and the numbers typed into the docs |
+| The 18 summary files listed in the script (23 with MobileWorld), from episode files, request logs, predictions and per-run metric files | Re-scoring raw AndroidControl / general-knowledge predictions into those metric files (use the `eval/` scorers) |
+| AndroidWorld analyses without an AndroidWorld install (task metadata is pinned in `data/meta/`) | Training logs, dataset statistics, the numbers typed into the docs, and older runs whose raw predictions were not kept |
 
 | What is regenerated | From |
 |---|---|

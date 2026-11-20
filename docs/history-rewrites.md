@@ -29,7 +29,8 @@ In the 2026-11-19 table below, the "new" hashes `f76ba4d` and `b7d6b65` therefor
 Two committed run logs (results/androidworld_sealed/{guiowl,v4}_seed7_rerun/run_output.log, first committed in old ac9dee6) contained
 environment values dumped by android_env's adb controller (an API key and a Claude Code session token). Before the first push,
 every commit from ac9dee6 on was rewritten with git filter-branch to redact those values in the two logs (nothing else changed;
-the final tree is identical). New commits redact such values automatically (.gitattributes, filter.redact-env).
+the final tree is identical). New `*.log` commits redact this format where the local `redact-env` filter is configured
+(.gitattributes); it does not catch every format, see [repository.md](repository.md#secrets-and-history-rewrites).
 
 Old hashes cited in files map as follows (e.g. `git diff dd2f7f7` in results/codex/PROMPT_final_heldout_audit.md and the
 final audit report means `git diff 4c397da` now):
