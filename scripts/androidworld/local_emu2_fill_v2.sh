@@ -18,7 +18,7 @@ rundir() { local d; d=$(ls -d "$OUT"/run_*/ 2>/dev/null | tail -1); echo "${d%/}
 count() { local d; d=$(rundir); [ -n "$d" ] && ls "$d"/*.pkl.gz 2>/dev/null | wc -l | tr -d ' ' || echo 0; }
 log "emu2 fill v2 (pid $$): watching ${ARM}_seed${SEED} ($(count) episodes) and the v4 lane"
 until grep -q "exported; pausing\|EXPORT FAILED" "$LANE"; do
-  pgrep -f "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh $ARM $SEED $CP " > /dev/null || { log "arm ended before the v4 hand-off: $(tail -1 "$ALOG")"; exit 0; }
+  pgrep -f "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?[.]sh $ARM $SEED $CP " > /dev/null || { log "arm ended before the v4 hand-off: $(tail -1 "$ALOG")"; exit 0; }
   sleep 20
 done
 grep -q "EXPORT FAILED" "$LANE" && { log "v4 export failed; leaving the arm running"; exit 1; }
@@ -29,7 +29,7 @@ RESUME=$(rundir)
 [ -d "$RESUME" ] || { log "no run dir to resume in $OUT; not resuming"; exit 1; }
 log "paused at $(count) episodes (run dir $RESUME); waiting for the v4 seed-30 pass"
 until grep -q "v4 AndroidWorld seed-30 finished" "$LANE"; do sleep 60; done
-until ! pgrep -f "[r]un_aw.py.*console_port=$CP" > /dev/null; do sleep 10; done
+until ! pgrep -f "[r]un_aw.py.*console_port=$CP( |$)" > /dev/null; do sleep 10; done
 log "resuming ${ARM}_seed${SEED} from $RESUME"
 bash scripts/androidworld/local_sealed_aw_v3.sh $ARM $SEED $CP $GP $PORT "$RESUME" >> "$ALOG" 2>&1 < /dev/null
 RC=$?

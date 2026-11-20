@@ -1,0 +1,113 @@
+[
+  {
+    "case": "normal_handoff",
+    "returncode": 0,
+    "resume_attempted": true,
+    "trace": [
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "mock_sleep 5",
+      "pgrep -f [r]un_aw.py.*console_port=5558",
+      "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock",
+      "MOCK_RESUME scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock"
+    ],
+    "stdout": "[13:11:24] emu2 fill v2 (pid 99606): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:11:24] v4 lane ready: pausing guiowl_seed1234\nlauncher: none run_aw: none server: none\nlauncher: none run_aw: none server: none\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_mock (0 episodes saved)\n[13:11:24] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_mock); waiting for the v4 seed-30 pass\n[13:11:24] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_mock\n[13:11:24] arm ended (exit 0): mock arm log\n",
+    "stderr": ""
+  },
+  {
+    "case": "dry_run_failure",
+    "returncode": 1,
+    "resume_attempted": false,
+    "trace": [
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run"
+    ],
+    "stdout": "[13:11:24] emu2 fill v2 (pid 99654): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:11:24] v4 lane ready: pausing guiowl_seed1234\n[13:11:24] pause dry-run failed; not pausing\n",
+    "stderr": ""
+  },
+  {
+    "case": "explicit_pause_failure",
+    "returncode": 1,
+    "resume_attempted": false,
+    "trace": [
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115"
+    ],
+    "stdout": "[13:11:24] emu2 fill v2 (pid 99670): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:11:24] v4 lane ready: pausing guiowl_seed1234\nlauncher: none run_aw: none server: none\n[13:11:24] pause failed; not resuming\n",
+    "stderr": ""
+  },
+  {
+    "case": "failed_kill_surviving_launcher",
+    "returncode": 0,
+    "resume_attempted": true,
+    "trace": [
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "mock_kill 41001",
+      "mock_sleep 5",
+      "pgrep -f [r]un_aw.py.*console_port=5558",
+      "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock",
+      "MOCK_RESUME scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock"
+    ],
+    "stdout": "[13:11:24] emu2 fill v2 (pid 99689): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:11:24] v4 lane ready: pausing guiowl_seed1234\nlauncher: 41001 run_aw: none server: none\nlauncher: 41001 run_aw: none server: none\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_mock (0 episodes saved)\n[13:11:24] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_mock); waiting for the v4 seed-30 pass\n[13:11:24] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_mock\n[13:11:24] arm ended (exit 0): mock arm log\n",
+    "stderr": ""
+  },
+  {
+    "case": "successful_kill_still_alive",
+    "returncode": 0,
+    "resume_attempted": true,
+    "trace": [
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "mock_kill 41001",
+      "mock_kill 41003",
+      "mock_sleep 5",
+      "pgrep -f [r]un_aw.py.*console_port=5558",
+      "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock",
+      "MOCK_RESUME scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock"
+    ],
+    "stdout": "[13:11:24] emu2 fill v2 (pid 99735): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:11:24] v4 lane ready: pausing guiowl_seed1234\nlauncher: 41001 run_aw: none server: 41003\nlauncher: 41001 run_aw: none server: 41003\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_mock (0 episodes saved)\n[13:11:24] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_mock); waiting for the v4 seed-30 pass\n[13:11:24] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_mock\n[13:11:24] arm ended (exit 0): mock arm log\n",
+    "stderr": ""
+  },
+  {
+    "case": "resume_failure",
+    "returncode": 23,
+    "resume_attempted": true,
+    "trace": [
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115",
+      "pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "pgrep -f [l]lama-server.*--port 8115 ",
+      "mock_sleep 5",
+      "pgrep -f [r]un_aw.py.*console_port=5558",
+      "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock",
+      "MOCK_RESUME scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock"
+    ],
+    "stdout": "[13:11:24] emu2 fill v2 (pid 99781): watching guiowl_seed1234 (0 episodes) and the v4 lane\n[13:11:24] v4 lane ready: pausing guiowl_seed1234\nlauncher: none run_aw: none server: none\nlauncher: none run_aw: none server: none\npaused; resume dir: results/androidworld_sealed/guiowl_seed1234/run_mock (0 episodes saved)\n[13:11:24] paused at 0 episodes (run dir results/androidworld_sealed/guiowl_seed1234/run_mock); waiting for the v4 seed-30 pass\n[13:11:24] resuming guiowl_seed1234 from results/androidworld_sealed/guiowl_seed1234/run_mock\n[13:11:24] arm ended (exit 23): mock arm log\n",
+    "stderr": ""
+  }
+]

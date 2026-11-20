@@ -1,0 +1,1695 @@
+{
+  "patterns": {
+    "scripts/androidworld/local_v4_to_aw_v2.sh": [
+      "[r]un_aw.py.*console_port=5558",
+      "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 5558 ",
+      "[l]lama-server.*--port 8115 ",
+      "[l]lama-server.*--port 8114 "
+    ],
+    "scripts/androidworld/local_emu2_fill_v2.sh": [
+      "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 5558 ",
+      "[r]un_aw.py.*console_port=5558"
+    ],
+    "scripts/androidworld/local_emu2_fill_v4.sh": [
+      "[r]un_aw.py.*console_port=5558",
+      "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh [a-z0-9]+ [0-9]+ 5558 "
+    ],
+    "scripts/androidworld/pause_sealed_arm.sh": [
+      "^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 ",
+      "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "[l]lama-server.*--port 8115 "
+    ]
+  },
+  "launcher_cases": [
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "wrong_arm",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh v1 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "wrong_seed",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 7 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "seed_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 12340 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "wrong_console_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5556 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "console_port_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 55580 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "wrong_server_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8117",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "wrong_launcher_version",
+      "command": "bash scripts/androidworld/local_sealed_aw_v4.sh guiowl 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "case": "wrong_filename_dot",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "wrong_arm",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh v1 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "wrong_seed",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 7 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "seed_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 12340 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "wrong_console_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5556 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "console_port_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 55580 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "wrong_server_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8117",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "wrong_launcher_version",
+      "command": "bash scripts/androidworld/local_sealed_aw_v4.sh guiowl 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "case": "wrong_filename_dot",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "wrong_arm",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh v1 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "wrong_seed",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 7 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "seed_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 12340 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "wrong_console_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5556 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "console_port_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 55580 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "wrong_server_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8117",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "wrong_launcher_version",
+      "command": "bash scripts/androidworld/local_sealed_aw_v4.sh guiowl 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "case": "wrong_filename_dot",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ./scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /Users/alpha/lfm3-android/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash /tmp/moved-checkout/scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v2.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "supported_invocation",
+      "command": "/usr/local/bin/bash ../../scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "wrong_arm",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh v1 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "wrong_seed",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 7 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "seed_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 12340 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "wrong_console_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5556 8558 8115",
+      "matches": true,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "console_port_suffix",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 55580 8558 8115",
+      "matches": true,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "wrong_server_port",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8117",
+      "matches": true,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "wrong_launcher_version",
+      "command": "bash scripts/androidworld/local_sealed_aw_v4.sh guiowl 1234 5558 8558 8115",
+      "matches": false,
+      "expected": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "case": "wrong_filename_dot",
+      "command": "bash scripts/androidworld/local_sealed_aw_v3Xsh guiowl 1234 5558 8558 8115",
+      "matches": true,
+      "expected": false
+    }
+  ],
+  "runner_and_server_cases": [
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "correct",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_console_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5556 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "console_port_suffix",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_arm",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/v1_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_seed",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed12340 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_server_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8117 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[l]lama-server.*--port 8115 ",
+      "case": "correct",
+      "command": "llama-server -m model.gguf --port 8115 --host 127.0.0.1",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[l]lama-server.*--port 8115 ",
+      "case": "wrong_server_port",
+      "command": "llama-server -m model.gguf --port 8117 --host 127.0.0.1",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[l]lama-server.*--port 8115 ",
+      "case": "server_port_suffix",
+      "command": "llama-server -m model.gguf --port 81150 --host 127.0.0.1",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[l]lama-server.*--port 8114 ",
+      "case": "correct",
+      "command": "llama-server -m model.gguf --port 8114 --host 127.0.0.1",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[l]lama-server.*--port 8114 ",
+      "case": "wrong_server_port",
+      "command": "llama-server -m model.gguf --port 8117 --host 127.0.0.1",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "pattern": "[l]lama-server.*--port 8114 ",
+      "case": "server_port_suffix",
+      "command": "llama-server -m model.gguf --port 81140 --host 127.0.0.1",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "correct",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_console_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5556 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "console_port_suffix",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_arm",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/v1_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_seed",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed12340 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_server_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8117 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "correct",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_console_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5556 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "console_port_suffix",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_arm",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/v1_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_seed",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed12340 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "pattern": "[r]un_aw.py.*console_port=5558",
+      "case": "wrong_server_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8117 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "case": "correct",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "case": "wrong_console_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5556 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "case": "console_port_suffix",
+      "command": "python eval/androidworld/run_aw.py --console_port=55580 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "case": "wrong_arm",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/v1_seed1234 --agent=guiowl",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "case": "wrong_seed",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8115 --output_path=results/androidworld_sealed/guiowl_seed12340 --agent=guiowl",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 ",
+      "case": "wrong_server_port",
+      "command": "python eval/androidworld/run_aw.py --console_port=5558 --grpc_port=8558 --server_url=http://127.0.0.1:8117 --output_path=results/androidworld_sealed/guiowl_seed1234 --agent=guiowl",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[l]lama-server.*--port 8115 ",
+      "case": "correct",
+      "command": "llama-server -m model.gguf --port 8115 --host 127.0.0.1",
+      "matches": true
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[l]lama-server.*--port 8115 ",
+      "case": "wrong_server_port",
+      "command": "llama-server -m model.gguf --port 8117 --host 127.0.0.1",
+      "matches": false
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "pattern": "[l]lama-server.*--port 8115 ",
+      "case": "server_port_suffix",
+      "command": "llama-server -m model.gguf --port 81150 --host 127.0.0.1",
+      "matches": false
+    }
+  ],
+  "seed30_cases": [
+    {
+      "case": "valid_identity",
+      "accepted": true,
+      "expected_accepted": true,
+      "successes": 0
+    },
+    {
+      "case": "all_records_wrong_agent",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: agent is not lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "all_records_missing_agent",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: agent is not lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "one_wrong_agent",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: agent is not lfm3vl2b_v4_q4km"
+    },
+    {
+      "case": "duplicate_template",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: templates differ from task metadata"
+    },
+    {
+      "case": "missing_template",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: templates differ from task metadata"
+    },
+    {
+      "case": "wrong_seed",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio not seed 30"
+    },
+    {
+      "case": "success_and_exception",
+      "accepted": true,
+      "expected_accepted": true,
+      "successes": 0
+    },
+    {
+      "case": "missing_instance_id",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio is not instance 0"
+    },
+    {
+      "case": "wrong_instance",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio is not instance 0"
+    },
+    {
+      "case": "missing_seed_without_exception",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio not seed 30"
+    },
+    {
+      "case": "exception_without_seed_allowed_by_scope",
+      "accepted": true,
+      "expected_accepted": true,
+      "successes": 0
+    },
+    {
+      "case": "exception_with_wrong_seed",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: AudioRecorderRecordAudio not seed 30"
+    },
+    {
+      "case": "two_records_per_file",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: an episode file holds more than one record"
+    },
+    {
+      "case": "empty_records",
+      "accepted": false,
+      "expected_accepted": false,
+      "error": "lfm3vl2b_v4: an episode file holds more than one record"
+    }
+  ],
+  "actual_seed30_runs": [
+    {
+      "id": "lfm3vl2b_v4",
+      "expected_agent": "lfm3vl2b_v4_q4km",
+      "run_dir": "results/androidworld/lfm3vl2b_v4/run_20261118T093443059487/",
+      "agent": "lfm3vl2b_v4_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 18,
+      "answer_task_successes": 6,
+      "action_task_successes": 12,
+      "exceptions": 4,
+      "median_steps": 10,
+      "steps_timed": 1706,
+      "step_latency_median_s": 2.96,
+      "step_latency_p10_s": 1.74,
+      "step_latency_p90_s": 4.63,
+      "prompt_tokens_median": 1303,
+      "output_tokens_median": 22
+    },
+    {
+      "id": "maiui_2b_matched_q8_0",
+      "expected_agent": "maiui_2b_matched1img_q8_0",
+      "run_dir": "results/androidworld/maiui_2b_matched_q8_0/run_20261118T144721333786/",
+      "agent": "maiui_2b_matched1img_q8_0",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 32,
+      "answer_task_successes": 5,
+      "action_task_successes": 27,
+      "exceptions": 1,
+      "median_steps": 11,
+      "steps_timed": 2053,
+      "step_latency_median_s": 9.35,
+      "step_latency_p10_s": 6.19,
+      "step_latency_p90_s": 13.91,
+      "prompt_tokens_median": 2086,
+      "output_tokens_median": 51
+    },
+    {
+      "id": "guiowl15_2b_matched",
+      "expected_agent": "guiowl15_2b_matched1img_q4km",
+      "run_dir": "results/androidworld/guiowl15_2b_matched/run_20261116T231457945810/",
+      "agent": "guiowl15_2b_matched1img_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 23,
+      "answer_task_successes": 10,
+      "action_task_successes": 13,
+      "exceptions": 0,
+      "median_steps": 12,
+      "steps_timed": 2228,
+      "step_latency_median_s": 7.0,
+      "step_latency_p10_s": 4.56,
+      "step_latency_p90_s": 10.4,
+      "prompt_tokens_median": 2106,
+      "output_tokens_median": 47
+    },
+    {
+      "id": "qwen35_2b_ft",
+      "expected_agent": "qwen35_2b_ft_q4km",
+      "run_dir": "results/androidworld/qwen35_2b_ft/run_20261117T111259609427/",
+      "agent": "qwen35_2b_ft_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 16,
+      "answer_task_successes": 0,
+      "action_task_successes": 16,
+      "exceptions": 2,
+      "median_steps": 9,
+      "steps_timed": 1619,
+      "step_latency_median_s": 4.2,
+      "step_latency_p10_s": 2.57,
+      "step_latency_p90_s": 6.17,
+      "prompt_tokens_median": 1176,
+      "output_tokens_median": 23
+    },
+    {
+      "id": "lfm3vl2b_ft",
+      "expected_agent": "lfm3vl2b_ft_q4km",
+      "run_dir": "results/androidworld/lfm3vl2b_ft/run_20261117T030335477504/",
+      "agent": "lfm3vl2b_ft_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 15,
+      "answer_task_successes": 0,
+      "action_task_successes": 15,
+      "exceptions": 2,
+      "median_steps": 10,
+      "steps_timed": 1760,
+      "step_latency_median_s": 2.66,
+      "step_latency_p10_s": 1.95,
+      "step_latency_p90_s": 3.45,
+      "prompt_tokens_median": 1157,
+      "output_tokens_median": 22
+    },
+    {
+      "id": "lfm3vl2b_v3",
+      "expected_agent": "lfm3vl2b_v3_q4km",
+      "run_dir": "results/androidworld/lfm3vl2b_v3/run_20261117T210853476910/",
+      "agent": "lfm3vl2b_v3_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 13,
+      "answer_task_successes": 0,
+      "action_task_successes": 13,
+      "exceptions": 3,
+      "median_steps": 10,
+      "steps_timed": 1790,
+      "step_latency_median_s": 2.61,
+      "step_latency_p10_s": 1.08,
+      "step_latency_p90_s": 4.53,
+      "prompt_tokens_median": 1160,
+      "output_tokens_median": 22
+    },
+    {
+      "id": "qwen35_08b_ft",
+      "expected_agent": "qwen35_08b_ft_q4km",
+      "run_dir": "results/androidworld/qwen35_08b_ft/run_20261117T152004373700/",
+      "agent": "qwen35_08b_ft_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 12,
+      "answer_task_successes": 0,
+      "action_task_successes": 12,
+      "exceptions": 1,
+      "median_steps": 10,
+      "steps_timed": 1756,
+      "step_latency_median_s": 2.0,
+      "step_latency_p10_s": 0.85,
+      "step_latency_p90_s": 3.11,
+      "prompt_tokens_median": 1187,
+      "output_tokens_median": 26
+    },
+    {
+      "id": "lfm3vl2b_ft_runtimefb",
+      "expected_agent": "lfm3vl2b_ft_q4km_runtimefb",
+      "run_dir": "results/androidworld/lfm3vl2b_ft_runtimefb/run_20261117T112723045785/",
+      "agent": "lfm3vl2b_ft_q4km_runtimefb",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 10,
+      "answer_task_successes": 0,
+      "action_task_successes": 10,
+      "exceptions": 7,
+      "median_steps": 10,
+      "steps_timed": 1819,
+      "step_latency_median_s": 2.85,
+      "step_latency_p10_s": 1.65,
+      "step_latency_p90_s": 4.85,
+      "prompt_tokens_median": 1148,
+      "output_tokens_median": 21
+    },
+    {
+      "id": "lfm3vl2b_v2_forcethink",
+      "expected_agent": "lfm3vl2b_v2_q4km_forcethink",
+      "run_dir": "results/androidworld/lfm3vl2b_v2_forcethink/run_20261117T201810135662/",
+      "agent": "lfm3vl2b_v2_q4km_forcethink",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 6,
+      "answer_task_successes": 0,
+      "action_task_successes": 6,
+      "exceptions": 4,
+      "median_steps": 10,
+      "steps_timed": 1652,
+      "step_latency_median_s": 2.68,
+      "step_latency_p10_s": 1.55,
+      "step_latency_p90_s": 4.48,
+      "prompt_tokens_median": 1156,
+      "output_tokens_median": 21
+    },
+    {
+      "id": "lfm3vl2b_v2",
+      "expected_agent": "lfm3vl2b_v2_q4km",
+      "run_dir": "results/androidworld/lfm3vl2b_v2/run_20261117T153954478386/",
+      "agent": "lfm3vl2b_v2_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 3,
+      "answer_task_successes": 0,
+      "action_task_successes": 3,
+      "exceptions": 5,
+      "median_steps": 10,
+      "steps_timed": 1679,
+      "step_latency_median_s": 2.61,
+      "step_latency_p10_s": 2.08,
+      "step_latency_p90_s": 3.54,
+      "prompt_tokens_median": 1140,
+      "output_tokens_median": 17
+    },
+    {
+      "id": "lfm25vl450m_ft",
+      "expected_agent": "lfm25vl450m_ft_q4km",
+      "run_dir": "results/androidworld/lfm25vl450m_ft/run_20261117T022926194002/",
+      "agent": "lfm25vl450m_ft_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 2,
+      "answer_task_successes": 0,
+      "action_task_successes": 2,
+      "exceptions": 4,
+      "median_steps": 12,
+      "steps_timed": 2129,
+      "step_latency_median_s": 1.14,
+      "step_latency_p10_s": 0.82,
+      "step_latency_p90_s": 2.29,
+      "prompt_tokens_median": 1173,
+      "output_tokens_median": 29
+    },
+    {
+      "id": "lfm3vl2b_base_nothink",
+      "expected_agent": "lfm3vl2b_base_nothink_q4km",
+      "run_dir": "results/androidworld/lfm3vl2b_base_nothink/run_20261116T190932199444/",
+      "agent": "lfm3vl2b_base_nothink_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 1,
+      "answer_task_successes": 0,
+      "action_task_successes": 1,
+      "exceptions": 2,
+      "median_steps": 12,
+      "steps_timed": 2320,
+      "step_latency_median_s": 2.13,
+      "step_latency_p10_s": 0.96,
+      "step_latency_p90_s": 3.59,
+      "prompt_tokens_median": 1118,
+      "output_tokens_median": 18
+    },
+    {
+      "id": "lfm25vl450m_base",
+      "expected_agent": "lfm25vl450m_base_q4km",
+      "run_dir": "results/androidworld/lfm25vl450m_base/run_20261117T062246232259/",
+      "agent": "lfm25vl450m_base_q4km",
+      "seed": 170855541,
+      "episodes": 116,
+      "successes": 0,
+      "answer_task_successes": 0,
+      "action_task_successes": 0,
+      "exceptions": 3,
+      "median_steps": 12,
+      "steps_timed": 2279,
+      "step_latency_median_s": 2.21,
+      "step_latency_p10_s": 0.91,
+      "step_latency_p90_s": 7.42,
+      "prompt_tokens_median": 1196,
+      "output_tokens_median": 20
+    }
+  ],
+  "shell_syntax": [
+    {
+      "file": "scripts/androidworld/local_v4_to_aw_v2.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v2.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "scripts/androidworld/local_emu2_fill_v4.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "scripts/androidworld/pause_sealed_arm.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "analysis/reproduce.sh",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "scripts/androidworld/local_sealed_aw_v3.sh",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ]
+}

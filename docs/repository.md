@@ -52,6 +52,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `docs/research/` | Research reports (from `reports/`) | 2 |
 | `docs/research/notes/` | Research notes (from `research_notes/`) | 11 |
 | `docs/` | History-rewrite record | 1 |
+| `results/codex/restructure_docs_audit/` | Copy of the retired run-log generator, kept as Codex audit evidence | 1 |
 
 - Moved scripts had their internal paths, repository-root detection and process-matching patterns updated.
 - Local launchers now find the repository from their own location instead of a hard-coded path.
@@ -92,7 +93,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `scripts/local_sealed_queue.sh` | `scripts/androidworld/local_sealed_queue.sh` |
 | `scripts/local_v2_to_aw.sh` | `scripts/androidworld/local_v2_to_aw.sh` |
 | `scripts/local_v4_to_aw_v2.sh` | `scripts/androidworld/local_v4_to_aw_v2.sh` |
-| `scripts/pause_sealed_arm.sh` | `scripts/androidworld/pause_sealed_arm.sh` |
+| `scripts/pause_sealed_arm.sh` | `scripts/androidworld/pause_sealed_arm.sh` (moved and largely rewritten, so `git diff -M` shows it as delete + add) |
 | `scripts/aws_mw_launch.sh` | `scripts/mobileworld/aws_mw_launch.sh` |
 | `scripts/aws_mw_setup.sh` | `scripts/mobileworld/aws_mw_setup.sh` |
 | `scripts/check_maiui_server.py` | `scripts/mobileworld/check_maiui_server.py` |
@@ -198,6 +199,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `research_notes/Small GUI agent training methods/rl_infrastructure.md` | `docs/research/notes/small-gui-agent-training-methods/rl_infrastructure.md` |
 | `research_notes/Small GUI agent training methods/self_improvement_data.md` | `docs/research/notes/small-gui-agent-training-methods/self_improvement_data.md` |
 | `docs/HISTORY_REWRITE_20261119.md` | `docs/history-rewrites.md` |
+| `scripts/build_runs_registry.py` | `results/codex/restructure_docs_audit/archived_registry_source.py` (audit evidence) |
 
 </details>
 
@@ -205,7 +207,6 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 
 | Removed | Why |
 |---|---|
-| `scripts/build_runs_registry.py` | Run-log site generator, retired; its seed-30 computation moved to `analysis/aw_dev_seed30.py` (a copy of its source is Codex audit evidence: `results/codex/restructure_docs_audit/archived_registry_source.py`) |
 | `scripts/colab_keepalive_loop.sh` | Session keep-alive helper |
 | `scripts/colab_poll_fast_gpu.sh` | GPU polling helper |
 | `scripts/colab_watchdog.sh` | Superseded by `scripts/training/colab_watchdog_v2.sh` |
@@ -217,7 +218,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | `scripts/devstream_keeper.sh` | Superseded by `scripts/speed/devstream_keeper_v3.sh` |
 | `scripts/devstream_keeper_v2.sh` | Superseded by `scripts/speed/devstream_keeper_v3.sh` |
 | `scripts/docs_refresh_loop.sh` | Run-log site generator |
-| `scripts/gen_timeline_audits.py` | Run-log site generator |
+| `scripts/gen_timeline_audits.py` | Run-log site generator (retired with `build_runs_registry.py`, whose seed-30 computation moved to `analysis/aw_dev_seed30.py`) |
 | `scripts/local_emu1_queue.sh` | One-off emulator-1 queue for 2026-11-18; superseded by `local_sealed_queue.sh` |
 | `scripts/local_emu2_fill.sh` | First emulator-2 filler; replaced by `local_emu2_fill_v2.sh` (its resume-directory bug is fixed there) |
 | `scripts/local_emu2_fill_v3.sh` | Superseded by `local_emu2_fill_v4.sh` (identical except the launcher version) |
@@ -245,7 +246,7 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 | File | Why |
 |---|---|
 | `analysis/aw_dev_seed30.py` → `results/androidworld/dev_seed30_summary.*` | Seed-30 scores and Apple M5 speed, previously computed only by the removed run-log generator |
-| `analysis/reproduce.sh` | One command to regenerate and check every summary |
+| `analysis/reproduce.sh` | One command to regenerate and check the 18 listed summaries (23 with MobileWorld) |
 | `data/meta/androidworld_task_metadata.json` | AndroidWorld's task list and difficulty (from `55ddaf5`, Apache-2.0), so the analysis runs without an AndroidWorld checkout |
 | `results/general/lfm3vl2b_v4_retention_logprob.json` | v4's paired general-knowledge test |
 | Rows E/F in `results/sealed_sensitivity_final.*` | The preregistered goal-varying subgroup, as a computed result |
@@ -286,6 +287,6 @@ git config filter.redact-env.smudge cat
 | Ref | What |
 |---|---|
 | `main` | This repository |
-| `lfm3-android` | The branch name used while the project ran. Re-pointed to `main` at the 2026-11-20 merge, so its old commits (which held the expired token) are on no branch |
+| `lfm3-android` | The branch name used while the project ran. Force-updated to the same commit as `main` at the 2026-11-20 merge, because its earlier commits held the expired token. Check: `git ls-remote origin main lfm3-android` shows one hash |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction) |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |

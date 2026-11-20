@@ -1,0 +1,30 @@
+[
+  {
+    "case": "preexisting_unrelated_files",
+    "returncode": 0,
+    "expected_returncode": 0,
+    "stdout": "OK: all 18 regenerated files are identical to the committed ones (HEAD), and no new file appeared.\n",
+    "stderr": ""
+  },
+  {
+    "case": "changed_expected_output",
+    "returncode": 1,
+    "expected_returncode": 1,
+    "stdout": "Differs from HEAD:\n results/sealed_analysis_final.md | 1 +\n 1 file changed, 1 insertion(+)\n",
+    "stderr": ""
+  },
+  {
+    "case": "new_unexpected_output",
+    "returncode": 1,
+    "expected_returncode": 1,
+    "stdout": "New files the scripts wrote under results/:\nresults/final_check_unexpected.txt\n",
+    "stderr": ""
+  },
+  {
+    "case": "missing_expected_output",
+    "returncode": 1,
+    "expected_returncode": 1,
+    "stdout": "Differs from HEAD:\n results/sealed_analysis_final.md | 38 --------------------------------------\n 1 file changed, 38 deletions(-)\n",
+    "stderr": ""
+  }
+]

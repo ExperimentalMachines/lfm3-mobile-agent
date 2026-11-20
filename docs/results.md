@@ -1,7 +1,7 @@
 # Results
 
 Each section names the file in [`results/`](../results/) its numbers come from.
-To recompute them all, see [reproduce.md](reproduce.md).
+To regenerate the summaries (and see what that covers), use [reproduce.md](reproduce.md).
 
 **Contents:** [AndroidWorld held-out](#androidworld-held-out-seeds-primary) ·
 [AndroidWorld development seed](#androidworld-development-seed-30) · [MobileWorld](#mobileworld) ·

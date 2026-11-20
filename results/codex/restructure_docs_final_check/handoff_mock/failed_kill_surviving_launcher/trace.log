@@ -1,0 +1,13 @@
+bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run
+pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 
+pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 
+pgrep -f [l]lama-server.*--port 8115 
+bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115
+pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 
+pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 
+pgrep -f [l]lama-server.*--port 8115 
+mock_kill 41001
+mock_sleep 5
+pgrep -f [r]un_aw.py.*console_port=5558
+bash scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock
+MOCK_RESUME scripts/androidworld/local_sealed_aw_v3.sh guiowl 1234 5558 8558 8115 results/androidworld_sealed/guiowl_seed1234/run_mock

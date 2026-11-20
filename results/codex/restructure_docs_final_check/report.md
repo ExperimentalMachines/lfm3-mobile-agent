@@ -1,0 +1,23 @@
+Verdict: NOT READY
+
+Reviewed `d76fec4..87af11c` and affected dependencies. Current HEAD is `a5e228e`; its only later change adds the final-check prompt.
+
+1. **P2 — F04/N02 partly fixed:** `scripts/androidworld/local_emu2_fill_v2.sh:27`, `:32`; `scripts/androidworld/pause_sealed_arm.sh:13`. The helper returns 0 after failed termination; the filler then checks only runner absence. Mocked failed termination and surviving launcher/server cases both attempt resume and exit 0. **Fix:** propagate termination failures, verify launcher/runner/server disappearance with a bounded wait, and refuse resume on failure/timeout. The v3 handoff and resume exit-status propagation work. [Evidence](handoff_probe.json).
+
+2. **P2 — wrong-port pause selection persists:** `scripts/androidworld/pause_sealed_arm.sh:8`, `:9`. Pausing `guiowl 1234 8115` also selects a launcher ending `guiowl 1234 5558 8558 8117`; its runner selector likewise ignores server port. This can stop another lane. **Fix:** constrain the launcher argument tail to `$ARM $SEED [0-9]+ [0-9]+ $PORT([[:space:]]|$)` and require the runner's matching server-URL port as well as output path. This defect predates the fix commit. [Before/after control](preexisting_selector_issue.json).
+
+3. **P2 — F02 not fixed:** `docs/repository.md:289` still says the merge/repointing happened and old commits are on no branch. Local `main` is `2781d37`; cached `origin/main` is `2c2e53f`, cached `origin/lfm3-android` is `277471d9`; no local `lfm3-android` branch exists. **Fix:** describe replacement as pending, distinguish local/cached refs, and require verification after the owner's push. Do not assert completed replacement or disappearance of old history.
+
+4. **P2 — F07 wording partly fixed; N03 fixed:** `docs/results.md:4` still promises “recompute them all”; `docs/repository.md:248` still promises “every summary.” **Fix:** replace these with “regenerate selected summaries” and “regenerate and check the 18 listed summaries (23 with MobileWorld),” respectively. The script's manifest and unrelated-untracked-file handling pass.
+
+5. **P3 — N05 partly fixed:** `docs/repository.md:43`, `:62`, `:208`. Git reports **136 renames**, but the appendix/category totals cover **135**. **Fix:** add `scripts/build_runs_registry.py` → `results/codex/restructure_docs_audit/archived_registry_source.py` to the appendix and a one-file audit-evidence category; move its retirement explanation out of the deletion table. All other rename mappings/counts and the 58/224/36 grouped deletion counts match. [Comparison](repository_tables.json).
+
+6. **P3 — regex boundary cleanup:** the launcher patterns at `local_emu2_fill_v2.sh:21`, `local_emu2_fill_v4.sh:22`, `local_v4_to_aw_v2.sh:54`, and `pause_sealed_arm.sh:8` (all under `scripts/androidworld/`) accept `local_sealed_aw_v3Xsh`; use `[.]sh`. Runner console-port patterns at the first three files' lines 32/22/54 accept `55580` for `5558`; append `([[:space:]]|$)`. These are existing boundary weaknesses, not a new invocation regression.
+
+**Fixed:** F24, F31 under the accepted seedless-exception limitation, N04, N03, and N01's invocation-path failure. All 120 supported launcher combinations pass, including relative, `./`, absolute, moved-checkout and `/bin/bash` forms. Target-specific arm/seed controls pass; console-specific launcher controls pass. The pause port exception is above. Fifteen seed-30 mutation probes pass; all 13 real runs validate. Six shell syntax checks pass. No numerical regression was found. [Probes](probes.json).
+
+**Reproduction:** exact `bash analysis/reproduce.sh` exited 0 and ended **OK** for both [18 outputs](reproduce.log) and [23 outputs with local MobileWorld inputs](reproduce_with_mobileworld.log). A disposable tracked snapshot, copied index and audit-local temporary directory confined writes here. Both runs preserved unrelated untracked files. Changed/missing expected outputs and new unexpected outputs correctly fail the [guard controls](reproduce_guard_probe.json).
+
+**Blob scan:** all 47 added/modified postimages from `d76fec4..HEAD` (46 unique blobs; 2,430,161 bytes) contain no recognized credential or exact owner-email match. All 47 broad candidates are verified file SHA-256 values; retained prefixes are at most six characters. [Scan](added_blob_scan.json).
+
+F01 and F30 remain the accepted owner/evidence decisions. The filler was read end to end; process tests used mocks only. Original tracked files, index and refs are unchanged ([state](final_state.json)). No network, ref changes, signals, emulator/adb/cloud operations, or audit writes outside this directory occurred.

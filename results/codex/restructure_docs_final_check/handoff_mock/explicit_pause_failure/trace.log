@@ -1,0 +1,5 @@
+bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115 --dry-run
+pgrep -f ^([^ ]*/)?bash ([^ ]*/)?scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 
+pgrep -f [r]un_aw.py.*--output_path=results/androidworld_sealed/guiowl_seed1234 
+pgrep -f [l]lama-server.*--port 8115 
+bash scripts/androidworld/pause_sealed_arm.sh guiowl 1234 8115
