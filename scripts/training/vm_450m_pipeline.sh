@@ -1,5 +1,5 @@
 #!/bin/bash
-# Runs ON a Colab L4 (account <account-B>, launched from state-dashboard-v4:~/vl) inside the blocking cell.
+# Runs ON a Colab L4 (second Colab account) inside the blocking cell.
 # LFM2.5-VL-450M agent SFT designed to PRESERVE general knowledge:
 #   LoRA r=16 (LM only, vision+projector frozen), LR 1e-4, ~1 pass over 48k agent rows + 20% general replay,
 #   general-knowledge eval (MMStar + MMLU) before and after, AndroidControl test eval base + FT, push to HF.
