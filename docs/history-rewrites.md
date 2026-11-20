@@ -1,4 +1,29 @@
-# History rewrite, 2026-11-19 (~19:45 Asia/Manila)
+# History rewrites
+
+Two rewrites removed credentials from committed run logs. Nothing else changed; each final tree is identical apart from
+the redacted text. Commit hashes cited in older files (Codex prompts and reports, PREREG) map as below.
+
+## 2026-11-20 (~12:30 Asia/Manila): expired Colab proxy token
+
+A Codex audit log (`logs/codex_mw_r2_audit.log`) and an upload log (`logs/colab_upload_maiui_q8.log`) contained a
+download URL with a Colab file-proxy token (a JWT scoped to the Colab T4 VM that served the MobileWorld models; it
+had expired on 2026-11-18 21:54 UTC and the VM no longer exists). Every commit from old `f76ba4d` on was rewritten with
+`git filter-branch` to replace it with `<redacted-token>`. The `redact-env` clean filter now also redacts such tokens
+in new log commits.
+
+| old | new | subject |
+|---|---|---|
+| f76ba4d | 70bfd81 | Commit all run logs, episodes, Codex audit outputs and helper scripts |
+| b7d6b65 | 66d6542 | MAI-UI MobileWorld watcher log: both halves complete (19:32) |
+| 8e9a854 | e91c6fb | Document the 2026-11-19 history rewrite (env secrets redacted in two logs) and old->new hash map |
+| 521d8db | dd383df | MobileWorld: MAI-UI-2B third arm complete (11/105); pull and summarize extended; emulator-crash disclosure |
+| aa52b6a | 1f7f287 | Codex prompt: MobileWorld MAI-UI third-arm audit |
+| 277471d | 97817c2 | MobileWorld MAI-UI: Codex audit VALID WITH CAVEATS; corrected infrastructure account; container logs saved |
+| 6b2a5e5 | 2781d37 | Emulator logs: final shutdown lines (2026-11-20 02:32) |
+
+In the 2026-11-19 table below, the "new" hashes `f76ba4d` and `b7d6b65` therefore became `70bfd81` and `66d6542`.
+
+## 2026-11-19 (~19:45 Asia/Manila): API key and session token
 
 Two committed run logs (results/androidworld_sealed/{guiowl,v4}_seed7_rerun/run_output.log, first committed in old ac9dee6) contained
 environment values dumped by android_env's adb controller (an API key and a Claude Code session token). Before the first push,

@@ -1,7 +1,7 @@
 # Repository notes
 
 **Contents:** [Layout](#layout) · [2026-11-20 restructure](#2026-11-20-restructure) ·
-[Secrets](#secrets-and-the-2026-11-19-history-rewrite) · [Branches and tags](#branches-and-tags)
+[Secrets](#secrets-and-history-rewrites) · [Branches and tags](#branches-and-tags)
 
 ---
 
@@ -56,7 +56,7 @@ Each moved script's internal paths, repository-root detection and process-matchi
 
 | Was | Now |
 |---|---|
-| `docs/HISTORY_REWRITE_20261119.md` | `docs/history-rewrite-2026-11-19.md` |
+| `docs/HISTORY_REWRITE_20261119.md` | `docs/history-rewrites.md` |
 | `reports/Beating GUI Owl at 2B fairly.md` | `docs/research/beating-gui-owl-at-2b-fairly.md` |
 | `reports/Small GUI agent training methods.md` | `docs/research/small-gui-agent-training-methods.md` |
 | `research_notes/<topic>/*.md` | `docs/research/notes/<topic>/*.md` |
@@ -117,16 +117,22 @@ Also removed:
 
 ---
 
-## Secrets and the 2026-11-19 history rewrite
+## Secrets and history rewrites
 
-- AndroidWorld's environment setup printed process environment variables into two run logs, including API tokens.
-- On 2026-11-19 those values were redacted from every commit with `git filter-branch`; old → new commit hashes:
-  [history-rewrite-2026-11-19.md](history-rewrite-2026-11-19.md).
+| Date | What leaked into a run log | Fix |
+|---|---|---|
+| 2026-11-19 | Environment variables printed by AndroidWorld's setup (an API key, a session token) | Redacted in every commit (`git filter-branch`) |
+| 2026-11-20 | An expired Colab file-proxy token inside a download URL | Redacted in every commit (`git filter-branch`) |
+
+- Old → new commit hashes: [history-rewrites.md](history-rewrites.md).
+- A scan of every file in every pushed commit (including compressed episode files) finds no credentials. It
+  checked cloud keys, Hugging Face / OpenAI / Anthropic / GitHub / Google / Modal tokens, private keys, JWTs and
+  `*_KEY`/`*_TOKEN`/`*_SECRET`/`*_PASSWORD` values.
 - New log commits are redacted automatically: `.gitattributes` applies the `redact-env` clean filter to `*.log`.
   It needs a one-time local setup:
 
 ```bash
-git config filter.redact-env.clean "sed -E \"s/'([A-Z0-9_]*(KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*)': '[^']*'/'\\1': '<redacted>'/g\""
+git config filter.redact-env.clean "LC_ALL=C sed -E -e \"s/'([A-Z0-9_]*(KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*)': '[^']*'/'\\\\1': '<redacted>'/g\" -e 's/eyJ[A-Za-z0-9_-]{15,}[.]eyJ[A-Za-z0-9_-]{15,}[.][A-Za-z0-9_-]{10,}/<redacted-token>/g'"
 git config filter.redact-env.smudge cat
 ```
 
@@ -137,6 +143,6 @@ git config filter.redact-env.smudge cat
 | Ref | What |
 |---|---|
 | `main` | This repository |
-| `lfm3-android` | The same work before it was merged into `main` |
+| `lfm3-android` | Same commit as `main` (the branch name used while the project ran) |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |
