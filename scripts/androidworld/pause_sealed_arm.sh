@@ -1,6 +1,6 @@
 #!/bin/bash
 # Pause one sealed AndroidWorld arm so its emulator can be used, keeping its results resumable (AW checkpoint dir).
-# Kills ONLY (allowlist): the arm's launcher `bash scripts/local_sealed_aw[_v2].sh <arm> <seed> ...`, its run_aw.py
+# Kills ONLY (allowlist): the arm's launcher `bash scripts/(androidworld/)local_sealed_aw[_v2|_v3].sh <arm> <seed> ...`, its run_aw.py
 # (identified by --output_path=results/androidworld_sealed/<arm>_seed<seed>), and the llama-server on <server_port>.
 # Usage: bash scripts/androidworld/pause_sealed_arm.sh <arm> <seed> <server_port> [--dry-run]
 set -u
