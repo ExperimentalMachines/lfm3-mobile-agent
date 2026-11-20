@@ -1,6 +1,6 @@
 """Offline step-level generation on a held-out split (runs on the Colab GPU).
 
-Reads an eval dataset built by data/build_sft_data.py (columns: images, messages,
+Reads an eval dataset built by data/build_androidcontrol.py (columns: images, messages,
 episode_id, step_idx, gt_action, gt_bbox, split_tag, ...), re-renders the prompt from
 messages[:-1] (system+user), generates with HF transformers, and writes one JSONL row
 per step with the RAW model output. Scoring happens separately in score.py.

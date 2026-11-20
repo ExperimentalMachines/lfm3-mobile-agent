@@ -7,7 +7,7 @@
 Each call is the first step of a fresh episode on one of N real 1080x2400 MobileWorld screenshots with that task's real
 goal; one warm-up call is excluded. End-to-end latency = agent.predict() wall time (prompt building, image encoding to
 base64, HTTP, model, parsing). Server-side prompt/generation timings are read afterwards from the llama-server log
-(scripts/bench_speed.sh). Usage (MobileWorld venv):
+(scripts/speed/bench_speed.sh). Usage (MobileWorld venv):
   python bench_speed.py --agent lfm3 --url http://127.0.0.1:8114/v1 --shots ~/bench/shots --reps 3 --out res.json
 """
 import argparse

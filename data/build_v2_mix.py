@@ -1,4 +1,4 @@
-"""Build the v2 training mix (Codex dataset-viability plan, docs/DATA_V2_PLAN.md) in the v1 row format.
+"""Build the v2 training mix (Codex dataset-viability plan, docs/datasets.md) in the v1 row format.
 Revision 3: incorporates the Codex data audit (results/codex/codex_data_v2_audit.md, F1-F12) and its re-verification
 (results/codex/codex_data_v2_verify.md).
 

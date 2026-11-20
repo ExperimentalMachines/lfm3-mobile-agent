@@ -7,7 +7,7 @@ tags: [android, gui-agent, screen-agent, mobile, androidcontrol, gui-odyssey, am
 
 Screenshot-only Android agent SFT mix (one screenshot per step + text history -> one JSON action), same row format as
 `experimentalmachines/AndroidControl-screen-agent-sft` (v1). Built by `data/build_v2_mix.py` (lfm3-android repo)
-following the Codex dataset-viability review (`docs/DATA_V2_PLAN.md`).
+following the Codex dataset-viability review (`docs/datasets.md`).
 
 | split | rows | content |
 |---|---:|---|

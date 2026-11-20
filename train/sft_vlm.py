@@ -3,7 +3,7 @@
 Input: a HF dataset saved with `datasets.save_to_disk` (or a Hub repo) with columns
   images: list[Image]  (exactly one screenshot)
   messages: [{"role":"system",...},{"role":"user",...},{"role":"assistant","content":json_action,"reasoning_content":intent}]
-built by data/build_sft_data.py from the shared train/agent_format.py.
+built by data/build_androidcontrol.py from the shared train/agent_format.py.
 
 Every metric TRL logs is appended to <out>/logs/train_log.jsonl and the run config to
 <out>/logs/run_config.json, so the numbers survive even if the VM is reclaimed.
