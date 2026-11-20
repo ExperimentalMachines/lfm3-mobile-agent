@@ -1,0 +1,31 @@
+{
+  "source": "analysis/aw_dev_seed30.py",
+  "line": 38,
+  "cases": [
+    {
+      "input": {
+        "is_successful": 1.0,
+        "exception_info": "synthetic audit exception"
+      },
+      "counted_success": true,
+      "expected_success": false
+    },
+    {
+      "input": {
+        "is_successful": 1.0,
+        "exception_info": null
+      },
+      "counted_success": true,
+      "expected_success": true
+    },
+    {
+      "input": {
+        "is_successful": 0.0,
+        "exception_info": "synthetic audit exception"
+      },
+      "counted_success": false,
+      "expected_success": false
+    }
+  ],
+  "current_data_success_exception_conflicts": 0
+}

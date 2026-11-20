@@ -5,7 +5,7 @@
 # (waits for <done_marker> to appear in <done_log>: pgrep on a predecessor script is unreliable because its background
 #  subshells — e.g. the emulator's parent — keep the same argv for as long as the emulator runs)
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 REPO=$1; NAME=$2; PORT=$3; CP=$4; GP=$5; DONE=$6; LABEL=$7
 DLOG=${DONE%%:*}; DMARK=${DONE#*:}
 OUT=models/$NAME-GGUF

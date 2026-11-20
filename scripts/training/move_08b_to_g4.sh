@@ -1,7 +1,7 @@
 #!/bin/bash
 # Wait for the 0.8B's next hub checkpoint, release its L4 (second account, via the remote host), resume it on the main-account G4.
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 S=/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad
 WANT=${1:-1150}
 until [ "$(uvx --from huggingface_hub python -c "

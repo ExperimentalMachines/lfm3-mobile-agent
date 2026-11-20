@@ -9,7 +9,9 @@ which paired instances enter, or how one set of episodes is scored:
   B3. drop the three templates named in the 13:40 entry (BrowserDraw, SimpleSmsReplyMostRecent,
      SimpleSmsSendReceivedAddress) on every seed, as that entry literally promised;
   C. v4 seed 1234's 113 re-run episodes counted as failures (as if the re-run rule had not been applied);
-  D. seed 1234 excluded entirely (seeds 7 and 2026, clusters = templates across those two seeds).
+  D. seed 1234 excluded entirely (seeds 7 and 2026, clusters = templates across those two seeds);
+  E/F. preregistered secondary breakdown: the 78 templates whose goal text can vary with the seed
+     (results/aw_template_manifest.json) and the other 38 (20 of which still vary hidden setup with the seed).
 Usage: .venv-aw/bin/python analysis/sealed_sensitivity.py  ->  results/sealed_sensitivity_final.{json,md}
 """
 import json
@@ -23,6 +25,7 @@ tmp = tempfile.mkdtemp()
 sys.argv = ["sealed_analysis.py", "--seeds", "7,1234,2026", "--out", os.path.join(tmp, "a")]
 G = runpy.run_path("analysis/sealed_analysis.py")
 data, META, signflip, signflip_ci, SUBST = G["data"], G["META"], G["signflip"], G["signflip_ci"], G["SUBST"]
+VARY = G["VARY"]
 NI = G["NI_MARGIN"]
 
 
@@ -56,11 +59,14 @@ out = {
     "C_v4_seed1234_reruns_counted_as_failures": dict(paired("v4", "guiowl", S, ok=lambda arm, s, t: False if (
         arm == "v4" and s == 1234 and t in rerun113) else data[(arm, s)][0][t]), n_reruns=len(rerun113)),
     "D_seed1234_excluded": paired("v4", "guiowl", [7, 2026]),
-    "notes": ["Not preregistered; the primary analysis is results/sealed_analysis_final.md.",
+    "E_goal_text_can_vary_78_templates": paired("v4", "guiowl", S, keep=lambda s, t: t in VARY),
+    "F_goal_text_fixed_38_templates": paired("v4", "guiowl", S, keep=lambda s, t: t not in VARY),
+    "notes": ["A-D not preregistered; E/F are the preregistered seed-varying breakdown (secondary). "
+               "The primary analysis is results/sealed_analysis_final.md.",
               f"Non-inferiority margin {NI} pp on the lower bound of the 95% sign-flip test-inversion interval."],
 }
 json.dump(out, open("results/sealed_sensitivity_final.json", "w"), indent=1)
-L = ["# Held-out AndroidWorld: sensitivity analyses (v4 - GUI-Owl, not preregistered)", "",
+L = ["# Held-out AndroidWorld: sensitivity analyses and subgroups (v4 - GUI-Owl)", "",
      "| Variant | Paired instances (templates) | v4 | GUI-Owl | Difference (pp) | 95% CI | p | Non-inferior (-6.9 pp) |",
      "|---|---|---|---|---|---|---|---|"]
 for k, v in out.items():

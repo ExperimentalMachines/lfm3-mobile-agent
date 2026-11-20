@@ -1,0 +1,7 @@
+{
+  "doc_filter_command": "LC_ALL=C sed -E -e \"s/'([A-Z0-9_]*(KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*)': '[^']*'/'\\\\1': '<redacted>'/g\" -e 's/eyJ[A-Za-z0-9_-]{15,}[.]eyJ[A-Za-z0-9_-]{15,}[.][A-Za-z0-9_-]{10,}/<redacted-token>/g'",
+  "exit": 0,
+  "synthetic_input": "{'HF_TOKEN': 'synthetic_audit_token'}\nHF_TOKEN=synthetic_audit_token\n{\"api_key\": \"synthetic_audit_token\"}\n",
+  "output": "{'HF_TOKEN': '<redacted>'}\nHF_TOKEN=synthetic_audit_token\n{\"api_key\": \"synthetic_audit_token\"}\n",
+  "stderr": ""
+}

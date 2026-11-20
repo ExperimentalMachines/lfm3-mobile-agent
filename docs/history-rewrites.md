@@ -1,15 +1,16 @@
 # History rewrites
 
-Two rewrites removed credentials from committed run logs. Nothing else changed; each final tree is identical apart from
-the redacted text. Commit hashes cited in older files (Codex prompts and reports, PREREG) map as below.
+Two rewrites removed credentials from committed run logs. Nothing else changed: each final tree is identical apart
+from the redacted text. Commit hashes cited in older files (Codex prompts and reports, PREREG) map as below; commit
+subjects are shortened.
 
 ## 2026-11-20 (~12:30 Asia/Manila): expired Colab proxy token
 
 A Codex audit log (`logs/codex_mw_r2_audit.log`) and an upload log (`logs/colab_upload_maiui_q8.log`) contained a
 download URL with a Colab file-proxy token (a JWT scoped to the Colab T4 VM that served the MobileWorld models; it
 had expired on 2026-11-18 21:54 UTC and the VM no longer exists). Every commit from old `f76ba4d` on was rewritten with
-`git filter-branch` to replace it with `<redacted-token>`. The `redact-env` clean filter now also redacts such tokens
-in new log commits.
+`git filter-branch` to replace it with `<redacted-token>`. The local `redact-env` clean filter (`*.log` only) now also
+redacts JWT-shaped tokens; see [repository.md](repository.md#secrets-and-history-rewrites) for what it does not catch.
 
 | old | new | subject |
 |---|---|---|
@@ -66,10 +67,10 @@ final audit report means `git diff 4c397da` now):
 | 93d1c72 | 9bd69a2 | Live snapshot: MobileWorld counts, QDC phone report (02:34) |
 | 614b4bd | 1057897 | Live snapshot: MobileWorld counts, QDC phone report (02:04) |
 | faa7383 | 81f3462 | PREREG: correct count (4 setup failures, not 5) |
-| ad94809 | 11b18ca | MobileWorld run-2 completion rule (env failures get one re-run in a fresh container; model-caused crashes and ask_user without a user simulator count as failures), VM resume script, Mac watcher (restart after the 12-h stop, reserved IP); prereg entry |
+| ad94809 | 11b18ca | MobileWorld run-2 completion rule, VM resume script, Mac watcher; prereg entry |
 | eeacb13 | 8225bb7 | Live snapshot: MobileWorld counts, QDC phone report (01:34) |
 | 081c8e1 | eef7cd2 | Live snapshot: MobileWorld counts, QDC phone report (01:04) |
 | 3b87d5c | 0d621f4 | Docs registry: MAI-UI-2B seed-30 row and paired comparisons (v4 vs MAI-UI 6/20, McNemar 0.009; MAI-UI vs GUI-Owl 20/11, 0.15) |
-| 230553d | b9397a6 | Seed-7 analysis fixes from Codex seed7_analysis_audit (VALID WITH CAVEATS): source-checked 78-template goal-can-vary manifest (was 76 by goal-text diff), exact CI endpoints rounded outward ([-7.3, +10.8]; NI still no), checker-dispute sensitivity (v4 ClockStopWatchPausedVerify false positive: 17 vs 16, +0.9 pp, CI [-8.1, +9.9]), known limits (adb stderr pollution, nominal sign-flip CI); prereg entry before seeds 1234/2026 are opened; Codex report |
+| 230553d | b9397a6 | Seed-7 analysis fixes from the Codex seed-7 audit (template manifest, CI rounding, dispute sensitivity); prereg entry |
 | 1bebc29 | 37debfe | Live snapshot: MobileWorld counts, QDC phone report (00:34) |
 | ac9dee6 | 55af46b | Seed 7 final (after preregistered single re-runs) |

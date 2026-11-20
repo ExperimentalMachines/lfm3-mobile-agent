@@ -1,6 +1,6 @@
 #!/bin/bash
 # LFM3-VL-2B v2 + force_think (inference-only ablation), emulator 1 after the plain v2 run; server :8102 (same GGUF).
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 until grep -q "AndroidWorld finished" logs/local_lfm3v2_to_aw.log 2>/dev/null && ! pgrep -f "[r]un_aw.py.*console_port=5556" >/dev/null; do sleep 60; done
 until curl -s 127.0.0.1:8102/health | grep -q ok; do
   nohup llama-server -m models/lfm3vl2b_v2-GGUF/LFM3-VL-2B-AndroidAgent-v2-Q4_K_M.gguf --mmproj models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf \

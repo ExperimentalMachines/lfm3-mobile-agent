@@ -1,0 +1,6 @@
+No android_world checkout; results link supplies tracked inputs.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/analysis/sealed_analysis.py", line 39, in <module>
+    META = {m["task_name"]: m for m in json.load(open("android_world/android_world/task_metadata.json"))}
+                                                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'android_world/android_world/task_metadata.json'

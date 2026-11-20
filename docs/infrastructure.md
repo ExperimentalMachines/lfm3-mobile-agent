@@ -11,7 +11,7 @@
 |---|---|
 | SFT v1, v3, LFM2.5-VL-450M | Modal GPU containers (A100 / H100) |
 | SFT Qwen3.5-2B / 0.8B, v2 mixes | Google Colab GPUs |
-| SFT v4, offline evals, v4-RL (GRPO) | Colab A100-40GB (about 31 compute units) |
+| SFT v4, offline evals, v4-RL (GRPO) | Colab A100-40GB |
 | AndroidWorld: every seed-30 and held-out run | Apple M5 Mac, 2 Android emulators (Pixel 6, API 33, arm64), llama.cpp on Metal |
 | MobileWorld v4 run 1 (discarded) | AWS EC2 `c8i.4xlarge` (nested virtualisation), model on CPU |
 | MobileWorld run 2: GUI-Owl, v4, MAI-UI | GCP `n2-standard-16` spot VM (nested virtualisation); models on a Colab T4 through a reverse SSH tunnel restricted to the model ports |
@@ -37,7 +37,7 @@ Colab VMs have no KVM, so Android emulators could not run there. That is why Mob
 | When (Manila) | Incident | Handling |
 |---|---|---|
 | 11-16/17 | Early v3 attempt failed inside its paid pipeline | Rule: smoke-test the whole pipeline before paid compute |
-| 11-17 | v2 scored 3/116 | Diagnosed as blank intents with a forced-intent ablation; fixed in v3 |
+| 11-17 | v2 scored 3/116 | Blank intents suspected (forcing an intent: 3 → 6, p = 0.25); v3 filled them |
 | 11-18 04:51 | Colab A100 VM lost during v4 SFT (step 353) | Resumed from the step-350 Hub checkpoint on a new A100; training refuses to restart from scratch if a checkpoint exists |
 | 11-18 06:25 | Answer check accepted padded answers ("12M is incorrect") | Stricter gate criterion, fixed before any v4 result |
 | 11-18 08:10 | Hugging Face private storage full; merged v4 upload failed | Weights copied off the VM and verified tensor by tensor; the v2 dataset was made public to free space |

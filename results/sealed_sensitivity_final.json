@@ -74,8 +74,34 @@
   ],
   "non_inferior_vs_margin": true
  },
+ "E_goal_text_can_vary_78_templates": {
+  "n_instances": 234,
+  "n_clusters": 78,
+  "v4_successes": 32,
+  "guiowl_successes": 33,
+  "mean_diff_pp": -0.4,
+  "signflip_p_two_sided": 1.0,
+  "ci95_pp_test_inversion": [
+   -8.2,
+   7.3
+  ],
+  "non_inferior_vs_margin": false
+ },
+ "F_goal_text_fixed_38_templates": {
+  "n_instances": 114,
+  "n_clusters": 38,
+  "v4_successes": 22,
+  "guiowl_successes": 14,
+  "mean_diff_pp": 7.0,
+  "signflip_p_two_sided": 0.3112,
+  "ci95_pp_test_inversion": [
+   -5.0,
+   19.1
+  ],
+  "non_inferior_vs_margin": true
+ },
  "notes": [
-  "Not preregistered; the primary analysis is results/sealed_analysis_final.md.",
+  "A-D not preregistered; E/F are the preregistered seed-varying breakdown (secondary). The primary analysis is results/sealed_analysis_final.md.",
   "Non-inferiority margin -6.9 pp on the lower bound of the 95% sign-flip test-inversion interval."
  ]
 }

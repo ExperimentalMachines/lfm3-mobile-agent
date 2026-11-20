@@ -36,7 +36,7 @@ ARMS = {"v4": "lfm3vl2b_v4_q4km", "guiowl": "guiowl15_2b_matched1img_apps_q4km",
 LABEL = {"v4": "LFM3 v4 (final)", "guiowl": "GUI-Owl-1.5-2B matched", "v1": "LFM3 v1 (reference)"}
 NI_MARGIN = -6.9
 ANSWER = set(json.load(open("results/codex/v3_audit/answer_tasks.json"))["answer_tasks"])
-META = {m["task_name"]: m for m in json.load(open("android_world/android_world/task_metadata.json"))}
+META = {m["task_name"]: m for m in json.load(open("data/meta/androidworld_task_metadata.json"))}
 VARY = set(json.load(open("results/aw_template_manifest.json"))["goal_text_can_vary"])
 assert len(VARY) == 78 and VARY <= set(META)
 DISPUTES = json.load(open("results/aw_checker_disputes.json"))["disputes"]

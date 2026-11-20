@@ -14,7 +14,7 @@
 #    task still needs an attempt); its unfinished tasks are re-run once the server is back.
 # Exits when maiui_a_complete and maiui_b_complete exist (or after 20 h). Log: logs/gcp_mw_maiui_watch.log
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 source logs/gcp_mw_instance.env
 log() { echo "[$(date +%T)] $*"; }
 S() { ssh -o ConnectTimeout=15 -o BatchMode=yes -i "$PEM" "ubuntu@${IP}" "$@"; }

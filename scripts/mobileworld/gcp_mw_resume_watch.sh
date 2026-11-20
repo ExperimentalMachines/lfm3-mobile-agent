@@ -7,7 +7,7 @@
 #    wait until healthy and until the model tunnels answer, then start mw_resume.sh for each incomplete run.
 # Exits when guiowl_complete and v4_complete exist on the VM (or after 16 h). Log: logs/gcp_mw_resume_watch.log
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 source logs/gcp_mw_instance.env
 log() { echo "[$(date +%T)] $*"; }
 S() { ssh -o ConnectTimeout=15 -o BatchMode=yes -i "$PEM" "ubuntu@${IP}" "$@"; }

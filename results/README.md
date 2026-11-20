@@ -36,7 +36,6 @@ raw files are never edited. What each number means: [docs/results.md](../docs/re
 | `androidcontrol/` | AndroidControl test predictions and metrics |
 | `general/` | General-knowledge (MMStar, MMLU) predictions and retention tests |
 | `v2_dev/`, `v3_dev/`, `v4_dev/`, `v4rl_dev/` | Development-split predictions and metrics per version (v4: also training logs) |
-| `vm_backup/` | Copies of v4 / v4-RL dev outputs taken off the training VM |
 | `training/` | Training logs, configs and loss curves per run |
 | `speed/`, `qdc/`, `devstream/` | Raw speed measurements: CPU, Qualcomm phone, Pixel 9 |
 | `data/`, `data_v2/` | Dataset verification and build logs |

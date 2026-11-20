@@ -9,7 +9,7 @@
 #   2. full seed-30 run into results/androidworld/$NAME
 # Usage: nohup bash scripts/androidworld/local_maiui_aw.sh > logs/local_maiui_aw.log 2>&1 &
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 CP=5556; GP=8556; PORT=8119; Q=${Q:-Q8_0}; QL=$(echo "$Q" | tr A-Z a-z); NAME=maiui_2b_matched_$QL; LABEL=maiui_2b_matched1img_$QL
 M=models/MAI-UI-2B-GGUF
 log() { echo "[$(date +%T)] $*"; }

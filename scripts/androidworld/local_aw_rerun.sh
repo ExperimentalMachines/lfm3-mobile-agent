@@ -6,7 +6,7 @@
 # their own directory <out_dir>; the original episodes are kept untouched.
 # Usage: bash scripts/androidworld/local_aw_rerun.sh <arm> <seed> <console_port> <grpc_port> <server_port> <out_dir> <task1,task2,...> [agent_label]
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 ARM=$1; SEED=$2; CP=$3; GP=$4; PORT=$5; OUT=$6; TASKS=$7; LABEL=${8:-}
 NAME=${ARM}_seed${SEED}_rerun
 mkdir -p "$OUT"; LOG=$OUT/run_output.log

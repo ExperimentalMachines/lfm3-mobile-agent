@@ -2,7 +2,7 @@
 # Wait for alpharomercoma/AndroidAgent-SFT-v3 (stats file is uploaded last), pin its revision in the LFM3 v3 job,
 # then get a G4 on the main account (adopting it if the CLI times out after assignment), bootstrap and launch.
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 REPO=alpharomercoma/AndroidAgent-SFT-v3
 until REV=$(uvx --from huggingface_hub python -c "
 from huggingface_hub import HfApi; import sys

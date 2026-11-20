@@ -29,14 +29,15 @@ The app-name filter is a heuristic, not a proof of zero contamination. Known v4 
 |---|---|---|---|
 | v1 | `experimentalmachines/AndroidControl-screen-agent-sft` | 99,216 | AndroidControl high-level steps + ~15% low-level copies + one synthetic `complete` step per episode |
 | v2 | `experimentalmachines/AndroidAgent-SFT-v2` @ `42f7f763` | 78,982 | AndroidControl 55,936 (incl. 5,998 terminal) · GUI-Odyssey 9,979 · AMEX 7,072 · ScreenQA 5,995 |
-| v3 | `alpharomercoma/AndroidAgent-SFT-v3` @ `565ba76c` | 78,952 | v2 with every blank intent filled by a teacher model |
+| v3 | `alpharomercoma/AndroidAgent-SFT-v3` @ `565ba76c` | 78,952 | v2 with its 8,739 blank intents fixed: 2,603 filled from action templates, 6,106 by a teacher model, 30 rows dropped |
 | **v4** | `alpharomercoma/AndroidAgent-SFT-v4` @ `3375539` | 92,229 | v3 in the v4 prompt (answer-vs-complete rules + installed-app list) + navigate-then-answer episodes + shorter ScreenQA answers |
 
 v4's question episodes:
 - **Source:** AndroidControl train episodes. Questions and answers come from Qwen3-VL-8B-Instruct.
 - **Checks:** each answer is confirmed by a second teacher call and must pass a strict typed answer check
   ([`data/v4_answer_check.py`](../data/v4_answer_check.py)).
-- **Held out:** 200 screen-disjoint episodes are kept out of training as the question dev set.
+- **Held out:** 200 screen-disjoint source episodes were kept out of training. After filtering they give the gate's
+  136 question rows and 80 action-goal controls.
 
 Builders: [`data/build_androidcontrol.py`](../data/build_androidcontrol.py) (v1),
 [`data/build_v2_mix.py`](../data/build_v2_mix.py) (v2), [`data/v3_build_parquet.py`](../data/v3_build_parquet.py) (v3),
@@ -61,9 +62,9 @@ Builders: [`data/build_androidcontrol.py`](../data/build_androidcontrol.py) (v1)
 | Val | AndroidControl official **validation** ids (137 episodes) | ~830 rows | Eval loss |
 | AndroidControl test | Official **test** ids (1,543 episodes) | 8,444 high-level + 8,428 low-level + 1,543 terminal rows | Offline benchmark |
 | GUI-Odyssey dev | Official random-split **test** episodes | 1,000 rows | v2+ development |
-| AMEX dev | 5% of episodes, hash-held-out | 491 rows | v2+ development |
+| AMEX dev | 5% of episodes, hash-held-out | 468 rows | v2+ development |
 | ScreenQA dev | Official **validation** split | 500 rows | v2+ development |
-| v4 question dev | 200 screen-disjoint AndroidControl train episodes, removed from training | 200 episodes | v4 gate |
+| v4 question dev | 200 screen-disjoint AndroidControl train episodes, removed from training | 136 question rows + 80 action-goal controls | v4 gate |
 | AndroidWorld | 116 tasks; seed 30 (development), seeds 7 / 1234 / 2026 (held-out) | 116 per seed | Online benchmark |
 
 Splits are by episode, using the official ids, so no test screenshot is in training.

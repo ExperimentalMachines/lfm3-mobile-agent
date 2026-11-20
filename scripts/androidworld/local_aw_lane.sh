@@ -4,7 +4,7 @@
 # Qwen hand-offs (local_qwen_to_aw.sh) wait on "^bash scripts/androidworld/local_aw_lane.sh <lane>" + the emulator being free.
 # Usage: bash scripts/androidworld/local_aw_lane.sh lane1|lane2
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 export ANDROID_SDK_ROOT=/opt/homebrew/share/android-commandlinetools ANDROID_HOME=/opt/homebrew/share/android-commandlinetools \
        JAVA_HOME=/opt/homebrew/opt/openjdk@17
 EMU=$ANDROID_SDK_ROOT/emulator/emulator

@@ -1,0 +1,474 @@
+M	.gitignore
+A	README.md
+D	STATUS.md
+A	analysis/README.md
+A	analysis/aw_dev_seed30.py
+R094	scripts/bench_speed_report.py	analysis/bench_speed_report.py
+R098	scripts/build_report.py	analysis/build_report.py
+R097	scripts/devstream_report.py	analysis/devstream_report.py
+R098	scripts/mw_summarize_r2.py	analysis/mw_summarize_r2.py
+R099	scripts/qdc_report_v6.py	analysis/qdc_report_v6.py
+A	analysis/reproduce.sh
+R099	scripts/sealed_analysis.py	analysis/sealed_analysis.py
+R094	scripts/sealed_sensitivity.py	analysis/sealed_sensitivity.py
+R100	scripts/strict_dev_metrics.py	analysis/strict_dev_metrics.py
+R097	scripts/v2_compare.py	analysis/v2_compare.py
+R098	scripts/v4_gate.py	analysis/v4_gate.py
+R096	scripts/v4rl_promotion.py	analysis/v4rl_promotion.py
+M	data/build_v2_mix.py
+D	docs/DATASETS_AND_SPLITS.md
+D	docs/DATA_V2_PLAN.md
+D	docs/EVAL_PROTOCOL.md
+D	docs/GUI_OWL_LESSONS.md
+A	docs/audits.md
+A	docs/datasets.md
+A	docs/evaluation.md
+R074	docs/HISTORY_REWRITE_20261119.md	docs/history-rewrites.md
+A	docs/infrastructure.md
+A	docs/models.md
+A	docs/repository.md
+A	docs/reproduce.md
+A	docs/research/README.md
+R100	reports/Beating GUI Owl at 2B fairly.md	docs/research/beating-gui-owl-at-2b-fairly.md
+R100	research_notes/Beating GUI Owl at 2B fairly/data_and_environments.md	docs/research/notes/beating-gui-owl-at-2b-fairly/data_and_environments.md
+R100	research_notes/Beating GUI Owl at 2B fairly/fair_evaluation.md	docs/research/notes/beating-gui-owl-at-2b-fairly/fair_evaluation.md
+R100	research_notes/Beating GUI Owl at 2B fairly/gui_owl_recipe.md	docs/research/notes/beating-gui-owl-at-2b-fairly/gui_owl_recipe.md
+R100	research_notes/Beating GUI Owl at 2B fairly/input_inference_harness.md	docs/research/notes/beating-gui-owl-at-2b-fairly/input_inference_harness.md
+R100	research_notes/Beating GUI Owl at 2B fairly/peer_small_models.md	docs/research/notes/beating-gui-owl-at-2b-fairly/peer_small_models.md
+R100	research_notes/Beating GUI Owl at 2B fairly/training_tunables.md	docs/research/notes/beating-gui-owl-at-2b-fairly/training_tunables.md
+R100	research_notes/Small GUI agent training methods/architecture_hparams.md	docs/research/notes/small-gui-agent-training-methods/architecture_hparams.md
+R100	research_notes/Small GUI agent training methods/offline_rft.md	docs/research/notes/small-gui-agent-training-methods/offline_rft.md
+R100	research_notes/Small GUI agent training methods/online_rl.md	docs/research/notes/small-gui-agent-training-methods/online_rl.md
+R100	research_notes/Small GUI agent training methods/rl_infrastructure.md	docs/research/notes/small-gui-agent-training-methods/rl_infrastructure.md
+R100	research_notes/Small GUI agent training methods/self_improvement_data.md	docs/research/notes/small-gui-agent-training-methods/self_improvement_data.md
+R100	reports/Small GUI agent training methods.md	docs/research/small-gui-agent-training-methods.md
+A	docs/results.md
+M	eval/androidcontrol/generate.py
+M	eval/mobileworld/bench_speed.py
+A	logs/README.md
+D	logs/aws_mw_instance.env
+D	logs/chain_main_qwen2b.log
+D	logs/colab2_upload.log
+D	logs/colab_get_gpu_lfm3v4.log
+D	logs/colab_get_gpu_lfm3v4_r2.log
+D	logs/colab_keepalive_mwgpu.log
+D	logs/colab_keepalive_mwgpu2.log
+D	logs/colab_new_a100.log
+D	logs/colab_new_a100_par.log
+D	logs/colab_new_a100_x1.log
+D	logs/colab_new_a100_x2.log
+D	logs/colab_new_g4_1.log
+D	logs/colab_new_g4_2.log
+D	logs/colab_new_g4_bg1.log
+D	logs/colab_new_g4_r1.log
+D	logs/colab_new_g4_r2.log
+D	logs/colab_new_g4_t1.log
+D	logs/colab_new_g4_t2.log
+D	logs/colab_new_g4_u1.log
+D	logs/colab_new_g4_u2.log
+D	logs/colab_new_g4_x1.log
+D	logs/colab_new_l4b_resume.log
+D	logs/colab_new_now_A100.log
+D	logs/colab_new_now_G4.log
+D	logs/colab_poll_fast_gpu.log
+D	logs/colab_upload_maiui_q8.log
+D	logs/colab_watchdog_lfm3v4.log
+D	logs/colab_watchdog_lfm3v4a.log
+D	logs/devstream_keeper.log
+D	logs/devstream_stop
+D	logs/docs_refresh_loop.log
+D	logs/emulator_aw2_restart_1005.log
+D	logs/export_test_base.log
+D	logs/gcp_mw_instance.env
+D	logs/guiowl_download.log
+D	logs/launch_l4b.log
+D	logs/launch_l4b_resume.log
+D	logs/launch_l4e.log
+D	logs/launch_lfm3_v2.log
+D	logs/launch_lfm3_v2_personal.log
+D	logs/llama_qwen_test_base.log
+D	logs/llama_qwen_test_gen.log
+D	logs/llama_server_exporttest.log
+D	logs/llama_server_ft_smoke.log
+D	logs/llama_server_lfm3v2_test.log
+D	logs/move_08b_to_g4.log
+D	logs/move_2b_to_g4.log
+D	logs/provision_qwen2bl4.log
+D	logs/qdc_stop
+D	logs/qdc_tunnel.log
+D	logs/qdc_tunnel_keeper.log
+D	logs/restart_q08_fla.log
+D	logs/restart_q2b_fla.log
+D	logs/restart_qwen_fla.log
+D	logs/sdk_install_api33.log
+D	logs/sdk_install_api33_retry.log
+D	logs/vm1_last_stats.txt
+D	logs/watch_base_eval.log
+D	models/v2_adapters/README.md
+A	results/README.md
+M	results/SUMMARY.md
+A	results/androidworld/dev_seed30_summary.json
+A	results/androidworld/dev_seed30_summary.md
+A	results/codex/PROMPT_restructure_docs_audit.md
+D	results/codex/datasets_scratch/ac_datasheet_complete.pdf
+D	results/codex/datasets_scratch/ac_gcs_listing.json
+D	results/codex/datasets_scratch/ac_license_page.png
+D	results/codex/datasets_scratch/ac_paper.html
+D	results/codex/datasets_scratch/ac_paper_clean.txt
+D	results/codex/datasets_scratch/actor_README.md
+D	results/codex/datasets_scratch/actor_androidcontrol_bbox.json
+D	results/codex/datasets_scratch/actor_audit.json
+D	results/codex/datasets_scratch/actor_issue31_comments.json
+D	results/codex/datasets_scratch/actor_issues.json
+D	results/codex/datasets_scratch/actor_paper.html
+D	results/codex/datasets_scratch/actor_paper_clean.txt
+D	results/codex/datasets_scratch/actor_tree.json
+D	results/codex/datasets_scratch/additional_rico_audit.json
+D	results/codex/datasets_scratch/aitw_README.md
+D	results/codex/datasets_scratch/aitw_gcs_listing.json
+D	results/codex/datasets_scratch/aitw_listing_page1.json
+D	results/codex/datasets_scratch/aitw_listing_page10.json
+D	results/codex/datasets_scratch/aitw_listing_page11.json
+D	results/codex/datasets_scratch/aitw_listing_page2.json
+D	results/codex/datasets_scratch/aitw_listing_page3.json
+D	results/codex/datasets_scratch/aitw_listing_page4.json
+D	results/codex/datasets_scratch/aitw_listing_page5.json
+D	results/codex/datasets_scratch/aitw_listing_page6.json
+D	results/codex/datasets_scratch/aitw_listing_page7.json
+D	results/codex/datasets_scratch/aitw_listing_page8.json
+D	results/codex/datasets_scratch/aitw_listing_page9.json
+D	results/codex/datasets_scratch/aitw_paper.html
+D	results/codex/datasets_scratch/aitw_paper_clean.txt
+D	results/codex/datasets_scratch/aitw_paper_full.txt
+D	results/codex/datasets_scratch/aitw_paper_supp.pdf
+D	results/codex/datasets_scratch/aitw_size_audit.json
+D	results/codex/datasets_scratch/amazon_rvlm_paper.pdf
+D	results/codex/datasets_scratch/amazon_rvlm_paper.txt
+D	results/codex/datasets_scratch/amex_README.md
+D	results/codex/datasets_scratch/amex_audit.json
+D	results/codex/datasets_scratch/amex_code_README.md
+D	results/codex/datasets_scratch/amex_code_issues.json
+D	results/codex/datasets_scratch/amex_converter.py
+D	results/codex/datasets_scratch/amex_first_instruction.json
+D	results/codex/datasets_scratch/amex_full_tree.json
+D	results/codex/datasets_scratch/amex_instructions.zip
+D	results/codex/datasets_scratch/amex_issue2_comments.json
+D	results/codex/datasets_scratch/amex_paper.html
+D	results/codex/datasets_scratch/amex_paper.txt
+D	results/codex/datasets_scratch/amex_paper_clean.txt
+D	results/codex/datasets_scratch/amex_sample.png
+D	results/codex/datasets_scratch/amex_sample_element.json
+D	results/codex/datasets_scratch/amex_sample_tree.json
+D	results/codex/datasets_scratch/amex_subtree.json
+D	results/codex/datasets_scratch/amex_tree.json
+D	results/codex/datasets_scratch/apache_license.txt
+D	results/codex/datasets_scratch/aria_README.md
+D	results/codex/datasets_scratch/aria_issues.json
+D	results/codex/datasets_scratch/aria_mobile_head.json.txt
+D	results/codex/datasets_scratch/aria_mobile_head.json.txt.parsed.json
+D	results/codex/datasets_scratch/aria_mobile_tree.json
+D	results/codex/datasets_scratch/aria_paper.html
+D	results/codex/datasets_scratch/aria_paper.txt
+D	results/codex/datasets_scratch/aria_paper_clean.txt
+D	results/codex/datasets_scratch/aria_tree.json
+D	results/codex/datasets_scratch/atlas_README.md
+D	results/codex/datasets_scratch/atlas_amex_head.json.txt
+D	results/codex/datasets_scratch/atlas_amex_head.json.txt.parsed.json
+D	results/codex/datasets_scratch/atlas_aw.json
+D	results/codex/datasets_scratch/atlas_issues.json
+D	results/codex/datasets_scratch/atlas_mobile_tree.json
+D	results/codex/datasets_scratch/atlas_rico_image_head.zip.part
+D	results/codex/datasets_scratch/atlas_ricosca.json
+D	results/codex/datasets_scratch/atlas_tree.json
+D	results/codex/datasets_scratch/atlas_uibert.json
+D	results/codex/datasets_scratch/atlas_uibert_image_head.zip.part
+D	results/codex/datasets_scratch/atlas_uibert_image_head.zip.part.sample.jpg
+D	results/codex/datasets_scratch/atlas_widget.json
+D	results/codex/datasets_scratch/aw_apps.py
+D	results/codex/datasets_scratch/aw_setup_apps.py
+D	results/codex/datasets_scratch/aw_tree.json
+D	results/codex/datasets_scratch/ccby4_legal.html
+D	results/codex/datasets_scratch/ccby_license.html
+D	results/codex/datasets_scratch/ccby_nc4_legal.html
+D	results/codex/datasets_scratch/cmgui_README.md
+D	results/codex/datasets_scratch/cmgui_audit.json
+D	results/codex/datasets_scratch/cmgui_test.jsonl
+D	results/codex/datasets_scratch/cmgui_train.jsonl
+D	results/codex/datasets_scratch/cmgui_tree.json
+D	results/codex/datasets_scratch/downloads.jsonl
+D	results/codex/datasets_scratch/ferret_tree.json
+D	results/codex/datasets_scratch/ferretui_README.md
+D	results/codex/datasets_scratch/fetch.py
+D	results/codex/datasets_scratch/google_ac_README.md
+D	results/codex/datasets_scratch/google_ac_datasheet_full.pdf
+D	results/codex/datasets_scratch/google_ac_datasheet_full.txt
+D	results/codex/datasets_scratch/google_seq2act_tree.json
+D	results/codex/datasets_scratch/google_splits.json
+D	results/codex/datasets_scratch/guiact_README_correct.md
+D	results/codex/datasets_scratch/guiact_audit.json
+D	results/codex/datasets_scratch/guiact_train.json
+D	results/codex/datasets_scratch/guiact_tree_correct.json
+D	results/codex/datasets_scratch/guicourse_README.md
+D	results/codex/datasets_scratch/guicourse_paper.html
+D	results/codex/datasets_scratch/guicourse_paper_clean.txt
+D	results/codex/datasets_scratch/hf_alibaba.json
+D	results/codex/datasets_scratch/hf_amazon.json
+D	results/codex/datasets_scratch/hf_amazonagi.json
+D	results/codex/datasets_scratch/hf_apple.json
+D	results/codex/datasets_scratch/hf_bytedance.json
+D	results/codex/datasets_scratch/hf_bytedance2.json
+D	results/codex/datasets_scratch/hf_meta.json
+D	results/codex/datasets_scratch/hf_microsoft.json
+D	results/codex/datasets_scratch/hf_moui_search.json
+D	results/codex/datasets_scratch/hf_moui_search2.json
+D	results/codex/datasets_scratch/hf_mplug.json
+D	results/codex/datasets_scratch/hf_samsung.json
+D	results/codex/datasets_scratch/hf_tencent.json
+D	results/codex/datasets_scratch/image_sample_audit.json
+D	results/codex/datasets_scratch/libra_README.md
+D	results/codex/datasets_scratch/libra_ac.json
+D	results/codex/datasets_scratch/libra_amex_head.txt
+D	results/codex/datasets_scratch/libra_audit.json
+D	results/codex/datasets_scratch/libra_odyssey_head.txt
+D	results/codex/datasets_scratch/libra_paper.html
+D	results/codex/datasets_scratch/libra_paper_clean.txt
+D	results/codex/datasets_scratch/libra_tree.json
+D	results/codex/datasets_scratch/locate_README.md
+D	results/codex/datasets_scratch/locate_datasets.jsonl
+D	results/codex/datasets_scratch/locate_files.jsonl
+D	results/codex/datasets_scratch/locate_manifests_tree.json
+D	results/codex/datasets_scratch/locate_media_pools.jsonl
+D	results/codex/datasets_scratch/locate_osatlas_head.jsonl
+D	results/codex/datasets_scratch/locate_osatlas_tree.json
+D	results/codex/datasets_scratch/locate_release_policy.json
+D	results/codex/datasets_scratch/locate_root.json
+D	results/codex/datasets_scratch/locate_tree.json
+D	results/codex/datasets_scratch/locate_views.jsonl
+D	results/codex/datasets_scratch/mobileforge_README.md
+D	results/codex/datasets_scratch/mobileforge_page.html
+D	results/codex/datasets_scratch/motif_README.md
+D	results/codex/datasets_scratch/moui_README.md
+D	results/codex/datasets_scratch/moui_caption_train.json
+D	results/codex/datasets_scratch/moui_findicon_train.json
+D	results/codex/datasets_scratch/moui_paper_full.pdf
+D	results/codex/datasets_scratch/moui_paper_full.txt
+D	results/codex/datasets_scratch/moui_repo_metadata.json
+D	results/codex/datasets_scratch/moui_summary_train.json
+D	results/codex/datasets_scratch/moui_tree.json
+D	results/codex/datasets_scratch/odyssey_README.md
+D	results/codex/datasets_scratch/odyssey_audit.json
+D	results/codex/datasets_scratch/odyssey_device_split.json
+D	results/codex/datasets_scratch/odyssey_example1.json
+D	results/codex/datasets_scratch/odyssey_example2.json
+D	results/codex/datasets_scratch/odyssey_example3.json
+D	results/codex/datasets_scratch/odyssey_image_head.zip.part
+D	results/codex/datasets_scratch/odyssey_image_head.zip.part.sample.png
+D	results/codex/datasets_scratch/odyssey_index.json
+D	results/codex/datasets_scratch/odyssey_issue16_comments.json
+D	results/codex/datasets_scratch/odyssey_issue19_comments.json
+D	results/codex/datasets_scratch/odyssey_issues.json
+D	results/codex/datasets_scratch/odyssey_old_README.md
+D	results/codex/datasets_scratch/odyssey_paper.html
+D	results/codex/datasets_scratch/odyssey_paper.txt
+D	results/codex/datasets_scratch/odyssey_paper_clean.txt
+D	results/codex/datasets_scratch/odyssey_random_split.json
+D	results/codex/datasets_scratch/odyssey_screens_tree.json
+D	results/codex/datasets_scratch/odyssey_split_audit.json
+D	results/codex/datasets_scratch/odyssey_splits_tree.json
+D	results/codex/datasets_scratch/odyssey_tree.json
+D	results/codex/datasets_scratch/openmobile2_README_correct.md
+D	results/codex/datasets_scratch/openmobile2_manifest.json
+D	results/codex/datasets_scratch/openmobile2_root.json
+D	results/codex/datasets_scratch/openmobile2_sim_guionly_tree.json
+D	results/codex/datasets_scratch/openmobile2_simulator_tree.json
+D	results/codex/datasets_scratch/openmobile2_tree_correct.json
+D	results/codex/datasets_scratch/openmobile_README.md
+D	results/codex/datasets_scratch/openmobile_tree.json
+D	results/codex/datasets_scratch/report_integrity.json
+D	results/codex/datasets_scratch/rewalk_README.md
+D	results/codex/datasets_scratch/rewalk_issues.json
+D	results/codex/datasets_scratch/rewalk_tree.json
+D	results/codex/datasets_scratch/rico_app_details.csv
+D	results/codex/datasets_scratch/rico_audit.json
+D	results/codex/datasets_scratch/rico_aw_exact_audit.json
+D	results/codex/datasets_scratch/rico_copyright.txt
+D	results/codex/datasets_scratch/rico_image_head.tar.gz.part
+D	results/codex/datasets_scratch/rico_image_metadata.json
+D	results/codex/datasets_scratch/rico_original_sample.jpg
+D	results/codex/datasets_scratch/rico_site.html
+D	results/codex/datasets_scratch/rico_ui_details.csv
+D	results/codex/datasets_scratch/samsung_moui_repo_search.json
+D	results/codex/datasets_scratch/screen2words_README.md
+D	results/codex/datasets_scratch/screen2words_code_README.md
+D	results/codex/datasets_scratch/screen2words_issues.json
+D	results/codex/datasets_scratch/screen2words_summaries.csv
+D	results/codex/datasets_scratch/screen2words_train.txt
+D	results/codex/datasets_scratch/screen2words_tree.json
+D	results/codex/datasets_scratch/screen_annotation_README.md
+D	results/codex/datasets_scratch/screen_annotation_tree.json
+D	results/codex/datasets_scratch/screenqa_LICENSE
+D	results/codex/datasets_scratch/screenqa_README.md
+D	results/codex/datasets_scratch/screenqa_complex.json
+D	results/codex/datasets_scratch/screenqa_issue2_comments.json
+D	results/codex/datasets_scratch/screenqa_issues.json
+D	results/codex/datasets_scratch/screenqa_paper.html
+D	results/codex/datasets_scratch/screenqa_paper_clean.txt
+D	results/codex/datasets_scratch/screenqa_short_train.json
+D	results/codex/datasets_scratch/screenqa_train.json
+D	results/codex/datasets_scratch/screenqa_tree.json
+D	results/codex/datasets_scratch/seq2act_README.md
+D	results/codex/datasets_scratch/seq2act_data_README.md
+D	results/codex/datasets_scratch/seq2act_dataset_README.md
+D	results/codex/datasets_scratch/seq2act_pixelhelp_README_master.md
+D	results/codex/datasets_scratch/showui_TRAIN.md
+D	results/codex/datasets_scratch/uibert_README.md
+D	results/codex/datasets_scratch/uibert_tree.json
+D	results/codex/datasets_scratch/uis1_README.md
+D	results/codex/datasets_scratch/uis1_audit.json
+D	results/codex/datasets_scratch/uis1_gh_README.md
+D	results/codex/datasets_scratch/uis1_train.jsonl
+D	results/codex/datasets_scratch/uis1_tree.json
+D	results/codex/datasets_scratch/uitars_tree.json
+D	results/codex/datasets_scratch/widget_README.md
+D	results/codex/datasets_scratch/widget_README_main.md
+D	results/codex/datasets_scratch/widget_csv.csv
+D	results/codex/datasets_scratch/widget_train.txt
+D	results/codex/datasets_scratch/widget_tree_main.json
+M	results/data_v2/README.md
+A	scripts/README.md
+R091	scripts/aw_emu_guard.sh	scripts/androidworld/aw_emu_guard.sh
+R100	scripts/aw_watchdog.sh	scripts/androidworld/aw_watchdog.sh
+R100	scripts/local_450m_base_aw.sh	scripts/androidworld/local_450m_base_aw.sh
+R091	scripts/local_aw_lane.sh	scripts/androidworld/local_aw_lane.sh
+R068	scripts/local_aw_queue_v2.sh	scripts/androidworld/local_aw_queue_v2.sh
+R092	scripts/local_aw_rerun.sh	scripts/androidworld/local_aw_rerun.sh
+R078	scripts/local_emu2_fill_v4.sh	scripts/androidworld/local_emu2_fill_v4.sh
+R100	scripts/local_forcethink_aw.sh	scripts/androidworld/local_forcethink_aw.sh
+R100	scripts/local_launch_450m_aw.sh	scripts/androidworld/local_launch_450m_aw.sh
+R094	scripts/local_lfm3_to_aw.sh	scripts/androidworld/local_lfm3_to_aw.sh
+R097	scripts/local_maiui_aw.sh	scripts/androidworld/local_maiui_aw.sh
+R094	scripts/local_qwen_to_aw.sh	scripts/androidworld/local_qwen_to_aw.sh
+R100	scripts/local_runtime_ablation_aw.sh	scripts/androidworld/local_runtime_ablation_aw.sh
+R096	scripts/local_sealed_aw_v3.sh	scripts/androidworld/local_sealed_aw_v3.sh
+R072	scripts/local_sealed_queue.sh	scripts/androidworld/local_sealed_queue.sh
+R091	scripts/local_v2_to_aw.sh	scripts/androidworld/local_v2_to_aw.sh
+R089	scripts/local_v4_to_aw_v2.sh	scripts/androidworld/local_v4_to_aw_v2.sh
+R070	scripts/pause_sealed_arm.sh	scripts/androidworld/pause_sealed_arm.sh
+D	scripts/build_runs_registry.py
+D	scripts/colab_keepalive_loop.sh
+D	scripts/colab_poll_fast_gpu.sh
+D	scripts/colab_watchdog.sh
+D	scripts/devstream_chain.sh
+D	scripts/devstream_chain_v2.sh
+D	scripts/devstream_device.sh
+D	scripts/devstream_device_v2.sh
+D	scripts/devstream_device_v3.sh
+D	scripts/devstream_keeper.sh
+D	scripts/devstream_keeper_v2.sh
+D	scripts/docs_refresh_loop.sh
+D	scripts/gen_timeline_audits.py
+D	scripts/local_emu1_queue.sh
+D	scripts/local_emu2_fill.sh
+D	scripts/local_emu2_fill_v2.sh
+D	scripts/local_emu2_fill_v3.sh
+D	scripts/local_milestone_poll.sh
+D	scripts/local_sealed_aw.sh
+D	scripts/local_sealed_aw_v2.sh
+D	scripts/local_v4_to_aw.sh
+D	scripts/local_watch_base_eval.sh
+D	scripts/local_watch_base_eval_only.sh
+R093	scripts/aws_mw_launch.sh	scripts/mobileworld/aws_mw_launch.sh
+R081	scripts/aws_mw_setup.sh	scripts/mobileworld/aws_mw_setup.sh
+R100	scripts/check_maiui_server.py	scripts/mobileworld/check_maiui_server.py
+R097	scripts/colab2_mw_maiui_failover.py	scripts/mobileworld/colab2_mw_maiui_failover.py
+R093	scripts/colab2_upload_maiui.sh	scripts/mobileworld/colab2_upload_maiui.sh
+R096	scripts/colab_mw_maiui_q8.py	scripts/mobileworld/colab_mw_maiui_q8.py
+R100	scripts/colab_mw_models.sh	scripts/mobileworld/colab_mw_models.sh
+R090	scripts/gcp_mw_launch.sh	scripts/mobileworld/gcp_mw_launch.sh
+R096	scripts/gcp_mw_maiui_watch.sh	scripts/mobileworld/gcp_mw_maiui_watch.sh
+R100	scripts/gcp_mw_resume_vm.sh	scripts/mobileworld/gcp_mw_resume_vm.sh
+R100	scripts/gcp_mw_resume_watch.sh	scripts/mobileworld/gcp_mw_resume_watch.sh
+R094	scripts/mw_pull_r2.sh	scripts/mobileworld/mw_pull_r2.sh
+R098	scripts/mw_snapshot_r2.sh	scripts/mobileworld/mw_snapshot_r2.sh
+R097	scripts/check_local_merge.py	scripts/publish/check_local_merge.py
+R097	scripts/hf_publish_v4.py	scripts/publish/hf_publish_v4.py
+R089	scripts/local_export_gguf.sh	scripts/publish/local_export_gguf.sh
+R098	scripts/publish_hf.py	scripts/publish/publish_hf.py
+R098	scripts/publish_v2_hf.py	scripts/publish/publish_v2_hf.py
+R097	scripts/publish_v3_hf.py	scripts/publish/publish_v3_hf.py
+D	scripts/refresh_partial_aw.sh
+R100	scripts/android_cli.sh	scripts/speed/android_cli.sh
+R100	scripts/bench_speed.sh	scripts/speed/bench_speed.sh
+R069	scripts/devstream_chain_v3.sh	scripts/speed/devstream_chain_v3.sh
+R098	scripts/devstream_device_v4.sh	scripts/speed/devstream_device_v4.sh
+R098	scripts/devstream_device_v5.sh	scripts/speed/devstream_device_v5.sh
+R098	scripts/devstream_device_v6.sh	scripts/speed/devstream_device_v6.sh
+R073	scripts/devstream_keeper_v3.sh	scripts/speed/devstream_keeper_v3.sh
+R071	scripts/qdc_chain.sh	scripts/speed/qdc_chain.sh
+R080	scripts/qdc_chain2.sh	scripts/speed/qdc_chain2.sh
+R086	scripts/qdc_tunnel_keeper.sh	scripts/speed/qdc_tunnel_keeper.sh
+R084	scripts/chain_next_job.sh	scripts/training/chain_next_job.sh
+R100	scripts/colab_bootstrap.py	scripts/training/colab_bootstrap.py
+R086	scripts/colab_get_gpu.sh	scripts/training/colab_get_gpu.sh
+R091	scripts/colab_watchdog_v2.sh	scripts/training/colab_watchdog_v2.sh
+R069	scripts/gpu_session.sh	scripts/training/gpu_session.sh
+R100	scripts/jobs/general_logprob.logprob.json	scripts/training/jobs/general_logprob.logprob.json
+R100	scripts/jobs/lfm25vl450m_l4.json	scripts/training/jobs/lfm25vl450m_l4.json
+R100	scripts/jobs/lfm25vl450m_l4_v2.json	scripts/training/jobs/lfm25vl450m_l4_v2.json
+R100	scripts/jobs/lfm3_base_eval_l4.json	scripts/training/jobs/lfm3_base_eval_l4.json
+R100	scripts/jobs/lfm3_full_40g.json	scripts/training/jobs/lfm3_full_40g.json
+R100	scripts/jobs/lfm3_full_80g.json	scripts/training/jobs/lfm3_full_80g.json
+R100	scripts/jobs/lfm3_phase1_40g.json	scripts/training/jobs/lfm3_phase1_40g.json
+R100	scripts/jobs/lfm3_phase1_80g.json	scripts/training/jobs/lfm3_phase1_80g.json
+R100	scripts/jobs/lfm3_train_l4.json	scripts/training/jobs/lfm3_train_l4.json
+R100	scripts/jobs/lfm3_train_l4_resume.json	scripts/training/jobs/lfm3_train_l4_resume.json
+R100	scripts/jobs/lfm3_v2mix_g4.json	scripts/training/jobs/lfm3_v2mix_g4.json
+R100	scripts/jobs/lfm3_v2mix_g4_personal.json	scripts/training/jobs/lfm3_v2mix_g4_personal.json
+R100	scripts/jobs/lfm3_v3mix_modal.json	scripts/training/jobs/lfm3_v3mix_modal.json
+R100	scripts/jobs/lfm3_v4_a100.json	scripts/training/jobs/lfm3_v4_a100.json
+R100	scripts/jobs/modal_450m.json	scripts/training/jobs/modal_450m.json
+R100	scripts/jobs/modal_lfm3.json	scripts/training/jobs/modal_lfm3.json
+R100	scripts/jobs/qwen35_08b_g4.json	scripts/training/jobs/qwen35_08b_g4.json
+R100	scripts/jobs/qwen35_08b_l4.json	scripts/training/jobs/qwen35_08b_l4.json
+R100	scripts/jobs/qwen35_2b_g4.json	scripts/training/jobs/qwen35_2b_g4.json
+R100	scripts/jobs/qwen35_2b_l4.json	scripts/training/jobs/qwen35_2b_l4.json
+R100	scripts/jobs/qwen35_2b_v2mix_g4.json	scripts/training/jobs/qwen35_2b_v2mix_g4.json
+R100	scripts/jobs/qwen35_2b_v2mix_g4_personal.json	scripts/training/jobs/qwen35_2b_v2mix_g4_personal.json
+R100	scripts/jobs/qwen_logprob_g4b.json	scripts/training/jobs/qwen_logprob_g4b.json
+R100	scripts/jobs/v3_build.build.json	scripts/training/jobs/v3_build.build.json
+R100	scripts/jobs/v3_intents.intents.json	scripts/training/jobs/v3_intents.intents.json
+R100	scripts/jobs/v3_intents_g4b.json	scripts/training/jobs/v3_intents_g4b.json
+R100	scripts/jobs/v3_intents_l4b.json	scripts/training/jobs/v3_intents_l4b.json
+R100	scripts/jobs/v4_teacher.json	scripts/training/jobs/v4_teacher.json
+R100	scripts/jobs/v4_teacher2.json	scripts/training/jobs/v4_teacher2.json
+R100	scripts/jobs/v4_teacher_smoke.json	scripts/training/jobs/v4_teacher_smoke.json
+R073	scripts/launch_gpu_jobs.sh	scripts/training/launch_gpu_jobs.sh
+R081	scripts/launch_on_session.sh	scripts/training/launch_on_session.sh
+R082	scripts/make_v4_train_job.py	scripts/training/make_v4_train_job.py
+R095	scripts/modal_app.py	scripts/training/modal_app.py
+R093	scripts/move_08b_to_g4.sh	scripts/training/move_08b_to_g4.sh
+R078	scripts/move_2b_to_g4.sh	scripts/training/move_2b_to_g4.sh
+R062	scripts/provision_and_launch.sh	scripts/training/provision_and_launch.sh
+R079	scripts/v3_modal_chain.sh	scripts/training/v3_modal_chain.sh
+R084	scripts/v3_train_when_ready.sh	scripts/training/v3_train_when_ready.sh
+R074	scripts/v4_relaunch.sh	scripts/training/v4_relaunch.sh
+R096	scripts/vm_450m_pipeline.sh	scripts/training/vm_450m_pipeline.sh
+R100	scripts/vm_blocking_jobs.py	scripts/training/vm_blocking_jobs.py
+R100	scripts/vm_eval.sh	scripts/training/vm_eval.sh
+R100	scripts/vm_logprob_only.sh	scripts/training/vm_logprob_only.sh
+R100	scripts/vm_model_pipeline.sh	scripts/training/vm_model_pipeline.sh
+R100	scripts/vm_prepare_data.sh	scripts/training/vm_prepare_data.sh
+R100	scripts/vm_prepare_list.sh	scripts/training/vm_prepare_list.sh
+R100	scripts/vm_prepare_slice.sh	scripts/training/vm_prepare_slice.sh
+R100	scripts/vm_push_data.sh	scripts/training/vm_push_data.sh
+R100	scripts/vm_rl_go.sh	scripts/training/vm_rl_go.sh
+R100	scripts/vm_rl_hook.sh	scripts/training/vm_rl_hook.sh
+R100	scripts/vm_train.sh	scripts/training/vm_train.sh
+R100	scripts/vm_train_eval_push.sh	scripts/training/vm_train_eval_push.sh
+R100	scripts/vm_v3_intents.sh	scripts/training/vm_v3_intents.sh
+R100	scripts/vm_v4_teacher.sh	scripts/training/vm_v4_teacher.sh
+R100	scripts/vm_v4_teacher2.sh	scripts/training/vm_v4_teacher2.sh
+R100	scripts/wait_hub_step.py	scripts/training/wait_hub_step.py
+D	scripts/update_runs_docs.sh
+D	scripts/wait_v3_or_aw.sh
+M	train/sft_vlm.py

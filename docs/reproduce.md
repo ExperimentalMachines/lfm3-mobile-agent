@@ -7,14 +7,19 @@ git clone git@github.com:alpharomercoma/lfm3-android-runs.git && cd lfm3-android
 bash analysis/reproduce.sh          # needs Python 3.10+ with numpy; PY=... to pick the interpreter
 ```
 
-The script re-runs every script in [`analysis/`](../analysis/) and checks that each output matches the committed one.
+The script re-runs every script in [`analysis/`](../analysis/) and checks each output against the committed version.
 
-| What is recomputed | From |
+| Covered | Not covered |
+|---|---|
+| Every summary in `results/`, from episode files, request logs, predictions and per-run metric files | Re-scoring raw AndroidControl / general-knowledge predictions into those metric files (use the `eval/` scorers) |
+| AndroidWorld analyses without an AndroidWorld install (task metadata is pinned in `data/meta/`) | Training logs, dataset statistics, and the numbers typed into the docs |
+
+| What is regenerated | From |
 |---|---|
 | AndroidWorld held-out and seed-30 scores, tests, sensitivity, M5 speed | Episode files (`*.pkl.gz`) in `results/androidworld_sealed/` and `results/androidworld/` |
 | v4 gate, v4-RL promotion, offline tables | Prediction and metric files in `results/v4_dev/`, `results/v4rl_dev/`, `results/androidcontrol/`, `results/general/` |
 | Speed (CPU, phones) | Raw request logs in `results/speed/`, `results/qdc/`, `results/devstream/` |
-| MobileWorld | **Skipped** unless `results/mobileworld/traj_r2/` exists. The 8.6 GB of raw trajectories are not in git; the per-task summaries are |
+| MobileWorld | **Skipped** unless `results/mobileworld/traj_r2/` exists: the 8.6 GB of raw trajectories are not in git; the per-task summaries are |
 
 The episode files are Python pickles written by this project's own AndroidWorld harness. Load them only from this
 repository.

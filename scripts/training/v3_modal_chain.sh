@@ -1,7 +1,7 @@
 #!/bin/bash
 # Modal H100: (1) teacher-fill v3 intents -> push dataset; (2) pin its revision; (3) LFM3-VL-2B v3 training + evals.
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 M="uvx --from modal modal"
 if ! uvx --from huggingface_hub python -c "
 from huggingface_hub import HfApi; import sys

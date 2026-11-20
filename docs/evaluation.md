@@ -8,18 +8,34 @@
 
 ## Fairness at a glance
 
-| Matched across compared models | Not matched (disclosed) |
-|---|---|
-| Same harness, emulator image, tasks and seeds | Image size: AndroidWorld v4 ≤ 880×880 px area (≈ 720 tokens) vs GUI-Owl / MAI-UI ≤ 1,048,576 px (≈ 1,024 tokens); MobileWorld v4 the same vs full screenshots up to 2,600 tokens (favours them) |
-| One screenshot per step | Prompt and output format: each model uses its own |
-| Same step budget, temperature 0 | GUI-Owl is not in its published 5-screenshot setup |
-| 4-bit weights via llama.cpp (MAI-UI: 8-bit, its 4-bit output breaks) | GUI-Owl's / MAI-UI's AndroidWorld training exposure is undisclosed |
-| Installed-app list in the prompt for both v4 and GUI-Owl (held-out runs) | Parse retries: v4 one retry; GUI-Owl's unparseable reply wastes the step |
-| Exceptions count as failures for everyone | v4 trained with **no** AndroidWorld data (contamination rule) |
+### AndroidWorld (primary comparison: v4 vs GUI-Owl)
 
-Why GUI-Owl runs with one screenshot: its native setup (current + 4 previous screenshots at full resolution) took
-61 s per step on the M5 (~10,700 prompt tokens). A full 116-task run would take about two days per seed. The
-on-device budget this project targets is one screenshot.
+| Setting | v4 | GUI-Owl-1.5-2B | Same? |
+|---|---|---|---|
+| Tasks, seeds, emulator image, harness | AndroidWorld, 116 tasks × seeds 7/1234/2026 | same | yes |
+| Screenshots per step | 1 | 1 | yes |
+| Step budget, temperature | 10 × task complexity, 0 | same | yes |
+| Weights | 4-bit (Q4_K_M) | 4-bit (Q4_K_M) | yes |
+| Installed-app list in the prompt | yes | yes | yes |
+| Image size | ≤ 880×880 px area (≈ 720 tokens) | ≤ 1,048,576 px (≈ 1,024 tokens) | no: GUI-Owl gets a larger image |
+| Prompt and output format | its own (trained) | its official one, ported | no |
+| Parse retries | 1 | 0 (an unparseable reply wastes the step) | no |
+| AndroidWorld in training data | none (contamination rule) | undisclosed by its authors | unknown |
+
+GUI-Owl is not run in its published setup (5 screenshots at full resolution). That setup took 61 s per step on the
+M5 (~10,700 prompt tokens), so a full 116-task run would take about two days per seed. The project targets an
+on-device budget of one screenshot.
+
+### MobileWorld (secondary)
+
+| Setting | v4 | GUI-Owl / MAI-UI |
+|---|---|---|
+| Agent | our adapter | MobileWorld's official agents |
+| Screenshots per step | 1 | 1 |
+| Image | ≤ 880×880 px area, ≤ 1,024 tokens | full screenshot, ≤ 2,600 tokens |
+| Weights | 4-bit | GUI-Owl 4-bit; MAI-UI 8-bit (its 4-bit output degenerates) |
+
+The larger image budgets give GUI-Owl and MAI-UI more visual detail; their effect on accuracy was not isolated.
 
 ---
 
@@ -68,8 +84,9 @@ None touches model input/output or scoring.
   had finished that seed.
 - **Re-run rule:** an infrastructure crash before step 1 (emulator/adb, not model output) is re-run once.
   Everything else counts as it is.
-- **Trajectory review:** every checker success is compared with its saved screenshots. Contradicted successes are
-  listed in `results/aw_checker_disputes.json` and enter only a sensitivity analysis.
+- **Trajectory review:** checker successes are compared with their saved screenshots (done for all v4 and GUI-Owl
+  successes and v1's on seeds 1234/2026). Contradicted successes are listed in `results/aw_checker_disputes.json`
+  and enter only a sensitivity analysis.
 - **Primary analysis:** paired difference v4 − GUI-Owl over 348 instances; template-clustered sign-flip test
   (10,000 draws, seed 0); 95% CI by test inversion.
 - **Decision rule:** non-inferior if the CI's lower bound is above −6.9 points (8 tasks of 116).
@@ -141,9 +158,13 @@ Development splits (GUI-Odyssey, AMEX, ScreenQA, v4 questions) use the same scor
 
 | Measurement | How |
 |---|---|
-| CPU | Idle GCP n2-standard-16, 8 threads. 5 real screenshots and goals through each model's own evaluation agent, 1 warm-up + 3 passes. Calls served from llama.cpp's RAM prompt cache are excluded. Script: [`scripts/speed/bench_speed.sh`](../scripts/speed/bench_speed.sh) |
+| CPU | 5 screenshots, 1 warm-up + 3 passes, 8 threads; cached calls excluded (14 / 4 / 4 kept) |
 | Apple M5 | Model time per step recorded inside the AndroidWorld seed-30 runs, while emulators and other servers were running |
-| Phone | Qualcomm reference phone (Snapdragon 8 Elite Extreme Gen 6) via Qualcomm Device Cloud. llama.cpp b12110 runs **on the phone's CPU** (4 threads, RAM cache off); the Mac sends screenshots through each model's own agent. Files checked by SHA-256. Scripts: [`scripts/speed/qdc_chain2.sh`](../scripts/speed/qdc_chain2.sh) |
+| Phone | Model runs on the phone's CPU (4 threads); 2 calls per model at the evaluation ceiling, 2 × 5 calls at the equal ceiling |
+
+- **CPU host:** idle GCP n2-standard-16; each model's own evaluation agent; [`scripts/speed/bench_speed.sh`](../scripts/speed/bench_speed.sh).
+- **Phone:** Qualcomm reference phone via Qualcomm Device Cloud; llama.cpp b12110, RAM prompt cache off; model files
+  checked by SHA-256; [`scripts/speed/qdc_chain2.sh`](../scripts/speed/qdc_chain2.sh).
 
 Phone caveats:
 - Frequencies are sampled, not controlled.

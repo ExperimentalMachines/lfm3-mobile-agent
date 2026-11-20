@@ -8,7 +8,7 @@
 # Usage: bash scripts/androidworld/local_sealed_aw_v3.sh <arm> <seed> <console_port> <grpc_port> <server_port> [resume_run_dir]
 #   arm = v1 | v3 | v4 | guiowl
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 ARM=$1; SEED=$2; CP=$3; GP=$4; PORT=$5; RESUME=${6:-}
 NAME=${ARM}_seed${SEED}
 OUT=results/androidworld_sealed/$NAME

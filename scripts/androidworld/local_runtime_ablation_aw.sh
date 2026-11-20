@@ -2,7 +2,7 @@
 # Ablation (Codex final-audit rec. #1): LFM3-VL-2B FT, same GGUF/server/seed as the main run, plus --runtime_feedback
 # (lexical open_app resolution against installed apps + failure / no-visible-change notes in the history).
 # Runs on emulator 2 (5558/8558) after the 450M base run there has finished.
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 sleep 5
 while pgrep -f "local_450m_base_aw.sh" >/dev/null || pgrep -f "agent_label=lfm25vl450m" >/dev/null; do sleep 60; done
 until curl -s 127.0.0.1:8096/health | grep -q ok; do

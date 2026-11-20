@@ -1,6 +1,9 @@
 #!/bin/bash
-# Recompute every reported number from the committed raw results, then list what changed (expected: nothing).
-# Needs Python 3.10+ with numpy. MobileWorld is skipped unless its raw trajectories (not in git) are present.
+# Regenerate every summary file in results/ from the committed inputs (episode files, request logs, predictions and
+# per-run metric files), then check each output against the committed version (expected: no change, nothing new).
+# Not covered: re-scoring raw AndroidControl / general-knowledge predictions into their metric files (eval/ scorers),
+# training logs, dataset statistics, and the hand-written docs. MobileWorld is skipped unless its raw trajectories
+# (not in git) are present. Needs Python 3.10+ with numpy.
 # Usage: bash analysis/reproduce.sh            (PY=/path/to/python to choose the interpreter)
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -21,11 +24,14 @@ echo "Offline evaluations"
 run "$PY" analysis/strict_dev_metrics.py --answer $E/lfm3_v4_dev_answer.jsonl --complete $E/lfm3_v4_dev_complete.jsonl \
   --out results/v4_dev/lfm3_v4_strict.json
 run "$PY" analysis/v4rl_promotion.py --v4_dir $E --rl_dir results/v4rl_dev --out results/v4rl_promotion_offline.json
+run "$PY" eval/general/paired_retention.py results/general/lfm3vl2b-ac-lora_base_general_logprob.jsonl \
+  $E/lfm3vl2b-v4bmix-lora_ft_general_logprob.jsonl results/general/lfm3vl2b_v4_retention_logprob.json
 run "$PY" analysis/build_report.py
 echo "· analysis/v2_compare.py > results/V2_COMPARISON.md"
 "$PY" analysis/v2_compare.py > results/V2_COMPARISON.md
 echo "Speed"
-run "$PY" analysis/bench_speed_report.py results/speed/results_t8 --md results/speed/speed_t8.md
+echo "· analysis/bench_speed_report.py > results/speed/speed_t8.json (+ .md)"
+"$PY" analysis/bench_speed_report.py results/speed/results_t8 --md results/speed/speed_t8.md > results/speed/speed_t8.json
 run "$PY" analysis/qdc_report_v6.py
 run "$PY" analysis/devstream_report.py $D --md $D/speed_phone_partial.md --json $D/speed_phone_partial.json
 echo "MobileWorld"
@@ -36,8 +42,9 @@ else
 fi
 find analysis -name __pycache__ -type d -prune -exec rm -rf {} +
 echo
-if git diff --quiet -- results; then
-  echo "OK: every regenerated file is identical to the committed one."
+changes=$(git status --porcelain --untracked-files=all -- results)
+if [ -z "$changes" ] && git diff --quiet HEAD -- results; then
+  echo "OK: every regenerated file is identical to the committed one (HEAD), and no new file appeared."
 else
-  echo "Changed files:"; git diff --stat -- results; exit 1
+  echo "Differs from HEAD:"; echo "$changes"; exit 1
 fi

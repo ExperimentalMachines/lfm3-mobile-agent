@@ -1,7 +1,7 @@
 #!/bin/bash
 # v4 of the filler: identical to local_emu2_fill_v3.sh except that arms run through scripts/androidworld/local_sealed_aw_v3.sh (bounded,
 # PID-bound server start that fails instead of hanging, so GUI-Owl seed 1234 is always resumed; Codex P2-1).
-# Emulator 2, after the v4 seed-30 development pass (replaces scripts/local_emu2_fill_v2.sh (archived: tag archive/pre-restructure-2026-11-20) while it waits; the sealed
+# Emulator 2, after the v4 seed-30 development pass (replaces scripts/androidworld/local_emu2_fill_v2.sh while it waits; the sealed
 # GUI-Owl seed-1234 arm is already paused with 33 saved episodes):
 #   1. wait for "v4 AndroidWorld seed-30 finished" in logs/local_v4_to_aw.log and for emulator 2 to be free;
 #   2. apply the preregistered development gate mechanically (analysis/v4_gate.py; docs/PREREG_v4.md):
@@ -13,7 +13,7 @@
 # Outcomes of sealed arms are never printed here (the sealed runner keeps its output inside the sealed dir).
 # Usage: nohup bash scripts/androidworld/local_emu2_fill_v4.sh >> logs/local_emu2_fill.log 2>&1 &
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 CP=5558; GP=8558; LANE=logs/local_v4_to_aw.log
 GO=results/androidworld_sealed/guiowl_seed1234; GOLOG=logs/local_sealed_guiowl_seed1234.log
 log() { echo "[$(date +%T)] $*"; }

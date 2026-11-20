@@ -3,7 +3,7 @@
 # emulator's previous job has logged its completion marker. The server is stopped afterwards (frees ~2 GB).
 # Usage: scripts/androidworld/local_v2_to_aw.sh <repo> <name> <kind lfm3|qwen> <port> <console_port> <grpc_port> <done_log>:<marker> <label>
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 REPO=$1; NAME=$2; KIND=$3; PORT=$4; CP=$5; GP=$6; DONE=$7; LABEL=$8
 DLOG=${DONE%%:*}; DMARK=${DONE#*:}
 OUT=models/$NAME-GGUF

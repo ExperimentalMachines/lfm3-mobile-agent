@@ -1,0 +1,150 @@
+{
+  "v4": {
+    "n": 105,
+    "successes": 6,
+    "final_categories": {
+      "result": 104,
+      "setup_failed": 1
+    },
+    "executions": 114,
+    "env_tasks": [
+      "ThanksgivingPrepTask"
+    ],
+    "reinit_tasks": [
+      "MastodonCreateListTask",
+      "ReadQwen3PaperTask1"
+    ]
+  },
+  "guiowl": {
+    "n": 105,
+    "successes": 22,
+    "final_categories": {
+      "result": 102,
+      "other_no_result": 2,
+      "setup_failed": 1
+    },
+    "executions": 148,
+    "env_tasks": [
+      "AdjustFontIconMaximumTask",
+      "CheckConferenceDurationTask",
+      "MastodonCreateListTask",
+      "MastodonMultiInviteTask",
+      "MastodonPostEditedPhotoTask",
+      "MattermostResourceConflictResolutionTask",
+      "SendInterviewEmailTask",
+      "ThanksgivingPrepTask"
+    ],
+    "reinit_tasks": [
+      "AdjustFontIconMaximumTask",
+      "CartInfoNotificationTask",
+      "CheckConferenceDurationTask",
+      "CheckInvoiceTask2",
+      "MastodonCreateListTask",
+      "MastodonExportFollowsTask",
+      "MastodonFollowTask",
+      "MastodonManageMultiListTask",
+      "MastodonMattermostPostNoticeTask",
+      "MastodonUpdateContactsTask",
+      "MattermostResourceConflictResolutionTask",
+      "ReadQwen3PaperTask1",
+      "ScheduleCoffeeTimeViaSmsTask",
+      "SendWaiverTask"
+    ]
+  },
+  "maiui": {
+    "n": 105,
+    "successes": 11,
+    "final_categories": {
+      "result": 98,
+      "other_no_result": 1,
+      "setup_failed": 6
+    },
+    "executions": 175,
+    "env_tasks": [
+      "MattermostCreateChannelTask",
+      "ReadQwen3PaperTask1",
+      "ReadQwen3PaperTask2",
+      "ReadQwen3PaperTask3",
+      "ReadQwen3PaperTask4",
+      "ReadQwen3PaperTask5",
+      "SendFormsTask",
+      "ThanksgivingPrepTask"
+    ],
+    "reinit_tasks": [
+      "CheckInterviewTimesTask",
+      "CountFileLinesTask",
+      "MastodonConditionalFavoTask",
+      "MastodonInviteTask",
+      "MastodonMattermostPostNoticeTask",
+      "MattermostBudgetApprovalPipelineTask",
+      "MattermostCreateChannelTask",
+      "MattermostCustomerFeedbackAnalysisTask",
+      "ReadQwen3PaperTask1",
+      "ReadQwen3PaperTask3",
+      "ReadQwen3PaperTask4",
+      "ReadQwen3PaperTask5",
+      "SendFormsTask",
+      "SuggestPaperTask"
+    ]
+  },
+  "pairs": {
+    "v4-guiowl": {
+      "n": 105,
+      "v4": 6,
+      "guiowl": 22,
+      "a_only": 0,
+      "b_only": 16,
+      "p": 3.0517578125e-05
+    },
+    "maiui-v4": {
+      "n": 105,
+      "maiui": 11,
+      "v4": 6,
+      "a_only": 7,
+      "b_only": 2,
+      "p": 0.1796875
+    },
+    "maiui-guiowl": {
+      "n": 105,
+      "maiui": 11,
+      "guiowl": 22,
+      "a_only": 2,
+      "b_only": 13,
+      "p": 0.00738525390625
+    }
+  },
+  "sensitivity_narrow": {
+    "n": 97,
+    "v4": 6,
+    "guiowl": 22,
+    "a_only": 0,
+    "b_only": 16,
+    "p": 3.0517578125e-05
+  },
+  "sensitivity_broad": {
+    "n": 87,
+    "v4": 5,
+    "guiowl": 21,
+    "a_only": 0,
+    "b_only": 16,
+    "p": 3.0517578125e-05
+  },
+  "exclude_maiui_final_setup": {
+    "maiui-v4": {
+      "n": 99,
+      "maiui": 11,
+      "v4": 6,
+      "a_only": 7,
+      "b_only": 2,
+      "p": 0.1796875
+    },
+    "maiui-guiowl": {
+      "n": 99,
+      "maiui": 11,
+      "guiowl": 22,
+      "a_only": 2,
+      "b_only": 13,
+      "p": 0.00738525390625
+    }
+  }
+}

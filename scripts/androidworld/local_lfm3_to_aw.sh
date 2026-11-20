@@ -1,7 +1,7 @@
 #!/bin/bash
 # Wait for the merged LFM3 fine-tune on the Hub -> export Q4_K_M GGUF -> serve on :8096 -> run AndroidWorld 116
 # on emulator 1 (5556/8556) once the GUI-Owl run there has finished.
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 REPO=experimentalmachines/LFM3-VL-2B-AndroidControl
 until uvx --from huggingface_hub python -c "
 from huggingface_hub import HfApi; import sys

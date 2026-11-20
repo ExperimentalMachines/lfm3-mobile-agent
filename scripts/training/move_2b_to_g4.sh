@@ -1,7 +1,7 @@
 #!/bin/bash
 # Bootstrap the (adopted) G4 session, seed /content/eval with eval outputs already on the Hub, launch Qwen3.5-2B (resumes from hub ckpt).
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 bash scripts/training/gpu_session.sh g4 2>&1 | grep -E "versions|HF user|pip rc|mismatch|Error|RTX" | tail -6
 cat > /tmp/seed_eval_$$.py <<'PY'
 import os

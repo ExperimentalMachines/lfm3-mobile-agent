@@ -5,7 +5,7 @@
 #      check_local_merge.py passed and the 14 non-weight files were found byte-identical to the v3 merged release),
 #      and check_local_merge.py is re-run against the pinned base and pinned adapter revision;
 #   2. phone GGUF export from that dir (same converter/quant/mmproj as v1-v3);
-#   3. same hand-off markers in logs/local_v4_to_aw.log for scripts/local_emu2_fill_v2.sh (archived: tag archive/pre-restructure-2026-11-20) ("exported; pausing" -> it
+#   3. same hand-off markers in logs/local_v4_to_aw.log for scripts/androidworld/local_emu2_fill_v2.sh ("exported; pausing" -> it
 #      pauses the sealed GUI-Owl seed-1234 arm; "v4 AndroidWorld seed-30 finished" -> it resumes that arm). After
 #      "exported; pausing" every exit path prints the finished marker, so the sealed arm is never left paused;
 #   4. emulator 2 is used only after the sealed arm's launcher, runner and server (:8115) are all gone;
@@ -15,7 +15,7 @@
 # Codex audit: results/codex/v4_local_lane_audit/codex_v4_local_lane_audit.md
 # Usage: nohup bash scripts/androidworld/local_v4_to_aw_v2.sh models/hf_local/LFM3-VL-2B-AndroidAgent-v4 >> logs/local_v4_to_aw.log 2>&1 &
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 SP=""; SRC=$1; OUT=models/lfm3vl2b_v4-GGUF; NAME=lfm3vl2b_v4; PORT=8114; CP=5558; GP=8558
 GG=$OUT/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf; MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf
 BASE=$HOME/.cache/huggingface/hub/models--LiquidAI--LFM3-VL-2B/snapshots/23387beda43c60310348e83e25f78f33c3140d3a/model.safetensors
@@ -49,9 +49,9 @@ log "checking $SRC against base + $AD"
 bash scripts/publish/local_export_gguf.sh "$SRC" "$OUT" || { log "EXPORT FAILED"; exit 1; }
 [ -s "$GG" ] && [ -s "$MM" ] || { log "EXPORT FAILED (missing $GG)"; exit 1; }
 shasum -a 256 "$GG" "$MM"
-log "exported; pausing the sealed GUI-Owl seed-1234 arm on emulator $CP (scripts/local_emu2_fill_v2.sh resumes it afterwards)"
+log "exported; pausing the sealed GUI-Owl seed-1234 arm on emulator $CP (scripts/androidworld/local_emu2_fill_v2.sh resumes it afterwards)"
 t0=$(date +%s)
-while pgrep -f "[r]un_aw.py.*console_port=$CP" >/dev/null || pgrep -f "^bash scripts/(androidworld/)?local_sealed_aw(_v2)?.sh guiowl 1234 " >/dev/null \
+while pgrep -f "[r]un_aw.py.*console_port=$CP" >/dev/null || pgrep -f "^bash scripts/(androidworld/)?local_sealed_aw(_v[23])?.sh guiowl 1234 $CP " >/dev/null \
       || pgrep -f "[l]lama-server.*--port 8115 " >/dev/null; do
   [ $(( $(date +%s) - t0 )) -gt 1800 ] && release "emulator $CP still busy after 30 min; v4 seed-30 run NOT STARTED"
   sleep 10

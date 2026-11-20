@@ -5,7 +5,7 @@
 # This log holds only start/end lines and episode-file counts. Usage:
 #   nohup bash scripts/androidworld/local_sealed_queue.sh <wait_pid> <console_port> <grpc_port> <arm:seed:port> ... > logs/x.log 2>&1 &
 set -u
-cd /Users/alpha/lfm3-android
+cd "$(dirname "$0")/../.." || exit 1
 W=$1; CP=$2; GP=$3; shift 3
 log() { echo "[$(date +%T)] $*"; }
 count() { local d; d=$(ls -d "$1"/run_*/ 2>/dev/null | tail -1); [ -n "$d" ] && ls "$d"*.pkl.gz 2>/dev/null | wc -l | tr -d ' ' || echo 0; }
