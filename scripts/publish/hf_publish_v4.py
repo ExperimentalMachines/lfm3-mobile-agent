@@ -58,6 +58,8 @@ def stage(files: dict, card: str) -> str:
 
 # v4
 v4 = "models/hf_local/LFM3-VL-2B-AndroidAgent-v4"
+# Already run. The checkpoint repo below was deleted 2026-11-22 (storage); the same adapter is in
+# experimentalmachines/LFM3-VL-2B-AndroidAgent-v4/lora_adapter/.
 ad = snapshot_download("alpharomercoma/LFM3-VL-2B-AndroidAgent-v4b-LoRA-ckpt", revision="58bcb65efa4e395d00c3f910e0184d53566fa35f",
                        allow_patterns=["adapter_model.safetensors", "adapter_config.json"])
 files = {f: os.path.join(v4, f) for f in os.listdir(v4)}
