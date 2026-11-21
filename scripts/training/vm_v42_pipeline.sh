@@ -1,6 +1,6 @@
 #!/bin/bash
-# v4.2 = fix 4 (2026-11-21, docs/PREREG_v41.md). Runs ON the Colab VM that trained v4.1 (colab-b session v41), detached
-# (started by vm_blocking_jobs.py with JOBS_JSON=/content/work/jobs_v42.json) while v4.1's evaluations may still run.
+# v4.2 = fix 4 (2026-11-21, docs/PREREG_v41.md). Runs ON the Colab VM that trained v4.1 (colab-b session v41), in the
+# same blocking cell as the resumed v4.1 evaluations (scripts/training/jobs/lfm3_v41_evals_v42_a100.json).
 #  1. v4.1's merged weights replay a deterministic SELFHIST_RATE share of training episodes on their recorded screens
 #     with their own history (data/v42_selfhist.py); rows of those episodes get the self-generated history.
 #  2. The unchanged v4 pipeline trains v4.2 from the base model on that dataset (same recipe, rows and order).
