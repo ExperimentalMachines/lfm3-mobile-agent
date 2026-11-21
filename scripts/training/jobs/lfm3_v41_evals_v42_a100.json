@@ -65,5 +65,14 @@
    "SELFHIST_RATE": "0.4"
   },
   "stagger_s": 0
+ },
+ {
+  "name": "gguf_export",
+  "script": "/content/work/vm_export_gguf.sh",
+  "log": "/content/runs/gguf_export.log",
+  "env": {
+   "EXPORT_RUNS": "lfm3vl2b-v41-lora:LFM3-VL-2B-AndroidAgent-v4.1 lfm3vl2b-v42-lora:LFM3-VL-2B-AndroidAgent-v4.2"
+  },
+  "stagger_s": 0
  }
 ]
