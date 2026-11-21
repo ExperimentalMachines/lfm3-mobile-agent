@@ -1,5 +1,5 @@
 #!/bin/bash
-# Mac-side watcher for the v4.1 follow-up MobileWorld run (docs/PREREG_v41.md): one run RUN (v4g|v41|v41g) on container
+# Mac-side watcher for the v4.1 follow-up MobileWorld run (docs/PREREG_v41.md): one run RUN (v4g|v41|v41g|v42g|v42) on container
 # lfmenv_0 with the model behind tunnel port 18094. Same logic as run 2's watcher (gcp_mw_resume_watch.sh):
 #  * first pass: start mw_resume.sh RUN (every task is "never started", so it runs one mw eval over the 105-task list);
 #  * whenever nothing of RUN is running and RUN is not complete: restart lfmenv_0 (fresh emulator), then mw_resume.sh
@@ -9,7 +9,7 @@
 # Usage: nohup bash scripts/mobileworld/gcp_mw_v41_watch.sh v41 >> logs/gcp_mw_v41_watch.log 2>&1 &
 set -u
 cd "$(dirname "$0")/../.." || exit 1
-RUN=${1:?usage: $0 v4g|v41|v41g}
+RUN=${1:?usage: $0 v4g|v41|v41g|v42g|v42}
 source logs/gcp_mw_instance.env
 log() { echo "[$(date +%T)] $RUN: $*"; }
 S() { ssh -o ConnectTimeout=15 -o BatchMode=yes -i "$PEM" "ubuntu@${IP}" "$@"; }

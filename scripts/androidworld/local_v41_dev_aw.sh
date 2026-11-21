@@ -1,9 +1,9 @@
 #!/bin/bash
-# v4.1 follow-up (docs/PREREG_v41.md): one AndroidWorld seed-30 development pass for variant A, B or C.
-#   A = v4 + guards, B = v4.1, C = v4.1 + guards.
+# v4.1 follow-up (docs/PREREG_v41.md): one AndroidWorld seed-30 development pass for variant A-E.
+#   A = v4 + guards, B = v4.1, C = v4.1 + guards, D = v4.2 + guards, E = v4.2.
 # Same harness as v4's seed-30 pass (scripts/androidworld/local_v4_to_aw_v2.sh): run_aw.py defaults (seed 30, one
 # instance per task), prompt v4, thinking on, same llama-server flags and mmproj; only the model file and --guards vary.
-# Usage: nohup bash scripts/androidworld/local_v41_dev_aw.sh A|B|C 5556|5558 [checkpoint_dir_to_resume] \
+# Usage: nohup bash scripts/androidworld/local_v41_dev_aw.sh A|B|C|D|E 5556|5558 [checkpoint_dir_to_resume] \
 #          >> logs/local_v41_dev_aw.log 2>&1 &
 set -u
 cd "$(dirname "$0")/../.." || exit 1
@@ -17,11 +17,14 @@ case "$CP" in
 esac
 GP=$((CP + 3000))
 V41=models/lfm3vl2b_v41-GGUF/LFM3-VL-2B-AndroidAgent-v4.1-Q4_K_M.gguf
+V42=models/lfm3vl2b_v42-GGUF/LFM3-VL-2B-AndroidAgent-v4.2-Q4_K_M.gguf
 case "$V" in
   A) GG=models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf; NAME=lfm3vl2b_v4_guards; G=true ;;
   B) GG=$V41; NAME=lfm3vl2b_v41; G=false ;;
   C) GG=$V41; NAME=lfm3vl2b_v41_guards; G=true ;;
-  *) echo "variant must be A, B or C"; exit 1 ;;
+  D) GG=$V42; NAME=lfm3vl2b_v42_guards; G=true ;;
+  E) GG=$V42; NAME=lfm3vl2b_v42; G=false ;;
+  *) echo "variant must be A, B, C, D or E"; exit 1 ;;
 esac
 MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf
 OUT=results/androidworld/$NAME

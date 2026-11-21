@@ -1,7 +1,7 @@
 #!/bin/bash
 # Pull the v4.1 follow-up MobileWorld run (run 3) to results/mobileworld/traj_r3/: every attempt folder (final, MobileWorld's
 # *_backup_* retries, folders moved aside by mw_resume.sh), the retry manifest and the stamps. --full adds screenshots.
-# Usage: bash scripts/mobileworld/mw_pull_r3.sh v4g|v41|v41g [--full]
+# Usage: bash scripts/mobileworld/mw_pull_r3.sh v4g|v41|v41g|v42g|v42 [--full]
 set -eu
 cd "$(dirname "$0")/../.."
 RUN=${1:?}; source logs/gcp_mw_instance.env
