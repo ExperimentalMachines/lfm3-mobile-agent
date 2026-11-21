@@ -111,7 +111,7 @@ if ! receipt_ok $OUT/train_receipt.json; then
     --max_pixels ${MAX_PIXELS:-774400} $INLINE_ARGS $TEMPLATE_ARGS $REGEX_ARGS \
     --bs ${BS:-8} --grad_accum ${GA:-4} --lr ${LR:-2e-4} --lora_r ${LORA_R:-64} --lora_alpha ${LORA_ALPHA:-128} \
     --modules_to_save --save_steps ${SAVE_STEPS:-100} --eval_steps ${EVAL_STEPS:-250} --workers ${WORKERS:-10} \
-    --hub_repo $CKPT_REPO
+    ${CKPT_REPO:+--hub_repo $CKPT_REPO}
 fi
 receipt_ok $OUT/train_receipt.json || { log "TRAINING FAILED"; push_evals; exit 1; }
 log "push merged + adapter"
