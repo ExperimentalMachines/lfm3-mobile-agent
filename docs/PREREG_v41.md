@@ -105,3 +105,10 @@ seed-30 result had been looked at.
 - **State at this time:** run A at 69/116 episodes, its success count not computed (one early episode's outcome was
   seen while checking guard logs); B and C not started; v4.1 training at step ~900 of 1,250. Literature notes:
   `docs/research/notes/training-on-own-mistakes-and-overfitting/`.
+
+### 2026-11-21 22:25 Asia/Manila — fix 4 detail (before any v4.2 data or seed-30 score)
+- The literature review (`docs/research/training-on-own-mistakes-and-overfitting.md`) noted that replacing every wrong
+  step with the human step never shows the model its own mistakes. Added: where v4.1 wrongly predicted `wait` (its
+  typical loop), the row for that step also shows that prediction (its own intent + `wait`) as the last history step.
+  A wait leaves the screen unchanged, so the recorded screen and the human target still fit. The count is reported
+  (`rows_own_wait_mistake`). Nothing else changes.

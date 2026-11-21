@@ -10,8 +10,9 @@ the history as the human step (a patch), read from the rows' history text:
     14%-of-screen click radius), its own (intent, action) enters the history; otherwise the human's (intent, action) is
     patched in, so the history always describes actions that lead to the recorded screens;
   * the training row for step t then carries this self-generated history; its target stays the human's intent + action.
-The model therefore learns from histories in its own words — including its copied intents and needless waits — while
-being taught the correct next step. Rows, images, targets and order are unchanged; only history text differs from v4.1.
+The model therefore learns from histories in its own words while being taught the correct next step. Where the model
+wrongly predicted `wait` (its typical loop), the row for that step also shows that mistake as the last history step:
+a wait leaves the screen unchanged, so the recorded screen and the human target still fit (own-mistake recovery). Rows, images, targets and order are unchanged; only history text differs from v4.1.
 
 Usage (Colab): python v42_selfhist.py --v41_disk DIR --model MERGED_DIR --work DIR --save_disk OUT_DIR [--rate 0.4]
 """
@@ -186,7 +187,13 @@ def main():
                 pi, pa = parse_output(txt)
                 ok = pa is not None and match(pa, json.loads(ga))[1]
                 prev = history(e, t) or []
-                st["self"].setdefault(e, {})[str(t)] = [pi, af.action_to_str(pa), 1] if ok else [gi, ga, 0]
+                if ok:
+                    entry = [pi, af.action_to_str(pa), 1]
+                elif pa is not None and pa["action_type"] == "wait":   # own no-op mistake: kept for a recovery row
+                    entry = [gi, ga, 0, pi, af.action_to_str(pa)]
+                else:
+                    entry = [gi, ga, 0]
+                st["self"].setdefault(e, {})[str(t)] = entry
                 lg = st["log"].setdefault(str(k), {"n": 0, "match": 0, "pred_wait": 0, "pred_copy": 0, "unparsed": 0})
                 lg["n"] += 1
                 lg["match"] += ok
@@ -202,12 +209,18 @@ def main():
                   f"copy {lg['pred_copy']}, unparsed {lg['unparsed']}, {time.time() - t0:.0f}s", flush=True)
 
     # rebuild histories into the rows; targets, images and row order unchanged
-    new_text = {}
+    new_text, own_wait_rows = {}, 0
     for e, rows in episodes.items():
         if e in st["bad"]:
             continue
         for t, i in rows:
-            h = history(e, t) if t > 0 else None
+            h = history(e, t) if t > 0 else []
+            mis = st["self"].get(e, {}).get(str(t))
+            if h is not None and mis is not None and len(mis) == 5:
+                # The model wrongly waited at this step. A wait leaves the screen unchanged, so this row (same screen,
+                # same human target) can show the model's own mistake (its intent + wait) as the last history step.
+                h = list(h) + [(mis[3], mis[4])]
+                own_wait_rows += 1
             if h:
                 head, tail = split_user(msgs_col[i][1]["content"])
                 new_text[i] = head + af.history_text(h) + tail
@@ -228,11 +241,13 @@ def main():
     tot = {k2: sum(v[k2] for v in st["log"].values()) for k2 in ("n", "match", "pred_wait", "pred_copy", "unparsed")}
     own = sum(x[2] for d in st["self"].values() for x in d.values())
     stats = {"rate": a.rate, "episodes": len(episodes), "episodes_skipped_unrecoverable": len(st["bad"]),
-             "rows_in_episodes": n_rows, "rows_with_new_history": len(new_text), "generated": tot["n"],
+             "rows_in_episodes": n_rows, "rows_with_new_history": len(new_text), "rows_own_wait_mistake": own_wait_rows,
+             "generated": tot["n"],
              "model_steps_kept": own, "patched": tot["n"] - own, "totals": tot, "by_round": st["log"],
              "model": a.model, "builder_sha256": hashlib.sha256(open(__file__, "rb").read()).hexdigest()}
     json.dump(stats, open(f"{a.work}/v42_stats.json", "w"), indent=1)
     print(json.dumps({k2: stats[k2] for k2 in ("episodes", "episodes_skipped_unrecoverable", "rows_with_new_history",
+                                                 "rows_own_wait_mistake",
                                                  "generated", "model_steps_kept", "patched", "totals")}), flush=True)
 
 
