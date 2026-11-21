@@ -4,6 +4,7 @@
 # MobileWorld a026188 and its env image, ONE container created with run 2's exact command for the v4 arm (lfmenv_0),
 # our agent files (agent_format.py, agent_guards.py, lfm3_mw_agent.py), the 105-task list, the resume script with the
 # fixed completion rule, and the reverse-tunnel key restricted to localhost:18094 (no shell).
+# The shell check uses only the tunnel key and no shared connection (~/.ssh/config multiplexes by default).
 # The external IP is promoted to a static address so a restart keeps it (the Colab tunnel reconnects by itself).
 # Usage: bash scripts/mobileworld/mw_v41_vm_setup.sh <colab_public_ip>      -> writes logs/gcp_mw_instance.env
 set -euo pipefail
@@ -28,7 +29,7 @@ scp -q -i "$PEM" scripts/mobileworld/gcp_mw_resume_vm.sh "ubuntu@${IP}:mw_resume
 S 'cd lfm3 && sha256sum agent_format.py agent_guards.py lfm3_mw_agent.py' && shasum -a 256 train/agent_format.py train/agent_guards.py eval/mobileworld/lfm3_mw_agent.py
 [ -s "$K" ] || ssh-keygen -q -t ed25519 -N "" -C lfm3-mw-tunnel -f "$K"
 S "grep -q lfm3-mw-tunnel ~/.ssh/authorized_keys || echo 'restrict,port-forwarding,permitlisten=\"localhost:18094\",command=\"/bin/false\" $(cat "$K.pub")' >> ~/.ssh/authorized_keys"
-ssh -i "$K" -o BatchMode=yes -o ConnectTimeout=10 "ubuntu@${IP}" 'echo SHELL_ALLOWED' 2>&1 | grep -q SHELL_ALLOWED && { echo "tunnel key allows a shell: refusing"; exit 1; }
+ssh -i "$K" -o IdentitiesOnly=yes -o ControlPath=none -o BatchMode=yes -o ConnectTimeout=10 "ubuntu@${IP}" 'echo SHELL_ALLOWED' 2>&1 | grep -q SHELL_ALLOWED && { echo "tunnel key allows a shell: refusing"; exit 1; }
 S "cd MobileWorld && sudo /home/ubuntu/.local/bin/uv run mw env run --count 1 --name-prefix lfmenv --backend-start-port 6810 --viewer-start-port 7870 --vnc-start-port 5810 --adb-start-port 5566 --launch-interval 20 > ../envrun_lfm.log 2>&1; tail -3 ../envrun_lfm.log | cut -c1-160"
 t0=$(date +%s)
 until [ "$(S "sudo docker inspect -f '{{.State.Health.Status}}' lfmenv_0" 2>/dev/null)" = healthy ]; do
