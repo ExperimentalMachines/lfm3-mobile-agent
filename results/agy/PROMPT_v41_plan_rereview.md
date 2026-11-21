@@ -24,6 +24,7 @@ report is `results/agy/v41_plan_review/report.md`; the authors' response is
 
 ## Report
 
-Write `results/agy/v41_plan_rereview/report.md` (create the folder). First line: `Verdict: GO`,
+**Do not write any file.** Put the complete report in your final reply (attempt 1 of this round claimed to write
+the file but did not, and its reply had no table). The reply must start with the verdict line: `Verdict: GO`,
 `Verdict: GO AFTER FIXES` or `Verdict: NO-GO`. Then the table (ID | severity | file:line | verbatim quote | what is
 wrong | exact fix), then a section "Earlier findings" with one line each.
