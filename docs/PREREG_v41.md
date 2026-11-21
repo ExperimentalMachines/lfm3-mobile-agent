@@ -143,3 +143,16 @@ seed-30 result had been looked at.
   0.895 / 0.888. AndroidControl's test labels keep the copied-intent waits, which v4.1/v4.2 are trained away from.
 - D (v4.2 + guards, emulator 5556) started 03:03; E (v4.2, emulator 5558) started 03:06. The rule is unchanged: D runs
   on MobileWorld if it reaches 18.
+
+### 2026-11-22 04:00 Asia/Manila — offline evals complete (D and E running, no D/E outcome seen)
+| Dev split (step success) | v4 | v4.1 | v4.2 |
+|---|---|---|---|
+| dev_answer | 0.890 | 0.882 | 0.868 |
+| dev_complete | 0.762 | 0.850 | 0.812 |
+| dev_screenqa | 0.790 | 0.780 | 0.788 |
+| dev_odyssey | 0.637 | 0.634 | 0.645 |
+| dev_amex | 0.731 | 0.731 | 0.714 |
+| MMStar / MMLU | 0.529 / 0.504 | 0.556 / 0.511 | 0.557 / 0.503 |
+
+- Files: `results/v41_dev/`, `results/v42_dev/`; v4.2's self-history decisions (enough to rebuild its data from v4.1's):
+  `results/v42/selfhist_state.json.gz`. The A100 session is stopped.

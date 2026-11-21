@@ -1,0 +1,47 @@
+{
+ "n_steps": 1000,
+ "n_episodes": 1000,
+ "parse_rate": 0.994,
+ "type_match": 0.847,
+ "step_sr": 0.634,
+ "episode_sr": 0.634,
+ "per_type": {
+  "click": {
+   "n": 686,
+   "type_match": 0.8950437317784257,
+   "step_sr": 0.6632653061224489
+  },
+  "input_text": {
+   "n": 142,
+   "type_match": 0.9366197183098591,
+   "step_sr": 0.5985915492957746
+  },
+  "long_press": {
+   "n": 6,
+   "type_match": 0.16666666666666666,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 3,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_home": {
+   "n": 92,
+   "type_match": 0.5652173913043478,
+   "step_sr": 0.5652173913043478
+  },
+  "scroll": {
+   "n": 71,
+   "type_match": 0.6619718309859155,
+   "step_sr": 0.5915492957746479
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 1000,
+  "expected": 1000,
+  "model": "/content/runs/lfm3vl2b-v41-lora/merged"
+ }
+}
