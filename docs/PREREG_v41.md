@@ -82,7 +82,7 @@ checkers or seeded app content in training data. The edits use only v4's own tra
 ### 2026-11-21 20:05 Asia/Manila
 Plan written. v4.1 training job launched 20:00 on a Colab A100 (`colab-b` session `v41`). Nothing evaluated yet.
 
-### 2026-11-21 20:40 Asia/Manila
+### 2026-11-21 20:11 Asia/Manila
 agy review of plan and code (`results/agy/v41_plan_review/`): GO AFTER FIXES. One valid finding (D1 wording: 4,104
 relabelled targets, of which 3,918 copy the previous intent) — fixed above; no count or code changed. The other seven
 were checked against the code and data and did not hold (details in `response.md`). Run A had started at 20:06; no

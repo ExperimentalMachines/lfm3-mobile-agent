@@ -58,7 +58,7 @@ done
 shasum -a 256 "$GG" | cut -c1-16 | sed "s/^/[$(date +%T)] $NAME: model sha256 /"
 log "server :$PORT up (pid $SP); seed-30 pass on emulator $CP, guards=$G"
 .venv-aw/bin/python eval/androidworld/run_aw.py --console_port=$CP --grpc_port=$GP --server_url=http://127.0.0.1:$PORT \
-  --agent_label=${NAME}_q4km --enable_thinking=true --prompt_version=v4 --guards=$G --output_path=$OUT "${CK[@]}" 2>&1 \
+  --agent_label=${NAME}_q4km --enable_thinking=true --prompt_version=v4 --guards=$G --output_path=$OUT ${CK[@]+"${CK[@]}"} 2>&1 \
   | grep --line-buffered -v "_os_env_vars\|FD from fork\|fork_posix" >> "logs/aw_run_$NAME.log"
 kill $SP 2>/dev/null
 D=$(ls -d $OUT/run_*/ 2>/dev/null | tail -1); D=${D%/}
