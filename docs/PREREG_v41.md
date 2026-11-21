@@ -126,3 +126,20 @@ seed-30 result had been looked at.
 - With the owner's approval, deleted 7 private checkpoint repos of finished trainings (`*-LoRA-ckpt`, `*-RL-ckpt`).
   Each model's final adapter and training logs remain in its final repo. Private reads worked again at once.
 - v4.2's dev evals run as planned. v4.1's dev evals are re-run on the same Colab session after the current cell ends.
+
+### 2026-11-22 03:50 Asia/Manila — B and C final (D and E running, no D/E outcome seen)
+| Seed 30 | Successes / 116 (primary) | Exceptions | Exceptions dropped | vs v4: gained / lost |
+|---|---|---|---|---|
+| v4 | 18 | 4 | 18/112 | — |
+| A (v4 + guards) | 18 | 1 | 18/115 | +3 / −3 |
+| B (v4.1) | 12 | 7 | 12/109 | +2 / −8 (no loss is an exception) |
+| C (v4.1 + guards) | 14 | 8 | 14/108 | +6 / −10 (3 losses are exceptions) |
+
+- All 16 B/C exceptions are setup crashes before the model acted. Most are gRPC log lines in adb output (B and C ran on
+  two emulators at once, as D and E do now); the rest are app-data reset failures.
+- B's losses include 4 Calendar tasks (`SimpleCalendarEventsOnDate`, `…AnyEventsOnDate`, `…DeleteOneEvent`, plus
+  `…LocationOfEvent` for C). They will be analysed after D and E finish.
+- v4.2 offline (AndroidControl test, high-level step accuracy): v4 0.728, v4.1 0.732, v4.2 0.732; low-level 0.908 /
+  0.895 / 0.888. AndroidControl's test labels keep the copied-intent waits, which v4.1/v4.2 are trained away from.
+- D (v4.2 + guards, emulator 5556) started 03:03; E (v4.2, emulator 5558) started 03:06. The rule is unchanged: D runs
+  on MobileWorld if it reaches 18.
