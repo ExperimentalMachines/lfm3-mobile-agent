@@ -27,7 +27,7 @@ follow-up is labelled "made after seeing the MobileWorld results". GUI-Owl and M
 |---|---|---|---|
 | 1 | **Loop guards.** G1: a `wait` whose intent does not mention waiting or loading is replaced. G2: an action proposed for the third time in a row is replaced when the screen is the same as two steps earlier (frozen screen or on/off toggle). Replacement = the model asked again with its own intent prefilled and a grammar that excludes the banned type, `wait`, `status` and `answer` | [`train/agent_guards.py`](../train/agent_guards.py) | off (`--guards`, `LFM3_GUARDS=1`) |
 | 2 | **MobileWorld typing as MobileWorld defines it:** `input_text` only types; Enter only when the model outputs `keyboard_enter` | [`eval/mobileworld/lfm3_mw_agent.py`](../eval/mobileworld/lfm3_mw_agent.py) | off (`LFM3_MW_TYPING=native`) |
-| 3 | **v4.1 training data.** D1: the 4,104 copied-intent `wait` targets (and 13,145 history lines that show them) get the intent "Wait for the screen to finish loading." D2: 5,244 rows (10% of eligible AndroidControl / GUI-Odyssey / AMEX rows) get one extra history step — the last step repeated once or twice, or a wait — with the human's next action still the target | [`data/v41_build_parquet.py`](../data/v41_build_parquet.py) | — |
+| 3 | **v4.1 training data.** D1: the 4,104 `wait` targets whose intent does not mention waiting or loading (3,918 of them copy the previous intent word for word), and the 13,145 history lines that show such steps, get the intent "Wait for the screen to finish loading." D2: 5,244 rows (10% of eligible AndroidControl / GUI-Odyssey / AMEX rows) get one extra history step — the last step repeated once or twice, or a wait — with the human's next action still the target | [`data/v41_build_parquet.py`](../data/v41_build_parquet.py) | — |
 
 **v4.1 training:** identical to v4 except the text edits — same base model, recipe (LoRA r64, lr 2e-4, 1,250 × 32),
 rows, row order (same shuffle seed and row count), image budget, prompt and dev splits; A100 like v4. Job:
@@ -81,3 +81,9 @@ checkers or seeded app content in training data. The edits use only v4's own tra
 
 ### 2026-11-21 20:05 Asia/Manila
 Plan written. v4.1 training job launched 20:00 on a Colab A100 (`colab-b` session `v41`). Nothing evaluated yet.
+
+### 2026-11-21 20:40 Asia/Manila
+agy review of plan and code (`results/agy/v41_plan_review/`): GO AFTER FIXES. One valid finding (D1 wording: 4,104
+relabelled targets, of which 3,918 copy the previous intent) — fixed above; no count or code changed. The other seven
+were checked against the code and data and did not hold (details in `response.md`). Run A had started at 20:06; no
+seed-30 result had been looked at.
