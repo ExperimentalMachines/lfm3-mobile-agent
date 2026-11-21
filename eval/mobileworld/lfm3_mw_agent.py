@@ -19,7 +19,11 @@ differently (Codex audit results/codex/session_1118_audit, C1/C2; fixed 2026-11-
     50-step budget per text action; the model's history is unchanged, as in AndroidWorld).
 Installed apps for v4: the names MobileWorld's open_app resolves (runtime/utils/models.APP_DICT, English names).
 Load with: mw eval --agent_type <this file> ... (MobileWorld's registry loads agent classes from a .py path).
-Env: LFM3_PROMPT_VERSION (v4 default), LFM3_AGENT_FORMAT_DIR (dir holding agent_format.py).
+Env: LFM3_PROMPT_VERSION (v4 default), LFM3_AGENT_FORMAT_DIR (dir holding agent_format.py and agent_guards.py).
+v4.1 follow-up (2026-11-21, docs/PREREG_v41.md), both opt-in; unset = the sealed v4 run's behaviour:
+  * LFM3_GUARDS=1          loop guards G1/G2 (train/agent_guards.py); a fired guard is noted in the prediction string.
+  * LFM3_MW_TYPING=native  MobileWorld's own input_text semantics (type only, as its official agents use); Enter only
+                           when the model outputs keyboard_enter. Default `aw` = the type + adapter-Enter step above.
 """
 import base64
 import io
@@ -36,6 +40,7 @@ from mobile_world.runtime.utils.models import JSONAction
 
 sys.path.insert(0, os.environ.get("LFM3_AGENT_FORMAT_DIR", os.path.dirname(os.path.abspath(__file__))))
 import agent_format as af  # noqa: E402
+import agent_guards as ag  # noqa: E402
 
 MW_APPS = ["Calendar", "Camera", "Chrome", "Clock", "Contacts", "Files", "Gallery", "Mail", "Maps", "Mastodon",
            "Mattermost", "Settings", "SMS", "Taodian"]
@@ -60,16 +65,23 @@ class LFM3MobileWorldAgent(BaseAgent):
         self.history: list[tuple[str, str]] = []
         self.max_parse_retries = 1
         self._pending_enter = False
+        self.guard = ag.LoopGuard() if os.environ.get("LFM3_GUARDS") == "1" else None
+        self.typing = os.environ.get("LFM3_MW_TYPING", "aw")
+        assert self.typing in ("aw", "native"), self.typing
 
     def initialize_hook(self, instruction: str) -> None:
         self.history = []
         self._pending_enter = False
+        if self.guard is not None:
+            self.guard.reset()
 
     def reset(self) -> None:
         self.history = []
         self._pending_enter = False
+        if self.guard is not None:
+            self.guard.reset()
 
-    def _query(self, goal: str, img) -> dict:
+    def _query(self, goal: str, img, extra_messages=None, **overrides) -> dict:
         payload = {
             "model": self.model,
             "messages": [
@@ -78,8 +90,9 @@ class LFM3MobileWorldAgent(BaseAgent):
                     {"type": "image_url", "image_url": {"url": "data:image/png;base64," + _png_b64(img)}},
                     {"type": "text", "text": af.user_text(goal, self.history, apps=self.apps)},
                 ]},
-            ],
+            ] + list(extra_messages or []),
             "temperature": 0.0, "max_tokens": 512, "chat_template_kwargs": {"enable_thinking": True},
+            **overrides,
         }
         t0 = time.time()
         r = requests.post(f"{self.server_url}/v1/chat/completions", json=payload, timeout=300)
@@ -106,12 +119,29 @@ class LFM3MobileWorldAgent(BaseAgent):
             if action is not None:
                 break
         raw = f"<think>{resp['reasoning']}</think>{resp['content']}  [latency {resp['latency_s']:.1f}s]"
+        small = ag.thumb(shot) if self.guard is not None else None
         if action is None:
             self.history.append(("(invalid output)", resp["content"][:80]))
             logger.warning(f"unparseable output: {resp['content'][:200]}")
             return raw, JSONAction(action_type="wait")  # same as AW: an invalid step consumes budget, no device action
         reasoning = resp["reasoning"].strip()
         intent = reasoning.splitlines()[0][:200] if reasoning else ""
+        if self.guard is not None:
+            banned, rules = self.guard.check(action, intent, small)
+            if banned:
+                excl = self.guard.forced_exclude(banned)
+                rq = self._query(self.instruction, img, extra_messages=[{"role": "assistant", "content": "",
+                                                                         "reasoning_content": reasoning}],
+                                 max_tokens=128, grammar=ag.grammar(excl))
+                txt = self.guard.forced_text(rq["content"], rq["reasoning"], reasoning)
+                a2 = af.parse_action(txt)
+                ok = a2 is not None and a2["action_type"] not in excl
+                raw += (f"  [guard {'+'.join(rules)}: {af.action_to_str(action)} -> "
+                        f"{af.action_to_str(a2) if ok else 'kept (forced reply unusable: ' + txt.strip()[:80] + ')'}"
+                        f" ({rq['latency_s']:.1f}s)]")
+                if ok:
+                    action = a2
+            self.guard.record(action, small)
         self.history.append((intent, af.action_to_str(action)))
         t = action["action_type"]
         if t == "status":
@@ -122,7 +152,7 @@ class LFM3MobileWorldAgent(BaseAgent):
         if t == "answer":
             return raw, JSONAction(action_type=t, text=action["text"])
         if t == "input_text":
-            self._pending_enter = bool(action["text"])  # AndroidWorld skips both type and Enter for empty text
+            self._pending_enter = bool(action["text"]) and self.typing == "aw"  # AW skips type and Enter for empty text
             return raw, JSONAction(action_type=t, text=action["text"])
         if t == "scroll":
             end = {"down": (W // 2, 0), "up": (W // 2, H), "right": (0, H // 2), "left": (W, H // 2)}.get(action["direction"])

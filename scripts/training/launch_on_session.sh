@@ -16,6 +16,9 @@ for f in train/sft_vlm.py train/agent_format.py train/qwen35_chat_template_gen.j
   dst="/content/work/$(basename "$f")"; [[ "$f" == data/meta/* ]] && dst="/content/work/meta/$(basename "$f")"
   C upload -s "$SESS" "$f" "$dst" | grep -q Uploaded || { echo "upload failed: $f"; exit 1; }
 done
+for pair in ${EXTRA_FILES:-}; do  # optional "local:remote" pairs, e.g. data/v41_build_parquet.py:/content/work/v41_build_parquet.py
+  C upload -s "$SESS" "${pair%%:*}" "${pair#*:}" | grep -q Uploaded || { echo "upload failed: ${pair%%:*}"; exit 1; }
+done
 C upload -s "$SESS" "$NEXT" /content/work/jobs.json | grep -q Uploaded || { echo "upload failed: jobs.json"; exit 1; }
 nohup "$CB" ${COLAB_CONFIG:+--config "$COLAB_CONFIG"} exec -s "$SESS" --timeout 200000 -f scripts/training/vm_blocking_jobs.py \
   > "logs/${SESS}_jobs_cell_$(basename "$NEXT" .json).log" 2>&1 < /dev/null &

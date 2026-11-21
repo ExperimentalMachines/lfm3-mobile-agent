@@ -19,6 +19,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "train"))
 import agent_format as af  # noqa: E402
+import agent_guards as ag  # noqa: E402
 import app_resolver  # noqa: E402
 
 from android_world.agents import base_agent  # noqa: E402
@@ -37,7 +38,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  max_pixels: int = af.MAX_PIXELS, max_tokens: int = 512,
                  temperature: float = 0.0, wait_after_action: float = 1.0,
                  max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False,
-                 prompt_version: str = "v1"):
+                 prompt_version: str = "v1", guards: bool = False):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -63,6 +64,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         assert prompt_version in af.PROMPTS, prompt_version
         self.prompt_version = prompt_version
         self.apps = None
+        # guards (opt-in, v4.1 follow-up; default off = the sealed v4 harness): train/agent_guards.py G1/G2.
+        self.guard = ag.LoopGuard() if guards else None
         if force_think:
             ids = requests.post(f"{self.server_url}/tokenize", json={"content": "</think>"}, timeout=30).json()["tokens"]
             assert len(ids) == 1, f"</think> is not a single token: {ids}"
@@ -73,6 +76,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self.env.hide_automation_ui()
         self.history = []
         self._prev_small, self._prev_type = None, None
+        if self.guard is not None:
+            self.guard.reset()
         if self.prompt_version == "v4":
             self.apps = app_resolver.device_app_names(self.env.controller)
             assert self.apps, "installed-app list is empty"
@@ -148,6 +153,30 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                     action = a2
                     resp = {**r2, "reasoning": intent, "latency_s": forced["latency_s"]}
 
+        guard_info = None
+        if self.guard is not None and action is not None:
+            r0 = (resp["reasoning"] or "").strip()
+            if not r0 and "</think>" in resp["content"]:
+                r0 = resp["content"].split("</think>", 1)[0].replace("<think>", "").strip()
+            intent0 = r0.splitlines()[0][:200] if r0 else ""
+            banned, rules = self.guard.check(action, intent0, small)
+            if banned:
+                excl = self.guard.forced_exclude(banned)
+                rq = self._query(goal, img, extra_messages=[{"role": "assistant", "content": "", "reasoning_content": r0}],
+                                 max_tokens=128, grammar=ag.grammar(excl))
+                txt = self.guard.forced_text(rq["content"], rq["reasoning"], r0)
+                a2 = af.parse_action(txt)
+                ok = a2 is not None and a2["action_type"] not in excl
+                guard_info = {"rules": rules, "excluded": sorted(excl), "original": af.action_to_str(action),
+                              "forced_text": txt[:200], "ok": ok}
+                attempts.append({"content": txt, "reasoning": r0, "latency_s": rq["latency_s"], "usage": rq["usage"],
+                                 "lenient_ok": a2 is not None, "strict_ok": af.parse_action(txt, strict=True) is not None,
+                                 "guard": True})
+                if ok:
+                    action = a2
+                    resp = {**resp, "content": txt}
+            self.guard.record(action, small)
+
         thumb = io.BytesIO()
         Image.fromarray(pixels).convert("RGB").resize((360, 800)).save(thumb, format="JPEG", quality=70)
         data = {
@@ -162,6 +191,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             "timings": resp["timings"],
             "parsed_action": action,
             "forced_intent": forced,
+            "guard": guard_info,
         }
         if action is None:
             self.history.append(("(invalid output)", resp["content"][:80]))

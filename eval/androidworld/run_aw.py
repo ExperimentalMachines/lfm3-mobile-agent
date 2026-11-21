@@ -46,6 +46,7 @@ flags.DEFINE_integer("max_pixels", 880 * 880, "screenshot pixel budget")
 flags.DEFINE_boolean("fixed_task_seed", False, "identical params across combos")
 flags.DEFINE_string("agent", "lfm", "lfm | guiowl | maiui")
 flags.DEFINE_boolean("runtime_feedback", False, "LFM agent: lexical open_app resolution + failure/no-change notes in history (ablation)")
+flags.DEFINE_boolean("guards", False, "LFM agent: loop guards G1 (ban wait under a non-wait intent) and G2 (ban an action repeated with no screen change), train/agent_guards.py (v4.1 follow-up; default off = sealed harness)")
 flags.DEFINE_boolean("force_think", False, "LFM agent: if the intent is empty, force a one-line intent (</think> banned) and re-ask for the action (ablation)")
 flags.DEFINE_integer("guiowl_images", 5, "GUI-Owl screenshots kept in context")
 flags.DEFINE_string("prompt_version", "v1", "LFM agent: v1 (models v1-v3) | v4 (answer/complete rules + installed-app list)")
@@ -80,7 +81,7 @@ def main(argv):
     else:
         agent = LFMScreenAgent(env, server_url=F.server_url, name=F.agent_label,
                                enable_thinking=F.enable_thinking, max_pixels=F.max_pixels,
-                               runtime_feedback=F.runtime_feedback, force_think=F.force_think,
+                               runtime_feedback=F.runtime_feedback, force_think=F.force_think, guards=F.guards,
                                prompt_version=F.prompt_version)
     agent.transition_pause = None
     ckpt = F.checkpoint_dir or checkpointer_lib.create_run_directory(F.output_path)
