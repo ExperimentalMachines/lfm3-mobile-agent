@@ -121,3 +121,8 @@ seed-30 result had been looked at.
 - **Offline dev evals:** v4.1's five dev-split evals failed. Hugging Face now refuses to *read* private repos while the
   account is over its private-storage limit (403), and the dev splits live only in the private v4 dataset. v4.1's
   AndroidControl test and general evals finished. Seed-30 selection does not use the dev evals.
+
+### 2026-11-22 01:40 Asia/Manila — Hugging Face reads restored
+- With the owner's approval, deleted 7 private checkpoint repos of finished trainings (`*-LoRA-ckpt`, `*-RL-ckpt`).
+  Each model's final adapter and training logs remain in its final repo. Private reads worked again at once.
+- v4.2's dev evals run as planned. v4.1's dev evals are re-run on the same Colab session after the current cell ends.
