@@ -156,3 +156,23 @@ seed-30 result had been looked at.
 
 - Files: `results/v41_dev/`, `results/v42_dev/`; v4.2's self-history decisions (enough to rebuild its data from v4.1's):
   `results/v42/selfhist_state.json.gz`. The A100 session is stopped.
+
+### 2026-11-22 06:05 Asia/Manila — D and E final; MobileWorld model selected by the rule
+| Seed 30 | Successes / 116 (primary) | Exceptions | Exceptions dropped | On the 79 tasks no run crashed |
+|---|---|---|---|---|
+| v4 | 18 | 4 | 18/112 | 11 |
+| A (v4 + guards) | 18 | 1 | 18/115 | 11 |
+| B (v4.1) | 12 | 7 | 12/109 | 8 |
+| C (v4.1 + guards) | 14 | 8 | 14/108 | 8 |
+| D (v4.2 + guards) | 13 | 24 | 13/92 | 9 |
+| E (v4.2) | 18 | 9 | 18/107 | 10 |
+
+- **D's exceptions are infrastructure.** Emulator 5556's accessibility service stopped answering, and the last 20 tasks
+  in run order (`SystemBluetoothTurnOnVerify` through `VlcCreateTwoPlaylists`) each ended after ~30 s with "Could not get
+  a11y tree" before the model acted. The rest are 2 gRPC-log and 2 app-data-reset crashes.
+- **Rule applied as written:** exceptions count as failures, so D = 13 < 18. Fallback: the best of A, B, C, E with at
+  least 18. A and E tie at 18; the tie order (E, B, C, A) selects **E = v4.2 without guards** (MobileWorld case `v42`,
+  native typing). Not re-litigated: where neither D nor E crashed (87 tasks), D and E tie 13–13, so the guards make no
+  measurable difference to v4.2 here.
+- **Reading:** no variant beats v4 on seed 30. v4.1 alone lost ground (12); v4.2, trained on its own replayed history,
+  is back to v4's level (18). Guards: neutral on v4 (A) and v4.2 (D vs E), +2 on v4.1 (C vs B).
