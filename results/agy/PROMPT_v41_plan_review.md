@@ -32,7 +32,7 @@ commit messages or docs: check them against the code and data.
    lines whose text contains " -> "). Recompute the counts 4,104 / 13,145 / 2,574 / 1,350 / 1,320 if you can.
 3. **Guards** (`train/agent_guards.py` and both integrations): find logic bugs. Is the GBNF grammar valid for
    every action and does it match `train/agent_format.action_to_str`? Are G1 and G2 as described? Can a guard end
-   an episode, loop forever, or change behaviour when guards are OFF (diff against `git show main:<file>`)? Is
+   an episode, loop forever, or change behaviour when guards are OFF (diff against `git show HEAD~1:<file>`)? Is
    the screen-change measure right in both agents (which screen is compared with which)?
 4. **Training job**: diff `scripts/training/jobs/lfm3_v41_a100.json` against `lfm3_v4_a100.json` and
    `vm_v41_pipeline.sh` against the plan's claim "identical to v4 except the text edits". Any difference that could
