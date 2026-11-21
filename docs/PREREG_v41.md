@@ -112,3 +112,12 @@ seed-30 result had been looked at.
   typical loop), the row for that step also shows that prediction (its own intent + `wait`) as the last history step.
   A wait leaves the screen unchanged, so the recorded screen and the human target still fit. The count is reported
   (`rows_own_wait_mistake`). Nothing else changes.
+
+### 2026-11-22 01:25 Asia/Manila — exceptions on seed 30; dev evals blocked (B and C running)
+- **Exceptions:** counted as failures, as in v4's seed-30 score of 18 (its 4 setup crashes were not re-run). No
+  seed-30 re-runs for any variant (A–E). Secondary: the official rule (exceptions dropped) is reported next to it.
+  Fixed after seeing interim counts: B 4 successes in 48 episodes (2 exceptions), C 4 in 52 (6 exceptions). All 8 are
+  setup crashes before the model acted (gRPC log lines in adb output; app-data reset failures).
+- **Offline dev evals:** v4.1's five dev-split evals failed. Hugging Face now refuses to *read* private repos while the
+  account is over its private-storage limit (403), and the dev splits live only in the private v4 dataset. v4.1's
+  AndroidControl test and general evals finished. Seed-30 selection does not use the dev evals.
