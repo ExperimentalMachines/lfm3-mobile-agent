@@ -258,10 +258,11 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
 
 ## Secrets and history rewrites
 
-| Date | What leaked into a run log | Fix |
+| Date | What was removed | Fix |
 |---|---|---|
 | 2026-11-19 | Environment variables printed by AndroidWorld's setup (an API key, a session token) | Redacted in every commit (`git filter-branch`) |
 | 2026-11-20 | An expired Colab file-proxy token inside a download URL | Redacted in every commit (`git filter-branch`) |
+| 2026-11-21 | The owner's e-mail address (commit metadata, Codex logs); Colab/Modal account names; a stray symlink to the owner's Mac | Replaced or removed in every commit (`git filter-repo`) |
 
 - **Hash maps:** old → new commit hashes are in [history-rewrites.md](history-rewrites.md).
 - **Scan:** two independent scans (ours and Codex's) found no credentials. They covered every file in every commit
@@ -269,7 +270,8 @@ Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to the old layout. Us
   - Checked: cloud keys, Hugging Face / OpenAI / Anthropic / GitHub / Google / Modal tokens, private keys, JWTs and
     key/token/secret/password assignments.
   - Not checked: images (no OCR).
-- **Owner identity:** the owner's git e-mail appears in commit author fields and in Codex logs that captured `git log`.
+- **Owner identity:** commits carry the GitHub noreply address, not a personal e-mail. This repository's local
+  `git config user.email` is set to it; set the same in any other clone before committing.
 - **Automatic redaction on commit (limited).** `.gitattributes` runs the `redact-env` clean filter on `*.log` files
   only, and only where it is configured locally:
   - It redacts `'NAME_WITH_KEY|TOKEN|SECRET|PASSWORD': '…'` pairs (the format AndroidWorld prints) and JWT-shaped
@@ -288,7 +290,7 @@ git config filter.redact-env.smudge cat
 
 | Ref | What |
 |---|---|
-| `main` | This repository |
-| `lfm3-android` | The branch name used while the project ran. Force-updated to the same commit as `main` at the 2026-11-20 merge, because its earlier commits held the expired token. Check: `git ls-remote origin main lfm3-android` shows one hash |
-| tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction) |
+| `main` | This repository. Force-pushed on 2026-11-21 (e-mail scrub; every hash changed) |
+| `lfm3-android` | The branch name used while the project ran. Kept at the same commit as `main` (force-updated on 2026-11-20 and 2026-11-21). Check: `git ls-remote origin main lfm3-android` shows one hash |
+| tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction; rewritten with the e-mail scrub) |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |

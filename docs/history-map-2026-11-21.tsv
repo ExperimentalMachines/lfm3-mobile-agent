@@ -1,0 +1,244 @@
+old	new	subject
+01cea2c36c66	c288576bbfca	Codex pass 11: GO for Qwen chains
+02b14faf97aa	acdd6ccef37f	Modal A100-40GB app for LFM runs (resume from hub), hand-off + same-session launcher
+06f34c52080a	fe5625eb1ef2	General-knowledge retention via forced-choice scoring: no forgetting for LFM3 or 450M
+077d3bfe6ec2	ed06aafe3687	Live snapshot: MobileWorld counts, QDC phone report (03:35)
+098a54ebf4c8	fe5e77a4e1ff	LFM3: certified base, matched no-think FT eval, training logs + loss curves
+0a507dd34475	148bfea8b036	QDC round 2: option 2 pass 2 (reversed) + phone listing
+0c8aae0675b1	e9c6080917dc	v4 lane: pause sealed v1 seed-7 (allowlisted), run v4 seed-30 dev pass, resume v1 from its checkpoin
+0ca2774ada3b	adb52f90df30	Refresh run log (2026-11-18 14:43)
+0d362dfb6122	c467dc61a8c6	STATUS: overnight v4 training (A100), RL pilot hook, sealed seed-7 arms, Codex data audit; v4 job wi
+0d621f47c63c	3a9dac128628	Docs registry: MAI-UI-2B seed-30 row and paired comparisons (v4 vs MAI-UI 6/20, McNemar 0.009; MAI-U
+0db5c0852096	ea9c6af8feb0	Refresh run log (2026-11-19 01:04)
+1057897b26c1	c90e512f40f3	Live snapshot: MobileWorld counts, QDC phone report (02:04)
+11b18ca18660	7dced9f3aa9a	MobileWorld run-2 completion rule (env failures get one re-run in a fresh container; model-caused cr
+123e5f3a6162	c091c7ec2477	Speed benchmark of the three 2B agents on identical inputs through their evaluation agent code (CPU 
+134ad9cdf262	f34f631b12af	Device streaming worker v3: start the phone server from a Mac-side background adb shell (v1 blocked 
+1378e0e8e4fa	e6d68663bba6	AWS MobileWorld: launcher spot/name/state options (bash-3.2-safe), instance bootstrap script (pinned
+157fb1e9b8a3	494c89a3855c	Live snapshot: MobileWorld counts, QDC phone report (11:08)
+1636541615d1	8e0d0a154777	Live snapshot: MobileWorld counts, QDC phone report (22:33)
+16389e048fbf	b1c1e9de30ad	v2 adapters saved locally (manifest + sha256), v2 training logs; jobs repointed to personal HF accou
+16be09247f12	060c6a0532cb	Fix Codex pass-8: weights fingerprint in eval manifest, pinned expectations when re-scoring
+1a020a681602	d6216d2ae946	Forced-choice (logprob) general-knowledge eval; Modal job for 4 models; LFM3 generation-mode retenti
+1f1b33aa117b	c6535e33ffe0	Docs: include MobileWorld run-2 comparison and summaries in the run log
+1f7f287efb43	cfc97142a9fa	Codex prompt: MobileWorld MAI-UI third-arm audit
+202d60b98876	42da6db09821	Run-log repo generator (registry from result files, sealed runs as counts only) + refresh/push scrip
+2207f1665b2a	727008e5efa6	QDC round 2: option 2 pass 1 (equal 1024 image budget)
+235839655a5c	41921f17b8ae	Docs: fix anchor and launcher comment
+241bd62167ab	160642095460	Qwen3.5-0.8B v1 AndroidWorld 12/116 (2.05 s/step); AW watchdog for hung task-setup children
+259281a30e8e	efc90831f1e8	v4 lane without the hub (merged upload hit the HF private storage limit): verified local copy of the
+25ac2443f288	d4739f78f70d	Refresh run log (2026-11-19 03:34)
+26711772f893	4005100ef478	Refresh run log (2026-11-19 06:36)
+2685864ce4f5	d8d9af805f61	Refresh run log (2026-11-18 21:03)
+27192cb022c8	70dd0aebaca1	AW agent: take intent from inline <think> for LFM2.5 (history parity with training)
+2781d3738a22	d013993acea3	Emulator logs: final shutdown lines (2026-11-20 02:32)
+283f1434429f	78c62e2f7511	Codex v4 dataset review: adversarial framing, default REJECT, claims C1-C5 to refute, null option
+29d5d257e6a9	ccaaa8e712de	Pre-registration for the v4 vs GUI-Owl comparison (held-out seeds 7/1234/2026 sealed, margin 8 tasks
+2aad021df9c5	05ae0f67805a	Live snapshot: MobileWorld counts, QDC phone report (12:08)
+2adbc02d0642	4cd23e9c3686	PREREG_v4: dated deviations (dev source, strict label check, v1 pause/resume, possible v4-RL arm rul
+2af34de5b49b	99fce462b584	v2 data mix (AC+GUI-Odyssey+AMEX+ScreenQA, 79,991 rows) builder, dev-split eval, LFM3 v2 job; GUI-Ow
+2b9bf51033db	d2ec618e04fd	MobileWorld: apply Codex mw_r2_audit (VALID WITH CAVEATS)
+2c2e53f93616	e11aaae99dd0	Refresh run log (2026-11-19 12:39)
+2ca034501d5d	a1ab56bcd21a	Refresh run log (2026-11-19 07:37)
+2dc21dedcc33	1b87756d15d5	Live snapshot: MobileWorld counts, QDC phone report (21:03)
+309428f76f55	00ac41936ddc	v4-RL: verified local copy (bf16(v4 + 2*B@A), 0 ulp; v4 tokenizer files; manifest), offline dev eval
+30bf6ec1f3cd	09282b5b5513	v4 docs: rows are step samples with an 8-step rolling history (not complete trajectories); dev prove
+325e78f6cd8e	87189d6618c4	v2 card: revision 3 filters
+3297a3e5fabf	30c55aac59df	MobileWorld on GCP credits: nested-virt spot n2-standard-16 launcher (own VPC, SSH from this Mac + t
+32d0baf62aeb	4c951b4bed06	MobileWorld LFM3 adapter v2 (Codex session audit C1/C2): scroll sent as AndroidWorld's exact centre-
+338740e5fb07	ee13fd045e1e	Live snapshot: MobileWorld counts, QDC phone report (12:39)
+33a1e91512b8	ff5087cf6ae9	LFM3 v2 AndroidWorld 3/116 (v1 15/116; paired v1-only 11, v2-only 0, p=0.001); empty intent on 30.4%
+3438cfb8f910	d5c94c4d28cd	Live snapshot: MobileWorld counts, QDC phone report (04:05)
+37debfed52b9	2cf3906bb8f1	Live snapshot: MobileWorld counts, QDC phone report (00:34)
+393c09e43a55	29cb0b332049	Refresh run log (2026-11-18 18:55)
+3bc390e0084e	030381dc8819	Documentation overhaul: README, docs/ set (results, evaluation, models, datasets, audits, infrastruc
+3cc14bc0ff51	447e17be94f5	Device-streaming speed benchmark harness (Firebase Android Device Streaming): recording proxy (fsync
+3e40b9ea1e23	3bb0b238778f	Chain re-binds to the newest running predecessor run (Codex pass-10 blocker)
+4109971ce00a	c9846f91c65f	Refresh run log (2026-11-18 16:02)
+4190aabda855	05f7bbb0ca27	Refresh run log (2026-11-18 15:52)
+449355f30c0e	de530dab05d5	Codex data audit STOP -> v4 rebuilt (3375539) and retrained from base under a new run/ckpt (v4b): ma
+44a73585863c	d4e1caa8119c	Refresh run log (2026-11-19 12:08)
+44adf6767466	ee68840b7c23	Refresh run log (2026-11-19 05:05)
+455ae4eb975b	39327d3d6150	Close Codex pass-4 edge cases: GT manifest required, row/manifest hash, receipt validity, metric gat
+456732a48f37	b8e470b76e9d	Seed 7 unsealed: preregistered analysis script + preliminary result before re-runs (v4 18, GUI-Owl 1
+45e1c3df4f66	97b49c5404c8	Fix Codex pass-2 findings (receipts, failure propagation, frozen GT scoring, matched evals, strict p
+463b5e2d9954	5511134cb7d6	PREREG: failover Colab session ready for the MAI-UI MobileWorld run
+464f86b3bcae	4c490bb3bd73	Status: LFM runs moved to Modal A100-40GB; Qwen on Colab L4s
+476d264abc62	c27fb51730a2	Tested watcher for v3 chain / Modal app state / v2 AW finish (state = field 3; finish marker anchore
+4872ab623e17	038012e07441	Refresh run log (2026-11-19 06:06)
+4c397dade5a9	3d5018493626	Codex prompt: final held-out AndroidWorld audit (seeds 7, 1234, 2026)
+4c3c5a7337ee	cdf0c4d03c8f	v2 data revision 4 (42f7f763) pinned in both v2 jobs; Codex verify #4 (narrow B1/B2)
+505685552f66	9fbc075ac139	Codex verify #4: GO on v2 revision 42f7f763; Qwen3.5-0.8B results; v2 trainings launched on two G4s
+50ced37d9c54	d77dc7ecf2b3	Refresh run log (2026-11-19 11:08)
+51e4de056325	3c88ccc2e87a	MobileWorld MAI-UI: graceful container restart (stale AVD lock fix); both halves started
+5214a2ab0719	3f4b57433d75	LFM3 v3 offline: empty intent 0% on AMEX/Odyssey dev (v2 100%/13.5%); AC high .723 low .902 term .72
+53f951c98ab7	8ff03484310e	Apply Codex final check: pause script fails safely and selects by server port; regex boundaries; wor
+55af46bd1874	9cbafe59f364	Seed 7 final (after preregistered single re-runs)
+55f0f79c32b6	272e5c51d02d	Device-streaming report script (proxy-logged phone timings, warm-up excluded, per-pass and thermal s
+564ae9954af1	88c6a4b80583	QDC benchmark: remote-adb recording proxy (HTTP via adb shell + curl on the phone; method/path allow
+5842bfdc18a0	95db5aaf1932	Refresh run log (2026-11-19 10:38)
+58f17b142b10	bc8aeddb8b61	QDC round 2: option 1 (evaluation image budgets, -fa on, MAI-UI Q8_0)
+5a58bb625663	725458e46b4a	GGUF export path (validated identical to official Q4_K_M on base LFM3); milestone monitor
+5c93a68e1cef	e40ac2e97971	QDC tunnel keeper (reopens local 15037 only)
+5de539b8a50e	9a046d4ff08d	Opt-in runtime feedback for the LFM agent (lexical open_app resolution vs installed apps, failure/no
+5ffcc80772f1	dbf36388dfeb	wait_v3_or_aw: AW-finish condition optional via AW_LOG (tested both ways)
+6053374315a3	837004abc674	Refresh run log (2026-11-19 00:34)
+60ec60f54e9d	35e0256c1e62	Refresh run log (2026-11-18 16:01)
+614bf4e2ec04	14f8c99c24c8	Refresh run log (2026-11-19 00:57)
+616be6ff3a83	e92ceb4b1536	QDC worker v6 (same-settings knobs: EXTRA_FLAGS, IMG_TOKENS, MAIUI_Q, SHOT_N, CLIENT_TIMEOUT, KEEP_F
+61a1b1586d6b	9125eaec0cc5	Qwen3.5-2B FT AndroidWorld 16/116 (paired vs LFM3 FT: 6-5, p=1.0); research report on next training 
+627e02a193c6	b4563ba967c5	Refresh run log (2026-11-19 04:35)
+640bd0ff6d23	5c1b3a36a9ba	Docs: data v2 plan (Codex viability review), GUI-Owl lessons, status
+64cd354be836	aaf03693a22e	STATUS + SUMMARY refresh: v2, v2+forced intent, v3 AndroidWorld rows; half-credits shown explicitly;
+64ef644b59fb	ec0fbafe638f	AW agent: --force_think ablation (one-line intent with </think> banned, then action with the intent 
+66d65423879a	b1c2e0ce779b	MAI-UI MobileWorld watcher log: both halves complete (19:32)
+686ea6422aec	dd14bf1a2832	Research: beating GUI-Owl-1.5-2B fairly at 2B (report + 6 note files): matched-budget gap = answer t
+699638c389f6	014a8ebe386d	v2 results: held-out GUI-Odyssey/AMEX/ScreenQA, AC test, general retention for LFM3 and Qwen3.5-2B v
+69e90968d59f	3f3cb8b18c11	Final held-out AndroidWorld analysis (seeds 7, 1234, 2026): v4 non-inferior to GUI-Owl (+2.0 pp, CI 
+6a0be920eff3	c0832afceacb	Refresh run log (2026-11-19 01:34)
+6a9c0aeb5ec4	cd466be2f22a	Refresh run log (2026-11-18 22:33)
+6aa3fed7e3b7	69308f9df84d	v3 build: exit 0 explicitly after verified success (streaming thread aborted interpreter teardown wi
+6b774d4c8baa	b6e1338c13ef	Queue remaining sealed arms (v4 1234, v1/GUI-Owl/v4 2026); prereg entry: seed 7 complete, unsealing 
+6bc02c89de5e	c2b1c98d4217	Docs: QDC round-2 report (option 1/2 tables), seed-7 analysis in EVALUATIONS (preliminary until re-r
+6d1726f2c390	3534a40d8e41	Refresh run log (2026-11-18 21:53)
+6f837521d4f8	aff1b9a2d7e9	Device streaming: Android CLI wrapper (OpenJDK 21 + SDK shim on the same Homebrew adb as the running
+6fb2fd7e4fec	8ad37d6486a5	Live snapshot: MobileWorld counts, QDC phone report (03:04)
+7034ebe3bddd	2707dc760cea	Live snapshot: MobileWorld counts, QDC phone report (23:03)
+70afed2df383	70afed2df383	Fix Codex audit findings: AW patch vocab bug, strict cleanup/teardown, strict+lenient parsing, eval 
+70bfd8109845	20b759b2702b	Commit all run logs, episodes, Codex audit outputs and helper scripts
+7435d16bdbe9	9499276b35bb	Codex recovery/gate audit fixes: SFT hub resume fails closed + run-config identity; watchdog v2 (exa
+743b7c340e92	35443a25a00f	MobileWorld run 2 final: GUI-Owl 22/105 vs v4 6/105; MAI-UI run started
+75b6b3799633	9d47f32d73b1	Refresh run log (2026-11-19 09:38)
+7702178395cf	cf12f09fdff8	Docs fixes from Codex round2_audit (no P1): phone prompt-prefix reuse disclosed (GUI-Owl/MAI-UI ~460
+771eebe06017	9e44cd4463be	Codex adversarial v4 dataset audit: NULL option (admit 0 of 9 releases); claims C2 unverified, C4 OS
+779a1a7421ea	e52bb1c45515	Commit on-disk evidence: remaining LFM3 v1 / 450M FT AndroidWorld episodes, v2 dev predictions, AC p
+77a45c73b0fb	f0051c22ba61	LFM3 AW takes priority on emulator 1; GUI-Owl reference resumes after
+7895691a2275	be918cc2a39d	Refresh run log (2026-11-19 08:07)
+79c4b5023173	0b76fd4d3719	MobileWorld: v4 final on 105 English GUI-only tasks = 5/105 (summary; full trajectories kept locally
+7a6fc70038cf	0d7a21e2b08a	Live snapshot: MobileWorld counts, QDC phone report (10:08)
+7b4ced13f8ed	cfd2ebe6ce55	Refresh run log (2026-11-19 04:05)
+7be18c1435c2	8b4388ddb6ca	Refresh run log (2026-11-18 22:03)
+7be6a33dca0b	c0219c988258	MobileWorld MAI-UI: recreate --rm containers after spot preemption; 2 interrupted tasks re-run
+7bef497e1ebd	4ba432768c6c	publish v2 phone GGUFs + cards to personal HF (private)
+7c225c5be0f5	02a3767c5e2a	AndroidWorld failure-mode classifier + partial results; final Codex eval prompt
+7c2382f80eee	262cdeb6d8db	Emulator 2 fill: after sealed v1 seed 7 (116 episodes verified), run the preregistered GUI-Owl seed-
+7cb900636ee8	e356098bd45a	Refresh run log (2026-11-19 08:37)
+7e1f11dee607	2241fea0afb4	Registry: phone speed results (QDC SM8975, partial Firebase Pixel 9)
+7f66290fb193	750aeae03848	RL job: base-model smoke (timing) -> wait for v4 pipeline -> budgeted GRPO from merged v4 -> push ->
+8030aba32070	093dd174f4e1	v4 prompt (answer vs complete rules) + installed-app list (device launcher names, all verified to re
+8131505f6d0c	5fe5e0cb1d53	Codex v3 audit: headline numbers reproduce (AW 15/3/6/13/23, paired tests, offline, retention); NO-G
+81f3462de278	8b66b31cfe99	PREREG: correct count (4 setup failures, not 5)
+8225bb7b3689	b3943dc54670	Live snapshot: MobileWorld counts, QDC phone report (01:34)
+84281466682c	e048ac159618	Refresh run log (2026-11-18 21:36)
+858c51e44426	4b0df28a675d	RL pilot (Codex research rank 1): strict reward with 18 fixtures, TRL GRPO script from Liquid's LFM3
+85a68aa44668	336593a8be8e	Firebase device-streaming benchmark stopped by request (switching to Qualcomm Device Cloud): partial
+87af11c6d6c1	5d552376983d	Apply Codex re-audit (READY AFTER FIXES): launcher matching for any invocation path, hand-off harden
+88c6435ea994	1f92a0d0ff3c	QDC round 2 complete (option 1 + option 2 both orders); phone cleaned, tunnel closed
+89d7cab3b335	1e3f8490b6a0	Live snapshot: MobileWorld counts, QDC phone report (10:38)
+8b696eee79c6	0176b9696609	Refresh run log (2026-11-18 23:03)
+8bb3c9f489ff	42892677fbc5	Codex prompt: confirmation before merge
+8c1cd9861600	b72bf6eabba4	Restructure: analysis/ for every script that computes a reported number, scripts/ grouped by purpose
+913f008594b1	01e0010b3067	Refresh run log (2026-11-18 23:34)
+914d59117c6b	914d59117c6b	LFM3-VL Android agent: data builder, SFT, offline+AndroidWorld eval harness, docs
+92162c652f64	c8be827b87df	QDC: pass 1 v4 data, GUI-Owl/MAI-UI stall evidence (vision encoder at 2,600 image tokens: swap exhau
+94b847aaf849	ac5b9fb63bfb	PREREG: Colab failover at 12:40:57 with no task lost
+94d1eeaab5ae	4a27a7bbc136	MobileWorld MAI-UI: failover Colab session scripts (same files by SHA-256, same build/flags; tunnel 
+95c3ce452bd4	fdf9efbc1140	PREREG: correct entry time (18:25)
+960ea728e9c5	486cd257d6b0	Codex re-audit (STOP) handled: continue v4b SFT with disclosed residual label noise; RL reward -> ex
+966619544617	1f143328c850	Refresh run log (2026-11-18 21:35)
+97817c28e3be	0a73ad9c68cc	MobileWorld MAI-UI: Codex audit VALID WITH CAVEATS; corrected infrastructure account; container logs
+97bb05ff155b	ff65edee4b42	Codex final held-out audit: VALID WITH CAVEATS; findings applied
+9a218d9ef96d	a371d40a50fa	Refresh run log (2026-11-19 02:04)
+9a25340becea	e9dbeb0adc6d	Live snapshot: MobileWorld counts, QDC phone report (22:03)
+9bcf0e05661a	c820ace2a800	Refresh run log (2026-11-19 11:38)
+9bd69a2c2a8b	ed1db504bd44	Live snapshot: MobileWorld counts, QDC phone report (02:34)
+9ee2876232b2	24fc7726047d	MAI-UI-2B: Q4_K_M collapses into empty <thinking> loops on AndroidWorld screens (reproduced on the e
+9f9ba316e74b	828a33de601e	LFM3 v2 + force_think AndroidWorld 6/116 (v2 3, v1 15): vs v2 +3/-0 p=0.25; vs v1 v1-only 9, ft-only
+9fdd5f20203e	f45ade726a58	Pipeline EXTRA_PIP hook (torch-pinned); Qwen3.5 jobs install flash-linear-attention (reference GDN p
+a085eed3e4f7	f1a990841db0	Publish LFM3 v3 phone GGUF + card (private HF: alpharomercoma/LFM3-VL-2B-AndroidAgent-v3[-GGUF]); v3
+a156881f765d	d45460d5e2b3	Apply Codex confirmation: pause script treats permission errors as alive and re-checks after the las
+a2c8b33acaa7	c23c93a43819	Qwen3.5 GGUF export + AndroidWorld hand-off (converter/serving validated on base 0.8B)
+a2c9d1fe25b6	7deebf20ce1a	MobileWorld: GUI-Owl run 2 complete (22/105); model-server-unreachable rule and guard before MAI-UI 
+a3f341b2cc2a	9540e42b2594	Auto 450M base AndroidWorld after FT run
+a482842e8a3a	40acacb72834	AW watchdog: allowlist (forked run_aw.py, one-shot adb pull/push/shell/install), never logcat; --sel
+a5e228eb6078	71db66a0dbb4	Codex prompt: final pre-merge check
+a6ad0ed49d94	b9de8e6a4ecb	Fix Codex pass-3 findings: paired restore + row identity, think prefill, type checks, high-only cert
+a762499c1666	20558ae99a9e	Codex emu2/promotion audit fixes: sealed runner v3 (bounded, PID-bound server start; fails instead o
+a920bd3b1179	215aa47df141	Live snapshot: MobileWorld counts, QDC phone report (00:04)
+aab92dab5e58	a77b869231ca	AW: full success = reward >= 1; partial_credit label for composite half rewards
+ab60e72440f5	86d17ca76f66	Emulator 1 queue: sealed v1 seed 1234 after GUI-Owl seed 7 (116 episodes verified)
+abd7984865dd	b13c1e65ba2e	MobileWorld smoke test on AWS: nested-virt c8i launcher (SSH from this Mac only, 12 h power-off guar
+b04fd26e87cd	92f84b2bb620	MobileWorld run 2: summaries (GUI-Owl provisional: one fresh-container attempt pending), MAI-UI Mobi
+b0bfc6f7d170	2438431adfcf	Refresh run log (2026-11-18 21:55)
+b13df7a24986	322f3be3fd38	LFM3 v3 AndroidWorld 13/116 full successes (+1 half-credit; AW mean 13.5/116): vs v1 15 (paired 110:
+b19307b7ccb7	37b0efe78b6f	launch_on_session: bracketed pkill patterns + python makedirs (pkill -f self-matched its shell, so m
+b33dd76f81ac	c9543680898b	Refresh run log (2026-11-19 00:04)
+b480c46db6e7	550caf6bbc3d	Refresh run log (2026-11-18 21:33)
+b54c08fe7068	7f0e0f5a35ab	v4 passes the preregistered seed-30 gate (18/116: 6 answer + 12 action; v3 13, v1 15, GUI-Owl 23); v
+b69acf32bb74	3be94b080329	Recover after host reboot + Colab VM loss: lane resume scripts, 50-step checkpoints, Qwen3.5-2B on C
+b6ee3b619f58	4bd9b6d5a413	Run log of the lfm3-android project: every training run, evaluation (AndroidControl, dev splits, ret
+b701cd77a8aa	2331de103412	Refresh run log (2026-11-18 21:54)
+b767527da8b8	5044d06ecc33	Refresh run log (2026-11-19 03:04)
+b87f82ea77e0	32d9d8ebb904	Colab GPU GUI-Owl server for MobileWorld (same GGUF/commit/flags as the AW runs, -ngl 99) behind a r
+b88ccd304690	11956b78717e	v3 on Modal H100: parallel shard download (load_dataset stalled), labeling + detached training chain
+b8e3b88fe301	68a173a362eb	Live snapshot: MobileWorld counts, QDC phone report (04:35)
+b9397a6f07fd	ecf062e242c2	Seed-7 analysis fixes from Codex seed7_analysis_audit (VALID WITH CAVEATS): source-checked 78-templa
+bc6db3069ba2	387044efe354	Live snapshot: MobileWorld counts, QDC phone report (23:34)
+bc7724fac141	2f3a5a8f365e	AW hand-off for v2 models (export -> wait for emulator marker -> run -> stop server)
+bd1facfcb413	03946e42a61f	Pipeline: config-bound receipts; always re-score predictions against frozen GT (Codex pass-6)
+be7bc115b4b9	a036269792a3	Apply Codex restructure/docs audit (NOT READY, 31 findings): fixes for all but the author-email item
+bebf929fc9d7	4bd5ef0ed2b0	summarize_aw: count GUI-Owl episode endings (terminate, and answer which ends its episode); GUI-Owl 
+c01ab13b1774	e833bd114b57	Refresh run log (2026-11-19 10:08)
+c0a6abb7bf98	3d9c30d36abf	Speed results: CPU (8 threads, idle GCP n2) per-step latency v4 6.4 s vs GUI-Owl 58.0 s vs MAI-UI 58
+c0cd4c4d8cd0	7c636f54a258	Fixes from Codex's adversarial v4 pipeline audit (7 P1/5 P2): currency/whole-token answer checks, di
+c11d63032346	5b600f12fefc	v4 data pipeline: candidate selection (AC episodes ending in complete, AW-app guard, 200 screen-disj
+c3e9ff73c6bd	4676c5bb5073	History rewrite record (2026-11-20: expired Colab token redacted); redact-env filter also redacts JW
+c446bc5efaed	b94c379cb8cb	Sealed runner v2 (resume support) as a new file (never edit a running script in place); allowlisted 
+c6d403f88d5c	e2812b1134a8	MobileWorld snapshot: run 2 final counts (GUI-Owl one attempt pending)
+c71d5b1025ea	e255940390af	Publish phone GGUFs + model cards to private HF repos
+c7293172e4d5	d43ee6d0bb43	Refresh run log (2026-11-18 21:55)
+c7c4e40e1e9c	7169882c6b95	Refresh run log (2026-11-19 02:34)
+ca43f74b61d8	644cb07be5ad	Refresh run log (2026-11-19 05:35)
+cb1ffec30b5f	a492da9b1410	v2 builder: positive-evidence keyboard submit merge (B1), control-drag scroll filter (B2)
+cb5ec4343189	b7b9e7ef5aad	v4 fixes from Codex research before training: strict type-aware answer agreement (rejects 1.5/15, -2
+cdb8be9384db	f5b1b0fcd16e	Fix Codex pass-7: lost-session detection under pipefail, atomic general summaries + validity gate, d
+cfdca57964b3	b76fa4b42448	QDC report: like-for-like headline at equal sampled clock (v4 ~39 s vs GUI-Owl 1100 s / MAI-UI 1063 
+cffe47ab8da1	e3de3f3b1f43	Colab VM loss at step 353 (04:51): relaunch script (bootstrap + v4/RL files, SFT resumes from hub ck
+d0c6d117f67c	6ea2b932df39	STATUS refresh; v2 job adds forced-choice general evals for Qwen3.5 2B/0.8B base+FT
+d0dba7708603	394de8e9e11d	Live snapshot: MobileWorld counts, QDC phone report (21:33)
+d357a01d1c02	85f770139fb0	Auto export+AndroidWorld for LFM3 fine-tune
+d465ac742c9b	fd10bd6076ce	AndroidWorld full 116: LFM3 FT 15/116 (base 1/116, paired McNemar p=1.2e-4), 450M FT 3/116; paired_a
+d4d31446df1e	4d43ac1b6ea7	v4-RL rejected by the preregistered offline promotion rule (dev_answer +0.022 < +0.05; AC high-level
+d60deb1f9c23	9e0912eda3cd	Refresh run log (2026-11-19 07:06)
+d62adde5bfde	3f32e0e7a724	Auto results summary builder
+d76fec421e9a	c2f8715ff93c	Codex prompt: re-audit of the restructure/docs fixes
+d7731389d7f6	dc008f26e918	Refresh run log (2026-11-19 09:08)
+d7de4f135f02	7387af66c836	Device streaming: pass 2 at 1 timed pass (phone CPU is ~7x slower than the server CPU; budget), work
+da3c14b43e69	b9e01e281742	v3 build via pyarrow (push_to_hub re-encoded in one thread: 700 s/shard, 0 MB/s); label->row alignme
+da8030a442db	04a0a3d73e35	PREREG: held-out seeds complete; 117 preregistered setup-crash re-runs (v4 seed 1234: emulator 2 hun
+db7d7849a82e	6492a023269f	Merge the old run-log site history into the restructured repository (tree: restructure; run-log page
+dc203ab27fa7	ca142ce5fe6e	PREREG: v1 seed 2026 relaunched on emulator 1 after emulator 2 hung during setup (0 episodes)
+dd383df7537e	f2f496a1aa55	MobileWorld: MAI-UI-2B third arm complete (11/105); pull and summarize extended; emulator-crash disc
+e035a51e3120	3350423f2a33	AW checkpoints: atomic writes, fail-closed load (unreadable saved episode no longer silently re-run)
+e336f6d4e7a3	f517a5486112	v2 data revision 3 (Codex re-verification fixes: no new-source terminals, keyboard-submit merge, Ody
+e5dab16550da	8cc2ecd440bc	v3: save teacher labels before push, CPU rebuild-from-labels path (H100 push OOM'd with forked worke
+e91c6fbc1b27	a67fe27897b7	Document the 2026-11-19 history rewrite (env secrets redacted in two logs) and old->new hash map
+e9a241e7b776	9fd82bae9706	Apply Codex final-audit corrections: classifier schema/loop defs, p-value format, retention wording,
+ea0034d2ca43	321a48c56585	Close Codex pass-5 gaps: receipt identity/final-step, metrics reuse identity, manifest hash required
+eb83c0817d20	42ee5f9472cd	LFM3-VL-2B fine-tune AndroidControl test results (0.715 high / 0.948 low)
+ecdebc553e52	0348bb155e38	Codex prompt: restructure + documentation audit
+ede2b2dd9b65	8626d1557aed	Live snapshot: MobileWorld counts, QDC phone report (11:38)
+eef7cd24ceb1	370fc395de18	Live snapshot: MobileWorld counts, QDC phone report (01:04)
+f0129a2fac71	0d26f01e6883	MAI-UI-2B (Q8_0, matched 1 screenshot) AndroidWorld seed 30 finished: summary (116/116 episodes, 1 e
+f09e65b206fc	0ab18ac41efe	PREREG: VM loss/resume entry (infrastructure only); watchdog: no RL hook on an L4 fallback
+f5aaed289ec3	30fce7720c2d	450M + Qwen pipelines, general-knowledge eval, replay mixing; codex pass-2 prompt
+f5e0994f6c90	55c35dce405c	v3 (teacher-filled intents) pipeline; Codex viability review of v4 candidate datasets launched
+f6fa58f6926c	255ff46fa8d1	v2 data revision 2: fixes for Codex audit F1-F12 (screen-disjoint dev, type+Enter merge, centre-band
+f743557c67a9	c4009b430be9	AW: base LFM3 summary, GUI-Owl native sample; GUI-Owl adapter
+f83d7ebc1522	19b23601e5ec	Refresh run log (2026-11-18 21:02)
+fb41e8cac68d	771751bd7ac5	Chains only accept the exit of the run they saw running (Codex pass-9)
+fbc1502b8c35	551fbbe60dde	450M: base AC metrics, training logs; summary refresh
+fbe2bb71994b	6072ecc7400a	450M fine-tune results: AC test + paired general-knowledge retention
+fc75b36a9ba6	746bf237d07b	v4: pipeline passes --prompt_v4_pool to AC/dev evals; v4 AW dev lane (hub -> GGUF -> seed 30 after s
+fcb60b04d15c	14b2e4714ad6	AW agent: answer ends episode (GUI-Owl harness parity); codex pass-4 prompt
+fe6589358e6d	078b3389dc81	v2 data revision 3 pushed (836e4019): pinned in training jobs; card; Codex verify #3 launched
