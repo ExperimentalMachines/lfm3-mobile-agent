@@ -1,23 +1,22 @@
 #!/bin/bash
-# Runs ON the Colab VM (colab-b), inside the blocking cell. Exports merged weights to the phone GGUF (Q4_K_M) with the
-# SAME converter as the Mac: llama.cpp cd959bae9 (convert_hf_to_gguf.py + llama-quantize) and a converter venv pinned
-# to the Mac's .venv-convert versions. Why here: the Mac's disk cannot hold merged (3.8 GB) + F16 (3.6 GB) right now,
-# and the Hub cannot hold the merged weights (private storage full, 2026-11-21).
-#  1. Parity: re-export v4's published merged weights (each file checked against results/v4_local_export_manifest.json)
-#     and require the Mac's v4 GGUF SHA-256. Nothing else is exported unless this matches byte for byte.
-#  2. For each EXPORT_RUNS entry "run_dir:Name" (waits for the run's train_receipt.json): check_local_merge.py
-#     (merged == bf16(base + LoRA)), then export to /content/gguf/<Name>-Q4_K_M.gguf and print its SHA-256.
+# Runs ON the Colab VM (colab-b), inside the blocking cell. Converts merged weights to an F16 GGUF with the Mac's
+# converter (llama.cpp cd959bae9 convert_hf_to_gguf.py; venv pinned to the Mac's .venv-convert versions), from a folder
+# named exactly like the Mac's export folder (the converter takes general.name etc. from it). The 4-bit step
+# (llama-quantize Q4_K_M) runs on the Mac: quantizing on this x86 VM changed 0.06% of bytes vs the Mac (2026-11-21
+# parity test), so only the F16 step moves here. Why here at all: the Mac's disk cannot hold merged (3.8 GB) + F16
+# (3.6 GB), and the Hub cannot hold the merged weights (private storage full).
+# EXPORT_RUNS entries "dir_or_run:Name": v4 (parity, published merged weights checked against
+# results/v4_local_export_manifest.json) and each run (waits for its train_receipt.json, then check_local_merge.py).
+# Output: /content/gguf/<Name>-F16.gguf (+ .sha256). The Mac quantizes and checks v4's Q4_K_M SHA-256 first.
 set -uo pipefail
 log() { echo "[$(date +%T)] export: $*"; }
 cd /content
 export HF_TOKEN=$(cat /content/.hf_token)
-V4_GGUF_SHA=5285279249948dc019abf9341f98b65778f679a1f2cbc76e94c57a96af2a35e7
 BASE_REV=23387beda43c60310348e83e25f78f33c3140d3a
-if [ ! -x llama.cpp/build/bin/llama-quantize ]; then
+if [ "$(cd llama.cpp 2>/dev/null && git rev-parse --short=9 HEAD)" != cd959bae9 ]; then
   rm -rf llama.cpp
-  git clone -q --filter=blob:none https://github.com/ggml-org/llama.cpp.git && (cd llama.cpp && git checkout -q cd959bae9 \
-    && cmake -B build -DGGML_CUDA=OFF -DLLAMA_CURL=OFF > /dev/null && cmake --build build -j "$(nproc)" --target llama-quantize > build.log 2>&1) \
-    || { log "BUILD FAILED"; exit 1; }
+  git clone -q --filter=blob:none https://github.com/ggml-org/llama.cpp.git && (cd llama.cpp && git checkout -q cd959bae9) \
+    || { log "CLONE FAILED"; exit 1; }
 fi
 (cd llama.cpp && log "llama.cpp $(git log -1 --format=%h)")
 if [ ! -x /content/venv-convert/bin/python ]; then
@@ -26,15 +25,17 @@ if [ ! -x /content/venv-convert/bin/python ]; then
     sentencepiece==0.2.3 protobuf==4.25.9 safetensors==0.8.0 gguf==0.19.0 huggingface-hub==2.4.0 || { log "VENV FAILED"; exit 1; }
 fi
 PY=/content/venv-convert/bin/python
-export_one() {  # merged_dir out_gguf
-  $PY llama.cpp/convert_hf_to_gguf.py "$1" --outtype f16 --outfile "$2.F16.gguf" > "$2.convert.log" 2>&1 || return 1
-  llama.cpp/build/bin/llama-quantize "$2.F16.gguf" "$2" Q4_K_M > "$2.quant.log" 2>&1 || return 1
-  rm -f "$2.F16.gguf"
+export_f16() {  # merged_dir Name  (converted through /content/named/<Name>, the Mac's folder name)
+  mkdir -p /content/named && ln -sfn "$1" "/content/named/$2"
+  $PY llama.cpp/convert_hf_to_gguf.py "/content/named/$2" --outtype f16 --outfile "/content/gguf/$2-F16.gguf.part" \
+    > "/content/gguf/$2.convert.log" 2>&1 || return 1
+  mv "/content/gguf/$2-F16.gguf.part" "/content/gguf/$2-F16.gguf"
+  sha256sum "/content/gguf/$2-F16.gguf" | cut -d' ' -f1 > "/content/gguf/$2-F16.gguf.sha256"
 }
 mkdir -p /content/gguf
 BASE=$($PY -c "from huggingface_hub import hf_hub_download as d; print(d('LiquidAI/LFM3-VL-2B', 'model.safetensors', revision='$BASE_REV'))") \
   || { log "BASE DOWNLOAD FAILED"; exit 1; }
-if [ ! -f /content/gguf/parity_ok ]; then
+if [ ! -s /content/gguf/LFM3-VL-2B-AndroidAgent-v4-F16.gguf ]; then
   $PY - <<'PY' || { log "PARITY INPUT FAILED"; exit 1; }
 import hashlib, json, os
 from huggingface_hub import hf_hub_download
@@ -48,18 +49,15 @@ for f, want in man.items():
     assert d.hexdigest() == want, f"{f}: published file differs from the v4 export manifest"
 print("v4 merged files match the manifest:", len(man))
 PY
-  export_one /content/v4merged /content/gguf/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf || { log "PARITY EXPORT FAILED"; exit 1; }
-  h=$(sha256sum /content/gguf/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf | cut -d' ' -f1)
-  [ "$h" = "$V4_GGUF_SHA" ] || { log "PARITY MISMATCH: $h (Mac $V4_GGUF_SHA)"; exit 1; }
-  touch /content/gguf/parity_ok
-  log "parity OK: the Colab export of v4 is byte-identical to the Mac's v4 GGUF"
+  export_f16 /content/v4merged LFM3-VL-2B-AndroidAgent-v4 || { log "PARITY F16 FAILED"; exit 1; }
+  log "v4 F16 ready (parity input for the Mac)"
 fi
 for spec in ${EXPORT_RUNS:?}; do
-  run=${spec%%:*}; name=${spec#*:}; R=/content/runs/$run; G=/content/gguf/$name-Q4_K_M.gguf
-  [ -s "$G" ] && { log "$G exists"; continue; }
+  run=${spec%%:*}; name=${spec#*:}; R=/content/runs/$run
+  [ -s "/content/gguf/$name-F16.gguf" ] && { log "$name F16 exists"; continue; }
   until [ -f "$R/train_receipt.json" ]; do sleep 120; done
   $PY /content/work/check_local_merge.py "$R/merged" "$BASE" "$R/lora" || { log "MERGE CHECK FAILED: $run"; exit 1; }
-  export_one "$R/merged" "$G" || { log "EXPORT FAILED: $run"; exit 1; }
-  log "exported $G sha256 $(sha256sum "$G" | cut -d' ' -f1)"
+  export_f16 "$R/merged" "$name" || { log "EXPORT FAILED: $run"; exit 1; }
+  log "exported /content/gguf/$name-F16.gguf sha256 $(cat /content/gguf/$name-F16.gguf.sha256)"
 done
-log "all exports done"
+log "all F16 exports done"
