@@ -74,5 +74,14 @@
    "EXPORT_RUNS": "lfm3vl2b-v41-lora:LFM3-VL-2B-AndroidAgent-v4.1 lfm3vl2b-v42-lora:LFM3-VL-2B-AndroidAgent-v4.2"
   },
   "stagger_s": 0
+ },
+ {
+  "name": "publish_public",
+  "script": "/content/work/vm_publish_public.sh",
+  "log": "/content/runs/publish_public.log",
+  "env": {
+   "PUBLISH_RUNS": "lfm3vl2b-v41-lora:LFM3-VL-2B-AndroidAgent-v4.1 lfm3vl2b-v42-lora:LFM3-VL-2B-AndroidAgent-v4.2"
+  },
+  "stagger_s": 0
  }
 ]
