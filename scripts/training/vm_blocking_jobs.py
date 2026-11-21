@@ -12,7 +12,9 @@ import os
 import subprocess
 import time
 
-jobs = json.load(open("/content/work/jobs.json"))
+JOBS = os.environ.get("JOBS_JSON", "/content/work/jobs.json")  # a second, detached runner can use its own file
+STATUS = JOBS[:-5] + "_status.json" if JOBS != "/content/work/jobs.json" else "/content/work/jobs_status.json"
+jobs = json.load(open(JOBS))
 import uuid
 RUN_ID = uuid.uuid4().hex[:12]  # lets watchers tie an exit status to the run they saw start
 procs = []
@@ -29,7 +31,7 @@ t0 = time.time()
 while True:
     alive = [(n, p) for n, p in procs if p.poll() is None]
     status = {n: ("running" if p.poll() is None else f"exit {p.returncode}") for n, p in procs}
-    with open("/content/work/jobs_status.json", "w") as f:
+    with open(STATUS, "w") as f:
         json.dump({"run_id": RUN_ID, "elapsed_s": round(time.time() - t0), "status": status}, f)
     print(f"[heartbeat {time.strftime('%H:%M:%S')}] {status}", flush=True)
     if not alive:

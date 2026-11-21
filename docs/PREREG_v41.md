@@ -87,3 +87,21 @@ agy review of plan and code (`results/agy/v41_plan_review/`): GO AFTER FIXES. On
 relabelled targets, of which 3,918 copy the previous intent) — fixed above; no count or code changed. The other seven
 were checked against the code and data and did not hold (details in `response.md`). Run A had started at 20:06; no
 seed-30 result had been looked at.
+
+### 2026-11-21 22:05 Asia/Manila — amendment: fix 4 and the all-fixes candidate (before any seed-30 score)
+- **Why:** the owner asked for fix 4 (train on the model's own mistakes) so that the one MobileWorld run applies all
+  four fixes.
+- **Fix 4 = v4.2.** v4.1's merged weights replay 40% of training episodes (deterministic by episode id;
+  AndroidControl / GUI-Odyssey / AMEX) on their recorded screens with their own history. Steps the model gets right (the
+  AndroidControl scorer's match rule) keep its own words in the history; wrong steps and steps without a stored screen
+  get the human step. The rows of those episodes then carry this self-generated history; targets, images and row order
+  are unchanged. v4.2 is trained from the base model with the same recipe ([`data/v42_selfhist.py`](../data/v42_selfhist.py),
+  [`scripts/training/vm_v42_pipeline.sh`](../scripts/training/vm_v42_pipeline.sh)). No environment, no teacher, no
+  benchmark data. Closest published method: UI-S1's semi-online patching (arXiv 2509.11543), without its RL.
+- **New seed-30 variants:** D = v4.2 + guards (all four fixes once MobileWorld typing is added), E = v4.2.
+- **Selection rule (replaces the one above):** D is the primary MobileWorld candidate and runs if its seed-30 score is
+  at least 18 (v4). If D scores below 18, the best of A, B, C, E with at least 18 runs instead (ties: E, B, C, A); if
+  none reaches 18, MobileWorld is not run. A, B, C and E are reported as seed-30 ablations.
+- **State at this time:** run A at 69/116 episodes, its success count not computed (one early episode's outcome was
+  seen while checking guard logs); B and C not started; v4.1 training at step ~900 of 1,250. Literature notes:
+  `docs/research/notes/training-on-own-mistakes-and-overfitting/`.
