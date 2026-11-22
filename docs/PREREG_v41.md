@@ -333,3 +333,18 @@ wrong click, wrong type) are saved before training.
   and S stopped with `complete` (Wi-Fi/Bluetooth combos, brightness, two recipe tasks). Whether S acted better there or
   only stopped where v4.2 kept going is not determined. P2 moved the same way, less.
 - Pass timing: 6 S episodes before the 22:48 reboot, 110 after the resume; 1 exception (none a11y-related).
+
+### 2026-11-23 01:55 Asia/Manila — corrections after an independent review (no decision changes)
+The agy quota was exhausted (resets ≈ 2026-11-28), so the round-5 results were checked by an independent Claude
+reviewer with the same prompt ([`results/review/v5_results_review_claude/report.md`](../results/review/v5_results_review_claude/report.md)).
+All gate decisions reproduce. Corrections to earlier entries (the log stays append-only):
+
+| Entry | Correction |
+|---|---|
+| 00:30 P2 | "Ends with a false `complete` *more* often" and "stopping correctly … is not the same skill" overstate noise. Paired on tasks neither run crashed: false `complete` 26 vs 25 against E (+9 / −8, p 1.0); episodes ending with `complete` +10 / −7 (p 0.63). P2's online stopping did not change measurably; why its offline gain did not show up is not determined. Its final DPO reward margin was 0.047 (P: 0.43) |
+| 01:35 S | Holds, with paired tests: S ends more episodes with `complete` (+25 / −11 vs E, p 0.03; +28 / −9 vs the replicate, p 0.003); false `complete`s +20 / −11 vs E (p 0.15), +24 / −9 vs the replicate (p 0.01) |
+| 22:48 reboot note | "Nothing re-run" is inaccurate: the task in progress at the reboot was restarted from scratch after the resume (P2: RecipeDeleteMultipleRecipesWithNoise, S: CameraTakeVideo; both failed). Their aborted first attempts left no result |
+| Run conditions (not logged before) | E was the second pass on emulator 5558 without a cold boot (9 exceptions, 2 of them the end-of-pass a11y failure); the replicate, P2 and S were cold-booted. On tasks neither run crashed: replicate 0, P2 +2 (p 0.75), S +5 (p 0.27). [`analysis/aw_paired_flips.py`](../analysis/aw_paired_flips.py) now prints this view |
+| S offline gate (not logged before) | S passed at 21:56 (AC high-level 0.736, terminal `complete` 0.757, `dev_answer` 0.860, `dev_complete` 0.875), before its 22:12 seed-30 pass |
+| Heading times | The 16:35 and 17:00 entries were committed at 16:09 (`da3a327`); the replicate actually started 16:05 and was relaunched 17:37. The 20:15 entry was committed at 19:54 (`bc38f4b`), the 20:20/20:25 entries at 20:08, the 20:30 entry at 20:27. These declared earlier than labelled. The 17:35 entry was committed at 18:34 (`fb5bbc6`), after P's pair statistics were printed; its settings had been in code since 16:18 (`2341bd7`) and were not changed |
+| Counting scripts | `aw_false_complete.py` now reproduces the taxonomy's `false_complete` exactly (answer tasks, partial credit and unparseable last steps excluded); counts are unchanged for every round-5 run and now match the taxonomy for v1–v4.2 too. Success was changed from `> 0` to `>= 1` after P2's result; no count changes (exception episodes store NaN) |

@@ -14,6 +14,8 @@ CB=$HOME/.local/bin/colab-b; MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gg
 V4SHA=5285279249948dc019abf9341f98b65778f679a1f2cbc76e94c57a96af2a35e7; MARK=results/.v4_quantize_parity_ok
 log() { echo "[$(date +%T)] $NAME: $*"; }
 V=${NAME#LFM3-VL-2B-AndroidAgent-}; D=models/lfm3vl2b_${V//./}-GGUF; G=$D/$NAME-Q4_K_M.gguf
+MSHA=$(shasum -a 256 "$MM" | cut -d' ' -f1)   # base vision projector, checked in every mode
+[ "$MSHA" = c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab ] || { log "projector differs"; exit 1; }
 if [ "$PUB" = publish-only ]; then
   W=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['q4_k_m_sha256'])" "results/${V//./}_gguf_manifest.json")
   [ "$(shasum -a 256 "$G" | cut -d' ' -f1)" = "$W" ] || { log "GGUF differs from its manifest"; exit 1; }
@@ -34,8 +36,7 @@ fi
 mkdir -p "$D"; [ -e "$G" ] && { log "$G exists; refusing to overwrite"; exit 1; }
 llama-quantize "$T/$NAME-F16.gguf" "$G" Q4_K_M > "$T/$NAME.quant.log" 2>&1
 rm -f "$T/$NAME-F16.gguf"
-GSHA=$(shasum -a 256 "$G" | cut -d' ' -f1); MSHA=$(shasum -a 256 "$MM" | cut -d' ' -f1)
-[ "$MSHA" = c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab ] || { log "projector differs"; exit 1; }
+GSHA=$(shasum -a 256 "$G" | cut -d' ' -f1)
 printf '{\n "name": "%s",\n "f16_sha256_colab": "%s",\n "q4_k_m_sha256": "%s",\n "mmproj_sha256": "%s",\n "procedure": "Colab: check_local_merge.py + convert_hf_to_gguf.py (llama.cpp cd959bae9, Mac-pinned venv) -> F16; Mac: llama-quantize Q4_K_M (b12110 = cd959bae9); v4 parity byte-identical"\n}\n' \
   "$NAME" "$F16SHA" "$GSHA" "$MSHA" > "results/${V//./}_gguf_manifest.json"
 log "quantized $G ($GSHA)"

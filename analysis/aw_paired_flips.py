@@ -1,15 +1,21 @@
 """Paired seed-30 comparison of AndroidWorld runs against a reference run (the round-5 online gate, docs/PREREG_v41.md
 2026-11-22 17:00): per task, success = is_successful >= 1 (exceptions count as failures). Prints successes, tasks only
-the candidate solves, tasks only the reference solves, net gain, and the exact two-sided McNemar p (binomial on flips).
+the candidate solves, tasks only the reference solves, net gain, and the exact two-sided McNemar p (binomial on flips); then the same on tasks where neither run crashed ("no_exc_*").
 Usage: .venv-aw/bin/python -I analysis/aw_paired_flips.py results/androidworld/<ref> results/androidworld/<run> [...]"""
 import glob, gzip, json, math, os, pickle, sys  # episode files come from this repo's own harness (trusted)
+
+
+EXC = {}
 
 
 def load(d):
     out = {}
     for f in glob.glob(os.path.join(d, "run_*", "*.pkl.gz")):
         e = pickle.load(gzip.open(f)); e = e[0] if isinstance(e, list) else e
-        out[os.path.basename(f)[:-len(".pkl.gz")]] = (e.get("is_successful") or 0) >= 1 and not e.get("exception_info")
+        t = os.path.basename(f)[:-len(".pkl.gz")]
+        out[t] = (e.get("is_successful") or 0) >= 1 and not e.get("exception_info")
+        if e.get("exception_info"):
+            EXC.setdefault(d, set()).add(t)
     return out
 
 
@@ -32,4 +38,8 @@ for d in sys.argv[2:]:
                       "run_successes": sum(run[t] for t in common), "only_run": len(only_run), "only_ref": len(only_ref),
                       "net_gain": len(only_run) - len(only_ref), "flips": len(only_run) + len(only_ref),
                       "mcnemar_p": round(mcnemar(len(only_run), len(only_ref)), 3),
+                      "no_exc_tasks": len(clean := [t for t in common if t not in EXC.get(d, set()) | EXC.get(sys.argv[1], set())]),
+                      "no_exc_only_run": (b := sum(run[t] and not ref[t] for t in clean)),
+                      "no_exc_only_ref": (c := sum(ref[t] and not run[t] for t in clean)),
+                      "no_exc_net_gain": b - c, "no_exc_mcnemar_p": round(mcnemar(b, c), 3),
                       "only_run_tasks": only_run, "only_ref_tasks": only_ref}))

@@ -16,7 +16,7 @@ Loops halved, but success barely moved. That matches this report's main finding:
 - **What is going wrong:** two behaviours that our training data never corrects cause about two-thirds of held-out failures.
   - **Looping:** the model repeats an action that changed nothing until it runs out of steps (44% of held-out failures).
   - **Stopping early:** the model says `complete` before the task is done (24%).
-  - Every LFM3 version has made 20–28 false `complete`s per 116 tasks. GUI-Owl made 0 on seed 30.
+  - Every LFM3 version has made 20–28 false `complete`s per 116 tasks (nine runs before round 5; v4.3-sft later made 37). GUI-Owl made 0 on seed 30.
 - **Not the cause:** too few epochs, too small a LoRA, or bad hyperparameters. Train loss over the last 100 steps equals validation loss (0.305 vs 0.306); at 0.43 epoch each row is seen at most once, so this shows no memorisation rather than spare capacity. The loss curve flattened because the learning rate reached zero. Rank, LoRA variant and learning rate are all in the range where published studies find little left to gain (1–2% or less).
 - **Best next step:** step-level preference training (DPO) on the model's own wrong answers at the same screens.
   - Sample the model's own actions where it disagrees with the human step, then train it to prefer the human step.
@@ -377,7 +377,7 @@ App count is not the gap: AC's training split alone covers 769 apps ([AndroidCon
 Computed with a paired McNemar test (ours).
 
 - One pass needs a net gain of ~10 tasks (8.6 pts) to show up.
-- **Behaviour counts have far more power than success counts.** False `complete`s ranged 20–28 across all nine LFM3 runs. A fix that drops them to ≤15 is visible in one pass, even when success is not (inference from the run-to-run range).
+- **Behaviour counts have far more power than success counts.** False `complete`s ranged 20–28 across all nine LFM3 runs (before round 5; v4.3-sft later made 37). A fix that drops them to ≤15 is visible in one pass, even when success is not (inference from the run-to-run range).
 - **Never mix reporting styles:**
   - pass@3 vs pass@1: Step-GUI-4B's AW is 75.8 vs 63.9 ([Step-GUI](https://arxiv.org/html/2512.15431)).
   - 100-step vs 50-step MW budgets.
@@ -457,28 +457,37 @@ rank 1 used a **v4.2** replicate (not v4), rank 3 became P/P2, rank 5 became S (
 rows). Rank 2 ran only as pair sampling (one greedy decode per state, not 4 samples), and ranks 4 and 6 were
 not run.
 
+The pre-registration also changed the plan's gates, before any training (none of these is outcome-driven):
+
+| Plan (rank 1–3 above) | Pre-registered |
+|---|---|
+| Net-gain floor max(R, 10) | max(R, 6). With R = 9 the floor was 9 instead of 10; no candidate reached either (best +6) |
+| Offline: early-`status` rate on non-final steps ≤ ⅔ of v4.2's | Dropped (the only offline check aimed at premature stops) |
+| Online: median output ≤ 30 tokens | Dropped |
+| Pairs: ≥ 3,000, with ≥ 20% stop-related and ≥ 20% wait- or copy-related | Not adopted (P: 4,163 pairs, 22% stop-related, 5% wait/copy) |
+
 | Plan rank | What ran | Result |
 |---|---|---|
 | 1 Yardstick | v4.2 replicate on seed 30 | R = 9 tasks flip between two identical passes; false `complete`s 22 vs 25 |
 | 3 Step-DPO | **P:** all 4,163 own mistakes, β 0.1, 0.5 × SFT | Failed offline: AC high-level 0.732 → 0.545 (whole action types collapsed) |
 | 3 Step-DPO (post-hoc fix) | **P2:** 851 balanced stop / copied-intent pairs, 1.0 × SFT, lr 1e-5 | Passed offline (terminal `complete` 0.738 → 0.785); failed online: 21/116, net +3 (noise), false `complete` 28 |
-| 5 More training | **S:** 500 more SFT steps (0.17 epoch), WSD, lr 1e-4 | Passed offline (AC 0.736; val loss 0.340 → 0.334); failed online: 24/116 (the most of any LFM3 version), net +6 (below R = 9), false `complete` 37 |
+| 5 More training | **S:** 500 more SFT steps (0.17 epoch), WSD, lr 1e-4 | Passed offline (AC 0.736; final val loss 0.340 → 0.334, [v4.2 log](../../results/v42_dev/training_logs/log_history.json), [S log](../../results/v5_dev/lfm3vl2b-v43sft/log_history.json)); failed online: 24/116 (the most of any LFM3 version), net +6 (below R = 9), false `complete` 37 |
 
 **What this changes in the report**
 
 | Earlier claim | After round 5 |
 |---|---|
-| "Step-level DPO on own wrong answers is the best next step" | Not confirmed at this scale. Unfiltered pairs destroy action priors; targeted pairs move the stop *rate*, not stop *accuracy* |
-| "False-`complete` counts are tight (20–28), so a real fix shows in one pass" | Held: P2's 28 and the replicate's 22 sit in the band; no candidate left it downwards |
-| "Offline metrics do not track online success" | Confirmed again: P2's best-ever terminal `complete` (0.785) came with its worst false-`complete` count (28) |
-| "More epochs would lower loss, not fix behaviour" | Partly revised: 0.17 epoch more gave the largest seed-30 gain of the round (+5 to +6 against three references, none significant), but through more stopping, not better stopping (precision 0.34). Worth one more test; not yet a result |
+| "Step-level DPO on own wrong answers is the best next step" | Not confirmed at this scale. Unfiltered pairs (P) collapsed whole action types; targeted pairs (P2) left online stopping unchanged (final DPO reward margin 0.047, so the model moved little) |
+| "False-`complete` counts are tight (20–28), so a real fix shows in one pass" | Partly: P2's 28 and the replicate's 22 sit in the band; S left it upwards (37); no candidate left it downwards |
+| "Offline metrics do not track online success" | Confirmed again: P2 raised terminal `complete` accuracy 0.738 → 0.785, but its online stopping did not change measurably (false `complete` 28 vs 22–25; 26 vs 25 on the 107 tasks neither P2 nor E crashed). The offline gate measured stopping on final steps only, not premature stops |
+| "More epochs would lower loss, not fix behaviour" | Partly revised: 0.17 epoch more gave the largest seed-30 gain of the round (+5 to +6 against three references, none significant), S ended 56 episodes with `complete` (v4.2: 37–38; paired p 0.03) at unchanged precision (0.34); whether its wins come from acting better or from stopping where v4.2 kept going is not determined. Worth one more test; not yet a result |
 
-**Why P2's stop training did not transfer (ours + inference):**
+**Why P2's stop training did not show up online (inference, not measured):**
+- P2's online stop rate and precision did not change measurably (p ≥ 0.17, paired against E and the replicate); its
+  final DPO reward margin was 0.047 (P: 0.43), so the preference signal moved the model little.
 - Pairs show the model a *recorded* final screen and the human's `complete`. On a live phone the hard cases are screens
   that look finished but are not (a draft not saved, a toggle not applied). Those states never occur in demonstration
   data, so no pair can contrast them.
-- 356 early-stop and 356 missed-stop pairs push in opposite directions; the net effect was a higher overall stop rate
-  (44 vs 37–38 episodes ending with `complete`) with unchanged precision (0.36).
 - The remaining lever is the one the plan ranked 6th: rollouts on non-benchmark apps where an adb check says whether
   the task is really done, so "looks done but isn't" states exist in training.
 
@@ -487,5 +496,5 @@ not run.
 ## Conclusion
 
 - **The question is what to train on, not how much.** By the textbook tests the model is neither too small nor overfit. It imitates AndroidControl's habits faithfully, and it has never seen a corrected version of its own two worst habits. Each method in the literature with a large own-attempt gain contrasts a wrong and a right action at the same screen. Neither more passes nor more parameters adds that contrast.
-- **Restraint is the cheapest gap to close and the easiest to measure.** GUI-Owl's advantage is stopping correctly (96% vs 33% precision on seed 30), and that is teachable without a teacher. False-`complete` counts sit in a tight 20–28 band across nine runs, so a real fix shows up in one pass, even when success counts cannot.
+- **Restraint is the cheapest gap to close and the easiest to measure.** GUI-Owl's advantage is stopping correctly (96% vs 33% precision on seed 30), and that should be teachable without a teacher, though round 5's offline pairs did not teach it. False-`complete` counts sat in a tight 20–28 band across nine runs (v4.3-sft later made 37), so a real fix shows up in one pass, even when success counts cannot.
 - **Speed is an asset to protect.** On the phone, almost all step time is spent reading the screenshot. Training method, adapter size and a few extra reply tokens barely matter. Longer prompts and wasted loop steps matter a lot.
