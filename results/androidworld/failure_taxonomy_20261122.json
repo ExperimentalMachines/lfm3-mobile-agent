@@ -1,0 +1,1980 @@
+{
+ "dev:lfm3vl2b_ft": {
+  "n": 116,
+  "succ": 15,
+  "steps": 1760,
+  "type_share": {
+   "click": 0.468,
+   "wait": 0.333,
+   "open_app": 0.102,
+   "status": 0.034,
+   "input_text": 0.034,
+   "scroll": 0.029,
+   "navigate_back": 0.001
+  },
+  "type_counts": {
+   "click": 823,
+   "wait": 586,
+   "open_app": 179,
+   "status": 60,
+   "input_text": 59,
+   "scroll": 51,
+   "navigate_back": 2
+  },
+  "wait_share": 0.333,
+  "waits": 586,
+  "wait_nonwait_intent": 586,
+  "same_intent_as_prev_share": 0.516,
+  "noeffect_rate": {
+   "click": [
+    192,
+    806,
+    0.238
+   ],
+   "input_text": [
+    12,
+    58,
+    0.207
+   ],
+   "scroll": [
+    33,
+    48,
+    0.688
+   ],
+   "wait": [
+    518,
+    553,
+    0.937
+   ],
+   "open_app": [
+    80,
+    179,
+    0.447
+   ],
+   "navigate_back": [
+    0,
+    2,
+    0.0
+   ]
+  },
+  "primary": {
+   "false_complete": 27,
+   "budget:stuck_same_intent": 24,
+   "answer_task_completed_without_answer": 18,
+   "success": 15,
+   "budget:wandering": 15,
+   "budget:stuck_wait": 14,
+   "infra_exception": 2,
+   "budget:scroll_heavy": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 60,
+   "same_intent_run4": 46,
+   "wait_run3": 28,
+   "answer_task_no_answer_action": 25,
+   "never_opened_expected_app": 19,
+   "unmapped_open_app": 16,
+   "noeffect_clicks3": 16,
+   "typed_text_not_in_goal": 8,
+   "same_action_run3": 5,
+   "no_open_app": 2
+  },
+  "answer_tasks_with_answer_action": 0,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 54
+ },
+ "dev:lfm3vl2b_v2": {
+  "n": 116,
+  "succ": 3,
+  "steps": 1679,
+  "type_share": {
+   "click": 0.418,
+   "wait": 0.307,
+   "scroll": 0.14,
+   "open_app": 0.068,
+   "input_text": 0.043,
+   "status": 0.023,
+   "answer": 0.001,
+   "navigate_back": 0.001
+  },
+  "type_counts": {
+   "click": 702,
+   "wait": 515,
+   "scroll": 235,
+   "open_app": 114,
+   "input_text": 72,
+   "status": 39,
+   "answer": 1,
+   "navigate_back": 1
+  },
+  "wait_share": 0.307,
+  "waits": 515,
+  "wait_nonwait_intent": 433,
+  "same_intent_as_prev_share": 0.408,
+  "noeffect_rate": {
+   "click": [
+    267,
+    670,
+    0.399
+   ],
+   "input_text": [
+    35,
+    71,
+    0.493
+   ],
+   "scroll": [
+    192,
+    221,
+    0.869
+   ],
+   "wait": [
+    455,
+    493,
+    0.923
+   ],
+   "open_app": [
+    34,
+    112,
+    0.304
+   ],
+   "navigate_back": [
+    0,
+    1,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 24,
+   "false_complete": 20,
+   "answer_task_completed_without_answer": 16,
+   "budget:stuck_wait": 15,
+   "budget:repeat_loop": 14,
+   "budget:wandering": 11,
+   "budget:scroll_heavy": 7,
+   "infra_exception": 5,
+   "success": 3,
+   "wrong_answer": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 44,
+   "same_intent_run4": 40,
+   "same_action_run3": 40,
+   "no_open_app": 28,
+   "noeffect_clicks3": 26,
+   "answer_task_no_answer_action": 24,
+   "wait_run3": 19,
+   "never_opened_expected_app": 9,
+   "unmapped_open_app": 7,
+   "typed_text_not_in_goal": 5
+  },
+  "answer_tasks_with_answer_action": 1,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 71
+ },
+ "dev:lfm3vl2b_v3": {
+  "n": 116,
+  "succ": 13,
+  "steps": 1790,
+  "type_share": {
+   "click": 0.475,
+   "wait": 0.247,
+   "scroll": 0.103,
+   "open_app": 0.092,
+   "input_text": 0.052,
+   "status": 0.029,
+   "navigate_home": 0.002,
+   "navigate_back": 0.001
+  },
+  "type_counts": {
+   "click": 850,
+   "wait": 442,
+   "scroll": 184,
+   "open_app": 164,
+   "input_text": 93,
+   "status": 52,
+   "navigate_home": 3,
+   "navigate_back": 2
+  },
+  "wait_share": 0.247,
+  "waits": 442,
+  "wait_nonwait_intent": 442,
+  "same_intent_as_prev_share": 0.516,
+  "noeffect_rate": {
+   "click": [
+    173,
+    827,
+    0.209
+   ],
+   "input_text": [
+    29,
+    90,
+    0.322
+   ],
+   "scroll": [
+    149,
+    176,
+    0.847
+   ],
+   "wait": [
+    331,
+    415,
+    0.798
+   ],
+   "open_app": [
+    71,
+    164,
+    0.433
+   ],
+   "navigate_back": [
+    0,
+    2,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 41,
+   "false_complete": 21,
+   "answer_task_completed_without_answer": 17,
+   "budget:wandering": 16,
+   "success": 13,
+   "infra_exception": 3,
+   "budget:stuck_wait": 2,
+   "budget:repeat_loop": 2,
+   "partial_credit": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 68,
+   "same_intent_run4": 49,
+   "answer_task_no_answer_action": 25,
+   "noeffect_clicks3": 24,
+   "wait_run3": 23,
+   "never_opened_expected_app": 16,
+   "unmapped_open_app": 14,
+   "same_action_run3": 9,
+   "typed_text_not_in_goal": 7,
+   "no_open_app": 7
+  },
+  "answer_tasks_with_answer_action": 0,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 61
+ },
+ "dev:lfm3vl2b_v4": {
+  "n": 116,
+  "succ": 18,
+  "steps": 1706,
+  "type_share": {
+   "click": 0.481,
+   "wait": 0.291,
+   "open_app": 0.084,
+   "scroll": 0.059,
+   "input_text": 0.047,
+   "status": 0.022,
+   "answer": 0.012,
+   "navigate_back": 0.005
+  },
+  "type_counts": {
+   "click": 820,
+   "wait": 497,
+   "open_app": 143,
+   "scroll": 100,
+   "input_text": 81,
+   "status": 37,
+   "answer": 20,
+   "navigate_back": 8
+  },
+  "wait_share": 0.291,
+  "waits": 497,
+  "wait_nonwait_intent": 497,
+  "same_intent_as_prev_share": 0.563,
+  "noeffect_rate": {
+   "click": [
+    335,
+    800,
+    0.419
+   ],
+   "input_text": [
+    11,
+    79,
+    0.139
+   ],
+   "scroll": [
+    75,
+    93,
+    0.806
+   ],
+   "wait": [
+    413,
+    471,
+    0.877
+   ],
+   "open_app": [
+    38,
+    143,
+    0.266
+   ],
+   "navigate_back": [
+    0,
+    8,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 32,
+   "false_complete": 25,
+   "success": 18,
+   "wrong_answer": 14,
+   "budget:stuck_wait": 11,
+   "budget:wandering": 11,
+   "infra_exception": 4,
+   "budget:repeat_loop": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 50,
+   "same_intent_run4": 48,
+   "noeffect_clicks3": 30,
+   "wait_run3": 20,
+   "same_action_run3": 13,
+   "no_open_app": 7,
+   "never_opened_expected_app": 6,
+   "typed_text_not_in_goal": 5,
+   "answer_task_no_answer_action": 5
+  },
+  "answer_tasks_with_answer_action": 20,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 55
+ },
+ "dev:lfm3vl2b_v4_guards": {
+  "n": 116,
+  "succ": 18,
+  "steps": 1817,
+  "type_share": {
+   "click": 0.711,
+   "scroll": 0.101,
+   "open_app": 0.078,
+   "input_text": 0.054,
+   "status": 0.023,
+   "answer": 0.012,
+   "navigate_back": 0.011,
+   "long_press": 0.01,
+   "navigate_home": 0.002
+  },
+  "type_counts": {
+   "click": 1291,
+   "scroll": 183,
+   "open_app": 142,
+   "input_text": 98,
+   "status": 41,
+   "answer": 21,
+   "navigate_back": 20,
+   "long_press": 18,
+   "navigate_home": 3
+  },
+  "wait_share": 0.0,
+  "waits": 0,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.534,
+  "noeffect_rate": {
+   "click": [
+    658,
+    1248,
+    0.527
+   ],
+   "input_text": [
+    14,
+    98,
+    0.143
+   ],
+   "scroll": [
+    80,
+    175,
+    0.457
+   ],
+   "open_app": [
+    27,
+    140,
+    0.193
+   ],
+   "navigate_back": [
+    0,
+    20,
+    0.0
+   ],
+   "long_press": [
+    9,
+    18,
+    0.5
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 37,
+   "false_complete": 28,
+   "success": 18,
+   "wrong_answer": 16,
+   "budget:wandering": 9,
+   "budget:repeat_loop": 6,
+   "budget:scroll_heavy": 1,
+   "infra_exception": 1
+  },
+  "flags_among_failures": {
+   "same_action_run3": 51,
+   "same_intent_run4": 49,
+   "noeffect_clicks3": 40,
+   "typed_text_not_in_goal": 10,
+   "never_opened_expected_app": 6,
+   "no_open_app": 6,
+   "answer_task_no_answer_action": 4
+  },
+  "answer_tasks_with_answer_action": 21,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 618,
+  "guard_rules": {
+   "G1": 547,
+   "G2": 71
+  },
+  "budget_exhausted": 53
+ },
+ "dev:lfm3vl2b_v41": {
+  "n": 116,
+  "succ": 12,
+  "steps": 1875,
+  "type_share": {
+   "click": 0.706,
+   "wait": 0.087,
+   "input_text": 0.063,
+   "open_app": 0.054,
+   "scroll": 0.053,
+   "status": 0.019,
+   "answer": 0.01,
+   "navigate_back": 0.008,
+   "navigate_home": 0.001
+  },
+  "type_counts": {
+   "click": 1323,
+   "wait": 163,
+   "input_text": 118,
+   "open_app": 101,
+   "scroll": 100,
+   "status": 36,
+   "answer": 18,
+   "navigate_back": 15,
+   "navigate_home": 1
+  },
+  "wait_share": 0.087,
+  "waits": 163,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.355,
+  "noeffect_rate": {
+   "click": [
+    543,
+    1284,
+    0.423
+   ],
+   "input_text": [
+    16,
+    114,
+    0.14
+   ],
+   "scroll": [
+    55,
+    94,
+    0.585
+   ],
+   "wait": [
+    100,
+    158,
+    0.633
+   ],
+   "open_app": [
+    1,
+    101,
+    0.01
+   ],
+   "navigate_back": [
+    2,
+    14,
+    0.143
+   ]
+  },
+  "primary": {
+   "budget:wandering": 27,
+   "false_complete": 24,
+   "budget:stuck_same_intent": 20,
+   "wrong_answer": 14,
+   "success": 12,
+   "infra_exception": 7,
+   "budget:repeat_loop": 6,
+   "answer_task_completed_without_answer": 4,
+   "budget:stuck_wait": 2
+  },
+  "flags_among_failures": {
+   "noeffect_clicks3": 29,
+   "same_intent_run4": 27,
+   "same_action_run3": 26,
+   "no_open_app": 13,
+   "typed_text_not_in_goal": 11,
+   "answer_task_no_answer_action": 7,
+   "never_opened_expected_app": 6,
+   "wait_run3": 6
+  },
+  "answer_tasks_with_answer_action": 18,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 55
+ },
+ "dev:lfm3vl2b_v41_guards": {
+  "n": 116,
+  "succ": 14,
+  "steps": 1771,
+  "type_share": {
+   "click": 0.609,
+   "scroll": 0.107,
+   "input_text": 0.077,
+   "wait": 0.064,
+   "open_app": 0.06,
+   "long_press": 0.03,
+   "status": 0.023,
+   "navigate_back": 0.018,
+   "answer": 0.007,
+   "navigate_home": 0.003
+  },
+  "type_counts": {
+   "click": 1079,
+   "scroll": 190,
+   "input_text": 137,
+   "wait": 114,
+   "open_app": 106,
+   "long_press": 54,
+   "status": 40,
+   "navigate_back": 32,
+   "answer": 13,
+   "navigate_home": 6
+  },
+  "wait_share": 0.064,
+  "waits": 114,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.348,
+  "noeffect_rate": {
+   "click": [
+    362,
+    1051,
+    0.344
+   ],
+   "input_text": [
+    42,
+    132,
+    0.318
+   ],
+   "scroll": [
+    135,
+    177,
+    0.763
+   ],
+   "wait": [
+    96,
+    109,
+    0.881
+   ],
+   "open_app": [
+    0,
+    105,
+    0.0
+   ],
+   "navigate_back": [
+    9,
+    30,
+    0.3
+   ],
+   "long_press": [
+    48,
+    53,
+    0.906
+   ]
+  },
+  "primary": {
+   "false_complete": 26,
+   "budget:wandering": 26,
+   "budget:stuck_same_intent": 24,
+   "success": 14,
+   "wrong_answer": 11,
+   "infra_exception": 8,
+   "budget:repeat_loop": 3,
+   "budget:scroll_heavy": 2,
+   "answer_task_completed_without_answer": 2
+  },
+  "flags_among_failures": {
+   "same_intent_run4": 34,
+   "noeffect_clicks3": 32,
+   "same_action_run3": 21,
+   "answer_task_no_answer_action": 12,
+   "no_open_app": 11,
+   "typed_text_not_in_goal": 9,
+   "never_opened_expected_app": 5
+  },
+  "answer_tasks_with_answer_action": 13,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 87,
+  "guard_rules": {
+   "G2": 87
+  },
+  "budget_exhausted": 55
+ },
+ "dev:lfm3vl2b_v42": {
+  "n": 116,
+  "succ": 18,
+  "steps": 1681,
+  "type_share": {
+   "click": 0.753,
+   "open_app": 0.062,
+   "input_text": 0.055,
+   "wait": 0.051,
+   "scroll": 0.035,
+   "status": 0.023,
+   "navigate_back": 0.011,
+   "answer": 0.01,
+   "navigate_home": 0.001
+  },
+  "type_counts": {
+   "click": 1265,
+   "open_app": 104,
+   "input_text": 93,
+   "wait": 86,
+   "scroll": 58,
+   "status": 38,
+   "navigate_back": 19,
+   "answer": 16,
+   "navigate_home": 2
+  },
+  "wait_share": 0.051,
+  "waits": 86,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.379,
+  "noeffect_rate": {
+   "click": [
+    591,
+    1226,
+    0.482
+   ],
+   "input_text": [
+    18,
+    91,
+    0.198
+   ],
+   "scroll": [
+    39,
+    52,
+    0.75
+   ],
+   "wait": [
+    61,
+    82,
+    0.744
+   ],
+   "open_app": [
+    0,
+    104,
+    0.0
+   ],
+   "navigate_back": [
+    1,
+    17,
+    0.059
+   ]
+  },
+  "primary": {
+   "false_complete": 25,
+   "budget:wandering": 24,
+   "budget:stuck_same_intent": 23,
+   "success": 18,
+   "wrong_answer": 11,
+   "infra_exception": 9,
+   "budget:repeat_loop": 3,
+   "budget:stuck_wait": 2,
+   "budget:scroll_heavy": 1
+  },
+  "flags_among_failures": {
+   "noeffect_clicks3": 31,
+   "same_action_run3": 30,
+   "same_intent_run4": 28,
+   "no_open_app": 11,
+   "answer_task_no_answer_action": 9,
+   "never_opened_expected_app": 5,
+   "wait_run3": 3,
+   "typed_text_not_in_goal": 2
+  },
+  "answer_tasks_with_answer_action": 16,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 53
+ },
+ "dev:lfm3vl2b_v42_guards": {
+  "n": 116,
+  "succ": 13,
+  "steps": 1487,
+  "type_share": {
+   "click": 0.627,
+   "scroll": 0.091,
+   "input_text": 0.081,
+   "open_app": 0.062,
+   "wait": 0.059,
+   "long_press": 0.028,
+   "status": 0.023,
+   "navigate_back": 0.014,
+   "answer": 0.011,
+   "navigate_home": 0.005
+  },
+  "type_counts": {
+   "click": 932,
+   "scroll": 135,
+   "input_text": 121,
+   "open_app": 92,
+   "wait": 87,
+   "long_press": 41,
+   "status": 34,
+   "navigate_back": 21,
+   "answer": 16,
+   "navigate_home": 8
+  },
+  "wait_share": 0.059,
+  "waits": 87,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.301,
+  "noeffect_rate": {
+   "click": [
+    227,
+    903,
+    0.251
+   ],
+   "input_text": [
+    13,
+    120,
+    0.108
+   ],
+   "scroll": [
+    65,
+    131,
+    0.496
+   ],
+   "wait": [
+    64,
+    83,
+    0.771
+   ],
+   "open_app": [
+    1,
+    91,
+    0.011
+   ],
+   "navigate_back": [
+    8,
+    19,
+    0.421
+   ],
+   "long_press": [
+    28,
+    41,
+    0.683
+   ]
+  },
+  "primary": {
+   "budget:wandering": 27,
+   "false_complete": 25,
+   "infra_exception": 24,
+   "success": 13,
+   "budget:stuck_same_intent": 13,
+   "wrong_answer": 12,
+   "budget:repeat_loop": 2
+  },
+  "flags_among_failures": {
+   "no_open_app": 26,
+   "noeffect_clicks3": 24,
+   "same_intent_run4": 19,
+   "same_action_run3": 13,
+   "answer_task_no_answer_action": 9,
+   "never_opened_expected_app": 5,
+   "typed_text_not_in_goal": 4,
+   "wait_run3": 1
+  },
+  "answer_tasks_with_answer_action": 16,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 90,
+  "guard_rules": {
+   "G2": 90
+  },
+  "budget_exhausted": 42
+ },
+ "dev:guiowl15_2b_matched": {
+  "n": 116,
+  "succ": 23,
+  "steps": 2228,
+  "type_share": {
+   "click": 0.675,
+   "scroll": 0.186,
+   "input_text": 0.092,
+   "wait": 0.023,
+   "navigate_back": 0.008,
+   "status": 0.006,
+   "answer": 0.005,
+   "navigate_home": 0.004,
+   "long_press": 0.002
+  },
+  "type_counts": {
+   "click": 1503,
+   "scroll": 414,
+   "input_text": 205,
+   "wait": 51,
+   "navigate_back": 18,
+   "status": 13,
+   "answer": 11,
+   "navigate_home": 8,
+   "long_press": 5
+  },
+  "wait_share": 0.023,
+  "waits": 51,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.0,
+  "noeffect_rate": {
+   "click": [
+    235,
+    1432,
+    0.164
+   ],
+   "input_text": [
+    127,
+    200,
+    0.635
+   ],
+   "scroll": [
+    199,
+    398,
+    0.5
+   ],
+   "wait": [
+    0,
+    51,
+    0.0
+   ],
+   "navigate_back": [
+    0,
+    18,
+    0.0
+   ],
+   "long_press": [
+    1,
+    5,
+    0.2
+   ]
+  },
+  "primary": {
+   "budget:wandering": 63,
+   "success": 23,
+   "budget:repeat_loop": 17,
+   "budget:scroll_heavy": 12,
+   "wrong_answer": 1
+  },
+  "flags_among_failures": {
+   "no_open_app": 90,
+   "same_action_run3": 32,
+   "noeffect_clicks3": 26,
+   "answer_task_no_answer_action": 14,
+   "typed_text_not_in_goal": 7
+  },
+  "answer_tasks_with_answer_action": 11,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 92
+ },
+ "sealed:v4_s7": {
+  "n": 116,
+  "succ": 18,
+  "steps": 1893,
+  "type_share": {
+   "click": 0.462,
+   "wait": 0.341,
+   "open_app": 0.08,
+   "input_text": 0.052,
+   "scroll": 0.032,
+   "status": 0.018,
+   "answer": 0.01,
+   "navigate_back": 0.004,
+   "navigate_home": 0.001
+  },
+  "type_counts": {
+   "click": 874,
+   "wait": 645,
+   "open_app": 152,
+   "input_text": 99,
+   "scroll": 60,
+   "status": 35,
+   "answer": 19,
+   "navigate_back": 7,
+   "navigate_home": 2
+  },
+  "wait_share": 0.341,
+  "waits": 645,
+  "wait_nonwait_intent": 645,
+  "same_intent_as_prev_share": 0.58,
+  "noeffect_rate": {
+   "click": [
+    367,
+    849,
+    0.432
+   ],
+   "input_text": [
+    19,
+    98,
+    0.194
+   ],
+   "scroll": [
+    39,
+    56,
+    0.696
+   ],
+   "wait": [
+    511,
+    613,
+    0.834
+   ],
+   "open_app": [
+    40,
+    152,
+    0.263
+   ],
+   "navigate_back": [
+    2,
+    7,
+    0.286
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 32,
+   "false_complete": 23,
+   "success": 18,
+   "budget:wandering": 16,
+   "budget:stuck_wait": 13,
+   "wrong_answer": 13,
+   "budget:scroll_heavy": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 77,
+   "same_intent_run4": 52,
+   "noeffect_clicks3": 30,
+   "wait_run3": 25,
+   "same_action_run3": 13,
+   "never_opened_expected_app": 7,
+   "typed_text_not_in_goal": 7,
+   "answer_task_no_answer_action": 6,
+   "no_open_app": 1
+  },
+  "answer_tasks_with_answer_action": 19,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 62
+ },
+ "sealed:v4_s1234": {
+  "n": 116,
+  "succ": 17,
+  "steps": 1692,
+  "type_share": {
+   "click": 0.498,
+   "wait": 0.308,
+   "open_app": 0.063,
+   "input_text": 0.054,
+   "scroll": 0.038,
+   "status": 0.022,
+   "answer": 0.01,
+   "navigate_back": 0.008
+  },
+  "type_counts": {
+   "click": 842,
+   "wait": 521,
+   "open_app": 107,
+   "input_text": 91,
+   "scroll": 64,
+   "status": 37,
+   "answer": 17,
+   "navigate_back": 13
+  },
+  "wait_share": 0.308,
+  "waits": 521,
+  "wait_nonwait_intent": 521,
+  "same_intent_as_prev_share": 0.493,
+  "noeffect_rate": {
+   "click": [
+    300,
+    819,
+    0.366
+   ],
+   "input_text": [
+    18,
+    91,
+    0.198
+   ],
+   "scroll": [
+    38,
+    57,
+    0.667
+   ],
+   "wait": [
+    468,
+    494,
+    0.947
+   ],
+   "open_app": [
+    0,
+    107,
+    0.0
+   ],
+   "navigate_back": [
+    0,
+    13,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 24,
+   "false_complete": 23,
+   "budget:wandering": 17,
+   "success": 17,
+   "budget:stuck_wait": 16,
+   "wrong_answer": 14,
+   "infra_exception": 5
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 47,
+   "same_intent_run4": 41,
+   "noeffect_clicks3": 24,
+   "wait_run3": 21,
+   "same_action_run3": 14,
+   "answer_task_no_answer_action": 8,
+   "no_open_app": 7,
+   "never_opened_expected_app": 6,
+   "typed_text_not_in_goal": 6
+  },
+  "answer_tasks_with_answer_action": 17,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 57
+ },
+ "sealed:v4_s2026": {
+  "n": 116,
+  "succ": 19,
+  "steps": 1806,
+  "type_share": {
+   "click": 0.424,
+   "wait": 0.367,
+   "input_text": 0.067,
+   "open_app": 0.059,
+   "scroll": 0.044,
+   "status": 0.023,
+   "answer": 0.01,
+   "navigate_back": 0.007
+  },
+  "type_counts": {
+   "click": 765,
+   "wait": 663,
+   "input_text": 121,
+   "open_app": 106,
+   "scroll": 80,
+   "status": 41,
+   "answer": 18,
+   "navigate_back": 12
+  },
+  "wait_share": 0.367,
+  "waits": 663,
+  "wait_nonwait_intent": 663,
+  "same_intent_as_prev_share": 0.546,
+  "noeffect_rate": {
+   "click": [
+    179,
+    748,
+    0.239
+   ],
+   "input_text": [
+    55,
+    121,
+    0.455
+   ],
+   "scroll": [
+    52,
+    74,
+    0.703
+   ],
+   "wait": [
+    612,
+    630,
+    0.971
+   ],
+   "open_app": [
+    0,
+    106,
+    0.0
+   ],
+   "navigate_back": [
+    0,
+    12,
+    0.0
+   ]
+  },
+  "primary": {
+   "false_complete": 25,
+   "budget:stuck_same_intent": 23,
+   "budget:stuck_wait": 20,
+   "success": 19,
+   "wrong_answer": 14,
+   "budget:wandering": 11,
+   "partial_credit": 1,
+   "budget:scroll_heavy": 1,
+   "budget:repeat_loop": 1,
+   "infra_exception": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 53,
+   "same_intent_run4": 49,
+   "wait_run3": 27,
+   "noeffect_clicks3": 13,
+   "same_action_run3": 10,
+   "no_open_app": 7,
+   "answer_task_no_answer_action": 7,
+   "never_opened_expected_app": 6,
+   "typed_text_not_in_goal": 5
+  },
+  "answer_tasks_with_answer_action": 18,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 56
+ },
+ "sealed:guiowl_s7": {
+  "n": 116,
+  "succ": 16,
+  "steps": 2224,
+  "type_share": {
+   "click": 0.801,
+   "scroll": 0.1,
+   "input_text": 0.052,
+   "wait": 0.023,
+   "answer": 0.006,
+   "status": 0.005,
+   "navigate_back": 0.004,
+   "navigate_home": 0.004,
+   "long_press": 0.002,
+   "open_app": 0.001,
+   "key": 0.0
+  },
+  "type_counts": {
+   "click": 1781,
+   "scroll": 223,
+   "input_text": 116,
+   "wait": 52,
+   "answer": 13,
+   "status": 12,
+   "navigate_back": 10,
+   "navigate_home": 9,
+   "long_press": 5,
+   "open_app": 2,
+   "key": 1
+  },
+  "wait_share": 0.023,
+  "waits": 52,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.0,
+  "noeffect_rate": {
+   "click": [
+    546,
+    1697,
+    0.322
+   ],
+   "input_text": [
+    23,
+    111,
+    0.207
+   ],
+   "scroll": [
+    52,
+    221,
+    0.235
+   ],
+   "wait": [
+    0,
+    52,
+    0.0
+   ],
+   "open_app": [
+    0,
+    2,
+    0.0
+   ],
+   "navigate_back": [
+    0,
+    10,
+    0.0
+   ],
+   "long_press": [
+    4,
+    5,
+    0.8
+   ]
+  },
+  "primary": {
+   "budget:wandering": 66,
+   "budget:repeat_loop": 23,
+   "success": 16,
+   "wrong_answer": 6,
+   "false_complete": 3,
+   "budget:scroll_heavy": 2
+  },
+  "flags_among_failures": {
+   "no_open_app": 95,
+   "noeffect_clicks3": 37,
+   "same_action_run3": 32,
+   "answer_task_no_answer_action": 12,
+   "typed_text_not_in_goal": 2
+  },
+  "answer_tasks_with_answer_action": 13,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 91
+ },
+ "sealed:guiowl_s1234": {
+  "n": 116,
+  "succ": 13,
+  "steps": 2286,
+  "type_share": {
+   "click": 0.698,
+   "scroll": 0.139,
+   "input_text": 0.105,
+   "wait": 0.028,
+   "navigate_back": 0.01,
+   "navigate_home": 0.01,
+   "status": 0.004,
+   "answer": 0.003,
+   "long_press": 0.001,
+   "null": 0.001,
+   "key": 0.0
+  },
+  "type_counts": {
+   "click": 1595,
+   "scroll": 317,
+   "input_text": 240,
+   "wait": 64,
+   "navigate_back": 23,
+   "navigate_home": 23,
+   "status": 9,
+   "answer": 8,
+   "long_press": 3,
+   "null": 3,
+   "key": 1
+  },
+  "wait_share": 0.028,
+  "waits": 64,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.0,
+  "noeffect_rate": {
+   "click": [
+    416,
+    1511,
+    0.275
+   ],
+   "input_text": [
+    120,
+    234,
+    0.513
+   ],
+   "scroll": [
+    115,
+    311,
+    0.37
+   ],
+   "wait": [
+    10,
+    64,
+    0.156
+   ],
+   "navigate_back": [
+    3,
+    22,
+    0.136
+   ],
+   "long_press": [
+    0,
+    2,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:wandering": 75,
+   "budget:repeat_loop": 18,
+   "success": 13,
+   "budget:scroll_heavy": 5,
+   "wrong_answer": 3,
+   "false_complete": 1,
+   "infra_exception": 1
+  },
+  "flags_among_failures": {
+   "no_open_app": 100,
+   "noeffect_clicks3": 44,
+   "same_action_run3": 38,
+   "answer_task_no_answer_action": 17,
+   "typed_text_not_in_goal": 9,
+   "wait_run3": 3,
+   "unparseable_step": 1
+  },
+  "answer_tasks_with_answer_action": 8,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 3,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 98
+ },
+ "sealed:guiowl_s2026": {
+  "n": 116,
+  "succ": 18,
+  "steps": 2245,
+  "type_share": {
+   "click": 0.726,
+   "scroll": 0.154,
+   "input_text": 0.089,
+   "wait": 0.011,
+   "navigate_back": 0.006,
+   "status": 0.005,
+   "navigate_home": 0.004,
+   "answer": 0.004,
+   "open_app": 0.0,
+   "long_press": 0.0
+  },
+  "type_counts": {
+   "click": 1629,
+   "scroll": 346,
+   "input_text": 199,
+   "wait": 24,
+   "navigate_back": 13,
+   "status": 12,
+   "navigate_home": 10,
+   "answer": 10,
+   "open_app": 1,
+   "long_press": 1
+  },
+  "wait_share": 0.011,
+  "waits": 24,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.0,
+  "noeffect_rate": {
+   "click": [
+    293,
+    1550,
+    0.189
+   ],
+   "input_text": [
+    29,
+    192,
+    0.151
+   ],
+   "scroll": [
+    136,
+    338,
+    0.402
+   ],
+   "wait": [
+    0,
+    24,
+    0.0
+   ],
+   "open_app": [
+    0,
+    1,
+    0.0
+   ],
+   "navigate_back": [
+    0,
+    13,
+    0.0
+   ],
+   "long_press": [
+    0,
+    1,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:wandering": 65,
+   "budget:repeat_loop": 22,
+   "success": 18,
+   "budget:scroll_heavy": 7,
+   "wrong_answer": 3,
+   "partial_credit": 1
+  },
+  "flags_among_failures": {
+   "no_open_app": 94,
+   "same_action_run3": 29,
+   "noeffect_clicks3": 28,
+   "answer_task_no_answer_action": 15,
+   "typed_text_not_in_goal": 10
+  },
+  "answer_tasks_with_answer_action": 10,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 94
+ },
+ "sealed:v1_s7": {
+  "n": 116,
+  "succ": 11,
+  "steps": 1856,
+  "type_share": {
+   "wait": 0.408,
+   "click": 0.402,
+   "open_app": 0.098,
+   "input_text": 0.04,
+   "status": 0.029,
+   "scroll": 0.022,
+   "navigate_back": 0.001
+  },
+  "type_counts": {
+   "wait": 758,
+   "click": 746,
+   "open_app": 182,
+   "input_text": 74,
+   "status": 54,
+   "scroll": 40,
+   "navigate_back": 2
+  },
+  "wait_share": 0.408,
+  "waits": 758,
+  "wait_nonwait_intent": 758,
+  "same_intent_as_prev_share": 0.56,
+  "noeffect_rate": {
+   "click": [
+    190,
+    728,
+    0.261
+   ],
+   "input_text": [
+    13,
+    72,
+    0.181
+   ],
+   "scroll": [
+    13,
+    37,
+    0.351
+   ],
+   "wait": [
+    627,
+    721,
+    0.87
+   ],
+   "open_app": [
+    81,
+    180,
+    0.45
+   ],
+   "navigate_back": [
+    1,
+    2,
+    0.5
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 29,
+   "false_complete": 27,
+   "budget:wandering": 18,
+   "answer_task_completed_without_answer": 16,
+   "budget:stuck_wait": 14,
+   "success": 11,
+   "budget:scroll_heavy": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 80,
+   "same_intent_run4": 51,
+   "wait_run3": 28,
+   "answer_task_no_answer_action": 25,
+   "noeffect_clicks3": 21,
+   "never_opened_expected_app": 17,
+   "unmapped_open_app": 16,
+   "typed_text_not_in_goal": 6,
+   "same_action_run3": 5
+  },
+  "answer_tasks_with_answer_action": 0,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 62
+ },
+ "sealed:v1_s1234": {
+  "n": 116,
+  "succ": 10,
+  "steps": 1765,
+  "type_share": {
+   "wait": 0.394,
+   "click": 0.377,
+   "open_app": 0.105,
+   "scroll": 0.058,
+   "input_text": 0.032,
+   "status": 0.031,
+   "navigate_back": 0.003
+  },
+  "type_counts": {
+   "wait": 695,
+   "click": 666,
+   "open_app": 185,
+   "scroll": 103,
+   "input_text": 56,
+   "status": 55,
+   "navigate_back": 5
+  },
+  "wait_share": 0.394,
+  "waits": 695,
+  "wait_nonwait_intent": 695,
+  "same_intent_as_prev_share": 0.564,
+  "noeffect_rate": {
+   "click": [
+    152,
+    649,
+    0.234
+   ],
+   "input_text": [
+    15,
+    55,
+    0.273
+   ],
+   "scroll": [
+    71,
+    97,
+    0.732
+   ],
+   "wait": [
+    588,
+    660,
+    0.891
+   ],
+   "open_app": [
+    81,
+    184,
+    0.44
+   ],
+   "navigate_back": [
+    0,
+    4,
+    0.0
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 27,
+   "false_complete": 26,
+   "answer_task_completed_without_answer": 18,
+   "budget:stuck_wait": 17,
+   "budget:wandering": 16,
+   "success": 10,
+   "budget:scroll_heavy": 1,
+   "partial_credit": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 75,
+   "same_intent_run4": 48,
+   "wait_run3": 30,
+   "answer_task_no_answer_action": 25,
+   "noeffect_clicks3": 19,
+   "never_opened_expected_app": 18,
+   "unmapped_open_app": 15,
+   "same_action_run3": 12,
+   "typed_text_not_in_goal": 6
+  },
+  "answer_tasks_with_answer_action": 0,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 61
+ },
+ "sealed:v1_s2026": {
+  "n": 116,
+  "succ": 11,
+  "steps": 1664,
+  "type_share": {
+   "click": 0.45,
+   "wait": 0.332,
+   "open_app": 0.102,
+   "scroll": 0.049,
+   "input_text": 0.034,
+   "status": 0.033,
+   "navigate_back": 0.001
+  },
+  "type_counts": {
+   "click": 748,
+   "wait": 552,
+   "open_app": 169,
+   "scroll": 81,
+   "input_text": 57,
+   "status": 55,
+   "navigate_back": 2
+  },
+  "wait_share": 0.332,
+  "waits": 552,
+  "wait_nonwait_intent": 552,
+  "same_intent_as_prev_share": 0.483,
+  "noeffect_rate": {
+   "click": [
+    114,
+    727,
+    0.157
+   ],
+   "input_text": [
+    13,
+    56,
+    0.232
+   ],
+   "scroll": [
+    59,
+    76,
+    0.776
+   ],
+   "wait": [
+    490,
+    519,
+    0.944
+   ],
+   "open_app": [
+    65,
+    168,
+    0.387
+   ],
+   "navigate_back": [
+    0,
+    2,
+    0.0
+   ]
+  },
+  "primary": {
+   "false_complete": 29,
+   "budget:stuck_same_intent": 27,
+   "budget:wandering": 21,
+   "answer_task_completed_without_answer": 15,
+   "budget:stuck_wait": 13,
+   "success": 11
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 57,
+   "same_intent_run4": 47,
+   "wait_run3": 28,
+   "answer_task_no_answer_action": 25,
+   "noeffect_clicks3": 17,
+   "never_opened_expected_app": 16,
+   "unmapped_open_app": 12,
+   "same_action_run3": 11,
+   "typed_text_not_in_goal": 8
+  },
+  "answer_tasks_with_answer_action": 0,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 61
+ },
+ "sealed_pooled:v4": {
+  "n": 348,
+  "succ": 54,
+  "steps": 5391,
+  "type_share": {
+   "click": 0.46,
+   "wait": 0.339,
+   "open_app": 0.068,
+   "input_text": 0.058,
+   "scroll": 0.038,
+   "status": 0.021,
+   "answer": 0.01,
+   "navigate_back": 0.006,
+   "navigate_home": 0.0
+  },
+  "type_counts": {
+   "click": 2481,
+   "wait": 1829,
+   "open_app": 365,
+   "input_text": 311,
+   "scroll": 204,
+   "status": 113,
+   "answer": 54,
+   "navigate_back": 32,
+   "navigate_home": 2
+  },
+  "wait_share": 0.339,
+  "waits": 1829,
+  "wait_nonwait_intent": 1829,
+  "same_intent_as_prev_share": 0.541,
+  "noeffect_rate": {
+   "click": [
+    846,
+    2416,
+    0.35
+   ],
+   "input_text": [
+    92,
+    310,
+    0.297
+   ],
+   "scroll": [
+    129,
+    187,
+    0.69
+   ],
+   "wait": [
+    1591,
+    1737,
+    0.916
+   ],
+   "open_app": [
+    40,
+    365,
+    0.11
+   ],
+   "navigate_back": [
+    2,
+    32,
+    0.062
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 79,
+   "false_complete": 71,
+   "success": 54,
+   "budget:stuck_wait": 49,
+   "budget:wandering": 44,
+   "wrong_answer": 41,
+   "infra_exception": 6,
+   "budget:scroll_heavy": 2,
+   "partial_credit": 1,
+   "budget:repeat_loop": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 177,
+   "same_intent_run4": 142,
+   "wait_run3": 73,
+   "noeffect_clicks3": 67,
+   "same_action_run3": 37,
+   "answer_task_no_answer_action": 21,
+   "never_opened_expected_app": 19,
+   "typed_text_not_in_goal": 18,
+   "no_open_app": 15
+  },
+  "answer_tasks_with_answer_action": 54,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 175
+ },
+ "sealed_pooled:guiowl": {
+  "n": 348,
+  "succ": 47,
+  "steps": 6755,
+  "type_share": {
+   "click": 0.741,
+   "scroll": 0.131,
+   "input_text": 0.082,
+   "wait": 0.021,
+   "navigate_back": 0.007,
+   "navigate_home": 0.006,
+   "status": 0.005,
+   "answer": 0.005,
+   "long_press": 0.001,
+   "open_app": 0.0,
+   "null": 0.0,
+   "key": 0.0
+  },
+  "type_counts": {
+   "click": 5005,
+   "scroll": 886,
+   "input_text": 555,
+   "wait": 140,
+   "navigate_back": 46,
+   "navigate_home": 42,
+   "status": 33,
+   "answer": 31,
+   "long_press": 9,
+   "open_app": 3,
+   "null": 3,
+   "key": 2
+  },
+  "wait_share": 0.021,
+  "waits": 140,
+  "wait_nonwait_intent": 0,
+  "same_intent_as_prev_share": 0.0,
+  "noeffect_rate": {
+   "click": [
+    1255,
+    4758,
+    0.264
+   ],
+   "input_text": [
+    172,
+    537,
+    0.32
+   ],
+   "scroll": [
+    303,
+    870,
+    0.348
+   ],
+   "wait": [
+    10,
+    140,
+    0.071
+   ],
+   "open_app": [
+    0,
+    3,
+    0.0
+   ],
+   "navigate_back": [
+    3,
+    45,
+    0.067
+   ],
+   "long_press": [
+    4,
+    8,
+    0.5
+   ]
+  },
+  "primary": {
+   "budget:wandering": 206,
+   "budget:repeat_loop": 63,
+   "success": 47,
+   "budget:scroll_heavy": 14,
+   "wrong_answer": 12,
+   "false_complete": 4,
+   "infra_exception": 1,
+   "partial_credit": 1
+  },
+  "flags_among_failures": {
+   "no_open_app": 289,
+   "noeffect_clicks3": 109,
+   "same_action_run3": 99,
+   "answer_task_no_answer_action": 44,
+   "typed_text_not_in_goal": 21,
+   "wait_run3": 3,
+   "unparseable_step": 1
+  },
+  "answer_tasks_with_answer_action": 31,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 3,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 283
+ },
+ "sealed_pooled:v1": {
+  "n": 348,
+  "succ": 32,
+  "steps": 5285,
+  "type_share": {
+   "click": 0.409,
+   "wait": 0.379,
+   "open_app": 0.101,
+   "scroll": 0.042,
+   "input_text": 0.035,
+   "status": 0.031,
+   "navigate_back": 0.002
+  },
+  "type_counts": {
+   "click": 2160,
+   "wait": 2005,
+   "open_app": 536,
+   "scroll": 224,
+   "input_text": 187,
+   "status": 164,
+   "navigate_back": 9
+  },
+  "wait_share": 0.379,
+  "waits": 2005,
+  "wait_nonwait_intent": 2005,
+  "same_intent_as_prev_share": 0.537,
+  "noeffect_rate": {
+   "click": [
+    456,
+    2104,
+    0.217
+   ],
+   "input_text": [
+    41,
+    183,
+    0.224
+   ],
+   "scroll": [
+    143,
+    210,
+    0.681
+   ],
+   "wait": [
+    1705,
+    1900,
+    0.897
+   ],
+   "open_app": [
+    227,
+    532,
+    0.427
+   ],
+   "navigate_back": [
+    1,
+    8,
+    0.125
+   ]
+  },
+  "primary": {
+   "budget:stuck_same_intent": 83,
+   "false_complete": 82,
+   "budget:wandering": 55,
+   "answer_task_completed_without_answer": 49,
+   "budget:stuck_wait": 44,
+   "success": 32,
+   "budget:scroll_heavy": 2,
+   "partial_credit": 1
+  },
+  "flags_among_failures": {
+   "wait_under_nonwait_intent": 212,
+   "same_intent_run4": 146,
+   "wait_run3": 86,
+   "answer_task_no_answer_action": 75,
+   "noeffect_clicks3": 57,
+   "never_opened_expected_app": 51,
+   "unmapped_open_app": 43,
+   "same_action_run3": 28,
+   "typed_text_not_in_goal": 20
+  },
+  "answer_tasks_with_answer_action": 0,
+  "action_tasks_with_answer_action": 0,
+  "unparseable_steps": 0,
+  "guard_fires": 0,
+  "guard_rules": {},
+  "budget_exhausted": 184
+ }
+}

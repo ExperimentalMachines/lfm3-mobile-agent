@@ -17,7 +17,7 @@ Loops halved, but success barely moved. That matches this report's main finding:
   - **Looping:** the model repeats an action that changed nothing until it runs out of steps (44% of held-out failures).
   - **Stopping early:** the model says `complete` before the task is done (24%).
   - Every LFM3 version has made 20–28 false `complete`s per 116 tasks. GUI-Owl made 0 on seed 30.
-- **Not the cause:** too few epochs, too small a LoRA, or bad hyperparameters. Train loss equals validation loss. The loss curve flattened because the learning rate reached zero. Rank, LoRA variant and learning rate are all in the range where published studies find little left to gain (1–2% or less).
+- **Not the cause:** too few epochs, too small a LoRA, or bad hyperparameters. Train loss over the last 100 steps equals validation loss (0.305 vs 0.306); at 0.43 epoch each row is seen at most once, so this shows no memorisation rather than spare capacity. The loss curve flattened because the learning rate reached zero. Rank, LoRA variant and learning rate are all in the range where published studies find little left to gain (1–2% or less).
 - **Best next step:** step-level preference training (DPO) on the model's own wrong answers at the same screens.
   - Sample the model's own actions where it disagrees with the human step, then train it to prefer the human step.
   - It needs no teacher and no emulator, and has a 2B result.
@@ -61,7 +61,7 @@ Loops halved, but success barely moved. That matches this report's main finding:
 
 ### Why held-out v4 episodes failed
 
-Computed from the 348 sealed-seed episodes per model ([ours](../../results/androidworld_sealed/)). Each failure has one primary category.
+Computed from the 348 sealed-seed episodes per model ([ours](../../results/androidworld_sealed/)). Each failure has one primary category: per-run counts in [failure_taxonomy_20261122.json](../../results/androidworld/failure_taxonomy_20261122.json) (`primary`), built by [analysis/failure_analysis/](../../analysis/failure_analysis/).
 
 | Failure | Held-out v4 (294 failures) | Seed 30: v4 / v4.2 | MW v4 (99 failures) | Training signal today |
 |---|---|---|---|---|
@@ -130,7 +130,7 @@ Source: [log_history.json](../../results/v4_dev/hub/training_logs/log_history.js
 
 | Signal | Value | Reading |
 |---|---|---|
-| Train vs validation loss at the end | 0.301–0.305 vs 0.306 | No memorisation |
+| Train vs validation loss at the end | 0.305 (mean of the last 100 steps; the whole-run average is 0.336) vs 0.306 | No memorisation (each row is seen at most once) |
 | Data seen | 0.434 epoch (40k of 92k rows), no row repeated | Most rows never seen |
 | Validation gain per 250 steps | −0.021, −0.024, −0.010, −0.003 | Flattening… |
 | Learning rate | 2e-5 by step 1,000; 0 at ~1,240 (cosine) | …because the learning rate reached zero |
@@ -150,7 +150,7 @@ Source: [log_history.json](../../results/v4_dev/hub/training_logs/log_history.js
 | Option | Colab A100 at 4.07 rows/s ([ours](../../results/v4_dev/hub/training_logs/train_summary.json)) |
 |---|---|
 | One v4-sized run (40k rows) | ~2.7 h |
-| One epoch of 92k rows | ~6.3 h |
+| One epoch of 92k rows | ~6.3 h (v4's resumed segment: 900 steps × 32 rows in 7,074 s = 4.1 rows/s) |
 | Two epochs | ~12.6 h |
 
 - The same recipe ran 2.2× faster on Modal (9.09 rows/s) ([ours](../../results/training/lfm3vl2b_v3/train_summary.json)).
@@ -276,7 +276,7 @@ Source: [log_history.json](../../results/v4_dev/hub/training_logs/log_history.js
 | Xeon CPU, 8 threads | 6.4 s | 5.59 s for 803 tokens | 28 tokens at 43 tok/s | +0.46 / +0.92 s (+7% / +14%) |
 | Apple M5 (v4.2, inside runs) | 2.0 s | 1.29 s for ~1,190 tokens | 23 tokens at ~22 ms each | +0.44 / +0.88 s (+22% / +44%) |
 
-Sources: [speed_qdc_v6.md](../../results/qdc/speed_qdc_v6.md), [speed_t8.md](../../results/speed/speed_t8.md), seed-30 episode timings ([ours](../../results/androidworld/)).
+Sources: [speed_qdc_v6.md](../../results/qdc/speed_qdc_v6.md), [speed_t8.md](../../results/speed/speed_t8.md); M5 split from the seed-30 server log [llama_server_lfm3vl2b_v42.log](../../logs/llama_server_lfm3vl2b_v42.log) via [latency.py](../../analysis/failure_analysis/latency.py).
 
 - **GUI-Owl is slower because of its bigger prompt, not longer replies.** On the M5: 2,106 vs 1,303 prompt tokens and 7.00 vs 2.96 s per step. On the phone at the same image limit: ~198 vs ~39 s per step ([results.md](../results.md)).
 - **What costs more than writing longer replies:**
@@ -405,7 +405,7 @@ All decision rules go into a PREREG_v41 amendment **before** any new score. Seed
 
 | Rank | Step | What exactly | A100 | Mac / emulators | Pre-declared decision rule |
 |---|---|---|---|---|---|
-| **1** | **Freeze the yardstick** | Write the amendment. Start a v4 replicate on seed 30. Let the running MW v4.2 job finish; it counts as development | 0 | Emulator 1: ~3 h | R = the number of tasks that flip between v4 and its replicate. A seed-30 change counts only if the net change ≥ max(R, 10) tasks. Otherwise the result is "no measurable change", and the behaviour gates below decide |
+| **1** | **Freeze the yardstick** | Write the amendment. Start a v4 replicate on seed 30. MW v4.2 has finished (8/105, development) | 0 | Emulator 1: ~3 h | R = the number of tasks that flip between v4 and its replicate. A seed-30 change counts only if the net change ≥ max(R, 10) tasks. Otherwise the result is "no measurable change", and the behaviour gates below decide |
 | **2** | **Diagnostics and pair sampling** | (a) Loss on seen vs never-seen rows. (b) Validation loss split into intent, action type and coordinates. (c) v4.2's early-`status` rate on non-final AC test steps (v4: 4.6%). (d) 4 samples per state on ~6k v4.2 replay states → DPO pairs. First run the whole DPO path with a tiny `--limit`, through adapter save and GGUF export | ~0.5 h | — | (a) Gap > 0.01 nats → no repeated rows ever. (b) Action + coordinate tokens < 30% of the remaining loss → drop "more epochs". (d) Continue only with ≥3,000 pairs, ≥20% of them stop-related and ≥20% wait- or copy-related. Otherwise retry once with 8 samples, then fall back to recovery-row SFT |
 | **3** | **Step-DPO on own mistakes** (v4.2-dpo) | From v4.2: DPO + 0.5 × SFT anchor, ~500 steps, one round | ~2 h | Emulator 1: ~3 h (seed 30) | **Offline gate, before any emulator time:** early-`status` rate ≤ ⅔ of v4.2's; final-step `complete` accuracy ≥ 0.70 (v4.2: 0.738), so it still stops; AC high-level ≥ 0.712; `dev_answer` ≥ 0.848. **Online gate:** false `complete`s ≤ 15 (all runs so far: 20–28), successes ≥ 16, median output ≤ 30 tokens. More than 10 exceptions → re-run the crashed tasks first. Passing makes it a held-out candidate, not a "better" claim |
 | **4** | **Peer-comparable and held-out checks** | SS-v2 mobile for v4.2 and GUI-Owl. AndroidLab: check the Mac AVD; freeze the protocol (25 rounds, exact-match answers, exceptions count as failures); run frozen v4 and GUI-Owl once each. Rescore AC on AndroidControl-Curated | 0 | Emulator 2 + Mac: ~1 h SS-v2, ~2–3 h v4, ~4–7 h GUI-Owl | SS-v2 is a guard, not a selector: a candidate > 2 pts below v4.2 is rejected. If v4's held-out AW lead over GUI-Owl reverses on AndroidLab, report the AW lead as benchmark-specific. AndroidLab never runs unfrozen versions |
