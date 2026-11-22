@@ -74,6 +74,7 @@ def main():
     ap.add_argument("--max_new_tokens", type=int, default=128)
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--limit_episodes", type=int, default=0, help="smoke tests only")
+    ap.add_argument("--no_generate", action="store_true", help="rebuild from a complete saved state only (round 5); exit if any step would need generation")
     a = ap.parse_args()
     import torch
     from datasets import load_from_disk
@@ -146,11 +147,16 @@ def main():
                 return None
         return h
 
-    proc = AutoProcessor.from_pretrained(a.model, trust_remote_code=True,
-                                         size={"shortest_edge": a.min_pixels, "longest_edge": a.max_pixels})
-    proc.tokenizer.padding_side = "left"
-    model = AutoModelForImageTextToText.from_pretrained(a.model, dtype=torch.bfloat16, trust_remote_code=True).to(a.device).eval()
     max_len = max(len(v) for v in episodes.values())
+    if a.no_generate:
+        if st["round_done"] < max_len - 2:
+            sys.exit(f"--no_generate: saved state stops at round {st['round_done']}, needs {max_len - 2}")
+        print(f"rebuilding from saved state (round {st['round_done']}), no generation", flush=True)
+    else:
+        proc = AutoProcessor.from_pretrained(a.model, trust_remote_code=True,
+                                             size={"shortest_edge": a.min_pixels, "longest_edge": a.max_pixels})
+        proc.tokenizer.padding_side = "left"
+        model = AutoModelForImageTextToText.from_pretrained(a.model, dtype=torch.bfloat16, trust_remote_code=True).to(a.device).eval()
     t0 = time.time()
     for k in range(st["round_done"] + 1, max_len - 1):   # the k-th stored step of each episode; the last one never feeds a history
         todo = [e for e, rows in episodes.items() if len(rows) > k + 1 and e not in st["bad"]]

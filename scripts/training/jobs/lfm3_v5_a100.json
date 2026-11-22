@@ -1,0 +1,32 @@
+[
+ {
+  "name": "lfm3_v5",
+  "script": "/content/work/vm_v5_pipeline.sh",
+  "log": "/content/runs/lfm3_v5_pipeline.log",
+  "env": {
+   "CANDIDATES": "P S",
+   "PAIR_ROWS": "16000",
+   "S_LR": "1e-4"
+  },
+  "stagger_s": 0
+ },
+ {
+  "name": "gguf_export",
+  "script": "/content/work/vm_export_gguf.sh",
+  "log": "/content/runs/gguf_export.log",
+  "env": {
+   "SKIP_V4_PARITY": "1",
+   "EXPORT_RUNS": "lfm3vl2b-v43dpo:LFM3-VL-2B-AndroidAgent-v4.3-dpo:/content/models/v42/model.safetensors lfm3vl2b-v43sft:LFM3-VL-2B-AndroidAgent-v4.3-sft:/content/models/v42/model.safetensors"
+  },
+  "stagger_s": 0
+ },
+ {
+  "name": "publish_public",
+  "script": "/content/work/vm_publish_public.sh",
+  "log": "/content/runs/publish_public.log",
+  "env": {
+   "PUBLISH_RUNS": "lfm3vl2b-v43dpo:LFM3-VL-2B-AndroidAgent-v4.3-dpo lfm3vl2b-v43sft:LFM3-VL-2B-AndroidAgent-v4.3-sft"
+  },
+  "stagger_s": 0
+ }
+]

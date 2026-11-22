@@ -5,7 +5,8 @@
 # (llama-quantize Q4_K_M) runs on the Mac: quantizing on this x86 VM changed 0.06% of bytes vs the Mac (2026-11-21
 # parity test), so only the F16 step moves here. Why here at all: the Mac's disk cannot hold merged (3.8 GB) + F16
 # (3.6 GB), and the Hub cannot hold the merged weights (private storage full).
-# EXPORT_RUNS entries "dir_or_run:Name": v4 (parity, published merged weights checked against
+# EXPORT_RUNS entries "dir_or_run:Name[:base_safetensors]" (round 5: base = v4.2's merged weights; SKIP_V4_PARITY=1 skips
+# the v4 parity input, whose Mac marker already exists): v4 (parity, published merged weights checked against
 # results/v4_local_export_manifest.json) and each run (waits for its train_receipt.json, then check_local_merge.py).
 # Output: /content/gguf/<Name>-F16.gguf (+ .sha256). The Mac quantizes and checks v4's Q4_K_M SHA-256 first.
 set -uo pipefail
@@ -35,7 +36,7 @@ export_f16() {  # merged_dir Name  (converted through /content/named/<Name>, the
 mkdir -p /content/gguf
 BASE=$($PY -c "from huggingface_hub import hf_hub_download as d; print(d('LiquidAI/LFM3-VL-2B', 'model.safetensors', revision='$BASE_REV'))") \
   || { log "BASE DOWNLOAD FAILED"; exit 1; }
-if [ ! -s /content/gguf/LFM3-VL-2B-AndroidAgent-v4-F16.gguf ]; then
+if [ "${SKIP_V4_PARITY:-0}" != 1 ] && [ ! -s /content/gguf/LFM3-VL-2B-AndroidAgent-v4-F16.gguf ]; then
   $PY - <<'PY' || { log "PARITY INPUT FAILED"; exit 1; }
 import hashlib, json, os
 from huggingface_hub import hf_hub_download
@@ -53,10 +54,10 @@ PY
   log "v4 F16 ready (parity input for the Mac)"
 fi
 for spec in ${EXPORT_RUNS:?}; do
-  run=${spec%%:*}; name=${spec#*:}; R=/content/runs/$run
+  run=${spec%%:*}; rest=${spec#*:}; name=${rest%%:*}; base=$BASE; [ "$rest" != "$name" ] && base=${rest#*:}; R=/content/runs/$run
   [ -s "/content/gguf/$name-F16.gguf" ] && { log "$name F16 exists"; continue; }
   until [ -f "$R/train_receipt.json" ]; do sleep 120; done
-  $PY /content/work/check_local_merge.py "$R/merged" "$BASE" "$R/lora" || { log "MERGE CHECK FAILED: $run"; exit 1; }
+  $PY /content/work/check_local_merge.py "$R/merged" "$base" "$R/lora" || { log "MERGE CHECK FAILED: $run"; exit 1; }
   export_f16 "$R/merged" "$name" || { log "EXPORT FAILED: $run"; exit 1; }
   log "exported /content/gguf/$name-F16.gguf sha256 $(cat /content/gguf/$name-F16.gguf.sha256)"
 done

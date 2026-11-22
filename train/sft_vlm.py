@@ -48,7 +48,13 @@ p.add_argument("--max_agent_rows", type=int, default=0, help="random subset of t
 p.add_argument("--replay", nargs="*", default=[], help="general-data replay datasets (save_to_disk dirs) mixed in to limit forgetting")
 p.add_argument("--inline_think", action="store_true", help="put intent as <think>..</think> inside content (templates without reasoning_content)")
 p.add_argument("--trust_remote_code", action="store_true", default=True)
+p.add_argument("--scheduler", default="cosine", choices=["cosine", "wsd"],
+               help="wsd = warm-up, constant, linear decay over the last --decay_frac of steps (round 5, candidate S)")
+p.add_argument("--decay_frac", type=float, default=0.15)
+p.add_argument("--warmup", type=float, default=0.03)
 args = p.parse_args()
+if args.scheduler == "wsd" and args.max_steps <= 0:
+    sys.exit("--scheduler wsd needs --max_steps")
 
 os.makedirs(f"{args.out}/logs", exist_ok=True)
 os.environ.setdefault("TENSORBOARD_LOGGING_DIR", f"{args.out}/logs/tb")
@@ -168,8 +174,10 @@ cfg = SFTConfig(
     per_device_eval_batch_size=args.bs,
     gradient_accumulation_steps=args.grad_accum,
     learning_rate=args.lr,
-    lr_scheduler_type="cosine",
-    warmup_steps=0.03,
+    lr_scheduler_type="warmup_stable_decay" if args.scheduler == "wsd" else "cosine",
+    lr_scheduler_kwargs={"num_decay_steps": int(args.decay_frac * args.max_steps), "decay_type": "linear"}
+    if args.scheduler == "wsd" else {},
+    warmup_steps=args.warmup,
     weight_decay=0.0,
     max_grad_norm=1.0,
     max_length=None,

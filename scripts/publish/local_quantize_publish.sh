@@ -12,7 +12,7 @@ CB=$HOME/.local/bin/colab-b; MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gg
 V4SHA=5285279249948dc019abf9341f98b65778f679a1f2cbc76e94c57a96af2a35e7; MARK=results/.v4_quantize_parity_ok
 log() { echo "[$(date +%T)] $NAME: $*"; }
 for f in "$NAME-F16.gguf.sha256" "$NAME-F16.gguf"; do
-  for try in 1 2 3; do perl -e 'alarm 3600; exec @ARGV' "$CB" download -s v41 "/content/gguf/$f" "$T/$f" > /dev/null 2>&1 && break
+  for try in 1 2 3; do perl -e 'alarm 3600; exec @ARGV' "$CB" download -s "${SESS:-v41}" "/content/gguf/$f" "$T/$f" > /dev/null 2>&1 && break
     log "retry download $f"; sleep 30; done
 done
 [ "$(shasum -a 256 "$T/$NAME-F16.gguf" | cut -d' ' -f1)" = "$(cat "$T/$NAME-F16.gguf.sha256")" ] || { log "F16 SHA MISMATCH"; exit 1; }
@@ -24,7 +24,7 @@ if [ "$NAME" = LFM3-VL-2B-AndroidAgent-v4 ]; then
   date > "$MARK"; log "parity OK: Colab F16 + Mac quantize reproduces v4's GGUF byte for byte"; exit 0
 fi
 [ -f "$MARK" ] || { log "v4 parity not established; refusing"; exit 1; }
-V=${NAME##*-}; D=models/lfm3vl2b_${V//./}-GGUF; G=$D/$NAME-Q4_K_M.gguf
+V=${NAME#LFM3-VL-2B-AndroidAgent-}; D=models/lfm3vl2b_${V//./}-GGUF; G=$D/$NAME-Q4_K_M.gguf
 mkdir -p "$D"; [ -e "$G" ] && { log "$G exists; refusing to overwrite"; exit 1; }
 llama-quantize "$T/$NAME-F16.gguf" "$G" Q4_K_M > "$T/$NAME.quant.log" 2>&1
 rm -f "$T/$NAME-F16.gguf"
@@ -38,7 +38,7 @@ log "quantized $G ($GSHA)"
 import sys
 from huggingface_hub import HfApi, hf_hub_download
 name, g, mm = sys.argv[1:4]
-ver = name.rsplit("-", 1)[1]
+ver = name.split("AndroidAgent-", 1)[1]
 api, rid = HfApi(), f"alpharomercoma/{name}-GGUF"
 api.create_repo(rid, private=False, exist_ok=True)
 if api.model_info(rid).private:

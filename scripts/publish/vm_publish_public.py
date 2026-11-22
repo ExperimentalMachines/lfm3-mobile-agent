@@ -46,7 +46,7 @@ api = HfApi()
 lic = hf_hub_download("LiquidAI/LFM3-VL-2B", "LICENSE", revision=BASE_REV)
 for spec in a.runs.split():
     run, name = spec.split(":")
-    ver = name.rsplit("-", 1)[1]                      # e.g. v4.1
+    ver = name.split("AndroidAgent-", 1)[1]           # e.g. v4.1, v4.3-dpo
     R = f"/content/runs/{run}"
     wait_for(f"{R}/train_receipt.json")
     rid = f"{USER}/{name}"
