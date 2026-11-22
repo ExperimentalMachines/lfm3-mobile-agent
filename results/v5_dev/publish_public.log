@@ -1,0 +1,96 @@
+Traceback (most recent call last):
+  File "/content/work/vm_publish_public.py", line 51, in <module>
+    wait_for(f"{R}/train_receipt.json")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/work/vm_publish_public.py", line 38, in wait_for
+    time.sleep(120)
+    ~~~~~~~~~~^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/content/work/vm_publish_public.py", line 51, in <module>
+    wait_for(f"{R}/train_receipt.json")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/work/vm_publish_public.py", line 38, in wait_for
+    time.sleep(120)
+    ~~~~~~~~~~^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_http.py", line 866, in hf_raise_for_status
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/httpx2/_models.py", line 828, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx2.HTTPStatusError: Client error '400 Bad Request' for url 'https://huggingface.co/api/validate-yaml'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 11715, in _validate_yaml
+    hf_raise_for_status(response)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_http.py", line 959, in hf_raise_for_status
+    raise _format(BadRequestError, message, response) from e
+huggingface_hub.errors.BadRequestError: (Request ID: Root=1-6b02d262-7d071a2232de04bc1a720e53;eb0e6e9c-a328-4d2d-81a4-43c6efa3db22)
+
+Bad request:
+"base_model.0" with value "/content/models/v42" is not valid. Use a model id from https://hf.co/models.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/content/work/vm_publish_public.py", line 55, in <module>
+    api.upload_folder(folder_path=f"{R}/lora", repo_id=rid, path_in_repo="lora_adapter", commit_message="LoRA adapter",
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      ignore_patterns=["training_args.bin"])
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 2036, in _inner
+    return fn(self, *args, **kwargs)
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 5987, in upload_folder
+    add_operations = self._prepare_upload_folder_additions(
+        folder_path,
+    ...<4 lines>...
+        repo_type=repo_type,
+    )
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 11666, in _prepare_upload_folder_additions
+    self._validate_yaml(
+    ~~~~~~~~~~~~~~~~~~~^
+        content=relpath_to_abspath["README.md"].read_text(encoding="utf8"),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        repo_type=repo_type,
+        ^^^^^^^^^^^^^^^^^^^^
+        token=token,
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/huggingface_hub/hf_api.py", line 11719, in _validate_yaml
+    raise ValueError(f"Invalid metadata in README.md.\n{message}") from e
+ValueError: Invalid metadata in README.md.
+- "base_model.0" with value "/content/models/v42" is not valid. Use a model id from https://hf.co/models.
+No files have been modified since last commit. Skipping to prevent empty commit.
+[11:57:39] published alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo
+[12:08:51] published alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo2
+Traceback (most recent call last):
+  File "/content/work/vm_publish_public.py", line 51, in <module>
+    wait_for(f"{R}/train_receipt.json")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/work/vm_publish_public.py", line 38, in wait_for
+    time.sleep(120)
+    ~~~~~~~~~~^^^^^
+KeyboardInterrupt
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+[12:30:49] published alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+No files have been modified since last commit. Skipping to prevent empty commit.
+[12:31:20] published alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo2
+[13:38:33] published alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-sft
+all published

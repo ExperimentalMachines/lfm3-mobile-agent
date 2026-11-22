@@ -1,0 +1,18 @@
+{
+ "model": "/content/models/v42",
+ "pairs": "/content/data/v5_pairs",
+ "out": "/content/runs/lfm3vl2b-v43dpo",
+ "beta": 0.1,
+ "sft_weight": 0.5,
+ "lr": 2e-05,
+ "bs": 4,
+ "grad_accum": 8,
+ "epochs": 1.0,
+ "lora_r": 64,
+ "lora_alpha": 128,
+ "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+ "max_pixels": 774400,
+ "min_pixels": 65536,
+ "smoke": 0,
+ "seed": 42
+}
