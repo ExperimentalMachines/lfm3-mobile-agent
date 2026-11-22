@@ -291,3 +291,25 @@ wrong click, wrong type) are saved before training.
   acted: emulator 5558 had just finished the replicate, and its accessibility forwarder does not survive into a second
   pass (third occurrence). Moved to `results/androidworld/_invalid/lfm3vl2b_v43dpo2_a11y_dead_20261122/`. The launcher
   now cold-boots its own emulator before every pass. The restarted pass's first episodes ran without exceptions.
+- **22:48 the Mac rebooted** (no panic report) during both passes: P2 had 55 episodes, S had 6. Both passes were
+  **resumed from their checkpoints** at 23:18 (completed episodes kept, only unstarted tasks run; nothing re-run). The
+  adb server was down after the reboot and was started by the first `adb devices`.
+
+### 2026-11-23 00:30 Asia/Manila — P2 fails the online gate
+| Seed 30 (116 tasks) | Successes | Exceptions | False `complete` | Net vs E | Flips vs E | McNemar p |
+|---|---|---|---|---|---|---|
+| E = v4.2 | 18 | 9 | 25 | — | — | — |
+| v4.2 replicate | 19 | 2 | 22 | +1 | 9 (= R) | 1.0 |
+| **P2 = v4.3-dpo2** | **21** | 3 | **28** | **+3** (7 − 4) | 11 | 0.55 |
+
+- **Gate:** behaviour path needs false `complete` ≤ 15 → **28, fail**; success path needs net gain ≥ 9 → **+3, fail**.
+  P2 is not a held-out candidate.
+- Its offline gain at the last step (terminal `complete` 0.738 → 0.785) did not transfer: on the phone it ends with a
+  false `complete` *more* often than v4.2 (28 vs 22–25). Stopping correctly on a recorded final screen is not the same
+  skill as knowing, mid-task, that the task is done.
+- Of its 7 E-only wins, 4 (SMS reply ×2, Bluetooth on/off) are tasks the identical v4.2 replicate also won over E (one
+  was an E exception); against the replicate P2 is +2 with 6 flips (p 0.69). This is noise-level.
+- Counts: [`analysis/aw_false_complete.py`](../analysis/aw_false_complete.py) and the new
+  [`analysis/aw_paired_flips.py`](../analysis/aw_paired_flips.py) (reproduces R = 9: 5 replicate-only, 4 E-only).
+- S is still running (47/116 at 00:30: 7 successes, 16 false `complete`s, so its behaviour path is already closed;
+  its success path is decided when the pass ends).
