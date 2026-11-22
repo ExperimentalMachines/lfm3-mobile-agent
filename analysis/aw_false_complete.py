@@ -9,7 +9,7 @@ for d in sys.argv[1:]:
     for f in glob.glob(os.path.join(d, "run_*", "*.pkl.gz")):
         e = pickle.load(gzip.open(f)); e = e[0] if isinstance(e, list) else e
         n += 1
-        ok = (e.get("is_successful") or 0) > 0
+        ok = (e.get("is_successful") or 0) >= 1  # exceptions store NaN: never a success
         s += ok
         if e.get("exception_info"):
             exc += 1
