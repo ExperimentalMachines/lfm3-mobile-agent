@@ -197,3 +197,35 @@ seed-30 result had been looked at.
   (git-ignored).
 - **Status of this follow-up:** post-hoc; MobileWorld is now a development benchmark. v4's 6/105 stays the held-out
   MobileWorld number; v4's sealed AndroidWorld result stays the AndroidWorld claim.
+
+### 2026-11-22 16:35 Asia/Manila — noise replicate started (before any new training)
+- **R = v4.2 replicate on seed 30** (identical to E: same GGUF, harness and flags; output `results/androidworld/lfm3vl2b_v42_rep/`),
+  emulator 5558. Purpose: the number of tasks that flip between two identical v4.2 passes (R) is the noise yardstick for
+  the next candidates, which all start from v4.2. Its score is not a new result for v4.2 and selects nothing.
+
+### 2026-11-22 17:00 Asia/Manila — round 5 plan (pre-declared before any new training)
+Basis: [research report](research/training-scale-and-own-attempt-learning.md) and two agy passes
+(`results/agy/v5_plan_review/`, `results/agy/v5_plan_rereview/`). Both candidates start from **v4.2** (merged).
+
+| Candidate | What | Answers the owner's question |
+|---|---|---|
+| **P = v4.2 + step-DPO on its own mistakes** | v4.2 decodes greedily (as at inference) on training rows. Where its action fails the AndroidControl scorer's `match` (eval/androidcontrol/score.py: type, 14%-radius click, text F1), a pair is made: preferred = the human step, rejected = v4.2's own step. Loss = DPO (β 0.1) + 0.5 × SFT on the preferred step; new language-only LoRA r64/α128 (projector not trained), one pass over the pairs | "Learn from its own attempts" |
+| **S = v4.2 + more SFT on the same mix** | 800 more steps × 32 rows sampled uniformly from v4.2's own training data (so ~43% are rows it already saw: this is "more epochs" without changing the mix); warm-up → constant → linear decay over the last 15%; new LoRA r64/α128 | "Train more over epochs" |
+
+**Pair rules (P):** training rows only (no dev/test episode, no AndroidWorld app, as in [datasets.md](datasets.md)); states
+whose human step is `wait` are excluded (noisy label); intent wording alone never makes a rejection; unparseable outputs
+are not used as rejections. Pair statistics by kind (early `status`/`answer`, missed stop, `wait`, copied intent,
+wrong click, wrong type) are saved before training.
+
+**Offline gate (each candidate, before any emulator time):** parse rate ≥ 0.99; AndroidControl high-level step accuracy
+≥ 0.712 (v4.2 0.732 − 0.02); terminal `complete` accuracy ≥ 0.70 (v4.2 0.738); `dev_answer` ≥ 0.848 (v4.2 0.868 − 0.02).
+
+**Online gate (AndroidWorld seed 30, development; exceptions count as failures):**
+- Noise yardstick **R** = tasks that flip between E (v4.2) and its replicate (started 16:35).
+- A candidate **passes** if successes ≥ 16 **and** false `complete`s ≤ 15 (v4.2: 25), **or** its net gain over E is
+  ≥ max(R, 6) tasks. False `complete` = the agent ended with `complete` and the checker scored 0
+  (`analysis/failure_analysis/aw_taxonomy.py`, primary category `false_complete`).
+- Both pass → more successes; tie → fewer false `complete`s; tie → P. Neither → round 5 is negative; v4.2 stays.
+- Passing makes a **held-out candidate** (sealed seeds next), not a "better" claim. No MobileWorld run in this round.
+- More than 10 exceptions in a run → re-run only the crashed tasks once, reported separately.
+- **Budget order:** P first; S only if Colab credits remain after P's training and export.
