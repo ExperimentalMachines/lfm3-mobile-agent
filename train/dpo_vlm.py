@@ -134,8 +134,9 @@ summary = {**res.metrics, "wall_s": time.time() - t0, "pairs": len(train_ds),
            "peak_gpu_mem_gb": torch.cuda.max_memory_allocated() / 1e9}
 json.dump(summary, open(f"{a.out}/logs/train_summary.json", "w"), indent=1)
 json.dump(trainer.state.log_history, open(f"{a.out}/logs/log_history.json", "w"), indent=1)
-hist = [h for h in trainer.state.log_history if "loss" in h]
-assert hist and all(h["loss"] == h["loss"] for h in hist), "non-finite loss"
+import math
+losses = [h["loss"] for h in trainer.state.log_history if "loss" in h] + [res.metrics.get("train_loss", float("nan"))]
+assert all(math.isfinite(x) for x in losses), f"non-finite loss: {losses[-5:]}"
 if a.smoke:
     print("SMOKE OK", json.dumps(summary), flush=True)
     sys.exit(0)
