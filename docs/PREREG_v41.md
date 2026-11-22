@@ -287,3 +287,7 @@ wrong click, wrong type) are saved before training.
 
 - P2 (851 balanced stop/copy pairs) keeps step accuracy and stops correctly more often at the last step. It goes to the
   online gate (seed 30). S was restarted at the declared 500 steps (the pipeline had started the old 800-step setting).
+- **20:41 P2 pass void, restarted 20:45.** Its first tasks failed with "Could not get a11y tree" before the model
+  acted: emulator 5558 had just finished the replicate, and its accessibility forwarder does not survive into a second
+  pass (third occurrence). Moved to `results/androidworld/_invalid/lfm3vl2b_v43dpo2_a11y_dead_20261122/`. The launcher
+  now cold-boots its own emulator before every pass. The restarted pass's first episodes ran without exceptions.

@@ -1,0 +1,865 @@
+I1122 20:41:53.967998 8250654592 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1122 20:41:53.968187 8250654592 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5558'"
+I1122 20:41:53.968224 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:41:53.968307 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1122 20:41:54.184739 8250654592 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1122 20:41:54.185050 8250654592 coordinator.py:80] Starting the simulator...
+I1122 20:41:54.185073 8250654592 coordinator.py:135] Simulator launch attempt 1 of 3
+I1122 20:41:54.185114 8250654592 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5558')
+I1122 20:41:54.185128 8250654592 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1122 20:41:54.197397 8250654592 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1122 20:41:54.206250 8250654592 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (11120313ms)
+I1122 20:41:54.206281 8250654592 emulator_simulator.py:386] Done booting the emulator (in 0.008566 seconds).
+I1122 20:41:54.206336 8250654592 emulator_simulator.py:387] ********** Emulator logs **********
+I1122 20:41:54.206349 8250654592 emulator_simulator.py:389] Logfile does not exist: None.
+I1122 20:41:54.206356 8250654592 emulator_simulator.py:390] ******* End of emulator logs *******
+I1122 20:41:54.206362 8250654592 emulator_simulator.py:391] See the full emulator logs at None
+I1122 20:41:54.206387 8250654592 emulator_simulator.py:249] Done booting the Android Emulator.
+I1122 20:41:54.206402 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:41:54.206489 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:41:54.258860 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:41:54.258922 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1122 20:41:54.416705 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:41:54.416810 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system pointer_location 1]
+I1122 20:41:54.451203 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:41:54.451310 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global policy_control immersive.full=*]
+I1122 20:41:54.487519 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:41:54.487592 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:41:54.487713 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:41:54.487960 8250654592 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1122 20:41:54.491544 8250654592 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1122 20:41:54.491689 8250654592 android_world_controller.py:330] Setting up AndroidWorldController.
+I1122 20:41:54.491727 8250654592 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1122 20:41:55.249647 8250654592 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1122 20:41:55.249765 8250654592 adb_call_parser.py:269] location_type: blob
+I1122 20:41:55.250757 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpvytxumi6.apk]
+I1122 20:42:06.798165 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:06.798655 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1122 20:42:12.855384 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:42:12.855846 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:42:14.088994 8250654592 a11y_grpc_wrapper.py:138] Using port 50741
+I1122 20:42:14.089761 8250654592 a11y_grpc_wrapper.py:141] Starting server
+I1122 20:42:14.091108 8250654592 a11y_grpc_wrapper.py:143] Server now running.
+I1122 20:42:14.091429 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:42:14.092741 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:42:14.092772 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:42:14.092869 8250654592 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1122 20:42:14.092889 8250654592 adb_call_parser.py:491] Getting orientation...
+I1122 20:42:14.092947 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell dumpsys input]
+I1122 20:42:14.119401 8250654592 adb_call_parser.py:523] Done getting orientation: '0'
+I1122 20:42:14.142894 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:42:14.142932 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:42:14.143013 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:14.143041 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global no_proxy 10.0.2.2:50741]
+I1122 20:42:14.166263 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:14.166365 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global airplane_mode_on 0]
+I1122 20:42:15.196974 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:15.197124 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell svc wifi enable]
+I1122 20:42:16.229950 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:42:16.230103 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 50741 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:42:16.261686 8250654592 env_launcher.py:92] Freezing datetime.
+I1122 20:42:16.261832 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.261868 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:16.315742 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:16.315865 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time 0]
+I1122 20:42:16.338317 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:16.338433 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time_zone 0]
+I1122 20:42:16.357918 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:16.358027 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system time_12_24 24]
+I1122 20:42:16.378328 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.378416 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell service call alarm 3 s16 UTC]
+Writing to results/androidworld/lfm3vl2b_v43dpo2/run_20261122T204216467438
+I1122 20:42:16.467623 8250654592 suite_utils.py:74] Running task: AudioRecorderRecordAudio
+======================================
+I1122 20:42:16.467692 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.467715 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:16.484822 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:16.484912 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time 0]
+I1122 20:42:16.506682 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:16.506778 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time_zone 0]
+I1122 20:42:16.525589 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:16.525676 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system time_12_24 24]
+I1122 20:42:16.545995 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.546084 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell service call alarm 3 s16 UTC]
+I1122 20:42:16.563241 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.563322 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:16.604347 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.604431 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell date 1015153423.00]
+I1122 20:42:16.624549 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.624650 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am force-stop com.dimowner.audiorecorder]
+I1122 20:42:16.716786 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.716876 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell 
+  if [ -d "/data/data/android_world/snapshots/com.dimowner.audiorecorder" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1122 20:42:16.736820 8250654592 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.dimowner.audiorecorder.
+I1122 20:42:16.737025 8250654592 task_eval.py:148] Initializing AudioRecorderRecordAudio
+I1122 20:42:16.737080 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.737100 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell 
+  if [ -d "/storage/emulated/0/Android/data/com.dimowner.audiorecorder/files/Music/records" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1122 20:42:16.756378 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.756476 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell ls /storage/emulated/0/Android/data/com.dimowner.audiorecorder/files/Music/records -ll -au]
+I1122 20:42:16.776170 8250654592 suite_utils.py:74] Running task AudioRecorderRecordAudio with goal "Record an audio clip using Audio Recorder app and save it."
+I1122 20:42:16.776292 8250654592 adb_utils.py:370] Attempting to press the HOME button
+I1122 20:42:16.776329 8250654592 adb_call_parser.py:98] AdbRequest command type: press_button
+I1122 20:42:16.776354 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell input keyevent KEYCODE_HOME]
+I1122 20:42:16.804445 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:42:16.805155 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:42:16.805190 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:42:16.814569 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:42:16.814615 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:42:16.814788 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:16.814832 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:42:16.850938 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:17.851308 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:18.853851 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:19.859068 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:20.863204 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:42:21.864673 8250654592 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1122 20:42:21.864841 8250654592 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5558'"
+I1122 20:42:21.864900 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:21.865101 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1122 20:42:22.094214 8250654592 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1122 20:42:22.094646 8250654592 coordinator.py:80] Starting the simulator...
+I1122 20:42:22.094701 8250654592 coordinator.py:135] Simulator launch attempt 1 of 3
+I1122 20:42:22.094789 8250654592 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5558')
+I1122 20:42:22.094825 8250654592 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1122 20:42:22.097722 8250654592 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1122 20:42:22.100233 8250654592 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (11148210ms)
+I1122 20:42:22.100289 8250654592 emulator_simulator.py:386] Done booting the emulator (in 0.001876 seconds).
+I1122 20:42:22.100317 8250654592 emulator_simulator.py:387] ********** Emulator logs **********
+I1122 20:42:22.100341 8250654592 emulator_simulator.py:389] Logfile does not exist: None.
+I1122 20:42:22.100356 8250654592 emulator_simulator.py:390] ******* End of emulator logs *******
+I1122 20:42:22.100369 8250654592 emulator_simulator.py:391] See the full emulator logs at None
+I1122 20:42:22.100390 8250654592 emulator_simulator.py:249] Done booting the Android Emulator.
+I1122 20:42:22.100415 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:22.100620 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:22.128964 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:22.129045 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1122 20:42:22.162126 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:22.162236 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system pointer_location 1]
+I1122 20:42:22.199910 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:22.200010 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global policy_control immersive.full=*]
+I1122 20:42:22.246968 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:42:22.247066 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:22.247210 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:22.247429 8250654592 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1122 20:42:22.250979 8250654592 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1122 20:42:22.251132 8250654592 android_world_controller.py:330] Setting up AndroidWorldController.
+I1122 20:42:22.251162 8250654592 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1122 20:42:22.266849 6232322048 adb_log_stream.py:42] clear_buffer_output: b''
+I1122 20:42:22.773656 8250654592 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1122 20:42:22.773836 8250654592 adb_call_parser.py:269] location_type: blob
+I1122 20:42:22.777570 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpk1xinkyf.apk]
+I1122 20:42:33.150412 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:33.150804 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1122 20:42:36.188287 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:42:36.188704 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:42:36.249018 8250654592 a11y_grpc_wrapper.py:138] Using port 50865
+I1122 20:42:36.249637 8250654592 a11y_grpc_wrapper.py:141] Starting server
+I1122 20:42:36.250957 8250654592 a11y_grpc_wrapper.py:143] Server now running.
+I1122 20:42:36.251191 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:42:36.251748 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:42:36.251786 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:42:36.251857 8250654592 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1122 20:42:36.251877 8250654592 adb_call_parser.py:491] Getting orientation...
+I1122 20:42:36.251911 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell dumpsys input]
+I1122 20:42:36.292581 8250654592 adb_call_parser.py:523] Done getting orientation: '0'
+I1122 20:42:36.302374 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:42:36.302418 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:42:36.302495 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:36.302525 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global no_proxy 10.0.2.2:50865]
+I1122 20:42:36.371606 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:36.371718 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global airplane_mode_on 0]
+I1122 20:42:37.395060 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:37.395275 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell svc wifi enable]
+I1122 20:42:38.438869 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:42:38.439073 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 50865 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:42:38.474789 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:38.474899 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:42:38.498502 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:39.502043 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:40.503986 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:41.505693 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:42.509304 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:42:43.514322 8250654592 suite_utils.py:74] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SKIPPING AudioRecorderRecordAudio.
+E1122 20:42:43.514454 8250654592 suite_utils.py:251] Logging exception and skipping task. Will keep running. Task: AudioRecorderRecordAudio: Could not get a11y tree.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 216, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 247, in _run_task
+    interaction_results = run_episode(task)
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 474, in run_episode
+    return episode_runner.run_episode(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/episode_runner.py", line 76, in run_episode
+    agent.reset(start_on_home_screen)
+  File "/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py", line 75, in reset
+    super().reset(go_home_on_reset)
+  File "/Users/alpha/lfm3-android/android_world/android_world/agents/base_agent.py", line 99, in reset
+    self.env.reset(go_home=go_home)
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/interface.py", line 238, in reset
+    return _process_timestep(self.controller.reset())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/wrappers/base_wrapper.py", line 38, in reset
+    timestep = self._process_timestep(self._env.reset())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 242, in _process_timestep
+    forest = self.get_a11y_forest()
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 223, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 216, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 247, in _run_task
+    interaction_results = run_episode(task)
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 474, in run_episode
+    return episode_runner.run_episode(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/episode_runner.py", line 76, in run_episode
+    agent.reset(start_on_home_screen)
+  File "/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py", line 75, in reset
+    super().reset(go_home_on_reset)
+  File "/Users/alpha/lfm3-android/android_world/android_world/agents/base_agent.py", line 99, in reset
+    self.env.reset(go_home=go_home)
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/interface.py", line 238, in reset
+    return _process_timestep(self.controller.reset())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/wrappers/base_wrapper.py", line 38, in reset
+    timestep = self._process_timestep(self._env.reset())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 242, in _process_timestep
+    forest = self.get_a11y_forest()
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 223, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+I1122 20:42:43.518322 8250654592 checkpointer.py:135] Wrote task episodes for AudioRecorderRecordAudio_0 to results/androidworld/lfm3vl2b_v43dpo2/run_20261122T204216467438/AudioRecorderRecordAudio_0.pkl.gz
+I1122 20:42:43.534651 8250654592 suite_utils.py:74] 
+
+                             task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                
+AudioRecorderRecordAudio            0                  0.0                NaN                  NaN             27.0              1.0
+========= Average =========         0                  0.0                NaN                  NaN             27.0              1.0
+I1122 20:42:43.540324 8250654592 suite_utils.py:74] 
+
+Empty DataFrame
+Columns: []
+Index: []
+I1122 20:42:43.540374 8250654592 suite_utils.py:74] Running task: AudioRecorderRecordAudioWithFileName
+==================================================
+I1122 20:42:43.540430 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.540453 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:43.562412 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:43.562522 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time 0]
+I1122 20:42:43.583061 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:43.583153 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time_zone 0]
+I1122 20:42:43.601990 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:43.602081 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system time_12_24 24]
+I1122 20:42:43.621324 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.621418 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell service call alarm 3 s16 UTC]
+I1122 20:42:43.639132 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.639213 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:43.655575 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.655653 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell date 1015153423.00]
+I1122 20:42:43.695554 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.695639 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am force-stop com.dimowner.audiorecorder]
+I1122 20:42:43.730911 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.731002 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell 
+  if [ -d "/data/data/android_world/snapshots/com.dimowner.audiorecorder" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1122 20:42:43.748116 8250654592 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.dimowner.audiorecorder.
+I1122 20:42:43.748218 8250654592 task_eval.py:148] Initializing AudioRecorderRecordAudioWithFileName
+I1122 20:42:43.748284 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.748303 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:43.767322 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:43.767416 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time 0]
+I1122 20:42:43.805583 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:43.805690 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time_zone 0]
+I1122 20:42:43.829229 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:43.829336 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system time_12_24 24]
+I1122 20:42:43.881053 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.881157 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell service call alarm 3 s16 UTC]
+I1122 20:42:43.900741 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.900842 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell whoami]
+I1122 20:42:43.925617 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.925711 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell date 1015153423.00]
+I1122 20:42:43.943971 8250654592 task_eval.py:148] Initializing CreateFile
+I1122 20:42:43.944128 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:43.944153 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell find /storage/emulated/0/ -mindepth 1 -type f -delete]
+I1122 20:42:44.002488 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:44.002589 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell content delete --uri content://media/external/downloads]
+I1122 20:42:45.179502 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:45.179598 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell 
+  if [ -d "/storage/emulated/0/Android/data/com.dimowner.audiorecorder/files/Music/records" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+I1122 20:42:45.195917 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:45.196026 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell ls -1 /storage/emulated/0/Android/data/com.dimowner.audiorecorder/files/Music/records]
+I1122 20:42:45.215920 8250654592 suite_utils.py:74] Running task AudioRecorderRecordAudioWithFileName with goal "Record an audio clip and save it with name "presentation_fGwr.m4a" using Audio Recorder app."
+I1122 20:42:45.216042 8250654592 adb_utils.py:370] Attempting to press the HOME button
+I1122 20:42:45.216074 8250654592 adb_call_parser.py:98] AdbRequest command type: press_button
+I1122 20:42:45.216101 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell input keyevent KEYCODE_HOME]
+I1122 20:42:45.265717 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:42:45.266405 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:42:45.266439 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:42:45.287609 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:42:45.287657 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:42:45.287779 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:42:45.287811 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:42:45.313714 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:46.315122 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:47.320252 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:48.325365 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:42:49.326503 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:42:50.332350 8250654592 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1122 20:42:50.332457 8250654592 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5558'"
+I1122 20:42:50.332493 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:50.332623 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1122 20:42:50.550050 8250654592 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1122 20:42:50.550394 8250654592 coordinator.py:80] Starting the simulator...
+I1122 20:42:50.550423 8250654592 coordinator.py:135] Simulator launch attempt 1 of 3
+I1122 20:42:50.550458 8250654592 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5558')
+I1122 20:42:50.550479 8250654592 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1122 20:42:50.552548 8250654592 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1122 20:42:50.554416 8250654592 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (11176664ms)
+I1122 20:42:50.554455 8250654592 emulator_simulator.py:386] Done booting the emulator (in 0.001498 seconds).
+I1122 20:42:50.554479 8250654592 emulator_simulator.py:387] ********** Emulator logs **********
+I1122 20:42:50.554501 8250654592 emulator_simulator.py:389] Logfile does not exist: None.
+I1122 20:42:50.554513 8250654592 emulator_simulator.py:390] ******* End of emulator logs *******
+I1122 20:42:50.554524 8250654592 emulator_simulator.py:391] See the full emulator logs at None
+I1122 20:42:50.554544 8250654592 emulator_simulator.py:249] Done booting the Android Emulator.
+I1122 20:42:50.554565 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:50.554728 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:50.567370 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:50.567421 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1122 20:42:50.593329 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:50.593431 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system pointer_location 1]
+I1122 20:42:50.615228 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:42:50.615349 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global policy_control immersive.full=*]
+I1122 20:42:50.639164 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:42:50.639227 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:50.639365 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:42:50.639570 8250654592 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1122 20:42:50.642972 8250654592 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1122 20:42:50.643125 8250654592 android_world_controller.py:330] Setting up AndroidWorldController.
+I1122 20:42:50.643156 8250654592 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1122 20:42:50.658592 6249148416 adb_log_stream.py:42] clear_buffer_output: b''
+I1122 20:42:51.105206 8250654592 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1122 20:42:51.105392 8250654592 adb_call_parser.py:269] location_type: blob
+I1122 20:42:51.106590 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp7ecgasoc.apk]
+I1122 20:43:01.482405 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:01.482627 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1122 20:43:07.530761 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:43:07.531059 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:43:07.572268 8250654592 a11y_grpc_wrapper.py:138] Using port 50989
+I1122 20:43:07.572829 8250654592 a11y_grpc_wrapper.py:141] Starting server
+I1122 20:43:07.574148 8250654592 a11y_grpc_wrapper.py:143] Server now running.
+I1122 20:43:07.574388 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:43:07.574924 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:43:07.574954 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:43:07.575010 8250654592 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1122 20:43:07.575024 8250654592 adb_call_parser.py:491] Getting orientation...
+I1122 20:43:07.575052 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell dumpsys input]
+I1122 20:43:07.602334 8250654592 adb_call_parser.py:523] Done getting orientation: '0'
+I1122 20:43:07.613054 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:43:07.613095 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:43:07.613173 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:07.613203 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global no_proxy 10.0.2.2:50989]
+I1122 20:43:07.633495 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:07.633602 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global airplane_mode_on 0]
+I1122 20:43:08.680491 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:08.680958 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell svc wifi enable]
+I1122 20:43:09.735146 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:43:09.735643 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 50989 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:43:10.106524 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:10.106672 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:43:10.132884 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:11.138065 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:12.139623 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:13.141111 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:14.145750 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:43:15.149859 8250654592 suite_utils.py:74] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SKIPPING AudioRecorderRecordAudioWithFileName.
+E1122 20:43:15.150026 8250654592 suite_utils.py:251] Logging exception and skipping task. Will keep running. Task: AudioRecorderRecordAudioWithFileName: Could not get a11y tree.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 216, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 247, in _run_task
+    interaction_results = run_episode(task)
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 474, in run_episode
+    return episode_runner.run_episode(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/episode_runner.py", line 76, in run_episode
+    agent.reset(start_on_home_screen)
+  File "/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py", line 75, in reset
+    super().reset(go_home_on_reset)
+  File "/Users/alpha/lfm3-android/android_world/android_world/agents/base_agent.py", line 99, in reset
+    self.env.reset(go_home=go_home)
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/interface.py", line 238, in reset
+    return _process_timestep(self.controller.reset())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/wrappers/base_wrapper.py", line 38, in reset
+    timestep = self._process_timestep(self._env.reset())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 242, in _process_timestep
+    forest = self.get_a11y_forest()
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 223, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 216, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 247, in _run_task
+    interaction_results = run_episode(task)
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 474, in run_episode
+    return episode_runner.run_episode(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/episode_runner.py", line 76, in run_episode
+    agent.reset(start_on_home_screen)
+  File "/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py", line 75, in reset
+    super().reset(go_home_on_reset)
+  File "/Users/alpha/lfm3-android/android_world/android_world/agents/base_agent.py", line 99, in reset
+    self.env.reset(go_home=go_home)
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/interface.py", line 238, in reset
+    return _process_timestep(self.controller.reset())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/wrappers/base_wrapper.py", line 38, in reset
+    timestep = self._process_timestep(self._env.reset())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 242, in _process_timestep
+    forest = self.get_a11y_forest()
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 223, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+I1122 20:43:15.151864 8250654592 environment.py:119] Cleaning up AndroidEnv...
+I1122 20:43:15.153753 8250654592 environment.py:122] Done cleaning up AndroidEnv.
+I1122 20:43:15.154788 8250654592 checkpointer.py:135] Wrote task episodes for AudioRecorderRecordAudioWithFileName_0 to results/androidworld/lfm3vl2b_v43dpo2/run_20261122T204216467438/AudioRecorderRecordAudioWithFileName_0.pkl.gz
+I1122 20:43:15.166180 8250654592 suite_utils.py:74] 
+
+                                      task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                         
+AudioRecorderRecordAudio                     0                  0.0                NaN                  NaN             27.0              1.0
+AudioRecorderRecordAudioWithFileName         1                  0.0                NaN                  NaN             31.6              1.0
+========= Average =========                  0                  0.0                NaN                  NaN             29.3              1.0
+I1122 20:43:15.172864 8250654592 suite_utils.py:74] 
+
+Empty DataFrame
+Columns: []
+Index: []
+I1122 20:43:15.172946 8250654592 suite_utils.py:74] Running task: BrowserDraw
+=========================
+I1122 20:43:15.173071 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:15.173119 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time 1]
+I1122 20:43:15.204240 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:15.204364 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time_zone 1]
+I1122 20:43:16.230987 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:16.231095 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am force-stop com.android.chrome]
+I1122 20:43:16.270586 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:16.270691 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell 
+  if [ -d "/data/data/android_world/snapshots/com.android.chrome" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1122 20:43:16.289585 8250654592 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.android.chrome.
+I1122 20:43:16.289730 8250654592 task_eval.py:148] Initializing BrowserDraw
+I1122 20:43:16.289807 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:16.289851 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell find /storage/emulated/0/ -mindepth 1 -type f -delete]
+I1122 20:43:16.363005 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:16.363111 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell content delete --uri content://media/external/downloads]
+I1122 20:43:17.497721 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:17.497815 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell pm clear com.android.chrome]
+I1122 20:43:17.590818 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:17.590924 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell pm grant com.android.chrome android.permission.POST_NOTIFICATIONS]
+I1122 20:43:17.626101 8250654592 adb_call_parser.py:98] AdbRequest command type: push
+I1122 20:43:17.626449 8250654592 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp8713ercu' to '/storage/emulated/0/Download/task.html'.
+I1122 20:43:17.626483 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp8713ercu /storage/emulated/0/Download/task.html]
+I1122 20:43:17.658230 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:17.658339 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell chmod 777 /storage/emulated/0/Download/task.html]
+I1122 20:43:17.688277 8250654592 suite_utils.py:74] Running task BrowserDraw with goal "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then create a drawing using the three colors shown at the top and hit submit."
+I1122 20:43:17.688404 8250654592 adb_utils.py:370] Attempting to press the HOME button
+I1122 20:43:17.688442 8250654592 adb_call_parser.py:98] AdbRequest command type: press_button
+I1122 20:43:17.688472 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell input keyevent KEYCODE_HOME]
+I1122 20:43:17.740777 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:43:17.741513 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:43:17.741580 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:43:17.766397 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:43:17.766448 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:43:17.766588 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:17.766622 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:43:17.802086 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:18.807282 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:19.808354 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:20.810170 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:21.811048 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:43:22.814700 8250654592 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1122 20:43:22.814837 8250654592 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5558'"
+I1122 20:43:22.814891 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:22.815066 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1122 20:43:23.039125 8250654592 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1122 20:43:23.039674 8250654592 coordinator.py:80] Starting the simulator...
+I1122 20:43:23.039728 8250654592 coordinator.py:135] Simulator launch attempt 1 of 3
+I1122 20:43:23.039788 8250654592 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5558')
+I1122 20:43:23.039819 8250654592 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1122 20:43:23.042704 8250654592 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1122 20:43:23.045036 8250654592 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (11209154ms)
+I1122 20:43:23.045099 8250654592 emulator_simulator.py:386] Done booting the emulator (in 0.001883 seconds).
+I1122 20:43:23.045125 8250654592 emulator_simulator.py:387] ********** Emulator logs **********
+I1122 20:43:23.045150 8250654592 emulator_simulator.py:389] Logfile does not exist: None.
+I1122 20:43:23.045169 8250654592 emulator_simulator.py:390] ******* End of emulator logs *******
+I1122 20:43:23.045185 8250654592 emulator_simulator.py:391] See the full emulator logs at None
+I1122 20:43:23.045207 8250654592 emulator_simulator.py:249] Done booting the Android Emulator.
+I1122 20:43:23.045232 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:23.045469 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:23.062148 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:23.062234 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1122 20:43:23.090895 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:23.091013 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system pointer_location 1]
+I1122 20:43:23.139509 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:23.139623 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global policy_control immersive.full=*]
+I1122 20:43:23.191728 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:43:23.191920 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:23.192154 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:23.192616 8250654592 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1122 20:43:23.195585 8250654592 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1122 20:43:23.195626 8250654592 android_world_controller.py:330] Setting up AndroidWorldController.
+I1122 20:43:23.195653 8250654592 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1122 20:43:23.207939 6232322048 adb_log_stream.py:42] clear_buffer_output: b''
+I1122 20:43:23.718883 8250654592 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1122 20:43:23.719000 8250654592 adb_call_parser.py:269] location_type: blob
+I1122 20:43:23.719667 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpz0lzr4iq.apk]
+I1122 20:43:34.055238 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:34.055495 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put secure enabled_accessibility_services com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder]
+I1122 20:43:37.098152 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:43:37.098605 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.ENABLE_ACCESSIBILITY_TREE_LOGS -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:43:38.052799 8250654592 a11y_grpc_wrapper.py:138] Using port 51087
+I1122 20:43:38.053594 8250654592 a11y_grpc_wrapper.py:141] Starting server
+I1122 20:43:38.054913 8250654592 a11y_grpc_wrapper.py:143] Server now running.
+I1122 20:43:38.055180 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:43:38.055872 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:43:38.055917 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:43:38.055997 8250654592 adb_call_parser.py:98] AdbRequest command type: get_orientation
+I1122 20:43:38.056018 8250654592 adb_call_parser.py:491] Getting orientation...
+I1122 20:43:38.056054 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell dumpsys input]
+I1122 20:43:38.084817 8250654592 adb_call_parser.py:523] Done getting orientation: '0'
+I1122 20:43:38.095769 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:43:38.095813 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:43:38.095890 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:38.095921 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global no_proxy 10.0.2.2:51087]
+I1122 20:43:38.117908 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:38.118008 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global airplane_mode_on 0]
+I1122 20:43:39.174207 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:39.174466 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell svc wifi enable]
+I1122 20:43:40.635642 8250654592 adb_call_parser.py:98] AdbRequest command type: send_broadcast
+I1122 20:43:40.635909 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am broadcast -a accessibility_forwarder.intent.action.SET_GRPC --ei "port" 51087 -n com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiver]
+I1122 20:43:40.670506 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:40.670614 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:43:40.693474 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:41.695738 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:42.699191 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:43.704399 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:44.705410 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:43:45.710746 8250654592 suite_utils.py:74] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SKIPPING BrowserDraw.
+E1122 20:43:45.710917 8250654592 suite_utils.py:251] Logging exception and skipping task. Will keep running. Task: BrowserDraw: Could not get a11y tree.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 216, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 247, in _run_task
+    interaction_results = run_episode(task)
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 474, in run_episode
+    return episode_runner.run_episode(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/episode_runner.py", line 76, in run_episode
+    agent.reset(start_on_home_screen)
+  File "/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py", line 75, in reset
+    super().reset(go_home_on_reset)
+  File "/Users/alpha/lfm3-android/android_world/android_world/agents/base_agent.py", line 99, in reset
+    self.env.reset(go_home=go_home)
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/interface.py", line 238, in reset
+    return _process_timestep(self.controller.reset())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/wrappers/base_wrapper.py", line 38, in reset
+    timestep = self._process_timestep(self._env.reset())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 242, in _process_timestep
+    forest = self.get_a11y_forest()
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 223, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 216, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 247, in _run_task
+    interaction_results = run_episode(task)
+                          ^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/suite_utils.py", line 474, in run_episode
+    return episode_runner.run_episode(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/episode_runner.py", line 76, in run_episode
+    agent.reset(start_on_home_screen)
+  File "/Users/alpha/lfm3-android/eval/androidworld/lfm_agent.py", line 75, in reset
+    super().reset(go_home_on_reset)
+  File "/Users/alpha/lfm3-android/android_world/android_world/agents/base_agent.py", line 99, in reset
+    self.env.reset(go_home=go_home)
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/interface.py", line 238, in reset
+    return _process_timestep(self.controller.reset())
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/.venv-aw/lib/python3.11/site-packages/android_env/wrappers/base_wrapper.py", line 38, in reset
+    timestep = self._process_timestep(self._env.reset())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 242, in _process_timestep
+    forest = self.get_a11y_forest()
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 223, in get_a11y_forest
+    return self._get_a11y_forest()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 209, in _get_a11y_forest
+    return get_a11y_tree(self._env)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alpha/lfm3-android/android_world/android_world/env/android_world_controller.py", line 102, in get_a11y_tree
+    raise RuntimeError('Could not get a11y tree.')
+RuntimeError: Could not get a11y tree.
+I1122 20:43:45.713247 8250654592 environment.py:119] Cleaning up AndroidEnv...
+I1122 20:43:45.715080 8250654592 environment.py:122] Done cleaning up AndroidEnv.
+I1122 20:43:45.716295 8250654592 checkpointer.py:135] Wrote task episodes for BrowserDraw_0 to results/androidworld/lfm3vl2b_v43dpo2/run_20261122T204216467438/BrowserDraw_0.pkl.gz
+I1122 20:43:45.725196 8250654592 suite_utils.py:74] 
+
+                                      task_num  num_complete_trials  mean_success_rate  mean_episode_length  total_runtime_s  num_fail_trials
+task                                                                                                                                         
+AudioRecorderRecordAudio                     0                  0.0                NaN                  NaN             27.0              1.0
+AudioRecorderRecordAudioWithFileName         1                  0.0                NaN                  NaN             31.6              1.0
+BrowserDraw                                  2                  0.0                NaN                  NaN             30.5              1.0
+========= Average =========                  0                  0.0                NaN                  NaN             29.7              1.0
+I1122 20:43:45.729974 8250654592 suite_utils.py:74] 
+
+Empty DataFrame
+Columns: []
+Index: []
+I1122 20:43:45.730039 8250654592 suite_utils.py:74] Running task: BrowserMaze
+=========================
+I1122 20:43:45.730126 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:45.730160 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time 1]
+I1122 20:43:45.759994 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:45.760113 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global auto_time_zone 1]
+I1122 20:43:46.788084 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:46.788327 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell am force-stop com.android.chrome]
+I1122 20:43:46.833271 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:46.833384 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell 
+  if [ -d "/data/data/android_world/snapshots/com.android.chrome" ]; then
+      echo "Exists"
+  else
+      echo "Does not exist"
+  fi
+  ]
+W1122 20:43:46.852000 8250654592 task_eval.py:125] Skipping app snapshot loading : Snapshot not found in /data/data/android_world/snapshots/com.android.chrome.
+I1122 20:43:46.852114 8250654592 task_eval.py:148] Initializing BrowserMaze
+I1122 20:43:46.852188 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:46.852209 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell find /storage/emulated/0/ -mindepth 1 -type f -delete]
+I1122 20:43:46.891921 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:46.892012 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell content delete --uri content://media/external/downloads]
+I1122 20:43:47.896661 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:47.896851 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell pm clear com.android.chrome]
+I1122 20:43:48.279964 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:48.280068 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell pm grant com.android.chrome android.permission.POST_NOTIFICATIONS]
+I1122 20:43:48.333369 8250654592 adb_call_parser.py:98] AdbRequest command type: push
+I1122 20:43:48.333745 8250654592 adb_call_parser.py:558] Uploading '/var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpoty3lb_q' to '/storage/emulated/0/Download/task.html'.
+I1122 20:43:48.333786 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 push /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmpoty3lb_q /storage/emulated/0/Download/task.html]
+I1122 20:43:48.389835 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:48.389946 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell chmod 777 /storage/emulated/0/Download/task.html]
+I1122 20:43:48.417526 8250654592 suite_utils.py:74] Running task BrowserMaze with goal "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then navigate the X to the bottom-right cell, by using the direction buttons."
+I1122 20:43:48.417662 8250654592 adb_utils.py:370] Attempting to press the HOME button
+I1122 20:43:48.417693 8250654592 adb_call_parser.py:98] AdbRequest command type: press_button
+I1122 20:43:48.417719 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell input keyevent KEYCODE_HOME]
+I1122 20:43:48.440621 8250654592 environment.py:69] Resetting AndroidEnv...
+I1122 20:43:48.441233 8250654592 log_stream.py:54] Pausing LogStream.
+I1122 20:43:48.441268 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:43:48.453068 8250654592 environment.py:85] Done resetting AndroidEnv.
+I1122 20:43:48.453109 8250654592 environment.py:86] ************* NEW EPISODE *************
+I1122 20:43:48.453233 8250654592 adb_call_parser.py:98] AdbRequest command type: generic
+I1122 20:43:48.453263 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings get global airplane_mode_on]
+W1122 20:43:48.492132 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:49.497341 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:50.498900 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:51.500267 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+W1122 20:43:52.505381 8250654592 android_world_controller.py:98] Could not get a11y tree, retrying.
+I1122 20:43:53.509253 8250654592 task_manager.py:85] Task config: id: "default"
+name: "Default task for device control."
+description: "Empty task"
+max_episode_sec: 7200
+
+I1122 20:43:53.509346 8250654592 emulator_simulator.py:110] Connecting to existing emulator "'emulator-5558'"
+I1122 20:43:53.509382 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:53.509515 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 devices]
+I1122 20:43:53.728502 8250654592 emulator_simulator.py:145] Initialized simulator with ADB server port 5037.
+I1122 20:43:53.728901 8250654592 coordinator.py:80] Starting the simulator...
+I1122 20:43:53.728929 8250654592 coordinator.py:135] Simulator launch attempt 1 of 3
+I1122 20:43:53.728961 8250654592 emulator_simulator.py:215] Attempt 1 at launching the Android Emulator ('emulator-5558')
+I1122 20:43:53.728986 8250654592 emulator_simulator.py:341] Creating gRPC channel to the emulator on port 8558
+I1122 20:43:53.731147 8250654592 emulator_simulator.py:355] Added gRPC channel for the Emulator on port localhost:8558
+I1122 20:43:53.733083 8250654592 emulator_simulator.py:374] Waiting for emulator ('emulator-5558') to start... (11239842ms)
+I1122 20:43:53.733122 8250654592 emulator_simulator.py:386] Done booting the emulator (in 0.001568 seconds).
+I1122 20:43:53.733144 8250654592 emulator_simulator.py:387] ********** Emulator logs **********
+I1122 20:43:53.733163 8250654592 emulator_simulator.py:389] Logfile does not exist: None.
+I1122 20:43:53.733175 8250654592 emulator_simulator.py:390] ******* End of emulator logs *******
+I1122 20:43:53.733186 8250654592 emulator_simulator.py:391] See the full emulator logs at None
+I1122 20:43:53.733205 8250654592 emulator_simulator.py:249] Done booting the Android Emulator.
+I1122 20:43:53.733227 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:53.733427 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:53.746895 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:53.746953 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system show_touches 1]
+I1122 20:43:53.771781 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:53.771888 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put system pointer_location 1]
+I1122 20:43:53.794976 8250654592 adb_call_parser.py:98] AdbRequest command type: settings
+I1122 20:43:53.795087 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 shell settings put global policy_control immersive.full=*]
+I1122 20:43:53.817919 8250654592 log_stream.py:59] Resuming LogStream.
+I1122 20:43:53.818125 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:53.818454 8250654592 adb_controller.py:34] config: AdbControllerConfig(adb_path='/opt/homebrew/bin/adb', adb_server_port=5037, default_timeout=120.0, device_name='emulator-5558')
+I1122 20:43:53.818828 8250654592 environment.py:52] Action spec: {'action_type': DiscreteArray(shape=(), dtype=int32, name=action_type, minimum=0, maximum=2, num_values=3), 'touch_position': BoundedArray(shape=(2,), dtype=dtype('float32'), name='touch_position', minimum=[0. 0.], maximum=[1. 1.])}
+I1122 20:43:53.821606 8250654592 environment.py:53] Observation spec: {'pixels': BoundedArray(shape=(2400, 1080, 3), dtype=dtype('uint8'), name='pixels', minimum=0, maximum=255), 'timedelta': Array(shape=(), dtype=dtype('int64'), name='timedelta'), 'orientation': BoundedArray(shape=(4,), dtype=dtype('uint8'), name='orientation', minimum=0, maximum=1)}
+I1122 20:43:53.821651 8250654592 android_world_controller.py:330] Setting up AndroidWorldController.
+I1122 20:43:53.821678 8250654592 a11y_grpc_wrapper.py:40] Downloading accessibility forwarder apk....
+I1122 20:43:53.832775 6249148416 adb_log_stream.py:42] clear_buffer_output: b''
+I1122 20:43:54.300410 8250654592 adb_call_parser.py:98] AdbRequest command type: install_apk
+I1122 20:43:54.300565 8250654592 adb_call_parser.py:269] location_type: blob
+I1122 20:43:54.301620 8250654592 adb_controller.py:128] Executing ADB command: [adb -P 5037 -s emulator-5558 install -r -t -g /var/folders/4y/4hgfgs110rg9f95s3w5y4r240000gn/T/tmp5878mwy5.apk]
