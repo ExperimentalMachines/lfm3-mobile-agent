@@ -19,6 +19,8 @@ AndroidWorld = development seed 30, successes out of 116 ([results.md](results.m
 | v4 (first build) | First v4 dataset | — | Codex data audit said STOP (answer leaks, guard gaps); run abandoned, retrained on rebuilt data |
 | **v4 (final)** | v3 data in the v4 prompt + navigate-then-answer episodes + installed-app list + shorter ScreenQA answers | **18** | Fixed "never answers" (0 → 6 answer tasks); passed the gate; frozen |
 | v4-RL | 200 steps of GRPO on static screenshots, from v4 | not run | Failed its offline promotion rule |
+| v4.1 | v4 data with `wait` relabelled + recovery-history augmentation ([PREREG_v41](PREREG_v41.md)) | 12 | Data fix alone lost ground (+2 / −8 vs v4) |
+| v4.2 | v4.1 + the model's own replayed history on training episodes (offline, DAgger-style) | 18 | Back to v4's level (+6 / −6); MobileWorld 8/105 vs v4's 6 (p = 0.63, post-hoc) with loops halved |
 
 Other base models on v1's data: Qwen3.5-2B with the same recipe (16); Qwen3.5-0.8B and LFM2.5-VL-450M with a
 smaller one (LoRA r16, 1 epoch): 12 and 2.
@@ -99,6 +101,7 @@ Hugging Face, private unless noted.
 |---|---|
 | **v4** (merged weights / GGUF) | `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4`, `…-v4-GGUF` |
 | v4-RL (not promoted) | `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4-RL`, `…-v4-RL-GGUF` |
+| v4.2, v4.1 (**public**) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.2` (+ `-GGUF`), `…-v4.1` (+ `-GGUF`) |
 | v3, v2 | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v3` (+ `-GGUF`), `…-v2` (+ `-GGUF`) |
 | v1 | `experimentalmachines/LFM3-VL-2B-AndroidControl` (+ `-GGUF`) |
 | v4 training data | `alpharomercoma/AndroidAgent-SFT-v4` @ `3375539` |

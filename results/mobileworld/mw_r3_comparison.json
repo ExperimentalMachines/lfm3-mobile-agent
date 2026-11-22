@@ -1,0 +1,84 @@
+{
+ "run": "v42",
+ "successes": 8,
+ "complete": true,
+ "pairs": {
+  "v4": {
+   "baseline_successes": 6,
+   "both": 5,
+   "v42_only": [
+    "MastodonChangeHeaderTask",
+    "MastodonFollowTask",
+    "MastodonNewPostTask"
+   ],
+   "v4_only": [
+    "CloseFlightModeTask"
+   ],
+   "difference_pp": 1.9,
+   "mcnemar_exact_p": 0.625
+  },
+  "guiowl": {
+   "baseline_successes": 22,
+   "both": 7,
+   "v42_only": [
+    "MastodonFollowTask"
+   ],
+   "guiowl_only": [
+    "AcceptMeetingTask",
+    "AdjustBrightnessMaximumTask",
+    "AdjustBrightnessMinimumTask",
+    "CancelMeetingTask",
+    "ChangeWallpaperTask",
+    "CheckConferenceAndSendSmsTask1",
+    "CheckConferenceLocationTask",
+    "CheckDepartTimeTask",
+    "CloseFlightModeTask",
+    "MastodonChangeLanguageTask",
+    "MastodonInviteTask",
+    "MastodonRevisePhotoAltTask",
+    "MastodonRevisePollTask",
+    "RequestCarpoolingTask",
+    "SetAlarmTask"
+   ],
+   "difference_pp": -13.3,
+   "mcnemar_exact_p": 0.0005
+  },
+  "maiui": {
+   "baseline_successes": 11,
+   "both": 5,
+   "v42_only": [
+    "AdjustFontIconMinimumTask",
+    "MastodonFollowTask",
+    "TakeSelfieTask"
+   ],
+   "maiui_only": [
+    "AcceptMeetingTask",
+    "CancelMeetingTask",
+    "ChangeWallpaperTask",
+    "CheckEventTimeTask",
+    "CloseFlightModeTask",
+    "GoogleMapsAlibabaSouthNeighborTask"
+   ],
+   "difference_pp": -2.9,
+   "mcnemar_exact_p": 0.5078
+  }
+ },
+ "loop_metrics": {
+  "v42": {
+   "steps": 3835,
+   "wait_steps": 198,
+   "wait_under_non_wait_intent": 18,
+   "wait_share": 0.052,
+   "repeated_intent_share": 0.329,
+   "tasks_at_50_steps": 69
+  },
+  "v4": {
+   "steps": 4461,
+   "wait_steps": 931,
+   "wait_under_non_wait_intent": 931,
+   "wait_share": 0.209,
+   "repeated_intent_share": 0.669,
+   "tasks_at_50_steps": 85
+  }
+ }
+}

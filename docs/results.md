@@ -143,6 +143,23 @@ Seed 30 was used to choose between versions, so these are development numbers. S
 - GUI-Owl's seed-30 run did not get the installed-app list that v4 gets. The held-out runs give it to both.
 - v4 passed its preregistered development gate on this seed ([`results/v4_gate_seed30.txt`](../results/v4_gate_seed30.txt)).
 
+### v4.1 follow-up variants (post-hoc, 2026-11-22)
+
+Designed after reading v4's MobileWorld trajectories ([PREREG_v41.md](PREREG_v41.md)). Exceptions count as failures.
+
+| Variant | Successes / 116 | Exceptions | vs v4 (gained / lost) |
+|---|---|---|---|
+| v4 (reference) | 18 | 4 | — |
+| A: v4 + loop guards | 18 | 1 | +3 / −3 |
+| B: v4.1 (wait relabel + recovery history) | 12 | 7 | +2 / −8 |
+| C: v4.1 + guards | 14 | 8 | +6 / −10 |
+| D: v4.2 + guards | 13 | 24 (20 emulator a11y crashes) | +6 / −11 |
+| **E: v4.2 (v4.1 + own replayed history)** | **18** | 9 | +6 / −6 |
+
+- **No variant beats v4.** E was selected for MobileWorld by the pre-declared rule (A and E tie; tie order E first).
+- **Run-to-run noise is large:** v4 and v4.2 both score 18 but disagree on 12 tasks; one pass detects only gaps of
+  about 9–10 points ([research notes](research/notes/training-scale-and-own-attempt-learning/benchmarks.md)).
+
 ---
 
 ## MobileWorld
@@ -158,6 +175,29 @@ This compares agent pipelines, not model weights alone. Source:
 | GUI-Owl-1.5-2B (official agent) | **22 (21.0%)** | 102 | 3 |
 | MAI-UI-2B (official agent, 8-bit) | 11 (10.5%) | 98 | 7 |
 | LFM3-VL-2B v4 | 6 (5.7%) | 104 | 1 |
+| LFM3-VL-2B v4.2 (post-hoc follow-up, run 3) | 8 (7.6%) | 104 | 1 |
+
+### v4.2 follow-up run (post-hoc, 2026-11-22)
+
+Source: [`results/mobileworld/mw_r3_comparison.md`](../results/mobileworld/mw_r3_comparison.md) (+ `.json`),
+[PREREG_v41.md](PREREG_v41.md). Same settings as run 2 except MobileWorld-native typing (no synthetic Enter).
+MobileWorld is now a development benchmark for LFM3; v4's 6/105 stays the held-out number.
+
+| v4.2 vs | Both | v4.2 only | Other only | Difference | Exact McNemar p |
+|---|---|---|---|---|---|
+| **v4 (primary)** | 5 | 3 | 1 | +1.9 pts | 0.625 |
+| GUI-Owl-1.5-2B | 7 | 1 | 15 | −13.3 pts | 0.0005 |
+| MAI-UI-2B | 5 | 3 | 6 | −2.9 pts | 0.51 |
+
+| Loop metric | v4 | v4.2 |
+|---|---|---|
+| Steps that are `wait` | 21% | 5% |
+| `wait` under a non-wait intent | 931 | 18 |
+| Steps repeating the previous intent | 67% | 33% |
+| Tasks ending at the 50-step limit | 85 | 69 |
+
+- **Gained:** MastodonChangeHeader, MastodonFollow, MastodonNewPost. **Lost:** CloseFlightMode. Not significant.
+- **Loops halved, success barely moved:** the freed steps mostly went to wandering, not to finishing tasks.
 
 ### Paired comparisons (exact McNemar)
 
@@ -273,6 +313,8 @@ Step success rate; history is teacher-forced, so this is an upper bound on close
 | LFM3-VL-2B v2 | 0.716 | 0.893 | 0.732 | 54.6% | 50.9% |
 | LFM3-VL-2B v3 | 0.723 | 0.902 | 0.725 | 55.3% | 50.0% |
 | LFM3-VL-2B v4 | 0.728 | 0.908 | 0.716 | 52.9% | 50.4% |
+| LFM3-VL-2B v4.1 | 0.732 | 0.895 | 0.739 | 55.6% | 51.1% |
+| LFM3-VL-2B v4.2 | 0.732 | 0.888 | 0.738 | 55.7% | 50.3% |
 | Qwen3.5-2B v1 | 0.734 | 0.949 | 0.784 | 57.3% | 53.7% |
 | Qwen3.5-0.8B v1 | 0.694 | 0.942 | 0.745 | 48.9% | 45.2% |
 | LFM2.5-VL-450M v1 | 0.536 | 0.862 | 0.561 | 39.3% | 39.2% |

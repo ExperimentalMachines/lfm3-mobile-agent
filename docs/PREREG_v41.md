@@ -176,3 +176,24 @@ seed-30 result had been looked at.
   measurable difference to v4.2 here.
 - **Reading:** no variant beats v4 on seed 30. v4.1 alone lost ground (12); v4.2, trained on its own replayed history,
   is back to v4's level (18). Guards: neutral on v4 (A) and v4.2 (D vs E), +2 on v4.1 (C vs B).
+
+### 2026-11-22 16:00 Asia/Manila — MobileWorld result (the one counted run): v4.2 8/105
+| MobileWorld, 105 English GUI-only | Successes | Both | v4.2 only | Other only | Exact McNemar p |
+|---|---|---|---|---|---|
+| **v4 (primary comparison)** | 6 | 5 | 3 | 1 | **0.625** |
+| GUI-Owl-1.5-2B (descriptive) | 22 | 7 | 1 | 15 | 0.0005 |
+| MAI-UI-2B (descriptive) | 11 | 5 | 3 | 6 | 0.51 |
+
+- **v4.2 = 8/105** (104 tasks with a result; ThanksgivingPrepTask failed setup on every attempt, as for every model).
+  Gained vs v4: MastodonChangeHeader, MastodonFollow, MastodonNewPost; lost: CloseFlightMode. **Not significant.**
+- **Loops fell, success barely moved:** `wait` 21% → 5% of steps (non-wait-intent waits 931 → 18), steps repeating
+  the previous intent 67% → 33%, tasks ending at the 50-step limit 85 → 69. Step counts are not strictly comparable
+  (v4 used synthetic Enters, v4.2 native typing).
+- **Run log:** the Mac watcher stopped acting after the last invocation (12:39) because the gcloud login expired
+  (VM status unreadable); the rule's one remaining fresh-container invocation (ThanksgivingPrepTask only) was started
+  by hand at 15:43 with the same restart + `mw_resume.sh v42` steps, and ended setup_failed → `v42_complete`.
+- Files: `results/mobileworld/mw_r3_comparison.{md,json}`, `results/mobileworld/v42_gui_en_r3_summary.json`
+  ([`analysis/mw_summarize_r3.py`](../analysis/mw_summarize_r3.py)); trajectories in `results/mobileworld/traj_r3/`
+  (git-ignored).
+- **Status of this follow-up:** post-hoc; MobileWorld is now a development benchmark. v4's 6/105 stays the held-out
+  MobileWorld number; v4's sealed AndroidWorld result stays the AndroidWorld claim.

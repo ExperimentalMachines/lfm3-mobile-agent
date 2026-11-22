@@ -1,0 +1,30 @@
+Created [https://www.googleapis.com/compute/v1/projects/voltaic-psyche-514908-s2/global/networks/lfm3-mw].
+
+Instances on this network will not be reachable until firewall rules
+are created. As an example, you can allow all internal traffic between
+instances as well as SSH, RDP, and ICMP by running:
+
+$ gcloud compute firewall-rules create <FIREWALL_NAME> --network lfm3-mw --allow tcp,udp,icmp --source-ranges <IP_RANGE>
+$ gcloud compute firewall-rules create <FIREWALL_NAME> --network lfm3-mw --allow tcp:22,tcp:3389,icmp
+
+Creating firewall...
+..Created [https://www.googleapis.com/compute/v1/projects/voltaic-psyche-514908-s2/global/firewalls/lfm3-mw-ssh-mac].
+done.
+Created [https://www.googleapis.com/compute/v1/projects/voltaic-psyche-514908-s2/zones/us-west1-b/instances/lfm3-mw-gcp-2].
+WARNING: Some requests generated warnings:
+ - Disk size: '200 GB' is larger than image size: '10 GB'. You might need to resize the root repartition manually if the operating system does not support automatic resizing. See https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd for details.
+
+launched lfm3-mw-gcp-2 (n2-standard-16 spot, us-west1-b) at 35.252.73.11; stops after 14 h
+Created [https://www.googleapis.com/compute/v1/projects/voltaic-psyche-514908-s2/regions/us-west1/addresses/lfm3-mw-ip2].
+Creating firewall...
+..Created [https://www.googleapis.com/compute/v1/projects/voltaic-psyche-514908-s2/global/firewalls/lfm3-mw-ssh-colab3].
+done.
+a026188 fix(site): correct UI-Venus and Qwen3-VL release dates
+PULL_OK
+8b5e26d04e5e0eafec46865efcfb02c488acdda5f8cefa7a5dc7866b18df877b  agent_format.py
+bded7776f846c7d76c1d468569c06a565725c84c1ec8818d78d7ae2790a69ac6  agent_guards.py
+d7a167cef1e7064f303409855c31b6c74d03c375dacca2c3c8ce68983cb8b171  lfm3_mw_agent.py
+8b5e26d04e5e0eafec46865efcfb02c488acdda5f8cefa7a5dc7866b18df877b  train/agent_format.py
+bded7776f846c7d76c1d468569c06a565725c84c1ec8818d78d7ae2790a69ac6  train/agent_guards.py
+d7a167cef1e7064f303409855c31b6c74d03c375dacca2c3c8ce68983cb8b171  eval/mobileworld/lfm3_mw_agent.py
+tunnel key allows a shell: refusing
