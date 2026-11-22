@@ -276,3 +276,14 @@ wrong click, wrong type) are saved before training.
 - **R = 9 tasks flip** between two identical v4.2 passes (5 replicate-only, 4 E-only). The online gate's success path
   therefore needs a net gain of ≥ 9 over E. False `complete` counts (22–25) stay inside the 20–28 band of all earlier runs.
 - Counts from [`analysis/aw_false_complete.py`](../analysis/aw_false_complete.py) (reproduces the taxonomy's v4 25 and E 25).
+
+### 2026-11-22 20:30 Asia/Manila — P2 passes the offline gate
+| Offline gate | v4.2 | P2 | Threshold |
+|---|---|---|---|
+| Parse rate | 1.000 | 1.000 | ≥ 0.99 |
+| AndroidControl high-level step accuracy | 0.732 | 0.728 | ≥ 0.712 |
+| Terminal `complete` accuracy | 0.738 | 0.785 | ≥ 0.70 |
+| `dev_answer` / `dev_complete` | 0.868 / 0.812 | 0.875 / 0.838 | ≥ 0.848 / — |
+
+- P2 (851 balanced stop/copy pairs) keeps step accuracy and stops correctly more often at the last step. It goes to the
+  online gate (seed 30). S was restarted at the declared 500 steps (the pipeline had started the old 800-step setting).
