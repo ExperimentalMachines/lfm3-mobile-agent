@@ -160,6 +160,31 @@ Designed after reading v4's MobileWorld trajectories ([PREREG_v41.md](PREREG_v41
 - **Run-to-run noise is large:** v4 and v4.2 both score 18 but disagree on 12 tasks; one pass detects only gaps of
   about 9–10 points ([research notes](research/notes/training-scale-and-own-attempt-learning/benchmarks.md)).
 
+### Round 5: learning from own mistakes vs more training (pre-registered, 2026-11-22)
+
+Gates were fixed before training ([PREREG_v41.md](PREREG_v41.md), 17:00 entry). All candidates start from v4.2.
+Counts: [`analysis/aw_false_complete.py`](../analysis/aw_false_complete.py),
+[`analysis/aw_paired_flips.py`](../analysis/aw_paired_flips.py); offline files in [`results/v5_dev/`](../results/v5_dev/).
+
+| Candidate | What | AC high-level | Terminal `complete` | Seed 30 successes | False `complete` | Net vs E (flips, p) | Gate |
+|---|---|---|---|---|---|---|---|
+| E = v4.2 (reference) | — | 0.732 | 0.738 | 18 | 25 | — | — |
+| v4.2 replicate | Same model, same harness, second pass | — | — | 19 | 22 | +1 (9 = R, 1.0) | noise yardstick |
+| P = v4.3-dpo | DPO on all 4,163 of its own mistakes | **0.545** | 0.885 | not run | — | — | offline **fail** |
+| P2 = v4.3-dpo2 | DPO on 851 balanced stop / copied-intent mistakes | 0.728 | 0.785 | 21 | **28** | +3 (11, 0.55) | online **fail** |
+| S = v4.3-sft | 500 more SFT steps on v4.2's mix | 0.736 | 0.757 | 24 | **37** | +6 (14, 0.18) | online **fail** |
+
+- **Pass rule:** successes ≥ 16 **and** false `complete` ≤ 15, **or** net gain over E ≥ R = 9 tasks.
+- **P** collapsed whole action types offline (`open_app` 0.95 → 0.16, `scroll` 0.62 → 0.16): with mostly generic
+  wrong-click pairs, DPO lowered entire action types instead of fixing the mistakes.
+- **P2** stops more often, not more accurately: it ended 44 tasks with `complete` (v4.2: 37–38), 16 right and 28
+  wrong, so stop precision stayed at 0.36 (v4.2: 0.34 / 0.41). The offline gain on recorded final screens did not
+  teach it to tell "done" from "not done" on a live phone.
+- **S** has the most seed-30 successes of any LFM3 version (24; MAI-UI-2B 32), and the gain is the same size against v4 (+6, p 0.15) and
+  the replicate (+5, p 0.23), but it stays below R = 9. It ends 56 tasks with `complete` (v4.2: 37–38), 19 right and 37
+  wrong: precision is unchanged (0.34). 4 of its 10 wins over E are tasks the v4.2 replicate also won (noise).
+- **Round 5 is negative by the declared rule: v4.2 stays.** No candidate goes to the held-out seeds.
+
 ---
 
 ## MobileWorld

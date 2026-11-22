@@ -450,6 +450,40 @@ All decision rules go into a PREREG_v41 amendment **before** any new score. Seed
 
 ---
 
+## Round 5 as executed (2026-11-22/23)
+
+The ranked plan was cut to what the credits allowed, then pre-registered ([PREREG_v41.md](../PREREG_v41.md), 17:00):
+rank 1 used a **v4.2** replicate (not v4), rank 3 became P/P2, rank 5 became S (more SFT on the same mix, not fresh
+rows). Rank 2 ran only as pair sampling (one greedy decode per state, not 4 samples), and ranks 4 and 6 were
+not run.
+
+| Plan rank | What ran | Result |
+|---|---|---|
+| 1 Yardstick | v4.2 replicate on seed 30 | R = 9 tasks flip between two identical passes; false `complete`s 22 vs 25 |
+| 3 Step-DPO | **P:** all 4,163 own mistakes, β 0.1, 0.5 × SFT | Failed offline: AC high-level 0.732 → 0.545 (whole action types collapsed) |
+| 3 Step-DPO (post-hoc fix) | **P2:** 851 balanced stop / copied-intent pairs, 1.0 × SFT, lr 1e-5 | Passed offline (terminal `complete` 0.738 → 0.785); failed online: 21/116, net +3 (noise), false `complete` 28 |
+| 5 More training | **S:** 500 more SFT steps (0.17 epoch), WSD, lr 1e-4 | Passed offline (AC 0.736; val loss 0.340 → 0.334); failed online: 24/116 (the most of any LFM3 version), net +6 (below R = 9), false `complete` 37 |
+
+**What this changes in the report**
+
+| Earlier claim | After round 5 |
+|---|---|
+| "Step-level DPO on own wrong answers is the best next step" | Not confirmed at this scale. Unfiltered pairs destroy action priors; targeted pairs move the stop *rate*, not stop *accuracy* |
+| "False-`complete` counts are tight (20–28), so a real fix shows in one pass" | Held: P2's 28 and the replicate's 22 sit in the band; no candidate left it downwards |
+| "Offline metrics do not track online success" | Confirmed again: P2's best-ever terminal `complete` (0.785) came with its worst false-`complete` count (28) |
+| "More epochs would lower loss, not fix behaviour" | Partly revised: 0.17 epoch more gave the largest seed-30 gain of the round (+5 to +6 against three references, none significant), but through more stopping, not better stopping (precision 0.34). Worth one more test; not yet a result |
+
+**Why P2's stop training did not transfer (ours + inference):**
+- Pairs show the model a *recorded* final screen and the human's `complete`. On a live phone the hard cases are screens
+  that look finished but are not (a draft not saved, a toggle not applied). Those states never occur in demonstration
+  data, so no pair can contrast them.
+- 356 early-stop and 356 missed-stop pairs push in opposite directions; the net effect was a higher overall stop rate
+  (44 vs 37–38 episodes ending with `complete`) with unchanged precision (0.36).
+- The remaining lever is the one the plan ranked 6th: rollouts on non-benchmark apps where an adb check says whether
+  the task is really done, so "looks done but isn't" states exist in training.
+
+---
+
 ## Conclusion
 
 - **The question is what to train on, not how much.** By the textbook tests the model is neither too small nor overfit. It imitates AndroidControl's habits faithfully, and it has never seen a corrected version of its own two worst habits. Each method in the literature with a large own-attempt gain contrasts a wrong and a right action at the same screen. Neither more passes nor more parameters adds that contrast.

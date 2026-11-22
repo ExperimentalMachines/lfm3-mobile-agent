@@ -21,6 +21,9 @@ AndroidWorld = development seed 30, successes out of 116 ([results.md](results.m
 | v4-RL | 200 steps of GRPO on static screenshots, from v4 | not run | Failed its offline promotion rule |
 | v4.1 | v4 data with `wait` relabelled + recovery-history augmentation ([PREREG_v41](PREREG_v41.md)) | 12 | Data fix alone lost ground (+2 / −8 vs v4) |
 | v4.2 | v4.1 + the model's own replayed history on training episodes (offline, DAgger-style) | 18 | Back to v4's level (+6 / −6); MobileWorld 8/105 vs v4's 6 (p = 0.63, post-hoc) with loops halved |
+| v4.3-dpo | v4.2 + DPO on all 4,163 of its own mistakes ([round 5](results.md#round-5-learning-from-own-mistakes-vs-more-training-pre-registered-2026-11-22)) | not run | Failed offline (AC 0.732 → 0.545): DPO on generic wrong clicks pushed down whole action types |
+| v4.3-dpo2 | v4.2 + DPO on 851 balanced stop / copied-intent mistakes | 21 | Net +3 vs v4.2 is noise (R = 9); false `complete` 28: it stops more, not more accurately |
+| v4.3-sft | v4.2 + 500 more SFT steps on the same mix ("more epochs") | 24 | Best LFM3 seed-30 count, but +6 vs v4.2 is below the noise yardstick (9) and false `complete` rose to 37: it stops more often, not more accurately |
 
 Other base models on v1's data: Qwen3.5-2B with the same recipe (16); Qwen3.5-0.8B and LFM2.5-VL-450M with a
 smaller one (LoRA r16, 1 epoch): 12 and 2.
@@ -101,6 +104,8 @@ Hugging Face, private unless noted.
 |---|---|
 | **v4** (merged weights / GGUF) | `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4`, `…-v4-GGUF` |
 | v4-RL (not promoted) | `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4-RL`, `…-v4-RL-GGUF` |
+| v4.3-dpo2, v4.3-sft (**public**, not promoted) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo2` (+ `-GGUF`), `…-v4.3-sft` (+ `-GGUF`) |
+| v4.3-dpo (**public**, failed offline gate) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo` (no GGUF) |
 | v4.2, v4.1 (**public**) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.2` (+ `-GGUF`), `…-v4.1` (+ `-GGUF`) |
 | v3, v2 | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v3` (+ `-GGUF`), `…-v2` (+ `-GGUF`) |
 | v1 | `experimentalmachines/LFM3-VL-2B-AndroidControl` (+ `-GGUF`) |

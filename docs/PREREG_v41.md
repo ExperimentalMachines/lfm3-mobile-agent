@@ -313,3 +313,23 @@ wrong click, wrong type) are saved before training.
   [`analysis/aw_paired_flips.py`](../analysis/aw_paired_flips.py) (reproduces R = 9: 5 replicate-only, 4 E-only).
 - S is still running (47/116 at 00:30: 7 successes, 16 false `complete`s, so its behaviour path is already closed;
   its success path is decided when the pass ends).
+
+### 2026-11-23 01:35 Asia/Manila — S fails the online gate; round 5 is negative, v4.2 stays
+| Seed 30 (116 tasks) | Successes | Exceptions | False `complete` | Net vs E | Flips vs E | McNemar p |
+|---|---|---|---|---|---|---|
+| E = v4.2 | 18 | 9 | 25 | — | — | — |
+| v4.2 replicate | 19 | 2 | 22 | +1 | 9 (= R) | 1.0 |
+| P2 = v4.3-dpo2 | 21 | 3 | 28 | +3 | 11 | 0.55 |
+| **S = v4.3-sft** | **24** | 1 | **37** | **+6** (10 − 4) | 14 | 0.18 |
+
+- **Gate:** behaviour path needs false `complete` ≤ 15 → **37, fail**; success path needs net gain ≥ 9 → **+6, fail**.
+  Neither candidate passes, so by the declared rule **round 5 is negative and v4.2 stays**. No held-out run.
+- S has the most seed-30 successes of any LFM3 version so far (MAI-UI-2B: 32), and its gain is the same size against all three references
+  (+6 vs E, +5 vs the replicate p 0.23, +6 vs v4 p 0.15). It is still below the pre-declared noise yardstick, so it is
+  a lead, not a result.
+- **How S gains:** it ends far more episodes with `complete` (56 vs 37–38; right 19, wrong 37) and fewer at the step
+  budget (37 vs 53–59). Stop precision is unchanged (0.34; v4.2 0.34 / 0.41; P2 0.36). Of its 10 wins over E, 4 are
+  tasks the identical v4.2 replicate also won (SMS reply, Bluetooth ×3: noise); 5 are tasks where E used up its steps
+  and S stopped with `complete` (Wi-Fi/Bluetooth combos, brightness, two recipe tasks). Whether S acted better there or
+  only stopped where v4.2 kept going is not determined. P2 moved the same way, less.
+- Pass timing: 6 S episodes before the 22:48 reboot, 110 after the resume; 1 exception (none a11y-related).
