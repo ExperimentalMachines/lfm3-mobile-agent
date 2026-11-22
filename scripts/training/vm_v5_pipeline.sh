@@ -138,10 +138,10 @@ fi
 if [[ " $CANDIDATES " == *" S "* ]]; then
   OUTS=/content/runs/lfm3vl2b-v43sft
   if [ ! -f $OUTS/train_receipt.json ]; then
-    log "S: 800 more SFT steps on v4.2's mix (WSD, lr ${S_LR:-1e-4}, sampler seed 5)"
-    python sft_vlm.py --model_id $M42 --train $D42 --val $R@val --out $OUTS --max_steps 800 --scheduler wsd --decay_frac 0.15 \
+    log "S: ${S_STEPS:-800} more SFT steps on v4.2's mix (WSD, lr ${S_LR:-1e-4}, sampler seed 5)"
+    python sft_vlm.py --model_id $M42 --train $D42 --val $R@val --out $OUTS --max_steps ${S_STEPS:-800} --scheduler wsd --decay_frac 0.15 \
       --lr ${S_LR:-1e-4} --seed 5 --max_pixels 774400 --bs 8 --grad_accum 4 --lora_r 64 --lora_alpha 128 \
-      --modules_to_save --save_steps 400 --eval_steps 400 --workers 10 || { log "S TRAINING FAILED"; exit 1; }
+      --modules_to_save --save_steps 250 --eval_steps 250 --workers 10 || { log "S TRAINING FAILED"; exit 1; }
   fi
   evals $OUTS/merged lfm3_v43sft || log "S evals incomplete"
 fi

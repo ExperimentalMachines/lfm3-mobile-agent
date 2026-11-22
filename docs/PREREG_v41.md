@@ -261,3 +261,8 @@ wrong click, wrong type) are saved before training.
   lr 1e-5 (was 2e-5), one pass. Same offline and online gates as P. Name `LFM3-VL-2B-AndroidAgent-v4.3-dpo2`.
 - **Order:** P2 runs before S (the owner ranked learning from own attempts above more epochs); S follows if credits
   remain. S's first minutes of training are discarded (killed for the reorder, not for any result).
+
+### 2026-11-22 20:20 Asia/Manila — S shortened to 500 steps (credits; no S outcome seen)
+- 19.80 compute units remained at 19:58 (A100 6.73/h). P2 plus 800 S steps plus evaluations would exhaust them before
+  S's evaluation ends, so S runs **500 steps** (16,000 rows, ≈0.17 epoch more; WSD decay over the last 75). The 25 S steps
+  run before the 20:15 reorder were discarded. S restarts after P2's offline evaluation finishes. Gates unchanged.

@@ -4,9 +4,10 @@
   "script": "/content/work/vm_v5_pipeline.sh",
   "log": "/content/runs/lfm3_v5_pipeline.log",
   "env": {
-   "CANDIDATES": "P2 S",
+   "CANDIDATES": "S",
    "PAIR_ROWS": "16000",
-   "S_LR": "1e-4"
+   "S_LR": "1e-4",
+   "S_STEPS": "500"
   },
   "stagger_s": 0
  },
