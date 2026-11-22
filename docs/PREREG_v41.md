@@ -229,3 +229,15 @@ wrong click, wrong type) are saved before training.
 - Passing makes a **held-out candidate** (sealed seeds next), not a "better" claim. No MobileWorld run in this round.
 - More than 10 exceptions in a run → re-run only the crashed tasks once, reported separately.
 - **Budget order:** P first; S only if Colab credits remain after P's training and export.
+
+### 2026-11-22 17:35 Asia/Manila — round 5 launched (no outcome seen)
+- Colab-b A100 session `v5` (6.73 compute units/h; 43.95 left at start). Jobs: `scripts/training/jobs/lfm3_v5_a100.json`.
+- Settings fixed at launch: P samples 16,000 training rows (15% terminal rows), DPO β 0.1, SFT weight 0.5, lr 2e-5,
+  batch 4 × 8, one pass; S = 800 steps, lr 1e-4 (half of v4.2's peak, as continued training), WSD with the last 15%
+  decaying, sampler seed 5 (v4.2 used 42, so the 25,600 rows are a fresh uniform draw from the same mix).
+- Candidate names: P = `LFM3-VL-2B-AndroidAgent-v4.3-dpo`, S = `LFM3-VL-2B-AndroidAgent-v4.3-sft` (public repos, marked
+  unvalidated). Correction to the agy response: the projector was never trained in any v4.x run (`modules_to_save: []`).
+- **17:45: replicate R void.** All 116 episodes ended with "Could not get a11y tree" before the model acted (emulator
+  5558's accessibility forwarder was dead from the start; same failure as D's last 20 tasks on 5556). Moved to
+  `results/androidworld/_invalid/lfm3vl2b_v42_rep_a11y_dead_20261122/`; both emulators cold-restarted; R relaunched on
+  5558. From now on every pass is checked for exceptions within its first episodes.

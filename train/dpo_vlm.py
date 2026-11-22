@@ -5,8 +5,7 @@ with DPO (sigmoid, β) + w × SFT on the preferred step (TRL loss_type ["sigmoid
 
 Texts are rendered with the model's own chat template exactly as at inference (thinking on): prompt = system + user
 (image + text) + generation prompt; completion = the rest of the rendered conversation, so the completion starts where
-generation starts. Whether TRL appends the end-of-sequence token is probed on one row; the end-of-turn marker is kept in
-the text only if TRL does not add it, so every completion ends with exactly one end token.
+generation starts; each completion ends with exactly one end-of-turn token (checked on a collated batch).
 
 usage: python dpo_vlm.py --model V42_MERGED --pairs PAIRS_DISK --out DIR [--smoke 16]
 """
@@ -105,45 +104,33 @@ class Log(TrainerCallback):
 def make(train_ds, max_steps=-1):
     cfg = DPOConfig(output_dir=a.out, beta=a.beta, loss_type=["sigmoid", "sft"], loss_weights=[1.0, a.sft_weight],
                     learning_rate=a.lr, per_device_train_batch_size=a.bs, gradient_accumulation_steps=a.grad_accum,
-                    num_train_epochs=a.epochs, max_steps=max_steps, lr_scheduler_type="cosine", warmup_ratio=0.1,
+                    num_train_epochs=a.epochs, max_steps=max_steps, lr_scheduler_type="cosine", warmup_steps=0.1,
                     max_length=None, bf16=True, gradient_checkpointing=True, logging_steps=5, save_strategy="no",
                     report_to=[], seed=a.seed, remove_unused_columns=False)
     return DPOTrainer(model=model, args=cfg, train_dataset=train_ds, processing_class=proc, peft_config=peft_config,
                       callbacks=[Log()])
 
 
-def ids_field(row, part):
-    ks = [k for k in row if part in k and "ids" in k and "attention" not in k]
-    assert ks, (part, list(row))
-    return row[sorted(ks, key=len)[0]]
-
-
-# probe: does TRL append the end-of-sequence token to completions?
-probe = make(build(keep_end=False).select(range(1)), max_steps=1)
-r0 = probe.train_dataset[0]
-ch_ids = ids_field(r0, "chosen")
-trl_adds_eos = len(ch_ids) > 0 and ch_ids[-1] == tok.eos_token_id
-print("TRL appends eos:", trl_adds_eos, "| chosen tail:", repr(tok.decode(ch_ids[-12:])), flush=True)
-model = probe.model.unload() if hasattr(probe.model, "unload") else model   # drop the probe's adapter
-del probe
-torch.cuda.empty_cache()
-
-train_ds = build(keep_end=not trl_adds_eos)
+# TRL 1.16 does not pre-tokenize vision datasets (skip_prepare_dataset) and adds no end token there: the collator
+# tokenizes prompt (+ images) and completions as given. So completions carry the end-of-turn token themselves; check it
+# on a real collated batch: every completion ends with exactly one end token and decodes back to the rendered text.
+train_ds = build(keep_end=True)
 trainer = make(train_ds, max_steps=2 if a.smoke else -1)
-r0 = trainer.train_dataset[0]
-for part in ("prompt", "chosen", "rejected"):
-    ids = ids_field(r0, part)
-    print(f"{part} tokens {len(ids)} tail: {tok.decode(ids[-16:])!r}", flush=True)
-for part in ("chosen", "rejected"):
-    ids = ids_field(r0, part)
-    assert ids[-1] == tok.eos_token_id and (len(ids) < 2 or ids[-2] != tok.eos_token_id), f"{part}: end token wrong"
+batch = trainer.data_collator([dict(train_ds[0])])
+ids, cm = batch["input_ids"], batch["completion_mask"].bool()
+for row, want in ((0, train_ds[0]["chosen"]), (1, train_ds[0]["rejected"])):
+    comp = ids[row][cm[row]].tolist()
+    print(f"completion {row}: {len(comp)} tokens, {tok.decode(comp)!r}", flush=True)
+    assert comp[-1] == tok.eos_token_id and (len(comp) < 2 or comp[-2] != tok.eos_token_id), "end token wrong"
+    assert tok.decode(comp).strip() == want.strip(), ("completion does not round-trip", tok.decode(comp), want)
+print("prompt tokens (with image):", int((~cm[0] & batch["attention_mask"][0].bool()).sum()), flush=True)
 names = [n for n, p_ in trainer.model.named_parameters() if p_.requires_grad]
 assert names and all("language_model" in n and "lora_" in n for n in names), names[:5]
 print(f"trainable tensors: {len(names)} (language-model LoRA only); pairs {len(train_ds)}", flush=True)
 
 t0 = time.time()
 res = trainer.train()
-summary = {**res.metrics, "wall_s": time.time() - t0, "pairs": len(train_ds), "trl_adds_eos": trl_adds_eos,
+summary = {**res.metrics, "wall_s": time.time() - t0, "pairs": len(train_ds),
            "peak_gpu_mem_gb": torch.cuda.max_memory_allocated() / 1e9}
 json.dump(summary, open(f"{a.out}/logs/train_summary.json", "w"), indent=1)
 json.dump(trainer.state.log_history, open(f"{a.out}/logs/log_history.json", "w"), indent=1)
