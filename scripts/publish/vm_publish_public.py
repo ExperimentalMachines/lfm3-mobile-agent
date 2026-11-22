@@ -51,9 +51,10 @@ for spec in a.runs.split():
     wait_for(f"{R}/train_receipt.json")
     rid = f"{USER}/{name}"
     public_repo(api, rid)
-    api.upload_folder(folder_path=f"{R}/merged", repo_id=rid, commit_message="merged weights (LoRA merged into the base)")
+    api.upload_folder(folder_path=f"{R}/merged", repo_id=rid, commit_message="merged weights (LoRA merged into the base)",
+                      ignore_patterns=["README.md"])   # trainer-written cards can carry a local base_model path
     api.upload_folder(folder_path=f"{R}/lora", repo_id=rid, path_in_repo="lora_adapter", commit_message="LoRA adapter",
-                      ignore_patterns=["training_args.bin"])
+                      ignore_patterns=["training_args.bin", "README.md"])
     api.upload_folder(folder_path=f"{R}/logs", repo_id=rid, path_in_repo="training_logs", commit_message="training logs")
     api.upload_file(path_or_fileobj=lic, path_in_repo="LICENSE", repo_id=rid)
     api.upload_file(path_or_fileobj=f"{a.cards}/card-{ver}.md", path_in_repo="README.md", repo_id=rid, commit_message="model card")

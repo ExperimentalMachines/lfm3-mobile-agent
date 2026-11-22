@@ -122,6 +122,18 @@ if [[ " $CANDIDATES " == *" P "* ]]; then
   evals $OUTP/merged lfm3_v43dpo || log "P evals incomplete"
 fi
 
+# ---- 2b. P2 (post-hoc, PREREG 2026-11-22 20:15): stop/copy pairs only, balanced, stronger anchor, lower lr
+if [[ " $CANDIDATES " == *" P2 "* ]]; then
+  OUTP2=/content/runs/lfm3vl2b-v43dpo2
+  [ -f $PAIRS/.done ] || { log "P2 needs P's pairs"; exit 1; }
+  if [ ! -f $OUTP2/train_receipt.json ]; then
+    log "P2 DPO training (early_stop + missed_stop<=356 + copied_intent; sft 1.0; lr 1e-5)"
+    python dpo_vlm.py --model $M42 --pairs $PAIRS --out $OUTP2 --kinds early_stop,missed_stop,copied_intent \
+      --cap_per_kind missed_stop=356 --sft_weight 1.0 --lr 1e-5 || { log "P2 DPO TRAINING FAILED"; exit 1; }
+  fi
+  evals $OUTP2/merged lfm3_v43dpo2 || log "P2 evals incomplete"
+fi
+
 # ---- 3. S: more SFT on v4.2's own mix
 if [[ " $CANDIDATES " == *" S "* ]]; then
   OUTS=/content/runs/lfm3vl2b-v43sft

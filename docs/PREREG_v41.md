@@ -241,3 +241,23 @@ wrong click, wrong type) are saved before training.
   5558's accessibility forwarder was dead from the start; same failure as D's last 20 tasks on 5556). Moved to
   `results/androidworld/_invalid/lfm3vl2b_v42_rep_a11y_dead_20261122/`; both emulators cold-restarted; R relaunched on
   5558. From now on every pass is checked for exceptions within its first episodes.
+
+### 2026-11-22 20:15 Asia/Manila — P fails the offline gate; P2 pre-declared (post-hoc variant), run before S
+| Offline gate | v4.2 | P | Threshold |
+|---|---|---|---|
+| AndroidControl high-level step accuracy | 0.732 | **0.545** | ≥ 0.712 → **fail** |
+| Terminal `complete` accuracy | 0.738 | 0.885 | ≥ 0.70 |
+| `dev_answer` / `dev_complete` | 0.868 / 0.812 | 0.875 / 0.850 | ≥ 0.848 / — |
+
+- **P gets no emulator time** (rule). Cause, from the per-type scores: whole action types collapsed regardless of the
+  screen — `open_app` 0.946 → 0.161, `wait` 0.591 → 0.004, `scroll` 0.623 → 0.160, while `navigate_back` rose 0.662 →
+  0.840. 3,039 of the 4,163 pairs were generic wrong clicks/types, and `wait` was only ever rejected (human-wait states
+  were excluded), so DPO lowered those action types' prior everywhere (a known DPO failure: likelihood displacement).
+  Pairs: 16,000 rows, 74% matched, 4,163 pairs (wrong target 2,102, wrong type 937, missed stop 558, early stop 356,
+  copied intent 139, wait 71). DPO itself trained as intended (reward accuracy 0.62 → ~0.84, margin ~0.4).
+- **P2 (post-hoc, declared before any P2 or S outcome):** the same pairs restricted to the behaviours the report
+  targets and balanced so no action type is only ever rejected: early stop 356 + missed stop 356 (random 356 of 558) +
+  copied intent 139 = 851 pairs; no `wait`, wrong-target or wrong-type pairs. DPO β 0.1 with SFT weight 1.0 (was 0.5),
+  lr 1e-5 (was 2e-5), one pass. Same offline and online gates as P. Name `LFM3-VL-2B-AndroidAgent-v4.3-dpo2`.
+- **Order:** P2 runs before S (the owner ranked learning from own attempts above more epochs); S follows if credits
+  remain. S's first minutes of training are discarded (killed for the reorder, not for any result).

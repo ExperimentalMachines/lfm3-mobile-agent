@@ -43,6 +43,8 @@ p.add_argument("--max_pixels", type=int, default=774400)
 p.add_argument("--min_pixels", type=int, default=65536)
 p.add_argument("--smoke", type=int, default=0, help="train on N pairs for 2 steps, check everything, no export")
 p.add_argument("--seed", type=int, default=42)
+p.add_argument("--kinds", default="", help="comma list of pair kinds to keep (empty = all)")
+p.add_argument("--cap_per_kind", default="", help="kind=N,... random cap per kind (seeded)")
 a = p.parse_args()
 os.makedirs(f"{a.out}/logs", exist_ok=True)
 json.dump(vars(a), open(f"{a.out}/logs/run_config.json", "w"), indent=1)
@@ -71,6 +73,21 @@ def render(prompt_msgs, comp, keep_end):
 
 
 ds = load_from_disk(a.pairs)
+if a.kinds:
+    keep = set(a.kinds.split(","))
+    ds = ds.filter(lambda k: k in keep, input_columns="kind")
+if a.cap_per_kind:
+    import random
+    rng = random.Random(a.seed)
+    caps = {k: int(v) for k, v in (x.split("=") for x in a.cap_per_kind.split(","))}
+    by = {}
+    for i, k in enumerate(ds["kind"]):
+        by.setdefault(k, []).append(i)
+    idx = sorted(i for k, v in by.items() for i in (rng.sample(v, caps[k]) if k in caps and len(v) > caps[k] else v))
+    ds = ds.select(idx)
+from collections import Counter as _C
+print("pairs by kind:", dict(_C(ds["kind"])), flush=True)
+json.dump(dict(_C(ds["kind"])), open(f"{a.out}/logs/pairs_used.json", "w"))
 if a.smoke:
     ds = ds.select(range(min(a.smoke, len(ds))))
 
