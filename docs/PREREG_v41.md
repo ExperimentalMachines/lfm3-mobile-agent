@@ -266,3 +266,13 @@ wrong click, wrong type) are saved before training.
 - 19.80 compute units remained at 19:58 (A100 6.73/h). P2 plus 800 S steps plus evaluations would exhaust them before
   S's evaluation ends, so S runs **500 steps** (16,000 rows, ≈0.17 epoch more; WSD decay over the last 75). The 25 S steps
   run before the 20:15 reorder were discarded. S restarts after P2's offline evaluation finishes. Gates unchanged.
+
+### 2026-11-22 20:25 Asia/Manila — noise yardstick R = 9
+| Seed 30 | Successes | Exceptions | False `complete` |
+|---|---|---|---|
+| E = v4.2 (03:06 pass) | 18 | 9 | 25 |
+| v4.2 replicate (17:37 pass, cold-booted emulator 5558) | 19 | 2 | 22 |
+
+- **R = 9 tasks flip** between two identical v4.2 passes (5 replicate-only, 4 E-only). The online gate's success path
+  therefore needs a net gain of ≥ 9 over E. False `complete` counts (22–25) stay inside the 20–28 band of all earlier runs.
+- Counts from [`analysis/aw_false_complete.py`](../analysis/aw_false_complete.py) (reproduces the taxonomy's v4 25 and E 25).
