@@ -1,7 +1,7 @@
 # Models
 
-**Contents:** [Versions](#versions-at-a-glance) · [Recipe](#training-recipe) · [Training runs](#training-runs) ·
-[v4-RL](#v4-rl-not-promoted) · [Released artifacts](#released-artifacts)
+**Contents:** [Versions](#versions-at-a-glance) · [v1–v3 in detail](#v1v3-in-detail) · [Recipe](#training-recipe) ·
+[Training runs](#training-runs) · [v4-RL](#v4-rl-not-promoted) · [Released artifacts](#released-artifacts)
 
 ---
 
@@ -27,6 +27,97 @@ AndroidWorld = development seed 30, successes out of 116 ([results.md](results.m
 
 Other base models on v1's data: Qwen3.5-2B with the same recipe (16); Qwen3.5-0.8B and LFM2.5-VL-450M with a
 smaller one (LoRA r16, 1 epoch): 12 and 2.
+
+---
+
+## v1–v3 in detail
+
+The three versions before v4 (2026-11-16 to 18). They share one recipe ([below](#training-recipe)), so the training
+data is what changed. Sources: [`results/SUMMARY.md`](../results/SUMMARY.md),
+[`results/V2_COMPARISON.md`](../results/V2_COMPARISON.md), [`results/v3_dev/`](../results/v3_dev/),
+[seed-30 results](results.md#androidworld-development-seed-30), failure causes from
+[`results/androidworld/failure_taxonomy_20261122.json`](../results/androidworld/failure_taxonomy_20261122.json).
+
+| | v1 | v2 | v3 |
+|---|---|---|---|
+| Built | 11-16 → 11-17, Modal | 11-17, Colab | 11-17 → 11-18, Modal H100 |
+| Question it tested | Does LoRA SFT on AndroidControl make LFM3 an agent? | Do more data sources help? | Were v2's blank intents the problem? |
+| Training data | AndroidControl only, 99,216 rows | + GUI-Odyssey, AMEX, ScreenQA: 78,982 rows | v2 with its 8,739 blank intents filled: 78,952 rows |
+| AndroidControl high / low / terminal `complete` | 0.715 / **0.948** / 0.792 | 0.716 / 0.893 / 0.732 | 0.723 / 0.902 / 0.725 |
+| Dev splits: GUI-Odyssey / AMEX / ScreenQA | 0.269 / 0.306 / 0.000 | 0.644 / 0.735 / **0.764** | **0.662 / 0.741** / 0.724 |
+| MMStar / MMLU (base 52.1% / 48.9%) | 57.1% / 49.5% | 54.6% / 50.9% | 55.3% / 50.0% |
+| **AndroidWorld seed 30** (/116) | **15** | 3 | 13 |
+| Answer tasks solved (seed 30, /25) | 0 | 0 | 0 |
+| Most common failure (seed 30) | False `complete` (27) | Stuck repeating one intent (24) | Stuck repeating one intent (41) |
+| Held-out AndroidWorld (/348) | 32 (seeds 7 / 1234 / 2026: 11 / 10 / 11) | not run | not run |
+| MobileWorld | not run | not run | not run |
+| Apple M5, median s/step | 2.66 | 2.61 | 2.61 |
+| Hugging Face (private) | `experimentalmachines/LFM3-VL-2B-AndroidControl` (+ `-GGUF`) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v2` (+ `-GGUF`); dataset **public** | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v3` (+ `-GGUF`) |
+| Local GGUF (git-ignored) | `models/LFM3-VL-2B-AndroidControl-GGUF/` | `models/lfm3vl2b_v2-GGUF/` | `models/lfm3vl2b_v3-GGUF/` |
+
+### v1: AndroidControl only
+
+- **Result:** base 1/116 → 15/116 on seed 30 (paired p = 1.2 × 10⁻⁴). The best LFM3 version at single actions of
+  those measured (low-level step SR 0.948).
+- **Weaknesses:** it never uses `answer` (AndroidControl has no answer supervision), so every answer task fails. A
+  third of its steps are `wait`, all under an intent that is not about waiting: the copied-intent pattern later traced
+  to AndroidControl's labels and fixed in v4.1.
+- **Codex review** ([final_results_eval](../results/codex/codex_final_eval.md)): offline gains real, robust phone use not
+  shown. Its first suggestion became the **runtime-feedback ablation** (app-name resolution + failure notes at
+  inference): 10/116, worse, dropped.
+- **What we did with it:**
+  - Kept as "our first model" in the preregistered held-out comparison: 32/348.
+    - v4 − v1 = +6.3 points (95% CI +1.1 to +11.5, p = 0.02).
+    - v1 − GUI-Owl = −4.3 points (p = 0.21).
+    - One disputed checker success (seed 2026, OpenAppTaskEval).
+  - The same data trained Qwen3.5-2B (16/116), Qwen3.5-0.8B (12) and LFM2.5-VL-450M (2) for a base-model comparison.
+
+### v2: more data sources
+
+- **Data:** four Codex data audits before training (three No-go, then Go on `42f7f763`). They fixed train/dev screen
+  leakage and conversion bugs.
+- **Offline:** large gains on the new dev splits (GUI-Odyssey 0.27 → 0.64, AMEX 0.31 → 0.74, ScreenQA answers 0 →
+  0.76), but lower low-level and terminal `complete` accuracy than v1.
+- **AndroidWorld:** collapsed to 3/116 (v1-only 11 tasks, v2-only 0, p = 0.001). 30.4% of its steps had an empty
+  intent; 8,739 training rows had a blank intent.
+- **Forced-intent ablation:** forcing a one-line intent at inference gave 6/116 (+3 / −0 vs v2, p = 0.25). This
+  supports the blank-intent suspicion, but the effect is small and the data mix changed too.
+- **What we did with it:**
+  - Published the model and GGUF (private).
+  - Made the dataset public (now superseded).
+  - Trained Qwen3.5-2B on the same data (offline only; AndroidWorld not run).
+  - Built v3 to test the blank-intent explanation.
+
+### v3: v2 with the intents filled
+
+- **Data:**
+  - 2,603 blank intents filled from action templates.
+  - 6,106 filled by a teacher model.
+  - 30 rows dropped.
+  - Empty intents on the dev splits fell to 0% (v2: 100% on AMEX, 13.5% on GUI-Odyssey).
+- **Offline:** close to v2. ScreenQA was lower (0.724 vs 0.764, p = 0.008) because v3 gave more full-sentence answers.
+- **AndroidWorld:** 13/116.
+  - Recovered from v2: v3-only 10 tasks, v2-only 0, p = 0.002.
+  - Not above v1: v1-only 6, v3-only 4, p = 0.75.
+  - Still no `answer` actions, although ScreenQA was in its training data.
+- **Codex review** ([v3_audit](../results/codex/codex_v3_audit.md)): numbers reproduce; No-go on the model-card
+  wording, which was fixed.
+- **What we did with it:**
+  - Published the model and GGUF (private).
+  - Its data became v4's base: v3's rows in the v4 prompt, plus navigate-then-answer episodes, the installed-app list
+    and shorter ScreenQA answers.
+  - Its 13 action successes set part of v4's gate: action successes ≥ v3 − 3.
+
+### What v1–v3 taught us
+
+| Lesson | Seen in | Acted on |
+|---|---|---|
+| Offline gains on new datasets do not predict AndroidWorld | v2, v3 | AndroidWorld seed 30 became part of the gate (v4) |
+| Blank intents break the agent loop | v2 | v3 filled them |
+| Copied `wait` intents cause loops | v1–v4 | v4.1 relabelled them; v4.2 halved loops on MobileWorld |
+| ScreenQA alone does not make the agent `answer` | v2, v3 (0 answer tasks) | v4: navigate-then-answer episodes + answer rules in the prompt (0 → 6 answer tasks) |
+| Long ScreenQA answers | v3 | v4: shorter answers |
+| Inference-time patches did not replace data fixes | v1 + runtime feedback (10), v2 + forced intent (6) | Dropped |
 
 ---
 
