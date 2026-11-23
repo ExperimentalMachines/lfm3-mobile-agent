@@ -294,6 +294,6 @@ git config filter.redact-env.smudge cat
 |---|---|
 | `main` | This repository. Force-pushed on 2026-11-21 (e-mail scrub; every hash changed) |
 | `lfm3-android` | The branch name used while the project ran. Kept at the same commit as `main` (force-updated on 2026-11-20 and 2026-11-21; fast-forwarded with `main` on 2026-11-23). Check: `git ls-remote origin main lfm3-android` shows one hash |
-| `v41-followup` | Follow-up rounds v4.1–v4.3 (2026-11-21 to 23). Merged into `main` by fast-forward on 2026-11-23 |
+| `v41-followup` (deleted) | Follow-up rounds v4.1–v4.3 (2026-11-21 to 23). Merged into `main` by fast-forward on 2026-11-23 (last commit `1cc8a87`), then deleted |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction; rewritten with the e-mail scrub) |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |
