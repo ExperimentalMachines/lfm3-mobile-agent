@@ -181,3 +181,29 @@ Both amendments are made before any v4.4 candidate exists or is trained; only v4
 
 - "A started training at 13:23" was 13:23 UTC = 21:23 Manila.
 - The A entry, "2026-11-24 00:45", is correct (commit `160fb0f` at 00:42).
+
+### 2026-11-24 04:05 Asia/Manila — B fails the offline gate (1 of 5 checks); C training
+
+| Metric | B | A | v4 | Bar | B result |
+|---|---|---|---|---|---|
+| AndroidControl high-level step accuracy | 0.728 | 0.729 | 0.727 | ≥ 0.707 | pass |
+| `dev_answer` | 0.890 | 0.890 | 0.890 | ≥ 0.840 | pass |
+| `dev_complete` (n = 80) | 0.713 | 0.700 | 0.763 | ≥ 0.713 | pass (57 / 80, at the bar) |
+| AndroidControl steps ≥ 4, predicted `status` | 8.75% | 8.5% | 9.0% | ≤ 6.0% | **fail** |
+| AndroidLens steps ≥ 10, step accuracy | 0.402 | 0.401 | 0.367 | ≥ 0.347 | pass |
+
+**Reported, not gated:**
+
+| Metric | B | A | v4 |
+|---|---|---|---|
+| AndroidLens terminal `complete` | 29.1% | 21.5% | 12.2% |
+| AndroidLens early `status` | 0.9% | 0.5% | 0.2% |
+| `dev_memgui` | 0.654 | 0.668 | 0.421 |
+
+- **Splits:** B was evaluated on the `_notes` splits, as pre-registered.
+- **Rule applied:** B does not go online.
+- **Reading:**
+  - The "no visible change" notes raised correct stopping at the real end of long tasks (AndroidLens terminal 22% → 29% vs A).
+  - They did not change the early stops on AndroidControl's late steps. Neither the new data nor the progress signal moves that rate.
+- **Next:** C started at 03:58 Manila (19:58 UTC). B's weights are public at
+  `experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-B`.
