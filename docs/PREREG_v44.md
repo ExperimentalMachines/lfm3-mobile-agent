@@ -165,3 +165,19 @@ Both amendments are made before any v4.4 candidate exists or is trained; only v4
 - **Rule applied:** A does not go online.
 - **Reading:** the MemGUI rows lifted long-task step accuracy and end-of-task stopping. They did not lower the early-stop rate on AndroidControl's late steps, which is the habit the round targets.
 - **Next:** B started training at 00:40 Manila (16:40 UTC). Its weights are public at `experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-A`. Gate file: `results/v44_dev/lfm3_v44a_offline_gate.json`.
+
+### 2026-11-24 01:40 Asia/Manila — timestamp correction
+
+**The error:** three earlier headings converted this Mac's "PST" as US Pacific time. It is Philippine Standard Time
+(UTC+8, the same as Asia/Manila), so the headings are 16 hours off.
+
+**The correct times** come from the commits, and the order of events is unchanged:
+
+| Heading as written | Correct time (Asia/Manila) | Commit |
+|---|---|---|
+| "2026-11-24 10:00 … (2026-11-23 18:00 PST)" (preregistration written) | 2026-11-23 18:00 | `dda0e0f` |
+| "2026-11-24 12:10" (data facts, gate amendments) | 2026-11-23 19:41 | `a6b535e` |
+| "2026-11-24 13:25" (smoke passed, v4 reference) | 2026-11-23 21:26 | `73143d1` |
+
+- "A started training at 13:23" was 13:23 UTC = 21:23 Manila.
+- The A entry, "2026-11-24 00:45", is correct (commit `160fb0f` at 00:42).
