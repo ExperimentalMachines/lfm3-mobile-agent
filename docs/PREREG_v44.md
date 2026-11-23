@@ -86,3 +86,42 @@ A candidate failing any gate does not go online. No gate is changed after a cand
 
 - Written before any v4.4 data, training or result.
 - Converters running: `data/v44_memgui.py` and `data/v44_androidlens_eval.py`.
+
+### 2026-11-24 12:10 Asia/Manila — data facts and two gate amendments (before any candidate exists)
+
+**MemGUI rows** (`data/v44_memgui.py`, MemGUI-3K @ `003822b5aa3d5450232b8e6305d3094f564a1cf1`):
+
+| What | Count |
+|---|---|
+| Trajectories kept | 567 of 2,661 train, 63 of 295 test |
+| Dropped, AndroidWorld apps (Joplin, Audio Recorder) | 1,471 train |
+| Dropped, AndroidLab apps (Bluecoins and others) | 104 |
+| Dropped, calendar apps | 108 |
+| Dropped, MobileWorld | 1, plus Messages / SMS trajectories (dropped conservatively) |
+| Dropped, infeasible tasks | 264 |
+| Dropped, inexpressible actions (mostly drags) | 66 |
+| Answer rows removed | 81 train, 11 dev. Their answers are full sentences, and v4 / AndroidWorld want short answers. The steps before them stay |
+
+- About half the rows are past step 8.
+- About a third have an unreasonable step earlier in their history: recovery.
+- Final counts are in `data/v44work/memgui_stats.json`.
+
+**"No visible change" notes on v4's rows** (`data/v44_nochange.py`):
+- 9.0% of AndroidControl rows get at least one note (3.9% of history lines), mostly after taps and scrolls.
+- Odyssey 0.2%; ScreenQA and AMEX 0.
+
+**Same evaluator for v4 and the candidates:**
+- v4's gate numbers come from the Colab pipeline's `V4REF` stage: Transformers bf16, `generate.py`, the same pre-rendered splits.
+- The GGUF baseline on AndroidLens (llama.cpp on the Mac) is informational only.
+
+**Amendment 1: the stopping gate moves to AndroidControl.**
+- v4's partial AndroidLens baseline (1,891 scored steps, GGUF) has almost no early stops: 0.4% overall, 0–1% per bucket.
+- On these long, unfamiliar tasks v4 fails by not stopping (terminal accuracy 9%), while step accuracy falls from 0.54 (steps 0–4) to 0.34 (steps 20+).
+- "≤ ⅔ of v4's early-stop rate" on AndroidLens would test a floor.
+- The new stopping gate is the AndroidControl test, high-level, non-terminal rows at step index ≥ 4: the predicted-`status` rate must be ≤ ⅔ of v4's. In v4's published bf16 run that rate is 276 / 3,064 = 9.0%; the bar uses `V4REF`'s number.
+
+**Amendment 2: AndroidLens becomes a no-regression check where v4 is weakest.**
+- Step accuracy on steps ≥ 10 must be ≥ v4's − 0.02, using `V4REF`'s number.
+- Overall AndroidLens step accuracy stays reported, not gated.
+
+Both amendments are made before any v4.4 candidate exists or is trained; only v4's own numbers were seen.
