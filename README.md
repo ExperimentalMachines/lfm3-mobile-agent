@@ -32,6 +32,7 @@ llama-server -m lfm3-mobile-agent-v4/LFM3-VL-2B-MobileAgent-v4-Q4_K_M.gguf \
 | Prompt and action format | [`train/agent_format.py`](train/agent_format.py) (`build_messages(..., prompt_version="v4", apps=[...])`, `parse_action`); also on the [model card](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4) |
 | Agent loop on an emulator or phone (AndroidWorld) | [`eval/androidworld/lfm_agent.py`](eval/androidworld/lfm_agent.py), run by [`eval/androidworld/run_aw.py`](eval/androidworld/run_aw.py) |
 | Agent for MobileWorld | [`eval/mobileworld/lfm3_mw_agent.py`](eval/mobileworld/lfm3_mw_agent.py) |
+| On the phone's GPU (LiteRT-LM) | [`LFM3-VL-2B-MobileAgent-v4-LiteRT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-LiteRT) (one int8 file, about 3.5 s per model call on a Snapdragon reference phone) and the Android app [ExperimentalMachines/mobile-agent](https://github.com/ExperimentalMachines/mobile-agent) |
 | Limits | Research model: do not let it act unattended on a phone with real accounts, messages or payments |
 
 ## Results at a glance

@@ -206,6 +206,11 @@ base model's LICENSE and a card with its status. Cards: [`scripts/publish/cards/
 | Qwen3.5-0.8B v1 | [`Qwen3.5-0.8B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/Qwen3.5-0.8B-MobileAgent-v1) | `…-v1-GGUF` | Comparison |
 | LFM2.5-VL-450M v1 | [`LFM2.5-VL-450M-MobileAgent-v1`](https://huggingface.co/experimentalmachines/LFM2.5-VL-450M-MobileAgent-v1) | `…-v1-GGUF` | Comparison |
 
+- **v4 for LiteRT-LM:** [`LFM3-VL-2B-MobileAgent-v4-LiteRT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-LiteRT)
+  is one int8 `.litertlm` that runs on a phone's GPU with the training-time 1280 × 576 screenshot grid. It picks the
+  same action as the bf16 model on 90.6% of 180 AndroidControl test steps (the v4 GGUF: 89.4%). It was converted, checked
+  and wrapped in an Android app in [ExperimentalMachines/mobile-agent](https://github.com/ExperimentalMachines/mobile-agent).
+
 | Dataset | Revision used for training | Trains |
 |---|---|---|
 | [`MobileAgent-SFT-v1`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v1) | (not pinned) | v1 and the comparison fine-tunes; its `test` split is the AndroidControl test set used offline |
