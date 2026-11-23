@@ -66,7 +66,8 @@ when the review and response were committed (Asia/Manila).
 | 11-23 01:58 | [v5_results_review](../results/agy/v5_results_review/agy_stdout.log) | Round-5 results, gates, docs | **Not run** | agy quota exhausted (HTTP 429; resets ≈ 2026-11-28) |
 | 11-23 01:58 | [v5_results_review_claude](../results/review/v5_results_review_claude/report.md) (stand-in) | Same brief, an independent Claude reviewer | Go after fixes | Gate decisions reproduce; all 12 findings fixed ([response](../results/review/v5_results_review_claude/response.md)) |
 
-The follow-up branch was merged into `main` on 2026-11-23 on the stand-in review, by the owner's decision; the agy
-results review is still to be run when its quota returns.
+The follow-up branch was merged into `main` on 2026-11-23 on the stand-in review, by the owner's decision. A retry
+the same morning hit the same quota on every agy model, and the owner decided not to run the agy results review, so
+the stand-in review is the only check of the round-5 results.
 
 Verdict words follow each report's own first line. Severity labels in reports: P1 = serious, P2 = moderate, P3 = minor.

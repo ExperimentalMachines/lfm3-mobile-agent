@@ -18,6 +18,7 @@
 | CPU speed benchmark | The same GCP VM, idle, before its MobileWorld run |
 | Phone speed benchmark | Qualcomm Device Cloud (Snapdragon 8 Elite Extreme Gen 6 reference phone); earlier attempt on a Pixel 9 via Firebase device streaming |
 | Audits and research | Codex CLI on the Mac |
+| Follow-up rounds v4.1–v4.3 (2026-11-21 to 23) | Training and offline gates on Colab A100 (second Colab account); seed-30 runs on the Mac; MobileWorld run 3 (v4.2) on a new GCP `n2-standard-16` VM with the model on a Colab T4, as in run 2; reviews by agy |
 
 Colab VMs have no KVM, so Android emulators could not run there. That is why MobileWorld moved to AWS and GCP.
 
@@ -27,6 +28,9 @@ Colab VMs have no KVM, so Android emulators could not run there. That is why Mob
 
 - Every cloud VM powers itself off after 12 h (AWS `shutdown -h`, GCP `--max-run-duration`).
 - Colab sessions were stopped by a watchdog once their jobs finished.
+- Teardown (2026-11-23): the GCP project was deleted (VM, disk, static IP, firewall rules, network), after checking
+  that every MobileWorld result, screenshot and log was saved locally. Its storage bucket (copies of the phone-test
+  model files and the Android llama.cpp build) was deleted first, after each file's CRC32C matched a local copy.
 - The whole pipeline was smoke-tested before any paid run (rule adopted after an early v3 attempt failed inside a
   paid pipeline).
 

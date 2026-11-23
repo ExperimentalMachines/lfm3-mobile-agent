@@ -356,3 +356,10 @@ All gate decisions reproduce. Corrections to earlier entries (the log stays appe
 - Before the merge, `README.md`, `docs/audits.md`, `docs/repository.md` and the folder guides were brought up to date
   with rounds v4.1–v4.3. The round-5 counts were re-run from the episode files and are unchanged (successes 18 / 19 / 21
   / 24, false `complete` 25 / 22 / 28 / 37 for E / replicate / P2 / S).
+
+### 2026-11-23 10:15 Asia/Manila — agy results review not run (owner's decision; no decision changes)
+- A retry of the agy results review hit the same account-wide quota on every agy model (gpt-oss-120b-medium: resets in
+  126 h; a one-line availability probe of gemini-3.8-flash-high: same error), logged in
+  [`results/agy/v5_results_review/agy_stdout.log`](../results/agy/v5_results_review/agy_stdout.log).
+- The owner decided not to run it. This supersedes the plan in the 09:50 entry: the independent stand-in review
+  (01:55 entry) is the only adversarial check of the round-5 results.
