@@ -4,8 +4,18 @@
   "script": "/content/work/vm_v44_pipeline.sh",
   "log": "/content/runs/lfm3_v44_pipeline.log",
   "env": {
-   "CANDIDATES": "SMOKE",
+   "CANDIDATES": "V4REF A B C",
    "DREV": "2b481ae3b6b5fb2ef4b343f5450e9f6673d44b5e"
+  },
+  "stagger_s": 0
+ },
+ {
+  "name": "publish_public",
+  "script": "/content/work/vm_publish_public.sh",
+  "log": "/content/runs/publish_public.log",
+  "env": {
+   "PUBLISH_ORG": "experimentalmachines",
+   "PUBLISH_RUNS": "lfm3vl2b-v44a:LFM3-VL-2B-MobileAgent-v4.4-A lfm3vl2b-v44b:LFM3-VL-2B-MobileAgent-v4.4-B lfm3vl2b-v44c:LFM3-VL-2B-MobileAgent-v4.4-C"
   },
   "stagger_s": 0
  }

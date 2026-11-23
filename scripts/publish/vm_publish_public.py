@@ -1,5 +1,5 @@
-"""Publish finished runs as PUBLIC repos on the owner's personal Hugging Face account (owner's request 2026-11-21:
-"Upload to public personal"; private storage is full). Runs ON the Colab VM inside the blocking cell.
+"""Publish finished runs as PUBLIC repos (since 2026-11-23 in the experimentalmachines org, PUBLISH_ORG; before that the
+owner's personal account, "Upload to public personal", 2026-11-21). Runs ON the Colab VM inside the blocking cell.
 
 For each "run_dir:Name" in --runs (waits until the run's train_receipt.json exists):
   alpharomercoma/<Name>       merged weights (root), LoRA adapter (lora_adapter/), training logs (training_logs/),
@@ -14,7 +14,7 @@ import time
 
 from huggingface_hub import HfApi, hf_hub_download
 
-USER = "alpharomercoma"
+USER = os.environ.get("PUBLISH_ORG", "experimentalmachines")  # since 2026-11-23 releases go to the org (docs/models.md)
 BASE_REV = "23387beda43c60310348e83e25f78f33c3140d3a"
 
 
@@ -46,7 +46,7 @@ api = HfApi()
 lic = hf_hub_download("LiquidAI/LFM3-VL-2B", "LICENSE", revision=BASE_REV)
 for spec in a.runs.split():
     run, name = spec.split(":")
-    ver = name.split("AndroidAgent-", 1)[1]           # e.g. v4.1, v4.3-dpo
+    ver = name.split("AndroidAgent-", 1)[1] if "AndroidAgent-" in name else name.split("MobileAgent-", 1)[1]  # v4.1, v4.4-A
     R = f"/content/runs/{run}"
     wait_for(f"{R}/train_receipt.json")
     rid = f"{USER}/{name}"
@@ -57,6 +57,10 @@ for spec in a.runs.split():
                       ignore_patterns=["training_args.bin", "README.md"])
     api.upload_folder(folder_path=f"{R}/logs", repo_id=rid, path_in_repo="training_logs", commit_message="training logs")
     api.upload_file(path_or_fileobj=lic, path_in_repo="LICENSE", repo_id=rid)
-    api.upload_file(path_or_fileobj=f"{a.cards}/card-{ver}.md", path_in_repo="README.md", repo_id=rid, commit_message="model card")
+    card = f"{a.cards}/card-{ver}.md"
+    if os.path.exists(card):
+        api.upload_file(path_or_fileobj=card, path_in_repo="README.md", repo_id=rid, commit_message="model card")
+    else:  # round 6: candidate cards are written on the Mac after the gates
+        print(f"[{time.strftime('%T')}] no card for {ver}; README added later", flush=True)
     print(f"[{time.strftime('%T')}] published {rid}", flush=True)
 print("all published", flush=True)
