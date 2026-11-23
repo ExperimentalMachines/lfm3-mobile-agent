@@ -27,10 +27,12 @@ The app-name filter is a heuristic, not a proof of zero contamination. Known v4 
 
 | Version | Dataset @ revision | Rows | Content |
 |---|---|---|---|
-| v1 | `experimentalmachines/AndroidControl-screen-agent-sft` | 99,216 | AndroidControl high-level steps + ~15% low-level copies + one synthetic `complete` step per episode |
-| v2 | `experimentalmachines/AndroidAgent-SFT-v2` @ `42f7f763` | 78,982 | AndroidControl 55,936 (incl. 5,998 terminal) · GUI-Odyssey 9,979 · AMEX 7,072 · ScreenQA 5,995 |
-| v3 | `alpharomercoma/AndroidAgent-SFT-v3` @ `565ba76c` | 78,952 | v2 with its 8,739 blank intents fixed: 2,603 filled from action templates, 6,106 by a teacher model, 30 rows dropped |
-| **v4** | `alpharomercoma/AndroidAgent-SFT-v4` @ `3375539` | 92,229 | v3 in the v4 prompt (answer-vs-complete rules + installed-app list) + navigate-then-answer episodes + shorter ScreenQA answers |
+| v1 | [`experimentalmachines/MobileAgent-SFT-v1`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v1) | 99,216 | AndroidControl high-level steps + ~15% low-level copies + one synthetic `complete` step per episode |
+| v2 | [`experimentalmachines/MobileAgent-SFT-v2`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v2) @ `42f7f763` | 78,982 | AndroidControl 55,936 (incl. 5,998 terminal) · GUI-Odyssey 9,979 · AMEX 7,072 · ScreenQA 5,995 |
+| v3 | [`experimentalmachines/MobileAgent-SFT-v3`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v3) @ `565ba76c` | 78,952 | v2 with its 8,739 blank intents fixed: 2,603 filled from action templates, 6,106 by a teacher model, 30 rows dropped |
+| **v4** | [`experimentalmachines/MobileAgent-SFT-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4) @ `3375539` | 92,229 | v3 in the v4 prompt (answer-vs-complete rules + installed-app list) + navigate-then-answer episodes + shorter ScreenQA answers |
+
+All training datasets are public (2026-11-23), renamed from their earlier names (scripts use the old ones; Hugging Face redirects them; [map](models.md#old-names-scripts-and-earlier-docs-use-them-hugging-face-redirects-them)).
 
 v4's question episodes:
 - **Source:** AndroidControl train episodes. Questions and answers come from Qwen3-VL-8B-Instruct.

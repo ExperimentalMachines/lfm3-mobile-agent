@@ -7,6 +7,7 @@ Notes:
 - Most scripts drove a specific machine or cloud session that no longer exists.
 - Local launchers find the repository from their own location; scripts that run on a VM use that VM's paths.
 - Superseded versions are kept at tag `archive/pre-restructure-2026-11-20` ([docs/repository.md](../docs/repository.md)).
+- Hugging Face names inside these scripts are the pre-release ones; the Hub redirects them ([name map](../docs/models.md#old-names-scripts-and-earlier-docs-use-them-hugging-face-redirects-them)).
 
 ## androidworld/ — AndroidWorld runs on the Mac's two emulators
 
@@ -88,4 +89,5 @@ Notes:
 | `vm_export_gguf.sh` | **Runs on Colab:** merged weights → F16 GGUF with the Mac's converter version |
 | `local_quantize_publish.sh` | Mac: F16 → 4-bit GGUF (v4 byte-parity check first), optional public GGUF repo; `publish-only` re-uploads an evaluated GGUF after checking its hashes |
 | `vm_publish_public.py`, `vm_publish_public.sh` | **Runs on Colab:** public model repos (merged weights, LoRA adapter, training logs, card) for v4.1+ |
-| `cards/` | Model cards for the public v4.1+ repos (`<version>.md`, `<version>-GGUF.md`) |
+| `em_release.py` | **Public release (2026-11-23):** moves / renames every model, GGUF and dataset into `experimentalmachines` as `<base>-MobileAgent-vX`, writes the cards, uploads licenses, makes them public, deletes stale copies (`cards`, `plan`, `apply --go`) |
+| `cards/` | Every Hugging Face card (`<version>.md`, `<version>-GGUF.md`, `dataset-*.md`), written by `em_release.py cards` (v4.1–v4.3 model cards are hand-written) |

@@ -1,15 +1,38 @@
-# LFM3-VL-2B Android agent
+# LFM3 Mobile Agent
 
-Post-training LiquidAI **LFM3-VL-2B** into a small, screenshot-only Android agent that runs on the phone, then
-comparing it fairly with **GUI-Owl-1.5-2B** and **MAI-UI-2B**.
+A small, screenshot-only Android agent: LiquidAI **LFM3-VL-2B** post-trained to operate a phone from one screenshot
+per step, small enough to run on the phone itself (4-bit GGUF, llama.cpp), and compared fairly with
+**GUI-Owl-1.5-2B** and **MAI-UI-2B**.
+
+This repository is the whole project: training code, dataset builders, benchmark harnesses, every result with its raw
+files, the preregistrations, the audits and the model cards.
 
 | | |
 |---|---|
-| Final model | **LFM3-VL-2B v4**: LoRA fine-tune, shipped as a 4-bit GGUF (1.30 GB with its image projector) |
+| Main model | **LFM3-VL-2B-MobileAgent-v4** ([weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF)): LoRA fine-tune, 4-bit GGUF of 1.30 GB with its image projector |
+| All models and data | [LFM3 Mobile Agent collection](https://huggingface.co/collections/experimentalmachines/lfm3-mobile-agent-6b03a79f8e23b8dde16e8326) on Hugging Face: every version v1–v4.3, the comparison fine-tunes and the training datasets, public ([list](docs/models.md#released-artifacts)) |
 | Main benchmark | AndroidWorld, 3 held-out seeds × 116 tasks, **preregistered** ([docs/PREREG_v4.md](docs/PREREG_v4.md)) |
 | Other benchmarks | MobileWorld (105 tasks), AndroidControl (offline), speed on CPU, Apple M5 and a phone |
 | Status | Complete (2026-11-19). The headline results were independently re-checked by Codex ([docs/audits.md](docs/audits.md)) |
 | Follow-up | v4.1–v4.3 (2026-11-21 to 23, development benchmarks only): no reliable gain over v4, so **v4 stays the evaluated model** ([below](#follow-up-rounds-development-only)) |
+| License | Code: Apache-2.0 ([LICENSE](LICENSE)). Models: their base model's license. Datasets: their sources' licenses |
+
+## Use the model
+
+```bash
+# llama.cpp (https://github.com/ggml-org/llama.cpp); the same flags as in our evaluations
+hf download experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF --local-dir lfm3-mobile-agent-v4
+llama-server -m lfm3-mobile-agent-v4/LFM3-VL-2B-MobileAgent-v4-Q4_K_M.gguf \
+  --mmproj lfm3-mobile-agent-v4/mmproj-LFM3-VL-2B-Q8_0.gguf \
+  -c 8192 --image-max-tokens 1024 --reasoning-format deepseek
+```
+
+| Piece | Where |
+|---|---|
+| Prompt and action format | [`train/agent_format.py`](train/agent_format.py) (`build_messages(..., prompt_version="v4", apps=[...])`, `parse_action`); also on the [model card](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4) |
+| Agent loop on an emulator or phone (AndroidWorld) | [`eval/androidworld/lfm_agent.py`](eval/androidworld/lfm_agent.py), run by [`eval/androidworld/run_aw.py`](eval/androidworld/run_aw.py) |
+| Agent for MobileWorld | [`eval/mobileworld/lfm3_mw_agent.py`](eval/mobileworld/lfm3_mw_agent.py) |
+| Limits | Research model: do not let it act unattended on a phone with real accounts, messages or payments |
 
 ## Results at a glance
 
@@ -85,7 +108,7 @@ Rules fixed in advance in [docs/PREREG_v41.md](docs/PREREG_v41.md). No follow-up
 - Two passes of the same model (v4.2) differ on 9 tasks, so one seed-30 pass cannot detect gains smaller than about
   9 tasks. That was the pass bar.
 - Details: [docs/results.md](docs/results.md#round-5-learning-from-own-mistakes-vs-more-training-pre-registered-2026-11-22),
-  [docs/models.md](docs/models.md#versions-at-a-glance). All follow-up models are public on Hugging Face, marked experimental.
+  [docs/models.md](docs/models.md#versions-at-a-glance). Every version is public on Hugging Face, with its status on its card.
 
 ## Read next
 
@@ -125,3 +148,13 @@ Rules fixed in advance in [docs/PREREG_v41.md](docs/PREREG_v41.md). No follow-up
 - **Sealed held-out seeds:** results of seeds 7/1234/2026 were not read until every model had finished that seed.
 - **Every deviation is dated** in [docs/PREREG_v4.md](docs/PREREG_v4.md), with what had and had not been seen at the time.
 - **Exceptions count as failures**, unlike AndroidWorld's default.
+
+## License
+
+| Part | License |
+|---|---|
+| Code and documentation in this repository | Apache-2.0 ([LICENSE](LICENSE)) |
+| LFM3-VL-2B and LFM2.5-VL-450M fine-tunes | LFM Open License v1.0, inherited from the LiquidAI base models |
+| Qwen3.5 fine-tunes | Apache-2.0, inherited from the Qwen base models |
+| Training datasets | Per source: AndroidControl Apache-2.0; GUI-Odyssey, AMEX, ScreenQA CC BY 4.0 (see each dataset card) |
+| Third-party code kept in the repo | `eval/androidworld/maiui_ref/` (MAI-UI reference agent) and the patches in `eval/androidworld/*.patch` (AndroidWorld, android_env): Apache-2.0, as their sources; file headers kept |

@@ -1,7 +1,7 @@
 # Repository notes
 
 **Contents:** [Layout](#layout) · [2026-11-20 restructure](#2026-11-20-restructure) ·
-[Secrets](#secrets-and-history-rewrites) · [Branches and tags](#branches-and-tags)
+[Secrets](#secrets-and-history-rewrites) · [Name and home](#name-and-home) · [Branches and tags](#branches-and-tags)
 
 ---
 
@@ -10,6 +10,7 @@
 | Path | What it holds | Edited after the fact? |
 |---|---|---|
 | `README.md`, `docs/*.md` | Documentation | Yes: kept current |
+| `LICENSE` | Apache-2.0, for the code and documentation (models and data keep their own licenses) | — |
 | `docs/PREREG_v4.md` | Preregistration + dated deviations | **No**: append-only record |
 | `docs/research/` | Literature reviews (deep-research reports + notes) | Only dead links repaired |
 | `analysis/` | Scripts that compute reported numbers | Yes |
@@ -288,12 +289,21 @@ git config filter.redact-env.smudge cat
 
 ---
 
+## Name and home
+
+| Date | Change |
+|---|---|
+| 2026-11-16 | Created as `alpharomercoma/lfm3-android-runs`, a run log of the project |
+| 2026-11-23 | Renamed **`lfm3-mobile-agent`** ("LFM3 Mobile Agent"): the repository is the whole project, not a run log. Code licensed Apache-2.0. Its public home is `experimentalmachines/lfm3-mobile-agent`; the owner transfers it there |
+
+GitHub redirects the old name. Archived documents and audit reports quote the old name; they are left as written.
+
 ## Branches and tags
 
 | Ref | What |
 |---|---|
 | `main` | This repository. Force-pushed on 2026-11-21 (e-mail scrub; every hash changed) |
-| `lfm3-android` | The branch name used while the project ran. Kept at the same commit as `main` (force-updated on 2026-11-20 and 2026-11-21; fast-forwarded with `main` on 2026-11-23). Check: `git ls-remote origin main lfm3-android` shows one hash |
+| `lfm3-android` (deleted) | The branch name used while the project ran, kept at `main`'s commit until 2026-11-23; deleted then, identical to `main` (`0f5d50b`) |
 | `v41-followup` (deleted) | Follow-up rounds v4.1–v4.3 (2026-11-21 to 23). Merged into `main` by fast-forward on 2026-11-23 (last commit `1cc8a87`), then deleted |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction; rewritten with the e-mail scrub) |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |

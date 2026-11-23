@@ -52,7 +52,7 @@ data is what changed. Sources: [`results/SUMMARY.md`](../results/SUMMARY.md),
 | Held-out AndroidWorld (/348) | 32 (seeds 7 / 1234 / 2026: 11 / 10 / 11) | not run | not run |
 | MobileWorld | not run | not run | not run |
 | Apple M5, median s/step | 2.66 | 2.61 | 2.61 |
-| Hugging Face (private) | `experimentalmachines/LFM3-VL-2B-AndroidControl` (+ `-GGUF`) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v2` (+ `-GGUF`); dataset **public** | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v3` (+ `-GGUF`) |
+| Hugging Face (public) | [`LFM3-VL-2B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v1) (+ `-GGUF`) | [`LFM3-VL-2B-MobileAgent-v2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v2) (+ `-GGUF`) | [`LFM3-VL-2B-MobileAgent-v3`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v3) (+ `-GGUF`) |
 | Local GGUF (git-ignored) | `models/LFM3-VL-2B-AndroidControl-GGUF/` | `models/lfm3vl2b_v2-GGUF/` | `models/lfm3vl2b_v3-GGUF/` |
 
 ### v1: AndroidControl only
@@ -83,7 +83,7 @@ data is what changed. Sources: [`results/SUMMARY.md`](../results/SUMMARY.md),
 - **Forced-intent ablation:** forcing a one-line intent at inference gave 6/116 (+3 / −0 vs v2, p = 0.25). This
   supports the blank-intent suspicion, but the effect is small and the data mix changed too.
 - **What we did with it:**
-  - Published the model and GGUF (private).
+  - Published the model and GGUF (private at first; public since 2026-11-23).
   - Made the dataset public (now superseded).
   - Trained Qwen3.5-2B on the same data (offline only; AndroidWorld not run).
   - Built v3 to test the blank-intent explanation.
@@ -103,7 +103,7 @@ data is what changed. Sources: [`results/SUMMARY.md`](../results/SUMMARY.md),
 - **Codex review** ([v3_audit](../results/codex/codex_v3_audit.md)): numbers reproduce; No-go on the model-card
   wording, which was fixed.
 - **What we did with it:**
-  - Published the model and GGUF (private).
+  - Published the model and GGUF (private at first; public since 2026-11-23).
   - Its data became v4's base: v3's rows in the v4 prompt, plus navigate-then-answer episodes, the installed-app list
     and shorter ScreenQA answers.
   - Its 13 action successes set part of v4's gate: action successes ≥ v3 − 3.
@@ -189,22 +189,45 @@ decision: [`results/v4rl_promotion_offline.json`](../results/v4rl_promotion_offl
 
 ## Released artifacts
 
-Hugging Face, private unless noted.
+Everything is **public** in the [experimentalmachines](https://huggingface.co/experimentalmachines) Hugging Face org ([collection](https://huggingface.co/collections/experimentalmachines/lfm3-mobile-agent-6b03a79f8e23b8dde16e8326))
+(released 2026-11-23 with [`scripts/publish/em_release.py`](../scripts/publish/em_release.py); log:
+[`logs/em_release_hf.log`](../logs/em_release_hf.log)). Each model repo holds the merged weights, the LoRA adapter
+(`lora_adapter/`), training logs (`training_logs/`), the prediction files behind its offline numbers (`eval/`), the
+base model's LICENSE and a card with its status. Cards: [`scripts/publish/cards/`](../scripts/publish/cards/).
 
-| Artifact | Repository |
+| Model | Weights | Phone GGUF | Status |
+|---|---|---|---|
+| **v4** | [`LFM3-VL-2B-MobileAgent-v4`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4) | [`…-v4-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF) | **Main model** (held-out evaluated) |
+| v1, v2, v3 | [`…-v1`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v1), [`…-v2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v2), [`…-v3`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v3) | `…-v1-GGUF`, `…-v2-GGUF`, `…-v3-GGUF` | Superseded |
+| v4-RL | [`…-v4-RL`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-RL) | `…-v4-RL-GGUF` | Not promoted |
+| v4.1, v4.2 | [`…-v4.1`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.1), [`…-v4.2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.2) | `…-v4.1-GGUF`, `…-v4.2-GGUF` | Experimental follow-ups |
+| v4.3-dpo, -dpo2, -sft | [`…-v4.3-dpo`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.3-dpo), [`…-v4.3-dpo2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.3-dpo2), [`…-v4.3-sft`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.3-sft) | `…-v4.3-dpo2-GGUF`, `…-v4.3-sft-GGUF` (dpo: none) | Failed their gates |
+| Qwen3.5-2B v1, v2 | [`Qwen3.5-2B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-v1), [`…-v2`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-v2) | `…-v1-GGUF`, `…-v2-GGUF` | Comparison |
+| Qwen3.5-0.8B v1 | [`Qwen3.5-0.8B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/Qwen3.5-0.8B-MobileAgent-v1) | `…-v1-GGUF` | Comparison |
+| LFM2.5-VL-450M v1 | [`LFM2.5-VL-450M-MobileAgent-v1`](https://huggingface.co/experimentalmachines/LFM2.5-VL-450M-MobileAgent-v1) | `…-v1-GGUF` | Comparison |
+
+| Dataset | Revision used for training | Trains |
+|---|---|---|
+| [`MobileAgent-SFT-v1`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v1) | (not pinned) | v1 and the comparison fine-tunes; its `test` split is the AndroidControl test set used offline |
+| [`MobileAgent-SFT-v2`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v2) | `42f7f763` | v2, Qwen3.5-2B v2 |
+| [`MobileAgent-SFT-v3`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v3) | `565ba76c` | v3 |
+| [`MobileAgent-SFT-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4) | `3375539` | v4; v4.1 / v4.2 rebuild their data from it |
+| [`MobileAgent-RL-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-RL-v4) | `9ba36d90` | v4-RL |
+
+### Old names (scripts and earlier docs use them; Hugging Face redirects them)
+
+| Old name | New name |
 |---|---|
-| **v4** (merged weights / GGUF) | `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4`, `…-v4-GGUF` |
-| v4-RL (not promoted) | `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4-RL`, `…-v4-RL-GGUF` |
-| v4.3-dpo2, v4.3-sft (**public**, not promoted) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo2` (+ `-GGUF`), `…-v4.3-sft` (+ `-GGUF`) |
-| v4.3-dpo (**public**, failed offline gate) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.3-dpo` (no GGUF) |
-| v4.2, v4.1 (**public**) | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v4.2` (+ `-GGUF`), `…-v4.1` (+ `-GGUF`) |
-| v3, v2 | `alpharomercoma/LFM3-VL-2B-AndroidAgent-v3` (+ `-GGUF`), `…-v2` (+ `-GGUF`) |
-| v1 | `experimentalmachines/LFM3-VL-2B-AndroidControl` (+ `-GGUF`) |
-| v4 training data | `alpharomercoma/AndroidAgent-SFT-v4` @ `3375539` |
-| v3 training data | `alpharomercoma/AndroidAgent-SFT-v3` @ `565ba76c` |
-| v2 training data | `experimentalmachines/AndroidAgent-SFT-v2` @ `42f7f763` (**public**, superseded) |
-| v1 training data | `experimentalmachines/AndroidControl-screen-agent-sft` |
-| RL state pool | `alpharomercoma/AndroidAgent-RL-v4` @ `9ba36d90` |
+| `experimentalmachines/LFM3-VL-2B-AndroidControl` (+ `-GGUF`) | `experimentalmachines/LFM3-VL-2B-MobileAgent-v1` (+ `-GGUF`) |
+| `alpharomercoma/LFM3-VL-2B-AndroidAgent-v2` … `-v4.3-sft` (+ `-GGUF`); `experimentalmachines/LFM3-VL-2B-AndroidAgent-v4`, `-v4-RL` (+ `-GGUF`) | `experimentalmachines/LFM3-VL-2B-MobileAgent-<same version>` (+ `-GGUF`) |
+| `experimentalmachines/Qwen3.5-2B-AndroidControl`, `alpharomercoma/Qwen3.5-2B-AndroidAgent-v2` | `experimentalmachines/Qwen3.5-2B-MobileAgent-v1`, `-v2` |
+| `experimentalmachines/Qwen3.5-0.8B-AndroidControl`, `experimentalmachines/LFM2.5-VL-450M-AndroidControl` (+ `-GGUF`) | `experimentalmachines/Qwen3.5-0.8B-MobileAgent-v1`, `experimentalmachines/LFM2.5-VL-450M-MobileAgent-v1` (+ `-GGUF`) |
+| `experimentalmachines/AndroidControl-screen-agent-sft`, `experimentalmachines/AndroidAgent-SFT-v2`, `alpharomercoma/AndroidAgent-SFT-v3`, `-v4`, `alpharomercoma/AndroidAgent-RL-v4` | `experimentalmachines/MobileAgent-SFT-v1` … `-v4`, `experimentalmachines/MobileAgent-RL-v4` |
+
+- GGUF files were renamed to match (e.g. `LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf` → `LFM3-VL-2B-MobileAgent-v4-Q4_K_M.gguf`);
+  the bytes are unchanged, so the hashes in the manifests below still apply.
+- Deleted as stale (owner's decision): logs-only partial copies of v2 / Qwen3.5-2B v2 in the org, logs-only stubs of
+  v4 / v4-RL in the personal account, and six intermediate `*-LoRA-ckpt` repos.
 
 ### Integrity records
 

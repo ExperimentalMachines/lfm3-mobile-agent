@@ -3,7 +3,7 @@
 ## Regenerate the result summaries (minutes, no GPU)
 
 ```bash
-git clone git@github.com:alpharomercoma/lfm3-android-runs.git && cd lfm3-android-runs
+git clone https://github.com/experimentalmachines/lfm3-mobile-agent.git && cd lfm3-mobile-agent
 bash analysis/reproduce.sh          # needs Python 3.10+ with numpy; PY=... to pick the interpreter
 ```
 
