@@ -125,3 +125,20 @@ A candidate failing any gate does not go online. No gate is changed after a cand
 - Overall AndroidLens step accuracy stays reported, not gated.
 
 Both amendments are made before any v4.4 candidate exists or is trained; only v4's own numbers were seen.
+
+### 2026-11-24 13:25 Asia/Manila — smoke passed; v4 reference measured; A training (no candidate result exists)
+
+- **Smoke test:** passed. Full mix built: train_a / train_b 109,239 rows (92,229 v4 + 2 × 8,505 MemGUI), 8,369 B rows
+  with notes, train_c 17,010. 50 training steps and every eval on 16 rows ran.
+- **v4 reference** (`V4REF`: Transformers bf16, `generate.py`, the pre-rendered splits; the same path as the
+  candidates):
+
+  | Metric | v4 | Candidate bar |
+  |---|---|---|
+  | AndroidControl test high-level step accuracy | 0.727 (published 0.728) | ≥ 0.707 |
+  | AndroidControl high-level non-terminal steps ≥ 4, predicted `status` | 9.0% (275 / 3,064; published run 276) | ≤ 6.0% |
+  | `dev_answer` / `dev_complete` | 0.890 / 0.763 | ≥ 0.840 / ≥ 0.713 |
+  | AndroidLens English, step accuracy at steps ≥ 10 | 0.367 (overall 0.414; terminal `complete` 12%) | ≥ 0.347 |
+  | `dev_memgui` step accuracy | 0.421 | Reported only |
+
+- **Candidates:** A started training at 13:23.
