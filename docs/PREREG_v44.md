@@ -207,3 +207,42 @@ Both amendments are made before any v4.4 candidate exists or is trained; only v4
   - They did not change the early stops on AndroidControl's late steps. Neither the new data nor the progress signal moves that rate.
 - **Next:** C started at 03:58 Manila (19:58 UTC). B's weights are public at
   `experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-B`.
+
+### 2026-11-24 05:45 Asia/Manila — C fails the offline gate (1 of 5 checks); round 6 ends negative
+
+| Metric | C | B | A | v4 | Bar | C result |
+|---|---|---|---|---|---|---|
+| AndroidControl high-level step accuracy | 0.724 | 0.728 | 0.729 | 0.727 | ≥ 0.707 | pass |
+| `dev_answer` | 0.875 | 0.890 | 0.890 | 0.890 | ≥ 0.840 | pass |
+| `dev_complete` | 0.788 | 0.713 | 0.700 | 0.763 | ≥ 0.713 | pass |
+| AndroidControl steps ≥ 4, predicted `status` | 9.8% | 8.75% | 8.5% | 9.0% | ≤ 6.0% | **fail** |
+| AndroidLens steps ≥ 10, step accuracy | 0.413 | 0.402 | 0.401 | 0.367 | ≥ 0.347 | pass |
+
+**Reported, not gated:**
+
+| Metric | C | B | A | v4 |
+|---|---|---|---|---|
+| AndroidLens terminal `complete` | **47.7%** | 29.1% | 21.5% | 12.2% |
+| AndroidControl terminal `complete` | 0.740 | 0.715 | 0.714 | 0.716 |
+| `dev_memgui` | 0.698 | 0.654 | 0.668 | 0.421 |
+
+**Decision under the rule:** no candidate passes the offline gate, so nothing goes online and round 6 is reported
+as negative. All three candidates are public: `experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-A`, `-B` and `-C`.
+
+**Gate-design observation** (made after the results; it changes no decision):
+- v4's 275 "early" `status` predictions at AndroidControl steps ≥ 4 mostly fall right before the end.
+  - 141 (51%) are exactly one step before the episode's terminal row; 61 are two steps before.
+  - The ground-truth action at those steps is click 114, scroll 99, wait 51, back 11.
+  - The human demonstrations often add a final scroll or wait before finishing.
+- So this gate partly measures AndroidControl's annotation habit, not the online failure. The online failure is
+  different: 26 of v4's 71 held-out false `complete`s came before the task's optimal step count.
+- A better stopping gate would be "`status` predicted ≥ 2 steps before the end", or a check on the model's own
+  trajectories. That is for a later, separately pre-registered round.
+
+**What the round showed (offline):**
+- Long-task step accuracy rose 3.5–4.6 points over v4 in all three candidates.
+- Correct stopping at the real end of long tasks rose 12% → 22% (A), 29% (B) and 48% (C).
+- Late-step early stopping on AndroidControl did not move (8.5–9.8% vs 9.0%).
+
+**Compute:** 64.5 Colab units for the smoke test, V4REF, A, B and C; 47.0 left. The session was stopped after the
+results were downloaded (`results/v44_dev/`).

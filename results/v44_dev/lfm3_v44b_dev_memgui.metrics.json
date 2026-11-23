@@ -1,0 +1,57 @@
+{
+ "n_steps": 921,
+ "n_episodes": 60,
+ "parse_rate": 1.0,
+ "type_match": 0.8458197611292074,
+ "step_sr": 0.6536373507057546,
+ "episode_sr": 0.06666666666666667,
+ "per_type": {
+  "click": {
+   "n": 575,
+   "type_match": 0.9043478260869565,
+   "step_sr": 0.6278260869565218
+  },
+  "input_text": {
+   "n": 106,
+   "type_match": 0.9245283018867925,
+   "step_sr": 0.7830188679245284
+  },
+  "long_press": {
+   "n": 1,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 7,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_home": {
+   "n": 26,
+   "type_match": 0.34615384615384615,
+   "step_sr": 0.34615384615384615
+  },
+  "scroll": {
+   "n": 95,
+   "type_match": 0.6947368421052632,
+   "step_sr": 0.6631578947368421
+  },
+  "status": {
+   "n": 49,
+   "type_match": 0.6122448979591837,
+   "step_sr": 0.6122448979591837
+  },
+  "wait": {
+   "n": 62,
+   "type_match": 0.9032258064516129,
+   "step_sr": 0.9032258064516129
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 921,
+  "expected": 921,
+  "model": "/content/runs/lfm3vl2b-v44b/merged"
+ }
+}

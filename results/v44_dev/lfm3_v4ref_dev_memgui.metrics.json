@@ -1,0 +1,57 @@
+{
+ "n_steps": 921,
+ "n_episodes": 60,
+ "parse_rate": 1.0,
+ "type_match": 0.6786102062975027,
+ "step_sr": 0.4212812160694897,
+ "episode_sr": 0.0,
+ "per_type": {
+  "click": {
+   "n": 575,
+   "type_match": 0.6782608695652174,
+   "step_sr": 0.32
+  },
+  "input_text": {
+   "n": 106,
+   "type_match": 0.9056603773584906,
+   "step_sr": 0.6698113207547169
+  },
+  "long_press": {
+   "n": 1,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 7,
+   "type_match": 0.14285714285714285,
+   "step_sr": 0.14285714285714285
+  },
+  "navigate_home": {
+   "n": 26,
+   "type_match": 0.23076923076923078,
+   "step_sr": 0.23076923076923078
+  },
+  "scroll": {
+   "n": 95,
+   "type_match": 0.7684210526315789,
+   "step_sr": 0.7052631578947368
+  },
+  "status": {
+   "n": 49,
+   "type_match": 0.061224489795918366,
+   "step_sr": 0.061224489795918366
+  },
+  "wait": {
+   "n": 62,
+   "type_match": 0.9032258064516129,
+   "step_sr": 0.9032258064516129
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 921,
+  "expected": 921,
+  "model": "/content/models/v4"
+ }
+}
