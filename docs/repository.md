@@ -294,7 +294,7 @@ git config filter.redact-env.smudge cat
 | Date | Change |
 |---|---|
 | 2026-11-16 | Created as `alpharomercoma/lfm3-android-runs`, a run log of the project |
-| 2026-11-23 | Renamed **`lfm3-mobile-agent`** ("LFM3 Mobile Agent"): the repository is the whole project, not a run log. Code licensed Apache-2.0. Transferred by the owner to the `ExperimentalMachines` GitHub org: `ExperimentalMachines/lfm3-mobile-agent` |
+| 2026-11-23 | Renamed **`lfm3-mobile-agent`** ("LFM3 Mobile Agent"): the repository is the whole project, not a run log. Code licensed Apache-2.0. Transferred by the owner to the `ExperimentalMachines` GitHub org (`ExperimentalMachines/lfm3-mobile-agent`) and made **public** |
 
 GitHub redirects the old name. Archived documents and audit reports quote the old name; they are left as written.
 
