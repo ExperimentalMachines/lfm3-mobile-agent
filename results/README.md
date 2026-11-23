@@ -14,6 +14,8 @@ raw files are never edited. What each number means: [docs/results.md](../docs/re
 | `speed/speed_t8.md`, `qdc/speed_qdc_v6.md` | Speed on CPU and on the phone |
 | `SUMMARY.md`, `V2_COMPARISON.md` | Offline AndroidControl, dev splits, general knowledge |
 | `v4_gate_seed30.txt`, `v4rl_promotion_offline.json` | v4 gate (pass) and v4-RL promotion (fail) |
+| `mobileworld/mw_r3_comparison.{md,json}` | Follow-up: MobileWorld v4.2 vs v4 / GUI-Owl / MAI-UI, loop metrics |
+| `androidworld/failure_taxonomy_20261122.json` | Follow-up: main failure cause per seed-30 episode, v1–v4.2 and held-out v4 |
 
 ## Supporting files
 
@@ -40,6 +42,11 @@ raw files are never edited. What each number means: [docs/results.md](../docs/re
 | `speed/`, `qdc/`, `devstream/` | Raw speed measurements: CPU, Qualcomm phone, Pixel 9 |
 | `data/`, `data_v2/` | Dataset verification and build logs |
 | `codex/` | Codex audits: `PROMPT_<name>.md` + report + evidence ([docs/audits.md](../docs/audits.md)) |
+| `v41_dev/`, `v42_dev/` | Follow-up v4.1 / v4.2: development-split predictions and metrics (v4.2: also its training log) |
+| `v42/` | v4.2 data build record: self-history replay state and statistics, data manifests |
+| `v5_dev/` | Round 5 (v4.3-*): DPO pair statistics, offline gate files, training logs, pipeline and publish logs |
+| `v4*_gguf_manifest.json` (v4.1+) | Hashes of the published follow-up GGUFs |
+| `agy/`, `review/` | Follow-up reviews: briefs, reports, our responses ([docs/audits.md](../docs/audits.md#follow-up-rounds-agy-reviews)) |
 
 Episode files (`*.pkl.gz`) are Python pickles written by this project's AndroidWorld harness; load them only from
 this repository.

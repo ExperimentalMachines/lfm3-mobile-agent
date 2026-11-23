@@ -348,3 +348,11 @@ All gate decisions reproduce. Corrections to earlier entries (the log stays appe
 | S offline gate (not logged before) | S passed at 21:56 (AC high-level 0.736, terminal `complete` 0.757, `dev_answer` 0.860, `dev_complete` 0.875), before its 22:12 seed-30 pass |
 | Heading times | The 16:35 and 17:00 entries were committed at 16:09 (`da3a327`); the replicate actually started 16:05 and was relaunched 17:37. The 20:15 entry was committed at 19:54 (`bc38f4b`), the 20:20/20:25 entries at 20:08, the 20:30 entry at 20:27. These declared earlier than labelled. The 17:35 entry was committed at 18:34 (`fb5bbc6`), after P's pair statistics were printed; its settings had been in code since 16:18 (`2341bd7`) and were not changed |
 | Counting scripts | `aw_false_complete.py` now reproduces the taxonomy's `false_complete` exactly (answer tasks, partial credit and unparseable last steps excluded); counts are unchanged for every round-5 run and now match the taxonomy for v1–v4.2 too. Success was changed from `> 0` to `>= 1` after P2's result; no count changes (exception episodes store NaN) |
+
+### 2026-11-23 09:50 Asia/Manila — merged into `main` (no decision changes)
+- The owner decided to merge `v41-followup` into `main` on the independent stand-in review (01:55 entry), with the
+  agy results review still outstanding (quota exhausted until ≈ 2026-11-28). That review is to be run on `main` when
+  the quota returns; any finding will be logged here as a new entry.
+- Before the merge, `README.md`, `docs/audits.md`, `docs/repository.md` and the folder guides were brought up to date
+  with rounds v4.1–v4.3. The round-5 counts were re-run from the episode files and are unchanged (successes 18 / 19 / 21
+  / 24, false `complete` 25 / 22 / 28 / 37 for E / replicate / P2 / S).

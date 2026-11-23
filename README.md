@@ -9,6 +9,7 @@ comparing it fairly with **GUI-Owl-1.5-2B** and **MAI-UI-2B**.
 | Main benchmark | AndroidWorld, 3 held-out seeds × 116 tasks, **preregistered** ([docs/PREREG_v4.md](docs/PREREG_v4.md)) |
 | Other benchmarks | MobileWorld (105 tasks), AndroidControl (offline), speed on CPU, Apple M5 and a phone |
 | Status | Complete (2026-11-19). The headline results were independently re-checked by Codex ([docs/audits.md](docs/audits.md)) |
+| Follow-up | v4.1–v4.3 (2026-11-21 to 23, development benchmarks only): no reliable gain over v4, so **v4 stays the evaluated model** ([below](#follow-up-rounds-development-only)) |
 
 ## Results at a glance
 
@@ -68,16 +69,35 @@ Same harness for every model: 1 screenshot per step, 4-bit model via llama.cpp, 
 
 MAI-UI-2B (8-bit, 1 screenshot) scored highest on the development seed but was **not** run on the held-out seeds.
 
+### Follow-up rounds (development only)
+
+Rules fixed in advance in [docs/PREREG_v41.md](docs/PREREG_v41.md). No follow-up version was run on the held-out seeds.
+
+| Version | What changed | Seed 30 / 116 | MobileWorld / 105 | Outcome |
+|---|---|---|---|---|
+| v4 | Reference | 18 | 6 | — |
+| v4.1 | `wait` labels fixed + recovery-history augmentation | 12 | — | Worse (+2 / −8 vs v4) |
+| v4.2 | v4.1 + the model's own replayed history (DAgger-style, offline) | 18 | 8 (p 0.63 vs v4) | Loops halved, success level; reference for round 5 |
+| v4.3-dpo | v4.2 + DPO on all 4,163 of its own mistakes | not run | — | Failed offline (action types collapsed) |
+| v4.3-dpo2 | v4.2 + DPO on 851 balanced stop / copied-intent mistakes | 21 | — | Failed online (+3 vs v4.2) |
+| v4.3-sft | v4.2 + 500 more SFT steps on the same mix | 24 | — | Failed online (+6 vs v4.2; false `complete` 25 → 37) |
+
+- Two passes of the same model (v4.2) differ on 9 tasks, so one seed-30 pass cannot detect gains smaller than about
+  9 tasks. That was the pass bar.
+- Details: [docs/results.md](docs/results.md#round-5-learning-from-own-mistakes-vs-more-training-pre-registered-2026-11-22),
+  [docs/models.md](docs/models.md#versions-at-a-glance). All follow-up models are public on Hugging Face, marked experimental.
+
 ## Read next
 
 | Document | Read it for |
 |---|---|
 | [docs/results.md](docs/results.md) | All results, each with its source file |
 | [docs/evaluation.md](docs/evaluation.md) | How each benchmark was run and kept fair |
-| [docs/models.md](docs/models.md) | Model versions v1–v4, training recipe, released artifacts |
+| [docs/models.md](docs/models.md) | Model versions v1–v4.3, training recipe, released artifacts |
 | [docs/datasets.md](docs/datasets.md) | Training data, splits, contamination rule |
 | [docs/PREREG_v4.md](docs/PREREG_v4.md) | The preregistration and every dated deviation (kept unedited) |
-| [docs/audits.md](docs/audits.md) | Every Codex audit and its verdict |
+| [docs/PREREG_v41.md](docs/PREREG_v41.md) | Follow-up rounds v4.1–v4.3: plans, gates and dated log (append-only) |
+| [docs/audits.md](docs/audits.md) | Every Codex audit and follow-up review, with its verdict |
 | [docs/infrastructure.md](docs/infrastructure.md) | Where things ran, incidents and fixes |
 | [docs/reproduce.md](docs/reproduce.md) | How to regenerate the result summaries, and what that covers |
 | [docs/repository.md](docs/repository.md) | Repository layout, what moved, history notes |

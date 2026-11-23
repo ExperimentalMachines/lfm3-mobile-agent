@@ -17,6 +17,8 @@
 | `scripts/` | Run orchestration by purpose ([scripts/README.md](../scripts/README.md)) | Yes |
 | `results/` | Raw results and computed summaries ([results/README.md](../results/README.md)) | Summaries are regenerated; raw files are not edited |
 | `results/codex/` | Codex audit briefs, reports and evidence | No |
+| `docs/PREREG_v41.md` | Follow-up rounds (v4.1–v4.3): plans, gates, dated log | **No**: append-only record |
+| `results/agy/`, `results/review/` | Follow-up review briefs, reports and our responses ([audits.md](audits.md#follow-up-rounds-agy-reviews)) | No |
 | `logs/` | Run logs kept as evidence ([logs/README.md](../logs/README.md)) | Only credential redaction |
 
 Git-ignored local folders used by the scripts: `models/` (GGUF and merged weights), `tools/` (llama.cpp,
@@ -291,6 +293,7 @@ git config filter.redact-env.smudge cat
 | Ref | What |
 |---|---|
 | `main` | This repository. Force-pushed on 2026-11-21 (e-mail scrub; every hash changed) |
-| `lfm3-android` | The branch name used while the project ran. Kept at the same commit as `main` (force-updated on 2026-11-20 and 2026-11-21). Check: `git ls-remote origin main lfm3-android` shows one hash |
+| `lfm3-android` | The branch name used while the project ran. Kept at the same commit as `main` (force-updated on 2026-11-20 and 2026-11-21; fast-forwarded with `main` on 2026-11-23). Check: `git ls-remote origin main lfm3-android` shows one hash |
+| `v41-followup` | Follow-up rounds v4.1–v4.3 (2026-11-21 to 23). Merged into `main` by fast-forward on 2026-11-23 |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction; rewritten with the e-mail scrub) |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |

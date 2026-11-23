@@ -21,3 +21,15 @@ Run them all with `bash analysis/reproduce.sh` (see [docs/reproduce.md](../docs/
 | `devstream_report.py` | Phone speed (Pixel 9, partial) | `results/devstream/run_*/speed_phone_partial.{json,md}` |
 
 `results/sealed_analysis_seed7*` are earlier interim outputs (seed 7 only), kept as the record of that stage.
+
+## Follow-up rounds (v4.1–v4.3, [docs/PREREG_v41.md](../docs/PREREG_v41.md))
+
+Run by hand, not by `reproduce.sh`. The two AndroidWorld scripts print JSON lines; run them with
+`.venv-aw/bin/python -I analysis/<script>.py results/androidworld/<run> ...`.
+
+| Script | Computes | Writes |
+|---|---|---|
+| `aw_paired_flips.py` | Paired seed-30 comparison against a reference run (first argument): successes, flips, net gain, exact McNemar p; also on tasks neither run crashed | Prints |
+| `aw_false_complete.py` | Successes, exceptions and false `complete`s per run (the failure taxonomy's definition) | Prints |
+| `mw_summarize_r3.py` | MobileWorld follow-up run (v4.2) vs run 2's models, loop metrics | `results/mobileworld/mw_r3_comparison.{json,md}`, `v42_gui_en_r3_summary.json` |
+| [`failure_analysis/`](failure_analysis/) | Failure taxonomy, paired task changes, loss curves, latency ([its guide](failure_analysis/README.md)) | A temp folder (committed copy: `results/androidworld/failure_taxonomy_20261122.json`) |

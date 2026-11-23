@@ -8,6 +8,7 @@ Every important step was checked by an independent, adversarial reviewer before 
 | Access | Read access to the repository; writes only inside its own audit folder |
 | Where | [`results/codex/`](../results/codex/): `PROMPT_<name>.md` (the brief) + the report and its evidence |
 | Paths inside reports | Refer to the repository at audit time. Moved or removed files are at tag `archive/pre-restructure-2026-11-20` ([repository.md](repository.md)) |
+| Follow-up rounds (from 2026-11-21) | Reviewed by agy (Antigravity CLI, model gpt-oss-120b-medium) instead of Codex: [Follow-up rounds](#follow-up-rounds-agy-reviews) |
 
 Start times are Asia/Manila (UTC+8), from each Codex session's log.
 
@@ -50,5 +51,22 @@ Start times are Asia/Manila (UTC+8), from each Codex session's log.
 | 11-18 10:16 | [emu2_v3_promo_audit](../results/codex/emu2_v3_promo_audit/report.md) | Emulator queue, v4-RL promotion | Fix (two moderate findings) | Fixed; v4-RL promotion recomputed (fails) |
 | 11-18 18:03 | [session_1118_audit](../results/codex/session_1118_audit/report.md) | Phone speed, MobileWorld run 1, docs | Fix | MobileWorld run 1 found unfair; replaced by run 2 |
 | 11-18 21:35 | [round2_audit](../results/codex/round2_audit/report.md) | Phone round 2, MobileWorld adapter v2 | Fix (no serious finding) | Wording and adapter limits corrected and disclosed |
+
+## Follow-up rounds (agy reviews)
+
+Briefs: [`results/agy/`](../results/agy/) (`PROMPT_<name>.md`); each folder holds the report and our response. Times are
+when the review and response were committed (Asia/Manila).
+
+| Recorded | Review | Checked | Verdict | Outcome |
+|---|---|---|---|---|
+| 11-21 20:11 | [v41_plan_review](../results/agy/v41_plan_review/response.md) | v4.1 plan: data fixes, loop guards, MobileWorld typing | Go after fixes | 1 wording fix; 5 of 8 findings not real (checked in code); 1 threshold change not adopted; 1 design choice kept |
+| 11-21 20:25 | [v41_plan_rereview](../results/agy/v41_plan_rereview/response.md) | Our response to the above | Go after fixes | Closed, except the screen-difference threshold: not adopted (raising it would make the guard fire more often, not less) |
+| 11-22 16:04 | [v5_plan_review](../results/agy/v5_plan_review/response.md) | Round-5 plan and the research behind it | Go after fixes | Missing sources committed (failure taxonomy, latency) |
+| 11-22 16:09 | [v5_plan_rereview](../results/agy/v5_plan_rereview/response.md) | Round-5 logic, decision rules, fairness | Go after fixes | Human `wait` states excluded from DPO pairs; rejection needs a scorer mismatch; S samples v4.2's own mix |
+| 11-23 01:58 | [v5_results_review](../results/agy/v5_results_review/agy_stdout.log) | Round-5 results, gates, docs | **Not run** | agy quota exhausted (HTTP 429; resets ≈ 2026-11-28) |
+| 11-23 01:58 | [v5_results_review_claude](../results/review/v5_results_review_claude/report.md) (stand-in) | Same brief, an independent Claude reviewer | Go after fixes | Gate decisions reproduce; all 12 findings fixed ([response](../results/review/v5_results_review_claude/response.md)) |
+
+The follow-up branch was merged into `main` on 2026-11-23 on the stand-in review, by the owner's decision; the agy
+results review is still to be run when its quota returns.
 
 Verdict words follow each report's own first line. Severity labels in reports: P1 = serious, P2 = moderate, P3 = minor.
