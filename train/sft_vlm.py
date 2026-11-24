@@ -229,8 +229,11 @@ if not ckpts and args.hub_repo:
         raise SystemExit(f"cannot list hub checkpoint repo {args.hub_repo} ({e}); refusing to train from scratch")
     KEYS = ("model_id", "train", "max_pixels", "lr", "bs", "grad_accum", "lora_r", "lora_alpha", "target_regex", "max_steps",
             "epochs", "inline_think", "replay")
-    if "run_config.json" in files:  # identity of the run that wrote the checkpoints
-        old = json.load(open(snapshot_download(args.hub_repo, allow_patterns=["run_config.json"]) + "/run_config.json"))
+    # identity of the run that wrote the checkpoints; the Trainer's own pushes replace the root copy, the one under
+    # logs/ (pushed with the output folder) survives (round 7 smoke, 2026-11-24)
+    ident = next((f for f in ("run_config.json", "logs/run_config.json") if f in files), None)
+    if ident:
+        old = json.load(open(snapshot_download(args.hub_repo, allow_patterns=[ident]) + "/" + ident))
         diff = [f"{k}: {old.get(k)!r} != {vars(args).get(k)!r}" for k in KEYS if k in old and old.get(k) != vars(args).get(k)]
         if diff:
             raise SystemExit("hub checkpoints belong to a different run configuration, refusing: " + "; ".join(diff))

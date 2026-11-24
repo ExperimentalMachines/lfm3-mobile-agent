@@ -11,7 +11,9 @@ cd /content/work
 MREV=23387beda43c60310348e83e25f78f33c3140d3a          # LiquidAI/LFM3-VL-2B, as v4
 DREV=45331aaadf0e89db25eb9ab10344a46603670557          # experimentalmachines/MobileAgent-SFT-v4.5
 VREV=f88a843239b7e0b68ea8fcb6eb0c5539276d64eb          # MobileAgent-SFT-v1 (AndroidControl val, eval loss only)
-log "start (Colab A100; resumes from the Hub checkpoint repo if one exists)"
+log "start (resumes from the Hub checkpoint repo if one exists)"
+# a finished run is never resumed: resuming at the last step trains one more step (seen in the round-7 smoke)
+[ -f /content/runs/r7d/train_receipt.json ] && { log "already trained (receipt present)"; MODEL=/content/runs/r7d/merged NAME=r7d LIMIT=0 bash vm_r7_eval.sh; exit $?; }
 python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --model_revision $MREV \
   --train experimentalmachines/MobileAgent-SFT-v4.5@train#$DREV --val experimentalmachines/MobileAgent-SFT-v1@val#$VREV \
   --out /content/runs/r7d --max_steps 5420 --max_pixels 774400 --bs 4 --grad_accum 8 --no_gc \

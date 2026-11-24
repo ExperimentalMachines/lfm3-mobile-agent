@@ -15,12 +15,15 @@ run() {
     --lora_r 64 --lora_alpha 128 --modules_to_save --save_steps 2 --eval_steps 1000 --workers 10 \
     --hub_repo experimentalmachines/LFM3-VL-2B-MobileAgent-v4.5-smoke-ckpt --hub_public
 }
+log "fresh start: delete the smoke checkpoint repo, run folder and eval files"
+python -c "from huggingface_hub import HfApi; HfApi().delete_repo('experimentalmachines/LFM3-VL-2B-MobileAgent-v4.5-smoke-ckpt', missing_ok=True)"
+rm -rf /content/runs/r7smoke /content/eval/smoke_*
 log "pass 1: train 4 steps, push checkpoints"
 run > /content/runs/r7smoke_1.log 2>&1 || { log "PASS 1 FAILED"; tail -20 /content/runs/r7smoke_1.log; exit 1; }
 log "pass 1 ok: $(grep -o '"peak_gpu_mem_gb": [0-9.]*' /content/runs/r7smoke/logs/train_summary.json)"
 rm -rf /content/runs/r7smoke
 log "pass 2: local folder deleted; must restore from the Hub"
 run > /content/runs/r7smoke_2.log 2>&1 || { log "PASS 2 FAILED"; tail -20 /content/runs/r7smoke_2.log; exit 1; }
-grep -q "restored /content/runs/r7smoke/checkpoint-4 from hub" /content/runs/r7smoke_2.log && log "hub restore ok (step 4)" || { log "SMOKE FAILED: no hub restore"; grep -iE "restore|resum|checkpoint" /content/runs/r7smoke_2.log | tail -5; exit 1; }
+grep -q "restored /content/runs/r7smoke/checkpoint-[0-9]* from hub" /content/runs/r7smoke_2.log && log "hub restore ok ($(grep -o 'checkpoint-[0-9]* from hub' /content/runs/r7smoke_2.log)); identity: $(grep -c 'different run configuration\|no run_config' /content/runs/r7smoke_2.log) warnings" || { log "SMOKE FAILED: no hub restore"; grep -iE "restore|resum|checkpoint" /content/runs/r7smoke_2.log | tail -5; exit 1; }
 log "evals, scorers and gate on 16 rows per split"
 MODEL=/content/runs/r7smoke/merged NAME=smoke LIMIT=16 bash vm_r7_eval.sh && log "SMOKE OK" || { log "SMOKE FAILED: evals"; exit 1; }

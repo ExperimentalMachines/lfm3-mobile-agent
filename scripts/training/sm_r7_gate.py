@@ -49,7 +49,7 @@ def status_rates(path):
 ac = L("test_ac_high")
 al = L("dev_androidlens_high")["high"]
 b = al["by_bucket"]
-parts = [b[x] for x in ("10-19", "20+") if x in b]
+parts = [b[x] for x in ("10-19", "20+") if x in b and b[x].get("n") and b[x].get("step_acc") is not None]
 sr = status_rates(os.path.join(a.eval, f"{a.name}_test_ac_high.jsonl"))
 c = {"ac_high": ac["high"]["overall"]["step_sr"], "terminal_complete": ac.get("terminal_complete", {}).get("step_sr"),
      "dev_answer": L("dev_answer")["step_sr"], "dev_complete": L("dev_complete")["step_sr"], "dev_memgui": L("dev_memgui")["step_sr"],

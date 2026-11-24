@@ -21,7 +21,7 @@ done
 python score.py $E/${N}_test_ac_high.jsonl --gt meta/androidcontrol_test_gt.jsonl --modes high --allow_incomplete \
   --out $E/${N}_test_ac_high.metrics.json > /dev/null || { log "AC SCORE FAILED"; exit 1; }
 for x in "dev_answer 136" "dev_complete 80" "dev_memgui 921"; do
-  set -- $x; EX=""; [ "$L" = 0 ] && EX="--expect_n $2"
+  set -- $x; EX="--expect_n $2"; [ "$L" != 0 ] && EX="--expect_n $(( L < $2 ? L : $2 ))"  # score_dev always checks the row count
   python score_dev.py $E/${N}_$1.jsonl $EX --out $E/${N}_$1.metrics.json > /dev/null || { log "SCORE FAILED $1"; exit 1; }
 done
 python - $E/${N}_dev_androidlens_high.jsonl $A/androidlens/dev_androidlens_high.parquet <<'PY' || { log "ANDROIDLENS ADAPT FAILED"; exit 1; }

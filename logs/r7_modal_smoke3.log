@@ -1,0 +1,53 @@
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-OQkDkkHKKj9pQopzoDmmrP
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+└── ✓ Created Function run_smoke.
+[08:52:40] r7smoke: fresh start: delete the smoke checkpoint repo, run folder and eval files
+[08:52:40] r7smoke: pass 1: train 4 steps, push checkpoints
+[08:57:40] r7smoke: pass 1 ok: "peak_gpu_mem_gb": 33.889722368
+[08:57:40] r7smoke: pass 2: local folder deleted; must restore from the Hub
+[08:59:28] r7smoke: hub restore ok (checkpoint-4 from hub); identity: 0 warnings
+[08:59:28] r7smoke: evals, scorers and gate on 16 rows per split
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+Fetching 2 files:  50%|█████     | 1/2 [00:00<00:00,  5.06it/s]
+Fetching 2 files: 100%|██████████| 2/2 [00:03<00:00,  1.98s/it]
+Fetching 2 files: 100%|██████████| 2/2 [00:03<00:00,  1.71s/it]
+[08:59:32] r7eval: eval smoke test_ac_high
+[09:00:16] r7eval: eval smoke dev_answer
+[09:00:34] r7eval: eval smoke dev_complete
+[09:01:02] r7eval: eval smoke dev_androidlens_high
+[09:01:25] r7eval: eval smoke dev_memgui
+INTEGRITY PROBLEM: ['9971 GT rows missing']
+INTEGRITY PROBLEM: ['high: 4971 of 4987 rows missing']
+Traceback (most recent call last):
+  File "/content/work/sm_r7_gate.py", line 58, in <module>
+    "androidlens_step_10plus": sum(x["step_acc"] * x["n"] for x in parts) / max(1, sum(x["n"] for x in parts)),
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/content/work/sm_r7_gate.py", line 58, in <genexpr>
+    "androidlens_step_10plus": sum(x["step_acc"] * x["n"] for x in parts) / max(1, sum(x["n"] for x in parts)),
+                                   ~~~~~~~~~~~~~~^~~~~~~~
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+[09:01:58] r7smoke: SMOKE FAILED: evals
+rc 1
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/alpha-6533/main/ap-OQkDkkHKKj9pQopzoDmmrP
+exit 0

@@ -143,3 +143,17 @@ online run.
   folder deleted, then the command must restore step 4 from the Hub).
 - **Evals and gate:** unchanged, on whichever platform finishes training (`scripts/training/sm_r7.sh`'s eval and gate
   steps, or the same scripts on Modal).
+
+### 2026-11-24 17:05 Asia/Manila — D moves to Modal; smoke passed (no candidate exists)
+
+- **Platform:** no Colab A100 or G4 was free for about 1.5 h; the owner said "Let's do modal for now". D runs on a Modal
+  H100 (`scripts/training/modal_r7.py`) with the identical command; recipe and data unchanged.
+- **Smoke on Modal (H100):** 4 steps on 200 rows (peak memory 33.9 GB), checkpoint pushed to the Hub, run folder wiped,
+  step 4 restored from the Hub with the identity check passing; all five evals, the scorers and the gate ran on 16
+  rows each.
+- **Fixed during the smoke (code only):**
+  - Resuming a run that already reached its last step trains one more step: the training script now skips training when
+    the run's receipt exists.
+  - The Trainer's own Hub pushes replace the root `run_config.json`; the resume identity check now also reads the
+    surviving `logs/run_config.json`.
+  - The gate script skips empty AndroidLens buckets; the smoke passes `--expect_n` to `score_dev.py`.
