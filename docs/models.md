@@ -24,6 +24,9 @@ AndroidWorld = development seed 30, successes out of 116 ([results.md](results.m
 | v4.3-dpo | v4.2 + DPO on all 4,163 of its own mistakes ([round 5](results.md#round-5-learning-from-own-mistakes-vs-more-training-pre-registered-2026-11-22)) | not run | Failed offline (AC 0.732 → 0.545): DPO on generic wrong clicks pushed down whole action types |
 | v4.3-dpo2 | v4.2 + DPO on 851 balanced stop / copied-intent mistakes | 21 | Net +3 vs v4.2 is noise (R = 9); stopping not measurably changed (false `complete` 28) |
 | v4.3-sft | v4.2 + 500 more SFT steps on the same mix ("more epochs") | 24 | Best LFM3 seed-30 count, but +6 vs v4.2 is below the noise yardstick (9); it stops more often at unchanged precision, so false `complete` rose to 37 |
+| v4.4-A | v4 recipe on v4's rows + 8,505 MemGUI rows ×2: long, self-correcting trajectories ([round 6](results.md#round-6--v44-long-and-self-correcting-trajectories-pre-registered-2026-11-23)) | not run | Failed the offline gate. Long-task accuracy up (AndroidLens steps ≥ 10: 0.367 → 0.401); late early-stops unchanged |
+| v4.4-B | A + "no visible change" notes in the history | not run | Failed the offline gate. Correct stop at the end of long tasks 12% → 29% |
+| v4.4-C | v4 + 500 steps on 50% MemGUI / 50% v4 rows | not run | Failed the offline gate on late early-stops only. Best offline: AndroidLens end-of-task stop 48%, steps ≥ 10 0.413 |
 
 Other base models on v1's data: Qwen3.5-2B with the same recipe (16); Qwen3.5-0.8B and LFM2.5-VL-450M with a
 smaller one (LoRA r16, 1 epoch): 12 and 2.
@@ -202,6 +205,7 @@ base model's LICENSE and a card with its status. Cards: [`scripts/publish/cards/
 | v4-RL | [`…-v4-RL`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-RL) | `…-v4-RL-GGUF` | Not promoted |
 | v4.1, v4.2 | [`…-v4.1`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.1), [`…-v4.2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.2) | `…-v4.1-GGUF`, `…-v4.2-GGUF` | Experimental follow-ups |
 | v4.3-dpo, -dpo2, -sft | [`…-v4.3-dpo`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.3-dpo), [`…-v4.3-dpo2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.3-dpo2), [`…-v4.3-sft`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.3-sft) | `…-v4.3-dpo2-GGUF`, `…-v4.3-sft-GGUF` (dpo: none) | Failed their gates |
+| v4.4-A, -B, -C | [`…-v4.4-A`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-A), [`…-v4.4-B`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-B), [`…-v4.4-C`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.4-C) | — | Not promoted (round 6, offline gate) |
 | Qwen3.5-2B v1, v2 | [`Qwen3.5-2B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-v1), [`…-v2`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-v2) | `…-v1-GGUF`, `…-v2-GGUF` | Comparison |
 | Qwen3.5-0.8B v1 | [`Qwen3.5-0.8B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/Qwen3.5-0.8B-MobileAgent-v1) | `…-v1-GGUF` | Comparison |
 | LFM2.5-VL-450M v1 | [`LFM2.5-VL-450M-MobileAgent-v1`](https://huggingface.co/experimentalmachines/LFM2.5-VL-450M-MobileAgent-v1) | `…-v1-GGUF` | Comparison |
@@ -218,6 +222,7 @@ base model's LICENSE and a card with its status. Cards: [`scripts/publish/cards/
 | [`MobileAgent-SFT-v3`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v3) | `565ba76c` | v3 |
 | [`MobileAgent-SFT-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4) | `3375539` | v4; v4.1 / v4.2 rebuild their data from it |
 | [`MobileAgent-RL-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-RL-v4) | `9ba36d90` | v4-RL |
+| [`MobileAgent-SFT-v4.4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.4) | `2b481ae3` | v4.4-A / B / C: the new MemGUI rows only (mixed with v4's at training time by `data/v44_build_mix.py`); also holds the AndroidLens English eval set (`androidlens/`, **never trained on**) |
 
 ### Old names (scripts and earlier docs use them; Hugging Face redirects them)
 

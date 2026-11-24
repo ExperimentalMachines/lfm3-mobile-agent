@@ -170,3 +170,35 @@ Phone caveats:
 - Frequencies are sampled, not controlled.
 - GUI-Owl and MAI-UI reused cached system-prompt tokens, which favours them.
 - v4's agent sends a 576×1280 screenshot; the others send 1080×2400.
+
+## AndroidLens English (offline, long tasks)
+
+**Evaluation only, never trained on.** Added in round 6 ([PREREG_v44.md](PREREG_v44.md)) because AndroidControl's
+episodes are short (median 6 steps) and v4 fails long tasks online.
+
+| Item | Detail |
+|---|---|
+| Source | [yuecao0119/AndroidLens](https://huggingface.co/datasets/yuecao0119/AndroidLens) @ `984576f3`, `test/en`: 172 episodes, 4,987 steps (median 27.5, p90 43), 42 apps, 93 cross-app (Apache-2.0) |
+| Conversion | [`data/v44_androidlens_eval.py`](../data/v44_androidlens_eval.py): v4 prompt, ground-truth history (intents from `low_instruction`), screenshots resized as in training |
+| Copy | Frozen in [`MobileAgent-SFT-v4.4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.4) `androidlens/`, checked by sha256 |
+| Scorer | [`eval/androidlens/score_androidlens.py`](../eval/androidlens/score_androidlens.py): AndroidControl's step rule (`score.match`); any listed valid alternative counts |
+| Metrics | By step bucket (0–4, 5–9, 10–19, 20+): early `status`, terminal `complete`, milestone and prefix progress, episode-bootstrap CIs |
+
+**Action mapping:**
+
+| AndroidLens action | Ours | Unscored |
+|---|---|---|
+| Tap | `click` | — |
+| Swipe | `scroll` (direction = where the content is revealed) | 140: drags, system gestures |
+| Long press, type, wait, back, home | `long_press`, `input_text`, `wait`, `navigate_back`, `navigate_home` | — |
+| Terminate | `status complete` | — |
+
+Unscored steps stay in the history.
+
+**Caveats:**
+- **Ground truth:** there are no element boxes for most clicks (the 0.14 distance rule applies), so the numbers are
+  not comparable with the paper's table.
+- **Bad hints:** on home screens, `low_instruction` often names the icon one row above the tap (118 steps flagged
+  `hint_suspect`).
+- **Not a test of online failures:** with ground-truth history, early stops are rare (v4: 0.26%). It does not
+  measure the online false-`complete` failure, which happens on the model's own off-track history.

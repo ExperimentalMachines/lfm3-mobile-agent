@@ -31,6 +31,7 @@ The app-name filter is a heuristic, not a proof of zero contamination. Known v4 
 | v2 | [`experimentalmachines/MobileAgent-SFT-v2`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v2) @ `42f7f763` | 78,982 | AndroidControl 55,936 (incl. 5,998 terminal) · GUI-Odyssey 9,979 · AMEX 7,072 · ScreenQA 5,995 |
 | v3 | [`experimentalmachines/MobileAgent-SFT-v3`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v3) @ `565ba76c` | 78,952 | v2 with its 8,739 blank intents fixed: 2,603 filled from action templates, 6,106 by a teacher model, 30 rows dropped |
 | **v4** | [`experimentalmachines/MobileAgent-SFT-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4) @ `3375539` | 92,229 | v3 in the v4 prompt (answer-vs-complete rules + installed-app list) + navigate-then-answer episodes + shorter ScreenQA answers |
+| v4.4 | [`experimentalmachines/MobileAgent-SFT-v4.4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.4) @ `2b481ae3` | 8,505 new (+ v4's 92,229) | New rows only: [MemGUI-3K](https://huggingface.co/datasets/lgy0404/MemGUI-3K) train trajectories, successful and feasible only; targets are the steps its judge rated reasonable; unreasonable steps stay in the history (recovery); answer rows removed (full-sentence answers). Mixed with v4's rows on the training machine by `data/v44_build_mix.py` (A / B: ×2; C: 50 / 50). Round 6 candidates, none promoted |
 
 All training datasets are public (2026-11-23), renamed from their earlier names (scripts use the old ones; Hugging Face redirects them; [map](models.md#old-names-scripts-and-earlier-docs-use-them-hugging-face-redirects-them)).
 
@@ -99,3 +100,6 @@ Codex reviewed candidate datasets twice ([`results/codex/dataset_viability.md`](
 | OpenMobile / OpenMobile-2 | **Rejected:** built on AndroidWorld |
 | Screen2Words, UI-S1, MoIT, AITW full | Rejected: licence, provenance or size |
 | Nine further releases (GUI-Reflection, Libra, Aguvis, …) | Rejected for v4 ("admit zero rows" under the remaining budget) |
+| MemGUI-3K (Apache-2.0) | **Used in v4.4**. Dropped trajectories touching AndroidWorld apps (Joplin, Audio Recorder: 1,471), AndroidLab apps (Bluecoins etc.: 104), calendar apps (108) and Messages / SMS (131); kept 556 of 2,661 |
+| AndroidLens (Apache-2.0) | **Evaluation only** (a benchmark's test set): the English long-task test of round 6 |
+| 2026-11-23 Hugging Face survey (~110 cards) | [notes](research/notes/hf-mobile-gui-datasets-2026-11-23.md). Rejected as collected inside our benchmarks: AndroidFlux, MobileForge, UI-MOPD/Uni-GUI-Mobile, UI-Genie, OS-Shepherd-100K, Tonic/android-operator-episodes (AndroidControl test leak) |

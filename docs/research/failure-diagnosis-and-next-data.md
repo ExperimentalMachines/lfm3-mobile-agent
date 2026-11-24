@@ -178,3 +178,21 @@ No clean mobile date-picker dataset exists. Nothing usable was uploaded after 20
 | Online RL on Colab | — | Colab has no hardware virtualization for Android emulators; rollouts must run on the Mac or the phone |
 | MobileWorld runs | VM + T4 hours | Needs a cloud VM (the GCP project is gone); not Colab |
 | All of AitW | 365–494 GB | Disk; only an app-filtered subset is realistic |
+
+---
+
+## Outcome: round 6 (added 2026-11-24)
+
+The plan ran as A, B and C ([PREREG_v44.md](../PREREG_v44.md), [results](../results.md#round-6--v44-long-and-self-correcting-trajectories-pre-registered-2026-11-23)).
+
+| Prediction here | What happened |
+|---|---|
+| Long, self-correcting trajectories help long tasks | **Yes, offline.** AndroidLens step accuracy at steps ≥ 10: 0.367 → 0.401–0.413 |
+| A "no visible change" signal helps with stopping and loops | **Partly.** Correct stops at the real end of long tasks: 22% (A) → 29% (B); 48% for C. Late-step early stops on AndroidControl did not move (8.5–9.8% vs 9.0%) |
+| 100 units fit the round | **Yes.** 64.5 used (smoke, v4 reference, A, B, C); 47.0 left |
+
+- **No candidate passed the offline gate,** so none ran online.
+- **The stopping gate was partly mis-specified:** half of v4's "early" stops on AndroidControl's late steps are one step
+  before the end, where demonstrations add a final scroll or wait.
+- **Still the open lever:** the "looks done but isn't" states that only the model's own runs produce, judged by adb
+  checks.

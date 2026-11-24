@@ -369,3 +369,66 @@ Sources: [`results/v4_gate_seed30.txt`](../results/v4_gate_seed30.txt),
 | AndroidWorld seed 30 total (RL only) | ≥ v4's 18 | — | not run | not reached: RL failed offline |
 
 **Outcome:** v4 was frozen as the final model. v4-RL was not promoted.
+
+### Round 6 / v4.4: long and self-correcting trajectories (pre-registered, 2026-11-23)
+
+**Setup**
+
+| Item | Detail |
+|---|---|
+| Rules | Fixed in advance in [PREREG_v44.md](PREREG_v44.md): gates amended twice before any candidate existed, every entry timestamped |
+| Diagnosis behind it | [research/failure-diagnosis-and-next-data.md](research/failure-diagnosis-and-next-data.md) |
+| Evaluator | v4 and the candidates through the same path: Transformers bf16, `generate.py`, pre-rendered splits (`V4REF`) |
+| Files | [`results/v44_dev/`](../results/v44_dev/) |
+| Compute | 64.5 Colab units (A100) |
+
+**New rows:** 8,505 [MemGUI-3K](https://huggingface.co/datasets/lgy0404/MemGUI-3K) training rows.
+- **Shape:** long agent trajectories (median 16 GUI steps), with the dataset's unreasonable steps left in the
+  history so that later rows show recovery.
+- **Filter:** AndroidWorld, MobileWorld and AndroidLab apps removed (`data/v44_memgui.py`).
+
+**Candidates**
+
+| Candidate | What |
+|---|---|
+| A | Base model + v4's rows + MemGUI ×2, v4 recipe (1,250 × 32) |
+| B | A + a " [no visible change]" note on history steps whose next screenshot did not change (the run-time rule of `lfm_agent.py`) |
+| C | v4 + 500 × 32 steps on 50% MemGUI / 50% v4 rows (warm-up / stable / short decay, lr 1e-4) |
+
+**Offline gate**
+
+| Metric | v4 | A | B | C | Bar |
+|---|---|---|---|---|---|
+| AndroidControl test high-level step accuracy | 0.727 | 0.729 | 0.728 | 0.724 | ≥ 0.707 |
+| `dev_answer` | 0.890 | 0.890 | 0.890 | 0.875 | ≥ 0.840 |
+| `dev_complete` (n = 80) | 0.763 | **0.700** | 0.713 | 0.788 | ≥ 0.713 |
+| AndroidControl steps ≥ 4: predicted `status` | 9.0% | **8.5%** | **8.75%** | **9.8%** | ≤ 6.0% |
+| AndroidLens English, step accuracy at steps ≥ 10 | 0.367 | 0.401 | 0.402 | 0.413 | ≥ 0.347 |
+| **Gate** | — | fail | fail | fail | |
+
+**Reported, not gated**
+
+| Metric | v4 | A | B | C |
+|---|---|---|---|---|
+| AndroidLens step accuracy, all steps | 0.414 | 0.448 | 0.441 | 0.444 |
+| AndroidLens: `complete` at the real last step | 12.2% | 21.5% | 29.1% | **47.7%** |
+| AndroidLens: early `status` | 0.2% | 0.5% | 0.9% | 1.4% |
+| AndroidControl terminal `complete` | 0.716 | 0.714 | 0.715 | 0.740 |
+| `dev_memgui` step accuracy | 0.421 | 0.668 | 0.654 | 0.698 |
+
+- **Round 6 is negative by the declared rule.** No candidate ran online; v4 stays.
+- **What moved:**
+  - Every candidate gained 3.5–4.6 points of long-task step accuracy over v4.
+  - The candidates stop correctly at the real end of long tasks far more often. The notes (B) and the continuation
+    from v4 (C) help most.
+- **What did not move:** the late-step early-stop rate on AndroidControl, 8.5–9.8% against v4's 9.0%.
+- **The gate partly measures annotation habit** (found after the results; no decision changed):
+  - 141 of v4's 275 "early" stops at steps ≥ 4 are one step before the episode's end, and 61 are two steps before.
+  - The human demonstration there is often a final scroll (99) or wait (51).
+  - The online failure is earlier: 26 of v4's 71 held-out false `complete`s came before the task's optimal step count.
+  - A later round should gate on "`status` ≥ 2 steps before the end", or on the model's own trajectories.
+- **AndroidLens English** is the new long-task test set (172 episodes, median 27.5 steps; evaluation only):
+  [evaluation.md](evaluation.md#androidlens-english-offline-long-tasks).
+  - v4's GGUF scores 0.395 on it.
+  - Accuracy falls with depth: 0.536 at steps 0–4, 0.329 at steps 20+.
+  - It says `complete` at the true end of only 11.6% of episodes.

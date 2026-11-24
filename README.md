@@ -14,7 +14,7 @@ files, the preregistrations, the audits and the model cards.
 | Main benchmark | AndroidWorld, 3 held-out seeds × 116 tasks, **preregistered** ([docs/PREREG_v4.md](docs/PREREG_v4.md)) |
 | Other benchmarks | MobileWorld (105 tasks), AndroidControl (offline), speed on CPU, Apple M5 and a phone |
 | Status | Complete (2026-11-19). The headline results were independently re-checked by Codex ([docs/audits.md](docs/audits.md)) |
-| Follow-up | v4.1–v4.3 (2026-11-21 to 23, development benchmarks only): no reliable gain over v4, so **v4 stays the evaluated model** ([below](#follow-up-rounds-development-only)) |
+| Follow-up | v4.1–v4.4 (2026-11-21 to 24, development benchmarks only): no reliable gain over v4, so **v4 stays the evaluated model** ([below](#follow-up-rounds-development-only)) |
 | License | Code: Apache-2.0 ([LICENSE](LICENSE)). Models: their base model's license. Datasets: their sources' licenses |
 
 ## Use the model
@@ -105,6 +105,7 @@ Rules fixed in advance in [docs/PREREG_v41.md](docs/PREREG_v41.md). No follow-up
 | v4.3-dpo | v4.2 + DPO on all 4,163 of its own mistakes | not run | — | Failed offline (action types collapsed) |
 | v4.3-dpo2 | v4.2 + DPO on 851 balanced stop / copied-intent mistakes | 21 | — | Failed online (+3 vs v4.2) |
 | v4.3-sft | v4.2 + 500 more SFT steps on the same mix | 24 | — | Failed online (+6 vs v4.2; false `complete` 25 → 37) |
+| v4.4-A / B / C | Long, self-correcting MemGUI trajectories (B: + "no visible change" notes; C: continued from v4) ([round 6](docs/results.md#round-6--v44-long-and-self-correcting-trajectories-pre-registered-2026-11-23)) | not run | — | Failed the offline gate on late early-stops; long-task accuracy and end-of-task stopping up |
 
 - Two passes of the same model (v4.2) differ on 9 tasks, so one seed-30 pass cannot detect gains smaller than about
   9 tasks. That was the pass bar.
