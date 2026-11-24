@@ -128,3 +128,22 @@ per run at the moment that agent decided (`analysis/done_audit/mjb_build.py`); t
 | **Agent said done, humans say failed (131)** | **45.0%** | **60.3%** |
 
 E is measured the same way (its own format).
+
+### 2026-11-24 23:55 Asia/Manila — stage-2 judge result and the drop decision (no candidate exists)
+
+| Source | Stage 1 NOT_COMPLETE | Stage 2 CONTRADICTS (dropped) | Stage 2 NO_PROOF (kept) |
+|---|---|---|---|
+| AndroidControl | 4,677 | 2,031 | 2,646 |
+| MemGUI | 416 | 374 | 42 |
+
+- **Spot check by eye** (16 random CONTRADICTS, `analysis/done_audit/contradicts_review.json`): about 6 right, 7 wrong,
+  3 ambiguous.
+  - Right: not added to cart, wrong file restored, timer not extended, wrong route mode, song not played.
+  - Wrong: "Entry saved" and "Reminder completed" toasts, a workout in progress, an edit applied.
+  - Neither judge alone nor both together reach high precision on "is it done?" from a final screenshot.
+- **Decision: drop the 2,405 rows both judges flag** (11% of `complete` labels; roughly 40% of them wrong). The costs
+  are lopsided:
+  - A wrong `complete` label teaches exactly the false-done failure this round targets.
+  - A lost good one only lowers the stop rate, which the `T_term` probe gate (≥ 70%) guards.
+  - PENDING (67) → `wait`, as registered.
+- **Short-history counterfactual rows** use only stage-1 COMPLETE final screens.

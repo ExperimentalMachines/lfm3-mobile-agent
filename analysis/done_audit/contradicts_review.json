@@ -1,0 +1,26 @@
+{
+ "about": "16 random rows the stage-2 judge (Qwen3-VL-32B, strict prompt) called CONTRADICTS, judged by eye on 2026-11-24 (analysis/done_audit/contradicts_sheets.py): is the task visibly NOT done on the final screen?",
+ "right": [
+  "#1 not added to cart",
+  "#5 wrong file restored",
+  "#6 timer not extended",
+  "#10 requested times not shown",
+  "#11 driving instead of public transit",
+  "#14 song found, not played"
+ ],
+ "wrong": [
+  "#3 'Entry saved' toast",
+  "#4 cheaper item's page shown",
+  "#7 'Reminder completed' toast",
+  "#8 edit applied (num1 = 20)",
+  "#12 calculation shown, prices unknown",
+  "#13 'Nature' folder with an item",
+  "#15 workout in progress"
+ ],
+ "ambiguous": [
+  "#0 slide with a template",
+  "#2 read state not visible",
+  "#9 call ringing"
+ ],
+ "decision": "drop rows that stage 1 (NOT_COMPLETE) and stage 2 (CONTRADICTS) both flag: a wrong 'complete' label teaches the false-done failure, a lost good one only lowers the stop rate (guarded by the T_term probe gate)"
+}
