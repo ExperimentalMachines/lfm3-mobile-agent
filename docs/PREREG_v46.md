@@ -147,3 +147,21 @@ E is measured the same way (its own format).
   - A lost good one only lowers the stop rate, which the `T_term` probe gate (≥ 70%) guards.
   - PENDING (67) → `wait`, as registered.
 - **Short-history counterfactual rows** use only stage-1 COMPLETE final screens.
+
+### 2026-11-25 00:25 Asia/Manila — v4.6 data built (no candidate exists)
+
+**Training split: 185,643 rows.** E's one pass = ⌈185,643 / 32⌉ = **5,802 steps**.
+
+| Change from v4.5 (173,430 rows) | Rows |
+|---|---|
+| `status` rows dropped (both judges) | −2,405 (AndroidControl 2,031, MemGUI 374) |
+| `status` → `wait` (still loading) | 67 |
+| `wait` intents fixed | 5,616 targets, 22,309 history lines |
+| Notes (new rule, paired by position) | 62,161 → 7,794; 34,198 history lines without a screen pair get no note |
+| Counterfactual rows: stale / ahead / short | +7,140 / +5,266 / +2,212 |
+| `status` labels in the result | 13,385 (incl. the 2,212 short rows) |
+
+- **Gate splits:** notes recomputed. Probes: 300 rows each from the same AndroidControl test episodes as round 7's
+  (same seed), in E's format.
+- **Build:** `results/v46_dev/build_stats.json`. One rerun was needed after the build instance's disk filled (no
+  change to the code or inputs).
