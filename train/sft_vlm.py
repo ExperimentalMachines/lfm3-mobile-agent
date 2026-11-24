@@ -23,7 +23,9 @@ from trl import SFTConfig, SFTTrainer
 
 p = argparse.ArgumentParser()
 p.add_argument("--model_id", default="LiquidAI/LFM3-VL-2B")
-p.add_argument("--model_revision", default=None, help="pin the Hub revision (the model uses trust_remote_code)")
+p.add_argument("--model_revision", default=None, help="Hub commit (40 hex) of --model_id; required for Hub ids because "
+               "the model is loaded with trust_remote_code")
+p.add_argument("--allow_unpinned", action="store_true", help="explicitly allow a Hub --model_id without --model_revision")
 p.add_argument("--train", nargs="+", required=True, help="dataset dirs (save_to_disk) or hub ids")
 p.add_argument("--val", default=None)
 p.add_argument("--out", required=True)
@@ -54,6 +56,10 @@ p.add_argument("--scheduler", default="cosine", choices=["cosine", "wsd"],
 p.add_argument("--decay_frac", type=float, default=0.15)
 p.add_argument("--warmup", type=float, default=0.03)
 args = p.parse_args()
+import re as _re
+if (not os.path.isdir(args.model_id) and not args.allow_unpinned
+        and not (args.model_revision and _re.fullmatch(r"[0-9a-f]{40}", args.model_revision))):
+    p.error("--model_id is a Hub id loaded with trust_remote_code: pass --model_revision <40-hex commit> (or --allow_unpinned)")
 if args.scheduler == "wsd" and args.max_steps <= 0:
     sys.exit("--scheduler wsd needs --max_steps")
 
