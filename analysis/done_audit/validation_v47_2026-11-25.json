@@ -56,5 +56,31 @@
   "defensible": 3,
   "doubtful": 3,
   "notes": "defensible: a progress bar after Save, a time picker animating, a video ad; doubtful: a 'apply last used filters?' sheet, a selected-dates calendar, a car page"
+ },
+ "third_review_published_build_420637e9": {
+  "about": "owner: 'do 32 more of each'; analysis/done_audit/v47_sheets_round3.py on the published build, every row reviewed before left out (seed 49); picks in results/v47_dev/review_round3_picked.json",
+  "relabelled_waits": {
+   "n": 16,
+   "right": 16,
+   "notes": "only 16 relabels were left unreviewed; all 63 relabels of the published build are now reviewed: 63 right, 4 inherit AndroidControl quirks"
+  },
+  "nwait_rows": {
+   "n": 32,
+   "screen_loaded_label_is_human_action": 32,
+   "inherited_label_quirks": 4,
+   "notes": "quirks from the source data, not from v4.7: 2 AndroidControl taps off the named element (SportSpar 'Men', Hardware Shop search icon), 2 GUI-Odyssey intents naming a nearby element"
+  },
+  "nwaitload_rows": {
+   "n": 32,
+   "visibly_loading": 17,
+   "defensible": 10,
+   "doubtful": 5,
+   "notes": "defensible: tap pending, picker animating, ad, file being processed; doubtful: a location-permission dialog, a 'Voice Search' tooltip, a 'Found 11 entries' toast, a timer picker, a product list"
+  },
+  "totals_published_build": {
+   "relabelled": "63 / 63 reviewed, all right (4 inherited quirks)",
+   "nwait": "80 reviewed, 80 right (5 inherited label quirks)",
+   "nwaitload": "48 reviewed after the fix: 40 good (83%), 8 doubtful (2 dialogs, 2 toasts or tooltips, 4 loaded screens)"
+  }
  }
 }

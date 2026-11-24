@@ -162,3 +162,16 @@ target that state, so E may fix most of it.
    AndroidWorld useless waits (next screen unchanged) ≤ 6.7% of steps (half of D's 13.4%): v4.7 then goes into the
    next full retrain. If E fails either, F is trained as registered above, with its wait bars replaced by:
    **C3n `wait` ≤ 15%**, W2_loading `wait` ≥ E's − 10 points, and E's round-8 gate.
+
+### 2026-11-25 05:40 PST — third review by eye of the published build (no candidate exists)
+
+Owner: "do 32 more of each". Rows not reviewed before, seed 49 (`analysis/done_audit/v47_sheets_round3.py`):
+
+| Kind | Result | All reviews of `420637e9` |
+|---|---|---|
+| Relabelled waits | 16 / 16 (the last unreviewed ones) | **63 / 63 right**; 4 inherit AndroidControl quirks |
+| nwait | 32 / 32; 4 inherited label quirks (2 AndroidControl taps off target, 2 GUI-Odyssey intents naming a nearby element) | **80 / 80** |
+| nwaitload | 17 loading, 10 defensible, 5 doubtful (a permission dialog, a tooltip, a toast, a picker, a list) | **40 / 48 good (83%)** |
+
+No change to the data: the doubtful nwaitload rows are about 1 in 6 of 1,500 rows (≈ 0.1% of the split), against
+5,000 nwait rows teaching the opposite on loaded screens; no automatic rule separates them.
