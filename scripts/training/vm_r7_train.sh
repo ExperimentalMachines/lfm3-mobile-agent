@@ -17,4 +17,4 @@ python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --model_revision $MREV \
   --out /content/runs/r7d --max_steps 5420 --max_pixels 774400 --bs 4 --grad_accum 8 --no_gc \
   --lora_r 64 --lora_alpha 128 --modules_to_save --save_steps 100 --eval_steps 1000 --workers 10 \
   --hub_repo experimentalmachines/LFM3-VL-2B-MobileAgent-v4.5-D-ckpt --hub_public \
-  && log "TRAIN DONE" || log "TRAIN STOPPED rc=$?"
+  && { log "TRAIN DONE"; MODEL=/content/runs/r7d/merged NAME=r7d LIMIT=0 bash vm_r7_eval.sh; } || log "TRAIN STOPPED rc=$?"

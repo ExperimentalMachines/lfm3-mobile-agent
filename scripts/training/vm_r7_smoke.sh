@@ -21,4 +21,6 @@ log "pass 1 ok: $(grep -o '"peak_gpu_mem_gb": [0-9.]*' /content/runs/r7smoke/log
 rm -rf /content/runs/r7smoke
 log "pass 2: local folder deleted; must restore from the Hub"
 run > /content/runs/r7smoke_2.log 2>&1 || { log "PASS 2 FAILED"; tail -20 /content/runs/r7smoke_2.log; exit 1; }
-grep -q "restored /content/runs/r7smoke/checkpoint-4 from hub" /content/runs/r7smoke_2.log && log "SMOKE OK (restored step 4 from the Hub)" || { log "SMOKE FAILED: no hub restore"; grep -iE "restore|resum|checkpoint" /content/runs/r7smoke_2.log | tail -5; }
+grep -q "restored /content/runs/r7smoke/checkpoint-4 from hub" /content/runs/r7smoke_2.log && log "hub restore ok (step 4)" || { log "SMOKE FAILED: no hub restore"; grep -iE "restore|resum|checkpoint" /content/runs/r7smoke_2.log | tail -5; exit 1; }
+log "evals, scorers and gate on 16 rows per split"
+MODEL=/content/runs/r7smoke/merged NAME=smoke LIMIT=16 bash vm_r7_eval.sh && log "SMOKE OK" || { log "SMOKE FAILED: evals"; exit 1; }
