@@ -1,0 +1,16 @@
+W1124 12:40:51.531000 4867 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 12:40:51.590000 4867 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Generating dev_answer split: 0 examples [00:00, ? examples/s]Generating dev_answer split: 136 examples [00:00, 5899.28 examples/s]
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights:   5%|▌         | 22/424 [00:00<00:02, 198.90it/s]Loading weights:  10%|▉         | 42/424 [00:00<00:02, 142.26it/s]Loading weights:  15%|█▌        | 65/424 [00:00<00:02, 165.59it/s]Loading weights:  23%|██▎       | 97/424 [00:00<00:01, 213.03it/s]Loading weights:  28%|██▊       | 120/424 [00:00<00:01, 216.92it/s]Loading weights:  34%|███▎      | 143/424 [00:00<00:01, 191.80it/s]Loading weights:  39%|███▊      | 164/424 [00:00<00:01, 179.23it/s]Loading weights:  47%|████▋     | 199/424 [00:00<00:01, 218.67it/s]Loading weights:  54%|█████▍    | 229/424 [00:01<00:00, 232.47it/s]Loading weights:  62%|██████▏   | 263/424 [00:01<00:00, 261.38it/s]Loading weights:  82%|████████▏ | 349/424 [00:01<00:00, 426.43it/s]Loading weights: 100%|██████████| 424/424 [00:01<00:00, 321.92it/s]
+to generate: 136 / 136
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/136 5s avg_prompt_tok=1271
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/136 8s avg_prompt_tok=1297
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/136 11s avg_prompt_tok=1295
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/136 14s avg_prompt_tok=1289
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+136/136 16s avg_prompt_tok=1287
+DONE 16.467135906219482

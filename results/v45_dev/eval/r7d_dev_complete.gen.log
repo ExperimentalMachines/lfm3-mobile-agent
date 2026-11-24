@@ -1,0 +1,12 @@
+W1124 12:41:24.055000 4941 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 12:41:24.100000 4941 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Generating dev_complete split: 0 examples [00:00, ? examples/s]Generating dev_complete split: 80 examples [00:00, 4519.36 examples/s]
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 8166.83it/s]
+to generate: 80 / 80
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/80 4s avg_prompt_tok=1280
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/80 7s avg_prompt_tok=1302
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+80/80 9s avg_prompt_tok=1293
+DONE 8.612242698669434

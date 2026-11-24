@@ -1,0 +1,49 @@
+{
+  "model_id": "LiquidAI/LFM3-VL-2B",
+  "model_revision": "23387beda43c60310348e83e25f78f33c3140d3a",
+  "allow_unpinned": false,
+  "train": [
+    "experimentalmachines/MobileAgent-SFT-v4.5@train#45331aaadf0e89db25eb9ab10344a46603670557"
+  ],
+  "val": "experimentalmachines/MobileAgent-SFT-v1@val#f88a843239b7e0b68ea8fcb6eb0c5539276d64eb",
+  "out": "/content/runs/r7d",
+  "max_pixels": 774400,
+  "min_pixels": 65536,
+  "epochs": 1.0,
+  "max_steps": 5420,
+  "lr": 0.0002,
+  "bs": 4,
+  "grad_accum": 8,
+  "lora_r": 64,
+  "lora_alpha": 128,
+  "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+  "modules_to_save": [],
+  "save_steps": 100,
+  "eval_steps": 1000,
+  "hub_repo": "experimentalmachines/LFM3-VL-2B-MobileAgent-v4.5-D-ckpt",
+  "hub_public": true,
+  "workers": 10,
+  "seed": 42,
+  "no_gc": true,
+  "chat_template_path": null,
+  "max_agent_rows": 0,
+  "replay": [],
+  "inline_think": false,
+  "trust_remote_code": true,
+  "scheduler": "cosine",
+  "decay_frac": 0.15,
+  "warmup": 0.03,
+  "provenance": {
+    "model_sha": "23387beda43c60310348e83e25f78f33c3140d3a",
+    "dataset_sha:experimentalmachines/MobileAgent-SFT-v4.5@train#45331aaadf0e89db25eb9ab10344a46603670557": "45331aaadf0e89db25eb9ab10344a46603670557",
+    "dataset_sha:experimentalmachines/MobileAgent-SFT-v1@val#f88a843239b7e0b68ea8fcb6eb0c5539276d64eb": "f88a843239b7e0b68ea8fcb6eb0c5539276d64eb",
+    "versions": {
+      "torch": "2.14.1",
+      "transformers": "5.20.2",
+      "trl": "1.16.0",
+      "peft": "0.21.2",
+      "datasets": "5.1.0",
+      "accelerate": "1.15.0"
+    }
+  }
+}

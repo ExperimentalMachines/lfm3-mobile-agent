@@ -1,0 +1,57 @@
+{
+ "n_steps": 921,
+ "n_episodes": 60,
+ "parse_rate": 1.0,
+ "type_match": 0.8707926167209555,
+ "step_sr": 0.6970684039087948,
+ "episode_sr": 0.05,
+ "per_type": {
+  "click": {
+   "n": 575,
+   "type_match": 0.9182608695652174,
+   "step_sr": 0.6695652173913044
+  },
+  "input_text": {
+   "n": 106,
+   "type_match": 0.9056603773584906,
+   "step_sr": 0.7830188679245284
+  },
+  "long_press": {
+   "n": 1,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 7,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_home": {
+   "n": 26,
+   "type_match": 0.6153846153846154,
+   "step_sr": 0.6153846153846154
+  },
+  "scroll": {
+   "n": 95,
+   "type_match": 0.7368421052631579,
+   "step_sr": 0.6947368421052632
+  },
+  "status": {
+   "n": 49,
+   "type_match": 0.7346938775510204,
+   "step_sr": 0.7346938775510204
+  },
+  "wait": {
+   "n": 62,
+   "type_match": 0.9032258064516129,
+   "step_sr": 0.9032258064516129
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 921,
+  "expected": 921,
+  "model": "/content/runs/r7d/merged"
+ }
+}

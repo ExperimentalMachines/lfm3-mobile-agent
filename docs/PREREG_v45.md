@@ -157,3 +157,35 @@ online run.
   - The Trainer's own Hub pushes replace the root `run_config.json`; the resume identity check now also reads the
     surviving `logs/run_config.json`.
   - The gate script skips empty AndroidLens buckets; the smoke passes `--expect_n` to `score_dev.py`.
+
+### 2026-11-24 20:55 Asia/Manila — D fails the offline gate (1 of 5 checks); round 7 ends negative under the rule
+
+**Training:** one pass, 5,420 steps (173,430 rows), 3.4 h on a Modal H100 (14.2 rows/s), peak 39.6 GB.
+Validation loss (AndroidControl val, v4's 8-step format) by step 1,000–5,000: 0.335, 0.304, 0.278, 0.261, 0.253;
+final 0.252 (v4: 0.306).
+
+| Check | D | v4 | Bar | Result |
+|---|---|---|---|---|
+| AndroidControl test, high-level step accuracy | **0.753** | 0.727 | ≥ 0.707 | pass |
+| `dev_answer` | 0.882 | 0.890 | ≥ 0.840 | pass |
+| `dev_complete` | 0.800 | 0.763 | ≥ 0.713 | pass |
+| AndroidControl: `status` ≥ 2 steps before the end | **3.64%** | 2.74% | ≤ 3.24% | **fail** |
+| AndroidLens step accuracy at steps ≥ 10 | **0.471** | 0.367 | ≥ 0.367 | pass |
+
+**Reported, not gated:**
+
+| Metric | D | v4 |
+|---|---|---|
+| AndroidLens step accuracy, all steps | 0.507 | 0.414 |
+| AndroidLens `complete` at the real last step | 57.6% | 12.2% |
+| AndroidLens early `status` | 0.96% | 0.21% |
+| AndroidControl terminal `complete` | 0.799 | 0.716 |
+| AndroidControl `status` one step before the end | 15.4% | 13.2% |
+| `dev_memgui` step accuracy | 0.697 | 0.421 |
+
+**Where the extra early stops are** (post-hoc, no decision changed): on the 6,901 AndroidControl test rows ≥ 2 steps
+before the end, D says `status` where v4 does not on 114 rows, the reverse on 52 (paired sign test p < 0.0001).
+At those 114 steps the human scrolled (57) or clicked (41); they lie 2 (37), 3 (26), 4 (17), 5 (9) and 6+ (25) steps
+before the end.
+
+**Decision under the rule:** D does not go online; round 7 is negative. D's weights are published as not promoted.
