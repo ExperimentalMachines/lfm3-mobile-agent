@@ -165,3 +165,14 @@ E is measured the same way (its own format).
   (same seed), in E's format.
 - **Build:** `results/v46_dev/build_stats.json`. One rerun was needed after the build instance's disk filled (no
   change to the code or inputs).
+
+### 2026-11-25 01:00 Asia/Manila — E restarted on Colab (Modal workspace disabled)
+
+- **What happened:** E's Modal run stopped at about step 105 with "workspace … is disabled" (Modal billing / spend
+  limit; owner action needed). The step-100 checkpoint had not finished uploading, so E restarts from step 0.
+- **New plan:** per the owner's earlier instruction ("Run it on google colab and we'll switch to modal later,
+  checkpoint well"), E runs on a Colab A100 or G4 (`scripts/training/colab_r8_start.sh`) with the identical command and
+  checkpoints every 100 steps to the public Hub repo. The credit guard stops Colab below 1.5 units; the same command
+  finishes on Modal once it is re-enabled.
+- **Unchanged:** recipe, data and gate. E smoke passed on Modal before the run (training, Hub restore, all evals,
+  probes and the round-8 gate on 16 rows).
