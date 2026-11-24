@@ -1,8 +1,47 @@
 {
  "about": "Visual validation of the v4.6 relabelling by eye (2026-11-25), after E started training. Samples from MobileAgent-SFT-v4.6 @ 0ace5559 train shards 3 and 21 and the AndroidControl test split.",
- "counterfactual_rows": {"n": 9, "correct": 9, "notes": "stale x3: the pending step is still on screen (Move button, Remove dialog, Delete menu) and the label redoes it; ahead x3: the label is the action the shown screen needs; short x3: the final screen shows the goal done (filters applied, alarm sound set, font 113%)"},
- "new_rule_unchanged_pairs": {"n": 8, "truly_unchanged": 8, "notes": "all 0.0000% changed pixels; 76 of 8,444 non-wait AndroidControl test pairs are flagged unchanged"},
- "wait_intent_relabels": {"n": 10, "intent_fits": 6, "wait_on_fully_loaded_screen": 4, "notes": "the intent now matches the action; 4 waits sit on loaded screens where a real next action was obvious: an AndroidControl action-label problem, not fixed in v4.6 (round 9: tied to the looping failure)"},
+ "counterfactual_rows": {
+  "n": 9,
+  "correct": 9,
+  "notes": "stale x3: the pending step is still on screen (Move button, Remove dialog, Delete menu) and the label redoes it; ahead x3: the label is the action the shown screen needs; short x3: the final screen shows the goal done (filters applied, alarm sound set, font 113%)"
+ },
+ "new_rule_unchanged_pairs": {
+  "n": 8,
+  "truly_unchanged": 8,
+  "notes": "all 0.0000% changed pixels; 76 of 8,444 non-wait AndroidControl test pairs are flagged unchanged"
+ },
+ "wait_intent_relabels": {
+  "n": 10,
+  "intent_fits": 6,
+  "wait_on_fully_loaded_screen": 4,
+  "notes": "the intent now matches the action; 4 waits sit on loaded screens where a real next action was obvious: an AndroidControl action-label problem, not fixed in v4.6 (round 9: tied to the looping failure)"
+ },
  "judges": "see manual_terminal_review.json (stage 1: 21/24 agreement) and contradicts_review.json (stage 2: about 6 right / 7 wrong / 3 ambiguous of 16)",
- "not_checked": ["Aguvis intent wording for GUI-Odyssey/AMEX (alignment proven by coordinates only)", "the 2,688 kept NO_PROOF / stage-2 rows"]
+ "not_checked": [],
+ "gaps_checked_2026_11_25": {
+  "kept_no_proof_complete_rows": {
+   "n": 16,
+   "visibly_done": 9,
+   "not_judgeable_from_final_screen": 6,
+   "probably_not_done": 1,
+   "notes": "mostly 'share via email' tasks: the app returns to the shared item, so only the history can show the send step"
+  },
+  "intent_wording": {
+   "amex_aguvis": {
+    "n": 12,
+    "match": 11
+   },
+   "odyssey": {
+    "n": 20,
+    "match": 18
+   },
+   "notes": "mismatches name a nearby element (a 'Skip' label on an X tap, an avatar on a copy-link tap); actions are the humans' real taps"
+  },
+  "androidcontrol_wait_actions": {
+   "n": 30,
+   "justified": 17,
+   "on_screens_needing_no_wait": 13,
+   "notes": "loaded pages, dialogs needing a tap, and waits right after a confirmation toast where the next step is complete; about 43% of ~6,600 wait rows; present since v1; round-9 fix: drop waits whose next screen is unchanged (train/screen_change.py), judge the rest for a loading state"
+  }
+ }
 }
