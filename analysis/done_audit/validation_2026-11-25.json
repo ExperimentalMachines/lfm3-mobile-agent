@@ -41,7 +41,25 @@
    "n": 30,
    "justified": 17,
    "on_screens_needing_no_wait": 13,
-   "notes": "loaded pages, dialogs needing a tap, and waits right after a confirmation toast where the next step is complete; about 43% of ~6,600 wait rows; present since v1; round-9 fix: drop waits whose next screen is unchanged (train/screen_change.py), judge the rest for a loading state"
+   "notes": "loaded pages, dialogs needing a tap, and waits right after a confirmation toast where the next step is complete; about 43% of ~6,600 wait rows; present since v1; round-9 fix: drop waits whose next screen is unchanged (train/screen_change.py), judge the rest for a loading state",
+   "correction_2026_11_25": {
+    "status": "the 43% estimate above is WRONG: it was judged from the wait screen alone, without the next screen",
+    "method": "before/after pairs (screen at the wait | the episode's next screen), analysis/done_audit/wait_audit.py samples, 40 random pairs (16 + 24, seed 91)",
+    "next_screen_changed_or_status_next": {
+     "n": 36,
+     "justified": 33,
+     "unneeded": 2,
+     "unclear": 1,
+     "notes": "justified: spinner or skeleton -> content, 'Saving...' -> saved, a toast or overlay disappears; unneeded: results already on screen before `complete`; unclear: a text field cleared"
+    },
+    "next_screen_unchanged": {
+     "n": 4,
+     "unneeded": 4,
+     "notes": "pixel-identical screens, then the human acts: the wait did nothing"
+    },
+    "full_counts": "analysis/done_audit/wait_detail.py on the v4.6 train split: 64 waits followed by an action on the unchanged screen (relabelled in v4.7), 24 followed by another wait on a static screen (kept), the rest changed",
+    "conclusion": "the AndroidControl wait labels are mostly right; the looping comes from the agent, which never sees that a wait changed nothing (docs/PREREG_v47.md)"
+   }
   }
  }
 }

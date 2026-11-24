@@ -40,7 +40,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  temperature: float = 0.0, wait_after_action: float = 1.0,
                  max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False,
                  prompt_version: str = "v1", guards: bool = False, history_steps: int = af.HISTORY_STEPS,
-                 nochange_notes: bool = False, change_rule: str = "coarse"):
+                 nochange_notes: bool = False, change_rule: str = "coarse", note_waits: bool = False):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -62,6 +62,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         # the v4.6 data uses; "coarse" = round 6's 72x160 mean-difference rule (what v4.4-B and v4.5-D were trained with)
         assert change_rule in ("coarse", "fine"), change_rule
         self.change_rule = change_rule
+        # round 9 (PREREG_v47): also note `wait` steps that left the screen unchanged, as the v4.7 data does
+        self.note_waits = note_waits
         self._labels = None
         self._prev_small = None
         self._prev_type = None
@@ -133,7 +135,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             small = np.asarray(Image.fromarray(pixels).convert("L").resize((72, 160)), dtype=np.float32)
             unchanged = lambda a, b: float(np.abs(a - b).mean()) < 1.0
         if ((self.runtime_feedback or self.nochange_notes) and self.history and self._prev_small is not None
-                and self._prev_type not in ("wait", "status", "answer", None)
+                and self._prev_type not in (("status", "answer", None) if self.note_waits else ("wait", "status", "answer", None))
                 and unchanged(small, self._prev_small)):
             i, a = self.history[-1]
             if not a.endswith("]"):  # action JSON ends with "}"; a trailing "]" means already annotated

@@ -1,0 +1,60 @@
+{
+ "about": "Review by eye of MobileAgent-SFT-v4.7's new and changed rows before any round-9 candidate (2026-11-25), sheets from analysis/done_audit/v47_sheets.py (seed 47, 16 per kind)",
+ "relabelled_waits": {
+  "n": 16,
+  "screens_identical_and_label_is_the_next_human_action": 16,
+  "notes": "14 clean; 2 inherit an AndroidControl quirk (the typed text is already visible before the input_text action), the same label the next row already had"
+ },
+ "nwait_rows": {
+  "n": 16,
+  "screen_loaded_and_label_right": 16,
+  "notes": "search fields, lists, calendars, an ad with a Skip button; one AMEX label taps a corner icon (an original AMEX label)"
+ },
+ "nwaitload_rows": {
+  "n": 16,
+  "visibly_loading": 9,
+  "defensible": 3,
+  "looks_loaded": 4,
+  "notes": "loading: spinners, skeletons, splash screens, 'Requesting network', a chatbot typing, a countdown; defensible: a tap not yet answered, an interstitial ad, a live camera; looks loaded: a sign-in sheet, an inserted image, a Drive list, a ticket page (the next screen did change, so the app was still busy)",
+  "decision": "kept: 1,500 nwaitload vs 5,000 nwait rows (23% re-wait after a useless wait; humans in AndroidControl: 24 of 86, 28%)"
+ },
+ "second_review_32_more_per_kind": {
+  "about": "owner asked for 32 more by eye per kind; fresh rows (seed 48), the first 16 excluded; v47_sheets.py --more 32, with the episode's real next screen",
+  "relabelled_waits": {
+   "n": 32,
+   "clean": 29,
+   "inherited_androidcontrol_tap_off_target": 2,
+   "wrong": 1,
+   "notes": "off target: XE 'click number one' at mid-screen, Houzz 'Save at bottom right' at mid-screen (the next row has the same label); wrong: Wanderlog wait on a blank page relabelled `complete` (that `complete` row was KEEP_NO_PROOF, stage 1: 'the screen is blank')"
+  },
+  "nwait_rows": {
+   "n": 32,
+   "right": 32
+  },
+  "nwaitload_rows": {
+   "n": 32,
+   "visibly_loading": 18,
+   "defensible": 8,
+   "looks_loaded": 4,
+   "dialog_needs_a_tap": 2,
+   "notes": "looks loaded: a 'Reminder updated' toast, a book page, a product list, a currency screen; dialogs: a contacts permission, a delivery-location sheet"
+  },
+  "totals_48_per_kind": {
+   "relabelled": "47 / 48 right (4 inherit AndroidControl quirks)",
+   "nwait": "48 / 48",
+   "nwaitload": "38 / 48 loading or defensible, 10 doubtful"
+  },
+  "finding": "6 of the 10 doubtful nwaitload rows come from a wait right before `status` (vs 10 of the 38 good ones); the screen there is mostly the finished one",
+  "fixes_rebuilt": [
+   "relabel a wait to `status` only if that status row was judged COMPLETE (1 row: the Wanderlog case)",
+   "nwaitload only from waits whose next real action is not `status` / `answer` (estimated doubtful share 21% -> 12%)"
+  ]
+ },
+ "after_rebuild_nwaitload_16": {
+  "n": 16,
+  "visibly_loading": 10,
+  "defensible": 3,
+  "doubtful": 3,
+  "notes": "defensible: a progress bar after Save, a time picker animating, a video ad; doubtful: a 'apply last used filters?' sheet, a selected-dates calendar, a car page"
+ }
+}
