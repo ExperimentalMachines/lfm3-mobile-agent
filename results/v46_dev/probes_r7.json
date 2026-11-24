@@ -1,0 +1,61 @@
+{
+ "about": "History-reliance probes (analysis/done_audit/build_history_probes.py) on AndroidControl test episodes, 300 rows each; D = v4.5-D in its 24-step/coarse-note format, v4 = the same rows in v4's 8-step format without notes. Value = share of rows where the model outputs status.",
+ "probes": {
+  "C3n_stale_note": {
+   "d": {
+    "status_rate": 0.32,
+    "n": 300
+   }
+  },
+  "C3_stale": {
+   "v4": {
+    "status_rate": 0.3133,
+    "n": 300
+   },
+   "d": {
+    "status_rate": 0.37,
+    "n": 300
+   }
+  },
+  "C2_hist_cut": {
+   "v4": {
+    "status_rate": 0.3867,
+    "n": 300
+   },
+   "d": {
+    "status_rate": 0.5433,
+    "n": 300
+   }
+  },
+  "T_term": {
+   "d": {
+    "status_rate": 0.8433,
+    "n": 300
+   },
+   "v4": {
+    "status_rate": 0.7367,
+    "n": 300
+   }
+  },
+  "C0_base": {
+   "v4": {
+    "status_rate": 0.02,
+    "n": 300
+   },
+   "d": {
+    "status_rate": 0.0367,
+    "n": 300
+   }
+  },
+  "C1_hist_done": {
+   "v4": {
+    "status_rate": 0.4033,
+    "n": 300
+   },
+   "d": {
+    "status_rate": 0.5367,
+    "n": 300
+   }
+  }
+ }
+}

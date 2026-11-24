@@ -1,0 +1,2608 @@
+[
+ {
+  "key": "lfm3vl2b_v4__ClockStopWatchPausedVerify",
+  "run": "lfm3vl2b_v4",
+  "task": "ClockStopWatchPausedVerify",
+  "goal": "Pause the stopwatch.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the stopwatch tab at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[700.0,930.0]}",
+   "3. Click on the play button. -> {\"action_type\":\"click\",\"point_2d\":[500.0,816.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__ContactsAddContact",
+  "run": "lfm3vl2b_v4",
+  "task": "ContactsAddContact",
+  "goal": "Create a new contact for Hugo Pereira. Their number is +13920741751.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Contacts app -> {\"action_type\":\"open_app\",\"app_name\":\"Contacts\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[873.0,839.0]}",
+   "3. Click on the First name text bar -> {\"action_type\":\"click\",\"point_2d\":[494.0,388.0]}",
+   "4. Enter Hugo Pereira in the first name text bar -> {\"action_type\":\"input_text\",\"text\":\"Hugo Pereira\"}",
+   "5. Click on the Last name text bar -> {\"action_type\":\"click\",\"point_2d\":[494.0,465.0]}",
+   "6. Enter 1st name in the last name text bar -> {\"action_type\":\"input_text\",\"text\":\"1st name\"}",
+   "7. Click on the Company text bar -> {\"action_type\":\"click\",\"point_2d\":[494.0,550.0]}",
+   "8. Enter +13920741751 in the company text bar -> {\"action_type\":\"input_text\",\"text\":\"+13920741751\"}",
+   "9. Click on the Phone number input box -> {\"action_type\":\"click\",\"point_2d\":[494.0,602.0]}",
+   "10. Enter +13920741751 in the phone number input box -> {\"action_type\":\"input_text\",\"text\":\"+13920741751\"}",
+   "11. Click on the Save button at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[777.0,88.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__ExpenseAddMultipleFromMarkor",
+  "run": "lfm3vl2b_v4",
+  "task": "ExpenseAddMultipleFromMarkor",
+  "goal": "Go through the transactions in my_expenses.txt in Markor. Log the reimbursable transactions in the pro expense.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Open my_expenses.txt -> {\"action_type\":\"click\",\"point_2d\":[568.0,250.0]}",
+   "3. Open my_expenses.txt -> {\"action_type\":\"wait\"}",
+   "4. Click on the save icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[755.0,84.0]}",
+   "5. Click on the save icon at the top of the screen -> {\"action_type\":\"wait\"}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__ExpenseAddMultiple",
+  "run": "lfm3vl2b_v4",
+  "task": "ExpenseAddMultiple",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Social Club Dues\n amount_dollars: $67.41\n category_name: Social\n note: Monthly recurring\n\nExpense: Legal Fees\n amount_dollars: $10.14\n category_name: Others\n note: Monthly recurring\n\nExpense: Stationery\n amount_dollars: $118.93\n category_name: Others\n note: Remember to transfer funds\n",
+  "n_steps": 26,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,181.0]}",
+   "4. Enter Social Club Dues in the name textbox -> {\"action_type\":\"input_text\",\"text\":\"Social Club Dues\"}",
+   "5. Click on the amount textbox -> {\"action_type\":\"click\",\"point_2d\":[499.0,270.0]}",
+   "6. Enter $67.41 in the amount textbox -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "7. Click on the category name \"Social\" -> {\"action_type\":\"click\",\"point_2d\":[656.0,339.0]}",
+   "8. Click on the note textbox -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "9. Enter Monthly recurring in the note textbox -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "10. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[421.0,543.0]}",
+   "11. Click on the save button -> {\"action_type\":\"wait\"}",
+   "12. Click on the save button -> {\"action_type\":\"wait\"}",
+   "13. Click on the save button -> {\"action_type\":\"wait\"}",
+   "14. Click on the save button -> {\"action_type\":\"wait\"}",
+   "15. Click on the save button -> {\"action_type\":\"wait\"}",
+   "16. Click on the save button -> {\"action_type\":\"wait\"}",
+   "17. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "18. Click on the name text bar -> {\"action_type\":\"click\",\"point_2d\":[499.0,178.0]}",
+   "19. Enter the name as Social Club Dues -> {\"action_type\":\"input_text\",\"text\":\"Social Club Dues\"}",
+   "20. Enter the amount as $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "21. Click on the category name section -> {\"action_type\":\"click\",\"point_2d\":[500.0,338.0]}",
+   "22. Select the Social category -> {\"action_type\":\"click\",\"point_2d\":[656.0,338.0]}",
+   "23. Click on the note text bar -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "24. Enter the note as Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "25. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[421.0,543.0]}",
+   "26. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__ExpenseAddSingle",
+  "run": "lfm3vl2b_v4",
+  "task": "ExpenseAddSingle",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Therapy Sessions\n amount_dollars: $307.01\n category_name: Health Care\n note: I may repeat this\n",
+  "n_steps": 12,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,178.0]}",
+   "4. Enter the expense name as Therapy Sessions -> {\"action_type\":\"input_text\",\"text\":\"Therapy Sessions\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter the amount as 307.01 -> {\"action_type\":\"input_text\",\"text\":\"307.01\"}",
+   "7. Click on the category name tab -> {\"action_type\":\"click\",\"point_2d\":[129.0,339.0]}",
+   "8. Click on the food tab -> {\"action_type\":\"click\",\"point_2d\":[129.0,339.0]}",
+   "9. Click on the note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "10. Enter the note as I may repeat this -> {\"action_type\":\"input_text\",\"text\":\"I may repeat this\"}",
+   "11. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[421.0,543.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__ExpenseDeleteMultiple",
+  "run": "lfm3vl2b_v4",
+  "task": "ExpenseDeleteMultiple",
+  "goal": "Delete the following expenses from pro expense: Ride-Sharing, Flight Tickets, Taxi Fare.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the expenses in this week -> {\"action_type\":\"click\",\"point_2d\":[500.0,518.0]}",
+   "3. Click on the ride-sharing -> {\"action_type\":\"click\",\"point_2d\":[500.0,827.0]}",
+   "4. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "5. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "6. Click on the flight tickets -> {\"action_type\":\"click\",\"point_2d\":[500.0,827.0]}",
+   "7. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "8. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "9. Click on the taxi fare -> {\"action_type\":\"click\",\"point_2d\":[500.0,827.0]}",
+   "10. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "11. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__FilesDeleteFile",
+  "run": "lfm3vl2b_v4",
+  "task": "FilesDeleteFile",
+  "goal": "Delete the file q2a8_fancy_banana.mp3 from the Android filesystem located in the Notifications folder within the sdk_gphone_x86_64 storage area.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open the Files app. -> {\"action_type\":\"open_app\",\"app_name\":\"Files\"}",
+   "2. Open the search function in the file manager. -> {\"action_type\":\"click\",\"point_2d\":[824.0,80.0]}",
+   "3. Type 'q2a8_fancy_banana.mp3' into the search bar. -> {\"action_type\":\"input_text\",\"text\":\"q2a8_fancy_banana.mp3\"}",
+   "4. Click on the cross icon to clear the search bar. -> {\"action_type\":\"click\",\"point_2d\":[921.0,80.0]}",
+   "5. Click on the cross icon of q2a8_fancy_banana.mp3 file. -> {\"action_type\":\"click\",\"point_2d\":[903.0,265.0]}",
+   "6. Click on the cross icon of q2a8_fancy_banana.mp3 file. -> {\"action_type\":\"wait\"}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__MarkorCreateNoteFromClipboard",
+  "run": "lfm3vl2b_v4",
+  "task": "MarkorCreateNoteFromClipboard",
+  "goal": "Create a note in Markor named 2023_09_08_active_umbrella.txt. Perform a paste operation in the note and save the note.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"wait\"}",
+   "4. Click on the name textbox -> {\"action_type\":\"click\",\"point_2d\":[348.0,401.0]}",
+   "5. Enter the note name as 2023_09_08_active_umbrella.txt -> {\"action_type\":\"input_text\",\"text\":\"2023_09_08_active_umbrella\"}",
+   "6. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[854.0,464.0]}",
+   "7. Click on the OK button -> {\"action_type\":\"wait\"}",
+   "8. Click on the save icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[760.0,84.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__MarkorDeleteNote",
+  "run": "lfm3vl2b_v4",
+  "task": "MarkorDeleteNote",
+  "goal": "Delete the note in Markor named bold_king_edited.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the bold_king_edited -> {\"action_type\":\"click\",\"point_2d\":[568.0,249.0]}",
+   "3. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[412.0,950.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__MarkorMoveNote",
+  "run": "lfm3vl2b_v4",
+  "task": "MarkorMoveNote",
+  "goal": "In Markor, move the note shy_king_copy.md from StudyGuides to MeetingMinutes.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the StudyGuides folder -> {\"action_type\":\"click\",\"point_2d\":[500.0,322.0]}",
+   "3. Click on the MeetingMinutes folder -> {\"action_type\":\"click\",\"point_2d\":[500.0,258.0]}",
+   "4. Click on the shy_king_copy.md file -> {\"action_type\":\"click\",\"point_2d\":[500.0,208.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeAddMultipleRecipesFromImage",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeAddMultipleRecipesFromImage",
+  "goal": "Add the recipes from recipes.jpg in Simple Gallery Pro to the Broccoli recipe app.",
+  "n_steps": 15,
+  "steps": [
+   "1. Open the Broccoli app. -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes tab. -> {\"action_type\":\"click\",\"point_2d\":[212.0,228.0]}",
+   "4. Click on the plus icon at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,928.0]}",
+   "5. Click on the image tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,228.0]}",
+   "6. Click on the pick photo option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,511.0]}",
+   "7. Click on the pick photo option. -> {\"action_type\":\"wait\"}",
+   "8. Click on the first image. -> {\"action_type\":\"click\",\"point_2d\":[197.0,423.0]}",
+   "9. Click on the save tab at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "10. Click on the title tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,383.0]}",
+   "11. Type Broccoli in the title tab. -> {\"action_type\":\"input_text\",\"text\":\"Broccoli\"}",
+   "12. Click on the description tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,552.0]}",
+   "13. Type the name of the recipe in the description tab. -> {\"action_type\":\"input_text\",\"text\":\"Broccoli\"}",
+   "14. Click on the save tab at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "15. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeAddMultipleRecipesFromMarkor2",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeAddMultipleRecipesFromMarkor2",
+  "goal": "Add the recipes from recipes.txt in Markor that take 10 mins to prepare into the Broccoli recipe app.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the recipes.txt file -> {\"action_type\":\"click\",\"point_2d\":[500.0,258.0]}",
+   "3. Click on the recipes.txt file -> {\"action_type\":\"wait\"}",
+   "4. Click on the search icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[854.0,84.0]}",
+   "5. Click on the search bar -> {\"action_type\":\"click\",\"point_2d\":[451.0,138.0]}",
+   "6. Search for 10 mins -> {\"action_type\":\"input_text\",\"text\":\"10 mins\"}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeAddMultipleRecipesFromMarkor",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeAddMultipleRecipesFromMarkor",
+  "goal": "Add the recipes from recipes.txt in Markor to the Broccoli recipe app.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the recipes.txt file -> {\"action_type\":\"click\",\"point_2d\":[500.0,258.0]}",
+   "3. Click on the recipes.txt file -> {\"action_type\":\"wait\"}",
+   "4. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "5. Click on the share option -> {\"action_type\":\"click\",\"point_2d\":[752.0,135.0]}",
+   "6. Click on the plain text -> {\"action_type\":\"click\",\"point_2d\":[752.0,135.0]}",
+   "7. Click on the copy button -> {\"action_type\":\"click\",\"point_2d\":[383.0,642.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeAddSingleRecipe",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeAddSingleRecipe",
+  "goal": "Add the following recipes into the Broccoli app:\nRecipe: Chicken Caesar Salad Wrap\n description: An ideal recipe for experimenting with different flavors and ingredients.\n servings: 3-4 servings\n preparationTime: 2 hrs\n ingredients: as desired\n directions: Toss chopped romaine lettuce with Caesar dressing, grilled chicken strips, and Parmesan cheese. Wrap in a large tortilla. Feel free to substitute with ingredients you have on hand.\n",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,928.0]}",
+   "3. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"wait\"}",
+   "4. Click on the title textbox -> {\"action_type\":\"click\",\"point_2d\":[500.0,383.0]}",
+   "5. Enter the recipe name as Chicken Caesar Salad Wrap -> {\"action_type\":\"input_text\",\"text\":\"Chicken Caesar Salad Wrap\"}",
+   "6. Click on the description textbox -> {\"action_type\":\"click\",\"point_2d\":[500.0,552.0]}",
+   "7. Enter the description as An ideal recipe for experimenting with different flavors and ingredients -> {\"action_type\":\"input_text\",\"text\":\"An ideal recipe for experimenting with different flavors and ingredients\"}",
+   "8. Click on the categories textbox -> {\"action_type\":\"click\",\"point_2d\":[500.0,452.0]}",
+   "9. Click on the black garlic -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "10. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[827.0,568.0]}",
+   "11. Click on the save button at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeDeleteDuplicateRecipes",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeDeleteDuplicateRecipes",
+  "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes option -> {\"action_type\":\"click\",\"point_2d\":[212.0,228.0]}",
+   "4. Click on the Classic Margherita Pizza -> {\"action_type\":\"click\",\"point_2d\":[499.0,525.0]}",
+   "5. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "6. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,251.0]}",
+   "7. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,540.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeDeleteMultipleRecipes",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeDeleteMultipleRecipes",
+  "goal": "Delete the following recipes from Broccoli app: Zucchini Noodles with Pesto, Garlic Butter Shrimp, Lentil Soup.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes option -> {\"action_type\":\"click\",\"point_2d\":[212.0,228.0]}",
+   "4. Click on the Zucchini Noodles with Pesto -> {\"action_type\":\"click\",\"point_2d\":[499.0,519.0]}",
+   "5. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "6. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,251.0]}",
+   "7. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,540.0]}",
+   "8. Click on the Lentil Soup -> {\"action_type\":\"click\",\"point_2d\":[499.0,385.0]}",
+   "9. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "10. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,251.0]}",
+   "11. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,540.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RecipeDeleteSingleWithRecipeWithNoise",
+  "run": "lfm3vl2b_v4",
+  "task": "RecipeDeleteSingleWithRecipeWithNoise",
+  "goal": "Delete the following recipes from Broccoli app: Classic Margherita Pizza.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the recipes option -> {\"action_type\":\"click\",\"point_2d\":[212.0,228.0]}",
+   "4. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[941.0,144.0]}",
+   "5. Type Classic Margherita Pizza in the search bar -> {\"action_type\":\"input_text\",\"text\":\"Classic Margherita Pizza\"}",
+   "6. Click on the Classic Margherita Pizza -> {\"action_type\":\"click\",\"point_2d\":[499.0,242.0]}",
+   "7. Click on the cross icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,144.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RetroPlayingQueue",
+  "run": "lfm3vl2b_v4",
+  "task": "RetroPlayingQueue",
+  "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music.",
+  "n_steps": 15,
+  "steps": [
+   "1. Open Retro music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,87.0]}",
+   "3. Click on the sort order option -> {\"action_type\":\"click\",\"point_2d\":[752.0,205.0]}",
+   "4. Select the Album artist option -> {\"action_type\":\"click\",\"point_2d\":[731.0,625.0]}",
+   "5. Click on the three dots of Through the Storm -> {\"action_type\":\"click\",\"point_2d\":[941.0,754.0]}",
+   "6. Click on Add to playing queue -> {\"action_type\":\"click\",\"point_2d\":[761.0,218.0]}",
+   "7. Click on the three dots of Hidden Paths -> {\"action_type\":\"click\",\"point_2d\":[941.0,531.0]}",
+   "8. Click on Add to playing queue -> {\"action_type\":\"click\",\"point_2d\":[761.0,142.0]}",
+   "9. Click on the three dots of Forever Young -> {\"action_type\":\"click\",\"point_2d\":[941.0,605.0]}",
+   "10. Click on Add to playing queue -> {\"action_type\":\"click\",\"point_2d\":[761.0,142.0]}",
+   "11. Click on the three dots of Whispers of the Past -> {\"action_type\":\"click\",\"point_2d\":[941.0,819.0]}",
+   "12. Click on Add to playing queue -> {\"action_type\":\"click\",\"point_2d\":[761.0,142.0]}",
+   "13. Click on the three dots of Heartbeat Away -> {\"action_type\":\"click\",\"point_2d\":[941.0,309.0]}",
+   "14. Click on Add to playing queue -> {\"action_type\":\"click\",\"point_2d\":[761.0,142.0]}",
+   "15. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__RetroPlaylistDuration",
+  "run": "lfm3vl2b_v4",
+  "task": "RetroPlaylistDuration",
+  "goal": "Create a playlist in Retro Music titled \"Reggae Rhythms 51\" with a duration between 45 and 50 minutes using the provided songs.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of the first song -> {\"action_type\":\"click\",\"point_2d\":[941.0,162.0]}",
+   "3. Click on Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,329.0]}",
+   "4. Click on New playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the name Reggae Rhythms 51 -> {\"action_type\":\"input_text\",\"text\":\"Reggae Rhythms 51\"}",
+   "7. Click on Create -> {\"action_type\":\"click\",\"point_2d\":[776.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__SimpleCalendarAddOneEvent",
+  "run": "lfm3vl2b_v4",
+  "task": "SimpleCalendarAddOneEvent",
+  "goal": "In Simple Calendar Pro, create a calendar event on 2023-10-29 at 13h with the title 'Call with the Team' and the description 'We will understand upcoming project milestones.'. The event should last for 60 mins.",
+  "n_steps": 19,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the Event option -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "4. Click on the Title bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,164.0]}",
+   "5. Enter the title name as Call with the Team -> {\"action_type\":\"input_text\",\"text\":\"Call with the Team\"}",
+   "6. Click on the Description bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,296.0]}",
+   "7. Enter the description name as We will understand upcoming project milestones -> {\"action_type\":\"input_text\",\"text\":\"We will understand upcoming project milestones\"}",
+   "8. Click on the Date section -> {\"action_type\":\"click\",\"point_2d\":[500.0,477.0]}",
+   "9. Select the date 29 October -> {\"action_type\":\"click\",\"point_2d\":[208.0,652.0]}",
+   "10. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "11. Click on the Time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,477.0]}",
+   "12. Click on the 13 October -> {\"action_type\":\"click\",\"point_2d\":[687.0,521.0]}",
+   "13. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "14. Click on the Time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,477.0]}",
+   "15. Click on the 13 October -> {\"action_type\":\"click\",\"point_2d\":[687.0,521.0]}",
+   "16. Click on the Time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,477.0]}",
+   "17. Click on the time 13 October -> {\"action_type\":\"click\",\"point_2d\":[687.0,521.0]}",
+   "18. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,88.0]}",
+   "19. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__SimpleCalendarDeleteEventsOnRelativeDay",
+  "run": "lfm3vl2b_v4",
+  "task": "SimpleCalendarDeleteEventsOnRelativeDay",
+  "goal": "In Simple Calendar Pro, delete all events scheduled for this Monday.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Simple Calendar Pro. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the three dots icon at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "3. Click on the Go to date option. -> {\"action_type\":\"click\",\"point_2d\":[612.0,141.0]}",
+   "4. Click on the Add contact birthdays option. -> {\"action_type\":\"click\",\"point_2d\":[612.0,299.0]}",
+   "5. Click on the Monday 25 October. -> {\"action_type\":\"click\",\"point_2d\":[214.0,349.0]}",
+   "6. Click on the Meeting with Alice event. -> {\"action_type\":\"click\",\"point_2d\":[500.0,228.0]}",
+   "7. Click on the three dots icon at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "8. Click on the tick icon at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,88.0]}",
+   "9. Click on the Meeting with Alice event. -> {\"action_type\":\"click\",\"point_2d\":[500.0,310.0]}",
+   "10. Click on the delete icon at the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[725.0,88.0]}",
+   "11. Click on the Yes button. -> {\"action_type\":\"click\",\"point_2d\":[779.0,549.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__SimpleDrawProCreateDrawing",
+  "run": "lfm3vl2b_v4",
+  "task": "SimpleDrawProCreateDrawing",
+  "goal": "Create a new drawing in Simple Draw Pro. Name it adipiscing_fair_jelly_final.png. Save it in the Pictures folder within the sdk_gphone_x86_64 storage area.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Simple Draw Pro. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Draw Pro\"}",
+   "2. Click on the save icon at the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[608.0,87.0]}",
+   "3. Click on the text field to enter a new name for this file. -> {\"action_type\":\"click\",\"point_2d\":[500.0,435.0]}",
+   "4. Type adipiscing_fair_jelly_final.png in the text field. -> {\"action_type\":\"input_text\",\"text\":\"adipiscing_fair_jelly_final.png\"}",
+   "5. Click on OK to save this file. -> {\"action_type\":\"click\",\"point_2d\":[779.0,489.0]}",
+   "6. Click on the SAVE button at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[858.0,947.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__SimpleSmsResend",
+  "run": "lfm3vl2b_v4",
+  "task": "SimpleSmsResend",
+  "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger",
+  "n_steps": 4,
+  "steps": [
+   "1. Open the Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Open the conversation with Noa Mohammed -> {\"action_type\":\"click\",\"point_2d\":[557.0,178.0]}",
+   "3. Click on the send icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[931.0,943.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__SystemBluetoothTurnOffVerify",
+  "run": "lfm3vl2b_v4",
+  "task": "SystemBluetoothTurnOffVerify",
+  "goal": "Turn bluetooth off.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on connected devices option. -> {\"action_type\":\"click\",\"point_2d\":[381.0,456.0]}",
+   "3. Click on connection preferences. -> {\"action_type\":\"click\",\"point_2d\":[316.0,510.0]}",
+   "4. Click on Bluetooth option. -> {\"action_type\":\"click\",\"point_2d\":[568.0,328.0]}",
+   "5. Click on Use Bluetooth toggle button. -> {\"action_type\":\"click\",\"point_2d\":[844.0,308.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v4__SystemWifiTurnOffVerify",
+  "run": "lfm3vl2b_v4",
+  "task": "SystemWifiTurnOffVerify",
+  "goal": "Turn wifi off.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on Network & internet option. -> {\"action_type\":\"click\",\"point_2d\":[378.0,359.0]}",
+   "3. Click on Network & internet option. -> {\"action_type\":\"wait\"}",
+   "4. Click on Internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,295.0]}",
+   "5. Click on Wi-Fi toggle button. -> {\"action_type\":\"click\",\"point_2d\":[895.0,370.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__AudioRecorderRecordAudioWithFileName",
+  "run": "lfm3vl2b_v42",
+  "task": "AudioRecorderRecordAudioWithFileName",
+  "goal": "Record an audio clip and save it with name \"presentation_fGwr.m4a\" using Audio Recorder app.",
+  "n_steps": 13,
+  "steps": [
+   "1. Open Audio Recorder app -> {\"action_type\":\"open_app\",\"app_name\":\"Audio Recorder\"}",
+   "2. Click on Get started button -> {\"action_type\":\"click\",\"point_2d\":[500.0,869.0]}",
+   "3. Click on the Naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "4. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "5. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "6. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "7. Click on the Naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "8. Click on the Naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "9. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "10. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "11. Click on the Apply button -> {\"action_type\":\"click\",\"point_2d\":[747.0,938.0]}",
+   "12. Click on the Details button -> {\"action_type\":\"click\",\"point_2d\":[664.0,594.0]}",
+   "13. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__AudioRecorderRecordAudio",
+  "run": "lfm3vl2b_v42",
+  "task": "AudioRecorderRecordAudio",
+  "goal": "Record an audio clip using Audio Recorder app and save it.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Audio Recorder app. -> {\"action_type\":\"open_app\",\"app_name\":\"Audio Recorder\"}",
+   "2. Click on Get started button. -> {\"action_type\":\"click\",\"point_2d\":[500.0,869.0]}",
+   "3. Click on Apply at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[747.0,938.0]}",
+   "4. Click on Details in the middle right side of the screen. -> {\"action_type\":\"click\",\"point_2d\":[664.0,594.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ClockStopWatchPausedVerify",
+  "run": "lfm3vl2b_v42",
+  "task": "ClockStopWatchPausedVerify",
+  "goal": "Pause the stopwatch.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the stopwatch tab at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[700.0,930.0]}",
+   "3. Click on the play button in the middle of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,816.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ClockTimerEntry",
+  "run": "lfm3vl2b_v42",
+  "task": "ClockTimerEntry",
+  "goal": "Create a timer with 0 hours, 16 minutes, and 35 seconds. Do not start the timer.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the timer icon at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,930.0]}",
+   "3. Set the timer to 0 hours, 16 minutes, and 35 seconds. -> {\"action_type\":\"input_text\",\"text\":\"16\"}",
+   "4. Set the timer to 0 hours, 16 minutes, and 35 seconds. -> {\"action_type\":\"input_text\",\"text\":\"35\"}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ContactsAddContact",
+  "run": "lfm3vl2b_v42",
+  "task": "ContactsAddContact",
+  "goal": "Create a new contact for Hugo Pereira. Their number is +13920741751.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Contacts app -> {\"action_type\":\"open_app\",\"app_name\":\"Contacts\"}",
+   "2. Click on the contacts tab -> {\"action_type\":\"click\",\"point_2d\":[166.0,930.0]}",
+   "3. Click on the add icon -> {\"action_type\":\"click\",\"point_2d\":[873.0,839.0]}",
+   "4. Click on the name section -> {\"action_type\":\"click\",\"point_2d\":[500.0,500.0]}",
+   "5. Click on the first name -> {\"action_type\":\"click\",\"point_2d\":[494.0,388.0]}",
+   "6. Enter Hugo Pereira -> {\"action_type\":\"input_text\",\"text\":\"Hugo Pereira\"}",
+   "7. Click on the last name section -> {\"action_type\":\"click\",\"point_2d\":[494.0,465.0]}",
+   "8. Enter +13920741751 -> {\"action_type\":\"input_text\",\"text\":\"+13920741751\"}",
+   "9. Click on the company section -> {\"action_type\":\"click\",\"point_2d\":[494.0,550.0]}",
+   "10. Click on the company section -> {\"action_type\":\"click\",\"point_2d\":[494.0,550.0]}",
+   "11. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[776.0,88.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ExpenseAddMultipleFromMarkor",
+  "run": "lfm3vl2b_v42",
+  "task": "ExpenseAddMultipleFromMarkor",
+  "goal": "Go through the transactions in my_expenses.txt in Markor. Log the reimbursable transactions in the pro expense.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Go to the home directory -> {\"action_type\":\"click\",\"point_2d\":[500.0,138.0]}",
+   "3. Go back to previous page -> {\"action_type\":\"navigate_back\"}",
+   "4. Open my_expenses.txt -> {\"action_type\":\"click\",\"point_2d\":[500.0,258.0]}",
+   "5. Click on the save icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[758.0,84.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ExpenseAddMultiple",
+  "run": "lfm3vl2b_v42",
+  "task": "ExpenseAddMultiple",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Social Club Dues\n amount_dollars: $67.41\n category_name: Social\n note: Monthly recurring\n\nExpense: Legal Fees\n amount_dollars: $10.14\n category_name: Others\n note: Monthly recurring\n\nExpense: Stationery\n amount_dollars: $118.93\n category_name: Others\n note: Remember to transfer funds\n",
+  "n_steps": 33,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the Name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,182.0]}",
+   "4. Enter Social Club Dues -> {\"action_type\":\"input_text\",\"text\":\"Social Club Dues\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "7. Click on the category name -> {\"action_type\":\"click\",\"point_2d\":[500.0,339.0]}",
+   "8. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "9. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "10. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "11. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,543.0]}",
+   "12. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "13. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "14. Enter $10.14 -> {\"action_type\":\"input_text\",\"text\":\"$10.14\"}",
+   "15. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "16. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "17. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "18. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "19. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "20. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "21. Enter $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "22. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "23. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "24. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "25. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "26. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "27. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "28. Enter $10.14 -> {\"action_type\":\"input_text\",\"text\":\"$10.14\"}",
+   "29. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "30. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "31. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "32. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "33. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ExpenseAddSingle",
+  "run": "lfm3vl2b_v42",
+  "task": "ExpenseAddSingle",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Therapy Sessions\n amount_dollars: $307.01\n category_name: Health Care\n note: I may repeat this\n",
+  "n_steps": 11,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,180.0]}",
+   "4. Enter the expense name as Therapy Sessions -> {\"action_type\":\"input_text\",\"text\":\"Therapy Sessions\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter the amount as 307.01 -> {\"action_type\":\"input_text\",\"text\":\"307.01\"}",
+   "7. Click on the category name tab -> {\"action_type\":\"click\",\"point_2d\":[129.0,339.0]}",
+   "8. Click on the note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "9. Enter the note as I may repeat this -> {\"action_type\":\"input_text\",\"text\":\"I may repeat this\"}",
+   "10. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,543.0]}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__ExpenseDeleteMultiple2",
+  "run": "lfm3vl2b_v42",
+  "task": "ExpenseDeleteMultiple2",
+  "goal": "Delete the following expenses from pro expense: Streaming Services, Unexpected Expenses, Pet Supplies.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[500.0,952.0]}",
+   "3. Click on the delete icon of Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "4. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "5. Click on the delete icon of Unexpected Expenses -> {\"action_type\":\"click\",\"point_2d\":[500.0,952.0]}",
+   "6. Click on the delete icon of Pet Supplies -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "7. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__MarkorChangeNoteContent",
+  "run": "lfm3vl2b_v42",
+  "task": "MarkorChangeNoteContent",
+  "goal": "Update the content of strong_jacket_h1hZ.txt to \"inNqu8UNNtyXBHCZpYp7\" in Markor and change its name to lively_fox_2023_03_22.md.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the search icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[854.0,84.0]}",
+   "3. Click on the search bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,432.0]}",
+   "4. Enter the text lively_fox_2023_03_22.md -> {\"action_type\":\"input_text\",\"text\":\"lively_fox_2023_03_22\"}",
+   "5. Click on the cancel button -> {\"action_type\":\"click\",\"point_2d\":[839.0,595.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__MarkorCreateNote",
+  "run": "lfm3vl2b_v42",
+  "task": "MarkorCreateNote",
+  "goal": "Create a new note in Markor named 2023_01_26_wise_yacht.md with the following text: Ignorance is bliss.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[346.0,401.0]}",
+   "4. Enter the name 2023_01_26_wise_yacht -> {\"action_type\":\"input_text\",\"text\":\"2023_01_26_wise_yacht\"}",
+   "5. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "6. Click on the text input box -> {\"action_type\":\"click\",\"point_2d\":[548.0,502.0]}",
+   "7. Enter the text Ignorance is bliss -> {\"action_type\":\"input_text\",\"text\":\"Ignorance is bliss\"}",
+   "8. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__MarkorDeleteNote",
+  "run": "lfm3vl2b_v42",
+  "task": "MarkorDeleteNote",
+  "goal": "Delete the note in Markor named bold_king_edited.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[854.0,84.0]}",
+   "3. Click on the search bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,432.0]}",
+   "4. Type bold_king_edited in the search bar -> {\"action_type\":\"input_text\",\"text\":\"bold_king_edited\"}",
+   "5. Click on the cancel button -> {\"action_type\":\"click\",\"point_2d\":[839.0,595.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__MarkorEditNote",
+  "run": "lfm3vl2b_v42",
+  "task": "MarkorEditNote",
+  "goal": "Edit note_SiFbv.txt in Markor. Add to the top of the note Hello, World!",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the folder icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "3. Click on the Notebook option -> {\"action_type\":\"click\",\"point_2d\":[687.0,398.0]}",
+   "4. Click on the + icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,866.0]}",
+   "5. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[346.0,400.0]}",
+   "6. Type Hello, World! -> {\"action_type\":\"input_text\",\"text\":\"Hello, World!\"}",
+   "7. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,463.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__RecipeAddMultipleRecipesFromImage",
+  "run": "lfm3vl2b_v42",
+  "task": "RecipeAddMultipleRecipesFromImage",
+  "goal": "Add the recipes from recipes.jpg in Simple Gallery Pro to the Broccoli recipe app.",
+  "n_steps": 18,
+  "steps": [
+   "1. Open the Broccoli app. -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes tab. -> {\"action_type\":\"click\",\"point_2d\":[208.0,228.0]}",
+   "4. Click on the plus icon at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,928.0]}",
+   "5. Click on the image tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,228.0]}",
+   "6. Click on the Pick photo option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,511.0]}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Click on the Photos tab. -> {\"action_type\":\"click\",\"point_2d\":[833.0,250.0]}",
+   "9. Click on the Pictures folder. -> {\"action_type\":\"click\",\"point_2d\":[500.0,228.0]}",
+   "10. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "11. Click on the first image. -> {\"action_type\":\"click\",\"point_2d\":[125.0,258.0]}",
+   "12. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "13. Click on the save tab at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "14. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "15. Click on the title tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,383.0]}",
+   "16. Type Broccoli in the title tab. -> {\"action_type\":\"input_text\",\"text\":\"Broccoli\"}",
+   "17. Click on the save tab at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "18. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__RecipeDeleteMultipleRecipes",
+  "run": "lfm3vl2b_v42",
+  "task": "RecipeDeleteMultipleRecipes",
+  "goal": "Delete the following recipes from Broccoli app: Zucchini Noodles with Pesto, Garlic Butter Shrimp, Lentil Soup.",
+  "n_steps": 11,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,228.0]}",
+   "4. Click on the Zucchini Noodles with Pesto -> {\"action_type\":\"click\",\"point_2d\":[499.0,519.0]}",
+   "5. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "6. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,251.0]}",
+   "7. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,539.0]}",
+   "8. Click on the Garlic Butter Shrimp -> {\"action_type\":\"click\",\"point_2d\":[499.0,241.0]}",
+   "9. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "10. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,539.0]}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__RetroCreatePlaylist",
+  "run": "lfm3vl2b_v42",
+  "task": "RetroCreatePlaylist",
+  "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of Hidden Paths song -> {\"action_type\":\"click\",\"point_2d\":[941.0,754.0]}",
+   "3. Click on Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,271.0]}",
+   "4. Click on New Playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the playlist name as Hip Hop Bangers 270 -> {\"action_type\":\"input_text\",\"text\":\"Hip Hop Bangers 270\"}",
+   "7. Click on Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__RetroPlayingQueue",
+  "run": "lfm3vl2b_v42",
+  "task": "RetroPlayingQueue",
+  "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music.",
+  "n_steps": 10,
+  "steps": [
+   "1. Open Retro music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of Through the Storm song -> {\"action_type\":\"click\",\"point_2d\":[941.0,384.0]}",
+   "3. Click on Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[757.0,473.0]}",
+   "4. Click on Hidden Paths song -> {\"action_type\":\"click\",\"point_2d\":[500.0,604.0]}",
+   "5. Click on Forever Young song -> {\"action_type\":\"click\",\"point_2d\":[500.0,814.0]}",
+   "6. Click on Whispers of the Past song -> {\"action_type\":\"click\",\"point_2d\":[500.0,162.0]}",
+   "7. Click on Heartbeat Away song -> {\"action_type\":\"click\",\"point_2d\":[500.0,679.0]}",
+   "8. Click on the three dots icon of Heartbeat Away song -> {\"action_type\":\"click\",\"point_2d\":[941.0,680.0]}",
+   "9. Click on Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[761.0,144.0]}",
+   "10. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__RetroPlaylistDuration",
+  "run": "lfm3vl2b_v42",
+  "task": "RetroPlaylistDuration",
+  "goal": "Create a playlist in Retro Music titled \"Reggae Rhythms 51\" with a duration between 45 and 50 minutes using the provided songs.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of the first song -> {\"action_type\":\"click\",\"point_2d\":[941.0,162.0]}",
+   "3. Click on the Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,330.0]}",
+   "4. Click on the New Playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the name of the playlist as Reggae Rhythms 51 -> {\"action_type\":\"input_text\",\"text\":\"Reggae Rhythms 51\"}",
+   "7. Click on the Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. Click on the create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SimpleCalendarAddOneEvent",
+  "run": "lfm3vl2b_v42",
+  "task": "SimpleCalendarAddOneEvent",
+  "goal": "In Simple Calendar Pro, create a calendar event on 2023-10-29 at 13h with the title 'Call with the Team' and the description 'We will understand upcoming project milestones.'. The event should last for 60 mins.",
+  "n_steps": 21,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the event option -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "4. Click on the title bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,165.0]}",
+   "5. Enter the title name as Call with the Team -> {\"action_type\":\"input_text\",\"text\":\"Call with the Team\"}",
+   "6. Click on the location option -> {\"action_type\":\"click\",\"point_2d\":[444.0,231.0]}",
+   "7. Click on the description bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,297.0]}",
+   "8. Enter the description name as We will understand upcoming project milestones -> {\"action_type\":\"input_text\",\"text\":\"We will understand upcoming project milestones\"}",
+   "9. Click on the date section -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "10. Select the date 29 october -> {\"action_type\":\"click\",\"point_2d\":[208.0,652.0]}",
+   "11. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "12. Click on the time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "13. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "14. Click on the start time -> {\"action_type\":\"click\",\"point_2d\":[891.0,475.0]}",
+   "15. Click on the 13 -> {\"action_type\":\"click\",\"point_2d\":[581.0,502.0]}",
+   "16. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[772.0,760.0]}",
+   "17. Click on the end time -> {\"action_type\":\"click\",\"point_2d\":[891.0,535.0]}",
+   "18. Click on the 00 -> {\"action_type\":\"click\",\"point_2d\":[644.0,340.0]}",
+   "19. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[772.0,760.0]}",
+   "20. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,88.0]}",
+   "21. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SimpleCalendarAddRepeatingEvent",
+  "run": "lfm3vl2b_v42",
+  "task": "SimpleCalendarAddRepeatingEvent",
+  "goal": "In Simple Calendar Pro, create a recurring calendar event titled 'Review session for Budget Planning' starting on 2023-10-15 at 14h. The event recurs weekly, forever, and lasts for 60 minutes each occurrence. The event description should be 'We will understand business objectives. Remember to confirm attendance.'.",
+  "n_steps": 28,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the event option -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "4. Click on the title bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,165.0]}",
+   "5. Enter the title name as Review session for Budget Planning -> {\"action_type\":\"input_text\",\"text\":\"Review session for Budget Planning\"}",
+   "6. Click on the description option -> {\"action_type\":\"click\",\"point_2d\":[500.0,296.0]}",
+   "7. Enter the description We will understand business objectives. Remember to confirm attendance -> {\"action_type\":\"input_text\",\"text\":\"We will understand business objectives. Remember to confirm attendance\"}",
+   "8. Click on the date section -> {\"action_type\":\"click\",\"point_2d\":[500.0,497.0]}",
+   "9. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "10. Click on the time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,497.0]}",
+   "11. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "12. Click on the start time -> {\"action_type\":\"click\",\"point_2d\":[500.0,497.0]}",
+   "13. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "14. Click on the end time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,557.0]}",
+   "15. Click on the end time -> {\"action_type\":\"click\",\"point_2d\":[500.0,557.0]}",
+   "16. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "17. Click on the repeat section -> {\"action_type\":\"click\",\"point_2d\":[500.0,710.0]}",
+   "18. Select the weekly option -> {\"action_type\":\"click\",\"point_2d\":[500.0,489.0]}",
+   "19. Click on the forever option -> {\"action_type\":\"click\",\"point_2d\":[500.0,827.0]}",
+   "20. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,678.0]}",
+   "21. Click on the start time -> {\"action_type\":\"click\",\"point_2d\":[500.0,498.0]}",
+   "22. Click on the 14th of october -> {\"action_type\":\"click\",\"point_2d\":[784.0,521.0]}",
+   "23. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "24. Click on the end time -> {\"action_type\":\"click\",\"point_2d\":[500.0,557.0]}",
+   "25. Click on the 16:00 time -> {\"action_type\":\"click\",\"point_2d\":[893.0,498.0]}",
+   "26. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[781.0,760.0]}",
+   "27. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,88.0]}",
+   "28. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SimpleSmsReplyMostRecent",
+  "run": "lfm3vl2b_v42",
+  "task": "SimpleSmsReplyMostRecent",
+  "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Simple SMS Messenger app. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Type A quick brown fox in the text field. -> {\"action_type\":\"input_text\",\"text\":\"A quick brown fox.\"}",
+   "4. Click on the tick icon at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SimpleSmsResend",
+  "run": "lfm3vl2b_v42",
+  "task": "SimpleSmsResend",
+  "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger",
+  "n_steps": 4,
+  "steps": [
+   "1. Open Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the profile icon of Noa Mohammed -> {\"action_type\":\"click\",\"point_2d\":[500.0,173.0]}",
+   "3. Click on the send button -> {\"action_type\":\"click\",\"point_2d\":[931.0,943.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SystemBluetoothTurnOffVerify",
+  "run": "lfm3vl2b_v42",
+  "task": "SystemBluetoothTurnOffVerify",
+  "goal": "Turn bluetooth off.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on the connected devices option. -> {\"action_type\":\"click\",\"point_2d\":[568.0,456.0]}",
+   "3. Click on the connected devices option. -> {\"action_type\":\"click\",\"point_2d\":[568.0,456.0]}",
+   "4. Click on connection preferences. -> {\"action_type\":\"click\",\"point_2d\":[500.0,522.0]}",
+   "5. Click on connection preferences. -> {\"action_type\":\"click\",\"point_2d\":[500.0,522.0]}",
+   "6. Click on back arrow at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[78.0,83.0]}",
+   "7. Click on Bluetooth option. -> {\"action_type\":\"click\",\"point_2d\":[568.0,328.0]}",
+   "8. Click on Use Bluetooth toggle button. -> {\"action_type\":\"click\",\"point_2d\":[844.0,308.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SystemBluetoothTurnOff",
+  "run": "lfm3vl2b_v42",
+  "task": "SystemBluetoothTurnOff",
+  "goal": "Turn bluetooth off.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on connected devices option. -> {\"action_type\":\"click\",\"point_2d\":[568.0,456.0]}",
+   "3. Click on connection preferences. -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "4. Click on Bluetooth. -> {\"action_type\":\"click\",\"point_2d\":[568.0,328.0]}",
+   "5. Click on Use Bluetooth. -> {\"action_type\":\"click\",\"point_2d\":[844.0,308.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42__SystemWifiTurnOffVerify",
+  "run": "lfm3vl2b_v42",
+  "task": "SystemWifiTurnOffVerify",
+  "goal": "Turn wifi off.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on Network & internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,370.0]}",
+   "3. Click on Internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,295.0]}",
+   "4. Click on Wi-Fi toggle button. -> {\"action_type\":\"click\",\"point_2d\":[893.0,370.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__AudioRecorderRecordAudioWithFileName",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "AudioRecorderRecordAudioWithFileName",
+  "goal": "Record an audio clip and save it with name \"presentation_fGwr.m4a\" using Audio Recorder app.",
+  "n_steps": 13,
+  "steps": [
+   "1. Open Audio Recorder app -> {\"action_type\":\"open_app\",\"app_name\":\"Audio Recorder\"}",
+   "2. Click on Get started button -> {\"action_type\":\"click\",\"point_2d\":[500.0,869.0]}",
+   "3. Click on the Naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "4. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "5. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "6. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "7. Click on the Naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "8. Click on the Naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "9. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "10. Click on the naming option -> {\"action_type\":\"click\",\"point_2d\":[500.0,210.0]}",
+   "11. Click on the Apply button -> {\"action_type\":\"click\",\"point_2d\":[746.0,938.0]}",
+   "12. Click on the Details button -> {\"action_type\":\"click\",\"point_2d\":[664.0,594.0]}",
+   "13. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__AudioRecorderRecordAudio",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "AudioRecorderRecordAudio",
+  "goal": "Record an audio clip using Audio Recorder app and save it.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Audio Recorder app. -> {\"action_type\":\"open_app\",\"app_name\":\"Audio Recorder\"}",
+   "2. Click on Get started button. -> {\"action_type\":\"click\",\"point_2d\":[500.0,869.0]}",
+   "3. Click on Apply at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[746.0,938.0]}",
+   "4. Click on Details in the middle right side of the screen. -> {\"action_type\":\"click\",\"point_2d\":[664.0,594.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ClockStopWatchPausedVerify",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ClockStopWatchPausedVerify",
+  "goal": "Pause the stopwatch.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the stopwatch tab at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[700.0,930.0]}",
+   "3. Click on the play button in the middle of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,816.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ClockTimerEntry",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ClockTimerEntry",
+  "goal": "Create a timer with 0 hours, 16 minutes, and 35 seconds. Do not start the timer.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the timer icon at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,930.0]}",
+   "3. Set the timer to 0 hours, 16 minutes, and 35 seconds. -> {\"action_type\":\"input_text\",\"text\":\"16\"}",
+   "4. Set the timer to 0 hours, 16 minutes, and 35 seconds. -> {\"action_type\":\"input_text\",\"text\":\"35\"}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ContactsAddContact",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ContactsAddContact",
+  "goal": "Create a new contact for Hugo Pereira. Their number is +13920741751.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Contacts app -> {\"action_type\":\"open_app\",\"app_name\":\"Contacts\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[873.0,838.0]}",
+   "3. Click on First name -> {\"action_type\":\"click\",\"point_2d\":[494.0,388.0]}",
+   "4. Enter Hugo Pereira -> {\"action_type\":\"input_text\",\"text\":\"Hugo Pereira\"}",
+   "5. Click on Last name -> {\"action_type\":\"click\",\"point_2d\":[494.0,465.0]}",
+   "6. Enter +13920741751 -> {\"action_type\":\"input_text\",\"text\":\"+13920741751\"}",
+   "7. Click on Company -> {\"action_type\":\"click\",\"point_2d\":[494.0,554.0]}",
+   "8. Enter +13920741751 -> {\"action_type\":\"input_text\",\"text\":\"+13920741751\"}",
+   "9. Click on Phone -> {\"action_type\":\"click\",\"point_2d\":[494.0,603.0]}",
+   "10. Enter +13920741751 -> {\"action_type\":\"input_text\",\"text\":\"+13920741751\"}",
+   "11. Click on Save -> {\"action_type\":\"click\",\"point_2d\":[776.0,88.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ContactsNewContactDraft",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ContactsNewContactDraft",
+  "goal": "Go to the new contact screen and enter the following details: First Name: Grace, Last Name: Taylor, Phone: 799-802-1530, Phone Label: Work. Do NOT hit save.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Contacts app -> {\"action_type\":\"open_app\",\"app_name\":\"Contacts\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[873.0,838.0]}",
+   "3. Click on First name -> {\"action_type\":\"click\",\"point_2d\":[494.0,388.0]}",
+   "4. Enter the first name as Grace -> {\"action_type\":\"input_text\",\"text\":\"Grace\"}",
+   "5. Click on Last Name -> {\"action_type\":\"click\",\"point_2d\":[494.0,465.0]}",
+   "6. Enter the last name as Taylor -> {\"action_type\":\"input_text\",\"text\":\"Taylor\"}",
+   "7. Click on Company -> {\"action_type\":\"click\",\"point_2d\":[494.0,550.0]}",
+   "8. Enter the phone number 799-802-1530 -> {\"action_type\":\"input_text\",\"text\":\"799-802-1530\"}",
+   "9. Click on Phone Label -> {\"action_type\":\"click\",\"point_2d\":[335.0,668.0]}",
+   "10. Select Work -> {\"action_type\":\"click\",\"point_2d\":[335.0,206.0]}",
+   "11. Click on Save -> {\"action_type\":\"click\",\"point_2d\":[776.0,88.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ExpenseAddMultipleFromMarkor",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ExpenseAddMultipleFromMarkor",
+  "goal": "Go through the transactions in my_expenses.txt in Markor. Log the reimbursable transactions in the pro expense.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Go to the home directory -> {\"action_type\":\"click\",\"point_2d\":[500.0,138.0]}",
+   "3. Go back to previous page -> {\"action_type\":\"navigate_back\"}",
+   "4. Open my_expenses.txt -> {\"action_type\":\"click\",\"point_2d\":[500.0,258.0]}",
+   "5. Click on the save icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[758.0,84.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ExpenseAddMultiple",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ExpenseAddMultiple",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Social Club Dues\n amount_dollars: $67.41\n category_name: Social\n note: Monthly recurring\n\nExpense: Legal Fees\n amount_dollars: $10.14\n category_name: Others\n note: Monthly recurring\n\nExpense: Stationery\n amount_dollars: $118.93\n category_name: Others\n note: Remember to transfer funds\n",
+  "n_steps": 33,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the Name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,182.0]}",
+   "4. Enter Social Club Dues -> {\"action_type\":\"input_text\",\"text\":\"Social Club Dues\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "7. Click on the category name -> {\"action_type\":\"click\",\"point_2d\":[500.0,339.0]}",
+   "8. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "9. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "10. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "11. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,543.0]}",
+   "12. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "13. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "14. Enter $10.14 -> {\"action_type\":\"input_text\",\"text\":\"$10.14\"}",
+   "15. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "16. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "17. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "18. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "19. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "20. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "21. Enter $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "22. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "23. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "24. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "25. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "26. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "27. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "28. Enter $10.14 -> {\"action_type\":\"input_text\",\"text\":\"$10.14\"}",
+   "29. Click on the Social category -> {\"action_type\":\"click\",\"point_2d\":[658.0,339.0]}",
+   "30. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "31. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "32. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "33. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ExpenseAddSingle",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ExpenseAddSingle",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Therapy Sessions\n amount_dollars: $307.01\n category_name: Health Care\n note: I may repeat this\n",
+  "n_steps": 11,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,181.0]}",
+   "4. Enter the expense name as Therapy Sessions -> {\"action_type\":\"input_text\",\"text\":\"Therapy Sessions\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter the amount as 307.01 -> {\"action_type\":\"input_text\",\"text\":\"307.01\"}",
+   "7. Click on the category name tab -> {\"action_type\":\"click\",\"point_2d\":[129.0,339.0]}",
+   "8. Click on the note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "9. Enter the note as I may repeat this -> {\"action_type\":\"input_text\",\"text\":\"I may repeat this\"}",
+   "10. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,543.0]}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__ExpenseDeleteMultiple2",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "ExpenseDeleteMultiple2",
+  "goal": "Delete the following expenses from pro expense: Streaming Services, Unexpected Expenses, Pet Supplies.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[500.0,952.0]}",
+   "3. Click on the delete icon of Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "4. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "5. Click on the delete icon of Unexpected Expenses -> {\"action_type\":\"click\",\"point_2d\":[500.0,952.0]}",
+   "6. Click on the delete icon of Pet Supplies -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "7. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__MarkorAddNoteHeader",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "MarkorAddNoteHeader",
+  "goal": "Update the Markor note 2023_08_10_neat_wolf.txt by adding the following text, along with a new blank line before the existing content: \"RnI8sP34yDzJQbvkfplR\", and rename it to busy_wolf_2023_07_23.txt.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[344.0,230.0]}",
+   "4. Enter the name busy_wolf_2023_07_23.txt -> {\"action_type\":\"input_text\",\"text\":\"busy_wolf_2023_07_23.txt\"}",
+   "5. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "6. Click on the back button -> {\"action_type\":\"navigate_back\"}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Click on the back button -> {\"action_type\":\"navigate_back\"}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__MarkorChangeNoteContent",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "MarkorChangeNoteContent",
+  "goal": "Update the content of strong_jacket_h1hZ.txt to \"inNqu8UNNtyXBHCZpYp7\" in Markor and change its name to lively_fox_2023_03_22.md.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[854.0,84.0]}",
+   "3. Click on the search bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,432.0]}",
+   "4. Enter text as lively_fox_2023_03_22.md -> {\"action_type\":\"input_text\",\"text\":\"lively_fox_2023_03_22\"}",
+   "5. Click on the cancel button -> {\"action_type\":\"click\",\"point_2d\":[839.0,595.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__MarkorCreateNote",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "MarkorCreateNote",
+  "goal": "Create a new note in Markor named 2023_01_26_wise_yacht.md with the following text: Ignorance is bliss.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[349.0,230.0]}",
+   "4. Enter the name 2023_01_26_wise_yacht -> {\"action_type\":\"input_text\",\"text\":\"2023_01_26_wise_yacht\"}",
+   "5. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "6. Click on the text input box -> {\"action_type\":\"click\",\"point_2d\":[500.0,343.0]}",
+   "7. Enter the text Ignorance is bliss -> {\"action_type\":\"input_text\",\"text\":\"Ignorance is bliss\"}",
+   "8. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__MarkorEditNote",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "MarkorEditNote",
+  "goal": "Edit note_SiFbv.txt in Markor. Add to the top of the note Hello, World!",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the folder icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "3. Click on the Notebook option -> {\"action_type\":\"click\",\"point_2d\":[687.0,398.0]}",
+   "4. Click on the + icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,866.0]}",
+   "5. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[346.0,401.0]}",
+   "6. Type Hello, World! -> {\"action_type\":\"input_text\",\"text\":\"Hello, World!\"}",
+   "7. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,463.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__RecipeDeleteMultipleRecipes",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "RecipeDeleteMultipleRecipes",
+  "goal": "Delete the following recipes from Broccoli app: Zucchini Noodles with Pesto, Garlic Butter Shrimp, Lentil Soup.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,228.0]}",
+   "4. Click on the Zucchini Noodles with Pesto -> {\"action_type\":\"click\",\"point_2d\":[499.0,519.0]}",
+   "5. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "6. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,251.0]}",
+   "7. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,539.0]}",
+   "8. Click on the Garlic Butter Shrimp -> {\"action_type\":\"click\",\"point_2d\":[499.0,241.0]}",
+   "9. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "10. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,251.0]}",
+   "11. Click on the Delete button -> {\"action_type\":\"click\",\"point_2d\":[799.0,539.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__RetroCreatePlaylist",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "RetroCreatePlaylist",
+  "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of Hidden Paths song -> {\"action_type\":\"click\",\"point_2d\":[941.0,754.0]}",
+   "3. Click on Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,271.0]}",
+   "4. Click on New Playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the playlist name as Hip Hop Bangers 270 -> {\"action_type\":\"input_text\",\"text\":\"Hip Hop Bangers 270\"}",
+   "7. Click on Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__RetroPlayingQueue",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "RetroPlayingQueue",
+  "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Retro music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of Through the Storm song -> {\"action_type\":\"click\",\"point_2d\":[941.0,384.0]}",
+   "3. Click on Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[761.0,473.0]}",
+   "4. Click on the three dots icon of Hidden Paths song -> {\"action_type\":\"click\",\"point_2d\":[941.0,605.0]}",
+   "5. Click on Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[761.0,143.0]}",
+   "6. Click on Forever Young song -> {\"action_type\":\"click\",\"point_2d\":[500.0,813.0]}",
+   "7. Click on Forever Young song -> {\"action_type\":\"click\",\"point_2d\":[500.0,813.0]}",
+   "8. Click on Whispers of the Past song -> {\"action_type\":\"click\",\"point_2d\":[500.0,162.0]}",
+   "9. Click on Whispers of the Past song -> {\"action_type\":\"click\",\"point_2d\":[500.0,855.0]}",
+   "10. Click on Heartbeat Away song -> {\"action_type\":\"click\",\"point_2d\":[500.0,938.0]}",
+   "11. Click on Start button -> {\"action_type\":\"click\",\"point_2d\":[779.0,635.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__RetroPlaylistDuration",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "RetroPlaylistDuration",
+  "goal": "Create a playlist in Retro Music titled \"Reggae Rhythms 51\" with a duration between 45 and 50 minutes using the provided songs.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of the first song -> {\"action_type\":\"click\",\"point_2d\":[941.0,162.0]}",
+   "3. Click on the Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,330.0]}",
+   "4. Click on the New Playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the name of the playlist as Reggae Rhythms 51 -> {\"action_type\":\"input_text\",\"text\":\"Reggae Rhythms 51\"}",
+   "7. Click on the Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__SimpleCalendarAddOneEvent",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "SimpleCalendarAddOneEvent",
+  "goal": "In Simple Calendar Pro, create a calendar event on 2023-10-29 at 13h with the title 'Call with the Team' and the description 'We will understand upcoming project milestones.'. The event should last for 60 mins.",
+  "n_steps": 21,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the event option -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "4. Click on the title bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,165.0]}",
+   "5. Enter the title name as Call with the Team -> {\"action_type\":\"input_text\",\"text\":\"Call with the Team\"}",
+   "6. Click on the location option -> {\"action_type\":\"click\",\"point_2d\":[444.0,231.0]}",
+   "7. Click on the description bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,297.0]}",
+   "8. Enter the description name as We will understand upcoming project milestones -> {\"action_type\":\"input_text\",\"text\":\"We will understand upcoming project milestones\"}",
+   "9. Click on the date section -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "10. Select the date 29 october -> {\"action_type\":\"click\",\"point_2d\":[208.0,652.0]}",
+   "11. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "12. Click on the time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "13. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "14. Click on the start time -> {\"action_type\":\"click\",\"point_2d\":[891.0,475.0]}",
+   "15. Click on the 13 -> {\"action_type\":\"click\",\"point_2d\":[581.0,502.0]}",
+   "16. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[772.0,760.0]}",
+   "17. Click on the end time -> {\"action_type\":\"click\",\"point_2d\":[891.0,535.0]}",
+   "18. Click on the 00 -> {\"action_type\":\"click\",\"point_2d\":[644.0,340.0]}",
+   "19. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[772.0,760.0]}",
+   "20. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,88.0]}",
+   "21. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__SimpleSmsResend",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "SimpleSmsResend",
+  "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger",
+  "n_steps": 4,
+  "steps": [
+   "1. Open Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the profile icon of Noa Mohammed -> {\"action_type\":\"click\",\"point_2d\":[500.0,175.0]}",
+   "3. Click on the send button -> {\"action_type\":\"click\",\"point_2d\":[931.0,947.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__SimpleSmsSendClipboardContent",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "SimpleSmsSendClipboardContent",
+  "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger",
+  "n_steps": 10,
+  "steps": [
+   "1. Open Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the Add Contact or Number text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,149.0]}",
+   "4. Enter +15459061746 in the contact number -> {\"action_type\":\"input_text\",\"text\":\"+15459061746\"}",
+   "5. Click on the right tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,149.0]}",
+   "6. Click on the clipboard icon -> {\"action_type\":\"click\",\"point_2d\":[500.0,656.0]}",
+   "7. Click on the send icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,605.0]}",
+   "8. Click on the first clipboard -> {\"action_type\":\"click\",\"point_2d\":[256.0,772.0]}",
+   "9. Click on the send icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,372.0]}",
+   "10. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v42_rep__SystemWifiTurnOffVerify",
+  "run": "lfm3vl2b_v42_rep",
+  "task": "SystemWifiTurnOffVerify",
+  "goal": "Turn wifi off.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on Network & internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,370.0]}",
+   "3. Click on Internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,295.0]}",
+   "4. Click on Wi-Fi toggle button. -> {\"action_type\":\"click\",\"point_2d\":[893.0,370.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__AudioRecorderRecordAudio",
+  "run": "lfm3vl2b_v43sft",
+  "task": "AudioRecorderRecordAudio",
+  "goal": "Record an audio clip using Audio Recorder app and save it.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Audio Recorder app -> {\"action_type\":\"open_app\",\"app_name\":\"Audio Recorder\"}",
+   "2. Click on Get started button -> {\"action_type\":\"click\",\"point_2d\":[499.0,869.0]}",
+   "3. Click on Get started button -> {\"action_type\":\"click\",\"point_2d\":[499.0,869.0]}",
+   "4. Click on Apply button -> {\"action_type\":\"click\",\"point_2d\":[746.0,938.0]}",
+   "5. Click on Apply button -> {\"action_type\":\"click\",\"point_2d\":[746.0,938.0]}",
+   "6. Click on Details -> {\"action_type\":\"click\",\"point_2d\":[666.0,594.0]}",
+   "7. Click on Record button -> {\"action_type\":\"click\",\"point_2d\":[499.0,912.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__ClockStopWatchPausedVerify",
+  "run": "lfm3vl2b_v43sft",
+  "task": "ClockStopWatchPausedVerify",
+  "goal": "Pause the stopwatch.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the stopwatch tab at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[700.0,930.0]}",
+   "3. Click on the play button in the middle of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,816.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__ContactsNewContactDraft",
+  "run": "lfm3vl2b_v43sft",
+  "task": "ContactsNewContactDraft",
+  "goal": "Go to the new contact screen and enter the following details: First Name: Grace, Last Name: Taylor, Phone: 799-802-1530, Phone Label: Work. Do NOT hit save.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open the Contacts app -> {\"action_type\":\"open_app\",\"app_name\":\"Contacts\"}",
+   "2. Click on the Plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[873.0,838.0]}",
+   "3. Click on the First name text bar -> {\"action_type\":\"click\",\"point_2d\":[494.0,388.0]}",
+   "4. Type Grace in the First name text bar -> {\"action_type\":\"input_text\",\"text\":\"Grace\"}",
+   "5. Click on the Last Name text bar -> {\"action_type\":\"click\",\"point_2d\":[494.0,465.0]}",
+   "6. Type Taylor in the Last Name text bar -> {\"action_type\":\"input_text\",\"text\":\"Taylor\"}",
+   "7. Click on the Phone number section -> {\"action_type\":\"scroll\",\"direction\":\"down\"}",
+   "8. Type 799-802-1530 in the Phone number section -> {\"action_type\":\"input_text\",\"text\":\"799-802-1530\"}",
+   "9. Click on the Label drop down button of the phone number -> {\"action_type\":\"click\",\"point_2d\":[334.0,317.0]}",
+   "10. Select Work as the label -> {\"action_type\":\"click\",\"point_2d\":[333.0,440.0]}",
+   "11. Click on the Save button at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[776.0,88.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__ExpenseAddMultipleFromGallery",
+  "run": "lfm3vl2b_v43sft",
+  "task": "ExpenseAddMultipleFromGallery",
+  "goal": "Add the expenses from expenses.jpg in Simple Gallery Pro to pro expense.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open the Simple Gallery Pro app. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Gallery Pro\"}",
+   "2. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "3. Click on the group by option. -> {\"action_type\":\"click\",\"point_2d\":[657.0,500.0]}",
+   "4. Click on the OK button. -> {\"action_type\":\"click\",\"point_2d\":[781.0,766.0]}",
+   "5. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__ExpenseAddSingle",
+  "run": "lfm3vl2b_v43sft",
+  "task": "ExpenseAddSingle",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Therapy Sessions\n amount_dollars: $307.01\n category_name: Health Care\n note: I may repeat this\n",
+  "n_steps": 9,
+  "steps": [
+   "1. Open the pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the Name text bar -> {\"action_type\":\"click\",\"point_2d\":[499.0,181.0]}",
+   "4. Enter a name as Therapy Sessions -> {\"action_type\":\"input_text\",\"text\":\"Therapy Sessions\"}",
+   "5. Click on the amount section -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter a amount as 307.01 -> {\"action_type\":\"input_text\",\"text\":\"307.01\"}",
+   "7. Click on the category name Food -> {\"action_type\":\"click\",\"point_2d\":[130.0,339.0]}",
+   "8. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,542.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__ExpenseDeleteMultiple2",
+  "run": "lfm3vl2b_v43sft",
+  "task": "ExpenseDeleteMultiple2",
+  "goal": "Delete the following expenses from pro expense: Streaming Services, Unexpected Expenses, Pet Supplies.",
+  "n_steps": 11,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the three bar menu at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the back icon -> {\"action_type\":\"click\",\"point_2d\":[599.0,91.0]}",
+   "4. Swipe up to view Streaming Services expense -> {\"action_type\":\"scroll\",\"direction\":\"down\"}",
+   "5. Click on the Streaming Services expense -> {\"action_type\":\"click\",\"point_2d\":[500.0,859.0]}",
+   "6. Click on the delete icon of Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "7. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "8. Click on the Pet Supplies expense -> {\"action_type\":\"click\",\"point_2d\":[500.0,859.0]}",
+   "9. Click on the delete icon of Pet Supplies -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "10. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__ExpenseDeleteMultiple",
+  "run": "lfm3vl2b_v43sft",
+  "task": "ExpenseDeleteMultiple",
+  "goal": "Delete the following expenses from pro expense: Ride-Sharing, Flight Tickets, Taxi Fare.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the Ride-Sharing -> {\"action_type\":\"click\",\"point_2d\":[500.0,828.0]}",
+   "3. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "4. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,926.0]}",
+   "5. Click on the Flight Tickets -> {\"action_type\":\"click\",\"point_2d\":[500.0,828.0]}",
+   "6. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[899.0,761.0]}",
+   "7. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,926.0]}",
+   "8. Click on the update button -> {\"action_type\":\"click\",\"point_2d\":[499.0,542.0]}",
+   "9. Click on the Taxi Fare -> {\"action_type\":\"click\",\"point_2d\":[500.0,750.0]}",
+   "10. Click on the delete icon -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "11. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,926.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__FilesDeleteFile",
+  "run": "lfm3vl2b_v43sft",
+  "task": "FilesDeleteFile",
+  "goal": "Delete the file q2a8_fancy_banana.mp3 from the Android filesystem located in the Notifications folder within the sdk_gphone_x86_64 storage area.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open the Files app. -> {\"action_type\":\"open_app\",\"app_name\":\"Files\"}",
+   "2. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,80.0]}",
+   "3. Click on the menu icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[68.0,80.0]}",
+   "4. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,80.0]}",
+   "5. Click on the New folder option. -> {\"action_type\":\"click\",\"point_2d\":[752.0,185.0]}",
+   "6. Type in the folder name. -> {\"action_type\":\"input_text\",\"text\":\"sdk_gphone_x86_64\"}",
+   "7. Click on the folder icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,309.0]}",
+   "8. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,80.0]}",
+   "9. Click on the Select all option. -> {\"action_type\":\"click\",\"point_2d\":[752.0,290.0]}",
+   "10. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,80.0]}",
+   "11. Click on the Delete icon at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[824.0,80.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__FilesMoveFile",
+  "run": "lfm3vl2b_v43sft",
+  "task": "FilesMoveFile",
+  "goal": "Move the file holiday_photos.jpg from Podcasts within the sdk_gphone_x86_64 storage area to the DCIM within the same sdk_gphone_x86_64 storage area in the Android filesystem.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open the Files app. -> {\"action_type\":\"open_app\",\"app_name\":\"Files\"}",
+   "2. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,80.0]}",
+   "3. Click on New folder. -> {\"action_type\":\"click\",\"point_2d\":[752.0,185.0]}",
+   "4. Type DCIM in the folder name section. -> {\"action_type\":\"input_text\",\"text\":\"DCIM\"}",
+   "5. Click on the DCIM folder. -> {\"action_type\":\"click\",\"point_2d\":[274.0,309.0]}",
+   "6. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__MarkorCreateFolder",
+  "run": "lfm3vl2b_v43sft",
+  "task": "MarkorCreateFolder",
+  "goal": "Create a new folder in Markor named folder_20261122_231912.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the folder icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[658.0,84.0]}",
+   "3. Click on the plus button -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__MarkorCreateNote",
+  "run": "lfm3vl2b_v43sft",
+  "task": "MarkorCreateNote",
+  "goal": "Create a new note in Markor named 2023_01_26_wise_yacht.md with the following text: Ignorance is bliss.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the name section -> {\"action_type\":\"click\",\"point_2d\":[344.0,380.0]}",
+   "4. Type 2023_01_26_wise_yacht.md -> {\"action_type\":\"input_text\",\"text\":\"2023_01_26_wise_yacht\"}",
+   "5. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,486.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__MarkorEditNote",
+  "run": "lfm3vl2b_v43sft",
+  "task": "MarkorEditNote",
+  "goal": "Edit note_SiFbv.txt in Markor. Add to the top of the note Hello, World!",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on note_SiFbv.txt -> {\"action_type\":\"click\",\"point_2d\":[500.0,559.0]}",
+   "3. Click on the eye icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "4. Click on the edit icon -> {\"action_type\":\"click\",\"point_2d\":[757.0,84.0]}",
+   "5. Type Hello, World! -> {\"action_type\":\"input_text\",\"text\":\"Hello, World!\"}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__MarkorMoveNote",
+  "run": "lfm3vl2b_v43sft",
+  "task": "MarkorMoveNote",
+  "goal": "In Markor, move the note shy_king_copy.md from StudyGuides to MeetingMinutes.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "3. Click on the settings option -> {\"action_type\":\"click\",\"point_2d\":[752.0,135.0]}",
+   "4. Click on the general tab -> {\"action_type\":\"click\",\"point_2d\":[568.0,146.0]}",
+   "5. Click on the notebook -> {\"action_type\":\"click\",\"point_2d\":[568.0,188.0]}",
+   "6. Click on the select this folder option -> {\"action_type\":\"click\",\"point_2d\":[733.0,921.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__OsmAndTrack",
+  "run": "lfm3vl2b_v43sft",
+  "task": "OsmAndTrack",
+  "goal": "Save a track with waypoints Sch\u00f6nberg, Liechtenstein, Triesen, Liechtenstein, Bendern, Liechtenstein in the OsmAnd maps app in the same order as listed.",
+  "n_steps": 11,
+  "steps": [
+   "1. Open the OsmAnd maps app. -> {\"action_type\":\"open_app\",\"app_name\":\"OsmAnd\"}",
+   "2. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "3. Click on the menu icon at the bottom left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[78.0,940.0]}",
+   "4. Click on the search option. -> {\"action_type\":\"click\",\"point_2d\":[212.0,314.0]}",
+   "5. Type Sch\u00f6nberg, Liechtenstein, Triesen, Liechtenstein, Bendern, Liechtenstein in the search bar at the top of the screen. -> {\"action_type\":\"input_text\",\"text\":\"Sch\\u00f6nberg, Liechtenstein, Triesen, Liechtenstein, Bendern, Liechtenstein\"}",
+   "6. Click on the first result. -> {\"action_type\":\"click\",\"point_2d\":[500.0,220.0]}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Click on the Add button at the bottom left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[125.0,885.0]}",
+   "9. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "10. Click on the save button in the middle right side of the screen. -> {\"action_type\":\"click\",\"point_2d\":[740.0,598.0]}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeAddMultipleRecipesFromImage",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeAddMultipleRecipesFromImage",
+  "goal": "Add the recipes from recipes.jpg in Simple Gallery Pro to the Broccoli recipe app.",
+  "n_steps": 10,
+  "steps": [
+   "1. Open the Simple Gallery Pro app. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Gallery Pro\"}",
+   "2. Click on the recipes.jpg file. -> {\"action_type\":\"click\",\"point_2d\":[500.0,402.0]}",
+   "3. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "4. Click on the OK button. -> {\"action_type\":\"click\",\"point_2d\":[777.0,696.0]}",
+   "5. Click on the share icon at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[608.0,935.0]}",
+   "6. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "7. Click on the Photos option at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[375.0,885.0]}",
+   "8. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "9. Click on the OK button. -> {\"action_type\":\"click\",\"point_2d\":[779.0,576.0]}",
+   "10. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeAddMultipleRecipesFromMarkor2",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeAddMultipleRecipesFromMarkor2",
+  "goal": "Add the recipes from recipes.txt in Markor that take 10 mins to prepare into the Broccoli recipe app.",
+  "n_steps": 15,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the files tab -> {\"action_type\":\"click\",\"point_2d\":[125.0,135.0]}",
+   "3. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "4. Click on the OK button in the pop up -> {\"action_type\":\"click\",\"point_2d\":[853.0,656.0]}",
+   "5. Click on the files folder -> {\"action_type\":\"click\",\"point_2d\":[500.0,202.0]}",
+   "6. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "7. Click on the OK button in the pop up -> {\"action_type\":\"click\",\"point_2d\":[853.0,656.0]}",
+   "8. Click on the files folder -> {\"action_type\":\"click\",\"point_2d\":[500.0,202.0]}",
+   "9. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "10. Click on the share option -> {\"action_type\":\"click\",\"point_2d\":[752.0,135.0]}",
+   "11. Click on the plain text -> {\"action_type\":\"click\",\"point_2d\":[752.0,135.0]}",
+   "12. Click on the Markor app -> {\"action_type\":\"click\",\"point_2d\":[125.0,885.0]}",
+   "13. Click on the share option -> {\"action_type\":\"click\",\"point_2d\":[500.0,606.0]}",
+   "14. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "15. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeAddMultipleRecipes",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeAddMultipleRecipes",
+  "goal": "Add the following recipes into the Broccoli app:\nRecipe: Chicken Alfredo Pasta\n description: A delicious and healthy choice for any time of the day.\n servings: 2 servings\n preparationTime: 10 mins\n ingredients: as desired\n directions: Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.\n\nRecipe: Quinoa Salad with Vegetables\n description: A quick and easy meal, perfect for busy weekdays.\n servings: 8 servings\n preparationTime: 30 mins\n ingredients: to your liking\n directions: Mix cooked quinoa with diced vegetables, feta cheese, and a lemon olive oil dressing. Try adding a pinch of your favorite spices for extra flavor.\n\nRecipe: Butternut Squash Soup\n description: A delicious and healthy choice for any time of the day.\n servings: 1 serving\n preparationTime: 45 mins\n ingredients: per individual taste\n directions: Saut\u00e9 onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Feel free to substitute with ingredients you have on hand.\n",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the title section -> {\"action_type\":\"click\",\"point_2d\":[500.0,383.0]}",
+   "4. Add the first recipe -> {\"action_type\":\"input_text\",\"text\":\"Chicken Alfredo Pasta\"}",
+   "5. Add the description -> {\"action_type\":\"input_text\",\"text\":\"A delicious and healthy choice for any time of the day.\"}",
+   "6. Click on the save button at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeDeleteDuplicateRecipes2",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeDeleteDuplicateRecipes2",
+  "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,227.0]}",
+   "4. Click on the first recipe -> {\"action_type\":\"click\",\"point_2d\":[500.0,250.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeDeleteDuplicateRecipes3",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeDeleteDuplicateRecipes3",
+  "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,227.0]}",
+   "4. Click on the drop down icon -> {\"action_type\":\"click\",\"point_2d\":[824.0,144.0]}",
+   "5. Click on the all recipes -> {\"action_type\":\"click\",\"point_2d\":[403.0,144.0]}",
+   "6. Click on the first recipe -> {\"action_type\":\"click\",\"point_2d\":[500.0,235.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeDeleteDuplicateRecipes",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeDeleteDuplicateRecipes",
+  "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,227.0]}",
+   "4. Click on the first recipe -> {\"action_type\":\"click\",\"point_2d\":[500.0,242.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RecipeDeleteMultipleRecipes",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RecipeDeleteMultipleRecipes",
+  "goal": "Delete the following recipes from Broccoli app: Zucchini Noodles with Pesto, Garlic Butter Shrimp, Lentil Soup.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[67.0,84.0]}",
+   "3. Click on the recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,227.0]}",
+   "4. Click on the Zucchini Noodles with Pesto -> {\"action_type\":\"click\",\"point_2d\":[500.0,519.0]}",
+   "5. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "6. Click on the Delete option -> {\"action_type\":\"click\",\"point_2d\":[752.0,250.0]}",
+   "7. Click on the Delete button in the pop up -> {\"action_type\":\"click\",\"point_2d\":[799.0,540.0]}",
+   "8. Click on the Garlic Butter Shrimp -> {\"action_type\":\"click\",\"point_2d\":[500.0,242.0]}",
+   "9. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,84.0]}",
+   "10. Click on the Delete option in the pop up -> {\"action_type\":\"click\",\"point_2d\":[752.0,250.0]}",
+   "11. Click on the Delete button in the pop up -> {\"action_type\":\"click\",\"point_2d\":[799.0,540.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RetroCreatePlaylist",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RetroCreatePlaylist",
+  "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of Golden Days song -> {\"action_type\":\"click\",\"point_2d\":[941.0,458.0]}",
+   "3. Click on Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,600.0]}",
+   "4. Click on New playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the Playlist name text box -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter a playlist name as Hip Hop Bangers 270 -> {\"action_type\":\"input_text\",\"text\":\"Hip Hop Bangers 270\"}",
+   "7. Click on the Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__RetroPlayingQueue",
+  "run": "lfm3vl2b_v43sft",
+  "task": "RetroPlayingQueue",
+  "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music.",
+  "n_steps": 15,
+  "steps": [
+   "1. Open the Retro music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots of the Forever Young song -> {\"action_type\":\"click\",\"point_2d\":[941.0,531.0]}",
+   "3. Click on the Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[761.0,143.0]}",
+   "4. Click on the three dots of Hidden Paths song -> {\"action_type\":\"click\",\"point_2d\":[941.0,752.0]}",
+   "5. Click on the three dots of Forever Young song -> {\"action_type\":\"click\",\"point_2d\":[941.0,531.0]}",
+   "6. Click on the Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[761.0,143.0]}",
+   "7. Click on the three dots of Whispers of the Past song -> {\"action_type\":\"click\",\"point_2d\":[941.0,843.0]}",
+   "8. Click on the Add to playing queue option -> {\"action_type\":\"click\",\"point_2d\":[761.0,858.0]}",
+   "9. Click on the three dots of Heartbeat Away song -> {\"action_type\":\"click\",\"point_2d\":[941.0,938.0]}",
+   "10. Click on the Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[752.0,456.0]}",
+   "11. Click on the New playlist -> {\"action_type\":\"click\",\"point_2d\":[499.0,508.0]}",
+   "12. Click on the Playlist name text box -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "13. Type Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away in the playlist name -> {\"action_type\":\"input_text\",\"text\":\"Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away\"}",
+   "14. Click on the Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "15. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SaveCopyOfReceiptTaskEval",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SaveCopyOfReceiptTaskEval",
+  "goal": "In Simple Gallery Pro, copy receipt_2023_01_22_sure_frog.jpg in DCIM and save a copy with the same name in Download",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Simple Gallery Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Gallery Pro\"}",
+   "2. Click on the receipt_2023_01_22_sure_frog.jpg -> {\"action_type\":\"click\",\"point_2d\":[500.0,408.0]}",
+   "3. Click on the share icon at the bottom of the screen -> {\"action_type\":\"click\",\"point_2d\":[608.0,935.0]}",
+   "4. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "5. Click on the Photos option -> {\"action_type\":\"click\",\"point_2d\":[375.0,885.0]}",
+   "6. Click on the OK button in the pop up -> {\"action_type\":\"click\",\"point_2d\":[781.0,576.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleCalendarAddOneEventInTwoWeeks",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleCalendarAddOneEventInTwoWeeks",
+  "goal": "In Simple Calendar Pro, create a calendar event in two weeks from today at 17h with the title 'Meeting with the Team' and the description 'We will prepare for annual budget.'. The event should last for 30 mins.",
+  "n_steps": 30,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[325.0,88.0]}",
+   "3. Search for Meeting with the Team -> {\"action_type\":\"input_text\",\"text\":\"Meeting with the Team\"}",
+   "4. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "5. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "6. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "9. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "10. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "11. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "12. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "13. Go back to the previous screen -> {\"action_type\":\"navigate_back\"}",
+   "14. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "15. Search for Meeting with the Team -> {\"action_type\":\"input_text\",\"text\":\"Meeting with the Team\"}",
+   "16. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "17. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "18. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "19. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "20. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "21. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "22. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "23. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "24. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "25. Go back to the previous screen -> {\"action_type\":\"navigate_back\"}",
+   "26. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "27. Search for Meeting with the Team -> {\"action_type\":\"input_text\",\"text\":\"Meeting with the Team\"}",
+   "28. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "29. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "30. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleCalendarAddOneEventRelativeDay",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleCalendarAddOneEventRelativeDay",
+  "goal": "In Simple Calendar Pro, create a calendar event for this Thursday at 5h with the title 'Call with the Team' and the description 'We will celebrate team roles.'. The event should last for 60 mins.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "3. Search for Call with the Team -> {\"action_type\":\"input_text\",\"text\":\"Call with the Team\"}",
+   "4. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "5. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleCalendarAddOneEventTomorrow",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleCalendarAddOneEventTomorrow",
+  "goal": "In Simple Calendar Pro, create a calendar event for tomorrow at 20h with the title 'Call with the Team' and the description 'We will prepare for team roles.'. The event should last for 30 mins.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "3. Search for Call with the Team -> {\"action_type\":\"input_text\",\"text\":\"Call with the Team\"}",
+   "4. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "5. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleCalendarAddRepeatingEvent",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleCalendarAddRepeatingEvent",
+  "goal": "In Simple Calendar Pro, create a recurring calendar event titled 'Review session for Budget Planning' starting on 2023-10-15 at 14h. The event recurs weekly, forever, and lasts for 60 minutes each occurrence. The event description should be 'We will understand business objectives. Remember to confirm attendance.'.",
+  "n_steps": 18,
+  "steps": [
+   "1. Open Simple Calendar Pro app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "3. Search for Review session for Budget Planning -> {\"action_type\":\"input_text\",\"text\":\"Review session for Budget Planning\"}",
+   "4. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "5. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "6. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "9. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "10. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "11. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "12. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "13. Go back to the previous screen -> {\"action_type\":\"navigate_back\"}",
+   "14. Click on the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "15. Type 'Review session for Budget Planning' in the search bar -> {\"action_type\":\"input_text\",\"text\":\"Review session for Budget Planning\"}",
+   "16. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "17. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "18. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleCalendarDeleteEventsOnRelativeDay",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleCalendarDeleteEventsOnRelativeDay",
+  "goal": "In Simple Calendar Pro, delete all events scheduled for this Monday.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Simple Calendar Pro. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "3. Click on the Export events to an .ics file option. -> {\"action_type\":\"click\",\"point_2d\":[610.0,456.0]}",
+   "4. Click on the OK button in the pop up box. -> {\"action_type\":\"click\",\"point_2d\":[779.0,687.0]}",
+   "5. Click on the save button at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[858.0,947.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleCalendarDeleteOneEvent",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleCalendarDeleteOneEvent",
+  "goal": "In Simple Calendar Pro, delete the calendar event on 2023-10-24 at 23h with the title 'Workshop on Project X'",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "3. Click on the Export events to an .ics file option -> {\"action_type\":\"click\",\"point_2d\":[610.0,456.0]}",
+   "4. Click on the OK button in the pop up -> {\"action_type\":\"click\",\"point_2d\":[779.0,687.0]}",
+   "5. Click on the Save button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[858.0,947.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleDrawProCreateDrawing",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleDrawProCreateDrawing",
+  "goal": "Create a new drawing in Simple Draw Pro. Name it adipiscing_fair_jelly_final.png. Save it in the Pictures folder within the sdk_gphone_x86_64 storage area.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open the Simple Draw Pro app. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Draw Pro\"}",
+   "2. Click on the three dots icon at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[951.0,87.0]}",
+   "3. Click on the save icon at the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[608.0,87.0]}",
+   "4. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleSmsReplyMostRecent",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleSmsReplyMostRecent",
+  "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open the Simple SMS Messenger app. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Open the most recent text message. -> {\"action_type\":\"click\",\"point_2d\":[500.0,175.0]}",
+   "3. Type a quick brown fox in the text field. -> {\"action_type\":\"input_text\",\"text\":\"A quick brown fox\"}",
+   "4. Send the message \"A quick brown fox\". -> {\"action_type\":\"click\",\"point_2d\":[931.0,943.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleSmsResend",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleSmsResend",
+  "goal": "Resend the message I just sent to Noa Mohammed in Simple SMS Messenger",
+  "n_steps": 7,
+  "steps": [
+   "1. Open the Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Open the conversation with Noa Mohammed -> {\"action_type\":\"click\",\"point_2d\":[568.0,178.0]}",
+   "3. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[951.0,88.0]}",
+   "4. Click on the Block number option -> {\"action_type\":\"click\",\"point_2d\":[736.0,245.0]}",
+   "5. Click on the Yes button -> {\"action_type\":\"click\",\"point_2d\":[779.0,560.0]}",
+   "6. Click on the Start a conversation link -> {\"action_type\":\"click\",\"point_2d\":[500.0,199.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleSmsSendClipboardContent",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleSmsSendClipboardContent",
+  "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger",
+  "n_steps": 7,
+  "steps": [
+   "1. Open the Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Add contact as +15459061746 -> {\"action_type\":\"input_text\",\"text\":\"+15459061746\"}",
+   "4. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,149.0]}",
+   "5. Click on the clipboard icon -> {\"action_type\":\"click\",\"point_2d\":[500.0,655.0]}",
+   "6. Click on the send button -> {\"action_type\":\"click\",\"point_2d\":[931.0,605.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SimpleSmsSendReceivedAddress",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SimpleSmsSendReceivedAddress",
+  "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger",
+  "n_steps": 16,
+  "steps": [
+   "1. Open the Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Open the conversation with Oscar Mohamed -> {\"action_type\":\"click\",\"point_2d\":[500.0,175.0]}",
+   "3. Go back to the previous page -> {\"action_type\":\"navigate_back\"}",
+   "4. Go to the search bar at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[340.0,88.0]}",
+   "5. Search for Gabriel Ibrahim -> {\"action_type\":\"input_text\",\"text\":\"Gabriel Ibrahim\"}",
+   "6. Click on the tick button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "9. Click on the plus button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "10. Search for Oscar Mohamed -> {\"action_type\":\"input_text\",\"text\":\"Oscar Mohamed\"}",
+   "11. Click on the tick button at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,150.0]}",
+   "12. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "13. Click on the Oscar Mohamed contact -> {\"action_type\":\"click\",\"point_2d\":[568.0,402.0]}",
+   "14. Type 789 E Oak St, Phoenix AZ 85006 in the message bar at the bottom of the screen -> {\"action_type\":\"input_text\",\"text\":\"789 E Oak St, Phoenix AZ 85006\"}",
+   "15. Click on the send button at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[931.0,943.0]}",
+   "16. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SystemBrightnessMax",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SystemBrightnessMax",
+  "goal": "Turn brightness to the max value.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open settings app -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on the screen -> {\"action_type\":\"click\",\"point_2d\":[500.0,500.0]}",
+   "3. Go back to previous page -> {\"action_type\":\"navigate_back\"}",
+   "4. Swipe up for brightness option -> {\"action_type\":\"scroll\",\"direction\":\"down\"}",
+   "5. Click on the Display option -> {\"action_type\":\"click\",\"point_2d\":[500.0,175.0]}",
+   "6. Click on the Brightness level -> {\"action_type\":\"click\",\"point_2d\":[231.0,338.0]}",
+   "7. Swipe left for max value -> {\"action_type\":\"scroll\",\"direction\":\"right\"}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43sft__SystemWifiTurnOffVerify",
+  "run": "lfm3vl2b_v43sft",
+  "task": "SystemWifiTurnOffVerify",
+  "goal": "Turn wifi off.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on Network & internet. -> {\"action_type\":\"click\",\"point_2d\":[500.0,372.0]}",
+   "3. Click on Internet. -> {\"action_type\":\"click\",\"point_2d\":[500.0,295.0]}",
+   "4. Toggle Wi-Fi off. -> {\"action_type\":\"click\",\"point_2d\":[893.0,370.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__AudioRecorderRecordAudio",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "AudioRecorderRecordAudio",
+  "goal": "Record an audio clip using Audio Recorder app and save it.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Audio Recorder app. -> {\"action_type\":\"open_app\",\"app_name\":\"Audio Recorder\"}",
+   "2. Click on Get started button at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,869.0]}",
+   "3. Click on Apply button at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[746.0,938.0]}",
+   "4. Click on Details button in the middle right side of the screen. -> {\"action_type\":\"click\",\"point_2d\":[664.0,594.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__ClockStopWatchPausedVerify",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "ClockStopWatchPausedVerify",
+  "goal": "Pause the stopwatch.",
+  "n_steps": 4,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the stopwatch tab at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[700.0,930.0]}",
+   "3. Click on the play button in the middle of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,816.0]}",
+   "4. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__ClockTimerEntry",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "ClockTimerEntry",
+  "goal": "Create a timer with 0 hours, 16 minutes, and 35 seconds. Do not start the timer.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open the Clock app. -> {\"action_type\":\"open_app\",\"app_name\":\"Clock\"}",
+   "2. Click on the timer icon at the bottom of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,930.0]}",
+   "3. Enter 0 hours, 16 minutes and 35 seconds. -> {\"action_type\":\"input_text\",\"text\":\"01635\"}",
+   "4. Click on the play button to start the timer. -> {\"action_type\":\"click\",\"point_2d\":[500.0,816.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__ExpenseAddMultipleFromMarkor",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "ExpenseAddMultipleFromMarkor",
+  "goal": "Go through the transactions in my_expenses.txt in Markor. Log the reimbursable transactions in the pro expense.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Go to the home directory -> {\"action_type\":\"click\",\"point_2d\":[500.0,138.0]}",
+   "3. Go back to previous page -> {\"action_type\":\"navigate_back\"}",
+   "4. Open my_expenses.txt -> {\"action_type\":\"click\",\"point_2d\":[500.0,258.0]}",
+   "5. Click on the save icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[758.0,84.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__ExpenseAddMultiple",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "ExpenseAddMultiple",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Social Club Dues\n amount_dollars: $67.41\n category_name: Social\n note: Monthly recurring\n\nExpense: Legal Fees\n amount_dollars: $10.14\n category_name: Others\n note: Monthly recurring\n\nExpense: Stationery\n amount_dollars: $118.93\n category_name: Others\n note: Remember to transfer funds\n",
+  "n_steps": 33,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the Name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,182.0]}",
+   "4. Enter Social Club Dues -> {\"action_type\":\"input_text\",\"text\":\"Social Club Dues\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "7. Click on the category name -> {\"action_type\":\"click\",\"point_2d\":[500.0,339.0]}",
+   "8. Click on the Social option -> {\"action_type\":\"click\",\"point_2d\":[656.0,339.0]}",
+   "9. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "10. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "11. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,543.0]}",
+   "12. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "13. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "14. Enter $10.14 -> {\"action_type\":\"input_text\",\"text\":\"$10.14\"}",
+   "15. Click on the Social option -> {\"action_type\":\"click\",\"point_2d\":[656.0,339.0]}",
+   "16. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "17. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "18. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "19. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "20. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "21. Enter $67.41 -> {\"action_type\":\"input_text\",\"text\":\"$67.41\"}",
+   "22. Click on the Social option -> {\"action_type\":\"click\",\"point_2d\":[656.0,339.0]}",
+   "23. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "24. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "25. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "26. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "27. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "28. Enter $10.14 -> {\"action_type\":\"input_text\",\"text\":\"$10.14\"}",
+   "29. Click on the Social option -> {\"action_type\":\"click\",\"point_2d\":[656.0,339.0]}",
+   "30. Click on the Note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "31. Enter Monthly recurring -> {\"action_type\":\"input_text\",\"text\":\"Monthly recurring\"}",
+   "32. Click on the Save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,541.0]}",
+   "33. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__ExpenseAddSingle",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "ExpenseAddSingle",
+  "goal": "Add the following expenses into the pro expense:\nExpense: Therapy Sessions\n amount_dollars: $307.01\n category_name: Health Care\n note: I may repeat this\n",
+  "n_steps": 11,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,908.0]}",
+   "3. Click on the name text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,182.0]}",
+   "4. Enter the expense name as Therapy Sessions -> {\"action_type\":\"input_text\",\"text\":\"Therapy Sessions\"}",
+   "5. Click on the amount text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,265.0]}",
+   "6. Enter the amount as 307.01 -> {\"action_type\":\"input_text\",\"text\":\"307.01\"}",
+   "7. Click on the category name tab -> {\"action_type\":\"click\",\"point_2d\":[129.0,339.0]}",
+   "8. Click on the note text box -> {\"action_type\":\"click\",\"point_2d\":[499.0,443.0]}",
+   "9. Enter the note as I may repeat this -> {\"action_type\":\"input_text\",\"text\":\"I may repeat this\"}",
+   "10. Click on the save button -> {\"action_type\":\"click\",\"point_2d\":[420.0,543.0]}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__ExpenseDeleteMultiple2",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "ExpenseDeleteMultiple2",
+  "goal": "Delete the following expenses from pro expense: Streaming Services, Unexpected Expenses, Pet Supplies.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open pro expense app -> {\"action_type\":\"open_app\",\"app_name\":\"Pro Expense\"}",
+   "2. Click on the Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[500.0,958.0]}",
+   "3. Click on the delete icon of Streaming Services -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "4. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "5. Click on the delete icon of Unexpected Expenses -> {\"action_type\":\"click\",\"point_2d\":[500.0,958.0]}",
+   "6. Click on the delete icon of Pet Supplies -> {\"action_type\":\"click\",\"point_2d\":[899.0,692.0]}",
+   "7. Click on the confirm button -> {\"action_type\":\"click\",\"point_2d\":[500.0,925.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__FilesDeleteFile",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "FilesDeleteFile",
+  "goal": "Delete the file q2a8_fancy_banana.mp3 from the Android filesystem located in the Notifications folder within the sdk_gphone_x86_64 storage area.",
+  "n_steps": 10,
+  "steps": [
+   "1. Open the Files app. -> {\"action_type\":\"open_app\",\"app_name\":\"Files\"}",
+   "2. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,79.0]}",
+   "3. Click on New folder. -> {\"action_type\":\"click\",\"point_2d\":[752.0,185.0]}",
+   "4. Type in Notifications. -> {\"action_type\":\"input_text\",\"text\":\"Notifications\"}",
+   "5. Click on the Notifications folder. -> {\"action_type\":\"click\",\"point_2d\":[274.0,309.0]}",
+   "6. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,79.0]}",
+   "7. Click on Select all. -> {\"action_type\":\"click\",\"point_2d\":[752.0,290.0]}",
+   "8. Click on the three dots at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[941.0,79.0]}",
+   "9. Click on Select all. -> {\"action_type\":\"click\",\"point_2d\":[752.0,290.0]}",
+   "10. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorChangeNoteContent",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorChangeNoteContent",
+  "goal": "Update the content of strong_jacket_h1hZ.txt to \"inNqu8UNNtyXBHCZpYp7\" in Markor and change its name to lively_fox_2023_03_22.md.",
+  "n_steps": 10,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the search icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[854.0,84.0]}",
+   "3. Click on the search bar -> {\"action_type\":\"click\",\"point_2d\":[499.0,432.0]}",
+   "4. Enter the text lively_fox_2023_03_22.md -> {\"action_type\":\"input_text\",\"text\":\"lively_fox_2023_03_22\"}",
+   "5. Click on the cancel button -> {\"action_type\":\"click\",\"point_2d\":[839.0,595.0]}",
+   "6. Click on the file busy_wolf_2023_07_23.txt.md -> {\"action_type\":\"click\",\"point_2d\":[458.0,250.0]}",
+   "7. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,343.0]}",
+   "8. Enter the text inNqu8UNNtyXBHCZpYp7 -> {\"action_type\":\"input_text\",\"text\":\"inNqu8UNNtyXBHCZpYp7\"}",
+   "9. Click on the save icon -> {\"action_type\":\"click\",\"point_2d\":[757.0,84.0]}",
+   "10. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorCreateFolder",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorCreateFolder",
+  "goal": "Create a new folder in Markor named folder_20261122_204525.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the folder icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "3. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "4. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "5. Enter folder name as folder_20261122_204525 -> {\"action_type\":\"input_text\",\"text\":\"folder_20261122_204525\"}",
+   "6. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorCreateNoteFromClipboard",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorCreateNoteFromClipboard",
+  "goal": "Create a note in Markor named 2023_09_08_active_umbrella.txt. Perform a paste operation in the note and save the note.",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[344.0,230.0]}",
+   "4. Type 2023_09_08_active_umbrella.txt -> {\"action_type\":\"input_text\",\"text\":\"2023_09_08_active_umbrella.txt\"}",
+   "5. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,463.0]}",
+   "6. Click on the clipboard icon -> {\"action_type\":\"click\",\"point_2d\":[500.0,656.0]}",
+   "7. Click on the continue button -> {\"action_type\":\"click\",\"point_2d\":[827.0,777.0]}",
+   "8. Click on Allow -> {\"action_type\":\"click\",\"point_2d\":[500.0,544.0]}",
+   "9. Click on the clipboard icon -> {\"action_type\":\"click\",\"point_2d\":[500.0,544.0]}",
+   "10. Click on the clipboard icon -> {\"action_type\":\"click\",\"point_2d\":[500.0,544.0]}",
+   "11. Click on the save icon -> {\"action_type\":\"click\",\"point_2d\":[757.0,84.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorCreateNote",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorCreateNote",
+  "goal": "Create a new note in Markor named 2023_01_26_wise_yacht.md with the following text: Ignorance is bliss.",
+  "n_steps": 9,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "3. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[344.0,230.0]}",
+   "4. Enter the name 2023_01_26_wise_yacht -> {\"action_type\":\"input_text\",\"text\":\"2023_01_26_wise_yacht\"}",
+   "5. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,463.0]}",
+   "6. Click on the text input box -> {\"action_type\":\"click\",\"point_2d\":[500.0,343.0]}",
+   "7. Enter the text Ignorance is bliss -> {\"action_type\":\"input_text\",\"text\":\"Ignorance is bliss\"}",
+   "8. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,463.0]}",
+   "9. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorDeleteNote",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorDeleteNote",
+  "goal": "Delete the note in Markor named bold_king_edited.",
+  "n_steps": 6,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[854.0,84.0]}",
+   "3. Click on the search bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,432.0]}",
+   "4. Type bold_king_edited in the search bar -> {\"action_type\":\"input_text\",\"text\":\"bold_king_edited\"}",
+   "5. Click on the cancel button -> {\"action_type\":\"click\",\"point_2d\":[839.0,595.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorEditNote",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorEditNote",
+  "goal": "Edit note_SiFbv.txt in Markor. Add to the top of the note Hello, World!",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the folder icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "3. Click on the Notebook option -> {\"action_type\":\"click\",\"point_2d\":[731.0,398.0]}",
+   "4. Click on the + icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,866.0]}",
+   "5. Click on the name input box -> {\"action_type\":\"click\",\"point_2d\":[344.0,230.0]}",
+   "6. Type Hello, World! -> {\"action_type\":\"input_text\",\"text\":\"Hello, World!\"}",
+   "7. Click on OK -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__MarkorTranscribeVideo",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "MarkorTranscribeVideo",
+  "goal": "Transcribe the contents of video ZwUN_moment_70_.mp4 by watching it in VLC player (located in Download) and writing the sequence of strings shown on each frame to the text file ZwUN_moment_70__transcription.txt in Markor as a comma separated list. For example, if the first frame shows the text \"edna\" and the second frame shows the text \"pineapple\", then the text file should contain only the following text: \"edna, pineapple\".",
+  "n_steps": 6,
+  "steps": [
+   "1. Open the Markor app. -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Tap on the folder icon located at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[66.0,138.0]}",
+   "3. Tap the plus button to create a new file. -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "4. Type 'edna, pineapple' in the text field. -> {\"action_type\":\"input_text\",\"text\":\"edna, pineapple\"}",
+   "5. Click on the OK button to save the file. -> {\"action_type\":\"click\",\"point_2d\":[853.0,464.0]}",
+   "6. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__OsmAndFavorite",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "OsmAndFavorite",
+  "goal": "Add a favorite location marker for 47.1303814, 9.5930117 in the OsmAnd maps app.",
+  "n_steps": 11,
+  "steps": [
+   "1. Open the OsmAnd maps app. -> {\"action_type\":\"open_app\",\"app_name\":\"OsmAnd\"}",
+   "2. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "3. Click on the menu icon at the bottom left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[78.0,940.0]}",
+   "4. Click on the Map markers option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,205.0]}",
+   "5. Click on the flag icon in the middle of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,205.0]}",
+   "6. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "7. Click on the Places option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,435.0]}",
+   "8. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "9. Click on the flag icon in the middle of the screen. -> {\"action_type\":\"click\",\"point_2d\":[500.0,205.0]}",
+   "10. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "11. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__RecipeAddMultipleRecipesFromImage",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "RecipeAddMultipleRecipesFromImage",
+  "goal": "Add the recipes from recipes.jpg in Simple Gallery Pro to the Broccoli recipe app.",
+  "n_steps": 21,
+  "steps": [
+   "1. Open the Broccoli app. -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the Recipes tab. -> {\"action_type\":\"click\",\"point_2d\":[208.0,228.0]}",
+   "4. Click on the plus icon at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[893.0,928.0]}",
+   "5. Click on the image tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,228.0]}",
+   "6. Click on the Pick photo option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,511.0]}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Click on the Photos tab. -> {\"action_type\":\"click\",\"point_2d\":[833.0,250.0]}",
+   "9. Click on the Select a photo option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,91.0]}",
+   "10. Click on the Pictures folder. -> {\"action_type\":\"click\",\"point_2d\":[500.0,228.0]}",
+   "11. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "12. Click on the first image. -> {\"action_type\":\"click\",\"point_2d\":[125.0,258.0]}",
+   "13. Click on the Save tab at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "14. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "15. Click on the title option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,383.0]}",
+   "16. Type Broccoli in the Title input box. -> {\"action_type\":\"input_text\",\"text\":\"Broccoli\"}",
+   "17. Click on the Description tab. -> {\"action_type\":\"click\",\"point_2d\":[500.0,552.0]}",
+   "18. Click on the description option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,552.0]}",
+   "19. Type Broccoli in the Description input box. -> {\"action_type\":\"input_text\",\"text\":\"Broccoli\"}",
+   "20. Click on the save tab at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[884.0,84.0]}",
+   "21. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__RecipeAddMultipleRecipesFromMarkor",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "RecipeAddMultipleRecipesFromMarkor",
+  "goal": "Add the recipes from recipes.txt in Markor to the Broccoli recipe app.",
+  "n_steps": 47,
+  "steps": [
+   "1. Open Markor app -> {\"action_type\":\"open_app\",\"app_name\":\"Markor\"}",
+   "2. Click on the folder icon at the top of the screen -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "3. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "4. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "5. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "6. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "7. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "8. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "9. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "10. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "11. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "12. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "13. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "14. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "15. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "16. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "17. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "18. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "19. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "20. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "21. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "22. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "23. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "24. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "25. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "26. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "27. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "28. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "29. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "30. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "31. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "32. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "33. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "34. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "35. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "36. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[500.0,212.0]}",
+   "37. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "38. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "39. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "40. Click on the folder option -> {\"action_type\":\"click\",\"point_2d\":[158.0,634.0]}",
+   "41. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[854.0,396.0]}",
+   "42. Type recipes.txt -> {\"action_type\":\"input_text\",\"text\":\"recipes.txt\"}",
+   "43. Click on the folder icon -> {\"action_type\":\"click\",\"point_2d\":[660.0,84.0]}",
+   "44. Click on the internal storage option -> {\"action_type\":\"click\",\"point_2d\":[731.0,189.0]}",
+   "45. Click on the plus icon -> {\"action_type\":\"click\",\"point_2d\":[893.0,864.0]}",
+   "46. Click on the OK button -> {\"action_type\":\"click\",\"point_2d\":[854.0,634.0]}",
+   "47. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__RecipeDeleteMultipleRecipesWithNoise",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "RecipeDeleteMultipleRecipesWithNoise",
+  "goal": "Delete the following recipes from Broccoli app: Chicken Alfredo Pasta, Tomato Basil Bruschetta, Grilled Cheese with Tomato and Basil.",
+  "n_steps": 14,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "3. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "4. Click on the Recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,228.0]}",
+   "5. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[941.0,144.0]}",
+   "6. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[941.0,144.0]}",
+   "7. Type Chicken Alfredo Pasta -> {\"action_type\":\"input_text\",\"text\":\"Chicken Alfredo Pasta\"}",
+   "8. Click on the cross icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,144.0]}",
+   "9. Type Tomato Basil Bruschetta -> {\"action_type\":\"input_text\",\"text\":\"Tomato Basil Bruschetta\"}",
+   "10. Click on the cross icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,144.0]}",
+   "11. Type Grilled Cheese with Tomato and Basil -> {\"action_type\":\"input_text\",\"text\":\"Grilled Cheese with Tomato and Basil\"}",
+   "12. Click on the cross icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,144.0]}",
+   "13. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[920.0,912.0]}",
+   "14. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__RecipeDeleteSingleWithRecipeWithNoise",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "RecipeDeleteSingleWithRecipeWithNoise",
+  "goal": "Delete the following recipes from Broccoli app: Classic Margherita Pizza.",
+  "n_steps": 7,
+  "steps": [
+   "1. Open Broccoli app -> {\"action_type\":\"open_app\",\"app_name\":\"Broccoli\"}",
+   "2. Click on the menu icon at the top left corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[68.0,84.0]}",
+   "3. Click on the recipes option -> {\"action_type\":\"click\",\"point_2d\":[208.0,228.0]}",
+   "4. Click on the search icon -> {\"action_type\":\"click\",\"point_2d\":[941.0,144.0]}",
+   "5. Type Classic Margherita Pizza in the search bar -> {\"action_type\":\"input_text\",\"text\":\"Classic Margherita Pizza\"}",
+   "6. Click on the cross icon of the Classic Margherita Pizza -> {\"action_type\":\"click\",\"point_2d\":[931.0,144.0]}",
+   "7. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__RetroCreatePlaylist",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "RetroCreatePlaylist",
+  "goal": "Create a playlist in Retro Music titled \"Hip Hop Bangers 270\" with the following songs, in order: Golden Days, Dreamer's Awake, Hidden Paths",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of Hidden Paths song -> {\"action_type\":\"click\",\"point_2d\":[941.0,754.0]}",
+   "3. Click on Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,271.0]}",
+   "4. Click on New Playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the playlist name as Hip Hop Bangers 270 -> {\"action_type\":\"input_text\",\"text\":\"Hip Hop Bangers 270\"}",
+   "7. Click on Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__RetroPlaylistDuration",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "RetroPlaylistDuration",
+  "goal": "Create a playlist in Retro Music titled \"Reggae Rhythms 51\" with a duration between 45 and 50 minutes using the provided songs.",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Retro Music app -> {\"action_type\":\"open_app\",\"app_name\":\"Retro Music\"}",
+   "2. Click on the three dots icon of the first song -> {\"action_type\":\"click\",\"point_2d\":[941.0,162.0]}",
+   "3. Click on the Add to playlist option -> {\"action_type\":\"click\",\"point_2d\":[761.0,330.0]}",
+   "4. Click on the New Playlist -> {\"action_type\":\"click\",\"point_2d\":[500.0,508.0]}",
+   "5. Click on the text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,502.0]}",
+   "6. Enter the name of the playlist as Reggae Rhythms 51 -> {\"action_type\":\"input_text\",\"text\":\"Reggae Rhythms 51\"}",
+   "7. Click on the Create button -> {\"action_type\":\"click\",\"point_2d\":[775.0,418.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__SimpleCalendarAddOneEvent",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "SimpleCalendarAddOneEvent",
+  "goal": "In Simple Calendar Pro, create a calendar event on 2023-10-29 at 13h with the title 'Call with the Team' and the description 'We will understand upcoming project milestones.'. The event should last for 60 mins.",
+  "n_steps": 21,
+  "steps": [
+   "1. Open Simple Calendar Pro -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Calendar Pro\"}",
+   "2. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the event option -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "4. Click on the title bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,165.0]}",
+   "5. Enter the title name as Call with the Team -> {\"action_type\":\"input_text\",\"text\":\"Call with the Team\"}",
+   "6. Click on the location option -> {\"action_type\":\"click\",\"point_2d\":[444.0,231.0]}",
+   "7. Click on the description bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,297.0]}",
+   "8. Enter the description name as We will understand upcoming project milestones -> {\"action_type\":\"input_text\",\"text\":\"We will understand upcoming project milestones\"}",
+   "9. Click on the date section -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "10. Select the date 29 october -> {\"action_type\":\"click\",\"point_2d\":[208.0,652.0]}",
+   "11. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "12. Click on the time section -> {\"action_type\":\"click\",\"point_2d\":[500.0,475.0]}",
+   "13. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[781.0,750.0]}",
+   "14. Click on the start time -> {\"action_type\":\"click\",\"point_2d\":[891.0,475.0]}",
+   "15. Click on the 13 -> {\"action_type\":\"click\",\"point_2d\":[581.0,502.0]}",
+   "16. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[772.0,760.0]}",
+   "17. Click on the end time -> {\"action_type\":\"click\",\"point_2d\":[891.0,535.0]}",
+   "18. Click on the 00 -> {\"action_type\":\"click\",\"point_2d\":[644.0,340.0]}",
+   "19. Click on the ok button -> {\"action_type\":\"click\",\"point_2d\":[772.0,760.0]}",
+   "20. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,88.0]}",
+   "21. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__SimpleDrawProCreateDrawing",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "SimpleDrawProCreateDrawing",
+  "goal": "Create a new drawing in Simple Draw Pro. Name it adipiscing_fair_jelly_final.png. Save it in the Pictures folder within the sdk_gphone_x86_64 storage area.",
+  "n_steps": 10,
+  "steps": [
+   "1. Open Simple Draw Pro. -> {\"action_type\":\"open_app\",\"app_name\":\"Simple Draw Pro\"}",
+   "2. Click on the orange square at the top right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[931.0,152.0]}",
+   "3. Click on OK. -> {\"action_type\":\"click\",\"point_2d\":[779.0,735.0]}",
+   "4. Click on the save icon at the top of the screen. -> {\"action_type\":\"click\",\"point_2d\":[608.0,88.0]}",
+   "5. Type adipiscing_fair_jelly_final.png in the text field. -> {\"action_type\":\"input_text\",\"text\":\"adipiscing_fair_jelly_final.png\"}",
+   "6. Click on OK. -> {\"action_type\":\"click\",\"point_2d\":[779.0,489.0]}",
+   "7. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "8. Click on the save button at the bottom right corner of the screen. -> {\"action_type\":\"click\",\"point_2d\":[858.0,947.0]}",
+   "9. Wait for the screen to finish loading. -> {\"action_type\":\"wait\"}",
+   "10. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__SimpleSmsSendClipboardContent",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "SimpleSmsSendClipboardContent",
+  "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger",
+  "n_steps": 8,
+  "steps": [
+   "1. Open Simple SMS Messenger app -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the + icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "3. Click on the Add Contact or Number text bar -> {\"action_type\":\"click\",\"point_2d\":[500.0,149.0]}",
+   "4. Enter +15459061746 in the contact number -> {\"action_type\":\"input_text\",\"text\":\"+15459061746\"}",
+   "5. Click on the right tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,149.0]}",
+   "6. Click on the clipboard icon -> {\"action_type\":\"click\",\"point_2d\":[500.0,656.0]}",
+   "7. Click on the send icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,605.0]}",
+   "8. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__SimpleSmsSendReceivedAddress",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "SimpleSmsSendReceivedAddress",
+  "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger",
+  "n_steps": 12,
+  "steps": [
+   "1. Open Simple SMS Messenger -> {\"action_type\":\"open_app\",\"app_name\":\"Simple SMS Messenger\"}",
+   "2. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "3. Click on the message from Oscar Mohamed -> {\"action_type\":\"click\",\"point_2d\":[500.0,178.0]}",
+   "4. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "5. Click on the message from Oscar Mohamed -> {\"action_type\":\"click\",\"point_2d\":[500.0,178.0]}",
+   "6. Click on the three dots at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,88.0]}",
+   "7. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "8. Click on the plus icon at the bottom right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[893.0,925.0]}",
+   "9. Type 1234567890 in the text field -> {\"action_type\":\"input_text\",\"text\":\"1234567890\"}",
+   "10. Click on the tick icon at the top right corner of the screen -> {\"action_type\":\"click\",\"point_2d\":[941.0,150.0]}",
+   "11. Click on the send icon -> {\"action_type\":\"click\",\"point_2d\":[931.0,605.0]}",
+   "12. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__SystemBluetoothTurnOffVerify",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "SystemBluetoothTurnOffVerify",
+  "goal": "Turn bluetooth off.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on the connected devices option. -> {\"action_type\":\"click\",\"point_2d\":[568.0,456.0]}",
+   "3. Click on connection preferences. -> {\"action_type\":\"click\",\"point_2d\":[500.0,521.0]}",
+   "4. Click on Bluetooth. -> {\"action_type\":\"click\",\"point_2d\":[568.0,328.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ },
+ {
+  "key": "lfm3vl2b_v43dpo2__SystemWifiTurnOffVerify",
+  "run": "lfm3vl2b_v43dpo2",
+  "task": "SystemWifiTurnOffVerify",
+  "goal": "Turn wifi off.",
+  "n_steps": 5,
+  "steps": [
+   "1. Open Settings app. -> {\"action_type\":\"open_app\",\"app_name\":\"Settings\"}",
+   "2. Click on Network & internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,372.0]}",
+   "3. Click on Internet option. -> {\"action_type\":\"click\",\"point_2d\":[500.0,295.0]}",
+   "4. Click on Wi-Fi toggle button. -> {\"action_type\":\"click\",\"point_2d\":[895.0,370.0]}",
+   "5. The goal has been completed. -> {\"action_type\":\"status\",\"goal_status\":\"complete\"}"
+  ]
+ }
+]

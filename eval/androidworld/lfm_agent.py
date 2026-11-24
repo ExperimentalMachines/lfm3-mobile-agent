@@ -20,6 +20,7 @@ from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "train"))
 import agent_format as af  # noqa: E402
 import agent_guards as ag  # noqa: E402
+import screen_change as sc  # noqa: E402
 import app_resolver  # noqa: E402
 
 from android_world.agents import base_agent  # noqa: E402
@@ -39,7 +40,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  temperature: float = 0.0, wait_after_action: float = 1.0,
                  max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False,
                  prompt_version: str = "v1", guards: bool = False, history_steps: int = af.HISTORY_STEPS,
-                 nochange_notes: bool = False):
+                 nochange_notes: bool = False, change_rule: str = "coarse"):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -57,6 +58,10 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         # round 7 (PREREG_v45, opt-in): the text-history window and the no-visible-change note alone, as D was trained
         self.history_steps = history_steps
         self.nochange_notes = nochange_notes
+        # round 8 (PREREG_v46): "fine" = train/screen_change.py (360x800, bars masked, > 0.1% of pixels changed), the rule
+        # the v4.6 data uses; "coarse" = round 6's 72x160 mean-difference rule (what v4.4-B and v4.5-D were trained with)
+        assert change_rule in ("coarse", "fine"), change_rule
+        self.change_rule = change_rule
         self._labels = None
         self._prev_small = None
         self._prev_type = None
@@ -121,10 +126,15 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         pixels = state.pixels
         H, W = pixels.shape[:2]
         img = af.resize_screenshot(Image.fromarray(pixels), self.max_pixels)
-        small = np.asarray(Image.fromarray(pixels).convert("L").resize((72, 160)), dtype=np.float32)
+        if self.change_rule == "fine":
+            small = sc.prep(pixels)
+            unchanged = lambda a, b: not sc.changed(a, b)
+        else:
+            small = np.asarray(Image.fromarray(pixels).convert("L").resize((72, 160)), dtype=np.float32)
+            unchanged = lambda a, b: float(np.abs(a - b).mean()) < 1.0
         if ((self.runtime_feedback or self.nochange_notes) and self.history and self._prev_small is not None
                 and self._prev_type not in ("wait", "status", "answer", None)
-                and float(np.abs(small - self._prev_small).mean()) < 1.0):
+                and unchanged(small, self._prev_small)):
             i, a = self.history[-1]
             if not a.endswith("]"):  # action JSON ends with "}"; a trailing "]" means already annotated
                 self.history[-1] = (i, a + " [no visible change]")

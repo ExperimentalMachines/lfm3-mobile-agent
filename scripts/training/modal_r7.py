@@ -29,6 +29,7 @@ FILES = {
     "scripts/training/vm_r7_eval.sh": "/content/work/vm_r7_eval.sh",
     "scripts/training/vm_r7_smoke.sh": "/content/work/vm_r7_smoke.sh",
     "scripts/publish/vm_publish_public.py": "/content/work/vm_publish_public.py",
+    "analysis/done_audit/judge_terminal.py": "/content/work/judge_terminal.py",
     "scripts/publish/cards/v4.5-D.md": "/content/work/meta/card-v4.5-D.md",
     "data/meta/androidcontrol_test_gt.jsonl": "/content/work/meta/androidcontrol_test_gt.jsonl",
     "data/meta/androidcontrol_test_gt.manifest.json": "/content/work/meta/androidcontrol_test_gt.manifest.json",
@@ -45,6 +46,7 @@ for src, dst in FILES.items():
 
 app = modal.App("lfm3-r7", image=image)
 VOL = modal.Volume.from_name("lfm3-r7", create_if_missing=True)
+V4_REV = "f2a44507613f751b939fabdbd789e13aec2d10e3"  # experimentalmachines/LFM3-VL-2B-MobileAgent-v4
 
 
 def _run(script: str, sub: str) -> int:
@@ -104,3 +106,53 @@ def publish_d() -> int:
 @app.local_entrypoint()
 def publish():
     print("rc", publish_d.remote())
+
+
+@app.function(timeout=2 * 3600, **SPEC)
+def probe_fn(which: str) -> int:
+    """History-reliance probes (analysis/done_audit): generate.py over /vol/probes/data/<which>/* for D (volume) or v4
+    (experimentalmachines/LFM3-VL-2B-MobileAgent-v4, pinned), outputs in /vol/probes/out/."""
+    with open("/content/.hf_token", "w") as f:
+        f.write(os.environ["HF_TOKEN"])
+    if which == "d":
+        model = "/vol/d/runs/r7d/merged"
+    else:
+        from huggingface_hub import snapshot_download
+        model = snapshot_download("experimentalmachines/LFM3-VL-2B-MobileAgent-v4", revision=V4_REV, local_dir="/content/models/v4",
+                                  ignore_patterns=["lora_adapter/*", "training_logs/*", "eval/*", "*.gguf"])
+    os.makedirs("/vol/probes/out", exist_ok=True)
+    rc = 0
+    for p in sorted(os.listdir(f"/vol/probes/data/{which}")):
+        out = f"/vol/probes/out/{which}_{p}.jsonl"
+        if os.path.exists(out + ".done"):
+            continue
+        r = subprocess.run(["python", "/content/work/generate.py", "--model", model, "--data", f"/vol/probes/data/{which}/{p}",
+                            "--out", out, "--enable_thinking", "1", "--bs", "32", "--max_pixels", "774400"], cwd="/content/work")
+        if r.returncode == 0:
+            open(out + ".done", "w").close()
+        rc |= r.returncode
+        VOL.commit()
+    return rc
+
+
+@app.local_entrypoint()
+def probes():
+    print("rc", list(probe_fn.map(["d", "v4"])))
+
+
+@app.function(timeout=6 * 3600, **SPEC)
+def judge_fn(calibrate: bool) -> int:
+    """Round 8 completion judge over /vol/judge/r8_terminal.parquet (analysis/done_audit/judge_terminal.py)."""
+    args = ["python", "/content/work/judge_terminal.py", "/vol/judge/r8_terminal.parquet"]
+    if calibrate:
+        args += ["/vol/judge/calibration.jsonl", "--episodes", "/vol/judge/calibration_ids.json"]
+    else:
+        args += ["/vol/judge/verdicts.jsonl"]
+    rc = subprocess.run(args, cwd="/content/work").returncode
+    VOL.commit()
+    return rc
+
+
+@app.local_entrypoint()
+def judge(calibrate: bool = True):
+    print("rc", judge_fn.remote(calibrate))

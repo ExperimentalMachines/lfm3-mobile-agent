@@ -3,10 +3,12 @@
 #   A = v4 + guards, B = v4.1, C = v4.1 + guards, D = v4.2 + guards, E = v4.2,
 #   R = v4.2 replicate (identical to E, separate output; measures run-to-run noise),
 #   P = v4.3-dpo (round 5: DPO on own mistakes), S = v4.3-sft (round 5: more SFT on the same mix),
-#   Q = v4.3-dpo2 (round 5, P2: balanced stop/copy pairs).
+#   Q = v4.3-dpo2 (round 5, P2: balanced stop/copy pairs),
+#   T = v4.5-D (round 7, docs/PREREG_v45.md; run as an owner-requested exception after D failed its offline gate):
+#       D was trained with a 24-step history and no-visible-change notes, so its pass adds exactly those two options.
 # Same harness as v4's seed-30 pass (scripts/androidworld/local_v4_to_aw_v2.sh): run_aw.py defaults (seed 30, one
 # instance per task), prompt v4, thinking on, same llama-server flags and mmproj; only the model file and --guards vary.
-# Usage: nohup bash scripts/androidworld/local_v41_dev_aw.sh A|B|C|D|E|R|P|Q|S 5556|5558 [checkpoint_dir_to_resume] \
+# Usage: nohup bash scripts/androidworld/local_v41_dev_aw.sh A|B|C|D|E|R|P|Q|S|T 5556|5558 [checkpoint_dir_to_resume] \
 #          >> logs/local_v41_dev_aw.log 2>&1 &
 set -u
 cd "$(dirname "$0")/../.." || exit 1
@@ -31,8 +33,11 @@ case "$V" in
   P) GG=models/lfm3vl2b_v43-dpo-GGUF/LFM3-VL-2B-AndroidAgent-v4.3-dpo-Q4_K_M.gguf; NAME=lfm3vl2b_v43dpo; G=false ;;
   Q) GG=models/lfm3vl2b_v43-dpo2-GGUF/LFM3-VL-2B-AndroidAgent-v4.3-dpo2-Q4_K_M.gguf; NAME=lfm3vl2b_v43dpo2; G=false ;;
   S) GG=models/lfm3vl2b_v43-sft-GGUF/LFM3-VL-2B-AndroidAgent-v4.3-sft-Q4_K_M.gguf; NAME=lfm3vl2b_v43sft; G=false ;;
-  *) echo "variant must be A, B, C, D, E, R, P, Q or S"; exit 1 ;;
+  T) GG=models/lfm3vl2b_v45d-GGUF/LFM3-VL-2B-MobileAgent-v4.5-D-Q4_K_M.gguf; NAME=lfm3vl2b_v45d; G=false
+     AWX="--history_steps=24 --nochange_notes=true" ;;
+  *) echo "variant must be A, B, C, D, E, R, P, Q, S or T"; exit 1 ;;
 esac
+AWX=${AWX:-}
 MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf
 OUT=results/androidworld/$NAME
 log() { echo "[$(date +%T)] $NAME: $*"; }
@@ -76,7 +81,7 @@ done
 shasum -a 256 "$GG" | cut -c1-16 | sed "s/^/[$(date +%T)] $NAME: model sha256 /"
 log "server :$PORT up (pid $SP); seed-30 pass on emulator $CP, guards=$G"
 .venv-aw/bin/python eval/androidworld/run_aw.py --console_port=$CP --grpc_port=$GP --server_url=http://127.0.0.1:$PORT \
-  --agent_label=${NAME}_q4km --enable_thinking=true --prompt_version=v4 --guards=$G --output_path=$OUT ${CK[@]+"${CK[@]}"} 2>&1 \
+  --agent_label=${NAME}_q4km --enable_thinking=true --prompt_version=v4 --guards=$G $AWX --output_path=$OUT ${CK[@]+"${CK[@]}"} 2>&1 \
   | grep --line-buffered -v "_os_env_vars\|FD from fork\|fork_posix" >> "logs/aw_run_$NAME.log"
 kill $SP 2>/dev/null
 D=$(ls -d $OUT/run_*/ 2>/dev/null | tail -1); D=${D%/}
