@@ -1,11 +1,12 @@
 #!/bin/bash
 # Launch the round-7 SageMaker training job (docs/PREREG_v45.md). The data channel must already hold the mix
 # (s3://$R7_BUCKET/r7/data/: train, ac_val, gate splits, androidlens/), uploaded from the build instance.
-# usage: R7_BUCKET=<bucket> scripts/training/sm_launch_r7.sh <job-name> smoke|full [bs ga] [max_hours]
+# usage: R7_BUCKET=<bucket> [R7_INSTANCE=ml.g7e.2xlarge] scripts/training/sm_launch_r7.sh <job-name> smoke|full [bs ga] [max_hours]
 # Account id and role ARN are read at run time (not stored in the repo).
 set -euo pipefail
 JOB=$1; MODE=$2; BS=${3:-4}; GA=${4:-8}; HOURS=${5:-3}
 B=${R7_BUCKET:?set R7_BUCKET}
+INST=${R7_INSTANCE:-ml.g7e.2xlarge}
 R=us-west-2
 export AWS_PAGER=""
 cd "$(dirname "$0")/../.."
@@ -30,7 +31,7 @@ cat > /tmp/r7_job_$JOB.json <<EOF
    {"ChannelName": "data", "DataSource": {"S3DataSource": {"S3DataType": "S3Prefix", "S3Uri": "s3://$B/r7/data/", "S3DataDistributionType": "FullyReplicated"}}}
  ],
  "OutputDataConfig": {"S3OutputPath": "s3://$B/r7/output/"},
- "ResourceConfig": {"InstanceType": "ml.g7e.2xlarge", "InstanceCount": 1, "VolumeSizeInGB": 300},
+ "ResourceConfig": {"InstanceType": "$INST", "InstanceCount": 1, "VolumeSizeInGB": 300},
  "StoppingCondition": {"MaxRuntimeInSeconds": $((HOURS * 3600))},
  "CheckpointConfig": {"S3Uri": "s3://$B/r7/ckpt/$JOB/", "LocalPath": "/opt/ml/checkpoints"},
  "Environment": {"R7_MODE": "$MODE", "R7_BS": "$BS", "R7_GA": "$GA"},

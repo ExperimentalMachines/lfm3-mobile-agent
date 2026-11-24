@@ -128,3 +128,18 @@ online run.
   xlangai/aguvis-stage2 @ `bd6f1ed4`, MemGUI-3K @ `003822b5`, AndroidLens @ `984576f3`.
 - **Statistics:** `results/v45_dev/build_stats.json`, `stats_odyssey.json`, `stats_amex.json`, `stats_ac.json`.
 - **AndroidWorld harness:** new opt-in flags `--history_steps` and `--nochange_notes` (defaults = v4's sealed harness).
+
+### 2026-11-24 15:50 Asia/Manila — hardware changed by the owner before any training step (no candidate exists)
+
+- **What changed:** SageMaker never assigned a GPU (both smoke jobs waited for capacity, then were stopped without
+  billing). The owner said: "Run it on google colab and we'll switch to modal later, checkpoint well".
+- **D's recipe is unchanged:** one pass, 5,420 steps × 32 rows, bs 4 × 8 without gradient checkpointing (measured on
+  the Colab A100: same loss as 8 × 4, 1.5× faster), base `LiquidAI/LFM3-VL-2B` pinned to `23387bed`, training data
+  `experimentalmachines/MobileAgent-SFT-v4.5` pinned to `45331aaa`.
+- **Checkpoints:** every 100 steps, pushed to the public repo `experimentalmachines/LFM3-VL-2B-MobileAgent-v4.5-D-ckpt`
+  (private Hub storage is full). The resume check compares data id and revision, steps, batch, LoRA and lr, so the same
+  command resumes on a new Colab VM or on Modal. A guard stops the Colab session below 1.5 units.
+- **Before the run:** a smoke test on Colab (4 steps on 200 rows, saves every 2 steps to a separate public repo, local
+  folder deleted, then the command must restore step 4 from the Hub).
+- **Evals and gate:** unchanged, on whichever platform finishes training (`scripts/training/sm_r7.sh`'s eval and gate
+  steps, or the same scripts on Modal).

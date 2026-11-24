@@ -72,12 +72,17 @@ PY
 }
 
 if [ "$MODE" = smoke ]; then
+  OK=""
   for cfg in "4 8" "8 4"; do
     set -- $cfg
-    train $CK/smoke_bs$1 30 $1 $2 --max_agent_rows 2000 --save_steps 100000 --eval_steps 100000 || { log "SMOKE TRAIN FAILED bs$1"; tail -5 $CK/smoke_bs$1.log; exit 1; }
-    log "SPEED bs $1 x $2: $(speed $CK/smoke_bs$1)"
+    if train $CK/smoke_bs$1 30 $1 $2 --max_agent_rows 2000 --save_steps 100000 --eval_steps 100000; then
+      log "SPEED bs $1 x $2: $(speed $CK/smoke_bs$1)"; OK=$CK/smoke_bs$1
+    else
+      log "bs $1 x $2 failed: $(grep -m1 -oE 'OutOfMemoryError|Error[^:]*' $CK/smoke_bs$1.log || echo see log)"
+    fi
   done
-  evals $CK/smoke_bs8/merged smoke 16 || exit 1
+  [ -n "$OK" ] || { log "SMOKE TRAIN FAILED"; exit 1; }
+  evals $OK/merged smoke 16 || exit 1
   log "SMOKE OK"
   exit 0
 fi

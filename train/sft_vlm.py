@@ -42,7 +42,8 @@ p.add_argument("--target_regex", default=r".*language_model.*\.(q_proj|k_proj|v_
 p.add_argument("--modules_to_save", nargs="*", default=["multi_modal_projector"])
 p.add_argument("--save_steps", type=int, default=500)
 p.add_argument("--eval_steps", type=int, default=500)
-p.add_argument("--hub_repo", default=None, help="private hub repo for checkpoint backup")
+p.add_argument("--hub_repo", default=None, help="hub repo for checkpoint backup (private unless --hub_public)")
+p.add_argument("--hub_public", action="store_true", help="checkpoint repo is public (private storage is full; round 7)")
 p.add_argument("--workers", type=int, default=8)
 p.add_argument("--seed", type=int, default=42)
 p.add_argument("--no_gc", action="store_true", help="disable gradient checkpointing")
@@ -204,7 +205,7 @@ cfg = SFTConfig(
     seed=args.seed,
     push_to_hub=bool(args.hub_repo),
     hub_model_id=args.hub_repo,
-    hub_private_repo=True,
+    hub_private_repo=not args.hub_public,
     hub_strategy="checkpoint" if args.hub_repo else "every_save",
 )
 
@@ -236,7 +237,7 @@ if not ckpts and args.hub_repo:
     elif files:
         print("WARNING: hub checkpoint repo has no run_config.json; only batch size / max_steps are checked", flush=True)
     else:
-        HfApi().create_repo(args.hub_repo, private=True, exist_ok=True)
+        HfApi().create_repo(args.hub_repo, private=not args.hub_public, exist_ok=True)
         HfApi().upload_file(path_or_fileobj=f"{args.out}/logs/run_config.json", path_in_repo="run_config.json",
                             repo_id=args.hub_repo)
     try:
