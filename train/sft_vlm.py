@@ -23,6 +23,7 @@ from trl import SFTConfig, SFTTrainer
 
 p = argparse.ArgumentParser()
 p.add_argument("--model_id", default="LiquidAI/LFM3-VL-2B")
+p.add_argument("--model_revision", default=None, help="pin the Hub revision (the model uses trust_remote_code)")
 p.add_argument("--train", nargs="+", required=True, help="dataset dirs (save_to_disk) or hub ids")
 p.add_argument("--val", default=None)
 p.add_argument("--out", required=True)
@@ -63,7 +64,7 @@ def _provenance():
     try:
         from huggingface_hub import HfApi
         api = HfApi()
-        prov["model_sha"] = api.model_info(args.model_id).sha if not os.path.isdir(args.model_id) else "local"
+        prov["model_sha"] = api.model_info(args.model_id, revision=args.model_revision).sha if not os.path.isdir(args.model_id) else "local"
         for t in args.train + ([args.val] if args.val else []):
             if not os.path.isdir(t):
                 prov[f"dataset_sha:{t}"] = api.dataset_info(t.partition("@")[0]).sha
@@ -132,7 +133,7 @@ if val_ds is not None:
 print(f"train rows={len(train_ds)} val rows={len(val_ds) if val_ds else 0}", flush=True)
 
 _pk = {"size": {"shortest_edge": args.min_pixels, "longest_edge": args.max_pixels}} if args.max_pixels > 0 else {}
-processor = AutoProcessor.from_pretrained(args.model_id, trust_remote_code=True, **_pk)
+processor = AutoProcessor.from_pretrained(args.model_id, revision=args.model_revision, trust_remote_code=True, **_pk)
 processor.tokenizer.padding_side = "right"
 if args.chat_template_path:
     tpl = open(args.chat_template_path).read()
@@ -140,7 +141,7 @@ if args.chat_template_path:
     processor.tokenizer.chat_template = tpl
     print("chat template overridden from", args.chat_template_path, flush=True)
 model = AutoModelForImageTextToText.from_pretrained(
-    args.model_id, dtype=torch.bfloat16, trust_remote_code=True,
+    args.model_id, revision=args.model_revision, dtype=torch.bfloat16, trust_remote_code=True,
     attn_implementation="sdpa",
 ).to("cuda")
 print(f"params={model.num_parameters():,}", flush=True)

@@ -29,7 +29,7 @@ log "train rows $N"
 train() {  # out steps bs ga extra...
   local O=$1 ST=$2 B=$3 G=$4; shift 4
   [ -f $O/train_receipt.json ] && return 0
-  python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --train $D/train --val $D/ac_val --out $O --max_steps $ST --max_pixels 774400 \
+  python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --model_revision 23387beda43c60310348e83e25f78f33c3140d3a --train $D/train --val $D/ac_val --out $O --max_steps $ST --max_pixels 774400 \
     --bs $B --grad_accum $G --no_gc --lora_r 64 --lora_alpha 128 --modules_to_save --workers 6 "$@" > $O.log 2>&1
 }
 

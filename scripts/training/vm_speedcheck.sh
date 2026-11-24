@@ -8,7 +8,7 @@
 # Per config: 30 optimizer steps, no eval, no hub push; GPU utilisation (nvidia-smi) and CPU load (vmstat) sampled
 # every 5 s. Steady-state speed = (elapsed at step 30 - elapsed at step 10) / 20 steps.
 set -uo pipefail
-export HF_TOKEN=$(cat /content/.hf_token)
+unset HF_TOKEN  # public data and model only: no token in this job's environment
 export TOKENIZERS_PARALLELISM=false
 OUT=/content/runs/speedcheck; mkdir -p $OUT
 log() { echo "[$(date +%T)] speed: $*"; }
@@ -42,7 +42,7 @@ run() {  # name extra-args...
   vmstat -n 5 > $OUT/cpu_$N.txt 2>/dev/null &
   local V=$!
   log "$N: start ($*)"
-  python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --train $SUB --out $O --max_steps 30 --max_pixels 774400 \
+  python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --model_revision 23387beda43c60310348e83e25f78f33c3140d3a --train $SUB --out $O --max_steps 30 --max_pixels 774400 \
     --lora_r 64 --lora_alpha 128 --modules_to_save --save_steps 100000 "$@" > $OUT/train_$N.log 2>&1
   local rc=$?
   kill $G $V 2>/dev/null
