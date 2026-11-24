@@ -176,3 +176,11 @@ E is measured the same way (its own format).
   finishes on Modal once it is re-enabled.
 - **Unchanged:** recipe, data and gate. E smoke passed on Modal before the run (training, Hub restore, all evals,
   probes and the round-8 gate on 16 rows).
+
+### 2026-11-25 01:10 Asia/Manila — E's micro-batch: 2 × 16 (same 32 rows per step)
+
+On the Colab A100-40GB, bs 4 × 8 ran out of memory at about step 10: v4.6's 24-step rows are longer than the v4 rows
+of the speed check (the Modal smoke already peaked at 37.1 GB on an H100). E restarted from step 0 with micro-batch
+2 × 16 and PyTorch's expandable-segments allocator. It is still 32 rows per optimizer step with the same schedule; only
+memory and speed change, which the prereg allows ("the micro-batch choice ... does not change the maths"). The Modal
+stretch uses the identical command.
