@@ -1,6 +1,6 @@
 # Preregistration: round 9 (v4.7), useless waits
 
-Written 2026-11-25 03:50 PST (Mac clock), before any round-9 candidate existed. E (round 8) was still training and
+Written 2026-11-25 03:50 Asia/Manila, before any round-9 candidate existed. E (round 8) was still training and
 no E result had been seen. Append-only.
 
 **Status: post-hoc development round.** The diagnosis used AndroidWorld seed-30 runs (development seed) and the
@@ -94,7 +94,7 @@ D's numbers on the wait probes are logged below before F exists.
 
 ## Log
 
-### 2026-11-25 04:05 PST — v4.7 data built, reviewed and published (no candidate exists)
+### 2026-11-25 04:05 Asia/Manila — v4.7 data built, reviewed and published (no candidate exists)
 
 **`experimentalmachines/MobileAgent-SFT-v4.7` @ `f1e466a7004643c94a41afd66836636f67595bda`.** Training split
 192,143 rows; F's mix `train_f` 32,000 rows (6,564 new or relabelled + 25,436 drawn from `train`).
@@ -121,7 +121,7 @@ wait that changed nothing (24 of 86, 28%).
 **Gate-split side effect:** AndroidLens marks far more waits as useless (1,843 noted, 1,295 changed); AndroidControl
 test 33 noted, 1,911 changed.
 
-### 2026-11-25 04:40 PST — second review, rebuild, D's baselines, and an amendment (no candidate exists; no E result seen)
+### 2026-11-25 04:40 Asia/Manila — second review, rebuild, D's baselines, and an amendment (no candidate exists; no E result seen)
 
 **Second review by eye** (owner: "Do 32 more by eye"; 32 fresh rows per kind with the episode's real next screen;
 totals over 48 per kind in `analysis/done_audit/validation_v47_2026-11-25.json`):
@@ -163,7 +163,7 @@ target that state, so E may fix most of it.
    next full retrain. If E fails either, F is trained as registered above, with its wait bars replaced by:
    **C3n `wait` ≤ 15%**, W2_loading `wait` ≥ E's − 10 points, and E's round-8 gate.
 
-### 2026-11-25 04:45 PST — third review by eye of the published build (no candidate exists)
+### 2026-11-25 04:45 Asia/Manila — third review by eye of the published build (no candidate exists)
 
 Owner: "do 32 more of each". Rows not reviewed before, seed 49 (`analysis/done_audit/v47_sheets_round3.py`):
 
