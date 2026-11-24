@@ -20,6 +20,8 @@ ap.add_argument("--episodes", default="", help="JSON list of AndroidControl epis
 ap.add_argument("--model", default="Qwen/Qwen3-VL-8B-Instruct")
 ap.add_argument("--rev", default="0c351dd01ed87e9c1b53cbc748cba10e6187ff3b")
 ap.add_argument("--bs", type=int, default=16)
+ap.add_argument("--strict_from", default="", help="stage 2: re-judge only the rows this verdicts file calls NOT_COMPLETE, "
+                "with the strict prompt (CONTRADICTS / NO_PROOF)")
 a = ap.parse_args()
 
 PROMPT = """You check whether a phone task is finished, using ONLY this screenshot.
@@ -31,8 +33,23 @@ PENDING - the screen is still loading, processing or in progress.
 UNSURE - this screenshot cannot show whether the task is done.
 On the second line give a one-sentence reason."""
 LABELS = ("NOT_COMPLETE", "COMPLETE", "PENDING", "UNSURE")
+STRICT = """You check a phone task using ONLY this screenshot.
+Task: {goal}
+Does something VISIBLE on this screenshot show that the task was NOT done? For example: a different item, value, date,
+time or setting than the task asks for is shown; an error message; the screen where the result would appear shows it
+missing; the task's text is typed but obviously not submitted.
+Reply with exactly one word on the first line:
+CONTRADICTS - something visible shows the task is not done.
+NO_PROOF - nothing visible contradicts it; the screenshot just does not prove it (the effect is elsewhere, already
+happened, or is not shown on this screen).
+On the second line give a one-sentence reason."""
+STRICT_LABELS = ("CONTRADICTS", "NO_PROOF")
 
 rows = pq.read_table(a.data).to_pylist()
+if a.strict_from:
+    flagged = {(x["source"], str(x["episode_id"]), int(x["step_idx"])) for x in map(json.loads, open(a.strict_from)) if x["verdict"] == "NOT_COMPLETE"}
+    rows = [r for r in rows if (r["source"], str(r["episode_id"]), int(r["step_idx"])) in flagged]
+    PROMPT, LABELS = STRICT, STRICT_LABELS
 if a.episodes:
     keep = set(json.load(open(a.episodes)))
     rows = [r for r in rows if r["source"] == "androidcontrol" and str(r["episode_id"]) in keep]

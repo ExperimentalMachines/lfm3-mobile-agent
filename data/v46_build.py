@@ -71,13 +71,23 @@ def _pairs_worker(job):
     return out
 
 
+def position(user):
+    """0-based position of a row in its episode = absolute number of its last history line (0 when there is none).
+    GUI-Odyssey and AMEX step numbers are not positions (AMEX counts from 1; merged keyboard steps leave gaps), so
+    screens are paired by position: history line j (step at position j-1) is compared with positions j-1 and j."""
+    nums = [int(m.group(1)) for m in map(LINE.match, HB.search(user).group(2).split("\n")) if m]
+    return nums[-1] if nums else 0
+
+
 def change_map(sources, workers):
-    """sources: [(key, dataset, tag_fn)] -> {(tag, ep, step): changed between step and step+1}"""
+    """sources: [(key, dataset, tag_fn, positional)] -> {(tag, ep, position): screen changed between position and +1}.
+    positional=False keys by step_idx (only for AndroidControl's stage rows, whose step numbers are positions)."""
     jobs = []
-    for key, ds, tag_fn in sources:
+    for key, ds, tag_fn, positional in sources:
         _DS[key] = ds.cast_column("images", Sequence(HFImage(decode=False))).select_columns(["images"])
         eps = defaultdict(dict)
-        for i, (src, e, s) in enumerate(zip(ds["source"], ds["episode_id"], ds["step_idx"])):
+        pos = [position(m[1]["content"]) for m in ds["messages"]] if positional else [int(s) for s in ds["step_idx"]]
+        for i, (src, e, s) in enumerate(zip(ds["source"], ds["episode_id"], pos)):
             eps[(tag_fn(src), base_ep(e))].setdefault(int(s), i)
         for (tag, ep), d in eps.items():
             jobs.append((key, tag, ep, sorted(d.items())))
@@ -152,11 +162,11 @@ def main():
     ST["train_in"] = len(train)
 
     # ---- 1. change map (AndroidControl train screens from the stage, test screens tagged separately)
-    srcs = [("ac_stage", ac_stage, lambda s: "androidcontrol"),
-            ("train", train.filter(lambda s: s != "androidcontrol" and s != "screenqa", input_columns="source"), tag_of),
-            ("test", gates["test_ac_high"], lambda s: "ac_test"),
-            ("al", gates["dev_androidlens_high"], lambda s: "androidlens"),
-            ("dm", gates["dev_memgui"], lambda s: "memgui")]
+    srcs = [("ac_stage", ac_stage, lambda s: "androidcontrol", False),
+            ("train", train.filter(lambda s: s != "androidcontrol" and s != "screenqa", input_columns="source"), tag_of, True),
+            ("test", gates["test_ac_high"], lambda s: "ac_test", True),
+            ("al", gates["dev_androidlens_high"], lambda s: "androidlens", True),
+            ("dm", gates["dev_memgui"], lambda s: "memgui", True)]
     cmap = change_map(srcs, a.workers)
     ST["change_pairs"] = len(cmap)
     ST["change_pairs_unchanged"] = sum(1 for v in cmap.values() if not v)

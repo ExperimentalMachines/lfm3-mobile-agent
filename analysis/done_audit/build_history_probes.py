@@ -6,6 +6,7 @@ format (MobileAgent-SFT-v4.5 test_ac_high: 24-step history + notes), build rows 
   C2  hist_cut    terminal rows (finished screen), history with its last 2 steps removed     (screen says done)
   C3  stale       terminal rows' full history, but the screenshot BEFORE the last action (the last action "did not
                   take effect", as in the AndroidWorld false completes)                       (expected: not status)
+  C3n stale_note  C3 with " [no visible change]" on that last step (what the run-time note adds)
   T   term        terminal rows, unchanged                                                     (expected: status)
 
 A model that judges completion from the screen says `status` on T and C2 and not on C0, C1, C3. A model that copies
@@ -53,7 +54,8 @@ def hist(r):
     return HB.search(r["messages"][1]["content"]).group(2)
 
 
-out = {"C0_base": [], "C1_hist_done": [], "C2_hist_cut": [], "C3_stale": [], "T_term": []}
+out = {"C0_base": [], "C1_hist_done": [], "C2_hist_cut": [], "C3_stale": [], "C3n_stale_note": [], "T_term": []}
+NOTE = " [no visible change]"
 eps = sorted(term)
 rnd.shuffle(eps)
 for e in eps:
@@ -71,12 +73,17 @@ for e in eps:
     # C3 only where the last real action changes the screen (not a trailing scroll / wait no-op)
     if last_type not in ("scroll", "wait") and len(out["C3_stale"]) < a.n:
         out["C3_stale"].append(with_hist(tr, "\n".join(th), img=d[T - 1]["images"], tag="C3_stale", note=last_type))
+        thn = th[:-1] + [th[-1] if th[-1].endswith(NOTE) else th[-1] + NOTE]
+        out["C3n_stale_note"].append(with_hist(tr, "\n".join(thn), img=d[T - 1]["images"], tag="C3n_stale_note", note=last_type))
     cand = [s for s in d if not d[s]["is_terminal"] and T - s >= 2]
     if cand and len(out["C0_base"]) < a.n:
         s = rnd.choice(cand)
         out["C0_base"].append(dict(d[s], probe="C0_base", probe_note=str(T - s)))
         out["C1_hist_done"].append(with_hist(d[s], "\n".join(th), tag="C1_hist_done", note=str(T - s)))
 os.makedirs(a.out, exist_ok=True)
+from datasets import Dataset, Image, Sequence, Value  # written with datasets so the Image type survives in the parquet
 for k, v in out.items():
-    pq.write_table(pa.Table.from_pylist(v), os.path.join(a.out, f"{k}.parquet"))
+    ds = Dataset.from_list(v)
+    ds = ds.cast_column("images", Sequence(Image()))
+    ds.to_parquet(os.path.join(a.out, f"probe_{k}.parquet"))
     print(k, len(v))

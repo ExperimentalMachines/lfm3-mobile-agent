@@ -91,3 +91,40 @@ If E fails the offline gate: round 8 is reported as negative; E published as not
 ---
 
 ## Log
+
+### 2026-11-24 23:40 Asia/Manila — data-construction changes before any candidate (no candidate exists)
+
+**1. Judge rule: two stages.** Stage 1 (Qwen3-VL-8B) called 4,677 of 13,170 AndroidControl and 416 of 475 MemGUI
+`status` rows NOT_COMPLETE (plus 67 PENDING, 3 UNSURE). Its reasons show many are "the screen does not prove it"
+(a share or logout leaves no trace on the final screen), not "the screen shows it is not done". Dropping all would
+remove a third of the `complete` labels. New rule:
+- **Drop** a `status` row only if stage 1 says NOT_COMPLETE **and** stage 2 says CONTRADICTS. Stage 2 is
+  Qwen/Qwen3-VL-32B-Instruct @ `0cfaf481`, asked whether something *visible* shows the task not done (CONTRADICTS) or
+  the screen merely lacks proof (NO_PROOF).
+- **PENDING** rows are relabelled `wait`, as before.
+- On the four flagged hand-reviewed rows stage 2 agreed with the hand review on two. Its CONTRADICTS calls are
+  spot-checked by eye before the build uses them (result logged).
+
+**2. Notes are paired by position, not step number** (found while checking the build). GUI-Odyssey and AMEX step
+numbers are not positions: AMEX counts from 1, and merged keyboard steps leave gaps.
+
+| Source | Rows whose step number differs from their position | Effect in v4.5 |
+|---|---|---|
+| AMEX | all 21,925 | Round 6's notes, which keyed screens by step number, were attached to the wrong action |
+| GUI-Odyssey | 11,810 | Wrong after a merged keyboard step |
+
+v4.6 keys screens by the row's position (its last history line number), and leaves a line without a note when
+either screen is missing.
+
+**3. Reported, not gated: MobileJudgeBench** (WesleyWzq/MobileJudgeBench @ `2170e51c`, CC BY 4.0). Other agents' real
+runs on SPA-Bench, A3, AndroidArena and B-MoCA (AndroidWorld and AndroidLab parts not downloaded), with human success
+labels: 648 runs, 376 successes. Of the 482 runs where the agent itself said done, humans judge 131 failures. One row
+per run at the moment that agent decided (`analysis/done_audit/mjb_build.py`); the share where the model says `status`:
+
+| | v4 | D |
+|---|---|---|
+| Human success (376) | 65.4% | 78.7% |
+| Human failure (272) | 33.8% | 48.5% |
+| **Agent said done, humans say failed (131)** | **45.0%** | **60.3%** |
+
+E is measured the same way (its own format).

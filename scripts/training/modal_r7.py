@@ -30,6 +30,10 @@ FILES = {
     "scripts/training/vm_r7_smoke.sh": "/content/work/vm_r7_smoke.sh",
     "scripts/publish/vm_publish_public.py": "/content/work/vm_publish_public.py",
     "analysis/done_audit/judge_terminal.py": "/content/work/judge_terminal.py",
+    "scripts/training/vm_r8_train.sh": "/content/work/vm_r8_train.sh",
+    "scripts/training/vm_r8_eval.sh": "/content/work/vm_r8_eval.sh",
+    "scripts/training/vm_r8_smoke.sh": "/content/work/vm_r8_smoke.sh",
+    "scripts/training/sm_r8_gate.py": "/content/work/sm_r8_gate.py",
     "scripts/publish/cards/v4.5-D.md": "/content/work/meta/card-v4.5-D.md",
     "data/meta/androidcontrol_test_gt.jsonl": "/content/work/meta/androidcontrol_test_gt.jsonl",
     "data/meta/androidcontrol_test_gt.manifest.json": "/content/work/meta/androidcontrol_test_gt.manifest.json",
@@ -49,7 +53,7 @@ VOL = modal.Volume.from_name("lfm3-r7", create_if_missing=True)
 V4_REV = "f2a44507613f751b939fabdbd789e13aec2d10e3"  # experimentalmachines/LFM3-VL-2B-MobileAgent-v4
 
 
-def _run(script: str, sub: str) -> int:
+def _run(script: str, sub: str, env: dict | None = None) -> int:
     """Run a /content/work script with /content/runs and /content/eval on the volume (under /vol/<sub>), so a
     restarted function keeps its local checkpoints and finished evals; stream and keep the log."""
     for d in (f"/vol/{sub}/runs", f"/vol/{sub}/eval", "/content/data"):
@@ -60,7 +64,7 @@ def _run(script: str, sub: str) -> int:
     with open("/content/.hf_token", "w") as f:
         f.write(os.environ["HF_TOKEN"])
     p = subprocess.Popen(["bash", f"/content/work/{script}"], cwd="/content/work", stdout=subprocess.PIPE,
-                         stderr=subprocess.STDOUT, text=True)
+                         stderr=subprocess.STDOUT, text=True, env=dict(os.environ, **(env or {})))
     with open(f"/vol/{sub}/modal.log", "a") as log:
         for line in p.stdout:
             print(line, end="", flush=True)
@@ -156,3 +160,71 @@ def judge_fn(calibrate: bool) -> int:
 @app.local_entrypoint()
 def judge(calibrate: bool = True):
     print("rc", judge_fn.remote(calibrate))
+
+
+# ---------------------------------------------------------------- round 8 / v4.6, candidate E (docs/PREREG_v46.md)
+R8_ENV = {"DREV": os.environ.get("R8_DREV", ""), "MAX_STEPS": os.environ.get("R8_MAX_STEPS", "")}
+
+
+@app.function(timeout=24 * 3600, **SPEC)
+def run_e(env: dict) -> int:
+    return _run("vm_r8_train.sh", "e", env)
+
+
+@app.function(timeout=2 * 3600, **SPEC)
+def run_smoke_e(env: dict) -> int:
+    return _run("vm_r8_smoke.sh", "smoke8", env)
+
+
+@app.local_entrypoint()
+def smoke_e():
+    assert R8_ENV["DREV"], "set R8_DREV"
+    print("rc", run_smoke_e.remote(R8_ENV))
+
+
+@app.local_entrypoint()
+def train_e():
+    assert R8_ENV["DREV"] and R8_ENV["MAX_STEPS"], "set R8_DREV and R8_MAX_STEPS"
+    print("rc", run_e.remote(R8_ENV))
+
+
+@app.function(timeout=2 * 3600, **SPEC)
+def mjb_fn(which: str, fmt: str, model_path: str = "") -> int:
+    """MobileJudgeBench done-judgement eval (analysis/done_audit/mjb_build.py): /vol/mjb/data/<fmt> -> /vol/mjb/out/<which>.jsonl"""
+    with open("/content/.hf_token", "w") as f:
+        f.write(os.environ["HF_TOKEN"])
+    model = model_path
+    if which == "v4":
+        from huggingface_hub import snapshot_download
+        model = snapshot_download("experimentalmachines/LFM3-VL-2B-MobileAgent-v4", revision=V4_REV, local_dir="/content/models/v4",
+                                  ignore_patterns=["lora_adapter/*", "training_logs/*", "eval/*", "*.gguf"])
+    os.makedirs("/vol/mjb/out", exist_ok=True)
+    out = f"/vol/mjb/out/{which}.jsonl"
+    rc = subprocess.run(["python", "/content/work/generate.py", "--model", model, "--data", f"/vol/mjb/data/{fmt}", "--out", out,
+                         "--enable_thinking", "1", "--bs", "32", "--max_pixels", "774400"], cwd="/content/work").returncode
+    VOL.commit()
+    return rc
+
+
+@app.local_entrypoint()
+def mjb():
+    print("rc", list(mjb_fn.starmap([("v4", "v4", ""), ("d", "d", "/vol/d/runs/r7d/merged")])))
+
+
+
+@app.function(timeout=8 * 3600, **SPEC)
+def judge2_fn(calibrate: bool) -> int:
+    """Stage-2 strict judge (Qwen3-VL-32B) on the rows stage 1 called NOT_COMPLETE (analysis/done_audit/judge_terminal.py)."""
+    args = ["python", "/content/work/judge_terminal.py", "/vol/judge/r8_terminal.parquet",
+            "/vol/judge/calibration2.jsonl" if calibrate else "/vol/judge/verdicts2.jsonl", "--strict_from", "/vol/judge/verdicts.jsonl",
+            "--model", "Qwen/Qwen3-VL-32B-Instruct", "--rev", "0cfaf48183f594c314753d30a4c4974bc75f3ccb", "--bs", "8"]
+    if calibrate:
+        args += ["--episodes", "/vol/judge/calibration_ids.json"]
+    rc = subprocess.run(args, cwd="/content/work").returncode
+    VOL.commit()
+    return rc
+
+
+@app.local_entrypoint()
+def judge2(calibrate: bool = True):
+    print("rc", judge2_fn.remote(calibrate))
