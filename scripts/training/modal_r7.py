@@ -28,6 +28,8 @@ FILES = {
     "scripts/training/vm_r7_train.sh": "/content/work/vm_r7_train.sh",
     "scripts/training/vm_r7_eval.sh": "/content/work/vm_r7_eval.sh",
     "scripts/training/vm_r7_smoke.sh": "/content/work/vm_r7_smoke.sh",
+    "scripts/publish/vm_publish_public.py": "/content/work/vm_publish_public.py",
+    "scripts/publish/cards/v4.5-D.md": "/content/work/meta/card-v4.5-D.md",
     "data/meta/androidcontrol_test_gt.jsonl": "/content/work/meta/androidcontrol_test_gt.jsonl",
     "data/meta/androidcontrol_test_gt.manifest.json": "/content/work/meta/androidcontrol_test_gt.manifest.json",
 }
@@ -88,3 +90,17 @@ def smoke():
 @app.local_entrypoint()
 def main():
     print("rc", run_d.remote())
+
+
+@app.function(timeout=2 * 3600, cpu=4, memory=16384, secrets=[modal.Secret.from_name("hf-lfm3-android")], volumes={"/vol": VOL})
+def publish_d() -> int:
+    """Public, not promoted: merged weights, LoRA adapter, training logs, LICENSE and card (vm_publish_public.py)."""
+    if not os.path.exists("/content/runs"):
+        os.symlink("/vol/d/runs", "/content/runs")
+    return subprocess.run(["python", "/content/work/vm_publish_public.py", "--runs", "r7d:LFM3-VL-2B-MobileAgent-v4.5-D",
+                           "--cards", "/content/work/meta"], cwd="/content/work").returncode
+
+
+@app.local_entrypoint()
+def publish():
+    print("rc", publish_d.remote())
