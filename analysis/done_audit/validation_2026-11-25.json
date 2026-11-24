@@ -1,0 +1,8 @@
+{
+ "about": "Visual validation of the v4.6 relabelling by eye (2026-11-25), after E started training. Samples from MobileAgent-SFT-v4.6 @ 0ace5559 train shards 3 and 21 and the AndroidControl test split.",
+ "counterfactual_rows": {"n": 9, "correct": 9, "notes": "stale x3: the pending step is still on screen (Move button, Remove dialog, Delete menu) and the label redoes it; ahead x3: the label is the action the shown screen needs; short x3: the final screen shows the goal done (filters applied, alarm sound set, font 113%)"},
+ "new_rule_unchanged_pairs": {"n": 8, "truly_unchanged": 8, "notes": "all 0.0000% changed pixels; 76 of 8,444 non-wait AndroidControl test pairs are flagged unchanged"},
+ "wait_intent_relabels": {"n": 10, "intent_fits": 6, "wait_on_fully_loaded_screen": 4, "notes": "the intent now matches the action; 4 waits sit on loaded screens where a real next action was obvious: an AndroidControl action-label problem, not fixed in v4.6 (round 9: tied to the looping failure)"},
+ "judges": "see manual_terminal_review.json (stage 1: 21/24 agreement) and contradicts_review.json (stage 2: about 6 right / 7 wrong / 3 ambiguous of 16)",
+ "not_checked": ["Aguvis intent wording for GUI-Odyssey/AMEX (alignment proven by coordinates only)", "the 2,688 kept NO_PROOF / stage-2 rows"]
+}
