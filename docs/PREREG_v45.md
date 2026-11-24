@@ -189,3 +189,22 @@ At those 114 steps the human scrolled (57) or clicked (41); they lie 2 (37), 3 (
 before the end.
 
 **Decision under the rule:** D does not go online; round 7 is negative. D's weights are published as not promoted.
+
+### 2026-11-25 00:40 Asia/Manila — D on AndroidWorld seed 30 (owner-requested exception, outside the rule)
+
+D failed its offline gate, so under the rule it does not go online. The owner asked for the run anyway ("Do both"):
+`scripts/androidworld/local_v41_dev_aw.sh T`, v4's seed-30 harness plus `--history_steps=24 --nochange_notes=true`
+(round 6's coarse note rule, as D was trained), Q4_K_M GGUF.
+
+| | v4 | D |
+|---|---|---|
+| Successes / 116 | 18 | 21 |
+| Exceptions | 4 | 0 |
+| False `complete` | 25 | 26 |
+| Paired vs v4 | — | +9 / −6, net +3 (McNemar p 0.61; noise yardstick R = 9) |
+
+- D's large offline gains (AndroidControl 0.753, AndroidLens steps ≥ 10 0.471) did not show online beyond noise.
+- False completes did not change, as the history probes predicted (round 8, `docs/PREREG_v46.md`).
+- 4 of D's 6 losses are question tasks (`NotesMeetingAttendeeCount`, `NotesTodoItemCount`, `SimpleCalendarAnyEventsOnDate`,
+  `SimpleCalendarEventsOnDate`).
+- Run: `results/androidworld/lfm3vl2b_v45d/`.
