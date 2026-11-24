@@ -38,7 +38,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  max_pixels: int = af.MAX_PIXELS, max_tokens: int = 512,
                  temperature: float = 0.0, wait_after_action: float = 1.0,
                  max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False,
-                 prompt_version: str = "v1", guards: bool = False):
+                 prompt_version: str = "v1", guards: bool = False, history_steps: int = af.HISTORY_STEPS,
+                 nochange_notes: bool = False):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -53,6 +54,9 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         # runtime_feedback (opt-in, default off = the reported baseline harness): resolve open_app names against
         # installed apps lexically and annotate failed / no-visible-change actions in the action history.
         self.runtime_feedback = runtime_feedback
+        # round 7 (PREREG_v45, opt-in): the text-history window and the no-visible-change note alone, as D was trained
+        self.history_steps = history_steps
+        self.nochange_notes = nochange_notes
         self._labels = None
         self._prev_small = None
         self._prev_type = None
@@ -83,7 +87,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             assert self.apps, "installed-app list is empty"
 
     def _query(self, goal: str, img: Image.Image, extra_messages=None, **overrides) -> dict:
-        text = af.user_text(goal, self.history, apps=self.apps if self.prompt_version == "v4" else None)
+        text = af.user_text(goal, self.history, apps=self.apps if self.prompt_version == "v4" else None,
+                            history_steps=self.history_steps)
         payload = {
             "model": self.model,
             "messages": [
@@ -117,7 +122,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         H, W = pixels.shape[:2]
         img = af.resize_screenshot(Image.fromarray(pixels), self.max_pixels)
         small = np.asarray(Image.fromarray(pixels).convert("L").resize((72, 160)), dtype=np.float32)
-        if (self.runtime_feedback and self.history and self._prev_small is not None
+        if ((self.runtime_feedback or self.nochange_notes) and self.history and self._prev_small is not None
                 and self._prev_type not in ("wait", "status", "answer", None)
                 and float(np.abs(small - self._prev_small).mean()) < 1.0):
             i, a = self.history[-1]

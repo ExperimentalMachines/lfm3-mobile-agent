@@ -1,0 +1,28 @@
+{
+ "ac_high": 0.7272619611558503,
+ "terminal_complete": 0.7154893065456902,
+ "dev_answer": 0.8897058823529411,
+ "dev_complete": 0.7625,
+ "dev_memgui": 0.4212812160694897,
+ "ac_late_status": 0.08975195822454309,
+ "androidlens_step": 0.4139,
+ "androidlens_step_10plus": 0.36657059415911386,
+ "androidlens_early_status": 0.0021,
+ "androidlens_terminal": {
+  "n": 172,
+  "acc": 0.1221,
+  "acc_status_only": 0.1221,
+  "pred_type_hist": {
+   "click": 89,
+   "navigate_home": 36,
+   "status": 21,
+   "scroll": 12,
+   "wait": 9,
+   "navigate_back": 3,
+   "open_app": 1,
+   "long_press": 1
+  }
+ },
+ "ac_early_status_2plus": 0.027387335168816113,
+ "source": "round 6 V4REF (results/v44_dev/lfm3_v4ref_*; v4 merged weights, Transformers bf16, generate.py, its own 8-step prompt); ac_early_status_2plus computed from lfm3_v4ref_test_ac_high.jsonl"
+}

@@ -80,8 +80,71 @@ p.add_argument("--workers", type=int, default=30)
 p.add_argument("--seed", type=int, default=0)
 p.add_argument("--max_pixels", type=int, default=af.MAX_PIXELS)
 p.add_argument("--repo", default="experimentalmachines/AndroidAgent-SFT-v2")
+# Round 7 / v4.5 switches (docs/PREREG_v45.md). Defaults reproduce the v2 build exactly.
+p.add_argument("--history_steps", type=int, default=8, help="text-history window (agent_format.HISTORY_STEPS)")
+p.add_argument("--ac_n", type=int, default=50000, help="AndroidControl high-level non-terminal rows")
+p.add_argument("--ac_terminal_n", type=int, default=6000)
+p.add_argument("--odyssey_n", type=int, default=10000)
+p.add_argument("--amex_n", type=int, default=8000)
+p.add_argument("--per_episode", type=int, default=3, help="GUI-Odyssey / AMEX train rows per episode")
+p.add_argument("--aguvis_dir", default="", help="xlangai/aguvis-stage2 amex-l2.json + gui-odyssey-l2.json: fill blank "
+               "intents with Aguvis' GPT-4o step instruction when intent_consistent() accepts it, then v3's templates")
+p.add_argument("--no_amex_quotas", action="store_true",
+               help="AMEX: no keyboard_enter / input_text quotas (in v2 a quota is also a ceiling: 1,000 input_text rows)")
+p.add_argument("--drop_blank_click_targets", action="store_true",
+               help="click/long_press rows whose intent is still blank are not training targets (they stay in history)")
 args = p.parse_args()
 os.makedirs(args.out, exist_ok=True)
+af.HISTORY_STEPS = args.history_steps  # read at render time by agent_format.history_text
+
+# v3's deterministic intents for non-click actions (data/vm_v3_intents.py TEMPL, copied verbatim)
+TEMPL = {
+    "scroll": lambda x: {"down": "Scroll down to see more content.", "up": "Scroll up to see the content above.",
+                         "left": "Swipe left to see more.", "right": "Swipe right to see more."}[x["direction"]],
+    "input_text": lambda x: f"Type '{x['text'].strip()[:60]}' into the text field.",
+    "navigate_back": lambda x: "Go back to the previous screen.",
+    "navigate_home": lambda x: "Go to the home screen.",
+    "keyboard_enter": lambda x: "Press enter to submit.",
+    "wait": lambda x: "Wait for the screen to finish loading.",
+    "open_app": lambda x: f"Open the {x['app_name']} app.",
+}
+_AGUVIS = {}
+
+
+def aguvis(source, image_name):
+    """Aguvis stage-2 L2 'Action:' line for a screenshot file name (lazy-loaded), or ''."""
+    if not args.aguvis_dir:
+        return ""
+    fn = {"amex": "amex-l2.json", "odyssey": "gui-odyssey-l2.json"}[source]
+    if source not in _AGUVIS:
+        m = {}
+        for e in json.load(open(os.path.join(args.aguvis_dir, fn))):
+            txt = next((c["value"] for c in e["conversations"] if c.get("from") == "gpt" and c.get("recipient") == "all"), "")
+            hit = re.search(r"^Action:\s*(.+?)\s*$", txt, re.M)
+            if hit and isinstance(e["image"], str):  # 1 AMEX entry lists two screenshots: skipped
+                m[os.path.basename(e["image"])] = hit.group(1)
+        _AGUVIS[source] = m
+        print(f"aguvis {source}: {len(m)} step instructions", flush=True)
+    return _AGUVIS[source].get(image_name, "")
+
+
+def fill_intent(source, act, image_name, st):
+    """Blank intent -> Aguvis instruction (if consistent with the recorded action) -> v3 template -> ''."""
+    if not args.aguvis_dir:
+        return ""
+    g = aguvis(source, image_name)
+    if g and intent_consistent(act, g):
+        st["intent_aguvis"] += 1
+        return g
+    if act["action_type"] in TEMPL:
+        st["intent_template"] += 1
+        return TEMPL[act["action_type"]](act)
+    st["intent_still_blank"] += 1
+    return ""
+
+
+def keep_target(r):
+    return not (args.drop_blank_click_targets and not r["intent"] and r["action"]["action_type"] in ("click", "long_press"))
 
 
 def is_aw(*names):
@@ -263,7 +326,10 @@ def materialize(rows, name, st):
                         "gt_action": json.dumps(act, ensure_ascii=False), "is_terminal": r["is_terminal"],
                         "orig_w": info[0], "orig_h": info[1], "img_sha": hashlib.sha256(jpg).hexdigest()})
     out.sort(key=lambda x: (x["episode_id"], x["step_idx"]))
-    Dataset.from_list(out, features=feats).save_to_disk(os.path.join(args.out, name))
+    # built in chunks: one Arrow binary array holds at most 2 GB of image bytes (round 7's uncapped stages exceed it)
+    from datasets import concatenate_datasets
+    parts = [Dataset.from_list(out[i:i + 4000], features=feats) for i in range(0, len(out), 4000)]
+    (concatenate_datasets(parts) if parts else Dataset.from_list([], features=feats)).save_to_disk(os.path.join(args.out, name))
     st[f"{name}_rows"] = len(out)
     st[f"{name}_actions"] = dict(Counter(json.loads(x["gt_action"])["action_type"] for x in out))
     return len(out)
@@ -386,6 +452,8 @@ def odyssey():
             intent = instr if intent_consistent(act, instr) else ""
             st["intent_kept" if intent else "intent_blanked_inconsistent"] += 1
             name = os.path.basename(s["screenshot"])
+            if not intent and not term:
+                intent = fill_intent("odyssey", act, name, st)
             if name not in members:
                 st["drop_row_missing_image"] += 1
                 break
@@ -400,7 +468,10 @@ def odyssey():
     st["candidates_train"], st["candidates_dev"] = len(tr), len(pools["dev_odyssey"])
     save_stats("odyssey", st)
     assert tr and pools["dev_odyssey"], "no Odyssey candidates"
-    chosen = sample_rows(tr, 10000, rng, per_episode=3)
+    n_tr = len(tr)
+    tr = [r for r in tr if keep_target(r)]  # shuffle order below depends on len(tr) only when nothing is dropped
+    st["drop_target_blank_click"] = n_tr - len(tr)
+    chosen = sample_rows(tr, args.odyssey_n, rng, per_episode=args.per_episode)
     dev = sample_rows(pools["dev_odyssey"], 1000, rng, per_episode=1)
     materialize(chosen, "odyssey_train", st)
     materialize(dev, "odyssey_dev", st)
@@ -432,7 +503,7 @@ def amex():
         sp = "dev_amex" if h01(eid) < 0.05 else "train"
         goal = (d.get("instruction") or "").strip()
         history, prev, last_kept = [], None, None
-        for s in steps:
+        for pos, s in enumerate(steps):
             a = s["action"]
             W, H = s["device_dim"]
             tx, ty = s["touch_coord"]
@@ -487,13 +558,18 @@ def amex():
                 st["drop_row_missing_image"] += 1
                 break
             term = act["action_type"] == "status"
+            if not term:  # Aguvis names AMEX screens "<episode_id>step<k>.png", k = position in the sorted steps
+                intent = fill_intent("amex", act, f"{eid}step{pos}.png", st)
             pools[sp].append(row("amex", sp, eid, s["step_id"], goal, history, act, intent,
                                  ("zip", zpath, members[name]), terminal=term, dev_portrait=H > W))
             history = history + [(intent if not term else "", af.action_to_str(act))]
             prev, last_kept = a, act["action_type"]
     rng = random.Random(args.seed + 1)
     st["candidates_train"], st["candidates_dev"] = len(pools["train"]), len(pools["dev_amex"])
-    chosen = sample_rows(pools["train"], 8000, rng, per_episode=3, quotas=[
+    n_tr = len(pools["train"])
+    pools["train"] = [r for r in pools["train"] if keep_target(r)]
+    st["drop_target_blank_click"] = n_tr - len(pools["train"])
+    chosen = sample_rows(pools["train"], args.amex_n, rng, per_episode=args.per_episode, quotas=None if args.no_amex_quotas else [
         (lambda r: r["action"]["action_type"] == "keyboard_enter", 500),
         (lambda r: r["action"]["action_type"] == "input_text", 1000)])
     dev = sample_rows(pools["dev_amex"], 500, rng, per_episode=4)
@@ -600,7 +676,7 @@ def ac():
     te = [i for i, (m, t) in enumerate(zip(meta["mode"], meta["is_terminal"])) if t and ok_ep[i] and portrait[i]]
     st["v1_high_nonterminal"], st["v1_terminal"] = len(hi), len(te)
     rng = random.Random(args.seed + 3)
-    pick = sorted(rng.sample(hi, min(50000, len(hi))) + rng.sample(te, min(6000, len(te))))
+    pick = sorted(rng.sample(hi, min(args.ac_n, len(hi))) + rng.sample(te, min(args.ac_terminal_n, len(te))))
     sub = ds.select(pick)
     sub = sub.map(lambda e: {"source": "androidcontrol", "split": "train", "episode_id": str(e["episode_id"])},
                   remove_columns=[c for c in sub.column_names if c not in

@@ -1336,7 +1336,14 @@ def main():
     p.add_argument("--workers", type=int, default=6)
     p.add_argument("--delete_volumes", action="store_true", help="extract: delete each volume once fully used")
     p.add_argument("--drop_jpeg", action="store_true", help="cleanup: also delete the JPEG cache")
+    p.add_argument("--history_steps", type=int, default=af.HISTORY_STEPS,
+                   help="round 7 (PREREG_v45): text-history window; build writes to --out")
+    p.add_argument("--out", default=None, help="build: output folder (default data/v44work/memgui_out)")
     a = p.parse_args()
+    global OUT, STATS
+    af.HISTORY_STEPS = a.history_steps
+    if a.out:
+        OUT, STATS = a.out, os.path.join(a.out, "memgui_stats.json")
     {"download": stage_download, "plan": stage_plan, "extract": lambda: stage_extract(a.workers, a.delete_volumes), "build": stage_build,
      "checks": stage_checks,
      "verify": stage_verify, "cleanup": lambda: stage_cleanup(a.drop_jpeg)}[a.stage]()

@@ -1,0 +1,24 @@
+[05:20:30] speed: hardware: 12 CPUs, 83 GB RAM, NVIDIA A100-SXM4-40GB, 40960 MiB
+[05:20:30] speed: download 2 of 16 v4 train shards @ 337553984ee970a767dceb21adc6343f3d613602 and keep 4,000 rows
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files:  50%|█████     | 1/2 [00:06<00:06,  6.21s/it]Fetching 2 files: 100%|██████████| 2/2 [00:09<00:00,  4.42s/it]Fetching 2 files: 100%|██████████| 2/2 [00:09<00:00,  4.69s/it]
+Generating x split: 0 examples [00:00, ? examples/s]Generating x split: 1032 examples [00:00, 2531.41 examples/s]Generating x split: 2064 examples [00:00, 4084.04 examples/s]Generating x split: 3096 examples [00:00, 5029.80 examples/s]Generating x split: 4128 examples [00:00, 5670.19 examples/s]Generating x split: 6836 examples [00:01, 4959.01 examples/s]Generating x split: 7868 examples [00:01, 5165.92 examples/s]Generating x split: 8900 examples [00:01, 5375.73 examples/s]Generating x split: 9932 examples [00:01, 5724.70 examples/s]Generating x split: 11499 examples [00:02, 6941.74 examples/s]Generating x split: 11499 examples [00:02, 5538.68 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/4000 [00:00<?, ? examples/s]Saving the dataset (0/1 shards):  25%|██▌       | 1000/4000 [00:00<00:00, 4128.06 examples/s]Saving the dataset (0/1 shards):  50%|█████     | 2000/4000 [00:00<00:00, 4232.78 examples/s]Saving the dataset (0/1 shards):  75%|███████▌  | 3000/4000 [00:00<00:00, 4477.54 examples/s]Saving the dataset (0/1 shards): 100%|██████████| 4000/4000 [00:00<00:00, 4507.68 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 4000/4000 [00:00<00:00, 4507.68 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 4000/4000 [00:00<00:00, 4412.42 examples/s]
+rows 11499
+[05:20:46] speed: base: start (--bs 8 --grad_accum 4 --workers 10)
+[05:25:50] speed: base: exit 0 (5 log lines)
+[05:25:51] speed: nogc: start (--bs 8 --grad_accum 4 --workers 10 --no_gc)
+[05:26:23] speed: nogc: exit 1 ( log lines)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 160.00 MiB. GPU 0 has a total capacity of 39.49 GiB of which 159.44 MiB is free. Including non-PyTorch memory, this process has 39.32 GiB memory in use. Of the allocated memory 38.19 GiB is allocated by PyTorch, and 643.00 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+  0%|          | 0/30 [00:06<?, ?it/s]
+[05:26:23] speed: bs16: start (--bs 16 --grad_accum 2 --workers 10 --no_gc)
+[05:26:58] speed: bs16: exit 1 ( log lines)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/functional.py", line 1497, in dropout
+    _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)
+                                                     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 170.00 MiB. GPU 0 has a total capacity of 39.49 GiB of which 59.44 MiB is free. Including non-PyTorch memory, this process has 39.41 GiB memory in use. Of the allocated memory 38.47 GiB is allocated by PyTorch, and 452.34 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+  0%|          | 0/30 [00:09<?, ?it/s]
+SPEEDCHECK {"cpus": "12", "gpu": "NVIDIA A100-SXM4-40GB, 40960 MiB", "base": {"s_per_step": 7.57, "rows_per_s": 4.23, "peak_gpu_mem_gb": 10.7, "loss_step30": 0.49350337982177733, "gpu_util_mean": 92.2, "gpu_util_median": 100.0, "cpu_busy_mean": 14.5}, "nogc": {"error": "FileNotFoundError(2, 'No such file or directory')", "gpu_util_mean": 0, "gpu_util_median": 0.0, "cpu_busy_mean": 18.7}, "bs16": {"error": "FileNotFoundError(2, 'No such file or directory')", "gpu_util_mean": 14.2, "gpu_util_median": 0.5, "cpu_busy_mean": 23.3}}
+[05:26:58] speed: SPEEDCHECK DONE

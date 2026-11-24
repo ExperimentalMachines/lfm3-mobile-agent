@@ -83,11 +83,12 @@ def action_to_str(a: dict[str, Any]) -> str:
     return json.dumps(out, ensure_ascii=False, separators=(",", ":"))
 
 
-def history_text(history: list[tuple[str, str]]) -> str:
-    """history: list of (intent, action_json_str), oldest first."""
+def history_text(history: list[tuple[str, str]], history_steps: int | None = None) -> str:
+    """history: list of (intent, action_json_str), oldest first. Shows the last `history_steps` (default
+    HISTORY_STEPS = 8; round 7 / v4.5 models were trained with 24)."""
     if not history:
         return "None"
-    start = max(0, len(history) - HISTORY_STEPS)
+    start = max(0, len(history) - (HISTORY_STEPS if history_steps is None else history_steps))
     lines = []
     for i, (intent, act) in enumerate(history[start:], start=start + 1):
         lines.append(f"{i}. {intent} -> {act}" if intent else f"{i}. {act}")
@@ -99,9 +100,9 @@ def apps_line(apps: list[str]) -> str:
 
 
 def user_text(goal: str, history: list[tuple[str, str]], step_instruction: str | None = None,
-              apps: list[str] | None = None) -> str:
+              apps: list[str] | None = None, history_steps: int | None = None) -> str:
     """apps=None -> v1-v3 format (no app line); apps=[...] -> v4 format (app line right after the goal)."""
-    s = f"Goal: {goal}\n" + (apps_line(apps) + "\n" if apps is not None else "") + f"Previous steps:\n{history_text(history)}"
+    s = f"Goal: {goal}\n" + (apps_line(apps) + "\n" if apps is not None else "") + f"Previous steps:\n{history_text(history, history_steps)}"
     if step_instruction:
         s += f"\nCurrent step hint: {step_instruction}"
     return s + "\nWhat is the next action?"

@@ -382,7 +382,9 @@ def main():
     ap.add_argument("--no_sets", action="store_true", help="skip the run.py sets (PNG per step, ~2 GB)")
     ap.add_argument("--only_downloaded", action="store_true",
                     help="smoke builds only: keep episodes whose screenshots are all present (use a scratch --out/--stats)")
+    ap.add_argument("--history_steps", type=int, default=af.HISTORY_STEPS, help="round 7 (PREREG_v45): text-history window")
     a = ap.parse_args()
+    af.HISTORY_STEPS = a.history_steps
 
     if a.download:
         from huggingface_hub import HfApi, snapshot_download

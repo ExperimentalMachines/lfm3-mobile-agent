@@ -1,0 +1,22 @@
+{
+ "cpus": "12",
+ "gpu": "NVIDIA A100-SXM4-40GB, 40960 MiB",
+ "base": {
+  "s_per_step": 7.57,
+  "rows_per_s": 4.23,
+  "peak_gpu_mem_gb": 10.7,
+  "loss_step30": 0.49350337982177733,
+  "gpu_util_mean": 92.2,
+  "gpu_util_median": 100.0,
+  "cpu_busy_mean": 14.5
+ },
+ "bs4nogc": {
+  "s_per_step": 5.04,
+  "rows_per_s": 6.35,
+  "peak_gpu_mem_gb": 28.71,
+  "loss_step30": 0.4937507152557373,
+  "gpu_util_mean": 83.8,
+  "gpu_util_median": 98.0,
+  "cpu_busy_mean": 17.2
+ }
+}
