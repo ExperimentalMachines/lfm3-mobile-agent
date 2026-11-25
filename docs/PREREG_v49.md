@@ -96,3 +96,12 @@ experimentalmachines. **If not:** results are reported and nothing is published.
   every candidate's history from E's training split: **1,766 / 1,766 identical** to the text the judge saw, 0 missing.
 - Smoke job `lfm3-r11-et-smoke` (ml.g6e.2xlarge) submitted 20:12; SageMaker reports "waiting for capacity" (nothing
   billed while waiting).
+
+### 2026-11-26 00:52 Asia/Manila — hardware changed to L4 before any training (no candidate exists)
+
+- The L40S smoke job waited 4 h 40 min for capacity and was stopped (never started, nothing billed).
+- New hardware: **SageMaker ml.g6.2xlarge (1x L4, 24 GB)**, the hardware of round 9's measurements. Nothing else
+  changes: same data, recipe (32 rows per step, 1,000 steps), evals and gate.
+- Smoke micro-batches for 24 GB: **2 x 16 without gradient checkpointing** (round 9: 18.0 s/step, 21.1 GB peak) and
+  **4 x 8 with it**. The full run uses the faster one that fits.
+- Cost revised: about $1 for the smoke run; the full run is about 5 h of training plus the evals, about $9 at $1.22/h.
