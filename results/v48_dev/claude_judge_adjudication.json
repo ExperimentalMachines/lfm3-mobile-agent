@@ -1,0 +1,32 @@
+{
+ "what": "The 18 calibration cases where Claude Opus 5.5 disagreed with the by-eye label, re-read at full resolution (576x1280) with the full step history (the original by-eye labels came from review sheets at 220x489 with the last 2 history lines). Diagnostic only: it does not change the registered result (75/93, FAIL).",
+ "caveat": "The by-eye labels and this re-reading were made by the coding assistant (also a Claude model), not by a human; the judge and the reader are not independent.",
+ "classes": {
+  "label_wrong": "the screen or history clearly contradicts the by-eye label; the judge is right",
+  "strict_defensible": "the goal literally asks for more than was done; the judge's strict reading is defensible",
+  "judge_too_strict": "the goal's deliverable is visible (search / go through / show progress); the judge demands an extra step",
+  "ambiguous": "the goal does not say what 'done' means here; either answer is defensible"
+ },
+ "cases": [
+  {"case": "pair_missed_stop#759", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "label_wrong", "note": "Citymapper bus for November 9: departure still 'Leave: Now'"},
+  {"case": "pair_missed_stop#549", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "label_wrong", "note": "weather history asked; the 7-day forecast is shown"},
+  {"case": "ody_r1#28", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "label_wrong", "note": "multi-part: Spotify opened and left at once (steps 3-4); the album was never streamed"},
+  {"case": "ody_r1#7", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "strict_defensible", "note": "'comprehensive learning plan' is a bare 'Korean Learning' task"},
+  {"case": "ody_r1#20", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "strict_defensible", "note": "'proceed to Amazon to make the purchase': product page, nothing bought"},
+  {"case": "ody_r2#22", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "strict_defensible", "note": "Chrome query typed, never submitted; the message is garbled with backslashes and still sending"},
+  {"case": "ody_r1#4", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "strict_defensible", "note": "to-do 'for tomorrow': a task with a link was added, no date set"},
+  {"case": "pair_early_stop#388", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "judge_too_strict", "note": "'search for solid wood Maharaja wardrobes': the Maharaja wardrobe is listed"},
+  {"case": "pair_missed_stop#583", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "judge_too_strict", "note": "'show my progress': profile shows days / minutes / stars; judge wants the Stats page"},
+  {"case": "pair_missed_stop#564", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "judge_too_strict", "note": "same as #583"},
+  {"case": "pair_missed_stop#460", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "judge_too_strict", "note": "'go through the main category for the katsu curry dish': the dish is shown in the Main results"},
+  {"case": "pair_early_stop#34", "label": "NOT_COMPLETE", "claude": "COMPLETE", "class": "ambiguous", "note": "'compare these shoes with others': 'You Might Also Like' with prices shown"},
+  {"case": "pair_early_stop#211", "label": "NOT_COMPLETE", "claude": "COMPLETE", "class": "ambiguous", "note": "'I want a Bosch speaker in the category': filtered results shown, none picked"},
+  {"case": "pair_early_stop#22", "label": "NOT_COMPLETE", "claude": "COMPLETE", "class": "ambiguous", "note": "dot pattern applied in black; 'black and white finishing' unclear on a blue canvas"},
+  {"case": "pair_early_stop#79", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "ambiguous", "note": "'read the product reviews': one review visible, 'View all' not opened"},
+  {"case": "pair_early_stop#348", "label": "NOT_COMPLETE", "claude": "COMPLETE", "class": "ambiguous", "note": "document viewer open but the page is blank (still loading or empty)"},
+  {"case": "ody_r1#15", "label": "COMPLETE", "claude": "NOT_COMPLETE", "class": "ambiguous", "note": "an item was added to the cart ($140); whether it is the lowest price cannot be told"},
+  {"case": "ody_r2#17", "label": "NOT_COMPLETE", "claude": "COMPLETE", "class": "ambiguous", "note": "task saved on a date plus the yoga video playing; whether that date is tomorrow and is a 'reminder' is unclear"}
+ ],
+ "counts": {"label_wrong": 3, "strict_defensible": 4, "judge_too_strict": 4, "ambiguous": 7},
+ "agreement_if_judge_credited_for_label_wrong_and_strict_defensible": "82/93 = 88% (still under the 90% bar)"
+}

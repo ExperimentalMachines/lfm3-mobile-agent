@@ -188,3 +188,35 @@ Owner: "label with claude API … You have $100 of credits. Don't go over $95". 
 - **Fail:** no Claude label is used; round 10 stays negative.
 - A second judge after the first failed gives two tries at the bar; at 84 / 93 a judge whose true agreement is 80% passes
   with probability under 1%, so the selection effect is small.
+
+### 2026-11-25 16:01 Asia/Manila — the Claude judge FAILS calibration too (81%); no Claude label is used
+
+Claude Opus 5.5 (effort high; `results/v48_dev/claude_judge_calibration.jsonl`) on the same 93 cases; **$1.03** spent
+(ledger `results/v48_dev/claude_spend.jsonl`; mean 235 output tokens per case):
+
+| Subset | Claude Opus 5.5 | Qwen3-VL-235B (15:46) |
+|---|---|---|
+| E-DPO early-stop pairs | 10 / 16 | 8 / 16 |
+| E-DPO missed-stop pairs | 11 / 16 | 9 / 16 |
+| GUI-Odyssey review 1 / 2 | 25 / 30, 29 / 31 | 23 / 30, 27 / 31 |
+| **All** | **75 / 93 = 81%** (bar 84) | 67 / 93 = 72% |
+
+**Decision (registered rule): fail; no Claude label is used; round 10 stays negative.**
+
+Diagnostic re-reading of the 18 disagreements at full resolution with the full history
+(`results/v48_dev/claude_judge_adjudication.json`; the by-eye labels came from 220×489 sheets with two history lines):
+
+| Class | Cases | Example |
+|---|---|---|
+| By-eye label wrong, judge right | 3 | bus "for November 9" but departure still "Leave: Now"; forecast shown for "weather history" |
+| Goal asks for more; judge's strict reading defensible | 4 | "make the purchase": product page only |
+| Deliverable visible; judge demands an extra step | 4 | "show my progress": profile summary shown, judge wants Stats |
+| Goal does not define "done" | 7 | "compare these shoes with others", "read the product reviews" |
+
+- 12 of the 18 are also Qwen disagreements. Unlike Qwen's errors (sent messages called "not sent"), Claude's are not
+  misreadings of the screen: they are disagreements about **what "done" means** for vague goals.
+- Crediting the judge for the 7 defensible cases gives 82 / 93 = 88%, still under the bar.
+- Caveat: the by-eye labels and this re-reading were made by the coding assistant (also a Claude model), not a person.
+
+Next step (not registered): a written "done" guideline (per goal type: search / view / multi-part / commit), used in the
+judge prompt and by the labeller, calibrated on a **fresh** set (the 93 cases have now shaped the guideline).
