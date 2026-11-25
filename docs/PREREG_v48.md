@@ -220,3 +220,30 @@ Diagnostic re-reading of the 18 disagreements at full resolution with the full h
 
 Next step (not registered): a written "done" guideline (per goal type: search / view / multi-part / commit), used in the
 judge prompt and by the labeller, calibrated on a **fresh** set (the 93 cases have now shaped the guideline).
+
+### 2026-11-25 16:06 Asia/Manila — owner’s definition of "done"; fresh calibration under it (registered before any label)
+
+Owner: "A job is done when the user's prompt task is met in full completion. Nothing more, nothing less. No unnecessary
+waits. Properly handled edge cases." The owner does not label; the coding assistant labels and decides.
+
+**Guideline (fixed now; the judge prompt `PROMPT_V2` in `analysis/done_audit/claude_judge.py` and the labeller both use it):**
+
+| Rule | COMPLETE only if … |
+|---|---|
+| Every part | each part of a multi-part goal is done and every stated detail (item, name, date, time, quantity, filter, recipient, text) matches |
+| Commit | an action the goal asks for that needs confirming (save, send, apply, add, book, buy, post, set, enable, delete) was confirmed; typed / ticked / selected but not saved, sent or applied is NOT_COMPLETE |
+| Nothing more | a goal to search for, find, open, view, show, check, go to or look for something is COMPLETE as soon as that thing is on the screen; no further opening, selecting or reading is required unless the goal says so |
+| Evidence | the screen shows the result, or the steps show it was done when this screen cannot; a blank, loading, error or blocked screen (ad, dialog, "connecting") where the result should be is NOT_COMPLETE |
+
+**Calibration (fresh; none of these cases has been seen by anyone or any judge):**
+- 50 early-stop + 50 missed-stop E-DPO pairs, `random.Random(50)` over the 842 pairs not in the 32 already reviewed.
+- Labels by eye at full resolution (576×1280) with the full step history, under the guideline, committed before any judge
+  output on them (`results/v48_dev/fresh_calib_labels.json`). A case the guideline cannot decide is marked doubtful and
+  left out; **more than 10 doubtful → the guideline is not usable → stop.**
+- Judge: Claude Opus 5.5 as before (effort high, max 8,000 output tokens), prompt = the guideline + the same inputs.
+- **Bar: at least 90% agreement on the non-doubtful cases.** Same ledger; hard stop at $90.
+- Caveat: labeller and judge are both Claude models; agreement is not independent human verification.
+
+**Pass:** the judge (same prompt) filters all 874 pairs via the Batch API (early stop kept if NOT_COMPLETE, missed stop
+kept if COMPLETE); E-DPO resumes as registered at 14:20 (balanced 1:1 on the kept pairs, E's round-8 gate, online bar
+false completes ≤ 15 and successes ≥ 19). **Fail:** no Claude label is used.
