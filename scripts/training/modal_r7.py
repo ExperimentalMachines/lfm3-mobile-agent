@@ -211,6 +211,12 @@ def mjb():
     print("rc", list(mjb_fn.starmap([("v4", "v4", ""), ("d", "d", "/vol/d/runs/r7d/merged")])))
 
 
+@app.local_entrypoint()
+def mjb_e():
+    """Round 8: MobileJudgeBench for E (its own format, rows in /vol/mjb/data/e on the volume)."""
+    print("rc", mjb_fn.remote("e", "e", "/vol/e/runs/r8e/merged"))
+
+
 
 @app.function(timeout=8 * 3600, **SPEC)
 def judge2_fn(calibrate: bool) -> int:

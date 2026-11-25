@@ -206,3 +206,20 @@ What E does instead of `status` on the stale screens: C3n 98% click (redo the ta
 
 **Per the registered rule:** round 8 is reported as negative and E is not promoted; the online test was conditional on
 the gate.
+
+### 2026-11-25 09:55 Asia/Manila — reported: MobileJudgeBench for E (not gated)
+
+Same 648 runs and rule as D and v4 (`results/v46_dev/mjb/e.jsonl`, `e_summary.json`); share where the model says `status`:
+
+| | v4 | D | **E** |
+|---|---|---|---|
+| Human success (376) | 65.4% | 78.7% | **69.7%** |
+| Human failure (272) | 33.8% | 48.5% | **37.1%** |
+| **Agent said done, humans say failed (131)** | 45.0% | 60.3% | **45.0%** |
+
+E says "done" less often than D on other agents' failures (back to v4's level), but the gap between successes and
+failures (E 32.6 points, v4 31.6, D 30.2) is about the same: on outside data E is more cautious, not yet a better
+judge of "done".
+
+**Owner decision:** run E on AndroidWorld seed 30 as an exploratory exception (as D in round 7), not a confirmatory test
+(variant U, `--history_steps 24 --nochange_notes --change_rule fine`).
