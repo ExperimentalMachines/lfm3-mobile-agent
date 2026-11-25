@@ -356,3 +356,25 @@ All 1,766 candidates judged (Batch API, 0 errors, $12.08; `results/v48_dev/claud
 **947 COMPLETE** (usable as terminal `status complete` rows: `results/v48_dev/ody_terminal_complete.json`), 819
 NOT_COMPLETE. Claude spend total: **$24.53** of the $90 hard stop (owner cap $95). The AndroidControl bulk step sent
 nothing. Using these rows in training needs its own data-version entry (none registered yet).
+
+### 2026-11-25 17:23 Asia/Manila — E-DPO (Claude-filtered pairs) FAILS E's round-8 gate; no online test; round 10 ends
+
+Job `lfm3-r10-edpo-claude` (ml.g6e.2xlarge, 47 billable min): DPO one pass on the 342 pairs = 11 optimizer steps
+(β 0.1, SFT weight 1.0, lr 1e-5), merge, gate (`results/v48_dev/r10edpo_eval/`).
+
+| Check | E | E-DPO | Bar | |
+|---|---|---|---|---|
+| C1 history-claims-done probe: false `complete` | 20% | 19.3% | ≤ 15% | ✗ |
+| AndroidControl early `status` (2+ before end) | 3.55% | 3.49% | ≤ 3.24% | ✗ |
+| AndroidControl step accuracy (ac_high) | 0.758 | 0.757 | ≥ v4 0.727 | ✓ |
+| T_term (correct stop at the real end) / C2 / C3 / C3n | 78% / 71% / 16.7% / 0.3% | 77.7% / 69.7% / 15% / 0.3% | | ✓ |
+
+**Decision (registered rule): fail → no AndroidWorld run; E-DPO is not published.** One pass over 342 pairs moved the
+model by noise (chosen reward 0.0025). Round 10 ends with these results carried forward:
+1. A calibrated completion judge exists for the owner's definition of done (Claude Opus 5.5 + `PROMPT_V2`: 93% on fresh
+   AndroidControl pairs, 91% on fresh GUI-Odyssey candidates), but it over-calls "not done" on AndroidControl's own
+   `complete` rows (spot check 26 / 32), so those labels are not used.
+2. **947 GUI-Odyssey multi-part terminal rows are confirmed done** (`results/v48_dev/ody_terminal_complete.json`): the
+   first trustworthy "finish a multi-part task" examples, the largest false-complete type in E's AndroidWorld run.
+3. Claude spend $24.53 (owner cap $95).
+Next round (not registered): an SFT data version adding the 947 rows.
