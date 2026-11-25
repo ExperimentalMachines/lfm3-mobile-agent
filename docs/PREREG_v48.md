@@ -297,3 +297,13 @@ exploratory AndroidWorld set), run only if the gate passes.
 | Budget | Same ledger; nothing is sent that could take the total past $90 (owner cap $95); expected about $53 |
 | Spot check | 32 judged rows at random (16 COMPLETE, 16 NOT_COMPLETE), read by eye at full resolution under the guideline; **if fewer than 28 / 32 agree, the labels are not used** |
 | Use | Labels only. A later data version may drop rows judged NOT_COMPLETE (and their variants); that build gets its own entry |
+
+### 2026-11-25 16:37 Asia/Manila — amendment before the bulk run: measure the premature rate first
+
+Only 3 rows have been labelled so far (all COMPLETE). The 21% premature rate seen in the missed-stop pairs comes from rows
+where E refused to stop, which over-samples doubtful labels, and cleaning AndroidControl `complete` rows can reach at
+most about 5 of E's 19 classified false completes (commit / detail errors; none of the 6 multi-part stops). So:
+1. **Random 1,000** of the extracted rows first (`random.Random(49)`, about $5).
+2. **Full labelling (about $48 more) only if at least 10% of those are judged NOT_COMPLETE.** Below that, stop here.
+3. The budget left goes first to GUI-Odyssey multi-part terminal candidates (the largest false-complete type), after an
+   Odyssey-only calibration on fresh by-eye labels (bar 90%), registered separately.
