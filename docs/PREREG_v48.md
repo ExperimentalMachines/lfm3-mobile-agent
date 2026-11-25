@@ -114,3 +114,19 @@ two that guard against over-correction (finished screen ≥ 70%, finished screen
 **Online (only if the gate passes): AndroidWorld seed 30, 116 tasks, variant of E's harness** (`--history_steps 24
 --nochange_notes --change_rule fine`). **Pass: false completes ≤ 15 and successes ≥ 19 (E's).** Reported against D and E:
 successes, false completes, waits, repeated taps; harness errors re-run once and reported both ways.
+
+### 2026-11-25 15:50 Asia/Manila — E-DPO pairs FAIL the by-eye check; DPO not run
+
+Job A (`lfm3-r10-edpo-pairs`, L40S, 46 billable min) decoded the 20,000 candidates. E's stop mistakes on its own training
+rows: early stop 2.9% (last 3 actions), 0.5% (elsewhere), 4.4% (ahead rows); missed stop 12.4% (judged-COMPLETE
+terminal rows). 437 + 437 balanced pairs (`results/v48_dev/r10_pairs_stats.json`). DPO smoke passed (10 GB peak).
+
+**Review by eye (registered rule: more than 3 of 32 wrong → stop): 9 of 32 wrong → stopped; DPO not trained.**
+
+| Kind | Wrong | What |
+|---|---|---|
+| early stop | 5 / 16 | The screen already met the goal (reviews visible, search results shown, the exchange rate on screen); the human kept browsing, so penalising `complete` there is wrong |
+| missed stop | 4 / 16 | **E was right and the label wrong**: a filter ticked but not applied (2), a file listed but not opened, a list entry typed but not saved; E's "rejected" step was the correct next action |
+
+AndroidControl's own `complete` labels contain premature completes even after the stage-1 judge's COMPLETE, and its
+non-terminal rows include goals already met on screen. Preference pairs built on these labels are about 28% wrong.
