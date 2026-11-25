@@ -286,3 +286,14 @@ Balanced 1:1 (seed 49) → **342 pairs** (`data/r10_filter_pairs.py`, `results/v
 SageMaker job `lfm3-r10-edpo-claude` (ml.g6e.2xlarge, max 4 h): DPO as registered (β 0.1, SFT weight 1.0, lr 1e-5,
 one pass), merge, then E's round-8 gate. Online bar unchanged (false completes ≤ 15 and successes ≥ 19 on the
 exploratory AndroidWorld set), run only if the gate passes.
+
+### 2026-11-25 16:25 Asia/Manila — owner: "go, you are autonomous": label every AndroidControl `complete` row in E's training split
+
+| Item | Setting |
+|---|---|
+| Rows | Every real AndroidControl `status complete` row in `MobileAgent-SFT-v4.6` @ 0ace5559 (train), about 10,400 (shard 0 has 255); the `#cf_short1/2` variants (same final screen, shortened history) are not sent: they inherit their source row's verdict when it is NOT_COMPLETE |
+| Judge | Exactly the calibrated one (Claude Opus 5.5, `PROMPT_V2`, effort high, max 8,000 output tokens), Batch API |
+| Output | `results/v48_dev/claude_ac_complete_verdicts.jsonl` (one verdict per row) + a summary |
+| Budget | Same ledger; nothing is sent that could take the total past $90 (owner cap $95); expected about $53 |
+| Spot check | 32 judged rows at random (16 COMPLETE, 16 NOT_COMPLETE), read by eye at full resolution under the guideline; **if fewer than 28 / 32 agree, the labels are not used** |
+| Use | Labels only. A later data version may drop rows judged NOT_COMPLETE (and their variants); that build gets its own entry |
