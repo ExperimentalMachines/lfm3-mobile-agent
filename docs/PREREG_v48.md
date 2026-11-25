@@ -247,3 +247,20 @@ waits. Properly handled edge cases." The owner does not label; the coding assist
 **Pass:** the judge (same prompt) filters all 874 pairs via the Batch API (early stop kept if NOT_COMPLETE, missed stop
 kept if COMPLETE); E-DPO resumes as registered at 14:20 (balanced 1:1 on the kept pairs, E's round-8 gate, online bar
 false completes ≤ 15 and successes ≥ 19). **Fail:** no Claude label is used.
+
+### 2026-11-25 16:13 Asia/Manila — fresh labels done (before any judge output on them); one guideline clause added
+
+- **Clause added (seen while labelling, before any judge output on the fresh set):** goals that end with a question ("…
+  then tell me X; reply with just the number") count as accomplished when every other part is done and the answer is
+  on the screen or was seen in the steps; the reply itself is the stop action (E's `answer`). Without it, a correct
+  answer at the right moment would be judged "not done" and penalised. It changes one label (`fresh_early_stop#340`).
+- Labels (`results/v48_dev/fresh_calib_labels.json`): 5 doubtful (limit 10), 95 labelled.
+
+| Pair kind | Done on this screen | Not done | Doubtful |
+|---|---|---|---|
+| early stop (E stopped, the human went on) | **27** | 19 | 4 |
+| missed stop (the human marked complete, E went on) | 37 | **12** | 1 |
+
+- Under the owner's definition, **most of E's "early" stops were correct** (27 of 46: the human kept browsing after the
+  goal was met), and a quarter of the human `complete` labels are premature (12 of 49). E-DPO's premise (penalise E's
+  stop, reward the human's) is wrong for over half of the early-stop pairs.

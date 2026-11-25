@@ -46,6 +46,8 @@ PROMPT_V2 = ("Goal: {goal}\nSteps already taken by the assistant:\n{hist}\n\n"
              "unless the goal asks for it.\n"
              "- Evidence: the screen shows the result, or the steps show it was done when this screen cannot. A blank, "
              "loading, error or blocked screen (ad, dialog, \"connecting\") where the result should be means not done.\n"
+             "- Questions: if the goal also asks a question, it counts as accomplished when every other part is done and "
+             "the answer is shown on the screen or was seen in the steps (the reply itself comes next).\n"
              "Answer with COMPLETE or NOT_COMPLETE on the first line, then one short reason.")
 PROMPTS = {"v1": PROMPT, "v2": PROMPT_V2}
 
