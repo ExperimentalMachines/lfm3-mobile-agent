@@ -310,8 +310,9 @@ most about 5 of E's 19 classified false completes (commit / detail errors; none 
 
 ### 2026-11-25 16:58 Asia/Manila — GUI-Odyssey terminal candidates: Odyssey-only calibration first (registered before any label)
 
-- **Rows:** the 1,766 amended GUI-Odyssey terminal candidates (`ody_term2`, 15:xx amendment: PIN-verification and
-  information-only goals excluded), exported from the build machine (started for the copy, stopped again).
+- **Rows:** the 1,766 amended GUI-Odyssey terminal candidates (`ody_term2`: PIN-verification and
+  information-only goals excluded by the amendment in the 14:05 entry), exported from the build machine (started for
+  the copy, stopped again).
 - **Calibration:** 60 candidates at random (`random.Random(51)`) outside the 64 already reviewed; labelled by eye at full
   resolution with the full step history under the owner's guideline, committed before any judge output on them; up to 6
   doubtful left out (more than 6 → stop). Same judge and prompt as the AndroidControl run (`PROMPT_V2`).
