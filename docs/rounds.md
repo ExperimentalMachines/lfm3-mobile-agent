@@ -52,7 +52,7 @@ Seed 30 = successes out of 116; false "done" = episodes the model ended as done 
 | 5 | 11-22 | v4.3-dpo / -dpo2 / -sft | DPO on own mistakes; or 500 more SFT steps | dpo failed | — / 21 / 24 | — / 28 / 37 | Negative | [PREREG_v41](PREREG_v41.md) |
 | 6 | 11-23 | v4.4-A / B / C | Long, self-correcting MemGUI trajectories | failed | — | — | Negative | [PREREG_v44](PREREG_v44.md) |
 | 7 | 11-24 | v4.5-D | All the data once; 24-step history | failed (1 of 5) | 21* | 27 | Negative | [PREREG_v45](PREREG_v45.md) |
-| 8 | 11-25 | **v4.6-E** | Rows where history and screen disagree | failed (2 of 10) | 19* | 24 | Negative; newest published model; held-out run in progress | [PREREG_v46](PREREG_v46.md) |
+| 8 | 11-25 | **v4.6-E** | Rows where history and screen disagree | failed (2 of 10) | 19* | 24 | Negative; newest published model; held-out 52 / 348 (v4 54), not promoted | [PREREG_v46](PREREG_v46.md) |
 | 9 | 11-25 | (v4.7 data) | Rows against useless waits | — | — | — | Candidate not trained: E already met its wait bars | [PREREG_v47](PREREG_v47.md) |
 | 10 | 11-25 | E-DPO | Penalise E's premature stops and reward its missed stops, on judge-checked pairs | failed | — | — | Negative | [PREREG_v48](PREREG_v48.md) |
 | 11 | 11-25 | E-T | E + 747 checked multi-part endings | queued | | | | [PREREG_v49](PREREG_v49.md) |
@@ -263,7 +263,17 @@ at 24: about half are multi-part tasks stopped part-way. E is published with its
 
 **Held-out run (owner's decision, post-hoc, 2026-11-25):** E on seeds 7 / 1234 / 2026, with the rule fixed first: E
 replaces v4 as the main model if it is non-inferior to v4 (lower bound above −6.9 points) and makes no more false
-"done" calls than v4's 71 of 348 ([PREREG_v46](PREREG_v46.md), 20:33). In progress.
+"done" calls than v4's 71 of 348 ([PREREG_v46](PREREG_v46.md), 20:33).
+
+| | E | v4 | GUI-Owl |
+|---|---|---|---|
+| Successes / 348 (seeds 7 / 1234 / 2026) | 52 (18 / 14 / 20) | 54 (18 / 17 / 19) | 47 |
+| E − model, 95% CI | | −0.6 pts [−5.4, +4.2] | +1.4 pts [−4.0, +6.9] |
+| False "done" (after re-runs) | 75 | 71 | 0 |
+
+- Non-inferior to v4 (lower bound −5.3 > −6.9), but more false "done" calls: **E does not replace v4.**
+- Fewer waits did not turn into more successes; false "done" is still the failure that matters.
+- Source: [`results/sealed_analysis_e.md`](../results/sealed_analysis_e.md).
 Files: [`results/v46_dev/`](../results/v46_dev/).
 
 ---

@@ -39,6 +39,10 @@ Source: [`results/sealed_analysis_final.md`](../results/sealed_analysis_final.md
 | v4 − v1 | +6.3 pts | [+1.1, +11.5] | 0.02 | v4 better |
 | v1 − GUI-Owl | −4.3 pts | [−10.6, +1.9] | 0.21 | No significant difference |
 
+**Later model on the same seeds (post-hoc, 2026-11-26):** v4.6-E scored 52 / 348 (18 / 14 / 20). E − v4 = −0.6 pts
+[−5.4, +4.2]; E − GUI-Owl = +1.4 pts [−4.0, +6.9]. It made 75 false "done" calls to v4's 71, so by the rule fixed before
+its runs it did not replace v4 ([PREREG_v46](PREREG_v46.md), [`sealed_analysis_e.md`](../results/sealed_analysis_e.md)).
+
 Per-seed exact McNemar tests for v4 − GUI-Owl: p = 0.85, 0.52 and 1.0. No single seed is significant.
 
 ### Sensitivity analyses

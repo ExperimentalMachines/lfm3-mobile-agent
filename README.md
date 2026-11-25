@@ -10,8 +10,8 @@ files, and the preregistered rules each decision followed.
 | | |
 |---|---|
 | **Main model** | **v4**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF) (1.30 GB with its image projector). The version tested on the sealed held-out benchmark |
-| **Newest model** | **v4.6-E**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E-GGUF). Barely waits and is sharper offline, but repeats taps more and is not more successful on the development seed. Held-out AndroidWorld run in progress (2026-11-25) |
-| **Now** | E on the three held-out AndroidWorld seeds ([rule](docs/PREREG_v46.md)); round 11, E trained further on multi-part tasks it should finish, waits for a GPU ([plan](docs/PREREG_v49.md)) |
+| **Newest model** | **v4.6-E**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E-GGUF). Barely waits and is sharper offline, but repeats taps more. Held-out AndroidWorld: 52 / 348 vs v4's 54 (not worse, not better), with more false "done" calls (75 vs 71), so it did not replace v4 |
+| **Now** | E on MobileWorld ([rule](docs/PREREG_v46.md)); round 11, E trained further on multi-part tasks it should finish, training on an L4 ([plan](docs/PREREG_v49.md)) |
 | Everything published | [LFM3 Mobile Agent collection](https://huggingface.co/collections/experimentalmachines/lfm3-mobile-agent-6b03a79f8e23b8dde16e8326): every model, GGUF and training dataset, public |
 | License | Code: Apache-2.0. Models and data: their sources' licenses ([below](#license)) |
 
@@ -49,6 +49,7 @@ llama-server -m lfm3-mobile-agent-v4/LFM3-VL-2B-MobileAgent-v4-Q4_K_M.gguf \
 | **LFM3-VL-2B v4 (ours)** | **54 (15.5%)** | |
 | GUI-Owl-1.5-2B | 47 (13.5%) | v4 − GUI-Owl = +2.0 points, 95% CI [−4.5, +8.6]: **non-inferior** (not worse by more than the preregistered 6.9-point margin), not shown better |
 | LFM3-VL-2B v1 (our first model) | 32 (9.2%) | v4 − v1 = +6.3 points, CI [+1.1, +11.5]: better |
+| LFM3-VL-2B v4.6-E (newest; run later, post-hoc) | 52 (14.9%) | E − v4 = −0.6 points, CI [−5.4, +4.2]: not worse, but 75 false "done" calls vs v4's 71, so v4 stays ([rule](docs/PREREG_v46.md)) |
 
 - **The non-inferiority verdict is fragile.** It relies on the preregistered re-run of episodes whose emulator crashed before
   step 1 (113 of v4's seed-1234 episodes, after one emulator hung overnight). On the 78 templates whose goal text changes with the seed,
@@ -85,10 +86,10 @@ v4 by that margin, so v4 remains the main model.**
 | 11-22 | 5 | v4.3-dpo, -dpo2, -sft | Penalise its own mistakes (DPO); or train longer | —, 21, 24 | —, 28, 37 | Failed (noise, or more false "done") |
 | 11-23 | 6 | v4.4-A, B, C | Long, self-correcting trajectories (MemGUI) | — | — | Failed offline gate |
 | 11-24 | 7 | v4.5-D | All the data once, 24-step memory | 21* | 27 | Failed offline gate (stops too early) |
-| 11-25 | 8 | **v4.6-E** | Teach it to judge "done" from the screen, not its history | 19* | 24 | Failed offline gate narrowly; waits 29% → 3.5% of steps |
+| 11-25 | 8 | **v4.6-E** | Teach it to judge "done" from the screen, not its history | 19* | 24 | Failed offline gate narrowly; waits 29% → 3.5% of steps. Held-out: 52 / 348 (v4 54), not promoted |
 | 11-25 | 9 | (v4.7 data) | Remove useless waits | — | — | Not trained: E already met the wait bars set for it |
 | 11-25 | 10 | E-DPO | Penalise E's premature stops and reward its missed stops, on judge-checked examples | — | — | Failed offline gate (unchanged from E) |
-| 11-25 | 11 | E-T | E + 747 checked "multi-part task finished" examples | queued | | |
+| 11-25 | 11 | E-T | E + 747 checked "multi-part task finished" examples | training | | |
 
 \* Exploratory run by the owner's decision after a failed offline gate.
 
