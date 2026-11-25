@@ -79,3 +79,17 @@ harness errors (re-run once with `scripts/androidworld/rerun_harness_errors.sh` 
   unanswered information requests). `data/v48_odyssey_terminals.py` excludes information-request and install goals by
   rule and OCR-filters pending screens (as AndroidControl's terminal rows) before the review.
 - E's baseline on the multi-part probes is measured by the same evaluator (generate.py, bf16) on the same hardware.
+
+### 2026-11-25 14:05 Asia/Manila — GUI-Odyssey terminal rows FAIL the by-eye check (no candidate exists)
+
+`data/v48_odyssey_terminals.py`: 2,120 candidates from 3,908 training episodes (1,224 truncated before the end, 124 not
+ending COMPLETE, 378 install goals, 34 information requests, 28 OCR-pending screens).
+
+| Review | Sample | Not done | Result |
+|---|---|---|---|
+| 1 (as registered) | 32 | 5 (16%): 3 AppLock "verify with the PIN" stopped on the PIN screen; a movie page never played; an information goal ("determine its price") that should end with an answer | fail (> 15%) |
+| 2 (amendment before any candidate: also exclude PIN-verification and information-only goals, `data/v48_odyssey_filter.py`, 1,766 left; **fresh** sample) | 32 | **8 (25%)**: 3 ride bookings stopped at "choose a payment method"; second parts never done (reminder, volume, sharing); a movie never played; a learning task never saved | **fail** |
+
+**Decision (the registered rule): no GUI-Odyssey terminal rows in v4.8.** The earlier audit's quarantine was right, and the
+failures are the very pattern this round targets: annotators also stopped multi-part tasks after the first part.
+`analysis/done_audit/` review sheets are not kept in the repo (screenshots); counts above.
