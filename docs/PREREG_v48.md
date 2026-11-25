@@ -93,3 +93,24 @@ ending COMPLETE, 378 install goals, 34 information requests, 28 OCR-pending scre
 **Decision (the registered rule): no GUI-Odyssey terminal rows in v4.8.** The earlier audit's quarantine was right, and the
 failures are the very pattern this round targets: annotators also stopped multi-part tasks after the first part.
 `analysis/done_audit/` review sheets are not kept in the repo (screenshots); counts above.
+
+### 2026-11-25 14:20 Asia/Manila — owner decision: round 10 becomes ONE candidate, E-DPO (no candidate exists)
+
+With no reliable multi-part completions, G (full v4.8 SFT) and its progress counts are deferred to the next full retrain.
+Owner: "Proceed with B". The round tests the penalty alone, on E:
+
+| Item | Value |
+|---|---|
+| **E-DPO** | E's merged weights (`experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E` @ `0203bc5a`) + a new language-only LoRA (r64 α128) trained with DPO (sigmoid, β 0.1) + 1.0 × SFT on the chosen side (`train/dpo_vlm.py`), lr 1e-5, one pass, 32 pairs per step; reference = E |
+| Candidate rows (E's own training split, MobileAgent-SFT-v4.6 @ `0ace5559`; no AndroidWorld app in the goal) | 12,000 real rows whose human action is not `wait` / `status` / `answer` (70% from the last 3 actions of their episode); 4,000 *ahead* counterfactual rows (screen before the end, history claims every step); 4,000 real AndroidControl `status complete` rows that the stage-1 judge called COMPLETE |
+| Pairs (E decodes greedily, bf16, thinking on, as at inference) | **early stop**: E says `status` / `answer` on a non-terminal row → chosen = the human step, rejected = E's step. **missed stop**: E does not stop on a judged-COMPLETE terminal row → chosen = `status complete`, rejected = E's step. Unparseable outputs never become rejections. **Balanced 1:1** (the larger kind capped at random, seed 49) |
+| Check before training | 16 random pairs of each kind by eye: an early-stop pair whose screen already looks done, or a missed-stop pair whose screen does not, counts as wrong; more than 3 of 32 wrong → stop and report |
+| Hardware | SageMaker ml.g6e.2xlarge (L40S): job A generates and builds pairs; job B trains, merges and evaluates |
+
+**Offline gate (all must hold): E's round-8 gate, all 10 bars** (`docs/PREREG_v46.md`), on the v4.6 splits, same evaluator.
+E failed two (C1 history probe 20% vs ≤ 15%; early `status` 3.55% vs ≤ 3.24%); E-DPO must pass all ten, including the
+two that guard against over-correction (finished screen ≥ 70%, finished screen with cut history ≥ 60%).
+
+**Online (only if the gate passes): AndroidWorld seed 30, 116 tasks, variant of E's harness** (`--history_steps 24
+--nochange_notes --change_rule fine`). **Pass: false completes ≤ 15 and successes ≥ 19 (E's).** Reported against D and E:
+successes, false completes, waits, repeated taps; harness errors re-run once and reported both ways.
