@@ -307,3 +307,14 @@ most about 5 of E's 19 classified false completes (commit / detail errors; none 
 2. **Full labelling (about $48 more) only if at least 10% of those are judged NOT_COMPLETE.** Below that, stop here.
 3. The budget left goes first to GUI-Odyssey multi-part terminal candidates (the largest false-complete type), after an
    Odyssey-only calibration on fresh by-eye labels (bar 90%), registered separately.
+
+### 2026-11-25 16:58 Asia/Manila — GUI-Odyssey terminal candidates: Odyssey-only calibration first (registered before any label)
+
+- **Rows:** the 1,766 amended GUI-Odyssey terminal candidates (`ody_term2`, 15:xx amendment: PIN-verification and
+  information-only goals excluded), exported from the build machine (started for the copy, stopped again).
+- **Calibration:** 60 candidates at random (`random.Random(51)`) outside the 64 already reviewed; labelled by eye at full
+  resolution with the full step history under the owner's guideline, committed before any judge output on them; up to 6
+  doubtful left out (more than 6 → stop). Same judge and prompt as the AndroidControl run (`PROMPT_V2`).
+- **Bar: at least 90% agreement** on the non-doubtful cases. Pass → label all 1,766 (Batch API, about $9); a candidate is
+  usable as a terminal `status complete` row only if the judge says COMPLETE. Fail → no Odyssey terminal rows.
+- Budget: same ledger and $90 hard stop.
