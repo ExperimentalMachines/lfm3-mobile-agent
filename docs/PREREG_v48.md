@@ -271,3 +271,18 @@ Claude Opus 5.5 with the guideline prompt (`results/v48_dev/claude_judge_fresh_c
 **88 / 95 = 93%** (bar 90%); early-stop pairs 43 / 46, missed-stop pairs 45 / 49. The 7 disagreements are borderline
 either way (e.g. a Maps "Save" button still outlined although the steps saved; a filter selected with the results panel
 still closed). **Decision (registered rule): the judge filters the 874 pairs (Batch API) and E-DPO resumes.**
+
+### 2026-11-25 16:21 Asia/Manila — the 874 pairs filtered; E-DPO resumes on 342 pairs
+
+Claude judge with the guideline prompt over all 874 pairs (Batch API, 3 batches, 0 errors, $4.72; ledger total $6.72;
+`results/v48_dev/claude_pair_verdicts.jsonl`):
+
+| Pair kind | Premise confirmed (kept) | Premise wrong (dropped) |
+|---|---|---|
+| early stop | 171 (judge: not done yet) | 266 (judge: already done, so E's stop was right) |
+| missed stop | 344 (judge: done) | 93 (judge: the human's `complete` was premature) |
+
+Balanced 1:1 (seed 49) → **342 pairs** (`data/r10_filter_pairs.py`, `results/v48_dev/r10_pairs_claude_stats.json`).
+SageMaker job `lfm3-r10-edpo-claude` (ml.g6e.2xlarge, max 4 h): DPO as registered (β 0.1, SFT weight 1.0, lr 1e-5,
+one pass), merge, then E's round-8 gate. Online bar unchanged (false completes ≤ 15 and successes ≥ 19 on the
+exploratory AndroidWorld set), run only if the gate passes.
