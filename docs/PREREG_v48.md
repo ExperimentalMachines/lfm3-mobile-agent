@@ -334,3 +334,18 @@ most about 5 of E's 19 classified false completes (commit / detail errors; none 
   instead of the product; checkout not started; a goal setting never changed.
 - Order: GUI-Odyssey first (about $9), then AndroidControl (about $50), one process at a time so the $90 guard is exact.
   Ledger now $12.45.
+
+### 2026-11-25 17:05 Asia/Manila — the AndroidControl spot check FAILS (26 / 32); AndroidControl labels not used, bulk run cancelled
+
+Blind spot check (`results/v48_dev/ac_spot_check.json`): 16 judged COMPLETE + 16 judged NOT_COMPLETE from the random
+1,000, shuffled, read by eye without the verdict. **26 / 32 agree (bar 28) → the AndroidControl labels are not used.**
+
+- All 6 disagreements are the judge saying NOT_COMPLETE where the by-eye reading says done. The judge is right in about
+  1-2 (an "Italy" clock 7 h off Berlin, so the wrong place was added; a Gmail query typed but not submitted), too strict
+  in 3 ("read the book" at page 10; artist results instead of the artist page; a restaurant list not sorted), unclear
+  in 1.
+- On AndroidControl `complete` rows the judge over-calls "not done": 16 / 16 of its COMPLETE calls hold, about 10 / 16 of
+  its NOT_COMPLETE calls do. Corrected premature rate ≈ 11.3% × 10/16 ≈ **7%**, below the registered 10% threshold.
+- The remaining ~10,070 AndroidControl rows are **not sent** (input moved aside before that step started). Spend on
+  AndroidControl stops at the 1,003 rows already labelled.
+- GUI-Odyssey labelling continues (its own calibration passed at 91%, 17:03).
