@@ -223,3 +223,22 @@ judge of "done".
 
 **Owner decision:** run E on AndroidWorld seed 30 as an exploratory exception (as D in round 7), not a confirmatory test
 (variant U, `--history_steps 24 --nochange_notes --change_rule fine`).
+
+### 2026-11-25 13:00 Asia/Manila — exploratory AndroidWorld run of E (owner exception, not confirmatory)
+
+Seed 30, 116 tasks, variant U (`--history_steps 24 --nochange_notes --change_rule fine`), Q4_K_M GGUF. The first launch
+crashed on every step (agent bug: `sc` shadowed in `lfm_agent.step`, fixed in `86bb728`; 17 crashed episodes deleted, log
+kept). Four harness errors (task setup / SMS checker parsing a gRPC fork log line) were re-run once with
+`scripts/androidworld/rerun_harness_errors.sh`. `results/v46_dev/aw_e_vs_d_vs_v4_rerun.json`.
+
+| | v4 | D | **E** |
+|---|---|---|---|
+| Successes | 18 | 21 | **19** |
+| False completes | 25 | 27 | **24** |
+| Wait share of steps | 29.1% | 16.9% | **3.5%** |
+| Useless waits (next screen unchanged) | 21.1% | 13.4% | **2.3%** |
+| Repeated-tap runs (same tap 3+ times) | 6 | 18 | **23** |
+
+E vs D: 5 wins, 7 losses (McNemar p = 0.77). Against the registered online bar (false completes ≤ 15, successes ≥ 18)
+E would fail on false completes. Waits nearly gone; false completes barely moved: 10 of the first 19 are partly done
+multi-part tasks (round 10, `docs/PREREG_v48.md`).
