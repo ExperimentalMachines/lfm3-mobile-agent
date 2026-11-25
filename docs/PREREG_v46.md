@@ -184,3 +184,25 @@ of the speed check (the Modal smoke already peaked at 37.1 GB on an H100). E res
 2 × 16 and PyTorch's expandable-segments allocator. It is still 32 rows per optimizer step with the same schedule; only
 memory and speed change, which the prereg allows ("the micro-batch choice ... does not change the maths"). The Modal
 stretch uses the identical command.
+
+### 2026-11-25 09:35 Asia/Manila — E's offline gate: FAIL (2 of 10 checks, both near the bar)
+
+E trained 5,802 steps (Colab to step 3,100, then Modal H100 from the Hub checkpoint; Modal metered $17.31 incl. the
+evals). `results/v46_dev/e_eval/r8e_offline_gate.json`.
+
+| Check | v4 | D | **E** | Bar | Pass |
+|---|---|---|---|---|---|
+| AndroidControl test, high-level step accuracy | 0.727 | 0.753 | **0.758** | ≥ 0.707 | ✓ |
+| `dev_answer` / `dev_complete` | 0.890 / 0.763 | 0.882 / 0.800 | **0.882 / 0.775** | ≥ 0.840 / ≥ 0.713 | ✓ |
+| AndroidLens step accuracy at steps ≥ 10 | 0.367 | 0.471 | **0.462** | ≥ 0.367 | ✓ |
+| AndroidControl `status` ≥ 2 steps before the end | 2.74% | 3.64% | **3.55%** | ≤ 3.24% | ✗ |
+| Probe C1: unfinished screen, history claims every step | 40.3% | 53.7% | **20.0%** | ≤ 15% | ✗ |
+| Probe C3n: screen before the last action, step noted | — | 32.0% | **0.3%** | ≤ 10% | ✓ |
+| Probe C3: screen before the last action, no note | 31.3% | 37.0% | **16.7%** | ≤ 20% | ✓ |
+| Probe T: finished screen, true history | 73.7% | 84.3% | **78.0%** | ≥ 70% | ✓ |
+| Probe C2: finished screen, last 2 steps cut | 38.7% | 54.3% | **71.0%** | ≥ 60% | ✓ |
+
+What E does instead of `status` on the stale screens: C3n 98% click (redo the tap; D: 48% wait), C3 65% click, 8.7% wait.
+
+**Per the registered rule:** round 8 is reported as negative and E is not promoted; the online test was conditional on
+the gate.
