@@ -239,8 +239,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             if self.runtime_feedback and not app_resolver.resolves_natively(action["app_name"]):
                 if self._labels is None:
                     self._labels = app_resolver.installed_labels(self.env.controller)
-                label, sc = app_resolver.resolve(action["app_name"], self._labels)
-                data["app_resolution"] = {"asked": action["app_name"], "resolved": label, "score": sc}
+                label, score = app_resolver.resolve(action["app_name"], self._labels)  # not `sc`: that name is the screen_change module
+                data["app_resolution"] = {"asked": action["app_name"], "resolved": label, "score": score}
                 if label is None:
                     i, a = self.history[-1]
                     self.history[-1] = (i, a + " [failed: no installed app with that name]")
