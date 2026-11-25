@@ -248,7 +248,7 @@ waits. Properly handled edge cases." The owner does not label; the coding assist
 kept if COMPLETE); E-DPO resumes as registered at 14:20 (balanced 1:1 on the kept pairs, E's round-8 gate, online bar
 false completes ≤ 15 and successes ≥ 19). **Fail:** no Claude label is used.
 
-### 2026-11-25 16:13 Asia/Manila — fresh labels done (before any judge output on them); one guideline clause added
+### 2026-11-25 16:11 Asia/Manila — fresh labels done (before any judge output on them); one guideline clause added
 
 - **Clause added (seen while labelling, before any judge output on the fresh set):** goals that end with a question ("…
   then tell me X; reply with just the number") count as accomplished when every other part is done and the answer is
@@ -264,3 +264,10 @@ false completes ≤ 15 and successes ≥ 19). **Fail:** no Claude label is used.
 - Under the owner's definition, **most of E's "early" stops were correct** (27 of 46: the human kept browsing after the
   goal was met), and a quarter of the human `complete` labels are premature (12 of 49). E-DPO's premise (penalise E's
   stop, reward the human's) is wrong for over half of the early-stop pairs.
+
+### 2026-11-25 16:13 Asia/Manila — the Claude judge PASSES the fresh calibration (93%)
+
+Claude Opus 5.5 with the guideline prompt (`results/v48_dev/claude_judge_fresh_calibration.jsonl`, $0.97):
+**88 / 95 = 93%** (bar 90%); early-stop pairs 43 / 46, missed-stop pairs 45 / 49. The 7 disagreements are borderline
+either way (e.g. a Maps "Save" button still outlined although the steps saved; a filter selected with the results panel
+still closed). **Decision (registered rule): the judge filters the 874 pairs (Batch API) and E-DPO resumes.**
