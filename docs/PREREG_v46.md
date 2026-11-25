@@ -242,3 +242,23 @@ kept). Four harness errors (task setup / SMS checker parsing a gRPC fork log lin
 E vs D: 5 wins, 7 losses (McNemar p = 0.77). Against the registered online bar (false completes ≤ 15, successes ≥ 18)
 E would fail on false completes. Waits nearly gone; false completes barely moved: 10 of the first 19 are partly done
 multi-part tasks (round 10, `docs/PREREG_v48.md`).
+
+### 2026-11-25 20:33 Asia/Manila — owner: E on the held-out AndroidWorld seeds (post-hoc; registered before any run)
+
+Owner: "What's wrong with the E that we haven't run the full suite on it yet. I think it's okay". E failed its offline
+gate (2 of 10, narrowly), so the round-8 rule never sent it to the held-out seeds. This entry adds that evaluation as an
+owner decision, with the comparison fixed before any episode runs.
+
+| Item | Value |
+|---|---|
+| Question | Is E at least as good as v4 on the held-out seeds, so that it can replace v4 as the main model? |
+| Runs | AndroidWorld seeds 7, 1234, 2026 × 116 tasks; E's Q4_K_M GGUF (`experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E-GGUF`, sha256 `fa8f2dca…`), harness variant U (`--history_steps=24 --nochange_notes=true --change_rule=fine`), prompt v4, thinking on, the same llama-server flags as v4 |
+| Same rules as v4's sealed runs | `--task_random_seed=<seed> --n_task_combinations=1`; an episode whose emulator crashed before step 1 is re-run once; exceptions count as failures; outcome lines kept out of the logs; no result read until all three seeds have finished |
+| One difference | A cold-booted emulator for every pass (`scripts/androidworld/local_sealed_aw_e.sh`), as for every development pass since 2026-11-22 (the accessibility forwarder fails on a second pass) |
+| Analysis | `analysis/sealed_analysis.py` with E added as an arm: the same paired, template-clustered sign-flip test (10,000 draws) against v4 and GUI-Owl on the same instances |
+| **E replaces v4 as the main model if** | (a) E − v4 lower 95% bound > −6.9 points (the preregistered non-inferiority margin of `docs/PREREG_v4.md`), **and** (b) E's false completes on the 348 episodes ≤ v4's 71 |
+| Otherwise | v4 stays the main model; E's held-out numbers go on its card and in `docs/results.md` |
+
+**Status: post-hoc.** The held-out seeds were unsealed on 2026-11-19, and v4's held-out false completes were read for
+round 6's diagnosis, so they are not pristine for models built after that. E was never trained or selected on them.
+MobileWorld for E needs a new cloud machine (owner's approval) and is not part of this rule.
