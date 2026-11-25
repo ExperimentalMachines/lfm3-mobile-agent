@@ -5,7 +5,7 @@ Same judge as claude_judge.py (PROMPT_V2, effort high, max 8,000 output tokens).
 ledger total + the worst case of every batch in flight + the new batch could pass CAP_USD ($90).
 Resumable: submitted batch ids are recorded in OUT.batches.jsonl before anything else; on restart they are collected
 first, and rows already in OUT are not sent again.
-Usage: ANTHROPIC_API_KEY=... python claude_label_rows.py ROWS_DIR OUT LEDGER [--max_inflight 3]
+Usage: ANTHROPIC_API_KEY=... python claude_label_rows.py ROWS_DIR OUT LEDGER [--max_inflight 3] [--prefix ac|ody]
 """
 import argparse
 import glob
@@ -21,9 +21,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from claude_judge import CAP_USD, PROMPT_V2, log_spend, params, spent, verdict, worst  # noqa: E402
 
 
+PREFIX = "ac"
+
+
 def load(path):
     t = pq.read_table(path).to_pylist()
-    return [{"case": f"ac_{r['episode_id']}_{r['step_idx']}", "episode_id": r["episode_id"], "step_idx": r["step_idx"],
+    return [{"case": f"{PREFIX}_{r['episode_id']}_{r['step_idx']}", "episode_id": r["episode_id"], "step_idx": r["step_idx"],
              "user": r["user"], "jpg": r["jpg"]} for r in t]
 
 
@@ -53,7 +56,10 @@ def main():
     ap.add_argument("out")
     ap.add_argument("ledger")
     ap.add_argument("--max_inflight", type=int, default=3)
+    ap.add_argument("--prefix", default="ac", help="case id prefix (ac: AndroidControl rows, ody: GUI-Odyssey rows)")
     a = ap.parse_args()
+    global PREFIX
+    PREFIX = a.prefix
     client = anthropic.Anthropic(max_retries=4)
     reg = a.out + ".batches.jsonl"
     files = sorted(glob.glob(os.path.join(a.rows, "*.parquet")))

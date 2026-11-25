@@ -319,3 +319,18 @@ most about 5 of E's 19 classified false completes (commit / detail errors; none 
 - **Bar: at least 90% agreement** on the non-doubtful cases. Pass → label all 1,766 (Batch API, about $9); a candidate is
   usable as a terminal `status complete` row only if the judge says COMPLETE. Fail → no Odyssey terminal rows.
 - Budget: same ledger and $90 hard stop.
+
+### 2026-11-25 17:03 Asia/Manila — GUI-Odyssey calibration PASSES (91%); AndroidControl sample 11.3% premature → full run
+
+| Check | Result | Rule | Decision |
+|---|---|---|---|
+| GUI-Odyssey calibration (`results/v48_dev/claude_judge_ody_calibration.jsonl`) | **51 / 56 = 91%** (by-eye: 29 done, 27 not done, 4 doubtful) | ≥ 90% | label all 1,766 candidates |
+| AndroidControl `complete` rows, random 1,000 (`claude_ac_complete_verdicts.jsonl`) | **113 NOT_COMPLETE = 11.3%** (95% CI 9.3-13.3%) | ≥ 10% | label the remaining ~10,070 rows |
+
+- By eye, about half of the GUI-Odyssey terminal candidates (27 / 56) are not done under the owner's definition (earlier,
+  more lenient reviews: 16-25%): unsaved documents, posts and messages still sending, ride / purchase flows stopped at
+  payment, the search part of a multi-part task skipped.
+- AndroidControl premature completes the judge names: save tapped but a sign-in screen opened; reviews of the seller
+  instead of the product; checkout not started; a goal setting never changed.
+- Order: GUI-Odyssey first (about $9), then AndroidControl (about $50), one process at a time so the $90 guard is exact.
+  Ledger now $12.45.

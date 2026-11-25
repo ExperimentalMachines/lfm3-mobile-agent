@@ -165,10 +165,11 @@ def run_batches(client, cases, out, ledger, chunk, prompt):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["calibrate", "calibrate_fresh", "filter"])
+    ap.add_argument("mode", choices=["calibrate", "calibrate_fresh", "calibrate_rows", "filter"])
+    ap.add_argument("--rows", default="", help="calibrate_rows: a parquet of (episode_id, step_idx, user, jpg) rows")
     ap.add_argument("--prompt", choices=list(PROMPTS), default="v1")
     ap.add_argument("--labels", default="", help="calibrate_fresh: the by-eye labels json {case: COMPLETE|NOT_COMPLETE|DOUBTFUL}")
-    ap.add_argument("--pairs", required=True)
+    ap.add_argument("--pairs", default="")
     ap.add_argument("--ody", default="")
     ap.add_argument("--out", required=True)
     ap.add_argument("--ledger", required=True)
@@ -176,7 +177,14 @@ def main():
     a = ap.parse_args()
     client = anthropic.Anthropic(max_retries=4)
     prompt = PROMPTS[a.prompt]
-    if a.mode == "calibrate_fresh":
+    if a.mode == "calibrate_rows":
+        import pyarrow.parquet as pq
+        labels = json.load(open(a.labels))["labels"]
+        rows = {f"ody_{r['episode_id']}_{r['step_idx']}": r for r in pq.read_table(a.rows).to_pylist()}
+        cases = [{"case": k, "user": rows[k]["user"], "jpg": rows[k]["jpg"], "label": v} for k, v in labels.items()
+                 if v != "DOUBTFUL"]
+        print(f"rows: {len(cases)} labelled, {sum(v == 'DOUBTFUL' for v in labels.values())} doubtful left out")
+    elif a.mode == "calibrate_fresh":
         labels = json.load(open(a.labels))["labels"]
         cases = [c | {"label": labels[c["case"]]} for c in fresh_cases(a.pairs) if labels[c["case"]] != "DOUBTFUL"]
         print(f"fresh: {len(cases)} labelled, {sum(v == 'DOUBTFUL' for v in labels.values())} doubtful left out")
@@ -202,7 +210,7 @@ def main():
         lab = [r for r in res if r.get("label")]
         agree = sum(r["verdict"] == r["label"] for r in lab)
         print(f"agreement {agree}/{len(lab)} = {agree / len(lab):.3f}  (bar >= 0.90)")
-        for grp in ("pair_early", "pair_missed", "ody_r1", "ody_r2", "fresh_early", "fresh_missed"):
+        for grp in ("pair_early", "pair_missed", "ody_r1", "ody_r2", "fresh_early", "fresh_missed", "ody_"):
             g = [r for r in lab if r["case"].startswith(grp)]
             if g:
                 print(f"  {grp}: {sum(r['verdict'] == r['label'] for r in g)}/{len(g)}")
