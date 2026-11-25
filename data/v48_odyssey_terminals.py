@@ -83,7 +83,8 @@ def pending(png):
     with tempfile.NamedTemporaryFile(suffix=".png") as f:
         f.write(png)
         f.flush()
-        pr = subprocess.run(["tesseract", f.name, "stdout", "--psm", "3"], capture_output=True, text=True, timeout=120)
+        pr = subprocess.run(["tesseract", f.name, "stdout", "--psm", "3"], capture_output=True, text=True, timeout=120,
+                            env={**os.environ, "OMP_THREAD_LIMIT": "1"})  # one thread each: 30 workers on 32 CPUs
     if pr.returncode != 0:
         return True  # fail closed
     return bool(PENDING_RE.search(pr.stdout))
