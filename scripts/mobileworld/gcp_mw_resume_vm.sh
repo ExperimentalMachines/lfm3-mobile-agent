@@ -19,7 +19,7 @@
 # (atomically, with every final disposition logged) only when a successfully parsed fresh plan has nothing left to attempt.
 # "ONE more attempt" = one more mw eval invocation, inside which MobileWorld's --auto_retry 3 allows up to 4 executions
 # (as v4 received for ThanksgivingPrepTask); the same for every model (PREREG 2026-11-19 05:45).
-# Usage: bash mw_resume.sh guiowl|v4|maiui_a|maiui_b|v4g|v41|v41g|v42g|v42 [--dry-run]   (deployed for MAI-UI as /home/ubuntu/mw_resume2.sh)
+# Usage: bash mw_resume.sh guiowl|v4|maiui_a|maiui_b|v4g|v41|v41g|v42g|v42|e [--dry-run]   (deployed for MAI-UI as /home/ubuntu/mw_resume2.sh)
 set -u
 cd /home/ubuntu
 RUN=$1; DRY=${2:-}; TASKS=/home/ubuntu/mw_gui_en.json
@@ -40,6 +40,13 @@ case $RUN in
                /home/ubuntu/.local/bin/uv run mw eval
                --agent_type /home/ubuntu/lfm3/lfm3_mw_agent.py --model_name local --llm_base_url http://127.0.0.1:18094/v1
                --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix lfmenv --log_file_root /home/ubuntu/$LOG) ;;
+  e)      # v4.6-E (docs/PREREG_v46.md 2026-11-25 20:40): v4's run-2 command (adapter typing `aw`, no guards) plus E's
+          # history format (24 steps, notes with the fine rule); container lfmenv_0, model tunnel 18094. Run 4 log root.
+          LOG=traj_logs/e_gui_en_r4
+          CMD=(sudo LFM3_PROMPT_VERSION=v4 LFM3_AGENT_FORMAT_DIR=/home/ubuntu/lfm3 LFM3_HISTORY_STEPS=24 LFM3_NOCHANGE_NOTES=1
+               LFM3_CHANGE_RULE=fine /home/ubuntu/.local/bin/uv run mw eval
+               --agent_type /home/ubuntu/lfm3/lfm3_mw_agent.py --model_name local --llm_base_url http://127.0.0.1:18094/v1
+               --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix lfmenv --log_file_root /home/ubuntu/$LOG) ;;
   maiui_a|maiui_b)   # MAI-UI-2B Q8_0, official MobileWorld agent with one screenshot (eval/mobileworld/maiui_mw_agent.py);
           # the 105 tasks are split alternately (mw_gui_en_maiui_a/b.json), half a on mobile_world_env_0 with the server on
           # tunnel 18093, half b on lfmenv_0 with an identical server on 18094; one shared log root
@@ -48,7 +55,7 @@ case $RUN in
           CMD=(sudo /home/ubuntu/.local/bin/uv run mw eval --agent_type /home/ubuntu/lfm3/maiui_mw_agent.py --model_name MAI-UI-2B
                --llm_base_url http://127.0.0.1:$PORT/v1 --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix $EP
                --log_file_root /home/ubuntu/$LOG) ;;
-  *) echo "usage: $0 guiowl|v4|maiui_a|maiui_b|v4g|v41|v41g|v42g|v42 [--dry-run]"; exit 2 ;;
+  *) echo "usage: $0 guiowl|v4|maiui_a|maiui_b|v4g|v41|v41g|v42g|v42|e [--dry-run]"; exit 2 ;;
 esac
 PAT="mw eval.*--log_file_root /home/ubuntu/$LOG"
 case $RUN in maiui_*) PAT="mw eval.*--env_prefix $EP --log_file_root /home/ubuntu/$LOG" ;; esac   # the two halves share LOG

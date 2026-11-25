@@ -262,3 +262,18 @@ owner decision, with the comparison fixed before any episode runs.
 **Status: post-hoc.** The held-out seeds were unsealed on 2026-11-19, and v4's held-out false completes were read for
 round 6's diagnosis, so they are not pristine for models built after that. E was never trained or selected on them.
 MobileWorld for E needs a new cloud machine (owner's approval) and is not part of this rule.
+
+### 2026-11-25 20:40 Asia/Manila — owner: E on MobileWorld too (descriptive; registered before any run)
+
+Owner: "Yes, it needs that" (a new AWS machine, about $10–20). Reported, not gated: it does not change the held-out
+rule above.
+
+| Item | Value |
+|---|---|
+| Benchmark | MobileWorld @ `a026188`, the same 105 GUI-only tasks (`results/mobileworld/mw_gui_en.json`), one run |
+| Environment | MobileWorld's env image pinned by digest `ghcr.io/tongyi-mai/mobile_world@sha256:b680380e…` (the `latest` tag, built 2025-12-24, so the image v4's run 2 pulled); one container created with run 2's exact `mw env run` command; AWS EC2 `c8i.4xlarge` with nested virtualisation (run 2 used a GCP n2-standard-16) |
+| Model server | llama.cpp `cd959bae9` with run 2's flags (`-c 8192 --image-max-tokens 1024 --reasoning-format deepseek -np 1 --cache-ram 0`), E's Q4_K_M GGUF, on this Mac's GPU, reached through a reverse SSH tunnel restricted to the VM's `localhost:18094` (run 2: a Colab T4) |
+| Agent | v4's run-2 command (`mw eval`, 50 rounds, 3 s step wait, `--auto_retry 3`; adapter typing `aw`, no guards) plus E's history format: `LFM3_HISTORY_STEPS=24 LFM3_NOCHANGE_NOTES=1 LFM3_CHANGE_RULE=fine` (new opt-in options of `eval/mobileworld/lfm3_mw_agent.py`, same logic as E's AndroidWorld agent; unset = v4's behaviour) |
+| Completion rule | Run 2's, unchanged (`scripts/mobileworld/gcp_mw_resume_vm.sh`, run `e`) |
+| Smoke first | One task in a separate log root (not counted) with the history logged, to check the 24-step window and the notes |
+| Reported | Successes / 105 against v4 (6), v4.2 (8, run 3), GUI-Owl (22), MAI-UI (11): exact McNemar; wait share, repeated intents, tasks ending at the 50-round limit |

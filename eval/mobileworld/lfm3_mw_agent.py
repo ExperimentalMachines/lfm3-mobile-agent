@@ -24,6 +24,13 @@ v4.1 follow-up (2026-11-21, docs/PREREG_v41.md), both opt-in; unset = the sealed
   * LFM3_GUARDS=1          loop guards G1/G2 (train/agent_guards.py); a fired guard is noted in the prediction string.
   * LFM3_MW_TYPING=native  MobileWorld's own input_text semantics (type only, as its official agents use); Enter only
                            when the model outputs keyboard_enter. Default `aw` = the type + adapter-Enter step above.
+v4.6-E (2026-11-25, docs/PREREG_v46.md), opt-in; the same history format as E's AndroidWorld agent (lfm_agent.py,
+variant U), so E sees the prompt it was trained on:
+  * LFM3_HISTORY_STEPS=24  history window (default agent_format.HISTORY_STEPS = 8, as v1-v4.4 were trained)
+  * LFM3_NOCHANGE_NOTES=1  append " [no visible change]" to the last history line when the screen did not change since
+                           the previous model step (not after wait / status / answer / invalid steps, as lfm_agent.py)
+  * LFM3_CHANGE_RULE=fine  train/screen_change.py (E's rule); default `coarse` = round 6's thumbnail rule
+  * LFM3_LOG_HISTORY=1     log the history block each step (smoke checks only)
 """
 import base64
 import io
@@ -32,8 +39,10 @@ import sys
 import time
 from typing import Any
 
+import numpy as np
 import requests
 from loguru import logger
+from PIL import Image
 
 from mobile_world.agents.base import BaseAgent
 from mobile_world.runtime.utils.models import JSONAction
@@ -41,6 +50,7 @@ from mobile_world.runtime.utils.models import JSONAction
 sys.path.insert(0, os.environ.get("LFM3_AGENT_FORMAT_DIR", os.path.dirname(os.path.abspath(__file__))))
 import agent_format as af  # noqa: E402
 import agent_guards as ag  # noqa: E402
+import screen_change as sc  # noqa: E402
 
 MW_APPS = ["Calendar", "Camera", "Chrome", "Clock", "Contacts", "Files", "Gallery", "Mail", "Maps", "Mastodon",
            "Mattermost", "Settings", "SMS", "Taodian"]
@@ -68,16 +78,24 @@ class LFM3MobileWorldAgent(BaseAgent):
         self.guard = ag.LoopGuard() if os.environ.get("LFM3_GUARDS") == "1" else None
         self.typing = os.environ.get("LFM3_MW_TYPING", "aw")
         assert self.typing in ("aw", "native"), self.typing
+        self.history_steps = int(os.environ.get("LFM3_HISTORY_STEPS", af.HISTORY_STEPS))
+        self.nochange_notes = os.environ.get("LFM3_NOCHANGE_NOTES") == "1"
+        self.change_rule = os.environ.get("LFM3_CHANGE_RULE", "coarse")
+        assert self.change_rule in ("coarse", "fine"), self.change_rule
+        self.log_history = os.environ.get("LFM3_LOG_HISTORY") == "1"
+        self._prev_small, self._prev_type = None, None
 
     def initialize_hook(self, instruction: str) -> None:
         self.history = []
         self._pending_enter = False
+        self._prev_small, self._prev_type = None, None
         if self.guard is not None:
             self.guard.reset()
 
     def reset(self) -> None:
         self.history = []
         self._pending_enter = False
+        self._prev_small, self._prev_type = None, None
         if self.guard is not None:
             self.guard.reset()
 
@@ -88,7 +106,7 @@ class LFM3MobileWorldAgent(BaseAgent):
                 {"role": "system", "content": af.PROMPTS[self.prompt_version]},
                 {"role": "user", "content": [
                     {"type": "image_url", "image_url": {"url": "data:image/png;base64," + _png_b64(img)}},
-                    {"type": "text", "text": af.user_text(goal, self.history, apps=self.apps)},
+                    {"type": "text", "text": af.user_text(goal, self.history, apps=self.apps, history_steps=self.history_steps)},
                 ]},
             ] + list(extra_messages or []),
             "temperature": 0.0, "max_tokens": 512, "chat_template_kwargs": {"enable_thinking": True},
@@ -112,6 +130,21 @@ class LFM3MobileWorldAgent(BaseAgent):
         shot = observation["screenshot"]
         W, H = shot.size
         img = af.resize_screenshot(shot, af.MAX_PIXELS)
+        if self.nochange_notes:  # as lfm_agent.step: compare with the screen of the previous model step
+            if self.change_rule == "fine":
+                small = sc.prep(shot)
+                unchanged = lambda a, b: not sc.changed(a, b)
+            else:
+                small = np.asarray(shot.convert("L").resize((72, 160)), dtype=np.float32)
+                unchanged = lambda a, b: float(np.abs(a - b).mean()) < 1.0
+            if (self.history and self._prev_small is not None and self._prev_type not in ("wait", "status", "answer", None)
+                    and unchanged(small, self._prev_small)):
+                i, a = self.history[-1]
+                if not a.endswith("]"):  # action JSON ends with "}"; a trailing "]" means already annotated
+                    self.history[-1] = (i, a + sc.NOTE)
+            self._prev_small = small
+        if self.log_history:
+            logger.info("LFM3 history:\n" + af.history_text(self.history, self.history_steps))
         resp, action = None, None
         for _ in range(1 + self.max_parse_retries):
             resp = self._query(self.instruction, img)
@@ -121,6 +154,7 @@ class LFM3MobileWorldAgent(BaseAgent):
         raw = f"<think>{resp['reasoning']}</think>{resp['content']}  [latency {resp['latency_s']:.1f}s]"
         small = ag.thumb(shot) if self.guard is not None else None
         if action is None:
+            self._prev_type = None
             self.history.append(("(invalid output)", resp["content"][:80]))
             logger.warning(f"unparseable output: {resp['content'][:200]}")
             return raw, JSONAction(action_type="wait")  # same as AW: an invalid step consumes budget, no device action
@@ -144,6 +178,7 @@ class LFM3MobileWorldAgent(BaseAgent):
             self.guard.record(action, small)
         self.history.append((intent, af.action_to_str(action)))
         t = action["action_type"]
+        self._prev_type = t
         if t == "status":
             return raw, JSONAction(action_type="finished", goal_status=action.get("goal_status"))
         if t in af.POINT_TYPES:
