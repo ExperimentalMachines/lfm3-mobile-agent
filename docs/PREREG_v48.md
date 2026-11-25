@@ -349,3 +349,10 @@ Blind spot check (`results/v48_dev/ac_spot_check.json`): 16 judged COMPLETE + 16
 - The remaining ~10,070 AndroidControl rows are **not sent** (input moved aside before that step started). Spend on
   AndroidControl stops at the 1,003 rows already labelled.
 - GUI-Odyssey labelling continues (its own calibration passed at 91%, 17:03).
+
+### 2026-11-25 17:10 Asia/Manila — GUI-Odyssey terminal candidates labelled: 947 usable
+
+All 1,766 candidates judged (Batch API, 0 errors, $12.08; `results/v48_dev/claude_ody_terminal_verdicts.jsonl`):
+**947 COMPLETE** (usable as terminal `status complete` rows: `results/v48_dev/ody_terminal_complete.json`), 819
+NOT_COMPLETE. Claude spend total: **$24.53** of the $90 hard stop (owner cap $95). The AndroidControl bulk step sent
+nothing. Using these rows in training needs its own data-version entry (none registered yet).
