@@ -105,3 +105,14 @@ experimentalmachines. **If not:** results are reported and nothing is published.
 - Smoke micro-batches for 24 GB: **2 x 16 without gradient checkpointing** (round 9: 18.0 s/step, 21.1 GB peak) and
   **4 x 8 with it**. The full run uses the faster one that fits.
 - Cost revised: about $1 for the smoke run; the full run is about 5 h of training plus the evals, about $9 at $1.22/h.
+
+### 2026-11-26 01:45 Asia/Manila — L4 smoke passed; full run launched (no candidate exists yet)
+
+- Smoke job `lfm3-r11-et-smoke2` (ml.g6.2xlarge, 43 billed minutes): mix, both training configurations, both M probes
+  for E and the smoke model, every round-8 eval, both gates and the round-11 gate ran end to end ("SMOKE OK"; numbers on
+  16 rows are meaningless by design).
+- Speed: **2 x 16 without checkpointing 18.1 s/step, peak 20.95 GB**; 4 x 8 with checkpointing 35.0 s/step, peak 8.8 GB.
+  The full run uses 2 x 16 without checkpointing (the faster one that fits): 1,000 steps ≈ 5 h.
+- Smoke mix (40 rows per class): 80 / 80 rebuilt histories identical to the judged text; `status` share 7.4% (E's
+  training split 7.2%).
+- Full job `lfm3-r11-et` launched with `R11_BS=2 R11_GA=16 R11_GC=nogc`, 10 h limit, checkpoints to S3 (resumable).
