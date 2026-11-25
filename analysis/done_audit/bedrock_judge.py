@@ -1,4 +1,4 @@
-"""Completion judge on AWS Bedrock (round 10, docs/PREREG_v48.md 2026-11-25 16:00): Qwen3-VL-235B-A22B, temperature 0.
+"""Completion judge on AWS Bedrock (round 10, docs/PREREG_v48.md 2026-11-25 15:40): Qwen3-VL-235B-A22B, temperature 0.
 Input per case: the goal, the step history and the screenshot; output COMPLETE / NOT_COMPLETE + one reason.
 
   calibrate  python bedrock_judge.py calibrate --pairs PAIRS_DISK --ody calib_ody.json --out results.jsonl

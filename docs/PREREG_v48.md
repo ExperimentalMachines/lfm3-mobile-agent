@@ -115,7 +115,7 @@ two that guard against over-correction (finished screen ≥ 70%, finished screen
 --nochange_notes --change_rule fine`). **Pass: false completes ≤ 15 and successes ≥ 19 (E's).** Reported against D and E:
 successes, false completes, waits, repeated taps; harness errors re-run once and reported both ways.
 
-### 2026-11-25 15:50 Asia/Manila — E-DPO pairs FAIL the by-eye check; DPO not run
+### 2026-11-25 15:34 Asia/Manila — E-DPO pairs FAIL the by-eye check; DPO not run
 
 Job A (`lfm3-r10-edpo-pairs`, L40S, 46 billable min) decoded the 20,000 candidates. E's stop mistakes on its own training
 rows: early stop 2.9% (last 3 actions), 0.5% (elsewhere), 4.4% (ahead rows); missed stop 12.4% (judged-COMPLETE
@@ -131,7 +131,7 @@ terminal rows). 437 + 437 balanced pairs (`results/v48_dev/r10_pairs_stats.json`
 AndroidControl's own `complete` labels contain premature completes even after the stage-1 judge's COMPLETE, and its
 non-terminal rows include goals already met on screen. Preference pairs built on these labels are about 28% wrong.
 
-### 2026-11-25 16:00 Asia/Manila — owner: "Proceed" with a judge calibration before any use
+### 2026-11-25 15:40 Asia/Manila — owner: "Proceed" with a judge calibration before any use
 
 - **Judge:** Qwen3-VL-235B-A22B on AWS Bedrock (`qwen.qwen3-vl-235b-a22b`, on demand, us-west-2), temperature 0. Input:
   the goal, the step history and the screenshot; output COMPLETE or NOT_COMPLETE with one line of reason.
@@ -143,7 +143,7 @@ non-terminal rows include goals already met on screen. Preference pairs built on
   step is human-verified completion labels. At or above it, the judge filters the 874 E-DPO pairs (a pair is kept only if
   the judge agrees with its premise) and E-DPO resumes as registered on the kept pairs (still balanced 1:1).
 
-### 2026-11-25 16:25 Asia/Manila — the Bedrock judge FAILS calibration; round 10 stops
+### 2026-11-25 15:46 Asia/Manila — the Bedrock judge FAILS calibration; round 10 stops
 
 Qwen3-VL-235B-A22B (Bedrock, temperature 0, `analysis/done_audit/bedrock_judge.py`) on the 93 cases labelled by eye
 today (`results/v48_dev/bedrock_judge_calibration.jsonl`; 108k input tokens):
@@ -169,3 +169,22 @@ Findings carried forward:
 3. A fair share of goals is ambiguous about what "done" means (read / browse / see-if goals).
 Next step (not registered yet): human-verified completion labels with written guidelines, on goals with an explicit end
 state, and a decision on how browse / read / see-if goals should end.
+
+### 2026-11-25 15:57 Asia/Manila — owner: label with the Claude API; the same calibration comes first
+
+Owner: "label with claude API … You have $100 of credits. Don't go over $95". Registered before any Claude output:
+
+| Item | Setting |
+|---|---|
+| Judge | Claude Opus 5.5 (`claude-opus-5-5`, Anthropic API, owner's credit), adaptive thinking, effort `high`, max 8,000 output tokens |
+| Input, prompt, parsing | Exactly as the Bedrock judge: goal + step history + the stored screenshot (576×1280 JPEG, about 1,300-1,600 input tokens); first line COMPLETE / NOT_COMPLETE (`analysis/done_audit/claude_judge.py` imports them from `bedrock_judge.py`) |
+| Calibration set | The same 93 cases labelled by eye on 2026-11-25; one run, no prompt change after seeing any output |
+| Bar | **At least 84 / 93 (90%)** agreement; refusals, unparsed and errors count as disagreements |
+| Budget | Every response priced at list price ($4 / $20 per M tokens in / out; Batch API half) in `results/v48_dev/claude_spend.jsonl`; the script sends nothing that could take the total past **$90** (owner cap $95) |
+
+- **Pass:** Claude filters the 874 E-DPO pairs through the Batch API (keep rule as registered at 15:40), and E-DPO
+  resumes as registered (balanced 1:1 on the kept pairs, E's round-8 gate, online bar false completes ≤ 15 and
+  successes ≥ 19).
+- **Fail:** no Claude label is used; round 10 stays negative.
+- A second judge after the first failed gives two tries at the bar; at 84 / 93 a judge whose true agreement is 80% passes
+  with probability under 1%, so the selection effect is small.
