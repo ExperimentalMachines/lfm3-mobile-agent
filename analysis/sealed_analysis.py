@@ -12,6 +12,9 @@ the test's breakpoints), reported rounded outward to 0.1 pp; the non-inferiority
 Sensitivity: successes disputed by the per-success trajectory review (results/aw_checker_disputes.json) counted as
 failures; the primary score is never rewritten.
 Usage: python analysis/sealed_analysis.py --seeds 7 --out results/sealed_analysis_seed7
+E (v4.6-E) arm, added post hoc (docs/PREREG_v46.md 2026-11-25 20:33): --arms v4,guiowl,v1,e adds E - v4 (E's rule: lower
+95% bound > -6.9 pp) and E - GUI-Owl, and false `complete` counts (definition of analysis/aw_false_complete.py) after the
+re-runs, for E against v4's 71. Without --arms the output is the preregistered v4 analysis, unchanged.
 """
 import argparse
 import glob
@@ -30,10 +33,16 @@ p = argparse.ArgumentParser()
 p.add_argument("--seeds", required=True, help="comma-separated held-out seeds (all arms must be complete)")
 p.add_argument("--out", required=True, help="output prefix (.json and .md are written)")
 p.add_argument("--perms", type=int, default=10000)
+p.add_argument("--arms", default="v4,guiowl,v1", help="v4,guiowl,v1 (preregistered) or v4,guiowl,v1,e")
 a = p.parse_args()
 SEEDS = [int(s) for s in a.seeds.split(",")]
-ARMS = {"v4": "lfm3vl2b_v4_q4km", "guiowl": "guiowl15_2b_matched1img_apps_q4km", "v1": "lfm3vl2b_v1_q4km"}
-LABEL = {"v4": "LFM3 v4 (final)", "guiowl": "GUI-Owl-1.5-2B matched", "v1": "LFM3 v1 (reference)"}
+ARMS = {"v4": "lfm3vl2b_v4_q4km", "guiowl": "guiowl15_2b_matched1img_apps_q4km", "v1": "lfm3vl2b_v1_q4km",
+        "e": "lfm3vl2b_v46e_q4km"}
+LABEL = {"v4": "LFM3 v4 (final)", "guiowl": "GUI-Owl-1.5-2B matched", "v1": "LFM3 v1 (reference)", "e": "LFM3 v4.6-E"}
+_want = a.arms.split(",")
+if _want[:3] != ["v4", "guiowl", "v1"] or not set(_want[3:]) <= {"e"} or len(_want) != len(set(_want)):
+    raise SystemExit("--arms must be v4,guiowl,v1 or v4,guiowl,v1,e")
+ARMS = {k: ARMS[k] for k in _want}
 NI_MARGIN = -6.9
 ANSWER = set(json.load(open("results/codex/v3_audit/answer_tasks.json"))["answer_tasks"])
 META = {m["task_name"]: m for m in json.load(open("data/meta/androidworld_task_metadata.json"))}
@@ -41,6 +50,8 @@ VARY = set(json.load(open("results/aw_template_manifest.json"))["goal_text_can_v
 assert len(VARY) == 78 and VARY <= set(META)
 DISPUTES = json.load(open("results/aw_checker_disputes.json"))["disputes"]
 SETUP = {}  # (run_root, template) -> True if the exception's last traceback is task setup (_run_task -> initialize_task)
+FC = {}  # (run_root, template) -> False `complete` (analysis/aw_false_complete.py): no exception, not a success, no
+#          partial credit, not an answer task, last parsed action status/complete
 
 
 def instance_seed(suite_seed, t, i=0):  # android_world suite_utils.create_suite._get_instance_seed
@@ -81,6 +92,16 @@ def load(run_root, agent, expect=116, full=True):
             SETUP[(run_root, t)] = frames[:2] == ["_run_task", "initialize_task"]
         ok[t] = isinstance(r, (int, float)) and not math.isnan(r) and r >= 1 and not e
         exc[t] = e
+        dd = ep.get("episode_data") if isinstance(ep.get("episode_data"), dict) else {}
+        la = (dd.get("parsed_action") or [None])[-1] if dd else None
+        if isinstance(la, str):
+            try:
+                la = json.loads(la)
+            except Exception:
+                la = None
+        FC[(run_root, t)] = bool(not e and dd and not ok[t] and not (isinstance(r, (int, float)) and r > 0)
+                                 and t not in ANSWER and isinstance(la, dict) and la.get("action_type") == "status"
+                                 and la.get("goal_status", "complete") == "complete")
         goal[t] = re.sub(r"\d{8}_\d{6}", "<ts>", ep.get("goal") or "")
         steps[t] = ep.get("episode_length")
     if full and set(ok) != set(META):
@@ -159,12 +180,18 @@ for s in SEEDS:
                 raise SystemExit(f"INPUT ERROR: re-run of {arm} seed {s} {t}, but the original crashed after task setup")
             matched = "original"
             if goal2[t] != goal[t]:
-                if {data[(a, s)][2][t] for a in ARMS if a != arm} != {goal2[t]}:
+                # E (added post hoc) never takes part in checking another arm's re-run, so the preregistered v4 analysis
+                # cannot change; an arm whose own episode crashed in task setup holds the raw (pre-rewording) goal and is
+                # not a valid reference. Neither changes a check of the published analysis (all passed with every arm).
+                ref = {data[(o, s)][2][t] for o in ARMS if o not in (arm, "e")
+                       and not SETUP.get((f"results/androidworld_sealed/{o}_seed{s}", t), False)}
+                if not ref or ref != {goal2[t]}:
                     raise SystemExit(f"INPUT ERROR: re-run goal differs for {arm} seed {s} {t} (and from the other arms)")
                 matched = "other_arms (original crashed before the date rewording)"
             SUBST.append({"arm": arm, "seed": s, "task": t, "rerun_success": ok2[t], "rerun_exception": exc2[t],
                           "goal_matched": matched})
             ok[t], exc[t] = ok2[t], exc2[t]
+            FC[(f"results/androidworld_sealed/{arm}_seed{s}", t)] = FC[(rr, t)]
 # seed-varying templates: goal text differs between dev seed 30 and each held-out seed (GUI-Owl matched runs)
 dev = {}
 for f in glob.glob("results/androidworld/guiowl15_2b_matched/run_*/*.pkl.gz"):
@@ -233,6 +260,17 @@ def compare(x, y, primary=False, D=None):
 
 
 res["comparisons"]["v4_minus_guiowl (PRIMARY)"] = compare("v4", "guiowl", primary=True)
+if "e" in ARMS:
+    res["comparisons"]["e_minus_v4 (E RULE)"] = compare("e", "v4", primary=True)
+    res["comparisons"]["e_minus_guiowl"] = compare("e", "guiowl")
+    fcs = {arm: {s: sum(FC[(f"results/androidworld_sealed/{arm}_seed{s}", t)] for t in META) for s in SEEDS} for arm in ARMS}
+    er = res["comparisons"]["e_minus_v4 (E RULE)"]
+    res["e_rule"] = {"false_completes_after_reruns": fcs,
+                     "a_lower_bound_pp": er["ci95_pp_exact_endpoints"][0] if er["ci95_pp_exact_endpoints"] else None,
+                     "a_non_inferior": er["non_inferior"],
+                     "b_e_false_completes": sum(fcs["e"].values()), "b_v4_false_completes": sum(fcs["v4"].values()),
+                     "b_holds": sum(fcs["e"].values()) <= sum(fcs["v4"].values())}
+    res["e_rule"]["e_replaces_v4"] = bool(res["e_rule"]["a_non_inferior"] and res["e_rule"]["b_holds"])
 both_ok = {s: [t for t in META if not data[("v4", s)][1][t] and not data[("guiowl", s)][1][t]] for s in SEEDS}
 sec = {}
 for s in SEEDS:
@@ -292,6 +330,13 @@ L += ["", "Re-runs applied: " + (", ".join(f"{r['arm']} s{r['seed']} {r['task']}
 pc = res["comparisons"]["v4_minus_guiowl (PRIMARY)"]
 L += ["", f"Non-inferiority (lower 95% bound > {NI_MARGIN} pp): **{'yes' if pc['non_inferior'] else 'no'}** "
       f"(lower bound {pc['ci95_pp_exact_endpoints'][0] if pc['ci95_pp_exact_endpoints'] else 'n/a'} pp)."]
+if "e" in ARMS:
+    er = res["e_rule"]
+    L += ["", "E's rule (docs/PREREG_v46.md 2026-11-25 20:33, post hoc):",
+          f"* (a) E - v4 lower 95% bound > {NI_MARGIN} pp: **{'yes' if er['a_non_inferior'] else 'no'}** (lower bound {er['a_lower_bound_pp']} pp)",
+          f"* (b) false `complete`s after re-runs, E <= v4: **{'yes' if er['b_holds'] else 'no'}** (E {er['b_e_false_completes']}, "
+          f"v4 {er['b_v4_false_completes']}; per seed: " + "; ".join(f"{arm} " + "/".join(str(v) for v in er['false_completes_after_reruns'][arm].values()) for arm in ARMS) + ")",
+          f"* **E replaces v4: {'yes' if er['e_replaces_v4'] else 'no'}**"]
 if disp:
     sc = res["sensitivity_checker_disputes"]
     L += ["", f"Sensitivity, disputed checker successes counted as failures ({', '.join(sc['disputed_successes_counted_as_failures'])}): "

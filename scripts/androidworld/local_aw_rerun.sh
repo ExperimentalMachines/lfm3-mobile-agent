@@ -21,6 +21,10 @@ case "$ARM" in
   v4) SRV=(-m models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf
            --mmproj models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf -c 8192 --image-max-tokens 1024 --reasoning-format deepseek)
       RUN=(--agent=lfm --enable_thinking=true --prompt_version=v4 --agent_label=lfm3vl2b_v4_q4km) ;;
+  e)  SRV=(-m models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-v4.6-E-Q4_K_M.gguf
+           --mmproj models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf -c 8192 --image-max-tokens 1024 --reasoning-format deepseek)
+      RUN=(--agent=lfm --enable_thinking=true --prompt_version=v4 --guards=false --history_steps=24 --nochange_notes=true
+           --change_rule=fine --agent_label=lfm3vl2b_v46e_q4km) ;;   # as scripts/androidworld/local_sealed_aw_e.sh
   guiowl) SRV=(-m models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.Q4_K_M.gguf
                --mmproj models/GUI-Owl-1.5-2B-GGUF/GUI-Owl-1.5-2B-Instruct.mmproj-Q8_0.gguf -c 20480 --image-max-tokens 2600 --jinja)
       RUN=(--agent=guiowl --guiowl_images=1 --guiowl_max_pixels=1048576 --installed_apps=true
