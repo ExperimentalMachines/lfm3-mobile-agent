@@ -130,3 +130,15 @@ terminal rows). 437 + 437 balanced pairs (`results/v48_dev/r10_pairs_stats.json`
 
 AndroidControl's own `complete` labels contain premature completes even after the stage-1 judge's COMPLETE, and its
 non-terminal rows include goals already met on screen. Preference pairs built on these labels are about 28% wrong.
+
+### 2026-11-25 16:00 Asia/Manila — owner: "Proceed" with a judge calibration before any use
+
+- **Judge:** Qwen3-VL-235B-A22B on AWS Bedrock (`qwen.qwen3-vl-235b-a22b`, on demand, us-west-2), temperature 0. Input:
+  the goal, the step history and the screenshot; output COMPLETE or NOT_COMPLETE with one line of reason.
+  (`analysis/done_audit/bedrock_judge.py`)
+- **Calibration set: every case labelled by eye on 2026-11-25** whose label was not marked doubtful: the 32 E-DPO pairs
+  (the question for each: is the task complete on that screen?) and the 64 GUI-Odyssey terminal candidates from the two
+  reviews (doubtful ones and the one information-goal case left out).
+- **Bar: at least 90% agreement with the by-eye labels.** Below it, no automatic judge is used: E-DPO stops and the next
+  step is human-verified completion labels. At or above it, the judge filters the 874 E-DPO pairs (a pair is kept only if
+  the judge agrees with its premise) and E-DPO resumes as registered on the kept pairs (still balanced 1:1).
