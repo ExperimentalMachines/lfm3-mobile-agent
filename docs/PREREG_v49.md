@@ -89,3 +89,10 @@ experimentalmachines. **If not:** results are reported and nothing is published.
 ---
 
 ## Log
+
+### 2026-11-25 20:35 Asia/Manila — inputs checked; smoke job queued (no candidate exists)
+
+- Inputs uploaded to S3 (`r11/in/`: `ody_term2.parquet`, the verdicts). Before any paid run, a text-only check rebuilt
+  every candidate's history from E's training split: **1,766 / 1,766 identical** to the text the judge saw, 0 missing.
+- Smoke job `lfm3-r11-et-smoke` (ml.g6e.2xlarge) submitted 20:12; SageMaker reports "waiting for capacity" (nothing
+  billed while waiting).

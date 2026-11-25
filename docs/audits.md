@@ -1,6 +1,7 @@
 # Codex audits
 
-Every important step was checked by an independent, adversarial reviewer before the project relied on it.
+Until round 5, every important step was checked by an independent, adversarial reviewer before the project relied on
+it. Rounds 6–11 had no external review ([below](#rounds-611-no-external-review)).
 
 | | |
 |---|---|
@@ -71,3 +72,16 @@ the same morning hit the same quota on every agy model, and the owner decided no
 the stand-in review is the only check of the round-5 results.
 
 Verdict words follow each report's own first line. Severity labels in reports: P1 = serious, P2 = moderate, P3 = minor.
+
+## Rounds 6–11: no external review
+
+The agy quota has been exhausted since 2026-11-23 (resets about 2026-11-28), and no other independent reviewer was
+used. What these rounds rest on instead:
+
+| Safeguard | Where |
+|---|---|
+| Rules, gates and pass bars committed before each candidate existed; every change dated | [PREREG_v44](PREREG_v44.md) – [PREREG_v49](PREREG_v49.md) |
+| Data checked by eye before training (16–48 rows per kind), with stop rules that were applied (round 10 stopped at four of them) | the same files' logs |
+| The "done" judge calibrated on fresh by-eye labels made before any judge output, with a bar (90%) | [PREREG_v48](PREREG_v48.md), [`results/v48_dev/`](../results/v48_dev/) |
+| Limitation | The by-eye labels were made by the coding assistant (a Claude model), and the judge is a Claude model: not independent |
+

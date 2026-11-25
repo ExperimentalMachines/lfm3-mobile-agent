@@ -1,5 +1,7 @@
 # Reproduce
 
+Regenerate every reported summary from the committed raw files, or re-run the experiments themselves.
+
 ## Regenerate the result summaries (minutes, no GPU)
 
 ```bash
@@ -30,7 +32,7 @@ These need hardware and accounts the analysis does not:
 
 | Experiment | Needs | Entry point |
 |---|---|---|
-| Training (SFT) | One GPU (peak use ~11.5 GB; runs used Colab A100 / L4 / G4 and Modal A100 / H100); Hugging Face access to the datasets | [`train/sft_vlm.py`](../train/sft_vlm.py); job configs in [`scripts/training/jobs/`](../scripts/training/jobs/) |
+| Training (SFT) | One GPU (peak use ~11.5 GB; runs used Colab A100 / L4 / G4, Modal A100 / H100 and SageMaker L40S); Hugging Face access to the datasets | [`train/sft_vlm.py`](../train/sft_vlm.py); job configs in [`scripts/training/jobs/`](../scripts/training/jobs/) |
 | AndroidControl offline eval | GPU | [`eval/androidcontrol/generate.py`](../eval/androidcontrol/generate.py) → [`score.py`](../eval/androidcontrol/score.py) |
 | AndroidWorld | AndroidWorld @ `55ddaf5` cloned to `android_world/` + the two patches in `eval/androidworld/`; Android SDK emulator (API 33); llama.cpp | [`scripts/androidworld/local_sealed_aw_v3.sh`](../scripts/androidworld/local_sealed_aw_v3.sh) `<arm> <seed> <console port> <grpc port> <server port>` |
 | MobileWorld | A Linux host with KVM; MobileWorld @ `a026188`; a GPU host for the model server | [`scripts/mobileworld/`](../scripts/mobileworld/) |

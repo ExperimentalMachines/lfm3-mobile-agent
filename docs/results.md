@@ -1,11 +1,16 @@
 # Results
 
-Each section names the file in [`results/`](../results/) its numbers come from.
-To regenerate the summaries (and see what that covers), use [reproduce.md](reproduce.md).
+The main study: **v4** (frozen 2026-11-19) against GUI-Owl-1.5-2B, MAI-UI-2B and our earlier versions. Each section
+names the file in [`results/`](../results/) its numbers come from; [reproduce.md](reproduce.md) regenerates them.
+Versions after v4 are development work: **[rounds.md](rounds.md)**.
 
-**Contents:** [AndroidWorld held-out](#androidworld-held-out-seeds-primary) ·
-[AndroidWorld development seed](#androidworld-development-seed-30) · [MobileWorld](#mobileworld) ·
-[Speed](#speed) · [Offline evaluations](#offline-evaluations)
+| Section | In one line |
+|---|---|
+| [AndroidWorld held-out](#androidworld-held-out-seeds-primary) | v4 54 / 348, GUI-Owl 47, v1 32: v4 non-inferior to GUI-Owl (within the preregistered 6.9-point margin), not shown better |
+| [AndroidWorld seed 30](#androidworld-development-seed-30) | The development seed every version was chosen on; MAI-UI-2B leads (32 / 116) |
+| [MobileWorld](#mobileworld) | GUI-Owl 22 / 105, MAI-UI 11, v4 6 |
+| [Speed](#speed) | v4 takes 2–3× less time per step than the other two 2B agents on a Mac; on a phone CPU about 28× less as evaluated, about 5× at an equal image budget |
+| [Offline evaluations](#offline-evaluations) | AndroidControl test, general knowledge, v4's gate, v4-RL |
 
 ---
 
@@ -142,53 +147,7 @@ Seed 30 was used to choose between versions, so these are development numbers. S
   ([`results/maiui_quant_check.md`](../results/maiui_quant_check.md)). Its official prompt lists AndroidWorld's apps.
 - GUI-Owl's seed-30 run did not get the installed-app list that v4 gets. The held-out runs give it to both.
 - v4 passed its preregistered development gate on this seed ([`results/v4_gate_seed30.txt`](../results/v4_gate_seed30.txt)).
-
-### v4.1 follow-up variants (post-hoc, 2026-11-22)
-
-Designed after reading v4's MobileWorld trajectories ([PREREG_v41.md](PREREG_v41.md)). Exceptions count as failures.
-
-| Variant | Successes / 116 | Exceptions | vs v4 (gained / lost) |
-|---|---|---|---|
-| v4 (reference) | 18 | 4 | — |
-| A: v4 + loop guards | 18 | 1 | +3 / −3 |
-| B: v4.1 (wait relabel + recovery history) | 12 | 7 | +2 / −8 |
-| C: v4.1 + guards | 14 | 8 | +6 / −10 |
-| D: v4.2 + guards | 13 | 24 (20 emulator a11y crashes) | +6 / −11 |
-| **E: v4.2 (v4.1 + own replayed history)** | **18** | 9 | +6 / −6 |
-
-- **No variant beats v4.** E was selected for MobileWorld by the pre-declared rule (A and E tie; tie order E first).
-- **Run-to-run noise is large:** v4 and v4.2 both score 18 but disagree on 12 tasks; one pass detects only gaps of
-  about 9–10 points ([research notes](research/notes/training-scale-and-own-attempt-learning/benchmarks.md)).
-
-### Round 5: learning from own mistakes vs more training (pre-registered, 2026-11-22)
-
-Gates were fixed before training ([PREREG_v41.md](PREREG_v41.md), 17:00 entry). All candidates start from v4.2.
-Counts: [`analysis/aw_false_complete.py`](../analysis/aw_false_complete.py) (the failure taxonomy's definition),
-[`analysis/aw_paired_flips.py`](../analysis/aw_paired_flips.py); offline files in [`results/v5_dev/`](../results/v5_dev/).
-
-| Candidate | What | AC high-level | Terminal `complete` | Seed 30 successes | Exceptions | False `complete` | Net vs E (flips, p) | Gate |
-|---|---|---|---|---|---|---|---|---|
-| E = v4.2 (reference) | — | 0.732 | 0.738 | 18 | 9 | 25 | — | — |
-| v4.2 replicate | Same model, same harness, second pass | — | — | 19 | 2 | 22 | +1 (9 = R, 1.0) | noise yardstick |
-| P = v4.3-dpo | DPO on all 4,163 of its own mistakes | **0.545** | 0.885 | not run | — | — | — | offline **fail** |
-| P2 = v4.3-dpo2 | DPO on 851 balanced stop / copied-intent mistakes | 0.728 | 0.785 | 21 | 3 | **28** | +3 (11, 0.55) | online **fail** |
-| S = v4.3-sft | 500 more SFT steps on v4.2's mix | 0.736 | 0.757 | 24 | 1 | **37** | +6 (14, 0.18) | online **fail** |
-
-- **Pass rule:** successes ≥ 16 **and** false `complete` ≤ 15, **or** net gain over E ≥ R = 9 tasks.
-- **Round 5 is negative by the declared rule: v4.2 stays.** No candidate goes to the held-out seeds.
-- **P** collapsed whole action types offline (`open_app` 0.95 → 0.16, `scroll` 0.62 → 0.16). Most of its pairs were
-  generic wrong clicks; that this is the cause is inferred (P2's rebalanced pairs kept per-type accuracy), not tested.
-- **P2** did not change online stopping measurably: 44 episodes ended with `complete` (v4.2: 37–38; paired +10 / −7 vs
-  E, p 0.63), false `complete`s 26 vs 25 on the tasks neither run crashed (p 1.0). Its offline gain on recorded final
-  screens did not show up online; why is not determined. Its DPO moved it little (final reward margin 0.047; P 0.43).
-- **S** has the most seed-30 successes of any LFM3 version (24; MAI-UI-2B 32). The gain is the same size against v4
-  (+6, p 0.15) and the replicate (+5, p 0.23), but stays below R = 9. It stops more often: 56 episodes ended with
-  `complete` (paired +25 / −11 vs E, p 0.03), with precision unchanged (0.34) and false `complete`s up (+20 / −11 vs E,
-  p 0.15; +24 / −9 vs the replicate, p 0.01). 4 of its 10 wins over E are tasks the replicate also won.
-- **Run conditions:** E was the second pass on its emulator without a cold boot (9 exceptions); the replicate, P2 and
-  S ran on cold-booted emulators. On tasks neither run crashed, the nets are replicate 0, P2 +2 (p 0.75), S +5
-  (p 0.27). Two void passes (dead accessibility service before the model acted) were discarded and re-run; a Mac
-  reboot interrupted P2 and S, which resumed from their checkpoints (the task in progress was restarted from scratch).
+- Versions after v4 on this seed (v4.1 to v4.6-E: 12–24 / 116): [rounds.md](rounds.md#all-rounds).
 
 ---
 
@@ -205,29 +164,8 @@ This compares agent pipelines, not model weights alone. Source:
 | GUI-Owl-1.5-2B (official agent) | **22 (21.0%)** | 102 | 3 |
 | MAI-UI-2B (official agent, 8-bit) | 11 (10.5%) | 98 | 7 |
 | LFM3-VL-2B v4 | 6 (5.7%) | 104 | 1 |
-| LFM3-VL-2B v4.2 (post-hoc follow-up, run 3) | 8 (7.6%) | 104 | 1 |
 
-### v4.2 follow-up run (post-hoc, 2026-11-22)
-
-Source: [`results/mobileworld/mw_r3_comparison.md`](../results/mobileworld/mw_r3_comparison.md) (+ `.json`),
-[PREREG_v41.md](PREREG_v41.md). Same settings as run 2 except MobileWorld-native typing (no synthetic Enter).
-MobileWorld is now a development benchmark for LFM3; v4's 6/105 stays the held-out number.
-
-| v4.2 vs | Both | v4.2 only | Other only | Difference | Exact McNemar p |
-|---|---|---|---|---|---|
-| **v4 (primary)** | 5 | 3 | 1 | +1.9 pts | 0.625 |
-| GUI-Owl-1.5-2B | 7 | 1 | 15 | −13.3 pts | 0.0005 |
-| MAI-UI-2B | 5 | 3 | 6 | −2.9 pts | 0.51 |
-
-| Loop metric | v4 | v4.2 |
-|---|---|---|
-| Steps that are `wait` | 21% | 5% |
-| `wait` under a non-wait intent | 931 | 18 |
-| Steps repeating the previous intent | 67% | 33% |
-| Tasks ending at the 50-step limit | 85 | 69 |
-
-- **Gained:** MastodonChangeHeader, MastodonFollow, MastodonNewPost. **Lost:** CloseFlightMode. Not significant.
-- **Loops halved, success barely moved:** the freed steps mostly went to wandering, not to finishing tasks.
+Later, v4.2 scored 8 / 105 (development run, [rounds.md](rounds.md#mobileworld-v42-post-hoc-2026-11-22)).
 
 ### Paired comparisons (exact McNemar)
 
@@ -353,6 +291,7 @@ Step success rate; history is teacher-forced, so this is an upper bound on close
 - **MMStar:** it rose significantly after fine-tuning for v1, v2, v3 and both Qwen3.5-2B versions. v4's changes
   (+0.7 / +1.5 points) are not significant (McNemar p = 0.52 / 0.23). Paired tests and 95% CIs are in `results/general/`.
 - **v4 vs v1:** v4 is lower on terminal "complete" accuracy (0.716 vs 0.792); the cause was not isolated.
+- Later versions' offline scores (v4.3 to v4.6-E; AndroidControl up to 0.758): [rounds.md](rounds.md).
 
 ### v4 development gate and v4-RL promotion
 
@@ -369,66 +308,3 @@ Sources: [`results/v4_gate_seed30.txt`](../results/v4_gate_seed30.txt),
 | AndroidWorld seed 30 total (RL only) | ≥ v4's 18 | — | not run | not reached: RL failed offline |
 
 **Outcome:** v4 was frozen as the final model. v4-RL was not promoted.
-
-### Round 6 / v4.4: long and self-correcting trajectories (pre-registered, 2026-11-23)
-
-**Setup**
-
-| Item | Detail |
-|---|---|
-| Rules | Fixed in advance in [PREREG_v44.md](PREREG_v44.md): gates amended twice before any candidate existed, every entry timestamped |
-| Diagnosis behind it | [research/failure-diagnosis-and-next-data.md](research/failure-diagnosis-and-next-data.md) |
-| Evaluator | v4 and the candidates through the same path: Transformers bf16, `generate.py`, pre-rendered splits (`V4REF`) |
-| Files | [`results/v44_dev/`](../results/v44_dev/) |
-| Compute | 64.5 Colab units (A100) |
-
-**New rows:** 8,505 [MemGUI-3K](https://huggingface.co/datasets/lgy0404/MemGUI-3K) training rows.
-- **Shape:** long agent trajectories (median 16 GUI steps), with the dataset's unreasonable steps left in the
-  history so that later rows show recovery.
-- **Filter:** AndroidWorld, MobileWorld and AndroidLab apps removed (`data/v44_memgui.py`).
-
-**Candidates**
-
-| Candidate | What |
-|---|---|
-| A | Base model + v4's rows + MemGUI ×2, v4 recipe (1,250 × 32) |
-| B | A + a " [no visible change]" note on history steps whose next screenshot did not change (the run-time rule of `lfm_agent.py`) |
-| C | v4 + 500 × 32 steps on 50% MemGUI / 50% v4 rows (warm-up / stable / short decay, lr 1e-4) |
-
-**Offline gate**
-
-| Metric | v4 | A | B | C | Bar |
-|---|---|---|---|---|---|
-| AndroidControl test high-level step accuracy | 0.727 | 0.729 | 0.728 | 0.724 | ≥ 0.707 |
-| `dev_answer` | 0.890 | 0.890 | 0.890 | 0.875 | ≥ 0.840 |
-| `dev_complete` (n = 80) | 0.763 | **0.700** | 0.713 | 0.788 | ≥ 0.713 |
-| AndroidControl steps ≥ 4: predicted `status` | 9.0% | **8.5%** | **8.75%** | **9.8%** | ≤ 6.0% |
-| AndroidLens English, step accuracy at steps ≥ 10 | 0.367 | 0.401 | 0.402 | 0.413 | ≥ 0.347 |
-| **Gate** | — | fail | fail | fail | |
-
-**Reported, not gated**
-
-| Metric | v4 | A | B | C |
-|---|---|---|---|---|
-| AndroidLens step accuracy, all steps | 0.414 | 0.448 | 0.441 | 0.444 |
-| AndroidLens: `complete` at the real last step | 12.2% | 21.5% | 29.1% | **47.7%** |
-| AndroidLens: early `status` | 0.2% | 0.5% | 0.9% | 1.4% |
-| AndroidControl terminal `complete` | 0.716 | 0.714 | 0.715 | 0.740 |
-| `dev_memgui` step accuracy | 0.421 | 0.668 | 0.654 | 0.698 |
-
-- **Round 6 is negative by the declared rule.** No candidate ran online; v4 stays.
-- **What moved:**
-  - Every candidate gained 3.5–4.6 points of long-task step accuracy over v4.
-  - The candidates stop correctly at the real end of long tasks far more often. The notes (B) and the continuation
-    from v4 (C) help most.
-- **What did not move:** the late-step early-stop rate on AndroidControl, 8.5–9.8% against v4's 9.0%.
-- **The gate partly measures annotation habit** (found after the results; no decision changed):
-  - 141 of v4's 275 "early" stops at steps ≥ 4 are one step before the episode's end, and 61 are two steps before.
-  - The human demonstration there is often a final scroll (99) or wait (51).
-  - The online failure is earlier: 26 of v4's 71 held-out false `complete`s came before the task's optimal step count.
-  - A later round should gate on "`status` ≥ 2 steps before the end", or on the model's own trajectories.
-- **AndroidLens English** is the new long-task test set (172 episodes, median 27.5 steps; evaluation only):
-  [evaluation.md](evaluation.md#androidlens-english-offline-long-tasks).
-  - v4's GGUF scores 0.395 on it.
-  - Accuracy falls with depth: 0.536 at steps 0–4, 0.329 at steps 20+.
-  - It says `complete` at the true end of only 11.6% of episodes.

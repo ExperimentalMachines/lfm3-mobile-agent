@@ -1,13 +1,16 @@
 # Models
 
-**Contents:** [Versions](#versions-at-a-glance) · [v1–v3 in detail](#v1v3-in-detail) · [Recipe](#training-recipe) ·
-[Training runs](#training-runs) · [v4-RL](#v4-rl-not-promoted) · [Released artifacts](#released-artifacts)
+Every model version, how it was trained, and where it is published. **v4 is the main model**; versions after it are
+development rounds ([rounds.md](rounds.md)).
+
+**Contents:** [Versions](#versions-at-a-glance) · [Recipe](#training-recipe) · [Training runs](#training-runs) ·
+[v4-RL](#v4-rl-not-promoted) · [Released artifacts](#released-artifacts)
 
 ---
 
 ## Versions at a glance
 
-AndroidWorld = development seed 30, successes out of 116 ([results.md](results.md#androidworld-development-seed-30)).
+AndroidWorld = development seed 30, successes out of 116 ([results.md](results.md#androidworld-development-seed-30), [rounds.md](rounds.md#all-rounds)).
 
 | Version | What changed | AndroidWorld | Lesson |
 |---|---|---|---|
@@ -21,95 +24,21 @@ AndroidWorld = development seed 30, successes out of 116 ([results.md](results.m
 | v4-RL | 200 steps of GRPO on static screenshots, from v4 | not run | Failed its offline promotion rule |
 | v4.1 | v4 data with `wait` relabelled + recovery-history augmentation ([PREREG_v41](PREREG_v41.md)) | 12 | Data fix alone lost ground (+2 / −8 vs v4) |
 | v4.2 | v4.1 + the model's own replayed history on training episodes (offline, DAgger-style) | 18 | Back to v4's level (+6 / −6); MobileWorld 8/105 vs v4's 6 (p = 0.63, post-hoc) with loops halved |
-| v4.3-dpo | v4.2 + DPO on all 4,163 of its own mistakes ([round 5](results.md#round-5-learning-from-own-mistakes-vs-more-training-pre-registered-2026-11-22)) | not run | Failed offline (AC 0.732 → 0.545): DPO on generic wrong clicks pushed down whole action types |
+| v4.3-dpo | v4.2 + DPO on all 4,163 of its own mistakes ([round 5](rounds.md#round-5-learning-from-own-mistakes-vs-more-training-2026-11-22)) | not run | Failed offline (AC 0.732 → 0.545): DPO on generic wrong clicks pushed down whole action types |
 | v4.3-dpo2 | v4.2 + DPO on 851 balanced stop / copied-intent mistakes | 21 | Net +3 vs v4.2 is noise (R = 9); stopping not measurably changed (false `complete` 28) |
 | v4.3-sft | v4.2 + 500 more SFT steps on the same mix ("more epochs") | 24 | Best LFM3 seed-30 count, but +6 vs v4.2 is below the noise yardstick (9); it stops more often at unchanged precision, so false `complete` rose to 37 |
-| v4.4-A | v4 recipe on v4's rows + 8,505 MemGUI rows ×2: long, self-correcting trajectories ([round 6](results.md#round-6--v44-long-and-self-correcting-trajectories-pre-registered-2026-11-23)) | not run | Failed the offline gate. Long-task accuracy up (AndroidLens steps ≥ 10: 0.367 → 0.401); late early-stops unchanged |
+| v4.4-A | v4 recipe on v4's rows + 8,505 MemGUI rows ×2: long, self-correcting trajectories ([round 6](rounds.md#round-6-long-and-self-correcting-trajectories-2026-11-23)) | not run | Failed the offline gate. Long-task accuracy up (AndroidLens steps ≥ 10: 0.367 → 0.401); late early-stops unchanged |
 | v4.4-B | A + "no visible change" notes in the history | not run | Failed the offline gate. Correct stop at the end of long tasks 12% → 29% |
 | v4.4-C | v4 + 500 steps on 50% MemGUI / 50% v4 rows | not run | Failed the offline gate on late early-stops only. Best offline: AndroidLens end-of-task stop 48%, steps ≥ 10 0.413 |
+| v4.5-D | All the data once (173,430 rows), 24-step history, change notes ([round 7](rounds.md#round-7-all-the-data-once-with-a-longer-memory-2026-11-24)) | 21 (exploratory) | Failed the offline gate on early stops. Offline gains (AndroidControl 0.753, long tasks 0.471) did not show online |
+| **v4.6-E** | Counterfactual rows where history and screen disagree; judge-filtered "done" labels ([round 8](rounds.md#round-8-judge-done-from-the-screen-not-the-history-2026-11-25)) | 19 (exploratory) | Failed the offline gate narrowly (2 of 10). Waits 29% → 3.5% of steps; false "done" unchanged (24). Newest published model |
+| E-DPO | E + DPO on 342 judge-checked stop pairs ([round 10](rounds.md#round-10-finishing-multi-part-tasks-2026-11-25)) | not run | Failed the offline gate: one pass (11 steps) left E unchanged. Not published |
+| E-T | E + 747 checked GUI-Odyssey "done" endings, 1,000 steps ([round 11](rounds.md#round-11-e-trained-on-checked-multi-part-endings-queued)) | — | Registered 2026-11-25; smoke job queued for a GPU |
 
 Other base models on v1's data: Qwen3.5-2B with the same recipe (16); Qwen3.5-0.8B and LFM2.5-VL-450M with a
 smaller one (LoRA r16, 1 epoch): 12 and 2.
 
 ---
-
-## v1–v3 in detail
-
-The three versions before v4 (2026-11-16 to 18). They share one recipe ([below](#training-recipe)), so the training
-data is what changed. Sources: [`results/SUMMARY.md`](../results/SUMMARY.md),
-[`results/V2_COMPARISON.md`](../results/V2_COMPARISON.md), [`results/v3_dev/`](../results/v3_dev/),
-[seed-30 results](results.md#androidworld-development-seed-30), failure causes from
-[`results/androidworld/failure_taxonomy_20261122.json`](../results/androidworld/failure_taxonomy_20261122.json).
-
-| | v1 | v2 | v3 |
-|---|---|---|---|
-| Built | 11-16 → 11-17, Modal | 11-17, Colab | 11-17 → 11-18, Modal H100 |
-| Question it tested | Does LoRA SFT on AndroidControl make LFM3 an agent? | Do more data sources help? | Were v2's blank intents the problem? |
-| Training data | AndroidControl only, 99,216 rows | + GUI-Odyssey, AMEX, ScreenQA: 78,982 rows | v2 with its 8,739 blank intents filled: 78,952 rows |
-| AndroidControl high / low / terminal `complete` | 0.715 / **0.948** / 0.792 | 0.716 / 0.893 / 0.732 | 0.723 / 0.902 / 0.725 |
-| Dev splits: GUI-Odyssey / AMEX / ScreenQA | 0.269 / 0.306 / 0.000 | 0.644 / 0.735 / **0.764** | **0.662 / 0.741** / 0.724 |
-| MMStar / MMLU (base 52.1% / 48.9%) | 57.1% / 49.5% | 54.6% / 50.9% | 55.3% / 50.0% |
-| **AndroidWorld seed 30** (/116) | **15** | 3 | 13 |
-| Answer tasks solved (seed 30, /25) | 0 | 0 | 0 |
-| Most common failure (seed 30) | False `complete` (27) | Stuck repeating one intent (24) | Stuck repeating one intent (41) |
-| Held-out AndroidWorld (/348) | 32 (seeds 7 / 1234 / 2026: 11 / 10 / 11) | not run | not run |
-| MobileWorld | not run | not run | not run |
-| Apple M5, median s/step | 2.66 | 2.61 | 2.61 |
-| Hugging Face (public) | [`LFM3-VL-2B-MobileAgent-v1`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v1) (+ `-GGUF`) | [`LFM3-VL-2B-MobileAgent-v2`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v2) (+ `-GGUF`) | [`LFM3-VL-2B-MobileAgent-v3`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v3) (+ `-GGUF`) |
-| Local GGUF (git-ignored) | `models/LFM3-VL-2B-AndroidControl-GGUF/` | `models/lfm3vl2b_v2-GGUF/` | `models/lfm3vl2b_v3-GGUF/` |
-
-### v1: AndroidControl only
-
-- **Result:** base 1/116 → 15/116 on seed 30 (paired p = 1.2 × 10⁻⁴). The best LFM3 version at single actions of
-  those measured (low-level step SR 0.948).
-- **Weaknesses:** it never uses `answer` (AndroidControl has no answer supervision), so every answer task fails. A
-  third of its steps are `wait`, all under an intent that is not about waiting: the copied-intent pattern later traced
-  to AndroidControl's labels and fixed in v4.1.
-- **Codex review** ([final_results_eval](../results/codex/codex_final_eval.md)): offline gains real, robust phone use not
-  shown. Its first suggestion became the **runtime-feedback ablation** (app-name resolution + failure notes at
-  inference): 10/116, worse, dropped.
-- **What we did with it:**
-  - Kept as "our first model" in the preregistered held-out comparison: 32/348.
-    - v4 − v1 = +6.3 points (95% CI +1.1 to +11.5, p = 0.02).
-    - v1 − GUI-Owl = −4.3 points (p = 0.21).
-    - One disputed checker success (seed 2026, OpenAppTaskEval).
-  - The same data trained Qwen3.5-2B (16/116), Qwen3.5-0.8B (12) and LFM2.5-VL-450M (2) for a base-model comparison.
-
-### v2: more data sources
-
-- **Data:** four Codex data audits before training (three No-go, then Go on `42f7f763`). They fixed train/dev screen
-  leakage and conversion bugs.
-- **Offline:** large gains on the new dev splits (GUI-Odyssey 0.27 → 0.64, AMEX 0.31 → 0.74, ScreenQA answers 0 →
-  0.76), but lower low-level and terminal `complete` accuracy than v1.
-- **AndroidWorld:** collapsed to 3/116 (v1-only 11 tasks, v2-only 0, p = 0.001). 30.4% of its steps had an empty
-  intent; 8,739 training rows had a blank intent.
-- **Forced-intent ablation:** forcing a one-line intent at inference gave 6/116 (+3 / −0 vs v2, p = 0.25). This
-  supports the blank-intent suspicion, but the effect is small and the data mix changed too.
-- **What we did with it:**
-  - Published the model and GGUF (private at first; public since 2026-11-23).
-  - Made the dataset public (now superseded).
-  - Trained Qwen3.5-2B on the same data (offline only; AndroidWorld not run).
-  - Built v3 to test the blank-intent explanation.
-
-### v3: v2 with the intents filled
-
-- **Data:**
-  - 2,603 blank intents filled from action templates.
-  - 6,106 filled by a teacher model.
-  - 30 rows dropped.
-  - Empty intents on the dev splits fell to 0% (v2: 100% on AMEX, 13.5% on GUI-Odyssey).
-- **Offline:** close to v2. ScreenQA was lower (0.724 vs 0.764, p = 0.008) because v3 gave more full-sentence answers.
-- **AndroidWorld:** 13/116.
-  - Recovered from v2: v3-only 10 tasks, v2-only 0, p = 0.002.
-  - Not above v1: v1-only 6, v3-only 4, p = 0.75.
-  - Still no `answer` actions, although ScreenQA was in its training data.
-- **Codex review** ([v3_audit](../results/codex/codex_v3_audit.md)): numbers reproduce; No-go on the model-card
-  wording, which was fixed.
-- **What we did with it:**
-  - Published the model and GGUF (private at first; public since 2026-11-23).
-  - Its data became v4's base: v3's rows in the v4 prompt, plus navigate-then-answer episodes, the installed-app list
-    and shorter ScreenQA answers.
-  - Its 13 action successes set part of v4's gate: action successes ≥ v3 − 3.
 
 ### What v1–v3 taught us
 
@@ -121,6 +50,8 @@ data is what changed. Sources: [`results/SUMMARY.md`](../results/SUMMARY.md),
 | ScreenQA alone does not make the agent `answer` | v2, v3 (0 answer tasks) | v4: navigate-then-answer episodes + answer rules in the prompt (0 → 6 answer tasks) |
 | Long ScreenQA answers | v3 | v4: shorter answers |
 | Inference-time patches did not replace data fixes | v1 + runtime feedback (10), v2 + forced intent (6) | Dropped |
+
+Per-version details for v1–v3 (data audits, evaluation numbers, Hugging Face links): [results.md](results.md#offline-evaluations), [datasets.md](datasets.md#training-data-per-version) and [Released artifacts](#released-artifacts).
 
 ---
 
@@ -137,7 +68,16 @@ Per-run deviations (resumes, checkpoint cadence) are listed under [Training runs
 | Image | One screenshot per step, area budget 880 × 880 px (≈ 720 image tokens for a phone screen) |
 | Input | Goal + text history of earlier steps + current screenshot (v4: + installed-app list) |
 | Output | `<think>short intent</think>` + one JSON action, coordinates on a 0–1000 grid |
-| Checkpoints | Pushed to the Hub so a lost VM can resume: every 100 steps (v1, LFM2.5-VL-450M), 50 steps (all later runs) |
+| Checkpoints | Saved so a lost machine can resume: every 100 steps (v1, LFM2.5-VL-450M), 50 steps (v2–v4.4), 100 steps (v4.5-D on; to the Hub, Modal volumes or S3) |
+
+**Changed after v4**
+
+| From | Change |
+|---|---|
+| v4.4-B, then v4.5 on | "[no visible change]" notes in the history |
+| v4.5-D | One full pass over the whole mix (5,000–6,000 steps), 24-step history, no gradient checkpointing (micro-batch 4 × 8 for D, 2 × 16 for E) |
+| v4.6-E | Stricter change rule for the notes; history-vs-screen counterfactual rows |
+| E-DPO, E-T | Continue from E's merged weights with a new LoRA: DPO lr 1e-5 (E-DPO); SFT lr 1e-4, 1,000 steps (E-T) |
 
 Code: [`train/sft_vlm.py`](../train/sft_vlm.py), prompt and action format in
 [`train/agent_format.py`](../train/agent_format.py), job configs in
@@ -166,9 +106,12 @@ Eval loss is on the AndroidControl validation split at the final step.
 | Qwen3.5-2B v2 | 78,982 | 1,250 × 32 | 64, 2e-4 | 0.250 | Colab | As LFM3 v2 (extra step 1,251) |
 | Qwen3.5-0.8B v1 | 60,000 | 1,875 × 32 (1 epoch) | 16, 1e-4 | 0.276 | Colab | Resumed after ~1,200 steps |
 | LFM2.5-VL-450M v1 | 60,000 | 1,875 × 32 (1 epoch) | 16, 1e-4 | 0.375 | Modal | Resumed after ~700 steps |
+| LFM3-VL-2B v4.5-D | 173,430 | 5,420 × 32 (1 pass) | 64, 2e-4 | 0.252 | Modal H100 | One uninterrupted run, 3.4 h ([`results/v45_dev/training/`](../results/v45_dev/training/)) |
+| LFM3-VL-2B v4.6-E | 185,643 | 5,802 × 32 (1 pass) | 64, 2e-4 | — | Colab A100 → Modal H100 | Resumed at step 3,100 from the Hub checkpoint ([PREREG_v46](PREREG_v46.md)) |
+| E-DPO (from E) | 342 preference pairs | 11 × 32 (1 pass) | 64, 1e-5 (DPO β 0.1) | — | SageMaker L40S | [`results/v48_dev/r10edpo_eval/`](../results/v48_dev/r10edpo_eval/) |
 
 - **Losses are not comparable across versions:** the data and prompts differ.
-- **Peak GPU memory** in the logged segments was 8.3–11.5 GB.
+- **Peak GPU memory** in the logged segments was 8.3–11.5 GB (v4.5-D without gradient checkpointing: 39.6 GB).
 - **Wall time** is per segment for resumed runs (see each `train_summary.json`). v4's resumed segment
   (steps 351–1,250) took 2.0 h on an A100.
 

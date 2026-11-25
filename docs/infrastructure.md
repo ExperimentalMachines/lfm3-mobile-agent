@@ -1,5 +1,7 @@
 # Infrastructure and incidents
 
+Where each part of the project ran, how costs were kept in check, and what went wrong.
+
 **Contents:** [Where things ran](#where-things-ran) · [Cost controls](#cost-controls) · [Incidents](#incidents-and-fixes) ·
 [Lessons](#lessons)
 
@@ -19,6 +21,12 @@
 | Phone speed benchmark | Qualcomm Device Cloud (Snapdragon 8 Elite Extreme Gen 6 reference phone); earlier attempt on a Pixel 9 via Firebase device streaming |
 | Audits and research | Codex CLI on the Mac |
 | Follow-up rounds v4.1–v4.3 (2026-11-21 to 23) | Training and offline gates on Colab A100 (second Colab account); seed-30 runs on the Mac; MobileWorld run 3 (v4.2) on a new GCP `n2-standard-16` VM with the model on a Colab T4, as in run 2; reviews by agy |
+| Round 6 (v4.4, 2026-11-23) | Colab A100 (64.5 compute units) |
+| Rounds 7–8 (D, E, 2026-11-24 to 25) | Data built on an AWS EC2 CPU instance; training on Modal H100 (E: Colab A100 to step 3,100, then Modal); evaluations on the same GPUs |
+| Round 9 (v4.7 data, 2026-11-25) | Data built on the AWS EC2 CPU instance; a SageMaker smoke job on `ml.g6.2xlarge` (L4) for F, which was never trained |
+| Rounds 10–11 (2026-11-25) | AWS SageMaker `ml.g6e.2xlarge` (1× L40S 48 GB): pair generation, DPO, SFT and every gate eval in one job each; the AWS EC2 CPU instance for data building and GGUF export, started and stopped per use |
+| "Done" judges (round 10) | Qwen3-VL-235B on AWS Bedrock (calibration only); Claude Opus 5.5 via the Anthropic API (Batch API for bulk labels) |
+| AndroidWorld runs after v4 (v4.1–v4.3, D, E; E's held-out seeds) | The same Apple M5 Mac, 2 emulators, Q4_K_M GGUF on llama.cpp |
 
 Colab VMs have no KVM, so Android emulators could not run there. That is why MobileWorld moved to AWS and GCP.
 
@@ -31,6 +39,8 @@ Colab VMs have no KVM, so Android emulators could not run there. That is why Mob
 - Teardown (2026-11-23): the GCP project was deleted (VM, disk, static IP, firewall rules, network), after checking
   that every MobileWorld result, screenshot and log was saved locally. Its storage bucket (copies of the phone-test
   model files and the Android llama.cpp build) was deleted first, after each file's CRC32C matched a local copy.
+- Claude API labels (round 10): every call priced into a ledger ([`results/v48_dev/claude_spend.jsonl`](../results/v48_dev/claude_spend.jsonl)); nothing was sent if the worst case of the work in flight could pass $90 (owner's cap $95). Spent: $24.53.
+- SageMaker jobs carry a maximum runtime and sync checkpoints to S3, so a stopped job resumes instead of restarting.
 - The whole pipeline was smoke-tested before any paid run (rule adopted after an early v3 attempt failed inside a
   paid pipeline).
 

@@ -1,5 +1,8 @@
 # How the benchmarks were run
 
+How each benchmark was set up and kept fair. The offline checks used to judge development rounds (history probes,
+early-stop rate, multi-part probes) are explained in [rounds.md](rounds.md#how-a-round-works).
+
 **Contents:** [Fairness at a glance](#fairness-at-a-glance) · [AndroidWorld](#androidworld) ·
 [MobileWorld](#mobileworld) · [AndroidControl](#androidcontrol-offline) ·
 [General knowledge](#general-knowledge-retention) · [Speed](#speed)

@@ -1,5 +1,7 @@
 # Datasets and splits
 
+What each version was trained on, how the data was split, and what was kept out of training.
+
 **Contents:** [Contamination rule](#contamination-rule) · [Training data per version](#training-data-per-version) ·
 [Splits](#splits) · [Leakage traps](#leakage-traps-found-and-avoided) · [Sources considered](#sources-considered)
 
@@ -32,6 +34,10 @@ The app-name filter is a heuristic, not a proof of zero contamination. Known v4 
 | v3 | [`experimentalmachines/MobileAgent-SFT-v3`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v3) @ `565ba76c` | 78,952 | v2 with its 8,739 blank intents fixed: 2,603 filled from action templates, 6,106 by a teacher model, 30 rows dropped |
 | **v4** | [`experimentalmachines/MobileAgent-SFT-v4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4) @ `3375539` | 92,229 | v3 in the v4 prompt (answer-vs-complete rules + installed-app list) + navigate-then-answer episodes + shorter ScreenQA answers |
 | v4.4 | [`experimentalmachines/MobileAgent-SFT-v4.4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.4) @ `2b481ae3` | 8,505 new (+ v4's 92,229) | New rows only: [MemGUI-3K](https://huggingface.co/datasets/lgy0404/MemGUI-3K) train trajectories, successful and feasible only; targets are the steps its judge rated reasonable; unreasonable steps stay in the history (recovery); answer rows removed (full-sentence answers). Mixed with v4's rows on the training machine by `data/v44_build_mix.py` (A / B: ×2; C: 50 / 50). Round 6 candidates, none promoted |
+| v4.5 | [`experimentalmachines/MobileAgent-SFT-v4.5`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.5) @ `45331aaa` | 173,430 | All AndroidControl, GUI-Odyssey and AMEX candidates (no per-episode caps), v4's ScreenQA and question rows, MemGUI; 24-step history with "[no visible change]" notes; blank intents filled from Aguvis stage 2 |
+| v4.6 | [`experimentalmachines/MobileAgent-SFT-v4.6`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.6) @ `0ace5559` | 185,643 | v4.5 + counterfactual rows where history and screen disagree; 2,405 "done" rows that two vision judges call not done dropped; copied `wait` intents replaced; stricter notes. Trains E |
+| v4.7 | [`experimentalmachines/MobileAgent-SFT-v4.7`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.7) @ `420637e9` | 192,143 | v4.6 + 6,500 rows against useless waits + 63 relabelled waits. Not trained on yet (round 9) |
+| Round 11 mix | Built inside the training job by [`data/r11_mix.py`](../data/r11_mix.py) (not published unless the candidate passes) | 32,000 | 747 GUI-Odyssey endings a calibrated judge confirmed done + their counterfactual rows + E's rows just before them + replay of v4.6 |
 
 All training datasets are public (2026-11-23), renamed from their earlier names (scripts use the old ones; Hugging Face redirects them; [map](models.md#old-names-scripts-and-earlier-docs-use-them-hugging-face-redirects-them)).
 
@@ -52,7 +58,8 @@ Builders: [`data/build_androidcontrol.py`](../data/build_androidcontrol.py) (v1)
 - **Type then Enter:** a typing step followed by Enter (or a keyboard "submit" tap) becomes one `input_text`,
   because AndroidWorld's `input_text` presses Enter.
 - **Swipes:** swipes that do not match the centre-line `scroll` the executor performs end the episode.
-- **Terminal rows:** they come from AndroidControl only. GUI-Odyssey's and AMEX's end markers were unreliable on review.
+- **Terminal rows:** they come from AndroidControl (and MemGUI from v4.4). GUI-Odyssey's and AMEX's end markers were
+  unreliable on review; round 11 adds the 747 GUI-Odyssey endings a calibrated judge confirmed done ([rounds.md](rounds.md#round-10-finishing-multi-part-tasks-2026-11-25)).
 - **Train/dev overlap:** none. Train screenshots identical to any dev screenshot were removed (verified: 0 overlap).
 
 ---
@@ -99,7 +106,7 @@ Codex reviewed candidate datasets twice ([`results/codex/dataset_viability.md`](
 | OS-Atlas, Aria-UI, Widget Captioning | Not used: small gains, extra filtering needed |
 | OpenMobile / OpenMobile-2 | **Rejected:** built on AndroidWorld |
 | Screen2Words, UI-S1, MoIT, AITW full | Rejected: licence, provenance or size |
-| Nine further releases (GUI-Reflection, Libra, Aguvis, …) | Rejected for v4 ("admit zero rows" under the remaining budget) |
+| Nine further releases (GUI-Reflection, Libra, Aguvis, …) | Rejected for v4 ("admit zero rows" under the remaining budget). Later, Aguvis stage 2 (`xlangai/aguvis-stage2`, Apache-2.0) supplied step instructions for blank GUI-Odyssey / AMEX intents (v4.5 on) |
 | MemGUI-3K (Apache-2.0) | **Used in v4.4**. Dropped trajectories touching AndroidWorld apps (Joplin, Audio Recorder: 1,471), AndroidLab apps (Bluecoins etc.: 104), calendar apps (108) and Messages / SMS (131); kept 556 of 2,661 |
 | AndroidLens (Apache-2.0) | **Evaluation only** (a benchmark's test set): the English long-task test of round 6 |
 | 2026-11-23 Hugging Face survey (~110 cards) | [notes](research/notes/hf-mobile-gui-datasets-2026-11-23.md). Rejected as collected inside our benchmarks: AndroidFlux, MobileForge, UI-MOPD/Uni-GUI-Mobile, UI-Genie, OS-Shepherd-100K, Tonic/android-operator-episodes (AndroidControl test leak) |

@@ -175,3 +175,10 @@ Owner: "do 32 more of each". Rows not reviewed before, seed 49 (`analysis/done_a
 
 No change to the data: the doubtful nwaitload rows are about 1 in 6 of 1,500 rows (≈ 0.1% of the split), against
 5,000 nwait rows teaching the opposite on loaded screens; no automatic rule separates them.
+
+### 2026-11-25 20:35 Asia/Manila — recorded late: F is not trained (decided by the 04:40 amendment)
+
+The 04:40 amendment made F conditional on E: F is not trained if E has C3n `wait` ≤ 15% and AndroidWorld useless waits
+≤ 6.7% of steps. E's results (`docs/PREREG_v46.md`, 09:35 and 13:00 entries): C3n 98% click (redo the tap), so `wait`
+≤ 2%; useless waits 2.3% of steps. **Both met → F is not trained; the v4.7 changes go into the next full retrain.**
+The decision followed from the rule at the time; this entry only records it (found missing by the 2026-11-25 docs review).
