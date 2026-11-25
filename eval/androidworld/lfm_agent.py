@@ -219,7 +219,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         reasoning = resp["reasoning"] or ""
         if not reasoning.strip() and "</think>" in resp["content"]:  # inline-think models (LFM2.5): intent lives in content
             reasoning = resp["content"].split("</think>", 1)[0].replace("<think>", "")
-        intent = reasoning.strip().splitlines()[0][:200] if reasoning.strip() else ""
+        intent = af.strip_progress(reasoning.strip().splitlines()[0])[:200] if reasoning.strip() else ""  # no "[N left]" in history
         self.history.append((intent, af.action_to_str(action)))
 
         t = action["action_type"]

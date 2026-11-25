@@ -35,6 +35,7 @@ FILES = {
     "scripts/training/vm_r8_smoke.sh": "/content/work/vm_r8_smoke.sh",
     "scripts/training/sm_r8_gate.py": "/content/work/sm_r8_gate.py",
     "scripts/publish/cards/v4.5-D.md": "/content/work/meta/card-v4.5-D.md",
+    "scripts/publish/cards/v4.6-E.md": "/content/work/meta/card-v4.6-E.md",
     "data/meta/androidcontrol_test_gt.jsonl": "/content/work/meta/androidcontrol_test_gt.jsonl",
     "data/meta/androidcontrol_test_gt.manifest.json": "/content/work/meta/androidcontrol_test_gt.manifest.json",
 }
@@ -110,6 +111,20 @@ def publish_d() -> int:
 @app.local_entrypoint()
 def publish():
     print("rc", publish_d.remote())
+
+
+@app.function(timeout=2 * 3600, cpu=4, memory=16384, secrets=[modal.Secret.from_name("hf-lfm3-android")], volumes={"/vol": VOL})
+def publish_e_fn() -> int:
+    """Round 8, public, not promoted: E's merged weights, LoRA adapter, training logs, LICENSE and card."""
+    if not os.path.exists("/content/runs"):
+        os.symlink("/vol/e/runs", "/content/runs")
+    return subprocess.run(["python", "/content/work/vm_publish_public.py", "--runs", "r8e:LFM3-VL-2B-MobileAgent-v4.6-E",
+                           "--cards", "/content/work/meta"], cwd="/content/work").returncode
+
+
+@app.local_entrypoint()
+def publish_e():
+    print("rc", publish_e_fn.remote())
 
 
 @app.function(timeout=2 * 3600, **SPEC)

@@ -83,6 +83,21 @@ def action_to_str(a: dict[str, Any]) -> str:
     return json.dumps(out, ensure_ascii=False, separators=(",", ":"))
 
 
+# round 10 (PREREG_v48): v4.8 models start their reasoning with a progress count "[N left] " (N = actions left after this
+# one; "5+" when 5 or more). It is part of the target only: history lines never carry it (training data and agents alike).
+PROGRESS_RE = re.compile(r"^\[(\d\+?) left\]\s*")
+
+
+def strip_progress(intent: str) -> str:
+    return PROGRESS_RE.sub("", intent or "", count=1)
+
+
+def progress_of(reasoning: str):
+    """The model's own progress count from a v4.8 reasoning ("5+" -> 5), or None if absent."""
+    m = PROGRESS_RE.match((reasoning or "").strip())
+    return int(m.group(1).rstrip("+")) if m else None
+
+
 def history_text(history: list[tuple[str, str]], history_steps: int | None = None) -> str:
     """history: list of (intent, action_json_str), oldest first. Shows the last `history_steps` (default
     HISTORY_STEPS = 8; round 7 / v4.5 models were trained with 24)."""
