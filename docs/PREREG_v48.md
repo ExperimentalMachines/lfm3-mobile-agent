@@ -142,3 +142,30 @@ non-terminal rows include goals already met on screen. Preference pairs built on
 - **Bar: at least 90% agreement with the by-eye labels.** Below it, no automatic judge is used: E-DPO stops and the next
   step is human-verified completion labels. At or above it, the judge filters the 874 E-DPO pairs (a pair is kept only if
   the judge agrees with its premise) and E-DPO resumes as registered on the kept pairs (still balanced 1:1).
+
+### 2026-11-25 16:25 Asia/Manila — the Bedrock judge FAILS calibration; round 10 stops
+
+Qwen3-VL-235B-A22B (Bedrock, temperature 0, `analysis/done_audit/bedrock_judge.py`) on the 93 cases labelled by eye
+today (`results/v48_dev/bedrock_judge_calibration.jsonl`; 108k input tokens):
+
+| Subset | Agreement |
+|---|---|
+| E-DPO early-stop pairs | 8 / 16 |
+| E-DPO missed-stop pairs | 9 / 16 |
+| GUI-Odyssey terminal review 1 / 2 | 23 / 30, 27 / 31 |
+| **All** | **67 / 93 = 72%** (bar ≥ 90%) |
+
+Reading the 26 disagreements: in about 4-7 the judge is right and the by-eye label lenient (weather "history" vs a
+forecast; reviews of another product; a post still uploading); about 15 are judge errors (sent messages called "not
+sent"; an open share sheet called "shared"; a PIN prompt called "verified"); the rest are goals that are ambiguous to
+anyone ("see if you can purchase", "proceed to Amazon", "read the reviews"). Crediting the judge wherever it is arguably
+right still leaves agreement under about 80%.
+
+**Decision (registered rule): no automatic judge; E-DPO is not trained; round 10 ends here, negative.**
+Findings carried forward:
+1. "Done" labels are the bottleneck for false completes: GUI-Odyssey COMPLETE markers 16-25% wrong, AndroidControl
+   `complete` labels include premature completes, and its non-terminal rows include goals already met on screen.
+2. Neither an 8B / 32B (round 8) nor a 235B (round 10) judge reaches careful human agreement on "is it done?".
+3. A fair share of goals is ambiguous about what "done" means (read / browse / see-if goals).
+Next step (not registered yet): human-verified completion labels with written guidelines, on goals with an explicit end
+state, and a decision on how browse / read / see-if goals should end.
