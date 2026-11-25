@@ -277,3 +277,22 @@ rule above.
 | Completion rule | Run 2's, unchanged (`scripts/mobileworld/gcp_mw_resume_vm.sh`, run `e`) |
 | Smoke first | One task in a separate log root (not counted) with the history logged, to check the 24-step window and the notes |
 | Reported | Successes / 105 against v4 (6), v4.2 (8, run 3), GUI-Owl (22), MAI-UI (11): exact McNemar; wait share, repeated intents, tasks ending at the 50-round limit |
+
+### 2026-11-26 03:49 Asia/Manila — E on the held-out seeds: result (rule of 2026-11-25 20:33)
+
+All three seeds finished (03:42) before any outcome was read. Five setup crashes before step 1 were re-run once on
+cold-booted emulators (seed 7: 4, seed 1234: 1; 2 became successes). Five crashes inside AndroidWorld's checker after
+E's last step (the known fork-warning adb defect) count as failures, as for v4.
+`analysis/sealed_analysis.py --arms v4,guiowl,v1,e` → `results/sealed_analysis_e.{json,md}`.
+
+| | E | v4 | GUI-Owl |
+|---|---|---|---|
+| Successes (seeds 7 / 1234 / 2026) | **52 / 348** (18 / 14 / 20) | 54 / 348 (18 / 17 / 19) | 47 / 348 |
+| E − model, 95% CI (paired, template-clustered sign-flip) | | −0.6 pts [−5.4, 4.2], p = 0.91 | +1.4 pts [−4.0, 6.9], p = 0.68 |
+| False `complete`s after re-runs (7 / 1234 / 2026) | **75** (25 / 23 / 27) | 71 (23 / 23 / 25) | 0 |
+
+- (a) Non-inferiority: lower bound −5.3 > −6.9 → **holds**.
+- (b) False completes ≤ v4's 71 → **fails** (75).
+- **E does not replace v4. v4 stays the main model.** E's held-out numbers go on its card and in the docs.
+- Not done: the by-eye review of every success against its trajectory (done for v4, GUI-Owl and v1) is not part of
+  this rule and was not run for E.
