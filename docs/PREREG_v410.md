@@ -159,3 +159,15 @@ nothing is published.
   with each tap drawn: Save icon, PayPal option at checkout, the document's edit button — all on target; the long press
   on pasted URL text is defensible (the judge named the extra text), though saving would be more direct; going home to
   play the missing podcast and waiting for the network are sensible. Batch for the remaining 613 next (about $4).
+
+### 2026-11-26 12:09 Asia/Manila — written actions done; review passes (39 / 40)
+
+- Batch for the remaining 613 ($3.51; session ledger $28.12). 17 replies first read as unparsed were valid: they put a
+  `Line 2:` label before the JSON. The parser was fixed to strip such labels and every stored reply re-read without a
+  new call (`claude_next_action.py reparse`): **619 / 619 valid**. Claude never answered DONE (it was told the screen
+  is unfinished, so this check is weak; the judge's own error rate, about 1 in 9, carries over).
+- Actions: tap 292, home 106, wait 94, open app 60, back 29, scroll 18, typing 13, long press 7. The waits are
+  pending states (message still sending, post uploading, feed loading), not idle waits.
+- **Review: 39 / 40 right (bar ≥ 34)**, `results/r12_dev/next_action_review.json`. The one wrong: it repeats a tap
+  the history shows had no effect. One weak (a back press meant to reach another app) counted right. Taps were on
+  target in every case. Fix 2's rows are used.

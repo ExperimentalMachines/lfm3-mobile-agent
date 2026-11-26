@@ -114,13 +114,13 @@ def parse(txt, c):
     t = txt.strip()
     if re.fullmatch(r"\**DONE\**\.?", t, re.I):
         return "done", None, None
-    lines = [l.strip() for l in t.splitlines() if l.strip()]
+    lines = [re.sub(r"^\**Line\s*\d+\s*:\**\s*", "", l.strip()) for l in t.splitlines() if l.strip()]
     js = [l for l in lines if l.startswith("{")]
     if len(lines) < 2 or not js:
         return "unparsed", None, None
-    intent = next(l for l in lines if not l.startswith("{")).strip('"').removeprefix("Line 1:").strip()
+    intent = next(l for l in lines if not l.startswith("{")).strip('"').strip()
     try:
-        a = json.loads(js[-1].removeprefix("Line 2:").strip())
+        a = json.loads(js[-1])
     except json.JSONDecodeError:
         return "unparsed", intent, None
     t0 = a.get("action_type")
@@ -192,7 +192,7 @@ def draw(cs, out_rows, d):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["split", "smoke", "write", "draw"])
+    ap.add_argument("mode", choices=["split", "smoke", "write", "draw", "reparse"])
     ap.add_argument("--term", default="data/r12work/ody_term2.parquet")
     ap.add_argument("--verdicts", default="results/v48_dev/claude_ody_terminal_verdicts.jsonl")
     ap.add_argument("--split", default="results/r12_dev/notdone_split.json")
@@ -211,6 +211,17 @@ def main():
         return
     sp = json.load(open(a.split))
     assert sp == split(a.verdicts), "split file does not match the fixed rule"
+    if a.mode == "reparse":  # after a parser fix: recompute status / intent / action from the stored replies
+        res = [json.loads(l) for l in open(a.out)]
+        by = {c["case"]: c for c in cases(a.term, a.verdicts, [r["case"] for r in res])}
+        before = [r["status"] for r in res]
+        res = [(record(by[r["case"]], r["text"], r.get("usage")) if r["status"] not in ("error",) else r) for r in res]
+        with open(a.out, "w") as f:
+            for r in res:
+                f.write(json.dumps(r) + "\n")
+        from collections import Counter
+        print("reparsed:", dict(Counter(zip(before, [r["status"] for r in res]))))
+        return
     if a.mode == "draw":
         res = [json.loads(l) for l in open(a.out)]
         pick = random.Random(a.seed).sample([r for r in res if r["status"] == "ok"], a.n)
