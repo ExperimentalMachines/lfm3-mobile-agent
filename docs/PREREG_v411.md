@@ -92,3 +92,26 @@ If any gate fails: reported, nothing published, and the next step is decided fro
 - Smoke timing (B 2, ≤ 6 steps): 30–45 s per batch, so the full setting (B 4, ≤ 12 steps) is estimated at ~3 min per
   batch: **100 batches ≈ 5 h**, plus merge and evals. Size unchanged from the registration.
 - Full job `lfm3-r13-es` launched (`R13_BATCHES=100`, lr 3e-5, 12 h limit, resumable).
+
+### 2026-11-26 15:00 Asia/Manila — external review: four defects confirmed; E-S stopped
+
+The owner asked for an adversarial review by Codex (`gpt-6.1-sol`, medium; read-only, no network; redacted transcript +
+repository). Report: [`docs/reviews/codex-adversarial-review-2026-11-26.md`](reviews/codex-adversarial-review-2026-11-26.md).
+Checked against the code and notes before acting:
+
+| Finding | Check | Consequence |
+|---|---|---|
+| C1: returns run across the human patch, so a wrong action is credited with progress the patch made possible | Confirmed: our own UI-S1 notes (`docs/research/notes/training-on-own-mistakes-and-overfitting/own_mistakes_methods.md`) sum returns only to the end of the naturally matching segment; `semi_online_rl.py` sums across patches | The "stopping early forfeits later reward" mechanism is not enforced |
+| M2: the 12-step cap drops the endings round 13 was built to teach | Confirmed: 371 / 619 written next actions and 468 / 947 judged-done endings sit at step ≥ 12 and are cut | Most GUI-Odyssey endings never reach training |
+| M4: AndroidControl's own "done" verdicts failed their spot check in round 10 (26 / 32, bar 28; "labels not used") yet are used | Confirmed (`docs/rounds.md`, round 10 table) | Round 12 trains 1,003 done-check rows from them and removes 129 replay rows; round 13 drops 110 completes |
+| M10: after a blocked `complete` the grammar still allows `answer`, which ends the episode unchecked | Confirmed (`lfm_agent.py`, `ag.grammar({"status"})`) | A blocked "done" can turn into an ending the check never sees |
+
+- **E-S (job `lfm3-r13-es`) stopped at about batch 20 of 100** (checkpoint kept). It is not evaluated: its credit
+  assignment and episode set are not what was registered in intent. A corrected run is a new, separately registered
+  experiment.
+- Round 12 (E-V) keeps training; its AndroidControl done-check rows come from the failed label source (a registered but
+  wrong choice), so E-V's results will be reported with and noted as confounded by that. The `answer` loophole is
+  fixed in the harness before any online run (logged when made).
+- Also accepted: my statement "every round trains on human histories" was overstated (v4.2 replayed its own
+  histories); starting E-S before the yardstick was validated contradicted "fix the yardstick first"; the
+  E / D false-complete references above (23 / 26) are the as-run counts, the rerun-adjusted ones are 24 / 27.
