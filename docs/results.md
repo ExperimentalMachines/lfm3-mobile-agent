@@ -222,18 +222,19 @@ These are small pilot measurements of each model's full pipeline (agent code + s
 Main sends far fewer prompt tokens per step (a smaller image) and showed higher prompt throughput in these runs; the
 tests do not isolate why.
 
-**Summary** (median seconds for one model step; details, token counts and caveats in the sections below):
+**Summary** (median seconds; what is timed differs by row, as stated in it; details, token counts and caveats in the sections below):
 
 | Where it ran | Main | GUI-Owl-1.5-2B | MAI-UI-2B |
 |---|---|---|---|
-| Apple M5 Mac, GPU (inside real AndroidWorld runs) | **2.96** | 7.00 | 9.35 (8-bit) |
-| Phone CPU (Snapdragon 8 Elite Extreme Gen 6), all three at the same 1,024-token image ceiling | **~39** | ~198 | ~183 (8-bit) |
-| Phone CPU, each model as evaluated (GUI-Owl and MAI-UI at a 2,600-token ceiling) | **~39** | ~1,100 | ~1,063 (8-bit) |
-| Phone GPU (LiteRT-LM, in the Mobile Agent app), per model call | 2.5 (int4, cold) to 3.5 (int8, warm) | not measured | not measured |
-| Cloud CPU (Xeon, 8 threads, idle) | **6.4** | 58.0 | 58.2 |
+| Apple M5 Mac, GPU: model time per step, measured inside real AndroidWorld runs (emulators and other servers running) | **2.96** | 7.00 | 9.35 (8-bit) |
+| Phone CPU (Snapdragon 8 Elite Extreme Gen 6): request time per step incl. the tunnel, all three at the same configured 1,024-token image ceiling | **~39** | ~198 | ~183 (8-bit) |
+| Phone CPU: request time per step, each model as evaluated (GUI-Owl and MAI-UI at a 2,600-token ceiling; Main's figure is its equal-ceiling run, see below) | **~39** | ~1,100 | ~1,063 (8-bit) |
+| Phone GPU (LiteRT-LM, in the Mobile Agent app): one model call only | 2.5 (int4, cold) to 3.5 (int8, warm; the published file) | not measured | not measured |
+| Cloud CPU (Xeon, 8 threads, idle): `agent.predict()` wall time incl. prompt building and HTTP | **6.4** | 58.0 | 58.2 |
 
-The phone-GPU row is a per-call time for Main only ([below](#phone-gpu-litert-lm)); GUI-Owl and MAI-UI have no LiteRT build, so
-there is no GPU comparison.
+The phone-GPU row is a per-call time for Main only ([below](#phone-gpu-litert-lm)); GUI-Owl and MAI-UI were not measured on the
+GPU, so there is no GPU comparison. On the phone CPU GUI-Owl and MAI-UI reused 460–990 cached prompt tokens per call and Main
+reused none, which favours them; the phone slowed under sustained load, so the rows are matched on sampled (not controlled) clocks.
 
 ### CPU (Intel Xeon 2.8 GHz, 8 threads, idle GCP n2-standard-16)
 
@@ -251,6 +252,8 @@ Same 5 screenshots and goals for every model, through each model's own evaluatio
 † Inflated by llama.cpp's RAM prompt cache. Model files are 1.30 GB (Main) and 1.55 GB (GUI-Owl, MAI-UI at 4-bit).
 
 ### Apple M5 GPU, measured inside the AndroidWorld seed-30 runs
+
+Model time per step recorded by the agent, while the emulators and other model servers were running.
 
 Source: [`results/androidworld/dev_seed30_summary.md`](../results/androidworld/dev_seed30_summary.md).
 
@@ -293,12 +296,12 @@ prompt (1,310 tokens) on a 1440 × 3200 screenshot. Source: the Mobile Agent app
 | int4, cold | **2.46 s** | 1.10 s | 1,213 tok/s | 43.3 tok/s |
 | int8 (the published file), warm and throttled | **3.53 s** | 1.37 s | 986 tok/s | 23.9 tok/s |
 
-- **Per model call, not per step:** on top of it the app spends roughly 0.4–0.9 s on screenshot, resize and the action, then waits 1 s for the screen to settle.
+- **Per model call, not per step:** on top of it the app spends roughly 0.4–0.9 s on screenshot, resize and the action, then waits 1 s for the screen to settle (up to 4 s more while the screen keeps moving).
 - **int8 and int4 are not compared cleanly:** the int8 session was already throttled (CPU clusters capped near 2.3–2.65 GHz,
   skin 48 °C), so file and heat effects are not separated.
-- **CPU vs CPU on the same phone:** LiteRT-LM took 10.8–14.0 s per model call; llama.cpp took 25.6–36.9 s on the phone per call
+- **CPU vs CPU on the same phone:** LiteRT-LM (int4, two calls) took 10.8–14.0 s per model call; llama.cpp took 25.6–36.9 s on the phone per call
   (27.7–39.2 s end to end per step, the tables above). The runtimes and prompts differ, so this is indicative only.
-- No GUI-Owl or MAI-UI LiteRT build exists, so the GPU row has no comparison.
+- GUI-Owl and MAI-UI were not measured on the GPU, so the GPU row has no comparison.
 
 ---
 

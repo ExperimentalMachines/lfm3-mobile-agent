@@ -38,21 +38,22 @@ agent, GUI-Owl-1.5-2B, solves 47. Each model sees one screenshot per step and ge
 
 ### Speed
 
-Time for the model to produce one step (read the screenshot, answer). The Mac numbers were measured during real AndroidWorld
-runs; the phone numbers on the same few fixed screenshots (2 to 5, depending on the setting) for every model.
+How long the model takes to answer one step. What exactly is timed differs by row (stated in the row), so compare across a row, not down a column.
 
 | Where it ran | Main | GUI-Owl-1.5-2B | MAI-UI-2B |
 |---|---|---|---|
-| **Mac** (Apple M5, GPU), median seconds per step | **3.0** | 7.0 | 9.4 (8-bit) |
-| **Phone CPU** (Snapdragon 8 Elite Extreme Gen 6), seconds per step, all three capped at the same image size | **~39** | ~198 | ~183 (8-bit) |
-| **Phone CPU**, each model as we evaluated it (the others use bigger images) | **~39** | ~1,100 | ~1,063 (8-bit) |
-| **Phone GPU** (the LiteRT file in the app), seconds per model call | 2.5–3.5 | not measured | not measured |
+| **Mac** (Apple M5, GPU): model time per step, measured during real AndroidWorld runs, seconds | **3.0** | 7.0 | 9.4 (8-bit) |
+| **Phone CPU** (Snapdragon 8 Elite Extreme Gen 6): request time per step, all three at the same 1,024-token image ceiling, seconds | **~39** | ~198 | ~183 (8-bit) |
+| **Phone CPU**, each model as we evaluated it (GUI-Owl and MAI-UI use bigger images), seconds | **~39** | ~1,100 | ~1,063 (8-bit) |
+| **Phone GPU** (the app's LiteRT file): one model call only, seconds | 2.5 (int4, cold) to 3.5 (int8, warm; the file we publish) | not measured | not measured |
 
 - Main is faster mainly because it sends fewer prompt tokens per step (a smaller image); these tests compare whole pipelines
   and do not isolate the cause.
-- These are small pilot measurements, not controlled benchmarks. The phone CPU rows are matched on the processor's measured
-  clock speed, and we did not measure how accurate GUI-Owl and MAI-UI are with the smaller image. Details, token counts and
-  more settings (a cloud CPU, a Pixel 9 attempt): [docs/results.md](docs/results.md#speed).
+- **They are small pilot measurements, not controlled benchmarks.** On the phone CPU, GUI-Owl and MAI-UI reused cached prompt
+  tokens and Main did not (which favours them); the phone slowed under sustained load, so rows are matched on the processor's
+  sampled clock speed; and we did not measure GUI-Owl's and MAI-UI's accuracy at the smaller image. The phone CPU numbers use
+  2 to 5 fixed screenshots; the Mac numbers were taken with emulators and other servers running.
+  More settings (a cloud CPU, a Pixel 9 attempt) and every caveat: [docs/results.md](docs/results.md#speed).
 
 ---
 

@@ -48,7 +48,7 @@ No AndroidWorld tasks, variants, trajectories or checkers were used in training.
 
 ## Evaluation
 
-Same harness for every model: one screenshot per step, 4-bit GGUF via llama.cpp, same step budget, temperature 0;
+Same harness for every model: one screenshot per step, 4-bit GGUF via llama.cpp (MAI-UI at 8-bit: its 4-bit output degenerates), same step budget, temperature 0;
 exceptions count as failures. The AndroidWorld comparison was preregistered.
 
 | Benchmark | Main | GUI-Owl-1.5-2B | MAI-UI-2B |
@@ -56,8 +56,8 @@ exceptions count as failures. The AndroidWorld comparison was preregistered.
 | **AndroidWorld held-out seeds 7 / 1234 / 2026** (348 tasks) | **54** (18 / 17 / 19) | 47 | not run |
 | AndroidWorld seed 30 (116 tasks, development) | 18 | 23 | 32 |
 | MobileWorld (105 English GUI-only tasks) | 6 | 22 | 11 |
-| Phone CPU (Snapdragon 8 Elite Extreme Gen 6), seconds per step | ~39 | ~1,100 | ~1,063 |
-| Apple M5 GPU, median seconds per step | 2.96 | 7.00 | 9.35 |
+| Phone CPU (Snapdragon 8 Elite Extreme Gen 6), seconds per step as evaluated (MAI-UI 8-bit; GUI-Owl and MAI-UI use larger images; Main's figure is its equal-1,024-token-ceiling run; at the same ceiling GUI-Owl takes ~198 and MAI-UI ~183) | ~39 | ~1,100 | ~1,063 |
+| Apple M5 GPU, median model seconds per step (MAI-UI 8-bit) | 2.96 | 7.00 | 9.35 |
 
 - **Main vs GUI-Owl on the held-out seeds:** +2.0 points, 95% CI [−4.5, +8.6], p = 0.60. Non-inferior at the
   preregistered −6.9-point margin; superiority is **not** shown.
