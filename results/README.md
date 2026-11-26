@@ -50,7 +50,7 @@ Folder and file names keep the labels used when they were written (`v46_dev`, `l
 | `v4*_gguf_manifest.json` (the WaitRelabel-to-ContinuedSFT GGUFs) | Hashes of the published follow-up GGUFs |
 | `v44_dev/`, `v45_dev/`, `v46_dev/`, `v47_dev/`, `v48_dev/` | Rounds 6–10: offline gate files, probes, judge labels and audits per round (MemGUI*, FullMix, Counterfactual, Counterfactual-WaitFix, stop-DPO) |
 | `r11_dev/` … `r14_dev/` | Rounds 11–14: gates, probes, SOP validation, training-job logs |
-| `hf_migration/`, `hf_snapshot_pre_rename_2026-11-26.json` | The 2026-11-26 Hugging Face rename: every move and commit, and the before-state (files, LFS hashes, revisions) |
+| `hf_migration/`, `hf_snapshot_pre_rename_2026-11-26.json` | The 2026-11-26 Hugging Face rename (every move and commit, the before and after state with LFS hashes) and the five GGUF repos added on 2026-11-27 (`gguf_added_2026-11-27.json`) |
 | `agy/`, `review/` | Follow-up reviews: briefs, reports, our responses ([docs/audits.md](../docs/audits.md#follow-up-rounds-agy-reviews)) |
 
 Episode files (`*.pkl.gz`) are Python pickles written by this project's AndroidWorld harness; load them only from

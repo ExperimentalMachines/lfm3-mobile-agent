@@ -37,7 +37,7 @@ the evaluated model.
 | Method | LoRA SFT (rank 64, alpha 128) on the language model, vision tower frozen; merged into the weights (adapter in `lora_adapter/`) |
 | Training | 5,420 steps × 32 rows (one pass), lr 2e-4 cosine, no gradient checkpointing; one H100, 3.4 h |
 | Data | [MobileAgent-SFT-FullMix](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-FullMix) @ `45331aaa`: all AndroidControl rows, uncapped GUI-Odyssey and AMEX (blank intents filled from Aguvis), MemGUI-3K, ScreenQA |
-| Phone format | None published |
+| Phone format | 4-bit GGUF: [LFM3-VL-2B-MobileAgent-Dev-FullMix-GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix-GGUF) (Q4_K_M + vision projector) |
 
 ## Input and output
 

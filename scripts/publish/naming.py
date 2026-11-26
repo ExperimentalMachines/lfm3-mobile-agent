@@ -51,7 +51,7 @@ OTHER_BASES = {
 }
 # LFM3 repos that exist only as formats of a model above
 FORMATS = {
-    LFM3: {"GGUF": ["v1", "v2", "v3", "v4", "v4-RL", "v4.1", "v4.2", "v4.3-dpo2", "v4.3-sft", "v4.6-E"], "LiteRT": ["v4"]},
+    LFM3: {"GGUF": list(MODELS), "LiteRT": ["v4"]},   # every LFM3 model has a GGUF repo; only the main model has a LiteRT file
     "Qwen3.5-2B": {"GGUF": ["v1", "v2"]},
     "Qwen3.5-0.8B": {"GGUF": ["v1"]},
     "LFM2.5-VL-450M": {"GGUF": ["v1"]},

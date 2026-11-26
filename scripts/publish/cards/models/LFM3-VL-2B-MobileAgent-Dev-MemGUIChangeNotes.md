@@ -22,7 +22,7 @@ tags:
 - **Recipe builds on:** [`LFM3-VL-2B-MobileAgent-Dev-MemGUI`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUI)
 - **What was added:** + "[no visible change]" notes in the history
 
-A 2B screenshot-only Android agent from round 6 of [LFM3 Mobile Agent](https://github.com/experimentalmachines/lfm3-mobile-agent): A's data and recipe, plus a " [no visible change]" note on history steps whose next screenshot did not change (the run-time rule of the project's AndroidWorld agent). Use the same notes at run time.
+A 2B screenshot-only Android agent from round 6 of [LFM3 Mobile Agent](https://github.com/experimentalmachines/lfm3-mobile-agent): MemGUI's data and recipe, plus a " [no visible change]" note on history steps whose next screenshot did not change (the run-time rule of the project's AndroidWorld agent). Use the same notes at run time.
 
 **Status: not promoted.** It failed the round's pre-registered offline gate on one check (late-step early stops on
 AndroidControl) and was not run online. [LFM3-VL-2B-MobileAgent](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent)
@@ -34,7 +34,7 @@ remains the evaluated model.
 | Method | LoRA SFT (rank 64, alpha 128) on the language model, vision tower frozen; merged into the weights (adapter in `lora_adapter/`) |
 | Training | 1,250 steps × 32 rows, lr 2e-4 cosine, one A100: Main's recipe |
 | Data | [MobileAgent-SFT](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT) @ `3375539` + [MobileAgent-SFT-MemGUI](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-MemGUI) @ `2b481ae3` (MemGUI-3K rows, filtered: no AndroidWorld, MobileWorld or AndroidLab apps) |
-| Phone format | None published |
+| Phone format | 4-bit GGUF: [LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes-GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes-GGUF) (Q4_K_M + vision projector) |
 
 ## Input and output
 

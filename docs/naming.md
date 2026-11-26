@@ -79,7 +79,7 @@ dataset tag and the model tag match only where there is one model per dataset.
 | [`Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly`](https://huggingface.co/experimentalmachines/Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly) | Qwen3.5-0.8B v1 | dev | the base model | — | same recipe family as the LFM3 model of that tag |
 | [`LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly`](https://huggingface.co/experimentalmachines/LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly) | LFM2.5-VL-450M v1 | dev | the base model | — | same recipe family as the LFM3 model of that tag |
 
-Phone formats: append `-GGUF` or `-LiteRT` to the model name (GGUF repos exist for the models listed in [models.md](models.md#released-artifacts); `-LiteRT` only for Main).
+Phone formats: append `-GGUF` or `-LiteRT` to the model name. **Every** model has a `-GGUF` repo; `-LiteRT` exists only for Main. No repo holds partially trained checkpoints ([policy](models.md#what-is-and-is-not-published)).
 
 ## Datasets
 

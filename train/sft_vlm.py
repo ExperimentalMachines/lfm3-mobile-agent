@@ -42,8 +42,6 @@ p.add_argument("--target_regex", default=r".*language_model.*\.(q_proj|k_proj|v_
 p.add_argument("--modules_to_save", nargs="*", default=["multi_modal_projector"])
 p.add_argument("--save_steps", type=int, default=500)
 p.add_argument("--eval_steps", type=int, default=500)
-p.add_argument("--hub_repo", default=None, help="hub repo for checkpoint backup (private unless --hub_public)")
-p.add_argument("--hub_public", action="store_true", help="checkpoint repo is public (private storage is full; round 7)")
 p.add_argument("--workers", type=int, default=8)
 p.add_argument("--seed", type=int, default=42)
 p.add_argument("--no_gc", action="store_true", help="disable gradient checkpointing")
@@ -203,10 +201,7 @@ cfg = SFTConfig(
     dataloader_persistent_workers=True,
     report_to=["tensorboard"],
     seed=args.seed,
-    push_to_hub=bool(args.hub_repo),
-    hub_model_id=args.hub_repo,
-    hub_private_repo=not args.hub_public,
-    hub_strategy="checkpoint" if args.hub_repo else "every_save",
+    push_to_hub=False,  # partially trained checkpoints are never pushed to the Hub (docs/models.md#released-artifacts)
 )
 
 trainer = SFTTrainer(
@@ -217,51 +212,7 @@ trainer = SFTTrainer(
 trainer.model.print_trainable_parameters()
 resume = None
 ckpts = [d for d in os.listdir(args.out) if d.startswith("checkpoint-")] if os.path.isdir(args.out) else []
-if not ckpts and args.hub_repo:
-    # VM was reclaimed? pull the last checkpoint pushed by hub_strategy="checkpoint"
-    from huggingface_hub import HfApi, snapshot_download
-    from huggingface_hub.errors import RepositoryNotFoundError
-    try:
-        files = HfApi().list_repo_files(args.hub_repo)
-    except RepositoryNotFoundError:
-        files = []  # first run: no checkpoint repo yet
-    except Exception as e:  # never silently restart from step 0 over an existing checkpoint repo (Codex recovery audit P1)
-        raise SystemExit(f"cannot list hub checkpoint repo {args.hub_repo} ({e}); refusing to train from scratch")
-    KEYS = ("model_id", "train", "max_pixels", "lr", "bs", "grad_accum", "lora_r", "lora_alpha", "target_regex", "max_steps",
-            "epochs", "inline_think", "replay")
-    # identity of the run that wrote the checkpoints; the Trainer's own pushes replace the root copy, the one under
-    # logs/ (pushed with the output folder) survives (round 7 smoke, 2026-11-24)
-    ident = next((f for f in ("run_config.json", "logs/run_config.json") if f in files), None)
-    if ident:
-        old = json.load(open(snapshot_download(args.hub_repo, allow_patterns=[ident]) + "/" + ident))
-        diff = [f"{k}: {old.get(k)!r} != {vars(args).get(k)!r}" for k in KEYS if k in old and old.get(k) != vars(args).get(k)]
-        if diff:
-            raise SystemExit("hub checkpoints belong to a different run configuration, refusing: " + "; ".join(diff))
-    elif files:
-        print("WARNING: hub checkpoint repo has no run_config.json; only batch size / max_steps are checked", flush=True)
-    else:
-        HfApi().create_repo(args.hub_repo, private=not args.hub_public, exist_ok=True)
-        HfApi().upload_file(path_or_fileobj=f"{args.out}/logs/run_config.json", path_in_repo="run_config.json",
-                            repo_id=args.hub_repo)
-    try:
-        if "last-checkpoint/trainer_state.json" in files:
-            snapshot_download(args.hub_repo, allow_patterns=["last-checkpoint/*"], local_dir=args.out)
-            st = json.load(open(f"{args.out}/last-checkpoint/trainer_state.json"))
-            bad = []
-            if st.get("train_batch_size") not in (None, args.bs):
-                bad.append(f"train_batch_size {st.get('train_batch_size')} != {args.bs}")
-            if args.max_steps > 0 and st.get("max_steps") not in (None, args.max_steps):
-                bad.append(f"max_steps {st.get('max_steps')} != {args.max_steps}")
-            if bad:
-                raise SystemExit("incompatible hub checkpoint, refusing to resume: " + "; ".join(bad))
-            dst = f"{args.out}/checkpoint-{st['global_step']}"
-            os.rename(f"{args.out}/last-checkpoint", dst)
-            ckpts = [os.path.basename(dst)]
-            print(f"restored {dst} from hub", flush=True)
-    except SystemExit:
-        raise
-    except Exception as e:  # a listed checkpoint that cannot be restored must not become a fresh run
-        raise SystemExit(f"hub resume failed ({e}); refusing to train from scratch over {args.hub_repo}")
+# Resuming uses only the local output folder (on SageMaker it is synced to S3); nothing is restored from the Hub.
 if ckpts:
     resume = True
     print("resuming from latest checkpoint", flush=True)

@@ -34,7 +34,7 @@ remains the evaluated model.
 | Method | LoRA SFT (rank 64, alpha 128) on Main's merged weights, vision tower frozen; merged (adapter in `lora_adapter/`) |
 | Training | 500 steps × 32 rows, lr 1e-4 warm-up / stable / short decay, one A100 |
 | Data | [MobileAgent-SFT](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT) @ `3375539` + [MobileAgent-SFT-MemGUI](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-MemGUI) @ `2b481ae3` (MemGUI-3K rows, filtered: no AndroidWorld, MobileWorld or AndroidLab apps) |
-| Phone format | None published |
+| Phone format | 4-bit GGUF: [LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-GGUF) (Q4_K_M + vision projector) |
 
 ## Input and output
 

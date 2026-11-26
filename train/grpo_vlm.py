@@ -14,7 +14,6 @@ import time
 
 import torch
 from datasets import load_dataset
-from huggingface_hub import HfApi
 from peft import LoraConfig
 from transformers import AutoModelForImageTextToText, AutoProcessor, TrainerCallback
 from trl import GRPOConfig, GRPOTrainer
@@ -34,7 +33,6 @@ p.add_argument("--gens", type=int, default=4)
 p.add_argument("--max_completion", type=int, default=192)
 p.add_argument("--max_pixels", type=int, default=774400)
 p.add_argument("--save_steps", type=int, default=25)
-p.add_argument("--hub_repo", default="", help="push checkpoints/adapter here (durable copy)")
 p.add_argument("--smoke", action="store_true", help="tiny run: 4 steps, then reload check")
 a = p.parse_args()
 t0 = time.time()
@@ -81,22 +79,12 @@ class Log(TrainerCallback):
             with open(os.path.join(a.out, "rl_log.jsonl"), "a") as f:
                 f.write(json.dumps({"step": state.global_step, "elapsed_s": round(time.time() - t0), **logs}) + "\n")
 
-    def on_save(self, args, state, control, **k):
-        if a.hub_repo:
-            try:
-                HfApi().upload_folder(folder_path=args.output_dir, repo_id=a.hub_repo, path_in_repo="checkpoints",
-                                      allow_patterns=[f"checkpoint-{state.global_step}/*", "rl_log.jsonl"])
-            except Exception as e:  # a failed durable copy must be visible but not kill training
-                print("checkpoint upload failed:", e, flush=True)
-
 
 trainer = GRPOTrainer(model=model, reward_funcs=[rl_reward.reward_fn], args=cfg, train_dataset=ds,
                       processing_class=processor, peft_config=peft_config, callbacks=[Log()])
 names = [n for n, p_ in trainer.model.named_parameters() if p_.requires_grad]
 assert names and all("language_model" in n and "lora_" in n for n in names), names[:5]
 print(f"trainable tensors: {len(names)} (all language-model LoRA)", flush=True)
-if a.hub_repo:
-    HfApi().create_repo(a.hub_repo, private=True, exist_ok=True)
 trainer.train()
 print(f"trained {a.max_steps} steps in {time.time() - t0:.0f}s; peak GPU {torch.cuda.max_memory_allocated() / 1e9:.1f} GB",
       flush=True)

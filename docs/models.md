@@ -150,13 +150,13 @@ Everything is **public** in the [experimentalmachines](https://huggingface.co/ex
 | [`LFM3-VL-2B-MobileAgent-Dev-GRPO`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-GRPO) (was v4-RL) | [`LFM3-VL-2B-MobileAgent-Dev-GRPO-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-GRPO-GGUF) | Development checkpoint: 200 GRPO steps on static screenshots |
 | [`LFM3-VL-2B-MobileAgent-Dev-WaitRelabel`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-WaitRelabel) (was v4.1) | [`LFM3-VL-2B-MobileAgent-Dev-WaitRelabel-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-WaitRelabel-GGUF) | Development checkpoint: copied `wait` intents relabelled + recovery-history augmentation |
 | [`LFM3-VL-2B-MobileAgent-Dev-OwnHistory`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-OwnHistory) (was v4.2) | [`LFM3-VL-2B-MobileAgent-Dev-OwnHistory-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-OwnHistory-GGUF) | Development checkpoint: + the model's own replayed history on training episodes |
-| [`LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes) (was v4.3-dpo) | none | Development checkpoint: DPO on all 4,163 of its own mistakes |
+| [`LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes) (was v4.3-dpo) | [`LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes-GGUF) | Development checkpoint: DPO on all 4,163 of its own mistakes |
 | [`LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes) (was v4.3-dpo2) | [`LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes-GGUF) | Development checkpoint: DPO on 851 balanced stop / copied-intent mistakes |
 | [`LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT) (was v4.3-sft) | [`LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT-GGUF) | Development checkpoint: 500 more SFT steps on the same mix |
-| [`LFM3-VL-2B-MobileAgent-Dev-MemGUI`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUI) (was v4.4-A) | none | Development checkpoint: + MemGUI long, self-correcting trajectories |
-| [`LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes) (was v4.4-B) | none | Development checkpoint: + "[no visible change]" notes in the history |
-| [`LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT) (was v4.4-C) | none | Development checkpoint: 500 more steps on 50% MemGUI / 50% main-model rows |
-| [`LFM3-VL-2B-MobileAgent-Dev-FullMix`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix) (was v4.5-D) | none | Development checkpoint: one pass over all candidate sources, 24-step history, change notes |
+| [`LFM3-VL-2B-MobileAgent-Dev-MemGUI`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUI) (was v4.4-A) | [`LFM3-VL-2B-MobileAgent-Dev-MemGUI-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUI-GGUF) | Development checkpoint: + MemGUI long, self-correcting trajectories |
+| [`LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes) (was v4.4-B) | [`LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes-GGUF) | Development checkpoint: + "[no visible change]" notes in the history |
+| [`LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT) (was v4.4-C) | [`LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-GGUF) | Development checkpoint: 500 more steps on 50% MemGUI / 50% main-model rows |
+| [`LFM3-VL-2B-MobileAgent-Dev-FullMix`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix) (was v4.5-D) | [`LFM3-VL-2B-MobileAgent-Dev-FullMix-GGUF`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix-GGUF) | Development checkpoint: one pass over all candidate sources, 24-step history, change notes |
 | [`Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly) (was Qwen3.5-2B v1) | [`Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly-GGUF`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly-GGUF) | Comparison model (same recipe family on another base) |
 | [`Qwen3.5-2B-MobileAgent-Dev-MultiSource`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-MultiSource) (was Qwen3.5-2B v2) | [`Qwen3.5-2B-MobileAgent-Dev-MultiSource-GGUF`](https://huggingface.co/experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-MultiSource-GGUF) | Comparison model (same recipe family on another base) |
 | [`Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly`](https://huggingface.co/experimentalmachines/Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly) (was Qwen3.5-0.8B v1) | [`Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly-GGUF`](https://huggingface.co/experimentalmachines/Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly-GGUF) | Comparison model (same recipe family on another base) |
@@ -175,6 +175,20 @@ Everything is **public** in the [experimentalmachines](https://huggingface.co/ex
 | [`MobileAgent-SFT-FullMix`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-FullMix) (was MobileAgent-SFT-v4.5) | `45331aaa` | `-Dev-FullMix` |
 | [`MobileAgent-SFT-Counterfactual`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-Counterfactual) (was MobileAgent-SFT-v4.6) | `0ace5559` | `-Counterfactual` |
 | [`MobileAgent-SFT-Counterfactual-WaitFix`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix) (was MobileAgent-SFT-v4.7) | `420637e9` | nothing yet (built in round 9, not trained on) |
+
+### What is and is not published
+
+- **Published:** each model's final merged weights, its final LoRA adapter (`lora_adapter/`), training logs, the prediction files behind its
+  offline numbers, and a 4-bit GGUF (`-GGUF`) of **every** LFM3 model and every comparison model; `-LiteRT` for the main model only.
+- **Never published: partially trained checkpoints** (optimizer state, `checkpoint-*`, `last-checkpoint/`). Training keeps them on the
+  training machine or in S3 (SageMaker's checkpoint sync), and `train/sft_vlm.py` / `train/grpo_vlm.py` no longer have any option to
+  push them to the Hub. [`scripts/publish/check_hub.py`](../scripts/publish/check_hub.py) audits every repo for them and for missing
+  GGUF repos.
+- GGUFs are built with [`local_export_gguf.sh`](../scripts/publish/local_export_gguf.sh) and uploaded with
+  [`publish_gguf.py`](../scripts/publish/publish_gguf.py); [`compare_gguf.py`](../scripts/publish/compare_gguf.py) shows two GGUFs hold
+  identical tensors. The five GGUFs added on 2026-11-27 (`-Dev-DPOAllMistakes`, `-Dev-MemGUI`, `-Dev-MemGUIChangeNotes`,
+  `-Dev-MemGUIContinuedSFT`, `-Dev-FullMix`) were converted from the published weights; where an earlier local GGUF of the same weights
+  existed, every tensor is identical to it (their cards say which).
 
 ### Integrity records
 

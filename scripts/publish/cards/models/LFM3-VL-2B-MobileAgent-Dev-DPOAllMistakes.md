@@ -29,7 +29,7 @@ Round 5: [OwnHistory](https://huggingface.co/experimentalmachines/LFM3-VL-2B-Mob
 | Start | OwnHistory (merged weights) |
 | Method | Step-level DPO (β 0.1) + 0.5 × SFT on the preferred step; new language-only LoRA r64/α128 merged into the weights (adapter in `lora_adapter/`); vision tower and projector frozen |
 | Data | OwnHistory decoded its own training rows greedily; where its action was wrong (AndroidControl scorer), the pair is human step (preferred) vs its own step (rejected). Rows with a human `wait` are excluded. No environment, teacher model or benchmark data |
-| Phone format | No GGUF published (failed its offline gate; never run on a phone) |
+| Phone format | 4-bit GGUF: [LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes-GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes-GGUF) (Q4_K_M + vision projector) |
 | Status | **Failed its offline gate; not evaluated online.** AndroidControl high-level step accuracy fell from 0.732 (OwnHistory) to 0.545: whole action types collapsed (`open_app` 0.95 → 0.16, `wait` 0.59 → 0.00, `scroll` 0.62 → 0.16). Kept public as a documented negative result; use Main (the main model) or OwnHistory |
 
 ## Input and output
