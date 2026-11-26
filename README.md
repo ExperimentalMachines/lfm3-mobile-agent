@@ -39,7 +39,7 @@ agent, GUI-Owl-1.5-2B, solves 47. Each model sees one screenshot per step and ge
 ### Speed
 
 Time for the model to produce one step (read the screenshot, answer). The Mac numbers were measured during real AndroidWorld
-runs; the phone numbers on the same five screenshots for every model.
+runs; the phone numbers on the same few fixed screenshots (2 to 5, depending on the setting) for every model.
 
 | Where it ran | Main | GUI-Owl-1.5-2B | MAI-UI-2B |
 |---|---|---|---|
