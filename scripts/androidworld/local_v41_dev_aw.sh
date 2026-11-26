@@ -7,9 +7,11 @@
 #   T = v4.5-D (round 7, docs/PREREG_v45.md; run as an owner-requested exception after D failed its offline gate):
 #       D was trained with a 24-step history and no-visible-change notes, so its pass adds exactly those two options,
 #   U = v4.6-E (round 8, docs/PREREG_v46.md): 24-step history, notes with the new rule (train/screen_change.py).
+#   V = v4.10-EV (round 12, docs/PREREG_v410.md) as U plus --done_check (the model's own done question before any
+#       `complete`); W = v4.10-EV as U without the check (what the data alone did).
 # Same harness as v4's seed-30 pass (scripts/androidworld/local_v4_to_aw_v2.sh): run_aw.py defaults (seed 30, one
 # instance per task), prompt v4, thinking on, same llama-server flags and mmproj; only the model file and --guards vary.
-# Usage: nohup bash scripts/androidworld/local_v41_dev_aw.sh A|B|C|D|E|R|P|Q|S|T|U 5556|5558 [checkpoint_dir_to_resume] \
+# Usage: nohup bash scripts/androidworld/local_v41_dev_aw.sh A|B|C|D|E|R|P|Q|S|T|U|V|W 5556|5558 [checkpoint_dir_to_resume] \
 #          >> logs/local_v41_dev_aw.log 2>&1 &
 set -u
 cd "$(dirname "$0")/../.." || exit 1
@@ -38,7 +40,11 @@ case "$V" in
      AWX="--history_steps=24 --nochange_notes=true" ;;
   U) GG=models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-v4.6-E-Q4_K_M.gguf; NAME=lfm3vl2b_v46e; G=false
      AWX="--history_steps=24 --nochange_notes=true --change_rule=fine" ;;
-  *) echo "variant must be A, B, C, D, E, R, P, Q, S, T or U"; exit 1 ;;
+  V) GG=models/lfm3vl2b_v410ev-GGUF/LFM3-VL-2B-MobileAgent-v4.10-EV-Q4_K_M.gguf; NAME=lfm3vl2b_v410ev_check; G=false
+     AWX="--history_steps=24 --nochange_notes=true --change_rule=fine --done_check=true" ;;
+  W) GG=models/lfm3vl2b_v410ev-GGUF/LFM3-VL-2B-MobileAgent-v4.10-EV-Q4_K_M.gguf; NAME=lfm3vl2b_v410ev; G=false
+     AWX="--history_steps=24 --nochange_notes=true --change_rule=fine" ;;
+  *) echo "variant must be A, B, C, D, E, R, P, Q, S, T, U, V or W"; exit 1 ;;
 esac
 AWX=${AWX:-}
 MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf
