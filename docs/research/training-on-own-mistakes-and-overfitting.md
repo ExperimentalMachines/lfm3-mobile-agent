@@ -1,6 +1,6 @@
 # Break the wait loop before training longer
 
-Written 2026-11-21, during the v4.1/v4.2 follow-up ([PREREG_v41.md](../PREREG_v41.md)). Question: how can a 2B screenshot-only agent (LFM3-VL-2B, LoRA SFT, 0.43 epoch of ~92k rows) raise MobileWorld (MW) and AndroidWorld (AW) success fairly with about one day of compute (one Colab A100, a Mac with two emulators)?
+Written 2026-11-21, during the v4.1/v4.2 follow-up ([../preregistrations/mobileworld-followup-waitrelabel.md](../preregistrations/mobileworld-followup-waitrelabel.md)). Question: how can a 2B screenshot-only agent (LFM3-VL-2B, LoRA SFT, 0.43 epoch of ~92k rows) raise MobileWorld (MW) and AndroidWorld (AW) success fairly with about one day of compute (one Colab A100, a Mac with two emulators)?
 
 **Bottom line**
 
@@ -132,7 +132,7 @@ All effects are author-reported. **None has an independent reproduction of its t
 | Sense | Evidence for | Evidence against | Verdict |
 |---|---|---|---|
 | **(a) Memorising training rows** | none | Train 0.304 vs AC-val 0.306; each row seen at most once at 0.43 epoch; validation loss still falling. Published SFT overfitting starts past ~2 epochs ([2609.01244](https://arxiv.org/abs/2609.01244)) | **Unlikely**, not directly tested |
-| **(b) Fitting dataset conventions** | 94% of AC `wait` rows copy the previous intent → on MW 21% `wait` steps and 73% copied intents; 35% / 37% `wait` steps on AW seeds 7 / 2026 ([PREREG_v41](../PREREG_v41.md)). Only 12 `keyboard_enter` rows → the model taps a button after typing. v1 never answered (AC has no `answer`). v3 raised GUI-Odyssey .269 → .662 and AMEX .306 → .741 with AW flat (2 vs 2 discordant, p = 1.0) ([earlier report](beating-gui-owl-at-2b-fairly.md)) | — | **Primary** |
+| **(b) Fitting dataset conventions** | 94% of AC `wait` rows copy the previous intent → on MW 21% `wait` steps and 73% copied intents; 35% / 37% `wait` steps on AW seeds 7 / 2026 ([PREREG_v41](../preregistrations/mobileworld-followup-waitrelabel.md)). Only 12 `keyboard_enter` rows → the model taps a button after typing. v1 never answered (AC has no `answer`). v3 raised GUI-Odyssey .269 → .662 and AMEX .306 → .741 with AW flat (2 vs 2 discordant, p = 1.0) ([earlier report](beating-gui-owl-at-2b-fairly.md)) | — | **Primary** |
 | **(c) Selection on the benchmark or dev seed** | 7 LFM3-2B configurations scored on seed 30 (5 more in this follow-up). v4's held-out lead sits only on fixed-goal templates (table below). The MW follow-up was designed after reading v4's MW trajectories | The headline AW claim used 3 sealed seeds and a preregistered template-clustered test | **Live and partly realised** |
 
 **The AndroidControl `wait` convention is documented independently.** A 2026 audit removes "within-episode duplicate step instructions, which arise when annotators recycle the previous step's instruction for a wait action" ([Lexical Coupling, 2608.21794](https://arxiv.org/abs/2608.21794), 2026-08). The same audit finds typing corrections in only 63 of 15,283 episodes (0.4%), so AndroidControl teaches almost no recovery. GUI-Libra estimates ~20% action or coordinate errors in AndroidControl ([GUI-Libra](https://arxiv.org/abs/2602.22190)).
@@ -176,7 +176,7 @@ All effects are author-reported. **None has an independent reproduction of its t
 |---|---|---|---|---|---|
 | 1 | Loss on seen vs never-seen training rows | (a) | Rebuild the trainer's shuffle order: the first ~40k rows were seen, the rest never | ~10 min on the A100 (eval ran at ~16 rows/s) | A gap above val noise = memorisation |
 | 2 | AC test by split: in-domain vs unseen app / task / category | (a) vs (b) | Existing AC eval, grouped by split | minutes | The AC authors' LoRA lost 11–13 pts at full data; a much smaller drop argues against (a) |
-| 3 | **SOP on AC test** | (b) | Run [`v42_selfhist.py`](../../data/v42_selfhist.py) on test episodes; compare matches under own history with teacher-forced accuracy | ~1 h on the A100 | Large gap = exposure bias. Trust it only if it ranks v1 < v4 as AW did |
+| 3 | **SOP on AC test** | (b) | Run [`v42_selfhist.py`](../../data/sft_ownhistory.py) on test episodes; compare matches under own history with teacher-forced accuracy | ~1 h on the A100 | Large gap = exposure bias. Trust it only if it ranks v1 < v4 as AW did |
 | 4 | Convention probes | (b) | P(`wait` \| previous intent repeated, same screen); P(tap vs `keyboard_enter` after typing); P(`complete` vs `answer` on question goals). The v4.2 replay already counts `pred_wait` and `pred_copy` | minutes | v4.1/v4.2 should cut copy → `wait` |
 | 5 | Behaviour monitors in every online run | (b) | Share of `wait` under non-wait intents, intent-repeat rate, tasks ending at the step cap | free | v4 on MW: 21%, 73%, 85 of 104 |
 | 6 | Sealed seeds, template-clustered tests, seed-varying subset reported, every variant counted | (c) | Already in PREREG_v4 | emulator hours | Separates real change from seed-30 tuning |
@@ -272,7 +272,7 @@ All effects are author-reported. **None has an independent reproduction of its t
 
 ## 5. What the literature predicts for the four fixes under way
 
-| Fix ([PREREG_v41](../PREREG_v41.md)) | Closest evidence (reported) | Expected effect (inference) | Main risk | Check before the MW run |
+| Fix ([PREREG_v41](../preregistrations/mobileworld-followup-waitrelabel.md)) | Closest evidence (reported) | Expected effect (inference) | Main risk | Check before the MW run |
 |---|---|---|---|---|
 | **1. Loop guards** (G1 replaces a `wait` whose intent is not about waiting; G2 replaces a third repeat on an unchanged screen) | Decode-time ban + abstracted history: loops 29% → 4%; "do not repeat" prompt 17% ([2608.23651](https://arxiv.org/abs/2608.23651)). An exact-duplicate blocker cut loops only 57.3% → 46.7% ([DeLoop](https://arxiv.org/abs/2610.19376)). A loop breaker nearly halves wasted steps ([VLAA-GUI](https://arxiv.org/abs/2604.21375)). **Success moves far less than loops:** success did not follow the loop ordering in 2608.23651, and DeLoop's 9× loop cut gave +0.8 success | Fewer wasted steps; some of the 10 looping near-universal tasks may flip | The re-ask keeps the copied intent, and surface form drives most copying. It is a harness change | Guard fire rate; success on guard-fired episodes; seed-30 run A vs v4, paired |
 | **2. MW-native typing** (Enter only when the model says so) | MW's own adapters type this way. v4 spent 138 rounds on synthetic Enters; 37 tasks at the cap had fewer than 50 decisions | 0 to +3 tasks | With 12 `keyboard_enter` training rows, search boxes without a button may stall | Count typing steps that are never submitted |
@@ -282,7 +282,7 @@ All effects are author-reported. **None has an independent reproduction of its t
 
 **Small changes with good evidence per hour**
 
-- **Store the wrong predictions in the v4.2 replay.** Today [`v42_selfhist.py`](../../data/v42_selfhist.py) keeps only the human step when the model is wrong. Saving the model's own (intent, action) there gives Agentic-DPO's rejected actions at no extra generation cost (greedy, K=1).
+- **Store the wrong predictions in the v4.2 replay.** Today [`v42_selfhist.py`](../../data/sft_ownhistory.py) keeps only the human step when the model is wrong. Saving the model's own (intent, action) there gives Agentic-DPO's rejected actions at no extra generation cost (greedy, K=1).
 - **Raise the recovery share to ~30% in the next data version** and use all five VeriGUI failure types, made by rules (section 6).
 - **When a guard fires, rewrite the history line** as well (for example "(same as previous; screen unchanged)"). Abstracting the failed action did better than banning it alone (4% vs 12% loops, [2608.23651](https://arxiv.org/abs/2608.23651)). Train on the same phrase, because untrained notes did not help v1.
 - **Report guards as a harness column**, with LFM3 shown both with and without them.

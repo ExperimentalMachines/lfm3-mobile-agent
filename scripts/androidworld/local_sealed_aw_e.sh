@@ -1,9 +1,9 @@
 #!/bin/bash
-# E (v4.6-E) on one held-out AndroidWorld seed (docs/PREREG_v46.md, 2026-11-25 20:33; owner decision, post-hoc).
+# E (v4.6-E) on one held-out AndroidWorld seed (docs/preregistrations/round-08-done-from-the-screen.md, 2026-11-25 20:33; owner decision, post-hoc).
 # Same sealing as local_sealed_aw_v3.sh (v4's held-out runs): results in results/androidworld_sealed/e_seed<seed>/, the
 # runner's output only inside that folder with outcome lines filtered out, "finished" = exit 0 and 116 episode files.
 # Differences: E's model file and harness flags (variant U, as its seed-30 pass), and a cold-booted emulator for every
-# pass (as local_v41_dev_aw.sh since 2026-11-22: a second pass on the same emulator loses its accessibility tree).
+# pass (as local_v41_dev_aw.sh, retired; see tag archive/pre-naming-cleanup-2026-11-26 since 2026-11-22: a second pass on the same emulator loses its accessibility tree).
 # Only this pass's own emulator is stopped; the shared adb server is never touched.
 # Usage: nohup bash scripts/androidworld/local_sealed_aw_e.sh <seed> 5556|5558 [resume_run_dir] > logs/sealed_e_seed<seed>.log 2>&1 &
 set -u
@@ -17,7 +17,7 @@ case "$CP" in
   *) echo "console port must be 5556 or 5558"; exit 1 ;;
 esac
 GP=$((CP + 3000))
-GG=models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-v4.6-E-Q4_K_M.gguf
+GG=models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-Counterfactual-Q4_K_M.gguf
 MM=models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf
 NAME=e_seed${SEED}
 OUT=results/androidworld_sealed/$NAME

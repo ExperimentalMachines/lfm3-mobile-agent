@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launch a round-11 E-T job (docs/PREREG_v49.md): scripts/training/sm_r11.sh with channels code, e (E's merged weights,
+# Launch a round-11 E-T job (docs/preregistrations/round-11-checked-endings.md): scripts/training/sm_r11.sh with channels code, e (E's merged weights,
 # s3://<bucket>/r10/e_merged/) and r11in (s3://<bucket>/r11/in/: ody_term2.parquet + claude_ody_terminal_verdicts.jsonl).
 # Account id and role are read at run time (not stored in the repo).
 # usage: R9_BUCKET=<bucket> [R9_CKPT=<resume name>] sm_launch_r11.sh <job> smoke|full [max_hours] [KEY=VALUE ...]
@@ -11,9 +11,9 @@ cd "$(dirname "$0")/../.."
 ACCT=$(aws sts get-caller-identity --query Account --output text)
 CODE=$(mktemp -d); mkdir -p $CODE/meta
 cp scripts/training/sm_r11.sh scripts/training/vm_r8_eval.sh scripts/training/sm_r11_gate.py scripts/training/sm_r8_gate.py \
-   scripts/training/sm_r7_gate.py data/r11_mix.py train/sft_vlm.py train/agent_format.py train/screen_change.py \
+   scripts/training/sm_r7_gate.py data/endings_mix.py train/sft_vlm.py train/agent_format.py train/screen_change.py \
    eval/androidcontrol/generate.py eval/androidcontrol/score.py eval/androidcontrol/score_dev.py eval/androidlens/score_androidlens.py $CODE/
-cp scripts/training/v4_reference_r7.json $CODE/v4_reference.json
+cp scripts/training/main_reference_r7.json $CODE/v4_reference.json
 cp results/v46_dev/e_eval/r8e_offline_gate.json $CODE/e_gate.json
 cp data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json $CODE/meta/
 aws s3 sync --delete --only-show-errors $CODE s3://$B/r11/code/$JOB/

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Pre-registered single re-run of infrastructure-crash episodes (docs/PREREG_v4.md: "Infrastructure crash before step 1
+# Pre-registered single re-run of infrastructure-crash episodes (docs/preregistrations/heldout-main-vs-gui-owl.md: "Infrastructure crash before step 1
 # (emulator/adb, not model output) is re-run once"). Same arm config (model files, server flags, agent flags) as
 # scripts/androidworld/local_sealed_aw_v3.sh; AndroidWorld derives each task's parameters from sha256(f"{seed}_{task}_{i}"), so a
 # --tasks subset gets the same instance as the full run (the analysis also checks the goal text matches). Results go to
@@ -21,7 +21,7 @@ case "$ARM" in
   v4) SRV=(-m models/lfm3vl2b_v4-GGUF/LFM3-VL-2B-AndroidAgent-v4-Q4_K_M.gguf
            --mmproj models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf -c 8192 --image-max-tokens 1024 --reasoning-format deepseek)
       RUN=(--agent=lfm --enable_thinking=true --prompt_version=v4 --agent_label=lfm3vl2b_v4_q4km) ;;
-  e)  SRV=(-m models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-v4.6-E-Q4_K_M.gguf
+  e)  SRV=(-m models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-Counterfactual-Q4_K_M.gguf
            --mmproj models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf -c 8192 --image-max-tokens 1024 --reasoning-format deepseek)
       RUN=(--agent=lfm --enable_thinking=true --prompt_version=v4 --guards=false --history_steps=24 --nochange_notes=true
            --change_rule=fine --agent_label=lfm3vl2b_v46e_q4km) ;;   # as scripts/androidworld/local_sealed_aw_e.sh

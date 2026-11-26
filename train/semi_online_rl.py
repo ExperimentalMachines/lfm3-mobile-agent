@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Semi-online RL (UI-S1, arXiv 2509.11543) for the LFM3 agent on static trajectories, corrected after the external
-review (round 14, docs/PREREG_v412.md; round 13's version had the defects C1, M1, M2, M4 of
+review (round 14, docs/preregistrations/round-14-own-history-vs-control.md; round 13's version had the defects C1, M1, M2, M4 of
 docs/reviews/codex-adversarial-review-2026-11-26.md). No environment, no teacher: the human trajectories supply the screens.
 
 Episodes: AndroidControl + GUI-Odyssey from E's training split, contiguous steps. AndroidControl keeps the human labels
@@ -44,7 +44,7 @@ import agent_format as af  # noqa: E402
 import screen_change as sc  # noqa: E402
 from score import strict_match  # noqa: E402
 
-REPO, REV = "experimentalmachines/MobileAgent-SFT-v4.6", "0ace5559e6c0b808a5ddf4e4ce9831d1d3614471"
+REPO, REV = "experimentalmachines/MobileAgent-SFT-Counterfactual", "0ace5559e6c0b808a5ddf4e4ce9831d1d3614471"
 HB = re.compile(r"\nPrevious steps:\n(.*?)\nWhat is the next action\?$", re.S)
 LINE = re.compile(r"^(\d+)\. (.*)$")
 TERMINAL = ("status", "answer")

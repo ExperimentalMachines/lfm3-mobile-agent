@@ -1,0 +1,47 @@
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-R02cmO0ltoKzWym5UuEIYB
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/cards/v4.5-D.md
+├── ✓ Uploaded /Users/alpha/lfm3-android/analysis/done_audit/judge_terminal.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/vm_publish_public.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+├── ✓ Created Function run_smoke.
+├── ✓ Created Function publish_d.
+├── ✓ Created Function probe_fn.
+└── ✓ Created Function judge_fn.
+W1124 13:42:40.935000 4 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:42:40.995000 4 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+rows to judge 24
+
+[1AFetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]
+[1AFetching 4 files:  25%|██▌       | 1/4 [00:13<00:41, 13.97s/it]
+[1AFetching 4 files:  50%|█████     | 2/4 [00:21<00:19,  9.98s/it]
+[1AFetching 4 files:  75%|███████▌  | 3/4 [00:30<00:09,  9.84s/it]
+[1AFetching 4 files: 100%|██████████| 4/4 [00:31<00:00,  6.22s/it]
+[1AFetching 4 files: 100%|██████████| 4/4 [00:31<00:00,  7.87s/it]
+
+[1ALoading weights:   0%|          | 0/750 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 750/750 [00:00<00:00, 8113.02it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+16/24
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+JUDGE DONE
+rc 0
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/alpha-6533/main/ap-R02cmO0ltoKzWym5UuEIYB

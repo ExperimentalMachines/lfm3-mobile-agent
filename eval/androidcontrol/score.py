@@ -81,7 +81,7 @@ def _strict_text(s):
 
 
 def strict_match(pred, gt, gt_bbox=None):
-    """Transition-validity matcher for RL rewards and own-history replay (round 14, docs/PREREG_v412.md; the external
+    """Transition-validity matcher for RL rewards and own-history replay (round 14, docs/preregistrations/round-14-own-history-vs-control.md; the external
     review's M1). Unlike `match` (kept unchanged for comparability): a tap must land inside the element box when one is
     known (no distance fallback), else within 5% of the screen; typed text and answers must match exactly up to case and
     whitespace (a wrong digit fails); app names must be equal up to case and spaces. Returns (type_match, full_match)."""

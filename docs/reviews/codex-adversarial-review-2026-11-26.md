@@ -1,6 +1,6 @@
 # Adversarial review
 
-External adversarial review requested by the owner (Codex CLI, `gpt-6.1-sol`, reasoning effort medium, read-only sandbox, no network) over a redacted transcript of the working session and the repository, 2026-11-26 14:44–14:59 Asia/Manila. Reproduced as written; local paths made relative. Verification of its main claims and the actions taken: `docs/PREREG_v411.md`, log entry 15:00.
+External adversarial review requested by the owner (Codex CLI, `gpt-6.1-sol`, reasoning effort medium, read-only sandbox, no network) over a redacted transcript of the working session and the repository, 2026-11-26 14:44–14:59 Asia/Manila. Reproduced as written; local paths made relative. Verification of its main claims and the actions taken: `docs/preregistrations/round-13-yardstick-own-history.md`, log entry 15:00.
 
 **Yes: the project is repeatedly optimising symptoms and development probes without establishing that those improvements cause better task completion.** E’s waits fell sharply, yet AndroidWorld success stayed flat and MobileWorld remained at 5/105. Round 13 addresses a plausible weakness—conditioning on the model’s own history—but its implementation credits actions with rewards earned after human intervention, removes many long-task endings through truncation, and uses an action matcher that can treat materially wrong actions as correct. Round 12 is a reasonable bounded experiment, but neither its labels nor its replay gate justify confidence that self-checking will improve completion. The strongest next investment is measurement and reward correctness, followed by one controlled recovery-training experiment. Another symptom-specific continuation would have poor expected value.
 
@@ -70,7 +70,7 @@ The learner can thus see the correct result of an action it did not perform corr
 
 ### M2. The 12-step cap removes the endings round 13 claims to teach
 
-**Evidence:** [semi_online_rl.py:114](train/semi_online_rl.py:114), [semi_online_rl.py:128](train/semi_online_rl.py:128), [PREREG_v411.md:66](docs/PREREG_v411.md:66).
+**Evidence:** [semi_online_rl.py:114](train/semi_online_rl.py:114), [semi_online_rl.py:128](train/semi_online_rl.py:128), [../preregistrations/round-13-yardstick-own-history.md:66](docs/preregistrations/round-13-yardstick-own-history.md:66).
 
 The builder appends a judged ending, then keeps only `steps[:12]`. Long episodes consequently lose their terminal supervision or their written corrective action.
 
@@ -137,7 +137,7 @@ Round 12 also assumes certain pre-end actions imply an unfinished task: [r12_mix
 
 ### M6. SOP is useful, but its current validation cannot establish the proposed general gate
 
-**Evidence:** [PREREG_v411.md:32](docs/PREREG_v411.md:32), [sop.py:95](eval/androidcontrol/sop.py:95).
+**Evidence:** [../preregistrations/round-13-yardstick-own-history.md:32](docs/preregistrations/round-13-yardstick-own-history.md:32), [sop.py:95](eval/androidcontrol/sop.py:95).
 
 There are four problems.
 
@@ -151,13 +151,13 @@ Report both episode incidence and the hazard conditional on reaching each nonter
 
 For the registered AndroidWorld values, an exact permutation calculation with untied SOP ranks gives approximately **p = 0.0476** at the `ρ ≥ 0.70` threshold. The threshold is barely significant under that favourable null calculation; it is not strong predictive validation.
 
-**Fourth, the reference outcomes are inconsistent.** Round 13 uses E/D false-complete counts **23/26**, while the rerun-adjusted table reports **24/27**: [PREREG_v411.md:35](docs/PREREG_v411.md:35), [PREREG_v46.md:234](docs/PREREG_v46.md:234).
+**Fourth, the reference outcomes are inconsistent.** Round 13 uses E/D false-complete counts **23/26**, while the rerun-adjusted table reports **24/27**: [../preregistrations/round-13-yardstick-own-history.md:35](docs/preregistrations/round-13-yardstick-own-history.md:35), [../preregistrations/round-08-done-from-the-screen.md:234](docs/preregistrations/round-08-done-from-the-screen.md:234).
 
 **Correction:** treat SOP as a provisional regression measure. Freeze one adjudicated reference table, report uncertainty and leave-one-model-out sensitivity, and require prospective online validation.
 
 ### M7. The statistical rules confuse screening thresholds, detectable effects, and evidence of failure
 
-**Evidence:** [rounds.md:23](docs/rounds.md:23), [rounds.md:133](docs/rounds.md:133), [PREREG_v411.md:79](docs/PREREG_v411.md:79).
+**Evidence:** [rounds.md:23](docs/rounds.md:23), [rounds.md:133](docs/rounds.md:133), [../preregistrations/round-13-yardstick-own-history.md:79](docs/preregistrations/round-13-yardstick-own-history.md:79).
 
 Nine discordant outcomes between two runs do **not** mean nine net successes are the minimum detectable improvement. The replicate had nine flips but only a one-success net difference. Statistical power depends on discordance, dependence, effect size, and the chosen test.
 
@@ -199,7 +199,7 @@ Round 13 then launched full training while the proposed yardstick validation was
 
 ### M9. These held-out seeds are no longer fresh confirmation for later models
 
-**Evidence:** [PREREG_v46.md:246](docs/PREREG_v46.md:246), [PREREG_v46.md:262](docs/PREREG_v46.md:262), [PREREG_v411.md:80](docs/PREREG_v411.md:80).
+**Evidence:** [../preregistrations/round-08-done-from-the-screen.md:246](docs/preregistrations/round-08-done-from-the-screen.md:246), [../preregistrations/round-08-done-from-the-screen.md:262](docs/preregistrations/round-08-done-from-the-screen.md:262), [../preregistrations/round-13-yardstick-own-history.md:80](docs/preregistrations/round-13-yardstick-own-history.md:80).
 
 The repository acknowledges that the seeds were opened and v4’s failures inspected before later model development. Sealing a new model’s outcomes until its run finishes does not restore independence from those earlier diagnoses.
 
@@ -258,7 +258,7 @@ These are conditional restart bugs, not evidence that the current uninterrupted 
 
 ### N4. The E analysis makes an incorrect review-coverage claim
 
-[sealed_analysis.py:297](analysis/sealed_analysis.py:297) emits “Every success is also reviewed.” However, [PREREG_v46.md:297](docs/PREREG_v46.md:297) explicitly says E’s success review was not performed.
+[sealed_analysis.py:297](analysis/sealed_analysis.py:297) emits “Every success is also reviewed.” However, [../preregistrations/round-08-done-from-the-screen.md:297](docs/preregistrations/round-08-done-from-the-screen.md:297) explicitly says E’s success review was not performed.
 
 The arithmetic handling of E’s rerun false-complete counts appears correct: replacements update the original arm’s stored count at [sealed_analysis.py:194](analysis/sealed_analysis.py:194), and E’s rule compares the intended arms. I found no demonstrated E-arm tally bug.
 

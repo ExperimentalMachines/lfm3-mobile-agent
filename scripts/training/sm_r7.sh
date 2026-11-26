@@ -1,5 +1,5 @@
 #!/bin/bash
-# Round 7 / v4.5 on an AWS SageMaker training job (ml.g7e.2xlarge: 1x RTX PRO 6000, 96 GB). docs/PREREG_v45.md.
+# Round 7 / v4.5 on an AWS SageMaker training job (ml.g7e.2xlarge: 1x RTX PRO 6000, 96 GB). docs/preregistrations/round-07-full-mix-long-history.md.
 # Channels: code (this script, training/eval code, ground truth, v4 reference numbers) and data (the round-7 mix:
 # train, ac_val, gate splits, androidlens/ for the scorer). Everything written under /opt/ml/checkpoints is synced to S3
 # while the job runs (checkpoints, merged weights, predictions, metrics, logs), so nothing waits for the job to end and

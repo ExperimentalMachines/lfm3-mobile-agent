@@ -1,6 +1,6 @@
 # Held-out AndroidWorld analysis, seed(s) 7, 1234, 2026
 
-> Exceptions with no re-run (counted as failures; eligibility per docs/PREREG_v4.md, e.g. the 13:40 entry): v4 seed 2026: ['SimpleSmsReplyMostRecent']
+> Exceptions with no re-run (counted as failures; eligibility per docs/preregistrations/heldout-main-vs-gui-owl.md, e.g. the 13:40 entry): v4 seed 2026: ['SimpleSmsReplyMostRecent']
 
 | Arm | Successes | % | Wilson 95% | Answer tasks | Action tasks | Goal can vary (78) | Easy | Medium | Hard | Exceptions |
 |---|---|---|---|---|---|---|---|---|---|---|

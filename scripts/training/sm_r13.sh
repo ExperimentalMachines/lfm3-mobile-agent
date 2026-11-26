@@ -1,5 +1,5 @@
 #!/bin/bash
-# Round 13 / candidate E-S (semi-online RL from E) on an AWS SageMaker training job. docs/PREREG_v411.md.
+# Round 13 / candidate E-S (semi-online RL from E) on an AWS SageMaker training job. docs/preregistrations/round-13-yardstick-own-history.md.
 # Channels: code; e (E's merged weights); r13in (ody_term2.parquet, claude_ody_terminal_verdicts.jsonl,
 # claude_next_actions.jsonl, claude_ac_complete_verdicts.jsonl, rl_probe_exclude.json). E's training split comes from the
 # public Hub (pinned). /opt/ml/checkpoints is synced to S3; a restarted job resumes from the last saved adapter.

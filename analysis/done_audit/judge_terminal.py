@@ -1,4 +1,4 @@
-"""Completion judge for the training `status` rows (round 8 audit, docs/PREREG_v46.md). Runs on a GPU (Modal).
+"""Completion judge for the training `status` rows (round 8 audit, docs/preregistrations/round-08-done-from-the-screen.md). Runs on a GPU (Modal).
 Qwen/Qwen3-VL-8B-Instruct (Apache-2.0, pinned) sees ONLY the goal and the final screenshot (not the agent's history,
 so it cannot copy completion from it) and answers COMPLETE / NOT_COMPLETE / PENDING / UNSURE plus a one-line reason.
 Usage: python judge_terminal.py <terminal.parquet> <out.jsonl> [--episodes ids.json] [--model ID --rev SHA]

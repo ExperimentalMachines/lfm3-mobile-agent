@@ -1,5 +1,5 @@
 """MobileJudgeBench (WesleyWzq/MobileJudgeBench @ 2170e51c, CC BY 4.0) -> a held-out "is it done?" evaluation in our
-prompt formats (round 8, docs/PREREG_v46.md: reported, not gated).
+prompt formats (round 8, docs/preregistrations/round-08-done-from-the-screen.md: reported, not gated).
 
 Other agents' real runs (M3A/T3A/UI-TARS) on four non-AndroidWorld benchmarks (SPA-Bench, A3, AndroidArena, B-MoCA),
 each with a human success label. One row per run, at the moment that agent decided it was finished:
@@ -9,7 +9,7 @@ The model under test answers the next action; `status` = "done". Wanted: `status
 failures, above all on failures where the agent itself said complete.
 
 Dropped: android_world / android_lab runs (not even downloaded) and runs whose goal or app names an AndroidWorld app
-(build_v2_mix.py's AW_APP_RE). History intents = the first sentence of that agent's own reasoning (<= 15 words).
+(sft_multisource.py's AW_APP_RE). History intents = the first sentence of that agent's own reasoning (<= 15 words).
 Formats: "e" (24-step history, notes by train/screen_change.py), "d" (24-step, round 6 coarse notes), "v4" (8-step,
 no notes). Usage: python mjb_build.py <mjb root> <app_pool.json> <out dir>
 """

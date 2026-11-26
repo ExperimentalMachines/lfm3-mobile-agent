@@ -1,11 +1,11 @@
 #!/bin/bash
-# Round 9 / v4.7 gate evals (docs/PREREG_v47.md): round 8's gate (vm_r8_eval.sh) on the v4.7 splits. The five splits of
-# experimentalmachines/MobileAgent-SFT-v4.7 @ DREV, the six history probes through generate.py, the scorers, then sm_r7_gate.py.
+# Round 9 / v4.7 gate evals (docs/preregistrations/round-09-useless-waits.md): round 8's gate (vm_r8_eval.sh) on the v4.7 splits. The five splits of
+# experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix @ DREV, the six history probes through generate.py, the scorers, then sm_r7_gate.py.
 # env: MODEL (merged weights dir), NAME (output prefix), LIMIT (0 = all rows; >0 = smoke, numbers meaningless)
 set -uo pipefail
 export TOKENIZERS_PARALLELISM=false
 M=${MODEL:-/content/runs/r9f/merged}; N=${NAME:-r9f}; L=${LIMIT:-0}
-DREPO=experimentalmachines/MobileAgent-SFT-v4.7; DREV=${DREV:?set DREV}
+DREPO=experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix; DREV=${DREV:?set DREV}
 E=/content/eval; A=/content/data/v47; mkdir -p $E $A
 log() { echo "[$(date +%T)] r9eval: $*"; }
 cd /content/work

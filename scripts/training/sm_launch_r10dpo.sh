@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launch a round-10 E-DPO job (docs/PREREG_v48.md): scripts/training/sm_r10dpo.sh with channels code, e and
+# Launch a round-10 E-DPO job (docs/preregistrations/round-10-multi-part-false-completes.md): scripts/training/sm_r10dpo.sh with channels code, e and
 # R10_CHANNEL (cand: s3://<bucket>/r10/cand/, or pairs: the S3 path of job A's pairs). Account id and role are read at run time (not stored in the repo).
 # usage: R9_BUCKET=<bucket> R10_CHANNEL=cand|pairs=s3://... [R9_CKPT=<resume name>] sm_launch_r10dpo.sh <job> pairs|dpo [max_hours] [KEY=VALUE ...]
 set -euo pipefail
@@ -10,10 +10,10 @@ export AWS_PAGER=""
 cd "$(dirname "$0")/../.."
 ACCT=$(aws sts get-caller-identity --query Account --output text)
 CODE=$(mktemp -d); mkdir -p $CODE/meta
-cp scripts/training/sm_r10dpo.sh scripts/training/vm_r8_eval.sh scripts/training/sm_r8_gate.py scripts/training/sm_r7_gate.py data/r10_stop_pairs.py train/dpo_vlm.py \
+cp scripts/training/sm_r10dpo.sh scripts/training/vm_r8_eval.sh scripts/training/sm_r8_gate.py scripts/training/sm_r7_gate.py data/stopdpo_pairs.py train/dpo_vlm.py \
    train/sft_vlm.py train/agent_format.py eval/androidcontrol/generate.py eval/androidcontrol/score.py \
    eval/androidcontrol/score_dev.py eval/androidlens/score_androidlens.py $CODE/
-cp scripts/training/v4_reference_r7.json $CODE/v4_reference.json
+cp scripts/training/main_reference_r7.json $CODE/v4_reference.json
 cp data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json $CODE/meta/
 aws s3 sync --delete --only-show-errors $CODE s3://$B/r10/code/$JOB/
 rm -rf $CODE

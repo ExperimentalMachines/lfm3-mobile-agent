@@ -1,5 +1,5 @@
 #!/bin/bash
-# Pull E's MobileWorld run (docs/PREREG_v46.md 2026-11-25 20:40; AWS VM of scripts/mobileworld/aws_mw_e_setup.sh) to
+# Pull E's MobileWorld run (docs/preregistrations/round-08-done-from-the-screen.md 2026-11-25 20:40; AWS VM of scripts/mobileworld/aws_mw_e_setup.sh, retired; see tag archive/pre-naming-cleanup-2026-11-26) to
 # results/mobileworld/traj_e/: every attempt folder (final, MobileWorld's *_backup_* retries, folders moved aside by
 # mw_resume.sh), the retry manifest and the stamps. --full adds screenshots. As scripts/mobileworld/mw_pull_r3.sh.
 # Usage: bash scripts/mobileworld/mw_pull_e.sh [--full]

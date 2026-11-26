@@ -3,7 +3,7 @@ LFM3-VL GRPO notebook (Liquid4All/cookbook finetuning/notebooks/lfm3_vl_grpo_wit
 5.20 pins), following results/codex/codex_overnight_research.md: start from the merged v4 model, fresh language-only LoRA
 r16/a32 (adapter disabled == v4, so the KL reference is v4), beta (KL) 0.001, 4 samples per state, short completions.
 
-Data: a parquet RL pool (data/v4_rl_pool.py) with columns image, prompt (system+user messages exactly as in v4 SFT),
+Data: a parquet RL pool (data/rl_states.py) with columns image, prompt (system+user messages exactly as in v4 SFT),
 gt_action, kind. Reward: train/rl_reward.py (strict).
 usage: python grpo_vlm.py --model <merged v4 dir|hub id> --data <repo>@<rev> --out <dir> [--max_steps N --smoke]
 """

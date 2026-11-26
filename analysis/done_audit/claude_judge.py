@@ -1,4 +1,4 @@
-"""Completion judge on the Anthropic API (docs/PREREG_v48.md, Claude entry): Claude Opus 5.5, adaptive thinking, effort high.
+"""Completion judge on the Anthropic API (docs/preregistrations/round-10-multi-part-false-completes.md, Claude entry): Claude Opus 5.5, adaptive thinking, effort high.
 Same prompt, inputs, cases and parsing as bedrock_judge.py (the Qwen3-VL-235B judge that failed calibration at 72%).
 
   calibrate  python claude_judge.py calibrate --pairs PAIRS_DISK --ody calib_ody.json --out results.jsonl --ledger spend.jsonl
@@ -32,7 +32,7 @@ USD_IN, USD_OUT = 4.0 / 1e6, 20.0 / 1e6      # list price per token, standard; t
 CAP_USD = 90.0
 WORST_IN = 2500                               # per request: measured 1,295-1,624 input tokens (count_tokens)
 LOCK = threading.Lock()
-# owner's definition of done (docs/PREREG_v48.md 2026-11-25 16:06), fixed before any fresh label or judge output
+# owner's definition of done (docs/preregistrations/round-10-multi-part-false-completes.md 2026-11-25 16:06), fixed before any fresh label or judge output
 PROMPT_V2 = ("Goal: {goal}\nSteps already taken by the assistant:\n{hist}\n\n"
              "The image is the phone screen now, after those steps.\n"
              "Is the goal fully accomplished now? It is accomplished when exactly what it asks for has been done: nothing "

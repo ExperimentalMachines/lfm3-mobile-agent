@@ -1,4 +1,4 @@
-"""Sensitivity analyses for the final held-out AndroidWorld result (docs/PREREG_v4.md, 2026-11-19 13:40 and 16:20).
+"""Sensitivity analyses for the final held-out AndroidWorld result (docs/preregistrations/heldout-main-vs-gui-owl.md, 2026-11-19 13:40 and 16:20).
 
 Not preregistered. Reuses analysis/sealed_analysis.py unchanged (loaded with runpy, so its input checks, its re-run
 substitution and its template-clustered sign-flip test + test-inversion CI are exactly the primary ones) and varies only

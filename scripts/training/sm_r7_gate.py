@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Round 7 / v4.5 offline gate (docs/PREREG_v45.md). Reads the candidate's metrics and predictions, compares them with
+"""Round 7 / v4.5 offline gate (docs/preregistrations/round-07-full-mix-long-history.md). Reads the candidate's metrics and predictions, compares them with
 v4's round-6 reference numbers (v4_reference.json: v4 through the same evaluator on its own 8-step prompt), writes
 <out> and prints one OFFLINE GATE line.
 

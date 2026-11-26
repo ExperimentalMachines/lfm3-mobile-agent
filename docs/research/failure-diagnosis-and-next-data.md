@@ -183,7 +183,7 @@ No clean mobile date-picker dataset exists. Nothing usable was uploaded after 20
 
 ## Outcome: round 6 (added 2026-11-24)
 
-The plan ran as A, B and C ([PREREG_v44.md](../PREREG_v44.md), [results](../rounds.md#round-6-long-and-self-correcting-trajectories-2026-11-23)).
+The plan ran as A, B and C ([../preregistrations/round-06-long-trajectories.md](../preregistrations/round-06-long-trajectories.md), [results](../rounds.md#round-6-long-and-self-correcting-trajectories-2026-11-23)).
 
 | Prediction here | What happened |
 |---|---|

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Every real AndroidControl `status complete` row of E's training split (MobileAgent-SFT-v4.6 @ 0ace5559, train), for
-the Claude completion labels (docs/PREREG_v48.md 2026-11-25 16:25). Streams one shard at a time (download, keep the rows,
+"""Every real AndroidControl `status complete` row of E's training split (MobileAgent-SFT-Counterfactual @ 0ace5559, train), for
+the Claude completion labels (docs/preregistrations/round-10-multi-part-false-completes.md 2026-11-25 16:25). Streams one shard at a time (download, keep the rows,
 delete the shard), resumable per shard.
 Out: OUT/rows/train-XXXXX.parquet (episode_id, step_idx, user, jpg) and OUT/variants.jsonl (the `#cf_short` variants:
 their id and the source row they copy).
@@ -15,7 +15,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from huggingface_hub import HfApi, hf_hub_download
 
-REPO, REV = "experimentalmachines/MobileAgent-SFT-v4.6", "0ace5559e6c0b808a5ddf4e4ce9831d1d3614471"
+REPO, REV = "experimentalmachines/MobileAgent-SFT-Counterfactual", "0ace5559e6c0b808a5ddf4e4ce9831d1d3614471"
 out = sys.argv[1]
 os.makedirs(f"{out}/rows", exist_ok=True)
 shards = sorted(f for f in HfApi().list_repo_files(REPO, repo_type="dataset", revision=REV) if f.startswith("data/train-"))

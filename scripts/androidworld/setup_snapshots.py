@@ -1,4 +1,4 @@
-"""Round 14 step 4 (docs/PREREG_v412.md): create AndroidWorld's per-app clean snapshots on one emulator, app by app.
+"""Round 14 step 4 (docs/preregistrations/round-14-own-history-vs-control.md): create AndroidWorld's per-app clean snapshots on one emulator, app by app.
 AndroidWorld restores /data/data/android_world/snapshots/<package> before every task; on our emulators that folder did
 not exist ("Snapshot not found" ~270 times per pass), so app state carried over between tasks. AndroidWorld's own
 setup (run_aw.py --perform_emulator_setup) stops at the first adb failure; this runs each app's own setup

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Round 8 / v4.6 offline gate (docs/PREREG_v46.md): round 7's checks (sm_r7_gate.py) plus the history probes.
+"""Round 8 / v4.6 offline gate (docs/preregistrations/round-08-done-from-the-screen.md): round 7's checks (sm_r7_gate.py) plus the history probes.
 Probe value = share of rows where the candidate outputs `status`. Prints one OFFLINE GATE line, writes <out>."""
 import argparse
 import json

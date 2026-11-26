@@ -1,5 +1,5 @@
 #!/bin/bash
-# Emulator guard for the preregistered single re-runs (docs/PREREG_v4.md 2026-11-19 13:40). An emulator whose guest
+# Emulator guard for the preregistered single re-runs (docs/preregistrations/heldout-main-vs-gui-owl.md 2026-11-19 13:40). An emulator whose guest
 # stops answering `adb shell` makes every following AndroidWorld episode crash in setup after adb's 120-s timeouts
 # (emulator 2, 2026-11-19 00:35-08:06: 113 setup crashes in v4 seed 1234). Because a re-run is allowed only once, this
 # guard probes the emulator every 20 s (15-s bound per probe, read-only `adb shell echo`; the shared adb server is never

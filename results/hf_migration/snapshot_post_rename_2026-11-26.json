@@ -1,0 +1,5692 @@
+{
+ "experimentalmachines/LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly-GGUF": {
+  "kind": "model",
+  "sha": "c6103f9525afca39085505af63acb55097eead6f",
+  "files": {
+   ".gitattributes": {
+    "size": 1841,
+    "lfs": null
+   },
+   "LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly-Q4_K_M.gguf": {
+    "size": 229312960,
+    "lfs": "2d1971ba90a52b5dd407ead94b553a5285eb0c10bfcae7c2790ec2221bd801a5"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2588,
+    "lfs": null
+   },
+   "mmproj-LFM2.5-VL-450m-Q8_0.gguf": {
+    "size": 102815168,
+    "lfs": "ebfc428baa37efad8bae93864f914b2634a09009f91ad59f974fe1a1565d8561"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-WaitRelabel": {
+  "kind": "model",
+  "sha": "c8814fecedca117b10a43c5794975a7b034ad228",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5602,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3638,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_amex.jsonl": {
+    "size": 252915,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_amex.jsonl.manifest.json": {
+    "size": 449,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_amex.metrics.json": {
+    "size": 749,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_answer.jsonl": {
+    "size": 73909,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_answer.jsonl.manifest.json": {
+    "size": 451,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_answer.metrics.json": {
+    "size": 448,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_complete.jsonl": {
+    "size": 42459,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_complete.jsonl.manifest.json": {
+    "size": 452,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_complete.metrics.json": {
+    "size": 359,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_odyssey.jsonl": {
+    "size": 538124,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_odyssey.jsonl.manifest.json": {
+    "size": 453,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_odyssey.metrics.json": {
+    "size": 882,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_screenqa.jsonl": {
+    "size": 273779,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_screenqa.jsonl.manifest.json": {
+    "size": 453,
+    "lfs": null
+   },
+   "eval/lfm3_v41_dev_screenqa.metrics.json": {
+    "size": 394,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_amex.jsonl": {
+    "size": 253091,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_amex.jsonl.manifest.json": {
+    "size": 449,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_amex.metrics.json": {
+    "size": 765,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_answer.jsonl": {
+    "size": 73941,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_answer.jsonl.manifest.json": {
+    "size": 451,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_answer.metrics.json": {
+    "size": 448,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_complete.jsonl": {
+    "size": 42454,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_complete.jsonl.manifest.json": {
+    "size": 452,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_complete.metrics.json": {
+    "size": 369,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_odyssey.jsonl": {
+    "size": 537047,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_odyssey.jsonl.manifest.json": {
+    "size": 453,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_odyssey.metrics.json": {
+    "size": 882,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_screenqa.jsonl": {
+    "size": 273828,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_screenqa.jsonl.manifest.json": {
+    "size": 453,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_screenqa.metrics.json": {
+    "size": 392,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft.jsonl": {
+    "size": 8187020,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft.jsonl.manifest.json": {
+    "size": 424,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft.metrics.json": {
+    "size": 15586,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft_general_logprob.jsonl": {
+    "size": 373847,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft_general_logprob.summary.json": {
+    "size": 246,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft.jsonl": {
+    "size": 8189450,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft.jsonl.manifest.json": {
+    "size": 424,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft.metrics.json": {
+    "size": 15549,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft_general_logprob.jsonl": {
+    "size": 373649,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft_general_logprob.summary.json": {
+    "size": 259,
+    "lfs": null
+   },
+   "eval/v41_data_manifest.json": {
+    "size": 3948,
+    "lfs": null
+   },
+   "eval/v42_data_manifest.json": {
+    "size": 349,
+    "lfs": null
+   },
+   "eval/v42_selfhist_stats.json": {
+    "size": 6924,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5204,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "b7f87e1ff3049dd7add6d561cabb4571a9f777cfd9f77f3f69ad24cbcd67a91e"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "72a68d19d70d3d271379a8828f6aa56faa3ec5f6c17453016c99220ee7cc8e4b"
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "be3362f1a84c7ac2d267c2362060d951c4eec7b4f5090530eef24025b55515ae"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38058,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1184,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795262584.6819ba54fd27.2467.0": {
+    "size": 58577,
+    "lfs": "232343f0c60b4771a7f0960a5ba38e356de3023e9c1b729f21b547face08966b"
+   },
+   "training_logs/tb/events.out.tfevents.1795272407.6819ba54fd27.2467.1": {
+    "size": 527,
+    "lfs": "c22326aef7adcc310ffad50d84dac74a2d12af585c69343db7d84895e27b2f54"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 38418,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 553,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly-GGUF": {
+  "kind": "model",
+  "sha": "13f2a6bee39e785491230a09ccdcc36b95366c3e",
+  "files": {
+   ".gitattributes": {
+    "size": 1871,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 11544,
+    "lfs": null
+   },
+   "Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly-Q4_K_M.gguf": {
+    "size": 529297088,
+    "lfs": "019e0f86433e7f7f9bc167b05d2beb36f87b36120eb6a58576adec2ca43df691"
+   },
+   "README.md": {
+    "size": 2561,
+    "lfs": null
+   },
+   "mmproj-Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly-F16.gguf": {
+    "size": 204986560,
+    "lfs": "57bb35caaf6c6672d1d569210da1e5e7ac3507e493a06cd488f690d8210ebeda"
+   }
+  }
+ },
+ "experimentalmachines/LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly": {
+  "kind": "model",
+  "sha": "779250f6b07acd617bff8922e5c57161471c7a18",
+  "files": {
+   ".gitattributes": {
+    "size": 1519,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4641,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 3836,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 2503,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base.jsonl": {
+    "size": 7708287,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base.jsonl.manifest.json": {
+    "size": 385,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base.metrics.json": {
+    "size": 14638,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general.jsonl": {
+    "size": 309411,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general.summary.json": {
+    "size": 208,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general_logprob.jsonl": {
+    "size": 372531,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general_logprob.summary.json": {
+    "size": 240,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft.jsonl": {
+    "size": 8205799,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft.jsonl.manifest.json": {
+    "size": 391,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft.metrics.json": {
+    "size": 15414,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft_general.jsonl": {
+    "size": 310516,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft_general.summary.json": {
+    "size": 238,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft_general_logprob.jsonl": {
+    "size": 369840,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_ft_general_logprob.summary.json": {
+    "size": 267,
+    "lfs": null
+   },
+   "eval/lfm25vl450m_base.jsonl": {
+    "size": 631411,
+    "lfs": null
+   },
+   "eval/lfm25vl450m_base.jsonl.manifest.json": {
+    "size": 253,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 132,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5212,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1158,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 24013320,
+    "lfs": "71c3933cc643d089b86161ae9b4b8dc5bc7597ee245044c9a9cdeb7904a75bb0"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 3836,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 824,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 4733040,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 859,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "ae75c0340790dac6dfd8b39ba7d0977a3cd2049439cef9175ae0c8974cf5fc26"
+   },
+   "model.safetensors": {
+    "size": 897484568,
+    "lfs": "a2bcf2472421b84a4c73fd01623317d5cd8ac067ee4000bcade8711962210f9e"
+   },
+   "processor_config.json": {
+    "size": 824,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 4733040,
+    "lfs": null
+   },
+   "tokenizer_config.json": {
+    "size": 859,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 55643,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1369,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794848344.modal.491.0": {
+    "size": 54521,
+    "lfs": "d8cbaa7b96942b81b0a6c4f85d434126ae25c954544e3c42a677aace2c4d9266"
+   },
+   "training_logs/tb/events.out.tfevents.1794851792.modal.491.1": {
+    "size": 527,
+    "lfs": "0c3ec4fb4322bb86faabfcd87d6ba18a10a5c42d17e0ee024304ecf22e3e9593"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 35413,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 539,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/Qwen3.5-0.8B-MobileAgent-Dev-AndroidControlOnly": {
+  "kind": "model",
+  "sha": "05bf41442f4eab2e7212b76509bbe7365992b63e",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 11544,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4478,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 7807,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 2700,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general.jsonl": {
+    "size": 309580,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general.summary.json": {
+    "size": 222,
+    "lfs": null
+   },
+   "eval/lfm25vl450m_base.jsonl": {
+    "size": 631411,
+    "lfs": null
+   },
+   "eval/lfm25vl450m_base.jsonl.manifest.json": {
+    "size": 253,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base.jsonl": {
+    "size": 6854550,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base.jsonl.manifest.json": {
+    "size": 378,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base.metrics.json": {
+    "size": 15495,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general.jsonl": {
+    "size": 439855,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general.summary.json": {
+    "size": 229,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general_logprob.jsonl": {
+    "size": 369131,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general_logprob.summary.json": {
+    "size": 225,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft.jsonl": {
+    "size": 8297758,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft.jsonl.manifest.json": {
+    "size": 395,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft.metrics.json": {
+    "size": 15544,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_general.jsonl": {
+    "size": 317319,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_general.summary.json": {
+    "size": 261,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl": {
+    "size": 3887345,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 396,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.metrics.json": {
+    "size": 8225,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.jsonl": {
+    "size": 6944791,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.jsonl.manifest.json": {
+    "size": 374,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.metrics.json": {
+    "size": 15659,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general.jsonl": {
+    "size": 409383,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general.summary.json": {
+    "size": 235,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.jsonl": {
+    "size": 8278442,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.jsonl.manifest.json": {
+    "size": 394,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.metrics.json": {
+    "size": 15586,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general.jsonl": {
+    "size": 314663,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general.summary.json": {
+    "size": 277,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl": {
+    "size": 3878058,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 395,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.metrics.json": {
+    "size": 8221,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 164,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5200,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1165,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 43346432,
+    "lfs": "d1fb1141764c634a55658e733abe790de6175c994ee04ca1d924b476450b8634"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 7807,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1217,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 19989339,
+    "lfs": "a5cd9732badce41de57e6efce8302930ded1c1188c5f81feb2bd6c24c4a1941f"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1579,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "80303165d600d8cff592e9e988f67f256d10058fb8134de6235b10af9788a5a7"
+   },
+   "model.safetensors": {
+    "size": 1706030528,
+    "lfs": "08d62a33c4001c9dfe512220b4ee72fc835c9e92a00eb53f41a8fc4a9875ffb3"
+   },
+   "processor_config.json": {
+    "size": 1217,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 19989339,
+    "lfs": "a5cd9732badce41de57e6efce8302930ded1c1188c5f81feb2bd6c24c4a1941f"
+   },
+   "tokenizer_config.json": {
+    "size": 1579,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 55589,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1427,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794848300.b3dc3a84b239.61965.0": {
+    "size": 23044,
+    "lfs": "ec967cfb6e9a45993f7845d2dffe6ef6eff4610e5828e496c01acd2dc8760f88"
+   },
+   "training_logs/tb/events.out.tfevents.1794889503.4817214def11.41928.0": {
+    "size": 34737,
+    "lfs": "938ae57efcd2ff6b29ac8f091ca49a8c3e7baf53f91eb4a8d34f2ab59dc9a687"
+   },
+   "training_logs/tb/events.out.tfevents.1794891650.4817214def11.41928.1": {
+    "size": 527,
+    "lfs": "b6d0688270fd5544080b42090f0d2b448a6c32c0bd882eec2d5625ff3e128f7d"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 20694,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 539,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly": {
+  "kind": "model",
+  "sha": "32705bc14570191fd58ad356367980e4b1fe0a95",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5164,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base.jsonl": {
+    "size": 7600684,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base.jsonl.manifest.json": {
+    "size": 382,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base.metrics.json": {
+    "size": 15715,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base_general.jsonl": {
+    "size": 655637,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base_general.summary.json": {
+    "size": 239,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base_general_logprob.jsonl": {
+    "size": 372533,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_base_general_logprob.summary.json": {
+    "size": 240,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft.jsonl": {
+    "size": 8153559,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft.jsonl.manifest.json": {
+    "size": 393,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft.metrics.json": {
+    "size": 15542,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_general.jsonl": {
+    "size": 370674,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_general.summary.json": {
+    "size": 241,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_general_logprob.jsonl": {
+    "size": 373732,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_general_logprob.summary.json": {
+    "size": 267,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_nothink_high.jsonl": {
+    "size": 3989728,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 394,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-ac-lora_ft_nothink_high.metrics.json": {
+    "size": 8264,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5204,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "e34c334875131cb7cb64ad9900ff30649fbedffc6ac5e669a4ecb762c9473e2d"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "38b4eb765dafbc19bcb685dcd31d765a895857707a5af492e2950aa7563e151f"
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "c8a0dd33989bb0ad4a9473c1f1ebb91b70e6100df913b0f4544497a4f0c760c0"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38011,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1332,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794851191.modal.214.0": {
+    "size": 30670,
+    "lfs": "fa00c3cd5066b4abba42b0daf222bb9127e657f0791d0d6c369355bf49d6501d"
+   },
+   "training_logs/tb/events.out.tfevents.1794855254.modal.214.1": {
+    "size": 527,
+    "lfs": "8352482a96049401f45955aed6a8fda8aa03db1e860430c430c2c31576257fc1"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 17350,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 556,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly": {
+  "kind": "model",
+  "sha": "e2563a1bbe1f4c51d58469df67e3e4083a23cae5",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 11544,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4630,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 7807,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 2701,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.jsonl": {
+    "size": 6944791,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.jsonl.manifest.json": {
+    "size": 374,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.metrics.json": {
+    "size": 15659,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general.jsonl": {
+    "size": 409383,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general.summary.json": {
+    "size": 235,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general_logprob.jsonl": {
+    "size": 368581,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general_logprob.summary.json": {
+    "size": 237,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.jsonl": {
+    "size": 8278442,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.jsonl.manifest.json": {
+    "size": 394,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.metrics.json": {
+    "size": 15586,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general.jsonl": {
+    "size": 314663,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general.summary.json": {
+    "size": 277,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general_logprob.jsonl": {
+    "size": 368164,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general_logprob.summary.json": {
+    "size": 267,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl": {
+    "size": 3878058,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 395,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.metrics.json": {
+    "size": 8221,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 164,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5196,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1164,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 269163632,
+    "lfs": "43de3b1123b6e550c7a1cea7fe40b45ca207d35d2c618b9e226e796c6682432f"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 7807,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1217,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 19989339,
+    "lfs": "a5cd9732badce41de57e6efce8302930ded1c1188c5f81feb2bd6c24c4a1941f"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1579,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "cef558528b54356f8b291eb4f7b6e9677cbb5f9f7338b8af649f261f254ae4e4"
+   },
+   "model.safetensors": {
+    "size": 4426558864,
+    "lfs": "d47bcce66e26a92158e688d1e36aed5e5f3cf9ef2bd30ec1afb1af12720632f1"
+   },
+   "processor_config.json": {
+    "size": 1217,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 19989339,
+    "lfs": "a5cd9732badce41de57e6efce8302930ded1c1188c5f81feb2bd6c24c4a1941f"
+   },
+   "tokenizer_config.json": {
+    "size": 1579,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 37988,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1390,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794851396.02080c68bada.4185.0": {
+    "size": 19222,
+    "lfs": "7a62181c329696caee14b11b3264b706016b235c493903314f87089561769896"
+   },
+   "training_logs/tb/events.out.tfevents.1794881313.4817214def11.3788.0": {
+    "size": 33532,
+    "lfs": "da5b0308788c6b29c2c69aa2c49ad67cc9f4bb018b17492607d3a4b1365adc55"
+   },
+   "training_logs/tb/events.out.tfevents.1794884407.4817214def11.3788.1": {
+    "size": 527,
+    "lfs": "a504c7574ff2d1c279f24c82e004b70a02c5b5b6f99efbe4f1e362e101ccdb56"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 20229,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 555,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly-GGUF": {
+  "kind": "model",
+  "sha": "762c30f60bbd25ea92519adc9e8de926ae3913a4",
+  "files": {
+   ".gitattributes": {
+    "size": 1825,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly-Q4_K_M.gguf": {
+    "size": 1099627104,
+    "lfs": "66adfff4a8b478b68c8e050b0f9b71eef8f94407852d9fc5b00d6e7b6f3b968d"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2833,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MultiSource": {
+  "kind": "model",
+  "sha": "71e5454897bbb6382c5a6dd4013b3de7a2dd0471",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4972,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general.jsonl": {
+    "size": 309580,
+    "lfs": null
+   },
+   "eval/lfm25vl450m-ac-lora_base_general.summary.json": {
+    "size": 222,
+    "lfs": null
+   },
+   "eval/lfm25vl450m_base.jsonl": {
+    "size": 631411,
+    "lfs": null
+   },
+   "eval/lfm25vl450m_base.jsonl.manifest.json": {
+    "size": 253,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_amex.jsonl": {
+    "size": 234720,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_amex.jsonl.manifest.json": {
+    "size": 413,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_amex.metrics.json": {
+    "size": 784,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_odyssey.jsonl": {
+    "size": 510727,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_odyssey.jsonl.manifest.json": {
+    "size": 417,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_odyssey.metrics.json": {
+    "size": 854,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_screenqa.jsonl": {
+    "size": 256300,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_screenqa.jsonl.manifest.json": {
+    "size": 417,
+    "lfs": null
+   },
+   "eval/lfm3_base_dev_screenqa.metrics.json": {
+    "size": 381,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_amex.jsonl": {
+    "size": 255098,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_amex.jsonl.manifest.json": {
+    "size": 467,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_amex.metrics.json": {
+    "size": 775,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_odyssey.jsonl": {
+    "size": 541535,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_odyssey.jsonl.manifest.json": {
+    "size": 471,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_odyssey.metrics.json": {
+    "size": 847,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_screenqa.jsonl": {
+    "size": 270515,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_screenqa.jsonl.manifest.json": {
+    "size": 471,
+    "lfs": null
+   },
+   "eval/lfm3_v1_dev_screenqa.metrics.json": {
+    "size": 366,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_amex.jsonl": {
+    "size": 237835,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_amex.jsonl.manifest.json": {
+    "size": 427,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_amex.metrics.json": {
+    "size": 738,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_odyssey.jsonl": {
+    "size": 537867,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_odyssey.jsonl.manifest.json": {
+    "size": 431,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_odyssey.metrics.json": {
+    "size": 867,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_screenqa.jsonl": {
+    "size": 275548,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_screenqa.jsonl.manifest.json": {
+    "size": 431,
+    "lfs": null
+   },
+   "eval/lfm3_v2_dev_screenqa.metrics.json": {
+    "size": 380,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft.jsonl": {
+    "size": 8217045,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft.jsonl.manifest.json": {
+    "size": 396,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft.metrics.json": {
+    "size": 15673,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft_general_logprob.jsonl": {
+    "size": 374060,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft_general_logprob.summary.json": {
+    "size": 248,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft_nothink_high.jsonl": {
+    "size": 3929195,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 397,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v2mix-lora_ft_nothink_high.metrics.json": {
+    "size": 8292,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base.jsonl": {
+    "size": 6854550,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base.jsonl.manifest.json": {
+    "size": 378,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base.metrics.json": {
+    "size": 15495,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general.jsonl": {
+    "size": 439855,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general.summary.json": {
+    "size": 229,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft.jsonl": {
+    "size": 8297758,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft.jsonl.manifest.json": {
+    "size": 395,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft.metrics.json": {
+    "size": 15544,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_general.jsonl": {
+    "size": 317319,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_general.summary.json": {
+    "size": 261,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl": {
+    "size": 3887345,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 396,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_nothink_high.metrics.json": {
+    "size": 8225,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.jsonl": {
+    "size": 6944791,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.jsonl.manifest.json": {
+    "size": 374,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base.metrics.json": {
+    "size": 15659,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general.jsonl": {
+    "size": 409383,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general.summary.json": {
+    "size": 235,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.jsonl": {
+    "size": 8278442,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.jsonl.manifest.json": {
+    "size": 394,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft.metrics.json": {
+    "size": 15586,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general.jsonl": {
+    "size": 314663,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general.summary.json": {
+    "size": 277,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl": {
+    "size": 3878058,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 395,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_nothink_high.metrics.json": {
+    "size": 8221,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5204,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "d8c46cbdc6ceae847b53390fb85dd033e2212ab8271b53074ab7d37a7bf2f252"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "b28ea80135a540c731a86dfaead1433afa31e85c998da09e095927a478ab2bf7"
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "b9446299ed1b4193f5b297f9c4cb2eafe3570ebc920b41120c73953abfc7e35f"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38357,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1394,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794894141.4817214def11.62160.0": {
+    "size": 58583,
+    "lfs": "f89aab67eb055966131e8e893fa9caa0f896e7075aa048bc130e7d7a1b4b2c72"
+   },
+   "training_logs/tb/events.out.tfevents.1794899995.4817214def11.62160.1": {
+    "size": 527,
+    "lfs": "007eaa2c07819e0fb1ea0c3c3b70ac47ed97bf3b99b601f9832f1397b4a0bdd7"
+   },
+   "training_logs/tb/events.out.tfevents.1794900295.4817214def11.89473.0": {
+    "size": 8780,
+    "lfs": "f9ac55534446948551783d65026dc72f850293a93f2ee7eb92db5d5eea8a6740"
+   },
+   "training_logs/tb/events.out.tfevents.1794900370.4817214def11.89473.1": {
+    "size": 527,
+    "lfs": "5483e67c280a361d1569ed4ae063ee5ddbc644471631773e4f2b40368ae93703"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 39281,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 550,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-MultiSource": {
+  "kind": "model",
+  "sha": "9a9e5b899da01b57d6352ce0674485ec97447544",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 11544,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4657,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 7807,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 2701,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general_logprob.jsonl": {
+    "size": 369131,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_base_general_logprob.summary.json": {
+    "size": 225,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_general_logprob.jsonl": {
+    "size": 368444,
+    "lfs": null
+   },
+   "eval/qwen35-08b-ac-lora_ft_general_logprob.summary.json": {
+    "size": 269,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general_logprob.jsonl": {
+    "size": 368581,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_base_general_logprob.summary.json": {
+    "size": 237,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general_logprob.jsonl": {
+    "size": 368164,
+    "lfs": null
+   },
+   "eval/qwen35-2b-ac-lora_ft_general_logprob.summary.json": {
+    "size": 267,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft.jsonl": {
+    "size": 8341454,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft.jsonl.manifest.json": {
+    "size": 397,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft.metrics.json": {
+    "size": 15641,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft_general_logprob.jsonl": {
+    "size": 368110,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft_general_logprob.summary.json": {
+    "size": 247,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft_nothink_high.jsonl": {
+    "size": 3939096,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft_nothink_high.jsonl.done": {
+    "size": 0,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft_nothink_high.jsonl.manifest.json": {
+    "size": 398,
+    "lfs": null
+   },
+   "eval/qwen35-2b-v2mix-lora_ft_nothink_high.metrics.json": {
+    "size": 8378,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_amex.jsonl": {
+    "size": 277005,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_amex.jsonl.manifest.json": {
+    "size": 405,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_amex.metrics.json": {
+    "size": 760,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_odyssey.jsonl": {
+    "size": 488697,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_odyssey.jsonl.manifest.json": {
+    "size": 409,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_odyssey.metrics.json": {
+    "size": 847,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_screenqa.jsonl": {
+    "size": 236226,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_screenqa.jsonl.manifest.json": {
+    "size": 409,
+    "lfs": null
+   },
+   "eval/qwen35_2b_base_dev_screenqa.metrics.json": {
+    "size": 373,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_amex.jsonl": {
+    "size": 258447,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_amex.jsonl.manifest.json": {
+    "size": 467,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_amex.metrics.json": {
+    "size": 807,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_odyssey.jsonl": {
+    "size": 548473,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_odyssey.jsonl.manifest.json": {
+    "size": 471,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_odyssey.metrics.json": {
+    "size": 843,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_screenqa.jsonl": {
+    "size": 274839,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_screenqa.jsonl.manifest.json": {
+    "size": 471,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v1_dev_screenqa.metrics.json": {
+    "size": 366,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_amex.jsonl": {
+    "size": 257878,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_amex.jsonl.manifest.json": {
+    "size": 428,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_amex.metrics.json": {
+    "size": 813,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_odyssey.jsonl": {
+    "size": 545270,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_odyssey.jsonl.manifest.json": {
+    "size": 432,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_odyssey.metrics.json": {
+    "size": 900,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_screenqa.jsonl": {
+    "size": 278758,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_screenqa.jsonl.manifest.json": {
+    "size": 432,
+    "lfs": null
+   },
+   "eval/qwen35_2b_v2_dev_screenqa.metrics.json": {
+    "size": 400,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 164,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5196,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1164,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 269163632,
+    "lfs": "b5d1272fb4368eecc1ac6cd95368c318987f362d9c3a36fbd51003db1cf08b35"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 7807,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1217,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 19989339,
+    "lfs": "a5cd9732badce41de57e6efce8302930ded1c1188c5f81feb2bd6c24c4a1941f"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1579,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "b89141f577113feababd7d48ca946cf42e4a4a1981d0dbd79228df96c0c26eb5"
+   },
+   "model.safetensors": {
+    "size": 4426558864,
+    "lfs": "7b8367667a74e03c0090f321cca6efec8622ff4f2994fb3e5cb4b3d107773561"
+   },
+   "processor_config.json": {
+    "size": 1217,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 19989339,
+    "lfs": "a5cd9732badce41de57e6efce8302930ded1c1188c5f81feb2bd6c24c4a1941f"
+   },
+   "tokenizer_config.json": {
+    "size": 1579,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38368,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1446,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794894143.dedeba712813.3171.0": {
+    "size": 57625,
+    "lfs": "05ead7e4475e20f6c4943d04eccc7c64eaaa16526cf0e660422674b73606e096"
+   },
+   "training_logs/tb/events.out.tfevents.1794899926.dedeba712813.3171.1": {
+    "size": 527,
+    "lfs": "f5b63d9606a73430881a83a08453362abb99a22153b6e7e0ddff196384c5654c"
+   },
+   "training_logs/tb/events.out.tfevents.1794900301.dedeba712813.31078.0": {
+    "size": 7822,
+    "lfs": "87687a5d96fd8b10ff30622b2d36511017704bc0667276c70f39ed9698e50918"
+   },
+   "training_logs/tb/events.out.tfevents.1794900394.dedeba712813.31078.1": {
+    "size": 527,
+    "lfs": "397987e74fffda68919688322bf1d9308364ac9377d68afe4eb8b0a4512f437b"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 39289,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 551,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MultiSource-GGUF": {
+  "kind": "model",
+  "sha": "8eb8f374f330e769f736eb1cec56240d98082be9",
+  "files": {
+   ".gitattributes": {
+    "size": 1819,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-MultiSource-Q4_K_M.gguf": {
+    "size": 1099627104,
+    "lfs": "17f47d18f066e64bca2f65c99f21d8e9eb634e3985c3e93e5bcba9e06febb952"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2763,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-MultiSource-GGUF": {
+  "kind": "model",
+  "sha": "25ad1ec704774999876cc73ffe7b314cd2a2f20e",
+  "files": {
+   ".gitattributes": {
+    "size": 1975,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 11544,
+    "lfs": null
+   },
+   "Qwen3.5-2B-MobileAgent-Dev-MultiSource-Q4_K_M.gguf": {
+    "size": 1274396352,
+    "lfs": "dee9bbed70b7009073c096b5bdb15ad5c5ca3a107340400f15ac361c35f68114"
+   },
+   "README.md": {
+    "size": 2447,
+    "lfs": null
+   },
+   "mmproj-Qwen3.5-2B-MobileAgent-Dev-MultiSource-F16.gguf": {
+    "size": 668226592,
+    "lfs": "23f9b36b60d4fa82258d38a1a7735010e3737b9320eee7c42b8b3bba6530bf02"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FilledIntents": {
+  "kind": "model",
+  "sha": "695bf0d16218628951ef518c1495097e628d099a",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5005,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_amex.jsonl": {
+    "size": 253769,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_amex.jsonl.manifest.json": {
+    "size": 427,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_amex.metrics.json": {
+    "size": 769,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_odyssey.jsonl": {
+    "size": 534992,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_odyssey.jsonl.manifest.json": {
+    "size": 431,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_odyssey.metrics.json": {
+    "size": 883,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_screenqa.jsonl": {
+    "size": 276174,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_screenqa.jsonl.manifest.json": {
+    "size": 431,
+    "lfs": null
+   },
+   "eval/lfm3_v3_dev_screenqa.metrics.json": {
+    "size": 393,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v3mix-lora_ft.jsonl": {
+    "size": 8216033,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v3mix-lora_ft.jsonl.manifest.json": {
+    "size": 396,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v3mix-lora_ft.metrics.json": {
+    "size": 15584,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v3mix-lora_ft_general_logprob.jsonl": {
+    "size": 373973,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v3mix-lora_ft_general_logprob.summary.json": {
+    "size": 259,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5204,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "d5233818784720cac911e5597c45df039795014cfbe771b841879595c53edbba"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5777,
+    "lfs": "786796b02ae39349f64e896ce2d06edb065ae160ea5266ec4b1932cda821cdac"
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "0438a2e7e23ddcf813adf6aebdb560d219d94889b8477db7666677d2a2d029ee"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38046,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1376,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794915093.modal.42.0": {
+    "size": 58577,
+    "lfs": "6536fef62cd57ef02ff04214e5208fc1c2f838f1fe55fcc5313ec951147facff"
+   },
+   "training_logs/tb/events.out.tfevents.1794919532.modal.42.1": {
+    "size": 527,
+    "lfs": "10737aba9c71e356f692ca05b1ee42c3361274debc627dc8c4f9ac2e96f09b30"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 38383,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 554,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FilledIntents-GGUF": {
+  "kind": "model",
+  "sha": "8abff664449c8c2c424a48490d97a1261c8463ec",
+  "files": {
+   ".gitattributes": {
+    "size": 1821,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-FilledIntents-Q4_K_M.gguf": {
+    "size": 1099627104,
+    "lfs": "92a7df3fe8b485bcafd24caa7682e0acaa68045543c81ac430fdf0c7f283e6e0"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2783,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent": {
+  "kind": "model",
+  "sha": "7648f77fbf7a77cee0e4bff40e39bfd41bcacc4c",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6574,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_amex.jsonl": {
+    "size": 254283,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_amex.jsonl.manifest.json": {
+    "size": 452,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_amex.metrics.json": {
+    "size": 786,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_answer.jsonl": {
+    "size": 74295,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_answer.jsonl.manifest.json": {
+    "size": 454,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_answer.metrics.json": {
+    "size": 451,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_complete.jsonl": {
+    "size": 42601,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_complete.jsonl.manifest.json": {
+    "size": 455,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_complete.metrics.json": {
+    "size": 372,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_odyssey.jsonl": {
+    "size": 538622,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_odyssey.jsonl.manifest.json": {
+    "size": 456,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_odyssey.metrics.json": {
+    "size": 868,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_screenqa.jsonl": {
+    "size": 275338,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_screenqa.jsonl.manifest.json": {
+    "size": 456,
+    "lfs": null
+   },
+   "eval/lfm3_v4_dev_screenqa.metrics.json": {
+    "size": 393,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4bmix-lora_ft.jsonl": {
+    "size": 8232486,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4bmix-lora_ft.jsonl.manifest.json": {
+    "size": 427,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4bmix-lora_ft.metrics.json": {
+    "size": 15526,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4bmix-lora_ft_general_logprob.jsonl": {
+    "size": 373608,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4bmix-lora_ft_general_logprob.summary.json": {
+    "size": 262,
+    "lfs": null
+   },
+   "eval/v4_direct_check.json": {
+    "size": 34511,
+    "lfs": null
+   },
+   "eval/v4_teacher_labels.json": {
+    "size": 931446,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "fd5c3577cd671d714c3ed42574a635f4ca133585a36cf5186e0a80e6dbbc1612"
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "864848a282673412e8dfe91f18e854a25f3769c64c231520ac1b9355263249d3"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38022,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1384,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1794953429.2e1c2bf3da1e.1927.0": {
+    "size": 44479,
+    "lfs": "a564b4ab669dfef7940c91bdbac1cf847bc48bc55684c29739255b293ec6b72d"
+   },
+   "training_logs/tb/events.out.tfevents.1794960585.2e1c2bf3da1e.1927.1": {
+    "size": 527,
+    "lfs": "c3990ee4d9356cc18b9aa80ac1e0ed99b8ef34290cb2a509b742939b28f0328b"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 27759,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 555,
+    "lfs": null
+   },
+   "v4_local_export_manifest.json": {
+    "size": 2031,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-GGUF": {
+  "kind": "model",
+  "sha": "0932baf64e775d6b217e506414a768cf580d26b0",
+  "files": {
+   ".gitattributes": {
+    "size": 1803,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "5285279249948dc019abf9341f98b65778f679a1f2cbc76e94c57a96af2a35e7"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2504,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-GRPO": {
+  "kind": "model",
+  "sha": "19076088981225813ab1e16addf13d449a5f24f7",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5067,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm3_v4_strict.json": {
+    "size": 229,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_amex.jsonl": {
+    "size": 246857,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_amex.jsonl.manifest.json": {
+    "size": 436,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_amex.metrics.json": {
+    "size": 770,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_answer.jsonl": {
+    "size": 72291,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_answer.jsonl.manifest.json": {
+    "size": 438,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_answer.metrics.json": {
+    "size": 405,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_complete.jsonl": {
+    "size": 41466,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_complete.jsonl.manifest.json": {
+    "size": 439,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_complete.metrics.json": {
+    "size": 356,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_odyssey.jsonl": {
+    "size": 520385,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_odyssey.jsonl.manifest.json": {
+    "size": 440,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_odyssey.metrics.json": {
+    "size": 853,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_screenqa.jsonl": {
+    "size": 267326,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_screenqa.jsonl.manifest.json": {
+    "size": 440,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_dev_screenqa.metrics.json": {
+    "size": 379,
+    "lfs": null
+   },
+   "eval/lfm3_v4rl_strict.json": {
+    "size": 214,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4rl_ft.jsonl": {
+    "size": 7946076,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4rl_ft.jsonl.manifest.json": {
+    "size": 411,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v4rl_ft.metrics.json": {
+    "size": 15492,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1165,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 64463968,
+    "lfs": "cfc05deb29257f8fcbb1621563d145f3abba7c6017363fb4a13f63c8f197c772"
+   },
+   "lora_adapter/rl_log.jsonl": {
+    "size": 169263,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "d59a2edaf3c27b6b0e70b487bbe636c2a4fd764b54f68aee7b067aa606e62a3f"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/logs_lfm3_v4_pipeline.log": {
+    "size": 295541,
+    "lfs": null
+   },
+   "training_logs/logs_rl_hook.log": {
+    "size": 119237,
+    "lfs": null
+   },
+   "training_logs/logs_rl_smoke.log": {
+    "size": 10679,
+    "lfs": null
+   },
+   "training_logs/logs_v4rl_train.log": {
+    "size": 309816,
+    "lfs": null
+   },
+   "v4rl_local_export_manifest.json": {
+    "size": 2201,
+    "lfs": null
+   },
+   "v4rl_promotion_offline.json": {
+    "size": 737,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-GRPO-GGUF": {
+  "kind": "model",
+  "sha": "eeadf5ec501634bd6ee80b3bc5e624263f6aa576",
+  "files": {
+   ".gitattributes": {
+    "size": 1818,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-GRPO-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "ca61a6df4692b3c00ebb864d790e2a1cfd3335038f08efe2bdf2cd90e14c2f9b"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2696,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-OwnHistory": {
+  "kind": "model",
+  "sha": "603fb83a56b1d55e7c8e1266bc46ec35e3ef914a",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6269,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_amex.jsonl": {
+    "size": 253091,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_amex.jsonl.manifest.json": {
+    "size": 449,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_amex.metrics.json": {
+    "size": 765,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_answer.jsonl": {
+    "size": 73941,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_answer.jsonl.manifest.json": {
+    "size": 451,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_answer.metrics.json": {
+    "size": 448,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_complete.jsonl": {
+    "size": 42454,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_complete.jsonl.manifest.json": {
+    "size": 452,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_complete.metrics.json": {
+    "size": 369,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_odyssey.jsonl": {
+    "size": 537047,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_odyssey.jsonl.manifest.json": {
+    "size": 453,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_odyssey.metrics.json": {
+    "size": 882,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_screenqa.jsonl": {
+    "size": 273828,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_screenqa.jsonl.manifest.json": {
+    "size": 453,
+    "lfs": null
+   },
+   "eval/lfm3_v42_dev_screenqa.metrics.json": {
+    "size": 392,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft.jsonl": {
+    "size": 8187020,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft.jsonl.manifest.json": {
+    "size": 424,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft.metrics.json": {
+    "size": 15586,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft_general_logprob.jsonl": {
+    "size": 373847,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v41-lora_ft_general_logprob.summary.json": {
+    "size": 246,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft.jsonl": {
+    "size": 8189450,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft.jsonl.manifest.json": {
+    "size": 424,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft.metrics.json": {
+    "size": 15549,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft_general_logprob.jsonl": {
+    "size": 373649,
+    "lfs": null
+   },
+   "eval/lfm3vl2b-v42-lora_ft_general_logprob.summary.json": {
+    "size": 259,
+    "lfs": null
+   },
+   "eval/v41_data_manifest.json": {
+    "size": 3948,
+    "lfs": null
+   },
+   "eval/v42_data_manifest.json": {
+    "size": 349,
+    "lfs": null
+   },
+   "eval/v42_selfhist_stats.json": {
+    "size": 6924,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/README.md": {
+    "size": 5204,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "fba9f84ef987a8bbbc49e453523daffbfad360e1754ad9165cbd7da6340229d8"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/training_args.bin": {
+    "size": 5713,
+    "lfs": "b050ab70c3a2894ac082d5402ffa983b3e7469a50a04f48ce82d43fb4ba3ae87"
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "7c58cb8d5bb6f86279dbe49e1cfbb28fbfea320996e7326e74a8987e3e33cf34"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38040,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1133,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795277100.6819ba54fd27.73370.0": {
+    "size": 58527,
+    "lfs": "c13ac9f3d22847ec35e6ce01b305e4dfbb90fe6699793d93d22ce7e234c7c2cb"
+   },
+   "training_logs/tb/events.out.tfevents.1795286874.6819ba54fd27.73370.1": {
+    "size": 527,
+    "lfs": "3e3b0e1659cb6389d124e0c1441ee80e8c89c0812288f15b4668f614ab32b400"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 38399,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 555,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-WaitRelabel-GGUF": {
+  "kind": "model",
+  "sha": "a5d1dcb079bee805dc2073cea985740c48338b2e",
+  "files": {
+   ".gitattributes": {
+    "size": 1823,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-WaitRelabel-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "ee414d59ad2d2afbe667a631354e32d8b0bea2df7b5053681af2dae0348dbfcb"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2765,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-OwnHistory-GGUF": {
+  "kind": "model",
+  "sha": "785bb69e9a3001f976fd626f6660364b6e4280a3",
+  "files": {
+   ".gitattributes": {
+    "size": 1822,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-OwnHistory-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "c2bccd0734f80433a77f660e39fde9d99a9e8c786395eeb548b8bcc1d648cfdc"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2755,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes": {
+  "kind": "model",
+  "sha": "bf4c903e9443e4ca20dca68639288dd1a1e6f34b",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5260,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "978f19662485e6fe58bb4533d37419c8a2f9c14c05562228e53ecce8f73e90ca"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908420,
+    "lfs": "81cc17fd138b419a827295be32aa06924f53dbae41fdc63790be831bacfda152"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "ef98ad019fcc96b137efba42f4923ae5ae7c7886a6abf62fafe32c1fd2a6ced5"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908420,
+    "lfs": "81cc17fd138b419a827295be32aa06924f53dbae41fdc63790be831bacfda152"
+   },
+   "tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 15769,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 417,
+    "lfs": null
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 15321,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 681,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes": {
+  "kind": "model",
+  "sha": "e98e0064d384fb087a7f30b0393ea692b202a380",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6121,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "08246950ccb20f031afa1810f051d053cf5316e7ba00bd062f78c25a379ac699"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908420,
+    "lfs": "81cc17fd138b419a827295be32aa06924f53dbae41fdc63790be831bacfda152"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "3a66daf84529847cb133360e03441c06780c19354238811af8ef08b30e284986"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908420,
+    "lfs": "81cc17fd138b419a827295be32aa06924f53dbae41fdc63790be831bacfda152"
+   },
+   "tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 3570,
+    "lfs": null
+   },
+   "training_logs/pairs_used.json": {
+    "size": 61,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 504,
+    "lfs": null
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 3462,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 691,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT": {
+  "kind": "model",
+  "sha": "9e0af53613b3a4a278f5a8f4a2ba400c766d35a7",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6018,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "e019e1111f1a69c8c5ce9472fa2df37ea7f43d12bf76acb24797f11b0547c7e2"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "46c68f0c0dafbfca4e2c9f4bd647c4b8a98016ccfdc4d9dd091da28687b930fe"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 15049,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1157,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795348261.2800b27592ee.53771.0": {
+    "size": 9128,
+    "lfs": "11e1da92a740840d2de9a45fecd5e7dba880bcff8af9429a3b4f8ce9353aa3ac"
+   },
+   "training_logs/tb/events.out.tfevents.1795350386.2800b27592ee.63214.0": {
+    "size": 8378,
+    "lfs": "8a4c27c0da06c3b343ff9a0339ebdc0f8b9188f9d5b47d4993dd4d6f486f05c0"
+   },
+   "training_logs/tb/events.out.tfevents.1795350642.2800b27592ee.64438.0": {
+    "size": 28625,
+    "lfs": "570860c8ad5a662f24699b09ff770ca21eb1b8ab44afb39372c5dc5be346d327"
+   },
+   "training_logs/tb/events.out.tfevents.1795354579.2800b27592ee.64438.1": {
+    "size": 527,
+    "lfs": "7538cdbf334e128e652b0647ed3a091615d66f7429563f0133cb05e1059e70f3"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 16289,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 557,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes-GGUF": {
+  "kind": "model",
+  "sha": "0d0742fa859ca069c68ac8ff39611079da339749",
+  "files": {
+   ".gitattributes": {
+    "size": 1837,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-DPOStopMistakes-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "b6b90de49c109fde2138f54a371a997610083d50dfd541fc75ee3c7d9f8c3128"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2810,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT-GGUF": {
+  "kind": "model",
+  "sha": "cf5a72555bcbae10c0229812ad8b4f10d2c8250d",
+  "files": {
+   ".gitattributes": {
+    "size": 1832,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Dev-ContinuedSFT-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "f17b34820e16d5f44ef3c9b2dcf16bfd460e91251b85a6b893354a091bcd49e0"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2779,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly-GGUF": {
+  "kind": "model",
+  "sha": "bdcb71654954db9b5205024914f5dbb638974396",
+  "files": {
+   ".gitattributes": {
+    "size": 1863,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 11544,
+    "lfs": null
+   },
+   "Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly-Q4_K_M.gguf": {
+    "size": 1274396352,
+    "lfs": "96e11b93049d4ee05932557e44db1151e1cc0c0978f7a44f9409a7686fdfda80"
+   },
+   "README.md": {
+    "size": 2531,
+    "lfs": null
+   },
+   "mmproj-Qwen3.5-2B-MobileAgent-Dev-AndroidControlOnly-F16.gguf": {
+    "size": 668226592,
+    "lfs": "23f9b36b60d4fa82258d38a1a7735010e3737b9320eee7c42b8b3bba6530bf02"
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-LiteRT": {
+  "kind": "model",
+  "sha": "671cbb92502fc6621d8cad9f4392e5aa004b5638",
+  "files": {
+   ".gitattributes": {
+    "size": 1704,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent_int8_g1280x576_ctx4096.litertlm": {
+    "size": 2760755451,
+    "lfs": "8eba580944ec4627986698392fa235acca02dfc469bf1e00dc6d22288156870d"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6430,
+    "lfs": null
+   },
+   "model.json": {
+    "size": 339,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUI": {
+  "kind": "model",
+  "sha": "a7981a0bbcd890951a7ebb88f0a4f2d2fe7d92c7",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5284,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "2847e04e5c746e28a4694b7a75ddf3afb0aa576e8bdb80f685468cf849a5273d"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "06a7d3108c71e41481c58a6e233f07e7d5819ebd6141db860c1bdb6a304d0e35"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38038,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1192,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795440204.bce2b398ce95.22327.0": {
+    "size": 58522,
+    "lfs": "72385f0b5145f5abc82ad15ed3624e4d6e33483e552f04c65a5ce69e1922c2b4"
+   },
+   "training_logs/tb/events.out.tfevents.1795450071.bce2b398ce95.22327.1": {
+    "size": 527,
+    "lfs": "f0ff7bdf10f9e15a45dcd324d87361904d77fdb53650cb67050f20d3fc6e56ec"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 38399,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 553,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes": {
+  "kind": "model",
+  "sha": "d5505d0f5755816715f02af3a1d79a32fe25a266",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5418,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "fe46546f40779f771fd2de34aa87ba2e1d516c0d40ad6ce705fcc199970264bc"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "7a0981598447d4d45ebccddea9af8a5935d6129c850c37887a215fd1c97c01a2"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 38028,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1192,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795452053.bce2b398ce95.71050.0": {
+    "size": 58522,
+    "lfs": "c6b4d9e1e3261794a213841c4061fadea0f38dc4a36f4ec29eccd710d19e0880"
+   },
+   "training_logs/tb/events.out.tfevents.1795461931.bce2b398ce95.71050.1": {
+    "size": 527,
+    "lfs": "44d427d32190153dc90c551076a25afd16372c50b151a84d665414cc0a10e971"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 38390,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 551,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT": {
+  "kind": "model",
+  "sha": "81473fd48e420086a7bafdd399fccf96807090ea",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 5451,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1154,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "7bfab61265073aea2401dae9c57bc9f51315ae600623f1cf85afcb4f9da3b6ed"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "37d24216cfac74993871c7716f18ffc600c3c6bb481778344b932c9666b4de6d"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1910,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 15024,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1151,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795463915.bce2b398ce95.119871.0": {
+    "size": 28623,
+    "lfs": "f51ac2b2e1c3a96b46b5abbb12bcfced664481070415823b0a0a5bdadd59ce58"
+   },
+   "training_logs/tb/events.out.tfevents.1795467948.bce2b398ce95.119871.1": {
+    "size": 527,
+    "lfs": "edfac6bbd3a27df8e68d46b5f6a95cd27ac4dc047a1e1f94ae3bb08f4fcb8f35"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 15164,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 551,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix": {
+  "kind": "model",
+  "sha": "a703ba9f9539c703b54ab3f7b68bb4f187b87510",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6272,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "e9b4a6d4f89fd5164a67a0bce98c02e61718394093f39ffa7d5ad57a8aad6d57"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "21d0ecbd4bb2f1c22947a9cd587184a227adb15396e880dfcdbdc455f854cb49"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 157579,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1613,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795511189.modal.7.0": {
+    "size": 218300,
+    "lfs": "c9284cc5db98610c85c66fc6c890d53888adb11b8ebb7670f303bd3423d4f662"
+   },
+   "training_logs/tb/events.out.tfevents.1795523430.modal.7.1": {
+    "size": 527,
+    "lfs": "dc002aa6d828030cf70af5f00da51ce3ff4882e81d877882bb9efae3b14e1d6e"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 159263,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 542,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Counterfactual": {
+  "kind": "model",
+  "sha": "5d391e6e96b2c5dad99585625c045a8d86cbd9de",
+  "files": {
+   ".gitattributes": {
+    "size": 1570,
+    "lfs": null
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 6668,
+    "lfs": null
+   },
+   "chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "config.json": {
+    "size": 3660,
+    "lfs": null
+   },
+   "configuration_lfm3.py": {
+    "size": 6105,
+    "lfs": null
+   },
+   "configuration_lfm3_vl.py": {
+    "size": 9138,
+    "lfs": null
+   },
+   "generation_config.json": {
+    "size": 350,
+    "lfs": null
+   },
+   "image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lfm3_conv.py": {
+    "size": 8532,
+    "lfs": null
+   },
+   "lora_adapter/adapter_config.json": {
+    "size": 1155,
+    "lfs": null
+   },
+   "lora_adapter/adapter_model.safetensors": {
+    "size": 263545648,
+    "lfs": "80dfea569ba116913b42cb33aeb6d10a23f8df82239238b24d27d22d67e6a397"
+   },
+   "lora_adapter/chat_template.jinja": {
+    "size": 12129,
+    "lfs": null
+   },
+   "lora_adapter/image_processing_lfm3_vl.py": {
+    "size": 12036,
+    "lfs": null
+   },
+   "lora_adapter/processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "lora_adapter/processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "lora_adapter/tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "lora_adapter/tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "lora_adapter/video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   },
+   "model.safetensors": {
+    "size": 3836417920,
+    "lfs": "472282dde609d49e49120d0065e8d79e83774dfd1f1699eadb31fdb960fa7cc8"
+   },
+   "modeling_lfm3.py": {
+    "size": 42343,
+    "lfs": null
+   },
+   "modeling_lfm3_vl.py": {
+    "size": 44999,
+    "lfs": null
+   },
+   "processing_lfm3_vl.py": {
+    "size": 12152,
+    "lfs": null
+   },
+   "processor_config.json": {
+    "size": 1654,
+    "lfs": null
+   },
+   "tokenizer.json": {
+    "size": 17908258,
+    "lfs": "a39eed58008cbcbc09e5b629b81338a654269c64cd13348aaa6090f4db75c7e7"
+   },
+   "tokenizer_config.json": {
+    "size": 1911,
+    "lfs": null
+   },
+   "training_logs/log_history.json": {
+    "size": 168216,
+    "lfs": null
+   },
+   "training_logs/run_config.json": {
+    "size": 1614,
+    "lfs": null
+   },
+   "training_logs/tb/events.out.tfevents.1795558262.modal.7.0": {
+    "size": 112789,
+    "lfs": "3c7372694b6bf2ca66ad00578f8f8a6d1790b58526cda6b676f26f6530121140"
+   },
+   "training_logs/tb/events.out.tfevents.1795568466.modal.7.1": {
+    "size": 527,
+    "lfs": "d08a754c6f046d751dcfd325d8839e5b4ce3a5c56cdccfdaf3b59f150d0827af"
+   },
+   "training_logs/train_log.jsonl": {
+    "size": 79139,
+    "lfs": null
+   },
+   "training_logs/train_summary.json": {
+    "size": 543,
+    "lfs": null
+   },
+   "video_processing_lfm3_vl.py": {
+    "size": 17161,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/LFM3-VL-2B-MobileAgent-Counterfactual-GGUF": {
+  "kind": "model",
+  "sha": "44d52eefb62b8dbd1c7a4f4da20703e0045ec17b",
+  "files": {
+   ".gitattributes": {
+    "size": 1747,
+    "lfs": null
+   },
+   "LFM3-VL-2B-MobileAgent-Counterfactual-Q4_K_M.gguf": {
+    "size": 1099627264,
+    "lfs": "fa8f2dcacdd8181a5a283cb0dbc70ff448a27c2c0cf5368895d2b56f667b59c9"
+   },
+   "LICENSE": {
+    "size": 10574,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 3666,
+    "lfs": null
+   },
+   "mmproj-LFM3-VL-2B-Q8_0.gguf": {
+    "size": 203031872,
+    "lfs": "c5c5b58d544a18da919172d2d0368090ea1a4a351b6feb7f8a326a264a5918ab"
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-AndroidControl": {
+  "kind": "dataset",
+  "sha": "aa86ac7c77fd36d9119f9a74359081bb3fc753c5",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2705,
+    "lfs": null
+   },
+   "data/test/g4-000.parquet": {
+    "size": 364843335,
+    "lfs": "3c058cc9f1ccdb01cfa727942502f74c53f527b7e17902ed4b21a1fabb47d842"
+   },
+   "data/test/g4-001.parquet": {
+    "size": 374536118,
+    "lfs": "7877038478ab2ebd1a701fc99e9ed4ca399fbba13d542d910fccd10da78c139d"
+   },
+   "data/test/g4-002.parquet": {
+    "size": 368114939,
+    "lfs": "da158110545e63a75f7d7fca00bd341684fd3e07a5ae668cac4b478f888ecc70"
+   },
+   "data/test/g4-003.parquet": {
+    "size": 358038046,
+    "lfs": "eeda3728ffc026f193af9bb563b7f467eb2442f5e9ff64c874d6b707bda4dbac"
+   },
+   "data/test/vm1-000.parquet": {
+    "size": 453669190,
+    "lfs": "b93c34f353c734b6369299a10d28ed2fdbc698b7e7b07f8500426abd2ee6f698"
+   },
+   "data/train/g4-000.parquet": {
+    "size": 273225261,
+    "lfs": "c2d445874376d1521aff01c9b860434ffb083c3e3bc6a74a901ec0c484516998"
+   },
+   "data/train/g4-001.parquet": {
+    "size": 283850869,
+    "lfs": "84feaa8fdf9d7399ea7f13b1af6d1c4848fbf8887c2a8336d328e8a4bc6c18f4"
+   },
+   "data/train/g4-002.parquet": {
+    "size": 275722828,
+    "lfs": "3bfffc8be5dc8404b870bb2c57ba7a3fb8cac096fe42205430700d4cc9ca1a1b"
+   },
+   "data/train/g4-003.parquet": {
+    "size": 276759037,
+    "lfs": "9a4c8cf9f967010b6f55761639ba7b86c11df3850db72a2ee80fc06197172c61"
+   },
+   "data/train/g4-004.parquet": {
+    "size": 270860130,
+    "lfs": "b5bc7a1dd864baa445ca07bd990fdc54ed3f23cebce798d506cc2f731024b033"
+   },
+   "data/train/g4-005.parquet": {
+    "size": 275931654,
+    "lfs": "2fe3e0ff0ab5c28d153d12cab2f34dc838968df1e7f19ebc1baa90995fb2759c"
+   },
+   "data/train/g4-006.parquet": {
+    "size": 281998604,
+    "lfs": "1e0df0d568324bd7f634946ac63d1c5bff98f900b565f9759abd662b05f1ea68"
+   },
+   "data/train/g4-007.parquet": {
+    "size": 283756419,
+    "lfs": "f21314f7804438998ef11a9c85bd02edb9a2fd5350eb4aaa019686f78556a7b6"
+   },
+   "data/train/g4-008.parquet": {
+    "size": 287824193,
+    "lfs": "3e66a142ae53cb34af1c3e424c489d4c1122dad126e8bdf44974569d8ebd36ea"
+   },
+   "data/train/g4-009.parquet": {
+    "size": 279321317,
+    "lfs": "30bd66dc9f891f39b66184bb61843711ffa369f2356ba118fae92f9acb7d2482"
+   },
+   "data/train/g4-010.parquet": {
+    "size": 288969225,
+    "lfs": "a259d56ce3258bd34c669c7a9baa5b33433d594c684e4f0af4373ebde5a66381"
+   },
+   "data/train/g4-011.parquet": {
+    "size": 289449943,
+    "lfs": "5413d30fe3972973787167ea3cf6b1f88234f35474d620460104c200f79a4916"
+   },
+   "data/train/g4-012.parquet": {
+    "size": 278631863,
+    "lfs": "d35035fe4569e5b2bf3eee5e663421153558043a996689f1f3537bb26f10aa74"
+   },
+   "data/train/g4-013.parquet": {
+    "size": 279801971,
+    "lfs": "5fb17393cd1593bc9119432f23ceba732ea7f2ee7e81a31706644ed8cf2a4d69"
+   },
+   "data/train/g4-014.parquet": {
+    "size": 283034302,
+    "lfs": "816b5fa8ca3f1f2e2008f996bb027ee390537c36c37036b4d1e904effafc578d"
+   },
+   "data/train/g4-015.parquet": {
+    "size": 280155080,
+    "lfs": "5f930ced538fd03a4c95cb5ef7beeed7f394044b1eb997bd85c422b7ab9d07fc"
+   },
+   "data/train/g4-016.parquet": {
+    "size": 281767387,
+    "lfs": "2f4482c2cb539069427d817a7e4d7f28f4b67584a596183ff9b1ae1053a13b46"
+   },
+   "data/train/g4-017.parquet": {
+    "size": 277392155,
+    "lfs": "143185c7a0b7f5962f5e5c8e1650c50f5b8a907c30c2ac83bbc38931c8c31356"
+   },
+   "data/train/g4-018.parquet": {
+    "size": 272099423,
+    "lfs": "9ae5e9982eaa0ef7f24e0ceeba088c0bcd0381ef6e5dd6fbc6cb35198c60eeba"
+   },
+   "data/train/g4-019.parquet": {
+    "size": 280898146,
+    "lfs": "4f760ab854c661a99e4af34dafc8bf7232fa3004ffa9cb639226dac46f1cdbfc"
+   },
+   "data/train/g4-020.parquet": {
+    "size": 273172989,
+    "lfs": "a2b7ce9b15dbd44d9514d006c315c7d10f143e08f5edf664e1c06374d6e515a0"
+   },
+   "data/train/g4-021.parquet": {
+    "size": 285224050,
+    "lfs": "aac739ff49d2ecb7d816a0c9e663c5d166266e5bd940f572b0969840aa7654de"
+   },
+   "data/train/g4-022.parquet": {
+    "size": 275478609,
+    "lfs": "e63b7be60167ce47c147d5d6ff9df5c446138ffc18e1f72f14b51fa348875d03"
+   },
+   "data/train/g4-023.parquet": {
+    "size": 278451961,
+    "lfs": "cf310dc998cf83d2654a2b3e801e311156d4e10912d563ec52678409ac4f8e5b"
+   },
+   "data/train/g4-024.parquet": {
+    "size": 279381429,
+    "lfs": "06eac0c36b27267e8f714112edf7eff95f0dc1ddd3f866a0703af4474d498d5f"
+   },
+   "data/train/vm1-000.parquet": {
+    "size": 323639708,
+    "lfs": "e5ce245f0d4eb9b0785c7b319536f02fde6f9a21464d39ffad02626854af37db"
+   },
+   "data/train/vm1-001.parquet": {
+    "size": 315433043,
+    "lfs": "4718970e0a62d2ab076be066fd60a6b679391dfbf60df4a396963cd95eae9714"
+   },
+   "data/train/vm1-002.parquet": {
+    "size": 316980370,
+    "lfs": "43623c60659e624c365db06bf1ab4cf2cfac98e5a87c206f6ae862862aebce26"
+   },
+   "data/train/vm1-003.parquet": {
+    "size": 311231201,
+    "lfs": "913ade1cf833197b919785971837a53c15222a58581482f5a3bf297f09bdf4fd"
+   },
+   "data/train/vm1-004.parquet": {
+    "size": 306492678,
+    "lfs": "c6565db0a339d38af82411e641cb7b3b6ebde883495d1149d2ddf2db9f95d2db"
+   },
+   "data/train/vm1-005.parquet": {
+    "size": 317973112,
+    "lfs": "e70c2b3f6b536410a409c53c69423ce64c7b1792956956c47fc4483b612aefb5"
+   },
+   "data/train/vm1-006.parquet": {
+    "size": 306808584,
+    "lfs": "c517740d79eb5818c9548775cc4b6843743abc12449c5bf480e1419885a20b47"
+   },
+   "data/val/g4-000.parquet": {
+    "size": 61762640,
+    "lfs": "b2429f83fad42f23e9193d79e8f3553d1119333e711475ca95e794facd776219"
+   },
+   "data/val/vm1-000.parquet": {
+    "size": 15999103,
+    "lfs": "4a8196b34db866c38f7d1528d72ea673e5683c37028159bd251d08c4f4a091dd"
+   },
+   "stats/stats-g4.json": {
+    "size": 1202,
+    "lfs": null
+   },
+   "stats/stats-vm1.json": {
+    "size": 65,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-MultiSource": {
+  "kind": "dataset",
+  "sha": "19bf25c04bb82cd5e0a105b9115d0b53c6cdff40",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 3876,
+    "lfs": null
+   },
+   "data/dev_amex-00000-of-00001.parquet": {
+    "size": 49327989,
+    "lfs": "ef22b0a1dca71da697f75f9c8e52fcbf3536f733130e8421f57799be424565fc"
+   },
+   "data/dev_odyssey-00000-of-00001.parquet": {
+    "size": 102564417,
+    "lfs": "8a97b088a003a6d727958b1c064b21fb374d19e2309fd4ec3bf5426797b3406b"
+   },
+   "data/dev_screenqa-00000-of-00001.parquet": {
+    "size": 47159176,
+    "lfs": "a4d4bc2cb66abaf613565eda933688c0d81b16b39511679a3cc9001cfff26a7f"
+   },
+   "data/train-00000-of-00016.parquet": {
+    "size": 470687863,
+    "lfs": "b04d8cec93df218c88e2d95082fe5e98ac20d072e314c258086b6fcb393d6f6e"
+   },
+   "data/train-00001-of-00016.parquet": {
+    "size": 477124502,
+    "lfs": "b6722a213510e4fdc9eb4d0a31fe307038f5e91b0a1fd11c682980d60bbce1f6"
+   },
+   "data/train-00002-of-00016.parquet": {
+    "size": 470064983,
+    "lfs": "6823b04198be20800b3b4381ab82ec133f6664962c19a015d620cf419d2b376e"
+   },
+   "data/train-00003-of-00016.parquet": {
+    "size": 470348691,
+    "lfs": "4ddc55d3b851cde464a512e00cd3eace4f0a567a51fa238b3f2c4616e78ffa7e"
+   },
+   "data/train-00004-of-00016.parquet": {
+    "size": 472124760,
+    "lfs": "6a4e09bc4b43e2cc620fc8dccdb1ce5add28e98cdfff651fcbcb10a1453de5d4"
+   },
+   "data/train-00005-of-00016.parquet": {
+    "size": 465699501,
+    "lfs": "37850ba4471131dfbb0de4a8633b790259a13fb8506ad673de9a54dc98182538"
+   },
+   "data/train-00006-of-00016.parquet": {
+    "size": 477598447,
+    "lfs": "81926eb08d67fca1a8e59946942aff00b86ff5972cd4efdf4ae18d2f1d92e7da"
+   },
+   "data/train-00007-of-00016.parquet": {
+    "size": 475151547,
+    "lfs": "54019ecdac290b0c2e0f229511f6cbca5800284dca6372f6de4995cf361f3108"
+   },
+   "data/train-00008-of-00016.parquet": {
+    "size": 474512350,
+    "lfs": "cf2c9d9e254f422290788cc4862b72405d2d8cb30eb871367ecb835dd40e7b03"
+   },
+   "data/train-00009-of-00016.parquet": {
+    "size": 467037507,
+    "lfs": "159dfbdd19ddfe478c50a861c234115440dd95754deef0a8f7207ff65107ecc8"
+   },
+   "data/train-00010-of-00016.parquet": {
+    "size": 465891991,
+    "lfs": "4736c8a0bdd59b3ca095279a13fbb04e4f2326bff78eb6cd8dbac14f288996cd"
+   },
+   "data/train-00011-of-00016.parquet": {
+    "size": 471419113,
+    "lfs": "115d2efb369199cd14c6734724cfc08f2ac29f68babc002459c2d0a33483fb49"
+   },
+   "data/train-00012-of-00016.parquet": {
+    "size": 472120755,
+    "lfs": "ab8b7b12a6caf061ef3a4757395cf63f7d68a6a0dde00e8238b1a64f79bfda75"
+   },
+   "data/train-00013-of-00016.parquet": {
+    "size": 470700045,
+    "lfs": "4f1d44b34c1f083340d419a95e4f439aaa0e6f54ab81b0e3f7e6122463a3e01d"
+   },
+   "data/train-00014-of-00016.parquet": {
+    "size": 476600707,
+    "lfs": "f1ce22c8a810623d4002d240b0eb6e4dbfaef4abbaed7445612956842c6d260c"
+   },
+   "data/train-00015-of-00016.parquet": {
+    "size": 469912851,
+    "lfs": "44917842e988901c6b488f6df12ff29c0399e65e95e241049fc2c03b54d6ceed"
+   },
+   "stats/stats.json": {
+    "size": 4316,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-FilledIntents": {
+  "kind": "dataset",
+  "sha": "827a4ea2933a39ec2ae546ce987972ea7bec19fd",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2776,
+    "lfs": null
+   },
+   "data/dev_amex-00000-of-00001.parquet": {
+    "size": 49327989,
+    "lfs": "ef22b0a1dca71da697f75f9c8e52fcbf3536f733130e8421f57799be424565fc"
+   },
+   "data/dev_odyssey-00000-of-00001.parquet": {
+    "size": 102564417,
+    "lfs": "8a97b088a003a6d727958b1c064b21fb374d19e2309fd4ec3bf5426797b3406b"
+   },
+   "data/dev_screenqa-00000-of-00001.parquet": {
+    "size": 47159176,
+    "lfs": "a4d4bc2cb66abaf613565eda933688c0d81b16b39511679a3cc9001cfff26a7f"
+   },
+   "data/train-00000-of-00016.parquet": {
+    "size": 440429870,
+    "lfs": "413a3beb374f811997dc83e36864efcfed745b4d903dea72244b4d8b9be98853"
+   },
+   "data/train-00001-of-00016.parquet": {
+    "size": 446286666,
+    "lfs": "a4e2ecd366d5fa73887bde9d275481d335573d158043d6774a1c3867db8018f2"
+   },
+   "data/train-00002-of-00016.parquet": {
+    "size": 439684938,
+    "lfs": "6e23c193ecf71db1f1e482e1eb1e1e5507ec5a189d7e38b84b691802853693db"
+   },
+   "data/train-00003-of-00016.parquet": {
+    "size": 439522087,
+    "lfs": "14a967db99b678ef685a7ee4093ac62d7e93dd0ca6fa275bcb5646669d2577f2"
+   },
+   "data/train-00004-of-00016.parquet": {
+    "size": 441536728,
+    "lfs": "3025d0880f0fe7f542f69899ef670a5a174b3536fedd7b97553d5598266f6c4c"
+   },
+   "data/train-00005-of-00016.parquet": {
+    "size": 435399093,
+    "lfs": "e845c481ed769d6dc3756839d400aaf68ec96a9561b7cbb86add22f2b0aecfdc"
+   },
+   "data/train-00006-of-00016.parquet": {
+    "size": 447515737,
+    "lfs": "42482d49fd019665349e827482a072985d3e805350ef17a451ea2c025a6f7a7b"
+   },
+   "data/train-00007-of-00016.parquet": {
+    "size": 445317857,
+    "lfs": "e2524d97be11952427e44c7c52b0ec7c1001e594e543f61e5226770d8f6f257f"
+   },
+   "data/train-00008-of-00016.parquet": {
+    "size": 443882635,
+    "lfs": "2b117db00fef345592513133024f37b15673fee67a3a229bd3fe16992367dbb8"
+   },
+   "data/train-00009-of-00016.parquet": {
+    "size": 435768979,
+    "lfs": "7fcdf237229ee62dc15d8e4b8a18dcc6e48efb828e12ef2dd98a5d8d6d57e5c3"
+   },
+   "data/train-00010-of-00016.parquet": {
+    "size": 434824442,
+    "lfs": "91ad72945c941ed841a5b32f5b056cc3717d3f8455380f71f5eae4a152e33d1e"
+   },
+   "data/train-00011-of-00016.parquet": {
+    "size": 441033645,
+    "lfs": "146835dc15f8db4e9c2a9d4a883130e72c60896c8309d4a668c855dc4493f8e2"
+   },
+   "data/train-00012-of-00016.parquet": {
+    "size": 441697113,
+    "lfs": "55426df661857acb1dea8b1e3d3b015f128d77f7fa2fef772d9538111e7463ab"
+   },
+   "data/train-00013-of-00016.parquet": {
+    "size": 440154904,
+    "lfs": "ca3d5c9e267dd694c8afd6dc071cdc3f7445525a2531bb68836cbd35230825b9"
+   },
+   "data/train-00014-of-00016.parquet": {
+    "size": 446177392,
+    "lfs": "5b70fdc81201f780bdb9839824c39f3571c1ba8cca92462ecacb4c512d9c4660"
+   },
+   "data/train-00015-of-00016.parquet": {
+    "size": 438873364,
+    "lfs": "ccb593dd64a9d3e81773b9fe71dd7791f8273147fde46c3037b8e0f5b908a8fc"
+   },
+   "stats/v3_intent_labels.json": {
+    "size": 411834,
+    "lfs": null
+   },
+   "stats/v3_intents.json": {
+    "size": 57114,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT": {
+  "kind": "dataset",
+  "sha": "05e8778ec5c3ffa1ab8bd469ef05cc08d1a5c52d",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 3082,
+    "lfs": null
+   },
+   "data/dev_amex-00000-of-00001.parquet": {
+    "size": 46922571,
+    "lfs": "046f6a5ff68f4e4be2c09f6f15c7fbd61a3478863530bdf84693aa27fdc50f32"
+   },
+   "data/dev_answer-00000-of-00001.parquet": {
+    "size": 14098892,
+    "lfs": "017900a5236628a2d1487f0ac560dcd2554458558988cf2630c628eb9170d59e"
+   },
+   "data/dev_complete-00000-of-00001.parquet": {
+    "size": 8343315,
+    "lfs": "8ae7293621cb6fa364b6d146428f8733ed6e4ef7983328e17396ff9b32b2cc38"
+   },
+   "data/dev_odyssey-00000-of-00001.parquet": {
+    "size": 98876520,
+    "lfs": "1e1769a3c0ac7a5779c5aaabc921e7b3c18975535864b06dc185a76138128dea"
+   },
+   "data/dev_screenqa-00000-of-00001.parquet": {
+    "size": 41543820,
+    "lfs": "913a9912c442fe7c77e7753c1aaa05113285c14be3ab01d4a02e305db0306b7c"
+   },
+   "data/train-00000-of-00016.parquet": {
+    "size": 502669755,
+    "lfs": "267f021dc4677b225108431d633ecd7f9b27b89e56136ecdf855be91d581192c"
+   },
+   "data/train-00001-of-00016.parquet": {
+    "size": 501294439,
+    "lfs": "62757771ca7e95da5bef22b1b56807d53076d24e33ea058cf438221686cfbe5b"
+   },
+   "data/train-00002-of-00016.parquet": {
+    "size": 499930907,
+    "lfs": "1892e14f3d7f15145dcb95e51f3808b797a4e7c07feacaf050966736e003ce36"
+   },
+   "data/train-00003-of-00016.parquet": {
+    "size": 494091920,
+    "lfs": "213f4f3078f5b756e15f261affb8f61806e4c4e5c84baef63666e73627c508b9"
+   },
+   "data/train-00004-of-00016.parquet": {
+    "size": 503094782,
+    "lfs": "b6046d1719a6cc3bb4e1d52f0d2253b465ddf0a24a11a953a076242bcf1388a8"
+   },
+   "data/train-00005-of-00016.parquet": {
+    "size": 493702968,
+    "lfs": "0f55068817afeb69840167984d8c0a971841081d7db2b27ba2975ff1cdb8bf1a"
+   },
+   "data/train-00006-of-00016.parquet": {
+    "size": 504916283,
+    "lfs": "63c6be433428a2ebed25360a5220056e1ab1c943d08ff6f14115d189d440c53c"
+   },
+   "data/train-00007-of-00016.parquet": {
+    "size": 508005107,
+    "lfs": "ac9b7ff16cd92636b86f4b5682475e18454d96bda3fadd5fbc58266a81dbdf6e"
+   },
+   "data/train-00008-of-00016.parquet": {
+    "size": 502504794,
+    "lfs": "f760b0561d9c7833621b63d3980e21ac8a4ebdf4f3de0e90bb86a4b8405af3f3"
+   },
+   "data/train-00009-of-00016.parquet": {
+    "size": 500476090,
+    "lfs": "7b073c5fbc959d350c4e0787a5751350e259e4c089be8781f7e0bb01a35d8c4c"
+   },
+   "data/train-00010-of-00016.parquet": {
+    "size": 493190654,
+    "lfs": "76341d24a997753ef09bca9b88b0b122cf7d4a12e65a3d034d6785c53150eff9"
+   },
+   "data/train-00011-of-00016.parquet": {
+    "size": 501086113,
+    "lfs": "8e130b09c4417a5c9d775701ee3b064c67690d16ddde569a80c577f890d86795"
+   },
+   "data/train-00012-of-00016.parquet": {
+    "size": 501773813,
+    "lfs": "5a8b038ab70324e26f37faeac043a9769b17624aa1e9c89bd0b3cdfe66a81b59"
+   },
+   "data/train-00013-of-00016.parquet": {
+    "size": 500149194,
+    "lfs": "3d1b10918d90037b100a533b6237fe4fa701fd3d3f5b7e9ccebd27c3bb735c53"
+   },
+   "data/train-00014-of-00016.parquet": {
+    "size": 507884255,
+    "lfs": "a1fb33d1c75f6be491733c2515b0cbc9ddc698be63e7a4b6ff3fb7020d93a7b8"
+   },
+   "data/train-00015-of-00016.parquet": {
+    "size": 499974146,
+    "lfs": "ae57ed849d120defc5bfd1dcb1a28a9d8cfe63dc8b379588840b52649e3dace9"
+   },
+   "stats/app_pool.json": {
+    "size": 7979,
+    "lfs": null
+   },
+   "stats/v4_candidates.json": {
+    "size": 1636898,
+    "lfs": null
+   },
+   "stats/v4_direct_check.json": {
+    "size": 34511,
+    "lfs": null
+   },
+   "stats/v4_stats.json": {
+    "size": 68286,
+    "lfs": null
+   },
+   "stats/v4_teacher_labels.json": {
+    "size": 931446,
+    "lfs": null
+   },
+   "stats/v4_teacher_labels_SMOKE.json": {
+    "size": 10459,
+    "lfs": null
+   },
+   "stats/v4_teacher_labels_used.json": {
+    "size": 931446,
+    "lfs": null
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-RL": {
+  "kind": "dataset",
+  "sha": "079737301252a937877da44b078db1e97cb03a3f",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 2621,
+    "lfs": null
+   },
+   "data/train-00000-of-00001.parquet": {
+    "size": 202604003,
+    "lfs": "bbba404b377d925c3d336ef86c88908ca352093e74b1a33fa84eaa0913e323f6"
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-MemGUI": {
+  "kind": "dataset",
+  "sha": "22d3a47e9fd2c4dcf14de68e4d9aa1d064ae1ce7",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 3591,
+    "lfs": null
+   },
+   "androidlens/dev_androidlens_high.parquet": {
+    "size": 491950158,
+    "lfs": "e94ce5c6ec30f6596addcff50c74dc2b1eebfd116ada51ef1e9eb4b688f98c5c"
+   },
+   "androidlens/dev_androidlens_low.parquet": {
+    "size": 492002413,
+    "lfs": "2aeb7a2581f6ba3b01dedf16870f263b4938b48cda66028ff5a16e1d71c65ea0"
+   },
+   "androidlens/manifest.json": {
+    "size": 851,
+    "lfs": null
+   },
+   "data/dev_memgui-00000-of-00001.parquet": {
+    "size": 90319175,
+    "lfs": "576f32dfa1bc393b223579e7b4c802917b59d7caaa15d22c8dabfcd37b11d5aa"
+   },
+   "data/memgui_train-00000-of-00002.parquet": {
+    "size": 420815537,
+    "lfs": "c83c9944836a70d91d12db3865387492fb2a3b9d96146e9cb7f651fcd00b4f5c"
+   },
+   "data/memgui_train-00001-of-00002.parquet": {
+    "size": 408017618,
+    "lfs": "faf2c6f7f1d7cc943d3e6704a05f3da13a53bc8c1bde3781b7708682bbffea47"
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-FullMix": {
+  "kind": "dataset",
+  "sha": "36a667a71e8ad71dd9e0541da650839824f419d9",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 3662,
+    "lfs": null
+   },
+   "androidlens/dev_androidlens_high.parquet": {
+    "size": 492230721,
+    "lfs": "32004ffed6275422272a88bbf5918a4ab493aebac1f30f8138ec76ae641a5b3c"
+   },
+   "androidlens/manifest.json": {
+    "size": 851,
+    "lfs": null
+   },
+   "build_stats.json": {
+    "size": 1707,
+    "lfs": null
+   },
+   "data/dev_androidlens_high-00000-of-00002.parquet": {
+    "size": 258403743,
+    "lfs": "969ad150da4771305ac8b5031c61c07597a7046a87ed86cd194fd7dce8d2e6f9"
+   },
+   "data/dev_androidlens_high-00001-of-00002.parquet": {
+    "size": 262865836,
+    "lfs": "2009827cc336e8289b798b1b1f7d192753e5e49d69dbc57e867555fdeab0022b"
+   },
+   "data/dev_answer-00000-of-00001.parquet": {
+    "size": 14860803,
+    "lfs": "400b0c20c4f6d894bb85a9db6e52837c4d46cf5def03549c283cb0ee2197a972"
+   },
+   "data/dev_complete-00000-of-00001.parquet": {
+    "size": 8814101,
+    "lfs": "ef09ebc865ad3b4f9ae2e5ad8a8f5369682290007b8bc59da6de226e6c280ff7"
+   },
+   "data/dev_memgui-00000-of-00001.parquet": {
+    "size": 94177110,
+    "lfs": "3397ecdbdd46c2b437b4335208ee744af978484d62f5a066c56275a82834a601"
+   },
+   "data/test_ac_high-00000-of-00003.parquet": {
+    "size": 355526984,
+    "lfs": "b9c1b77125fed55d6d1c00e3e481011ec7cd811bbb864abaccebe7a620b92d77"
+   },
+   "data/test_ac_high-00001-of-00003.parquet": {
+    "size": 344484779,
+    "lfs": "f189d8616e89a65e3929bd775f63e747504297dfa37fdb0097aee61a98b3222f"
+   },
+   "data/test_ac_high-00002-of-00003.parquet": {
+    "size": 350076708,
+    "lfs": "c29921109eb0a50ae49e136c79c6ab7de593333794823a002db9feeea529f3f0"
+   },
+   "data/train-00000-of-00039.parquet": {
+    "size": 436832201,
+    "lfs": "028dfdbaff4e8596c372e1242f82605b8afd5adc15061373ac9efaa08c95fe18"
+   },
+   "data/train-00001-of-00039.parquet": {
+    "size": 430599811,
+    "lfs": "12ddccd9f8105cd82bd1bfdba4c212a4fe932a1676bd95cea33a23de8761529e"
+   },
+   "data/train-00002-of-00039.parquet": {
+    "size": 439313492,
+    "lfs": "c14b255deacb9756dcd4afab04618ad74bd5a8a562f55cb5412d0b465066e814"
+   },
+   "data/train-00003-of-00039.parquet": {
+    "size": 434455885,
+    "lfs": "f0c2790e938e2695f4075ceccea56cb3be0dbc347e250a173ef598d3a9547dc7"
+   },
+   "data/train-00004-of-00039.parquet": {
+    "size": 434985381,
+    "lfs": "876a308f5e8c17400e9b91fd5d2974e1a169eb0f46aab47b2058d3ba682e6e48"
+   },
+   "data/train-00005-of-00039.parquet": {
+    "size": 437524086,
+    "lfs": "ad50a9163ccc8af68383126bef0ef51755fa92eee55aeb85db3fda43fd7807ac"
+   },
+   "data/train-00006-of-00039.parquet": {
+    "size": 439395154,
+    "lfs": "dd3512a7f890324948e66e9a84b720b7113e941d1d7897e6d4eefbabc61ea459"
+   },
+   "data/train-00007-of-00039.parquet": {
+    "size": 429305869,
+    "lfs": "54b584a7652c822b62690ec4a2a856be909d228c73198f651a2b808156ee3c63"
+   },
+   "data/train-00008-of-00039.parquet": {
+    "size": 434321723,
+    "lfs": "2dfc51a057fd2b268f0a923d4313c66732c70a19a997a5c97d2cfc2bf76f107a"
+   },
+   "data/train-00009-of-00039.parquet": {
+    "size": 435460998,
+    "lfs": "68553edc4784407d39aad97e37fa6837111c91b90895de147f7e47633b450cd6"
+   },
+   "data/train-00010-of-00039.parquet": {
+    "size": 436686708,
+    "lfs": "9ebb44d5dc9aa796919758c793928287003a3334b2878df660fbf0b7ec0d97e3"
+   },
+   "data/train-00011-of-00039.parquet": {
+    "size": 432936835,
+    "lfs": "7b70d2146f60b751d42a0a99189d607cbea61b4a29515ab390ecffa9fb575717"
+   },
+   "data/train-00012-of-00039.parquet": {
+    "size": 434517352,
+    "lfs": "50489a42b433f1cb70b2d98457d65b845188a6dcb35f41d7e51d02ac1cf04486"
+   },
+   "data/train-00013-of-00039.parquet": {
+    "size": 432008447,
+    "lfs": "a52f61e577ab3ed4e1c0b00a4fe4b025eb7956708eee34e1bd4697afba5e18e4"
+   },
+   "data/train-00014-of-00039.parquet": {
+    "size": 440158860,
+    "lfs": "144bda0f4521e2715e94dbebacf6efdf18bb862abe3804ad44c2f777fb37d146"
+   },
+   "data/train-00015-of-00039.parquet": {
+    "size": 434854242,
+    "lfs": "722f0edf6c2f3e5f1f73aad6ba6c51d4d81c15a9a58fbe2f8502b98c72122978"
+   },
+   "data/train-00016-of-00039.parquet": {
+    "size": 435186106,
+    "lfs": "b3a5560b1cd556d339c53c3dc3a0992e99be629853321e866aef0ed34ed4c7a9"
+   },
+   "data/train-00017-of-00039.parquet": {
+    "size": 435535019,
+    "lfs": "5c91bfdfb6ddc5bc80e17828aebada51e7509276e01f3f8edd3142f67507d196"
+   },
+   "data/train-00018-of-00039.parquet": {
+    "size": 434028765,
+    "lfs": "fe3a0b55b675e8992bf2d06433f3a83a31d208aa5947a492b1f0960da91a3478"
+   },
+   "data/train-00019-of-00039.parquet": {
+    "size": 429819374,
+    "lfs": "6dd2a37efa6d5bc0a96fd86167cbe3d184bc8780e3500ea88df8e376ea7edce3"
+   },
+   "data/train-00020-of-00039.parquet": {
+    "size": 438504629,
+    "lfs": "daed71c985e27a9f9303c17b2c1c415f6cd27e6b11e4495368b2f01483c08320"
+   },
+   "data/train-00021-of-00039.parquet": {
+    "size": 432078435,
+    "lfs": "7e4a567e4d34a59adf8eb5177f11f830edba71b740ac0cacabdd1e5f213ed108"
+   },
+   "data/train-00022-of-00039.parquet": {
+    "size": 433388288,
+    "lfs": "bfbc7e8ac641448f1517730ef6424dfd0d25976a1dbf4091475e1c82addbd984"
+   },
+   "data/train-00023-of-00039.parquet": {
+    "size": 437405262,
+    "lfs": "61be8670fb65a99b85429ff5b3c7bac1fea52390564403e85a59627ea4d815a0"
+   },
+   "data/train-00024-of-00039.parquet": {
+    "size": 432230784,
+    "lfs": "41ebff5872631b0d684ef6a03011a2d413b29d57cd70b10094ef27c93f96f881"
+   },
+   "data/train-00025-of-00039.parquet": {
+    "size": 433097379,
+    "lfs": "d07566b6b337f5073fc8e5fc9543c8b2e279eb92bb040a6cbd34bf9e2fa2894c"
+   },
+   "data/train-00026-of-00039.parquet": {
+    "size": 438029074,
+    "lfs": "3168bcfa106af14304776a7edfacdbb0c9c6537626f59e6ca86b40b5171275cb"
+   },
+   "data/train-00027-of-00039.parquet": {
+    "size": 432327702,
+    "lfs": "4cd49da7b14eb73165bb03644d86478c3655e92a56b9c7affe87a3e20077c0dc"
+   },
+   "data/train-00028-of-00039.parquet": {
+    "size": 430914268,
+    "lfs": "320353993c4b263573174123895e090f6f375e9eb948e7afb1dafd8c8961cbae"
+   },
+   "data/train-00029-of-00039.parquet": {
+    "size": 433293244,
+    "lfs": "b5eb25e70be562d3a4fac1940d1c0a7f8d1ef7b43ef73c8f1122febe8ded61cd"
+   },
+   "data/train-00030-of-00039.parquet": {
+    "size": 435851257,
+    "lfs": "fdc44b9e3e6e960c8dd1d7844f77e5bdebcaf6bb135ea2c83b474855a070e102"
+   },
+   "data/train-00031-of-00039.parquet": {
+    "size": 434710610,
+    "lfs": "8bc4e8a4564b28b49e15255992c88c48ae3018cf4fe220e90a33f70a131c0a3d"
+   },
+   "data/train-00032-of-00039.parquet": {
+    "size": 435684503,
+    "lfs": "f52dead172633d05ae7c6daa73771bf8140300fe75e5ece53ca49c04d0a82f67"
+   },
+   "data/train-00033-of-00039.parquet": {
+    "size": 434384383,
+    "lfs": "09db8480db80ea503791c80c4771207868ed2d3983f7745fa7400d4cedff53c0"
+   },
+   "data/train-00034-of-00039.parquet": {
+    "size": 435486191,
+    "lfs": "3026545b5136c2069ec47aee6c9fbac9d81ba4156bb204c552c319662e50ace3"
+   },
+   "data/train-00035-of-00039.parquet": {
+    "size": 435335606,
+    "lfs": "c67178bea92fc68cf102360fb39d2b5981a3a4a274192968a58ee4ac1f20ffa9"
+   },
+   "data/train-00036-of-00039.parquet": {
+    "size": 436544763,
+    "lfs": "dfb3e637232b957c797a059b1a030ac13c628541db8a58b30340012a265c54f2"
+   },
+   "data/train-00037-of-00039.parquet": {
+    "size": 437136490,
+    "lfs": "22643fb845e9cbc5626fcf8019556d31cc5b3caad9a7969d92c3bad1783f7e30"
+   },
+   "data/train-00038-of-00039.parquet": {
+    "size": 433563881,
+    "lfs": "d471381fc990bb45d913018eb04d7017a25e9793cad9354757496b52fce52352"
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-Counterfactual": {
+  "kind": "dataset",
+  "sha": "68ddcea63f01a5ec66e502dc478f29fab80b00ae",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4192,
+    "lfs": null
+   },
+   "androidlens/dev_androidlens_high.parquet": {
+    "size": 492230721,
+    "lfs": "32004ffed6275422272a88bbf5918a4ab493aebac1f30f8138ec76ae641a5b3c"
+   },
+   "androidlens/manifest.json": {
+    "size": 851,
+    "lfs": null
+   },
+   "build_stats.json": {
+    "size": 1232,
+    "lfs": null
+   },
+   "data/dev_androidlens_high-00000-of-00002.parquet": {
+    "size": 258392589,
+    "lfs": "858c2bd94dabb994f3d22f87ca9e8e46080a9c4df02a2f9ad77285352fca1617"
+   },
+   "data/dev_androidlens_high-00001-of-00002.parquet": {
+    "size": 262860839,
+    "lfs": "c43b558299f8cac72bd85782883b6dd4c4938bf8d7abe1ed3c868308da9a9fea"
+   },
+   "data/dev_answer-00000-of-00001.parquet": {
+    "size": 14860433,
+    "lfs": "7376ffb99222cda865826988ae663d8b192ec62be2e53643319a6fb26784e47f"
+   },
+   "data/dev_complete-00000-of-00001.parquet": {
+    "size": 8813968,
+    "lfs": "330d97fa61aa7d1bbbf81cb458885a34fc6e06ddf8163506f596a65abc8f1833"
+   },
+   "data/dev_memgui-00000-of-00001.parquet": {
+    "size": 94177152,
+    "lfs": "15f9256febe22927bda34b19bfda4b751884d03c2ac47d4122e5a4fb6e505ae7"
+   },
+   "data/probe_C0_base-00000-of-00001.parquet": {
+    "size": 31866106,
+    "lfs": "7f0e974ece9a080fd6d1f6ac4856ef826a46f042fc0bbe3e4e248303f8b02808"
+   },
+   "data/probe_C1_hist_done-00000-of-00001.parquet": {
+    "size": 31897681,
+    "lfs": "01789bf84a6f1dfdc9fa5f264397e8c3f8ea844726f52058125ba3d5cd689925"
+   },
+   "data/probe_C2_hist_cut-00000-of-00001.parquet": {
+    "size": 34867254,
+    "lfs": "3361683f5e61942b7806cbed6e724db47cbb1aa76c33ef2fc40f60952d8aa0e6"
+   },
+   "data/probe_C3_stale-00000-of-00001.parquet": {
+    "size": 26924068,
+    "lfs": "9933569e4c7efc61ad0287ac4ba2e4f9b64e1e4ed72b13f93b9a9186586b552d"
+   },
+   "data/probe_C3n_stale_note-00000-of-00001.parquet": {
+    "size": 26924507,
+    "lfs": "4b4e96f4eadd4ffde1a898763fa13beef8865902adfa5ca61b3420184a85f5cc"
+   },
+   "data/probe_T_term-00000-of-00001.parquet": {
+    "size": 34883755,
+    "lfs": "5848789ce4702fe9cb32799a885ac200fc3ca1150b2d3057720abfc2bf07744e"
+   },
+   "data/test_ac_high-00000-of-00003.parquet": {
+    "size": 355526084,
+    "lfs": "41c365be137bd3cee90dcbabd823750da87371091089243738b436706f2d2c04"
+   },
+   "data/test_ac_high-00001-of-00003.parquet": {
+    "size": 344484912,
+    "lfs": "e70b93d52fbf499efdb211edc49bd7860c3425f0afaf631dd9b981dac0a1dd29"
+   },
+   "data/test_ac_high-00002-of-00003.parquet": {
+    "size": 350075558,
+    "lfs": "4c9537fc03352975d7c82e6f3b3c5687e4ddff9d18e7d0b9b752d22365250e93"
+   },
+   "data/train-00000-of-00041.parquet": {
+    "size": 437508052,
+    "lfs": "29eb718bd00c611d5de6c042f7d453b93e034e32bd38b5eb97f297306832e748"
+   },
+   "data/train-00001-of-00041.parquet": {
+    "size": 436495621,
+    "lfs": "781d28e72aba7eb3dd870feaba28a071c6c023485f029c885db2bfe19c6e1942"
+   },
+   "data/train-00002-of-00041.parquet": {
+    "size": 437142697,
+    "lfs": "9b18357e516ac357fdcebf82f87373ff4d0955e735ad954b7a82954a76df4897"
+   },
+   "data/train-00003-of-00041.parquet": {
+    "size": 441515191,
+    "lfs": "e0eaf38b3d996c9bf726eed0843a00f638fbbb554b15bb05be69b107dc428b2c"
+   },
+   "data/train-00004-of-00041.parquet": {
+    "size": 436309379,
+    "lfs": "9a0190d1fe45a695ff0579adfab107917378dd9e5682baadbce03972fa856e47"
+   },
+   "data/train-00005-of-00041.parquet": {
+    "size": 441226477,
+    "lfs": "27694568e392c2e43d92888bde7cc0508818bca64e91a88be39d8f33fd482e5c"
+   },
+   "data/train-00006-of-00041.parquet": {
+    "size": 440977331,
+    "lfs": "cfa8c918f0f9afe9cfd7b05940aa2258057ac7caba08b0fba96312291c60a642"
+   },
+   "data/train-00007-of-00041.parquet": {
+    "size": 436566497,
+    "lfs": "77d4cea89efbea1596748462df6e0f6d5b108435930de62b88fec10711f26d53"
+   },
+   "data/train-00008-of-00041.parquet": {
+    "size": 438317274,
+    "lfs": "680009cab921c2aef8804084e372af36d5a9e2cde8ce6fafdf96f3bd78167139"
+   },
+   "data/train-00009-of-00041.parquet": {
+    "size": 440542849,
+    "lfs": "820bfb5085c97c729e2909a046dfdeb68b1af6250144296f48d77e87030dc2ec"
+   },
+   "data/train-00010-of-00041.parquet": {
+    "size": 440011246,
+    "lfs": "2b21261a37ed08e911febfd553f938e544d5d47b7283095e7f339849178a0612"
+   },
+   "data/train-00011-of-00041.parquet": {
+    "size": 438963299,
+    "lfs": "09d3ac4d20f060f83bff7ea7b25480e9f1d81407abbd8131cccfb90c86c67482"
+   },
+   "data/train-00012-of-00041.parquet": {
+    "size": 441358842,
+    "lfs": "4ced19496faf4ae59398ad7274dfc9a18bffe1363203c857866ff85e36ebd2d5"
+   },
+   "data/train-00013-of-00041.parquet": {
+    "size": 440717589,
+    "lfs": "522b4cc5dad548a48a7a201dcf926f3fe6c0ab8f985a9e59c197474e6e5dc57b"
+   },
+   "data/train-00014-of-00041.parquet": {
+    "size": 435458245,
+    "lfs": "85f72c0d52b4a4a09514eb509fbe0911ac53e8220c4dcdfccbb7ec6ab31c312e"
+   },
+   "data/train-00015-of-00041.parquet": {
+    "size": 438263093,
+    "lfs": "cea51f5da4b0d82704b83634fb23fb35b4136aa06038be5b3610fc2254adc287"
+   },
+   "data/train-00016-of-00041.parquet": {
+    "size": 437861693,
+    "lfs": "160ecad4b4d8636c83fc3ba4ca24f0b2852274518279a3e65a9bdd9edabe2b39"
+   },
+   "data/train-00017-of-00041.parquet": {
+    "size": 441649219,
+    "lfs": "df2ed4a6ca1885e44a4c7dfb599d0040301567bb33b1e849ffd8f1e2c72ee403"
+   },
+   "data/train-00018-of-00041.parquet": {
+    "size": 436823560,
+    "lfs": "60ecc457773ffd593725a84027e30d0a6efd5e901697f0c9db1bbc063b1344ef"
+   },
+   "data/train-00019-of-00041.parquet": {
+    "size": 437173050,
+    "lfs": "59fdaa51f9dbee4a4e0075fae4f21b5aa78e2724bb158b87f388a2016522d43d"
+   },
+   "data/train-00020-of-00041.parquet": {
+    "size": 438640500,
+    "lfs": "7de464c74555b63b4f7adc0b0bab084f175f0ed9ce98a4164bb6949563364baf"
+   },
+   "data/train-00021-of-00041.parquet": {
+    "size": 440221310,
+    "lfs": "fcdc08e4e4a8e811bba3438eaa3f4788b279becc720a2a111b708b241c50e32b"
+   },
+   "data/train-00022-of-00041.parquet": {
+    "size": 442987993,
+    "lfs": "e30127b1198c0aaf90bbffecfab61cd2a55b4f6da5c9e562aeee389b1bc02b1c"
+   },
+   "data/train-00023-of-00041.parquet": {
+    "size": 434316083,
+    "lfs": "4c52b41ecb8dc6f4d27035e20aecc3360e4b3c2fa4bd9ecc9608d8167abc50e7"
+   },
+   "data/train-00024-of-00041.parquet": {
+    "size": 432541031,
+    "lfs": "26df10c269aa63328ad5a9f00fc4f0a5611a3421c2c1986544cdc5d17a5a3571"
+   },
+   "data/train-00025-of-00041.parquet": {
+    "size": 437653314,
+    "lfs": "ec1597a81911f260b7728d386c1f2e1b7c597c9864abbb74a0de855e92c0fc7b"
+   },
+   "data/train-00026-of-00041.parquet": {
+    "size": 437803288,
+    "lfs": "37c39a6e83ae6511f3331bc7bb74baf3c38d51a85c19711baff5549d33abaafd"
+   },
+   "data/train-00027-of-00041.parquet": {
+    "size": 437320516,
+    "lfs": "468ed4b1a0b214d5be7c5f7a3e69287a629c6775833d3c4736cd0c56a25b3461"
+   },
+   "data/train-00028-of-00041.parquet": {
+    "size": 443257989,
+    "lfs": "7d44219eebaabce1788575111a52aaab227a4fdc76abccbe188ac710ca02792e"
+   },
+   "data/train-00029-of-00041.parquet": {
+    "size": 438289628,
+    "lfs": "39c047d150c616cf51c353754c7a08f1dec0c29abfedf9e6c5002929b472f186"
+   },
+   "data/train-00030-of-00041.parquet": {
+    "size": 436934965,
+    "lfs": "7d9ad52536f8d5ef994246f6bae2457620c60bb25eab38eb4823b5dfece1ebb6"
+   },
+   "data/train-00031-of-00041.parquet": {
+    "size": 443260290,
+    "lfs": "46b1c0da025e72ba9056863996176120b68b29da68092a163bd4b33983cc467b"
+   },
+   "data/train-00032-of-00041.parquet": {
+    "size": 435240746,
+    "lfs": "f7e0a3cd512bdc83bb0650ecc33eb546d3838279dab1172c9160905cb6bd8e2a"
+   },
+   "data/train-00033-of-00041.parquet": {
+    "size": 436792065,
+    "lfs": "75f8929f87155206c4b7bc2f286f2d4dbe95de37373c258e585a4aae3f0ff409"
+   },
+   "data/train-00034-of-00041.parquet": {
+    "size": 434869272,
+    "lfs": "22870fc226c17559d2dca0f7f2a7f25214bc9ed48dc13acc0cabca9253eb2495"
+   },
+   "data/train-00035-of-00041.parquet": {
+    "size": 435403957,
+    "lfs": "0cc22a5e74a9e17de130adce3a5190725efbe718d36dba57174581de46fef451"
+   },
+   "data/train-00036-of-00041.parquet": {
+    "size": 432776642,
+    "lfs": "305a02b7a66e5481735b19455c8fde445c7cd2369f58f34dcd12c68761c03c14"
+   },
+   "data/train-00037-of-00041.parquet": {
+    "size": 443085474,
+    "lfs": "ed4ba55d013fdf1176be83a2ff60f4bab18484f1601c0cc9b938a4c1bf1a233d"
+   },
+   "data/train-00038-of-00041.parquet": {
+    "size": 437319382,
+    "lfs": "61df8e976969f479d8650ad3d8f92fe4ae8728b6e1ffc151b8a8b6af2e0abf01"
+   },
+   "data/train-00039-of-00041.parquet": {
+    "size": 440046739,
+    "lfs": "bca53f3fde2e2e052c1f6864086e9568741d8793809281838ecda1d63629d18e"
+   },
+   "data/train-00040-of-00041.parquet": {
+    "size": 441761751,
+    "lfs": "ba14468902847fcc55602f0bbe0fbfd9f0fabfa18d2df4a513815b01a777051d"
+   }
+  }
+ },
+ "experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix": {
+  "kind": "dataset",
+  "sha": "4933583b437e2effaa1b8d4b1e74430fef211a8f",
+  "files": {
+   ".gitattributes": {
+    "size": 2504,
+    "lfs": null
+   },
+   "LICENSE.md": {
+    "size": 1152,
+    "lfs": null
+   },
+   "README.md": {
+    "size": 4053,
+    "lfs": null
+   },
+   "androidlens/dev_androidlens_high.parquet": {
+    "size": 492230721,
+    "lfs": "32004ffed6275422272a88bbf5918a4ab493aebac1f30f8138ec76ae641a5b3c"
+   },
+   "androidlens/manifest.json": {
+    "size": 851,
+    "lfs": null
+   },
+   "build_stats.json": {
+    "size": 2622,
+    "lfs": null
+   },
+   "data/dev_androidlens_high-00000-of-00002.parquet": {
+    "size": 258394799,
+    "lfs": "3b784350d8337b7f7bca6436c6d07baa6c9e3e45c23c59e0bccf8e01efeb7f8a"
+   },
+   "data/dev_androidlens_high-00001-of-00002.parquet": {
+    "size": 262862354,
+    "lfs": "f25cc4ea5baf71150d274cb4319e4570ea6e99df2ba2e3ff156857b9f1b66dcc"
+   },
+   "data/dev_answer-00000-of-00001.parquet": {
+    "size": 14860433,
+    "lfs": "7376ffb99222cda865826988ae663d8b192ec62be2e53643319a6fb26784e47f"
+   },
+   "data/dev_complete-00000-of-00001.parquet": {
+    "size": 8813968,
+    "lfs": "330d97fa61aa7d1bbbf81cb458885a34fc6e06ddf8163506f596a65abc8f1833"
+   },
+   "data/dev_memgui-00000-of-00001.parquet": {
+    "size": 94177039,
+    "lfs": "f2c337fc697348752486b2620f0299f30d62bb1628f1befd9563ace22bd8352d"
+   },
+   "data/probe_C0_base-00000-of-00001.parquet": {
+    "size": 31866098,
+    "lfs": "fded072d391bc0672a7068507a5fcffd62c33cb4202174b53e1f212608fbcacd"
+   },
+   "data/probe_C1_hist_done-00000-of-00001.parquet": {
+    "size": 31897752,
+    "lfs": "322c4afbf9a47c71652c76b02442cf77251ceaa4dd708edb6e1db69c385454cd"
+   },
+   "data/probe_C2_hist_cut-00000-of-00001.parquet": {
+    "size": 34867171,
+    "lfs": "4d1d6b403f7312ade895759a4b6d262d3bc2c8c6a8f48f325ab3fdd14dab45b5"
+   },
+   "data/probe_C3_stale-00000-of-00001.parquet": {
+    "size": 26924292,
+    "lfs": "416a9f39e53bce031e2d0e24a460bda999bde2f3a125516efa24d1861d8fdae5"
+   },
+   "data/probe_C3n_stale_note-00000-of-00001.parquet": {
+    "size": 26924529,
+    "lfs": "8d6d702cdb9544b7abd10c0e587e127d18ef6c888e385c211b382cd47e0003e8"
+   },
+   "data/probe_T_term-00000-of-00001.parquet": {
+    "size": 34883723,
+    "lfs": "1a24aee889d9f023b3696023dd35a60fcb85928b2130df6389de056a22537524"
+   },
+   "data/probe_W0_base-00000-of-00001.parquet": {
+    "size": 31412682,
+    "lfs": "5b4f2661193c8b62be4a94792fc211a8e811606a03dfc9af8867dc3595c0d7b9"
+   },
+   "data/probe_W1_nwait-00000-of-00001.parquet": {
+    "size": 31416515,
+    "lfs": "f47cadcf2404dba4fac152e2b7b336e93ebb579fa2f4d73e261981f73e937e13"
+   },
+   "data/probe_W2_loading-00000-of-00001.parquet": {
+    "size": 22062666,
+    "lfs": "da3a90f381d68a488ec8a0ad9a0ecbdac12b110000009eb24fc71232909b7401"
+   },
+   "data/test_ac_high-00000-of-00003.parquet": {
+    "size": 355526482,
+    "lfs": "a529108b01c2b41214a1de69d84218cb2871040b4753ff70ad3c5263d4980e7a"
+   },
+   "data/test_ac_high-00001-of-00003.parquet": {
+    "size": 344484802,
+    "lfs": "04cfcf352816cb388f67529dd33b6e0ed72e1b56f98c26fa47751759123bec7e"
+   },
+   "data/test_ac_high-00002-of-00003.parquet": {
+    "size": 350076070,
+    "lfs": "7da731fb1f18a48246b643b6641bd22a2f6838bac5734cdd24213351331c1b92"
+   },
+   "data/train-00000-of-00042.parquet": {
+    "size": 440400003,
+    "lfs": "50bef59d7f1dcb7cb2592a85b203610eb5ebd651019268d42c2afe6cfca23381"
+   },
+   "data/train-00000-of-00043.parquet": {
+    "size": 430745644,
+    "lfs": "0c3b725a4440ba9a8b91c389a212ae6c456cbc2253d368d7942ad47f28cb1379"
+   },
+   "data/train-00001-of-00042.parquet": {
+    "size": 439712196,
+    "lfs": "9959ee02cba58d143c4ee841d298600ff2148772ff6bbd5291ae1549ed0cb525"
+   },
+   "data/train-00001-of-00043.parquet": {
+    "size": 429721311,
+    "lfs": "87808830eea72d672a641900ea6f5948691600e885b65f5a531ac96d4ed52731"
+   },
+   "data/train-00002-of-00042.parquet": {
+    "size": 441583067,
+    "lfs": "082304fe8535c25d23a70c762ec1d1250fb9f4e35e3c299f77a605cfc85932aa"
+   },
+   "data/train-00002-of-00043.parquet": {
+    "size": 430937399,
+    "lfs": "22340e6c9caf26505bf551c339859127c3cf1f938cebdcb7abc3aa4daecf3cf9"
+   },
+   "data/train-00003-of-00042.parquet": {
+    "size": 450006193,
+    "lfs": "00d50c1873bde62ab6e719348ba2fa98b187989625252e3518b7f9d98a72d56c"
+   },
+   "data/train-00003-of-00043.parquet": {
+    "size": 440165625,
+    "lfs": "f5af340ef691944f7a95012ce58f6c0bb28f38c5ab57f75a62c75972e8f7e2aa"
+   },
+   "data/train-00004-of-00042.parquet": {
+    "size": 439025416,
+    "lfs": "f12bab0e8f517aaf75035d918e14ec9716d4bb4d174e23f324d4b0fb758bc8cf"
+   },
+   "data/train-00004-of-00043.parquet": {
+    "size": 429738279,
+    "lfs": "bcde08707fcda28851d9e40caa8430652f7341469733e415da408b475c86f7a6"
+   },
+   "data/train-00005-of-00042.parquet": {
+    "size": 435784675,
+    "lfs": "af3a72f66a96dc45de219d34b4df58e7590ef941116fdd3d46b91677090b1d94"
+   },
+   "data/train-00005-of-00043.parquet": {
+    "size": 424220571,
+    "lfs": "91e9be437cacff9cd5b118a72baceddf886080895249f21fffee004be0fe5045"
+   },
+   "data/train-00006-of-00042.parquet": {
+    "size": 446166628,
+    "lfs": "4323fb19f29796249fe5c3f7aa7deb8ccd3610d6f3a948e21ad0f38b68410291"
+   },
+   "data/train-00006-of-00043.parquet": {
+    "size": 435169795,
+    "lfs": "f1bc379474d415f0504d1be34b1b1831902352d760703476e9824d4c9be44ae0"
+   },
+   "data/train-00007-of-00042.parquet": {
+    "size": 439986658,
+    "lfs": "9542173fa29cfb18b440601ce725dfb4966fa254334aa388ef0e2bf7e3033f32"
+   },
+   "data/train-00007-of-00043.parquet": {
+    "size": 430965395,
+    "lfs": "3a0f59cd701ad04b5e525961238d10ad3952cc455ae032e22510e518079ebce0"
+   },
+   "data/train-00008-of-00042.parquet": {
+    "size": 440752222,
+    "lfs": "9f72642eaee29f6f429ecb32eac3c5c5c46b338341251b2286ee48ca03980d44"
+   },
+   "data/train-00008-of-00043.parquet": {
+    "size": 432372896,
+    "lfs": "1aef83429c021f13bc0d49cccf90bf144e1d2158e3549afc58e0bce2e366049e"
+   },
+   "data/train-00009-of-00042.parquet": {
+    "size": 443663857,
+    "lfs": "958bb4f2d704d4021e167e8e9e3072d09b7f298b010bfe2ddb70b36316bf2442"
+   },
+   "data/train-00009-of-00043.parquet": {
+    "size": 430489741,
+    "lfs": "99146ee3da43be30eef8e8566d7a9b1bfcf1805ebf64e9b86fd05f395e253fef"
+   },
+   "data/train-00010-of-00042.parquet": {
+    "size": 441766936,
+    "lfs": "a2c979693a5b97e4762321052900cccc0f276401e52f4dc1a55c3ae31d734a2d"
+   },
+   "data/train-00010-of-00043.parquet": {
+    "size": 430053003,
+    "lfs": "00f4177553067c26572026665c93cb8ae99bd75ca3e1e6f5ccd2611bb4acc956"
+   },
+   "data/train-00011-of-00042.parquet": {
+    "size": 442709161,
+    "lfs": "99bc85858f96183efba55550b7e6407022b0d92000cd774c49d74184605ca6cc"
+   },
+   "data/train-00011-of-00043.parquet": {
+    "size": 432138482,
+    "lfs": "7ffd1e1b597fe3d45b50356a20d8f77705f54df082608f57fee5f131b44bcd2a"
+   },
+   "data/train-00012-of-00042.parquet": {
+    "size": 440846415,
+    "lfs": "a6d028721b170f3b33351aabcb7f10565b137f9bffc5a39bbb91b7d070735ea4"
+   },
+   "data/train-00012-of-00043.parquet": {
+    "size": 431439778,
+    "lfs": "726daefddbfc01d99e14a98559d53bf8f5c032d7bcecc1589e3196b0b8be2670"
+   },
+   "data/train-00013-of-00042.parquet": {
+    "size": 444711668,
+    "lfs": "9e6527d3df5991f1f569fca7181b08caa277c98d26066116690f3efb445d976c"
+   },
+   "data/train-00013-of-00043.parquet": {
+    "size": 436083747,
+    "lfs": "ac2e2b681c086e24469959ff7b522f0447f980579cbbb624435843cabb894a1e"
+   },
+   "data/train-00014-of-00042.parquet": {
+    "size": 439225420,
+    "lfs": "5674ef489231cff5b5c060d5acd5f05b289d3ba164522d9c300e4b782f554a6c"
+   },
+   "data/train-00014-of-00043.parquet": {
+    "size": 430408815,
+    "lfs": "0c6cbcc1c8524e5307f89554e836b2bf3ea83d40655771029a5f57151dcdf692"
+   },
+   "data/train-00015-of-00042.parquet": {
+    "size": 443038972,
+    "lfs": "327b044464f1afa1f13a18cd12ea49f7264620ab3e38374a7700a078051327a6"
+   },
+   "data/train-00015-of-00043.parquet": {
+    "size": 433095128,
+    "lfs": "4577203a2ea129bca6efdb7f8a3c5b4a416674615835e1d520d555a5def1a731"
+   },
+   "data/train-00016-of-00042.parquet": {
+    "size": 444523042,
+    "lfs": "b4c46fc6742285f09ff19a18077480d498dbb0ba4d6fffc64dfa8665514b7657"
+   },
+   "data/train-00016-of-00043.parquet": {
+    "size": 433069917,
+    "lfs": "e84a8db13160ed8828d9db95d2dfbc1ba9bf2d6f3982e1aba1741d18b02a692f"
+   },
+   "data/train-00017-of-00042.parquet": {
+    "size": 443023320,
+    "lfs": "3e37d81189a21edb05771ff9605c66a5fe6c09dc2357cc496cb5262e27c582cd"
+   },
+   "data/train-00017-of-00043.parquet": {
+    "size": 432403860,
+    "lfs": "36e1ce20b5bb75699cc1e5a6ecacd8d5ded56ea8cbdf7902c2c06dced96418e8"
+   },
+   "data/train-00018-of-00042.parquet": {
+    "size": 440680394,
+    "lfs": "4ca5fc3968ea3c760d93e3e037a64ede2b0330502b83e9f24ea1c60092f5c3b1"
+   },
+   "data/train-00018-of-00043.parquet": {
+    "size": 431970677,
+    "lfs": "39060971e08eefc598e971d1625e99e65bbb2097d2ff695c053558339f0cc8fa"
+   },
+   "data/train-00019-of-00042.parquet": {
+    "size": 442487583,
+    "lfs": "746ff09426ac952f2bcbfc36f48835f28f6f10415356c66938aee161725428f8"
+   },
+   "data/train-00019-of-00043.parquet": {
+    "size": 431688676,
+    "lfs": "caa47bbbf524e78ae1ea69eb6bc8a06bf6b11455ddde5bf4aa8fcba392f96406"
+   },
+   "data/train-00020-of-00042.parquet": {
+    "size": 442492422,
+    "lfs": "d4eafb027bbbf8fc286747703d16ee08b6d457d3580bdae1900fd7fa9d3e7ce3"
+   },
+   "data/train-00020-of-00043.parquet": {
+    "size": 430579384,
+    "lfs": "bc36180e713f545e6d05e39c494c9717ce769c424b89c2de7f8e95c9cc75de1a"
+   },
+   "data/train-00021-of-00042.parquet": {
+    "size": 445728157,
+    "lfs": "08e3a766a0d7f4923b197521ec6d1a5f6e4be8b471c339dca52392f5ad47146a"
+   },
+   "data/train-00021-of-00043.parquet": {
+    "size": 437052758,
+    "lfs": "a9f3c194d9fe446631dcde351c092b59af668ec829faa066e5ae3c1bb7e12f99"
+   },
+   "data/train-00022-of-00042.parquet": {
+    "size": 440172132,
+    "lfs": "0df3d6b955f1a4aa3c3d6176c23ac7e0dab0e242790c507d3f895d964d2f44f6"
+   },
+   "data/train-00022-of-00043.parquet": {
+    "size": 429334453,
+    "lfs": "3aafe049fdc258cc93f26e79f3326b831e8e4a44671733b8df4e046d0f6e0a6b"
+   },
+   "data/train-00023-of-00042.parquet": {
+    "size": 440441833,
+    "lfs": "e8b45b03276e6b113a571e01169c867fbcde3e0aeeac833e650682f25f3296d9"
+   },
+   "data/train-00023-of-00043.parquet": {
+    "size": 430497710,
+    "lfs": "8fa202f51175877afa4d15d1b8e246991e808d7c875699935f6ba206259442b5"
+   },
+   "data/train-00024-of-00042.parquet": {
+    "size": 443097139,
+    "lfs": "e57a74260c429a517a785a7fab6acb0ac148bf303cb49de950a8af9b864083e0"
+   },
+   "data/train-00024-of-00043.parquet": {
+    "size": 432620895,
+    "lfs": "7962890175b94a82d0a915f9a2f00a282dccaf005b8a25af3756a31c2c526cc9"
+   },
+   "data/train-00025-of-00042.parquet": {
+    "size": 441590554,
+    "lfs": "0e9cae81ac27bd4cfd3b58e1a0dd213f76bc1565d2bd060d343c86a602a00ff3"
+   },
+   "data/train-00025-of-00043.parquet": {
+    "size": 431849897,
+    "lfs": "c96b772c5a288077dda29525a8b8e6f02751e02eda8f240791e2d1d34440c622"
+   },
+   "data/train-00026-of-00042.parquet": {
+    "size": 440515387,
+    "lfs": "2482e1c5a2e924925c0f0154976439306d9139208101091b2fb471df15e71d0c"
+   },
+   "data/train-00026-of-00043.parquet": {
+    "size": 429220923,
+    "lfs": "e803fcc5e1920b0d1f8ced2e99ca37379ad9a243cb060276e3e50d94914f3f77"
+   },
+   "data/train-00027-of-00042.parquet": {
+    "size": 444272706,
+    "lfs": "22111994074bc6d63b22ea15c5c93a456297a2968ecbb5b19068d0a31a0e7990"
+   },
+   "data/train-00027-of-00043.parquet": {
+    "size": 432577267,
+    "lfs": "0cc1058db42256cc0ba36906b7dfac4f6294b0c9a99eabd440c5e45c9aca4e3a"
+   },
+   "data/train-00028-of-00042.parquet": {
+    "size": 444064433,
+    "lfs": "946b06769bdba012375b33d7e7a0d5ad35ce9992771e610ad33610dcd0d78ab8"
+   },
+   "data/train-00028-of-00043.parquet": {
+    "size": 436590109,
+    "lfs": "06e34a2ee665456b9903e60dd99e948a0b0ccb97e629712bc0423687ab8c739f"
+   },
+   "data/train-00029-of-00042.parquet": {
+    "size": 438663354,
+    "lfs": "3ee2b51eb1c0a4c1295c1afb223700337a6ffded5baa1d857c20b97f5f1481c8"
+   },
+   "data/train-00029-of-00043.parquet": {
+    "size": 429450462,
+    "lfs": "0a428cdeee197567c2345dd1ee7853c8c8afa118fe6de8ee6230eb1ac33135ba"
+   },
+   "data/train-00030-of-00042.parquet": {
+    "size": 444241118,
+    "lfs": "f2b947091d652c4e98edc554753a9c06d28d7a799b11fe7bcc353ef5e18615e3"
+   },
+   "data/train-00030-of-00043.parquet": {
+    "size": 431330133,
+    "lfs": "75e870a3e687e591d746b6bb9a053fff69b8e5d153e8e84d5720c567f448b7b6"
+   },
+   "data/train-00031-of-00042.parquet": {
+    "size": 436606389,
+    "lfs": "323620d0ab13dfb04cb2405888c87e7c12e3258a6cf4b47fc0db35d958e8fd57"
+   },
+   "data/train-00031-of-00043.parquet": {
+    "size": 430424768,
+    "lfs": "7e4bc7335acc34023b300272c95073ccde605f46ff36cd410336e6f7a158bd53"
+   },
+   "data/train-00032-of-00042.parquet": {
+    "size": 441644459,
+    "lfs": "187d724bed30c0c09a23b2ea5252ccd24e879f337ea9828db3989d893e225901"
+   },
+   "data/train-00032-of-00043.parquet": {
+    "size": 429912635,
+    "lfs": "12527a0d78394a6c912d6f7a83950173d21913979a1ea95202b9559c604abfb0"
+   },
+   "data/train-00033-of-00042.parquet": {
+    "size": 438990806,
+    "lfs": "825647e4f1d3befca505b9ca6c203249b7318a8eed7defa520d951b94898d4bb"
+   },
+   "data/train-00033-of-00043.parquet": {
+    "size": 433047512,
+    "lfs": "18199920c7ba3c01ab744fccd8fd182ff8b778a694f933c333215e184d6f26ed"
+   },
+   "data/train-00034-of-00042.parquet": {
+    "size": 440466508,
+    "lfs": "778afac4981172826a1caeb60a161fc1f6404ac2396e962adb51090c1aa44770"
+   },
+   "data/train-00034-of-00043.parquet": {
+    "size": 429774818,
+    "lfs": "511f6563464c3751fa17ab76147eccdf82181be92251e830ff2cc047314e2586"
+   },
+   "data/train-00035-of-00042.parquet": {
+    "size": 437207498,
+    "lfs": "b88433b48cd3f7449b0b1bcac0cf1b87758b10073ba39701f4985cd13780ff59"
+   },
+   "data/train-00035-of-00043.parquet": {
+    "size": 428348990,
+    "lfs": "63a27431353f66068d9c15be7b36195c8e26bfb816b0d63017576a9cb2f4855b"
+   },
+   "data/train-00036-of-00042.parquet": {
+    "size": 441227473,
+    "lfs": "30fa05b1c89f5d1d3eb239c519378410aee4558e784054d0317c79f3b42d9f22"
+   },
+   "data/train-00036-of-00043.parquet": {
+    "size": 425187230,
+    "lfs": "e3ae592259cdf2261e40c034ed7693b8eeab55de1eed80a56639a7c50a0078c6"
+   },
+   "data/train-00037-of-00042.parquet": {
+    "size": 442846962,
+    "lfs": "aa858141d5a8d137e5d6261143dca3696161bcfa92bab6f1bd052474b5634fbe"
+   },
+   "data/train-00037-of-00043.parquet": {
+    "size": 432212715,
+    "lfs": "775010c810f815c0201c1e1ba2d66107a1d0c0db75f94f1cd50dbf2409132671"
+   },
+   "data/train-00038-of-00042.parquet": {
+    "size": 440987970,
+    "lfs": "15ae44fc6bd5eb70d0afb0e1e3545ec6fd24bebb2ebe6b4de5f5ab9c5ca83ec0"
+   },
+   "data/train-00038-of-00043.parquet": {
+    "size": 433802628,
+    "lfs": "1ce5ea643651e875f363355bdf9e0036e42cec2e93acc5a641ae79daa38fe9a2"
+   },
+   "data/train-00039-of-00042.parquet": {
+    "size": 439351662,
+    "lfs": "40509a596e25d12669d2db1c99a6dfc4cccae180305a3b970ef12ebd74003310"
+   },
+   "data/train-00039-of-00043.parquet": {
+    "size": 428993384,
+    "lfs": "e931e15eb0460d6eefb27b02c540f9ea6a85fe02c21094f7027339c362d21534"
+   },
+   "data/train-00040-of-00042.parquet": {
+    "size": 445116621,
+    "lfs": "8d4480ca18e6a0e582a95750366717d7a85732481080479d6ada722fffb0568e"
+   },
+   "data/train-00040-of-00043.parquet": {
+    "size": 430322963,
+    "lfs": "ce6fed5f142626d6de5dc3428ef424aada8fcfc6ee0c9a36cd05ee82b2323e65"
+   },
+   "data/train-00041-of-00042.parquet": {
+    "size": 445781511,
+    "lfs": "0ff9796143196503a80cec793d9e1a44439248fed6897b42722e49459ce54b8d"
+   },
+   "data/train-00041-of-00043.parquet": {
+    "size": 435299042,
+    "lfs": "c3e5ab6ea1b64e9e1cc9148c0aee588755f940a5155b4bb45d1d5f2f62881feb"
+   },
+   "data/train-00042-of-00043.parquet": {
+    "size": 434949171,
+    "lfs": "b84370205a9c91f20181d8eb5233d6165e068c9d63edd19a2f0b3aa3e23c30bf"
+   },
+   "data/train_f-00000-of-00007.parquet": {
+    "size": 433722896,
+    "lfs": "3e139c2e1598f274d556ff9c839dc0794956f96563857ffda36d05559f124d56"
+   },
+   "data/train_f-00001-of-00007.parquet": {
+    "size": 437080756,
+    "lfs": "003c723cf73f425a682ae1c453803217acbd0f983a0c0a5f002b49d42d6a60ab"
+   },
+   "data/train_f-00002-of-00007.parquet": {
+    "size": 431513450,
+    "lfs": "946d38fd764b94f15246c1cbda3b28e9b3d7e271c5658abfdd2d95e7ed01b013"
+   },
+   "data/train_f-00003-of-00007.parquet": {
+    "size": 436640907,
+    "lfs": "0180684fc6a43493b4ab18233a7d5b12d3cdd739d59321d7aa7135a4f94f5229"
+   },
+   "data/train_f-00004-of-00007.parquet": {
+    "size": 433508918,
+    "lfs": "0f11caeef95f5b9b975220d90d58da666681b1da0cce377864a8af21f8f717fd"
+   },
+   "data/train_f-00005-of-00007.parquet": {
+    "size": 437776314,
+    "lfs": "f705a940f7b20d1466420743381da40098f4f51a5ead6a7e2de37caaf41fd114"
+   },
+   "data/train_f-00006-of-00007.parquet": {
+    "size": 435426468,
+    "lfs": "2a1f45f42d900677324313153620429713e11f57de28e902b6989a5105fc3375"
+   }
+  }
+ }
+}

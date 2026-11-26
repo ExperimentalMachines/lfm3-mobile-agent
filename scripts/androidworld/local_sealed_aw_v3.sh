@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run one SEALED AndroidWorld arm on a held-out seed (docs/PREREG_v4.md): results go to results/androidworld_sealed/,
+# Run one SEALED AndroidWorld arm on a held-out seed (docs/preregistrations/heldout-main-vs-gui-owl.md): results go to results/androidworld_sealed/,
 # the runner's full output is written only inside the sealed dir; progress = episode-file counts; nobody reads results
 # before every arm on the seed has finished. Exit status and the 116-episode inventory decide "finished" vs "FAILED".
 # v3 (2026-11-18, Codex audit results/codex/emu2_v3_promo_audit/report.md P2-1): server startup is bounded (600 s,

@@ -1,4 +1,4 @@
-"""False `complete` count per AndroidWorld run (the round-5 online gate, docs/PREREG_v41.md 2026-11-22 17:00): the
+"""False `complete` count per AndroidWorld run (the round-5 online gate, docs/preregistrations/mobileworld-followup-waitrelabel.md 2026-11-22 17:00): the
 primary category `false_complete` of analysis/failure_analysis/aw_taxonomy.py, computed the same way as
 aw_features.py + aw_taxonomy_lib.primary(): not an exception, not a success (is_successful >= 1), not partial credit
 (0 < is_successful < 1), the LAST raw step parses to status/complete (an unparseable last step is not a `complete`),

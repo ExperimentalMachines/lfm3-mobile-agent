@@ -1,4 +1,4 @@
-"""Did an action visibly change the screen? Round 8 ("done but not done yet", docs/PREREG_v46.md).
+"""Did an action visibly change the screen? Round 8 ("done but not done yet", docs/preregistrations/round-08-done-from-the-screen.md).
 
 Replaces round 6's rule (mean absolute difference < 1.0 on 72x160 grayscale thumbnails), which called 67% of its
 "no visible change" pairs wrongly on the AndroidControl test split: it misses small but real changes such as a

@@ -1,0 +1,335 @@
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-Azy8wed7rcL66JiEREPHUy
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/cards/v4.5-D.md
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/vm_publish_public.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+├── ✓ Created Function run_smoke.
+├── ✓ Created Function publish_d.
+└── ✓ Created Function probe_fn.
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files:   5%|▌         | 1/19 [00:00<00:05,  3.09it/s]
+[1AFetching 19 files:  47%|████▋     | 9/19 [00:00<00:00, 16.51it/s]
+[1AFetching 19 files:  79%|███████▉  | 15/19 [00:00<00:00, 18.20it/s]
+[1AFetching 19 files:  95%|█████████▍| 18/19 [00:01<00:00, 15.39it/s]W1124 13:19:51.718000 4 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:19:51.768000 4 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights:   7%|▋         | 30/424 [00:00<00:01, 234.35it/s]
+[1ALoading weights:  17%|█▋        | 72/424 [00:00<00:01, 332.06it/s]
+[1ALoading weights:  25%|██▌       | 107/424 [00:00<00:01, 293.96it/s]
+[1ALoading weights:  33%|███▎      | 138/424 [00:00<00:01, 225.79it/s]
+[1ALoading weights:  42%|████▏     | 178/424 [00:00<00:00, 267.66it/s]
+[1ALoading weights:  58%|█████▊    | 246/424 [00:00<00:00, 375.33it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:00<00:00, 506.07it/s]
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1AFetching 19 files:  95%|█████████▍| 18/19 [00:19<00:00, 15.39it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:20<00:00,  2.23s/it]Fetching 19 files: 100%|██████████| 19/19 [00:20<00:00,  1.09s/it]
+32/300 9s avg_prompt_tok=1196
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 13s avg_prompt_tok=1188
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 16s avg_prompt_tok=1183
+W1124 13:20:13.582000 79 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:20:13.634000 79 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+128/300 19s avg_prompt_tok=1184
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 8063.45it/s]
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 21s avg_prompt_tok=1187
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 23s avg_prompt_tok=1187
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 27s avg_prompt_tok=1186
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 29s avg_prompt_tok=1185
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 9s avg_prompt_tok=1194
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 31s avg_prompt_tok=1187
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 13s avg_prompt_tok=1187
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 34s avg_prompt_tok=1187
+DONE 34.15197706222534
+96/300 16s avg_prompt_tok=1182
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/300 18s avg_prompt_tok=1183
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 21s avg_prompt_tok=1186
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:20:39.526000 66 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:20:39.569000 66 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+192/300 24s avg_prompt_tok=1185
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:00<00:00, 8609.16it/s]
+to generate: 300 / 300
+224/300 27s avg_prompt_tok=1185
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 29s avg_prompt_tok=1184
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 31s avg_prompt_tok=1185
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 5s avg_prompt_tok=1292
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 33s avg_prompt_tok=1185
+DONE 32.655078172683716
+64/300 7s avg_prompt_tok=1292
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 10s avg_prompt_tok=1284
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/300 13s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:20:58.440000 141 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:20:58.482000 141 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+160/300 16s avg_prompt_tok=1285
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 6445.03it/s]
+192/300 18s avg_prompt_tok=1287
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 21s avg_prompt_tok=1287
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 22s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 4s avg_prompt_tok=1276
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 24s avg_prompt_tok=1288
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 7s avg_prompt_tok=1270
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 26s avg_prompt_tok=1287
+DONE 26.41353940963745
+96/300 10s avg_prompt_tok=1267
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/300 12s avg_prompt_tok=1268
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 14s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:21:18.191000 121 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:21:18.233000 121 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+192/300 16s avg_prompt_tok=1270
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 18s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:00<00:00, 9452.30it/s]
+to generate: 300 / 300
+256/300 20s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 21s avg_prompt_tok=1272
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 24s avg_prompt_tok=1271
+DONE 23.53301239013672
+32/300 5s avg_prompt_tok=1239
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 8s avg_prompt_tok=1241
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 11s avg_prompt_tok=1235
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:21:34.123000 196 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:21:34.168000 196 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+128/300 13s avg_prompt_tok=1237
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 7036.25it/s]
+160/300 15s avg_prompt_tok=1235
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 17s avg_prompt_tok=1237
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 20s avg_prompt_tok=1237
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 5s avg_prompt_tok=1231
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 22s avg_prompt_tok=1236
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 7s avg_prompt_tok=1228
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 23s avg_prompt_tok=1238
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 26s avg_prompt_tok=1238
+96/300 10s avg_prompt_tok=1225
+DONE 25.684980154037476
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/300 12s avg_prompt_tok=1226
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 15s avg_prompt_tok=1226
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 17s avg_prompt_tok=1227
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:21:55.815000 176 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:21:55.856000 176 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+224/300 19s avg_prompt_tok=1227
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:00<00:00, 9232.08it/s]
+256/300 21s avg_prompt_tok=1226
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 23s avg_prompt_tok=1229
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 25s avg_prompt_tok=1229
+DONE 25.4436457157135
+32/300 5s avg_prompt_tok=1296
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 7s avg_prompt_tok=1281
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 10s avg_prompt_tok=1283
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:22:12.307000 251 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:22:12.348000 251 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+128/300 13s avg_prompt_tok=1281
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 15s avg_prompt_tok=1278
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 7259.28it/s]
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 17s avg_prompt_tok=1282
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 20s avg_prompt_tok=1282
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 4s avg_prompt_tok=1276
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 22s avg_prompt_tok=1282
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 7s avg_prompt_tok=1267
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 25s avg_prompt_tok=1282
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 9s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 27s avg_prompt_tok=1281
+DONE 27.30682349205017
+128/300 12s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 14s avg_prompt_tok=1267
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 16s avg_prompt_tok=1271
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 18s avg_prompt_tok=1271
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:22:35.640000 231 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:22:35.681000 231 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+256/300 19s avg_prompt_tok=1271
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+288/300 21s avg_prompt_tok=1270
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:00<00:00, 8858.84it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 24s avg_prompt_tok=1269
+DONE 23.564515829086304
+32/300 5s avg_prompt_tok=1300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 8s avg_prompt_tok=1285
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 13:22:48.643000 306 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:22:48.693000 306 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+96/300 10s avg_prompt_tok=1288
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 7464.49it/s]
+to generate: 300 / 300
+128/300 13s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 15s avg_prompt_tok=1282
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 4s avg_prompt_tok=1276
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 18s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 7s avg_prompt_tok=1270
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 21s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 9s avg_prompt_tok=1267
+256/300 23s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/300 11s avg_prompt_tok=1268
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 26s avg_prompt_tok=1287
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 13s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 28s avg_prompt_tok=1285
+DONE 27.680453300476074
+192/300 15s avg_prompt_tok=1270
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 17s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 19s avg_prompt_tok=1269
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 20s avg_prompt_tok=1272
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 22s avg_prompt_tok=1271
+DONE 21.972143173217773
+W1124 13:23:14.942000 286 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 13:23:14.984000 286 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:00<00:00, 9190.76it/s]
+to generate: 300 / 300
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/300 4s avg_prompt_tok=1292
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/300 7s avg_prompt_tok=1292
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/300 10s avg_prompt_tok=1284
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/300 13s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/300 15s avg_prompt_tok=1285
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/300 17s avg_prompt_tok=1287
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/300 20s avg_prompt_tok=1287
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/300 21s avg_prompt_tok=1286
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/300 23s avg_prompt_tok=1288
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+300/300 25s avg_prompt_tok=1287
+DONE 24.80350375175476
+rc [0, 0]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/alpha-6533/main/ap-Azy8wed7rcL66JiEREPHUy
+exit 0

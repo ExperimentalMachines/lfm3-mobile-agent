@@ -283,7 +283,7 @@ Use generic system apps (Settings, Clock, Contacts, Files, Chrome) with task tex
 - Contrast-at-the-same-state methods beat plain re-imitation: Digi-Q 71.2 vs filtered BC 54.5 on the same ~1k trajectories — [Digi-Q](https://arxiv.org/abs/2502.15760); GRSD 81.0 vs RFT 73.2 and GRPO/PPO 76 — [UI-Voyager](https://arxiv.org/abs/2603.24533).
 - Own-rollout loop training cut loops 57.3% → 6.1% (success +0.8) at 8B — [DeLoop](https://arxiv.org/abs/2610.19376).
 - Rule rewards beat judges in training (36.8 vs 26.4 with a Qwen judge) — [MobileJudgeBench](https://arxiv.org/abs/2608.11434).
-- Self-history SFT alone (v4.2) did not move seed 30 (18 vs 18) — ours, [PREREG_v41.md](../../../PREREG_v41.md) context.
+- Self-history SFT alone (v4.2) did not move seed 30 (18 vs 18) — ours, [../../../preregistrations/mobileworld-followup-waitrelabel.md](../../../preregistrations/mobileworld-followup-waitrelabel.md) context.
 - Online self-generated-task gains transfer weakly: +0.5–0.7 (ZeroGUI), +1.1 OOD (ARPO), +8.3 unseen apps (GRPO, many tasks) — [ZeroGUI](https://arxiv.org/abs/2505.23762), [ARPO](https://arxiv.org/abs/2505.16282), [AndroidWorld-Generalization](https://arxiv.org/abs/2603.07432).
 
 ### Inferences

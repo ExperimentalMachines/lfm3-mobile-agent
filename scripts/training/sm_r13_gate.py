@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Round 13 / E-S offline gate (docs/PREREG_v411.md): no regression on the round-8 evals, and the GUI-Odyssey ending probes.
+"""Round 13 / E-S offline gate (docs/preregistrations/round-13-yardstick-own-history.md): no regression on the round-8 evals, and the GUI-Odyssey ending probes.
   * round 11's first 10 checks: E's round-8 bars, with early status <= 3.80% and C1 <= 22%
   * M_done (judged-finished final screens): `status` >= 50%;  M_notdone (judged-unfinished): `status` <= 25%
 The multi-step test (eval/androidcontrol/sop.py on the GGUF, Mac) is the second gate and runs after export.

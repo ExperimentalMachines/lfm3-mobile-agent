@@ -11,9 +11,9 @@ early-stop rate, multi-part probes) are explained in [rounds.md](rounds.md#how-a
 
 ## Fairness at a glance
 
-### AndroidWorld (primary comparison: v4 vs GUI-Owl)
+### AndroidWorld (primary comparison: Main vs GUI-Owl)
 
-| Setting | v4 | GUI-Owl-1.5-2B | Same? |
+| Setting | Main | GUI-Owl-1.5-2B | Same? |
 |---|---|---|---|
 | Tasks, seeds, emulator image, harness | AndroidWorld, 116 tasks × seeds 7/1234/2026 | same | yes |
 | Screenshots per step | 1 | 1 | yes |
@@ -31,7 +31,7 @@ on-device budget of one screenshot.
 
 ### MobileWorld (secondary)
 
-| Setting | v4 | GUI-Owl / MAI-UI |
+| Setting | Main | GUI-Owl / MAI-UI |
 |---|---|---|
 | Agent | our adapter | MobileWorld's official agents |
 | Screenshots per step | 1 | 1 |
@@ -59,14 +59,14 @@ The larger image budgets give GUI-Owl and MAI-UI more visual detail; their effec
 
 ### Per-model settings (held-out runs)
 
-| | v4 | GUI-Owl-1.5-2B (matched) | v1 |
+| | Main | GUI-Owl-1.5-2B (matched) | AndroidControlOnly |
 |---|---|---|---|
 | Agent code | `eval/androidworld/lfm_agent.py`, prompt v4 | `eval/androidworld/guiowl_agent.py` (official prompt, ported) | `lfm_agent.py`, original prompt |
 | Screenshots per step | 1 | 1 | 1 |
-| Image | ≤ 880×880 px area (≈ 720 tokens; server cap 1,024) | ≤ 1,048,576 px (≈ 1,024 tokens; server cap 2,600 not reached) | as v4 |
+| Image | ≤ 880×880 px area (≈ 720 tokens; server cap 1,024) | ≤ 1,048,576 px (≈ 1,024 tokens; server cap 2,600 not reached) | as Main |
 | Context window | 8,192 | 20,480 | 8,192 |
 | Installed-app list | yes | yes | no |
-| Output | `<think>intent</think>` + one JSON action | `Action:` + `<tool_call>` | as v4 |
+| Output | `<think>intent</think>` + one JSON action | `Action:` + `<tool_call>` | as Main |
 
 Launcher with the exact flags: [`scripts/androidworld/local_sealed_aw_v3.sh`](../scripts/androidworld/local_sealed_aw_v3.sh).
 
@@ -87,15 +87,15 @@ None touches model input/output or scoring.
   had finished that seed.
 - **Re-run rule:** an infrastructure crash before step 1 (emulator/adb, not model output) is re-run once.
   Everything else counts as it is.
-- **Trajectory review:** checker successes are compared with their saved screenshots (done for all v4 and GUI-Owl
-  successes and v1's on seeds 1234/2026). Contradicted successes are listed in `results/aw_checker_disputes.json`
+- **Trajectory review:** checker successes are compared with their saved screenshots (done for all Main and GUI-Owl
+  successes and AndroidControlOnly's on seeds 1234/2026). Contradicted successes are listed in `results/aw_checker_disputes.json`
   and enter only a sensitivity analysis.
-- **Primary analysis:** paired difference v4 − GUI-Owl over 348 instances; template-clustered sign-flip test
+- **Primary analysis:** paired difference Main − GUI-Owl over 348 instances; template-clustered sign-flip test
   (10,000 draws, seed 0); 95% CI by test inversion.
 - **Decision rule:** non-inferior if the CI's lower bound is above −6.9 points (8 tasks of 116).
-- **Development gate:** v4 had to pass a gate on seed 30 and offline checks before it could run held-out. It passed.
+- **Development gate:** Main had to pass a gate on seed 30 and offline checks before it could run held-out. It passed.
 
-Full text and every dated change: [PREREG_v4.md](PREREG_v4.md).
+Full text and every dated change: [held-out preregistration](preregistrations/heldout-main-vs-gui-owl.md).
 
 ---
 
@@ -107,7 +107,7 @@ Full text and every dated change: [PREREG_v4.md](PREREG_v4.md).
 | Environment | Official Docker image (`ghcr.io/tongyi-mai/mobile_world`), on a GCP n2-standard-16 spot VM with nested virtualisation |
 | Model servers | llama.cpp `cd959bae9` on a Colab T4 GPU, reached through a restricted reverse SSH tunnel |
 | Task settings | 50 rounds, 3 s step wait, `--auto_retry 3`, temperature 0 |
-| v4 agent | Our adapter: `eval/mobileworld/lfm3_mw_agent.py` |
+| Main agent | Our adapter: `eval/mobileworld/lfm3_mw_agent.py` |
 | GUI-Owl agent | MobileWorld's official `gui_owl_1_5` agent |
 | MAI-UI agent | MobileWorld's official agent, 1 screenshot (`eval/mobileworld/maiui_mw_agent.py`) |
 
@@ -121,7 +121,7 @@ Full text and every dated change: [PREREG_v4.md](PREREG_v4.md).
 | Model server unreachable (added before MAI-UI started) | Run it |
 | Unsupported action, unparseable output, `ask_user` without a simulator | Failure |
 
-MAI-UI ran in two halves (53/52 tasks, alternating) in parallel containers, after GUI-Owl and v4 had finished.
+MAI-UI ran in two halves (53/52 tasks, alternating) in parallel containers, after GUI-Owl and Main had finished.
 
 ---
 
@@ -145,7 +145,7 @@ Step success rate counts a step correct if the action type matches and:
 | open_app | Case-insensitive match or containment |
 | back, home, wait | Type match is enough |
 
-Development splits (GUI-Odyssey, AMEX, ScreenQA, v4 questions) use the same scorer; see [datasets.md](datasets.md).
+Development splits (GUI-Odyssey, AMEX, ScreenQA, Main questions) use the same scorer; see [datasets.md](datasets.md).
 
 ---
 
@@ -172,18 +172,18 @@ Development splits (GUI-Odyssey, AMEX, ScreenQA, v4 questions) use the same scor
 Phone caveats:
 - Frequencies are sampled, not controlled.
 - GUI-Owl and MAI-UI reused cached system-prompt tokens, which favours them.
-- v4's agent sends a 576×1280 screenshot; the others send 1080×2400.
+- Main's agent sends a 576×1280 screenshot; the others send 1080×2400.
 
 ## AndroidLens English (offline, long tasks)
 
-**Evaluation only, never trained on.** Added in round 6 ([PREREG_v44.md](PREREG_v44.md)) because AndroidControl's
-episodes are short (median 6 steps) and v4 fails long tasks online.
+**Evaluation only, never trained on.** Added in round 6 ([round 6 preregistration](preregistrations/round-06-long-trajectories.md)) because AndroidControl's
+episodes are short (median 6 steps) and Main fails long tasks online.
 
 | Item | Detail |
 |---|---|
 | Source | [yuecao0119/AndroidLens](https://huggingface.co/datasets/yuecao0119/AndroidLens) @ `984576f3`, `test/en`: 172 episodes, 4,987 steps (median 27.5, p90 43), 42 apps, 93 cross-app (Apache-2.0) |
-| Conversion | [`data/v44_androidlens_eval.py`](../data/v44_androidlens_eval.py): v4 prompt, ground-truth history (intents from `low_instruction`), screenshots resized as in training |
-| Copy | Frozen in [`MobileAgent-SFT-v4.4`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-v4.4) `androidlens/`, checked by sha256 |
+| Conversion | [`data/eval_androidlens.py`](../data/eval_androidlens.py): v4 prompt, ground-truth history (intents from `low_instruction`), screenshots resized as in training |
+| Copy | Frozen in [`MobileAgent-SFT-MemGUI`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-MemGUI) `androidlens/`, checked by sha256 |
 | Scorer | [`eval/androidlens/score_androidlens.py`](../eval/androidlens/score_androidlens.py): AndroidControl's step rule (`score.match`); any listed valid alternative counts |
 | Metrics | By step bucket (0–4, 5–9, 10–19, 20+): early `status`, terminal `complete`, milestone and prefix progress, episode-bootstrap CIs |
 
@@ -203,5 +203,5 @@ Unscored steps stay in the history.
   not comparable with the paper's table.
 - **Bad hints:** on home screens, `low_instruction` often names the icon one row above the tap (118 steps flagged
   `hint_suspect`).
-- **Not a test of online failures:** with ground-truth history, early stops are rare (v4: 0.26%). It does not
+- **Not a test of online failures:** with ground-truth history, early stops are rare (Main: 0.26%). It does not
   measure the online false-`complete` failure, which happens on the model's own off-track history.

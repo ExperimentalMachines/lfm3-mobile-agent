@@ -1,11 +1,11 @@
 #!/bin/bash
-# Round 8 / v4.6 gate evals (docs/PREREG_v46.md) in the /content layout shared by Colab and Modal: the five splits of
-# experimentalmachines/MobileAgent-SFT-v4.6 @ DREV, the six history probes through generate.py, the scorers, then sm_r7_gate.py.
+# Round 8 / v4.6 gate evals (docs/preregistrations/round-08-done-from-the-screen.md) in the /content layout shared by Colab and Modal: the five splits of
+# experimentalmachines/MobileAgent-SFT-Counterfactual @ DREV, the six history probes through generate.py, the scorers, then sm_r7_gate.py.
 # env: MODEL (merged weights dir), NAME (output prefix), LIMIT (0 = all rows; >0 = smoke, numbers meaningless)
 set -uo pipefail
 export TOKENIZERS_PARALLELISM=false
 M=${MODEL:-/content/runs/r8e/merged}; N=${NAME:-r8e}; L=${LIMIT:-0}
-DREPO=experimentalmachines/MobileAgent-SFT-v4.6; DREV=${DREV:?set DREV}
+DREPO=experimentalmachines/MobileAgent-SFT-Counterfactual; DREV=${DREV:?set DREV}
 E=/content/eval; A=/content/data/v46; mkdir -p $E $A
 log() { echo "[$(date +%T)] r8eval: $*"; }
 cd /content/work

@@ -1,7 +1,7 @@
-"""Round 5, candidate P (docs/PREREG_v41.md, 2026-11-22 17:00): step-level DPO on the model's own mistakes (runs ON a
+"""Round 5, candidate P (docs/preregistrations/mobileworld-followup-waitrelabel.md, 2026-11-22 17:00): step-level DPO on the model's own mistakes (runs ON a
 Colab GPU). Start = v4.2's merged weights; a fresh language-only LoRA (r64/α128, projector and vision frozen) is trained
 with DPO (sigmoid, β) + w × SFT on the preferred step (TRL loss_type ["sigmoid", "sft"]); the reference is v4.2 itself
-(the adapter disabled). Pairs come from data/v5_pairs.py: preferred = the human step, rejected = v4.2's own greedy step.
+(the adapter disabled). Pairs come from data/dpo_allmistakes_pairs.py: preferred = the human step, rejected = v4.2's own greedy step.
 
 Texts are rendered with the model's own chat template exactly as at inference (thinking on): prompt = system + user
 (image + text) + generation prompt; completion = the rest of the rendered conversation, so the completion starts where

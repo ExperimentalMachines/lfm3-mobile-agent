@@ -1,4 +1,4 @@
-"""Summarise the v4.1 follow-up MobileWorld run (run 3: the variant selected by docs/PREREG_v41.md, 105 English GUI-only
+"""Summarise the v4.1 follow-up MobileWorld run (run 3: the variant selected by docs/preregistrations/mobileworld-followup-waitrelabel.md, 105 English GUI-only
 tasks) from results/mobileworld/traj_r3/ (pulled by scripts/mobileworld/mw_pull_r3.sh) and compare it with run 2.
 Same outcome rule as run 2 (analysis/mw_summarize_r2.py, whose classify / mcnemar_exact / traj_steps are reused): score =
 the final folder's result.txt; a task without one counts as a failure.
@@ -85,7 +85,7 @@ cmp_["loop_metrics"] = {RUN: summ["loop_metrics"], "v4": loops(os.path.join(R, "
 json.dump(cmp_, open("results/mobileworld/mw_r3_comparison.json", "w"), indent=1)
 
 L = [f"# MobileWorld run 3: {NAMES.get(RUN, RUN)} (105 English GUI-only tasks)", "",
-     "Post-hoc follow-up ([PREREG_v41.md](../../docs/PREREG_v41.md)): designed after reading v4's MobileWorld trajectories, so "
+     "Post-hoc follow-up ([docs/preregistrations/mobileworld-followup-waitrelabel.md](../../docs/preregistrations/mobileworld-followup-waitrelabel.md)): designed after reading v4's MobileWorld trajectories, so "
      "MobileWorld is a development benchmark for this run. v4's 6/105 stays the held-out MobileWorld number.", "",
      "| Model | Successes / 105 | Both | This run only | Baseline only | Difference | Exact McNemar p |", "|---|---|---|---|---|---|---|"]
 for k, p in cmp_["pairs"].items():

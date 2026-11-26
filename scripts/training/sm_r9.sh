@@ -1,6 +1,6 @@
 #!/bin/bash
 # Round 9 / v4.7 on an AWS SageMaker training job (the only GPU SageMaker could place on 2026-11-25: ml.g6.2xlarge,
-# 1x L4 24 GB). docs/PREREG_v47.md. Data comes straight from the public Hub dataset (pinned revision), so the job needs
+# 1x L4 24 GB). docs/preregistrations/round-09-useless-waits.md. Data comes straight from the public Hub dataset (pinned revision), so the job needs
 # no data channel and no token; everything under /opt/ml/checkpoints (run folder with checkpoints, merged weights,
 # predictions, metrics, logs) is synced to S3 while the job runs, and a restarted job resumes from it.
 # Same pinned packages and eval scripts as the Modal / Colab runs (/content layout).
@@ -31,7 +31,7 @@ train() {  # out steps bs ga extra...
   local O=$1 ST=$2 B=$3 G=$4; shift 4
   [ -f $O/train_receipt.json ] && return 0
   python sft_vlm.py --model_id LiquidAI/LFM3-VL-2B --model_revision $MREV \
-    --train experimentalmachines/MobileAgent-SFT-v4.7@train#$DREV --val experimentalmachines/MobileAgent-SFT-v1@val#$VREV \
+    --train experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix@train#$DREV --val experimentalmachines/MobileAgent-SFT-AndroidControl@val#$VREV \
     --out $O --max_steps $ST --max_pixels 774400 --bs $B --grad_accum $G --lora_r 64 --lora_alpha 128 --modules_to_save \
     --workers 6 "$@" > $O.log 2>&1
 }

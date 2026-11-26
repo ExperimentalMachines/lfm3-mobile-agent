@@ -1,5 +1,5 @@
 #!/bin/bash
-# Round 12 / candidate E-V on an AWS SageMaker training job (ml.g6.2xlarge, 1x L4 24 GB). docs/PREREG_v410.md.
+# Round 12 / candidate E-V on an AWS SageMaker training job (ml.g6.2xlarge, 1x L4 24 GB). docs/preregistrations/round-12-done-check.md.
 # Channels: code; e (E's merged weights); r12in (ody_term2.parquet = the 1,766 GUI-Odyssey terminal candidates,
 # claude_ody_terminal_verdicts.jsonl, claude_next_actions.jsonl, notdone_split.json, r11_mix_stats.json, claude_ac_complete_verdicts.jsonl). E's training split comes from the public Hub
 # (pinned revision), so the job needs no token. /opt/ml/checkpoints (runs, evals, logs) is synced to S3 while the job runs;
@@ -26,10 +26,10 @@ if [ ! -f $CK/.pip_ok ] || ! python -c "import trl" 2>/dev/null; then
   touch $CK/.pip_ok
 fi
 
-# ---- 1. the mix and the probes (data/r12_mix.py)
+# ---- 1. the mix and the probes (data/donecheck_mix.py)
 MX=""; [ "$MODE" = smoke ] && MX="--limit 40 --n_mix 2000"
 if [ ! -f $D/mix_stats.json ]; then
-  python r12_mix.py --term $IN/ody_term2.parquet --verdicts $IN/claude_ody_terminal_verdicts.jsonl --written $IN/claude_next_actions.jsonl --split $IN/notdone_split.json --r11stats $IN/r11_mix_stats.json --acv $IN/claude_ac_complete_verdicts.jsonl --out $D $MX > $CK/mix.log 2>&1 \
+  python donecheck_mix.py --term $IN/ody_term2.parquet --verdicts $IN/claude_ody_terminal_verdicts.jsonl --written $IN/claude_next_actions.jsonl --split $IN/notdone_split.json --r11stats $IN/r11_mix_stats.json --acv $IN/claude_ac_complete_verdicts.jsonl --out $D $MX > $CK/mix.log 2>&1 \
     || { log "MIX FAILED"; grep -v Warning $CK/mix.log | tail -5 | tee -a $CK/r12.log; cp $D*_diffs.json $CK/ 2>/dev/null; exit 1; }
 fi
 cp $D/mix_stats.json $CK/

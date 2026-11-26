@@ -1,4 +1,4 @@
-"""Round 13 step 1 / round 14 (docs/PREREG_v411.md, docs/PREREG_v412.md): does the multi-step test (SOP) rank our seven
+"""Round 13 step 1 / round 14 (docs/preregistrations/round-13-yardstick-own-history.md, docs/preregistrations/round-14-own-history-vs-control.md): does the multi-step test (SOP) rank our seven
 models like AndroidWorld seed 30 does? Spearman rho with an exact permutation p (all 7! orderings), leave-one-model-out
 rho, rho(premature `status`, false completes), the per-depth premature-stop hazard (review M6: early-stop incidence is
 censored by earlier misses), and the share of episodes that end on a human `wait` step.

@@ -1,0 +1,65 @@
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-G6d6HnxEERMyOD3UGqYc6m
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r8_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/cards/v4.5-D.md
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/analysis/done_audit/judge_terminal.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/vm_publish_public.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+├── ✓ Created Function run_smoke.
+├── ✓ Created Function publish_d.
+├── ✓ Created Function probe_fn.
+├── ✓ Created Function judge_fn.
+├── ✓ Created Function run_e.
+├── ✓ Created Function run_smoke_e.
+├── ✓ Created Function mjb_fn.
+└── ✓ Created Function judge2_fn.
+W1124 14:50:08.647000 4 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 14:50:08.704000 4 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+rows to judge 4
+
+[1AFetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]
+[1AFetching 14 files:   7%|▋         | 1/14 [01:36<20:50, 96.16s/it]
+[1AFetching 14 files:  14%|█▍        | 2/14 [01:41<08:33, 42.75s/it]
+[1AFetching 14 files:  21%|██▏       | 3/14 [01:53<05:14, 28.61s/it]
+[1AFetching 14 files:  29%|██▊       | 4/14 [01:58<03:14, 19.42s/it]
+[1AFetching 14 files:  36%|███▌      | 5/14 [02:10<02:31, 16.78s/it]
+[1AFetching 14 files:  43%|████▎     | 6/14 [02:47<03:07, 23.44s/it]
+[1AFetching 14 files:  50%|█████     | 7/14 [02:51<01:59, 17.09s/it]
+[1AFetching 14 files:  57%|█████▋    | 8/14 [02:53<01:13, 12.27s/it]
+[1AFetching 14 files:  64%|██████▍   | 9/14 [03:10<01:10, 14.03s/it]
+[1AFetching 14 files:  71%|███████▏  | 10/14 [03:46<01:22, 20.60s/it]
+[1AFetching 14 files:  79%|███████▊  | 11/14 [04:07<01:02, 20.89s/it]
+[1AFetching 14 files:  86%|████████▌ | 12/14 [04:08<00:29, 14.77s/it]
+[1AFetching 14 files:  93%|█████████▎| 13/14 [04:13<00:11, 11.66s/it]
+[1AFetching 14 files: 100%|██████████| 14/14 [04:14<00:00,  8.52s/it]
+[1AFetching 14 files: 100%|██████████| 14/14 [04:14<00:00, 18.17s/it]
+
+[1ALoading weights:   0%|          | 0/1058 [00:00<?, ?it/s]
+[1ALoading weights:  44%|████▍     | 470/1058 [00:00<00:00, 4684.88it/s]
+[1ALoading weights: 100%|██████████| 1058/1058 [00:00<00:00, 8862.51it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+4/4
+JUDGE DONE
+rc 0
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/alpha-6533/main/ap-G6d6HnxEERMyOD3UGqYc6m

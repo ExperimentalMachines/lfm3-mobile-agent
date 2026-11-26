@@ -6,7 +6,7 @@ here = os.path.dirname(os.path.abspath(__file__))
 for d in (here, os.path.join(here, "..", "train"), os.path.join(here, "..", "data")):
     sys.path.insert(0, d)
 import agent_format as af  # noqa: E402
-from v4_answer_check import exact_answer, same_answer  # noqa: E402
+from sft_main_answer_check import exact_answer, same_answer  # noqa: E402
 p = argparse.ArgumentParser(); p.add_argument("--answer", required=True); p.add_argument("--complete", required=True)
 p.add_argument("--out", required=True); a = p.parse_args()
 A = [json.loads(l) for l in open(a.answer)]; C = [json.loads(l) for l in open(a.complete)]

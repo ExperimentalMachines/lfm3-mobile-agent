@@ -10,12 +10,12 @@ raw files are never edited. What each number means: [docs/results.md](../docs/re
 | `sealed_analysis_final.{md,json}` | **Held-out AndroidWorld, preregistered analysis** (3 seeds) |
 | `sealed_sensitivity_final.{md,json}` | Held-out AndroidWorld sensitivity analyses |
 | `androidworld/dev_seed30_summary.{md,json}` | Development seed 30: every model's score and Apple M5 speed |
-| `mobileworld/mw_r2_comparison.{md,json}` | MobileWorld: v4 vs GUI-Owl vs MAI-UI |
+| `mobileworld/mw_r2_comparison.{md,json}` | MobileWorld: Main vs GUI-Owl vs MAI-UI |
 | `speed/speed_t8.md`, `qdc/speed_qdc_v6.md` | Speed on CPU and on the phone |
 | `SUMMARY.md`, `V2_COMPARISON.md` | Offline AndroidControl, dev splits, general knowledge |
-| `v4_gate_seed30.txt`, `v4rl_promotion_offline.json` | v4 gate (pass) and v4-RL promotion (fail) |
-| `mobileworld/mw_r3_comparison.{md,json}` | Follow-up: MobileWorld v4.2 vs v4 / GUI-Owl / MAI-UI, loop metrics |
-| `androidworld/failure_taxonomy_20261122.json` | Follow-up: main failure cause per seed-30 episode, v1–v4.2 and held-out v4 |
+| `v4_gate_seed30.txt`, `v4rl_promotion_offline.json` | Main gate (pass) and GRPO promotion (fail) |
+| `mobileworld/mw_r3_comparison.{md,json}` | Follow-up: MobileWorld OwnHistory vs Main / GUI-Owl / MAI-UI, loop metrics |
+| `androidworld/failure_taxonomy_20261122.json` | Follow-up: main failure cause per seed-30 episode, AndroidControlOnly–OwnHistory and held-out Main |
 
 ## Supporting files
 
@@ -30,6 +30,8 @@ raw files are never edited. What each number means: [docs/results.md](../docs/re
 
 ## Folders
 
+Folder and file names keep the labels used when they were written (`v46_dev`, `lfm3vl2b_v45d`, ...); the map to today's names is [docs/naming.md](../docs/naming.md#records-keep-the-old-names).
+
 | Folder | Contents |
 |---|---|
 | `androidworld_sealed/` | **Held-out episode files** (`<model>_seed<s>/`, re-runs in `*_rerun/`) |
@@ -37,15 +39,18 @@ raw files are never edited. What each number means: [docs/results.md](../docs/re
 | `mobileworld/` | MobileWorld per-model summaries, run snapshot, container logs. Raw trajectories (`traj_r2/`, 8.6 GB) are not in git |
 | `androidcontrol/` | AndroidControl test predictions and metrics |
 | `general/` | General-knowledge (MMStar, MMLU) predictions and retention tests |
-| `v2_dev/`, `v3_dev/`, `v4_dev/`, `v4rl_dev/` | Development-split predictions and metrics per version (v4: also training logs) |
+| `v2_dev/`, `v3_dev/`, `v4_dev/`, `v4rl_dev/` | Development-split predictions and metrics per version (Main: also training logs) |
 | `training/` | Training logs, configs and loss curves per run |
 | `speed/`, `qdc/`, `devstream/` | Raw speed measurements: CPU, Qualcomm phone, Pixel 9 |
 | `data/`, `data_v2/` | Dataset verification and build logs |
 | `codex/` | Codex audits: `PROMPT_<name>.md` + report + evidence ([docs/audits.md](../docs/audits.md)) |
-| `v41_dev/`, `v42_dev/` | Follow-up v4.1 / v4.2: development-split predictions and metrics (v4.2: also its training log) |
-| `v42/` | v4.2 data build record: self-history replay state and statistics, data manifests |
-| `v5_dev/` | Round 5 (v4.3-*): DPO pair statistics, offline gate files, training logs, pipeline and publish logs |
-| `v4*_gguf_manifest.json` (v4.1+) | Hashes of the published follow-up GGUFs |
+| `v41_dev/`, `v42_dev/` | Follow-up WaitRelabel / OwnHistory: development-split predictions and metrics (OwnHistory: also its training log) |
+| `v42/` | OwnHistory data build record: self-history replay state and statistics, data manifests |
+| `v5_dev/` | Round 5 (`-Dev-DPOAllMistakes`, `-Dev-DPOStopMistakes`, `-Dev-ContinuedSFT`): DPO pair statistics, offline gate files, training logs, pipeline and publish logs |
+| `v4*_gguf_manifest.json` (the WaitRelabel-to-ContinuedSFT GGUFs) | Hashes of the published follow-up GGUFs |
+| `v44_dev/`, `v45_dev/`, `v46_dev/`, `v47_dev/`, `v48_dev/` | Rounds 6–10: offline gate files, probes, judge labels and audits per round (MemGUI*, FullMix, Counterfactual, Counterfactual-WaitFix, stop-DPO) |
+| `r11_dev/` … `r14_dev/` | Rounds 11–14: gates, probes, SOP validation, training-job logs |
+| `hf_migration/`, `hf_snapshot_pre_rename_2026-11-26.json` | The 2026-11-26 Hugging Face rename: every move and commit, and the before-state (files, LFS hashes, revisions) |
 | `agy/`, `review/` | Follow-up reviews: briefs, reports, our responses ([docs/audits.md](../docs/audits.md#follow-up-rounds-agy-reviews)) |
 
 Episode files (`*.pkl.gz`) are Python pickles written by this project's AndroidWorld harness; load them only from

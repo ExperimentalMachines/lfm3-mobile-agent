@@ -1,4 +1,4 @@
-"""Unit test of the round-12 done check (eval/androidworld/lfm_agent.py --done_check; docs/PREREG_v410.md) against a stub
+"""Unit test of the round-12 done check (eval/androidworld/lfm_agent.py --done_check; docs/preregistrations/round-12-done-check.md) against a stub
 model server and a fake environment, no emulator. Checks:
   1. check answers no  -> the complete is blocked, the re-ask carries the reason as reasoning and a grammar without
      status, the replacement tap is executed and recorded in the history; the episode continues

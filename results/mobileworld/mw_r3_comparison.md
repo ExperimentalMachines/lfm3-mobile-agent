@@ -1,6 +1,6 @@
 # MobileWorld run 3: LFM3-VL-2B-AndroidAgent-v4.2 (no guards, MobileWorld-native typing) (105 English GUI-only tasks)
 
-Post-hoc follow-up ([PREREG_v41.md](../../docs/PREREG_v41.md)): designed after reading v4's MobileWorld trajectories, so MobileWorld is a development benchmark for this run. v4's 6/105 stays the held-out MobileWorld number.
+Post-hoc follow-up ([PREREG_v41.md](../../docs/preregistrations/mobileworld-followup-waitrelabel.md)): designed after reading v4's MobileWorld trajectories, so MobileWorld is a development benchmark for this run. v4's 6/105 stays the held-out MobileWorld number.
 
 | Model | Successes / 105 | Both | This run only | Baseline only | Difference | Exact McNemar p |
 |---|---|---|---|---|---|---|

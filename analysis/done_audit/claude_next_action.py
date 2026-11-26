@@ -1,4 +1,4 @@
-"""Round 12 fix 2 (docs/PREREG_v410.md): Claude writes the next action for GUI-Odyssey final screens the judge found
+"""Round 12 fix 2 (docs/preregistrations/round-12-done-check.md): Claude writes the next action for GUI-Odyssey final screens the judge found
 unfinished, so they can be trained as ordinary action rows ("not done here -> do this").
 
   split   python claude_next_action.py split --verdicts V.jsonl --out results/r12_dev/notdone_split.json

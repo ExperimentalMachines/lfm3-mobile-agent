@@ -1,4 +1,4 @@
-"""Full outcome accounting for AndroidWorld runs (round 14 step 3, docs/PREREG_v412.md; external review M3 and M10).
+"""Full outcome accounting for AndroidWorld runs (round 14 step 3, docs/preregistrations/round-14-own-history-vs-control.md; external review M3 and M10).
 Every episode gets exactly one outcome:
   success              is_successful >= 1 (the checker) and no exception
   claim_unfinished     ended with `status complete` but not fully met (partial credit INCLUDED; answer tasks included)

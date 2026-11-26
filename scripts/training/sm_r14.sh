@@ -1,5 +1,5 @@
 #!/bin/bash
-# Round 14 (docs/PREREG_v412.md): two arms from E on the same 400 episodes (seed 14), each on its own SageMaker job.
+# Round 14 (docs/preregistrations/round-14-own-history-vs-control.md): two arms from E on the same 400 episodes (seed 14), each on its own SageMaker job.
 #   R14_ARM=rl  : corrected semi-online RL (train/semi_online_rl.py: natural-segment returns, premature terminal ends the
 #                 attempt, strict matcher, suffix windows keep endings, no failed-audit labels), 100 batches x B4 x G4
 #   R14_ARM=sft : matched control: E's greedy own-history rollouts on the same episodes -> every strict miss labelled with
@@ -43,7 +43,7 @@ else
       || { log "COLLECT FAILED"; grep -v Warning $O.collect.log | tail -15 | tee -a $CK/r14.log; exit 1; }
   fi
   log "$(grep -m1 'plan:' $O.collect.log | cut -c1-300)"; log "$(cat $O/collect_stats.json | tr -d '\n' | cut -c1-500)"
-  [ -f $O/mix_stats.json ] || python r14_sft_mix.py --div $O/div --out $O/mix --n $((SFT_STEPS * 32)) > $O.mix.log 2>&1 \
+  [ -f $O/mix_stats.json ] || python ownhistory_sft_mix.py --div $O/div --out $O/mix --n $((SFT_STEPS * 32)) > $O.mix.log 2>&1 \
     || { log "MIX FAILED"; tail -5 $O.mix.log | tee -a $CK/r14.log; exit 1; }
   log "$(grep -o 'R14_SFT_MIX_DONE.*' $O.mix.log)"
   if [ ! -f $O/sft/train_receipt.json ]; then

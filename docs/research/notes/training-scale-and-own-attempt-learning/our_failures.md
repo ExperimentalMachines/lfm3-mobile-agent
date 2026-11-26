@@ -105,7 +105,7 @@ Source: [results/androidworld_sealed/](../../../../results/androidworld_sealed/)
 - Held-out GUI-Owl: 2.1% `wait`, 26.4% of clicks with no effect.
 - Held-out v1: 37.9% `wait`, 16% of new-intent clicks with no effect.
 - PREREG_v41 reports v4's `wait` share as 35% / 37% on seeds 7 / 2026 —
-  [docs/PREREG_v41.md](../../../../docs/PREREG_v41.md).
+  [docs/preregistrations/mobileworld-followup-waitrelabel.md](../../../../docs/preregistrations/mobileworld-followup-waitrelabel.md).
 
 **Table 4: termination precision (successes ÷ episodes the agent ended itself with `complete` or `answer`) (computed)**
 
@@ -212,7 +212,7 @@ Source: [results/androidworld_sealed/](../../../../results/androidworld_sealed/)
   - App-data reset failures: "Failed to clear directory".
 - v4.2+g: 20 of its 24 exceptions are "Could not get a11y tree".
 - Held-out v4 seed 1234: 113 setup crashes were re-run under the preregistered rule.
-- Sources: [docs/PREREG_v41.md](../../../../docs/PREREG_v41.md), [docs/results.md](../../../../docs/results.md).
+- Sources: [docs/preregistrations/mobileworld-followup-waitrelabel.md](../../../../docs/preregistrations/mobileworld-followup-waitrelabel.md), [docs/results.md](../../../../docs/results.md).
 
 ### Inferences
 - **False `complete` costs about a fifth to a quarter of all tasks, and no version changed it.**
@@ -453,7 +453,7 @@ Source: local, git-ignored trajectories in `results/mobileworld/traj_r2/v4_gui_e
 | Step where the final same-intent loop starts (median, p25–p75) | **6** (3–26) | 49 (47–49) |
 
 - PREREG_v41 gives 73% intent repetition for v4 with its own counting rule, and 85 of 104 tasks at the limit —
-  [docs/PREREG_v41.md](../../../../docs/PREREG_v41.md).
+  [docs/preregistrations/mobileworld-followup-waitrelabel.md](../../../../docs/preregistrations/mobileworld-followup-waitrelabel.md).
 
 **First divergence (same step index, different action type, or taps more than 100 px apart).**
 - All tasks with both trajectories:
@@ -569,7 +569,7 @@ Sources:
 - [results/v41_dev/lfm3vl2b-v41-lora_ft.metrics.json](../../../../results/v41_dev/lfm3vl2b-v41-lora_ft.metrics.json),
   [results/v42_dev/lfm3vl2b-v42-lora_ft.metrics.json](../../../../results/v42_dev/lfm3vl2b-v42-lora_ft.metrics.json).
 - Dev splits `results/v4{,1,2}_dev/*_dev_*.metrics.json`.
-- MMStar from [docs/PREREG_v41.md](../../../../docs/PREREG_v41.md) and [docs/results.md](../../../../docs/results.md).
+- MMStar from [docs/preregistrations/mobileworld-followup-waitrelabel.md](../../../../docs/preregistrations/mobileworld-followup-waitrelabel.md) and [docs/results.md](../../../../docs/results.md).
 
 | Version | AndroidWorld seed 30 | AndroidControl high-level step accuracy | Low-level | Terminal `complete` | Episode accuracy | `wait` step accuracy | `open_app` step accuracy | dev_answer | dev_complete | MMStar |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -598,7 +598,7 @@ Sources:
 - **v4.1 looked better than v4 offline and did worse online.**
   - dev_complete: 0.850 vs v4's 0.762.
   - AndroidControl high-level accuracy: 0.732 vs 0.728.
-  - Online seed 30: 12 vs 18 — [docs/PREREG_v41.md](../../../../docs/PREREG_v41.md).
+  - Online seed 30: 12 vs 18 — [docs/preregistrations/mobileworld-followup-waitrelabel.md](../../../../docs/preregistrations/mobileworld-followup-waitrelabel.md).
 
 **What offline evaluation shows vs closed-loop behaviour (computed from the per-step AndroidControl test predictions
 in `results/androidcontrol/lfm3vl2b-v{2,3}mix-lora_ft.jsonl` and `results/v4_dev/hub/eval/lfm3vl2b-v4bmix-lora_ft.jsonl`)**
@@ -706,7 +706,7 @@ were dropped as unreliable ([results/data_v2/stats.json](../../../../results/dat
 - The action space has no drag or slider action ([docs/models.md](../../../../docs/models.md)).
 
 **`wait` supervision copies intents.** 4,151 AndroidControl rows are `wait`; 3,918 (94%) repeat the previous step's
-intent. Only 12 `keyboard_enter` rows exist — [docs/PREREG_v41.md](../../../../docs/PREREG_v41.md).
+intent. Only 12 `keyboard_enter` rows exist — [docs/preregistrations/mobileworld-followup-waitrelabel.md](../../../../docs/preregistrations/mobileworld-followup-waitrelabel.md).
 
 **v4.1's data edits** ([results/v42/v41_data_manifest.json](../../../../results/v42/v41_data_manifest.json)):
 
@@ -718,7 +718,7 @@ intent. Only 12 `keyboard_enter` rows exist — [docs/PREREG_v41.md](../../../..
 | Rows given an extra `wait` in history | 2,574 |
 
 **v4.2's self-history** ([results/v42/selfhist_stats.json](../../../../results/v42/selfhist_stats.json); field
-definitions in [data/v42_selfhist.py](../../../../data/v42_selfhist.py)):
+definitions in [data/v42_selfhist.py](../../../../data/sft_ownhistory.py)):
 - **Replay coverage:** 6,922 episodes replayed (40% of eligible); 21,147 steps generated.
 - **Replay accuracy:**
   - v4.1 matched the human action on 14,769 steps (69.8%).

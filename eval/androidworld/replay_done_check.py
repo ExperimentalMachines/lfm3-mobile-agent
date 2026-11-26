@@ -1,4 +1,4 @@
-"""Round 12 "does it catch real false completes?" gate (docs/PREREG_v410.md): ask a model server the done question on the
+"""Round 12 "does it catch real false completes?" gate (docs/preregistrations/round-12-done-check.md): ask a model server the done question on the
 final screen of every seed-30 AndroidWorld episode that ended in `status complete`, from six earlier runs.
   false complete = not an exception, not a success, no partial credit, not an answer task (analysis/aw_false_complete.py)
   real success   = is_successful >= 1, ended in `status complete`

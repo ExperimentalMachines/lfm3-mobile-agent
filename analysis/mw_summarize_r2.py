@@ -2,8 +2,8 @@
 (pulled by scripts/mobileworld/mw_pull_r2.sh). Every attempt folder is classified with the same rule as mw_resume.sh (text after the
 runner's last "Error executing task"): MobileWorld's own in-run retries (--auto_retry 3, *_backup_* folders), folders
 moved aside by mw_resume.sh (_interrupted/<run>/), and the final folder. Score = the final folder's result.txt; a task
-without one counts as a failure (docs/PREREG_v4.md, 2026-11-19 01:55).
-MAI-UI ran as two halves (maiui_a / maiui_b, alternate split of the same 105 tasks; docs/PREREG_v4.md 2026-11-19 05:20)
+without one counts as a failure (docs/preregistrations/heldout-main-vs-gui-owl.md, 2026-11-19 01:55).
+MAI-UI ran as two halves (maiui_a / maiui_b, alternate split of the same 105 tasks; docs/preregistrations/heldout-main-vs-gui-owl.md 2026-11-19 05:20)
 whose folders share traj_logs/maiui_gui_en_r2; it is complete when both halves are.
 Writes results/mobileworld/{guiowl,v4,maiui}_gui_en_r2_summary.json and results/mobileworld/mw_r2_comparison.{json,md}.
 Usage: python analysis/mw_summarize_r2.py
@@ -27,7 +27,7 @@ DONE = {"guiowl": ["guiowl"], "v4": ["v4"], "maiui": ["maiui_a", "maiui_b"]}    
 ENV = ("setup_failed", "scoring_failed")
 MODEL = ("unsupported_action", "invalid_model_output", "ask_user_without_simulator", "other_error")
 # model server (Colab tunnel) unreachable: the official agent's 3 LLM retries failed with a connection error; re-run like an
-# interruption (scripts/mobileworld/gcp_mw_resume_vm.sh, docs/PREREG_v4.md 2026-11-19 10:20). Infrastructure, not a model outcome.
+# interruption (scripts/mobileworld/gcp_mw_resume_vm.sh, docs/preregistrations/heldout-main-vs-gui-owl.md 2026-11-19 10:20). Infrastructure, not a model outcome.
 SERVER_DOWN = ("Error calling OpenAI API: Connection error", "Error calling OpenAI API: Request timed out", "Connection refused",
                "Error calling OpenAI API: Error code: 502", "Error calling OpenAI API: Error code: 503",
                "Error calling OpenAI API: Error code: 504")
@@ -126,7 +126,7 @@ for key, (root, model, agent, ctr, st) in RUNS.items():
     s0, s1 = (stamp(st + ".start"), stamp(st + ".end")) if st else (None, None)
     out = {"model": model, "agent": agent, "container": ctr,
            "suite": "MobileWorld a026188, 105 English GUI-only tasks (results/mobileworld/mw_gui_en.json)",
-           "settings": "max_round 50, step_wait 3 s, auto_retry 3 (MobileWorld built-in), 1 screenshot; completion rule docs/PREREG_v4.md 2026-11-19 01:55 / 05:20 / 05:45",
+           "settings": "max_round 50, step_wait 3 s, auto_retry 3 (MobileWorld built-in), 1 screenshot; completion rule docs/preregistrations/heldout-main-vs-gui-owl.md 2026-11-19 01:55 / 05:20 / 05:45",
            "host": "GCP n2-standard-16 (env containers) + Colab T4 (model server, reverse SSH tunnel)",
            "model_server_unreachable_folders": sum(a["detail"] == "model_server_unreachable" for x in tasks.values() for a in x["attempts"]),
            "elapsed_s_original_list": (s1 - s0) if s0 and s1 else None,
@@ -309,7 +309,7 @@ L += [f"* GUI-Owl's official agent returns an `error_env` sentinel after 5 unpar
       "| Quantisation | Q4_K_M | Q4_K_M | Q8_0 (Q4_K_M degenerates) |",
       "| Step budget | 50 environment rounds incl. synthetic Enters | 50 environment rounds | 50 environment rounds |", "",
       "MobileWorld's own `--auto_retry 3` (same flag in every run) re-runs a task whose execution ended without a result, whatever "
-      "the reason; mw_resume.sh then applied the pre-declared completion rule (docs/PREREG_v4.md 2026-11-19 01:55, clarified "
+      "the reason; mw_resume.sh then applied the pre-declared completion rule (docs/preregistrations/heldout-main-vs-gui-owl.md 2026-11-19 01:55, clarified "
       "05:45: the fresh-container allowance is one more invocation, inside which `--auto_retry 3` allows up to 4 executions, "
       "equally for every model). Single run per model at temperature 0; a secondary, descriptive benchmark comparing agent "
       "pipelines, not model weights alone. Independent recomputation: results/codex/mw_r2_audit/ (VALID WITH CAVEATS)."]

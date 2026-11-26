@@ -1,11 +1,11 @@
 #!/bin/bash
-# Launch a round-9 SageMaker training job (docs/PREREG_v47.md): scripts/training/sm_r9.sh with a code channel only
+# Launch a round-9 SageMaker training job (docs/preregistrations/round-09-useless-waits.md): scripts/training/sm_r9.sh with a code channel only
 # (data from the public Hub). Account id and role are read at run time (not stored in the repo).
 # usage: R9_BUCKET=<bucket> [R9_REGION=us-west-2] [R9_INSTANCE=ml.g6.2xlarge] [R9_CKPT=<checkpoint name, to resume another job>] sm_launch_r9.sh <job-name> smoke|full [max_hours] [KEY=VALUE ...]
 set -euo pipefail
 JOB=$1; MODE=$2; HOURS=${3:-2}; shift 3 || true
 B=${R9_BUCKET:?set R9_BUCKET}; R=${R9_REGION:-us-west-2}; INST=${R9_INSTANCE:-ml.g6.2xlarge}
-DREV=420637e95d63c823f04c84bb9c03dd8159275f21   # experimentalmachines/MobileAgent-SFT-v4.7
+DREV=420637e95d63c823f04c84bb9c03dd8159275f21   # experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix
 export AWS_PAGER=""
 cd "$(dirname "$0")/../.."
 ACCT=$(aws sts get-caller-identity --query Account --output text)
@@ -13,7 +13,7 @@ CODE=$(mktemp -d); mkdir -p $CODE/meta
 cp scripts/training/sm_r9.sh scripts/training/vm_r9_eval.sh scripts/training/sm_r8_gate.py scripts/training/sm_r7_gate.py \
    train/sft_vlm.py train/agent_format.py eval/androidcontrol/generate.py eval/androidcontrol/score.py \
    eval/androidcontrol/score_dev.py eval/androidlens/score_androidlens.py $CODE/
-cp scripts/training/v4_reference_r7.json $CODE/v4_reference.json
+cp scripts/training/main_reference_r7.json $CODE/v4_reference.json
 cp data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json $CODE/meta/
 aws s3 sync --delete --only-show-errors $CODE s3://$B/r9/code/$JOB/
 rm -rf $CODE

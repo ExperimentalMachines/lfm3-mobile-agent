@@ -1,4 +1,4 @@
-"""Paired seed-30 comparison of AndroidWorld runs against a reference run (the round-5 online gate, docs/PREREG_v41.md
+"""Paired seed-30 comparison of AndroidWorld runs against a reference run (the round-5 online gate, docs/preregistrations/mobileworld-followup-waitrelabel.md
 2026-11-22 17:00): per task, success = is_successful >= 1 (exceptions count as failures). Prints successes, tasks only
 the candidate solves, tasks only the reference solves, net gain, and the exact two-sided McNemar p (binomial on flips); then the same on tasks where neither run crashed ("no_exc_*").
 Usage: .venv-aw/bin/python -I analysis/aw_paired_flips.py results/androidworld/<ref> results/androidworld/<run> [...]"""

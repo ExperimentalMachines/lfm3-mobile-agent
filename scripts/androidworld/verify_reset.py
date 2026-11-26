@@ -1,4 +1,4 @@
-"""Round 14 step 4 (docs/PREREG_v412.md): sentinel check that AndroidWorld's per-task app reset works on one emulator.
+"""Round 14 step 4 (docs/preregistrations/round-14-own-history-vs-control.md): sentinel check that AndroidWorld's per-task app reset works on one emulator.
 For each app with a snapshot: write a marker file into the app's data directory (what a previous episode's leftovers
 look like), run android_world's own restore_snapshot (exactly what TaskEval.initialize_task does for each of a task's
 apps), then check the marker is gone and the app's data directory exists again. Prints one line per app and a summary.

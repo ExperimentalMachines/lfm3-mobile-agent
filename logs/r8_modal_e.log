@@ -1,0 +1,394 @@
+Note that running a local entrypoint in detached mode only keeps the last triggered Modal function alive after the parent process has been killed or disconnected.
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-JBBYAu31BugpBq8E6AO532
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r8_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/cards/v4.5-D.md
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/analysis/done_audit/judge_terminal.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/vm_publish_public.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+├── ✓ Created Function run_smoke.
+├── ✓ Created Function publish_d.
+├── ✓ Created Function probe_fn.
+├── ✓ Created Function judge_fn.
+├── ✓ Created Function run_e.
+├── ✓ Created Function run_smoke_e.
+├── ✓ Created Function mjb_fn.
+└── ✓ Created Function judge2_fn.
+[16:22:47] r8e: start (resumes from the Hub checkpoint repo if one exists)
+W1124 16:23:00.346000 7 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 16:23:00.429000 7 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+Downloading data:   0%|          | 0/41 [00:00<?, ?files/s]
+Downloading data:   2%|▏         | 1/41 [00:03<02:22,  3.57s/files]
+Downloading data:   5%|▍         | 2/41 [00:06<02:14,  3.44s/files]
+Downloading data:   7%|▋         | 3/41 [00:10<02:08,  3.38s/files]
+Downloading data:  10%|▉         | 4/41 [00:13<02:04,  3.37s/files]
+Downloading data:  12%|█▏        | 5/41 [00:16<02:00,  3.35s/files]
+Downloading data:  15%|█▍        | 6/41 [00:20<02:02,  3.49s/files]
+Downloading data:  17%|█▋        | 7/41 [00:24<01:58,  3.49s/files]
+Downloading data:  20%|█▉        | 8/41 [00:28<01:58,  3.58s/files]
+Downloading data:  22%|██▏       | 9/41 [00:34<02:03,  3.86s/files]
+Downloading data:  24%|██▍       | 10/41 [00:38<01:59,  3.84s/files]
+Downloading data:  27%|██▋       | 11/41 [00:41<01:54,  3.81s/files]
+Downloading data:  29%|██▉       | 12/41 [00:45<01:49,  3.78s/files]
+Downloading data:  32%|███▏      | 13/41 [00:48<01:45,  3.77s/files]
+Downloading data:  34%|███▍      | 14/41 [00:52<01:41,  3.77s/files]
+Downloading data:  37%|███▋      | 15/41 [00:56<01:37,  3.75s/files]
+Downloading data:  39%|███▉      | 16/41 [00:59<01:33,  3.73s/files]
+Downloading data:  41%|████▏     | 17/41 [01:05<01:31,  3.83s/files]
+Downloading data:  44%|████▍     | 18/41 [01:09<01:28,  3.85s/files]
+Downloading data:  46%|████▋     | 19/41 [01:12<01:24,  3.83s/files]
+Downloading data:  49%|████▉     | 20/41 [01:16<01:19,  3.81s/files]
+Downloading data:  51%|█████     | 21/41 [01:19<01:15,  3.80s/files]
+Downloading data:  54%|█████▎    | 22/41 [01:23<01:12,  3.80s/files]
+Downloading data:  56%|█████▌    | 23/41 [01:27<01:08,  3.79s/files]
+Downloading data:  59%|█████▊    | 24/41 [01:30<01:04,  3.77s/files]
+Downloading data:  61%|██████    | 25/41 [01:33<00:59,  3.75s/files]
+Downloading data:  63%|██████▎   | 26/41 [01:37<00:55,  3.73s/files]
+Downloading data:  66%|██████▌   | 27/41 [01:40<00:52,  3.71s/files]
+Downloading data:  68%|██████▊   | 28/41 [01:43<00:48,  3.70s/files]
+Downloading data:  71%|███████   | 29/41 [01:47<00:44,  3.70s/files]
+Downloading data:  73%|███████▎  | 30/41 [01:50<00:40,  3.70s/files]
+Downloading data:  76%|███████▌  | 31/41 [01:54<00:36,  3.68s/files]
+Downloading data:  78%|███████▊  | 32/41 [01:57<00:33,  3.67s/files]
+Downloading data:  80%|████████  | 33/41 [02:00<00:29,  3.66s/files]
+Downloading data:  83%|████████▎ | 34/41 [02:04<00:25,  3.66s/files]
+Downloading data:  85%|████████▌ | 35/41 [02:07<00:21,  3.65s/files]
+Downloading data:  88%|████████▊ | 36/41 [02:11<00:18,  3.65s/files]
+Downloading data:  90%|█████████ | 37/41 [02:14<00:14,  3.64s/files]
+Downloading data:  93%|█████████▎| 38/41 [02:18<00:10,  3.64s/files]
+Downloading data:  95%|█████████▌| 39/41 [02:22<00:07,  3.64s/files]
+Downloading data:  98%|█████████▊| 40/41 [02:25<00:03,  3.64s/files]
+Downloading data: 100%|██████████| 41/41 [02:29<00:00,  3.64s/files]
+Downloading data: 100%|██████████| 41/41 [02:29<00:00,  3.64s/files]
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 1016 examples [00:00, 4701.02 examples/s]
+Generating train split: 3048 examples [00:00, 8472.61 examples/s]
+Generating train split: 5546 examples [00:00, 9049.32 examples/s]
+Generating train split: 6564 examples [00:00, 8837.93 examples/s]
+Generating train split: 7582 examples [00:00, 8216.32 examples/s]
+Generating train split: 8600 examples [00:01, 8603.69 examples/s]
+Generating train split: 10073 examples [00:01, 5509.55 examples/s]
+Generating train split: 11090 examples [00:01, 5899.77 examples/s]
+Generating train split: 12107 examples [00:01, 5975.81 examples/s]
+Generating train split: 14591 examples [00:02, 6423.78 examples/s]
+Generating train split: 15598 examples [00:02, 6578.83 examples/s]
+Generating train split: 16605 examples [00:02, 6541.30 examples/s]
+Generating train split: 19131 examples [00:02, 6550.05 examples/s]
+Generating train split: 20150 examples [00:02, 6924.41 examples/s]
+Generating train split: 21169 examples [00:03, 6877.07 examples/s]
+Generating train split: 22640 examples [00:03, 7980.91 examples/s]
+Generating train split: 23647 examples [00:03, 5355.41 examples/s]
+Generating train split: 24654 examples [00:03, 5883.14 examples/s]
+Generating train split: 25661 examples [00:03, 6408.39 examples/s]
+Generating train split: 28176 examples [00:04, 6957.55 examples/s]
+Generating train split: 29184 examples [00:04, 6335.02 examples/s]
+Generating train split: 30192 examples [00:04, 6006.77 examples/s]
+Generating train split: 32714 examples [00:04, 6131.49 examples/s]
+Generating train split: 33732 examples [00:05, 6167.39 examples/s]
+Generating train split: 35768 examples [00:05, 8082.27 examples/s]
+Generating train split: 37238 examples [00:05, 6504.62 examples/s]
+Generating train split: 38252 examples [00:05, 5797.89 examples/s]
+Generating train split: 39266 examples [00:05, 6066.50 examples/s]
+Generating train split: 41761 examples [00:06, 6101.81 examples/s]
+Generating train split: 42770 examples [00:06, 5969.47 examples/s]
+Generating train split: 43779 examples [00:06, 6436.94 examples/s]
+Generating train split: 46290 examples [00:06, 6900.53 examples/s]
+Generating train split: 47300 examples [00:07, 7064.75 examples/s]
+Generating train split: 48310 examples [00:07, 7250.37 examples/s]
+Generating train split: 50820 examples [00:07, 7385.23 examples/s]
+Generating train split: 51832 examples [00:07, 7495.68 examples/s]
+Generating train split: 53856 examples [00:07, 9471.39 examples/s]
+Generating train split: 55343 examples [00:08, 8881.30 examples/s]
+Generating train split: 57357 examples [00:08, 10088.29 examples/s]
+Generating train split: 59872 examples [00:08, 9671.46 examples/s] 
+Generating train split: 61888 examples [00:08, 10110.66 examples/s]
+Generating train split: 64412 examples [00:08, 9046.26 examples/s] 
+Generating train split: 65432 examples [00:09, 9149.04 examples/s]
+Generating train split: 67472 examples [00:09, 9843.56 examples/s]
+Generating train split: 68934 examples [00:09, 8703.28 examples/s]
+Generating train split: 69948 examples [00:09, 8812.41 examples/s]
+Generating train split: 70962 examples [00:09, 8418.89 examples/s]
+Generating train split: 73463 examples [00:10, 7726.08 examples/s]
+Generating train split: 74478 examples [00:10, 7887.00 examples/s]
+Generating train split: 76976 examples [00:10, 10508.49 examples/s]
+Generating train split: 78988 examples [00:10, 9351.27 examples/s] 
+Generating train split: 81000 examples [00:10, 11123.67 examples/s]
+Generating train split: 82521 examples [00:10, 9261.74 examples/s] 
+Generating train split: 84555 examples [00:11, 10976.93 examples/s]
+Generating train split: 87049 examples [00:11, 10616.61 examples/s]
+Generating train split: 90560 examples [00:11, 13447.77 examples/s]
+Generating train split: 92586 examples [00:11, 12802.84 examples/s]
+Generating train split: 95088 examples [00:11, 14324.52 examples/s]
+Generating train split: 97108 examples [00:12, 12104.37 examples/s]
+Generating train split: 99616 examples [00:12, 13726.99 examples/s]
+Generating train split: 102625 examples [00:12, 13305.01 examples/s]
+Generating train split: 105167 examples [00:12, 13098.10 examples/s]
+Generating train split: 108672 examples [00:12, 15619.46 examples/s]
+Generating train split: 110726 examples [00:12, 12978.15 examples/s]
+Generating train split: 113200 examples [00:13, 14646.52 examples/s]
+Generating train split: 115230 examples [00:13, 13067.12 examples/s]
+Generating train split: 118743 examples [00:13, 12957.57 examples/s]
+Generating train split: 121788 examples [00:13, 14893.52 examples/s]
+Generating train split: 124288 examples [00:13, 13086.13 examples/s]
+Generating train split: 126784 examples [00:14, 14325.28 examples/s]
+Generating train split: 128790 examples [00:14, 13057.19 examples/s]
+Generating train split: 132326 examples [00:14, 13316.58 examples/s]
+Generating train split: 134354 examples [00:14, 14264.14 examples/s]
+Generating train split: 136857 examples [00:14, 13790.61 examples/s]
+Generating train split: 138891 examples [00:15, 13758.25 examples/s]
+Generating train split: 141371 examples [00:15, 13226.26 examples/s]
+Generating train split: 144380 examples [00:15, 15184.26 examples/s]
+Generating train split: 146938 examples [00:15, 13820.22 examples/s]
+Generating train split: 150441 examples [00:15, 14137.26 examples/s]
+Generating train split: 153492 examples [00:15, 15924.31 examples/s]
+Generating train split: 155996 examples [00:16, 13186.65 examples/s]
+Generating train split: 158480 examples [00:16, 14615.36 examples/s]
+Generating train split: 160522 examples [00:16, 13003.72 examples/s]
+Generating train split: 164034 examples [00:16, 14300.83 examples/s]
+Generating train split: 167535 examples [00:16, 16638.57 examples/s]
+Generating train split: 169541 examples [00:17, 13971.90 examples/s]
+Generating train split: 172062 examples [00:17, 15480.95 examples/s]
+Generating train split: 174094 examples [00:17, 13861.25 examples/s]
+Generating train split: 177599 examples [00:17, 14525.23 examples/s]
+Generating train split: 180629 examples [00:17, 15949.42 examples/s]
+Generating train split: 183128 examples [00:18, 14905.41 examples/s]
+Generating train split: 185140 examples [00:18, 15209.48 examples/s]
+Generating train split: 185643 examples [00:18, 10216.09 examples/s]
+
+Generating val split: 0 examples [00:00, ? examples/s]
+Generating val split: 827 examples [00:00, 8801.77 examples/s]
+train rows=185643 val rows=827
+
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+Loading weights:  74%|███████▍  | 313/424 [00:00<00:00, 3100.17it/s]
+Loading weights: 100%|██████████| 424/424 [00:00<00:00, 3937.57it/s]
+params=1,918,181,888
+modules_to_save: []
+[RANK 0] Detected kernel version 4.19.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+trainable params: 65,874,944 || all params: 1,984,056,832 || trainable%: 3.3202
+WARNING: hub checkpoint repo has no run_config.json; only batch size / max_steps are checked
+
+  0%|          | 0/5802 [00:00<?, ?it/s]
+  0%|          | 1/5802 [00:14<22:36:48, 14.03s/it]{"step": 1, "epoch": 0.000172372928831527, "elapsed_s": 16.7, "gpu_mem_gb": 33.83, "loss": 2.153378486633301, "grad_norm": 5.424342632293701, "learning_rate": 0.0, "entropy": 0.46834780648350716, "mean_token_accuracy": 0.7236781716346741, "num_tokens": 42121.0}
+
+                                                   
+
+  0%|          | 1/5802 [00:14<22:36:48, 14.03s/it]
+  0%|          | 2/5802 [00:19<14:15:13,  8.85s/it]
+  0%|          | 3/5802 [00:22<10:20:21,  6.42s/it]
+  0%|          | 4/5802 [00:27<9:21:42,  5.81s/it] 
+  0%|          | 5/5802 [00:30<7:52:53,  4.89s/it]
+  0%|          | 6/5802 [00:34<7:00:22,  4.35s/it]
+  0%|          | 7/5802 [00:37<6:31:30,  4.05s/it]
+  0%|          | 8/5802 [00:41<6:10:53,  3.84s/it]
+  0%|          | 9/5802 [00:44<6:02:11,  3.75s/it]
+  0%|          | 10/5802 [00:48<5:53:23,  3.66s/it]{'loss': '2.153', 'grad_norm': '5.424', 'learning_rate': '0', 'entropy': '0.4683', 'mean_token_accuracy': '0.7237', 'num_tokens': '4.212e+04', 'epoch': '0.0001724'}
+{"step": 10, "epoch": 0.0017237292883152701, "elapsed_s": 50.7, "gpu_mem_gb": 34.13, "loss": 2.231919606526693, "grad_norm": 5.173431873321533, "learning_rate": 1.0285714285714286e-05, "entropy": 0.5619474256204234, "mean_token_accuracy": 0.7057855187190903, "num_tokens": 412128.0}
+
+                                                   
+
+  0%|          | 10/5802 [00:48<5:53:23,  3.66s/it]
+  0%|          | 11/5802 [00:51<5:47:43,  3.60s/it]
+  0%|          | 12/5802 [00:55<5:50:20,  3.63s/it]
+  0%|          | 13/5802 [00:58<5:46:01,  3.59s/it]
+  0%|          | 14/5802 [01:02<5:40:22,  3.53s/it]
+  0%|          | 15/5802 [01:05<5:40:00,  3.53s/it]
+  0%|          | 16/5802 [01:08<5:22:11,  3.34s/it]
+  0%|          | 17/5802 [01:12<5:26:15,  3.38s/it]
+  0%|          | 18/5802 [01:15<5:23:04,  3.35s/it]
+  0%|          | 19/5802 [01:18<5:26:31,  3.39s/it]
+  0%|          | 20/5802 [01:22<5:29:53,  3.42s/it]{'loss': '2.232', 'grad_norm': '5.173', 'learning_rate': '1.029e-05', 'entropy': '0.5619', 'mean_token_accuracy': '0.7058', 'num_tokens': '4.121e+05', 'epoch': '0.001724'}
+{"step": 20, "epoch": 0.0034474585766305402, "elapsed_s": 84.9, "gpu_mem_gb": 37.5, "loss": 1.4128840446472168, "grad_norm": 2.2729461193084717, "learning_rate": 2.1714285714285715e-05, "entropy": 0.5973095551133156, "mean_token_accuracy": 0.7821951277554036, "num_tokens": 826937.0}
+
+                                                   
+
+  0%|          | 20/5802 [01:22<5:29:53,  3.42s/it]
+  0%|          | 21/5802 [01:25<5:30:38,  3.43s/it]
+  0%|          | 22/5802 [01:29<5:33:59,  3.47s/it]
+  0%|          | 23/5802 [01:32<5:28:33,  3.41s/it]
+  0%|          | 24/5802 [01:35<5:28:02,  3.41s/it]
+  0%|          | 25/5802 [01:39<5:25:41,  3.38s/it]
+  0%|          | 26/5802 [01:42<5:14:38,  3.27s/it]
+  0%|          | 27/5802 [01:45<5:10:40,  3.23s/it]
+  0%|          | 28/5802 [01:48<5:10:16,  3.22s/it]
+  0%|          | 29/5802 [01:51<5:12:14,  3.25s/it]
+  1%|          | 30/5802 [01:55<5:22:28,  3.35s/it]{'loss': '1.413', 'grad_norm': '2.273', 'learning_rate': '2.171e-05', 'entropy': '0.5973', 'mean_token_accuracy': '0.7822', 'num_tokens': '8.269e+05', 'epoch': '0.003447'}
+{"step": 30, "epoch": 0.00517118786494581, "elapsed_s": 118.2, "gpu_mem_gb": 37.5, "loss": 0.7424146175384522, "grad_norm": 1.1783843040466309, "learning_rate": 3.314285714285714e-05, "entropy": 0.7603073213249445, "mean_token_accuracy": 0.8353241056203842, "num_tokens": 1240409.0}
+
+                                                   
+
+  1%|          | 30/5802 [01:55<5:22:28,  3.35s/it]
+  1%|          | 31/5802 [01:58<5:20:55,  3.34s/it]
+  1%|          | 32/5802 [02:01<5:03:28,  3.16s/it]
+  1%|          | 33/5802 [02:05<5:14:10,  3.27s/it]
+  1%|          | 34/5802 [02:08<5:16:48,  3.30s/it]
+  1%|          | 35/5802 [02:12<5:24:18,  3.37s/it]
+  1%|          | 36/5802 [02:15<5:26:40,  3.40s/it]
+  1%|          | 37/5802 [02:18<5:24:45,  3.38s/it]
+  1%|          | 38/5802 [02:21<5:16:10,  3.29s/it]
+  1%|          | 39/5802 [02:25<5:14:24,  3.27s/it]
+  1%|          | 40/5802 [02:28<5:05:09,  3.18s/it]{'loss': '0.7424', 'grad_norm': '1.178', 'learning_rate': '3.314e-05', 'entropy': '0.7603', 'mean_token_accuracy': '0.8353', 'num_tokens': '1.24e+06', 'epoch': '0.005171'}
+{"step": 40, "epoch": 0.0068949171532610804, "elapsed_s": 150.7, "gpu_mem_gb": 37.5, "loss": 0.6454119205474853, "grad_norm": 1.2415353059768677, "learning_rate": 4.4571428571428574e-05, "entropy": 0.6885363627225161, "mean_token_accuracy": 0.8493168100714683, "num_tokens": 1652469.0}
+
+                                                   
+
+  1%|          | 40/5802 [02:28<5:05:09,  3.18s/it]
+  1%|          | 41/5802 [02:31<5:12:57,  3.26s/it]
+  1%|          | 42/5802 [02:34<5:03:11,  3.16s/it]
+  1%|          | 43/5802 [02:37<5:03:28,  3.16s/it]
+  1%|          | 44/5802 [02:40<5:06:19,  3.19s/it]
+  1%|          | 45/5802 [02:44<5:20:17,  3.34s/it]
+  1%|          | 46/5802 [02:47<5:17:16,  3.31s/it]
+  1%|          | 47/5802 [02:50<5:13:19,  3.27s/it]
+  1%|          | 48/5802 [02:53<4:59:41,  3.13s/it]
+  1%|          | 49/5802 [02:56<4:55:17,  3.08s/it]
+  1%|          | 50/5802 [02:59<4:53:25,  3.06s/it]{'loss': '0.6454', 'grad_norm': '1.242', 'learning_rate': '4.457e-05', 'entropy': '0.6885', 'mean_token_accuracy': '0.8493', 'num_tokens': '1.652e+06', 'epoch': '0.006895'}
+{"step": 50, "epoch": 0.00861864644157635, "elapsed_s": 182.4, "gpu_mem_gb": 37.5, "loss": 0.584988021850586, "grad_norm": 1.0244063138961792, "learning_rate": 5.6000000000000006e-05, "entropy": 0.5715796705335379, "mean_token_accuracy": 0.866495443880558, "num_tokens": 2071225.0}
+
+                                                   
+
+  1%|          | 50/5802 [02:59<4:53:25,  3.06s/it]
+  1%|          | 51/5802 [03:03<5:00:21,  3.13s/it]
+  1%|          | 52/5802 [03:06<5:00:18,  3.13s/it]
+  1%|          | 53/5802 [03:09<5:07:30,  3.21s/it]
+  1%|          | 54/5802 [03:12<5:00:55,  3.14s/it]
+  1%|          | 55/5802 [03:16<5:17:07,  3.31s/it]
+  1%|          | 56/5802 [03:19<5:12:14,  3.26s/it]
+  1%|          | 57/5802 [03:22<5:18:40,  3.33s/it]
+  1%|          | 58/5802 [03:26<5:18:14,  3.32s/it]
+  1%|          | 59/5802 [03:29<5:06:23,  3.20s/it]
+  1%|          | 60/5802 [03:32<5:04:21,  3.18s/it]{'loss': '0.585', 'grad_norm': '1.024', 'learning_rate': '5.6e-05', 'entropy': '0.5716', 'mean_token_accuracy': '0.8665', 'num_tokens': '2.071e+06', 'epoch': '0.008619'}
+{"step": 60, "epoch": 0.01034237572989162, "elapsed_s": 214.9, "gpu_mem_gb": 37.5, "loss": 0.5108978271484375, "grad_norm": 1.0891188383102417, "learning_rate": 6.742857142857143e-05, "entropy": 0.5090847810730338, "mean_token_accuracy": 0.8803955540060997, "num_tokens": 2483324.0}
+
+                                                   
+
+  1%|          | 60/5802 [03:32<5:04:21,  3.18s/it]
+  1%|          | 61/5802 [03:35<5:01:52,  3.16s/it]
+  1%|          | 62/5802 [03:38<4:58:16,  3.12s/it]
+  1%|          | 63/5802 [03:41<5:06:10,  3.20s/it]
+  1%|          | 64/5802 [03:44<4:50:01,  3.03s/it]
+  1%|          | 65/5802 [03:47<4:48:52,  3.02s/it]
+  1%|          | 66/5802 [03:50<4:38:44,  2.92s/it]
+  1%|          | 67/5802 [03:53<4:49:30,  3.03s/it]
+  1%|          | 68/5802 [03:56<4:50:38,  3.04s/it]
+  1%|          | 69/5802 [03:59<4:49:45,  3.03s/it]
+  1%|          | 70/5802 [04:02<4:49:53,  3.03s/it]{'loss': '0.5109', 'grad_norm': '1.089', 'learning_rate': '6.743e-05', 'entropy': '0.5091', 'mean_token_accuracy': '0.8804', 'num_tokens': '2.483e+06', 'epoch': '0.01034'}
+{"step": 70, "epoch": 0.012066105018206891, "elapsed_s": 245.1, "gpu_mem_gb": 37.75, "loss": 0.5799669742584228, "grad_norm": 0.8192243576049805, "learning_rate": 7.885714285714286e-05, "entropy": 0.5319197006523609, "mean_token_accuracy": 0.8674358136951923, "num_tokens": 2895744.0}
+
+                                                   
+
+  1%|          | 70/5802 [04:02<4:49:53,  3.03s/it]
+  1%|          | 71/5802 [04:05<4:53:29,  3.07s/it]
+  1%|          | 72/5802 [04:08<4:54:27,  3.08s/it]
+  1%|▏         | 73/5802 [04:11<4:56:02,  3.10s/it]
+  1%|▏         | 74/5802 [04:14<4:52:00,  3.06s/it]
+  1%|▏         | 75/5802 [04:17<4:53:35,  3.08s/it]
+  1%|▏         | 76/5802 [04:21<4:53:36,  3.08s/it]
+  1%|▏         | 77/5802 [04:24<4:54:38,  3.09s/it]
+  1%|▏         | 78/5802 [04:27<4:48:34,  3.02s/it]
+  1%|▏         | 79/5802 [04:30<4:56:25,  3.11s/it]
+  1%|▏         | 80/5802 [04:33<4:55:11,  3.10s/it]{'loss': '0.58', 'grad_norm': '0.8192', 'learning_rate': '7.886e-05', 'entropy': '0.5319', 'mean_token_accuracy': '0.8674', 'num_tokens': '2.896e+06', 'epoch': '0.01207'}
+{"step": 80, "epoch": 0.013789834306522161, "elapsed_s": 276.1, "gpu_mem_gb": 37.75, "loss": 0.5005423545837402, "grad_norm": 0.8061930537223816, "learning_rate": 9.028571428571428e-05, "entropy": 0.5128513682633639, "mean_token_accuracy": 0.8785419225692749, "num_tokens": 3308654.0}
+
+                                                   
+
+  1%|▏         | 80/5802 [04:33<4:55:11,  3.10s/it]
+  1%|▏         | 81/5802 [04:36<5:00:13,  3.15s/it]
+  1%|▏         | 82/5802 [04:39<4:44:16,  2.98s/it]
+  1%|▏         | 83/5802 [04:41<4:35:45,  2.89s/it]
+  1%|▏         | 84/5802 [04:44<4:31:39,  2.85s/it]
+  1%|▏         | 85/5802 [04:47<4:22:00,  2.75s/it]
+  1%|▏         | 86/5802 [04:50<4:36:48,  2.91s/it]
+  1%|▏         | 87/5802 [04:53<4:31:28,  2.85s/it]
+  2%|▏         | 88/5802 [04:56<4:33:18,  2.87s/it]
+  2%|▏         | 89/5802 [04:59<4:38:23,  2.92s/it]
+  2%|▏         | 90/5802 [05:02<4:48:46,  3.03s/it]{'loss': '0.5005', 'grad_norm': '0.8062', 'learning_rate': '9.029e-05', 'entropy': '0.5129', 'mean_token_accuracy': '0.8785', 'num_tokens': '3.309e+06', 'epoch': '0.01379'}
+{"step": 90, "epoch": 0.01551356359483743, "elapsed_s": 305.1, "gpu_mem_gb": 37.75, "loss": 0.5114599227905273, "grad_norm": 0.8191872835159302, "learning_rate": 0.00010171428571428572, "entropy": 0.4919543856754899, "mean_token_accuracy": 0.8784104190766812, "num_tokens": 3721231.0}
+
+                                                   
+
+  2%|▏         | 90/5802 [05:02<4:48:46,  3.03s/it]
+  2%|▏         | 91/5802 [05:05<4:41:36,  2.96s/it]
+  2%|▏         | 92/5802 [05:08<4:40:21,  2.95s/it]
+  2%|▏         | 93/5802 [05:11<4:36:48,  2.91s/it]
+  2%|▏         | 94/5802 [05:14<4:44:52,  2.99s/it]
+  2%|▏         | 95/5802 [05:16<4:38:00,  2.92s/it]
+  2%|▏         | 96/5802 [05:19<4:36:50,  2.91s/it]
+  2%|▏         | 97/5802 [05:22<4:35:55,  2.90s/it]
+  2%|▏         | 98/5802 [05:25<4:42:33,  2.97s/it]
+  2%|▏         | 99/5802 [05:28<4:42:50,  2.98s/it]
+  2%|▏         | 100/5802 [05:32<4:49:19,  3.04s/it]{'loss': '0.5115', 'grad_norm': '0.8192', 'learning_rate': '0.0001017', 'entropy': '0.492', 'mean_token_accuracy': '0.8784', 'num_tokens': '3.721e+06', 'epoch': '0.01551'}
+{"step": 100, "epoch": 0.0172372928831527, "elapsed_s": 334.7, "gpu_mem_gb": 37.75, "loss": 0.4684150218963623, "grad_norm": 0.8627745509147644, "learning_rate": 0.00011314285714285715, "entropy": 0.48850593976676465, "mean_token_accuracy": 0.8881903640925884, "num_tokens": 4135575.0}
+
+                                                    
+
+  2%|▏         | 100/5802 [05:32<4:49:19,  3.04s/it]
+  2%|▏         | 101/5802 [05:38<6:32:40,  4.13s/it]
+  2%|▏         | 102/5802 [05:41<5:53:42,  3.72s/it]
+  2%|▏         | 103/5802 [05:44<5:22:14,  3.39s/it]
+  2%|▏         | 104/5802 [05:46<5:02:19,  3.18s/it]
+  2%|▏         | 105/5802 [05:49<5:00:56,  3.17s/it]
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /Users/alpha/lfm3-android/scripts/training/modal_r7.py:188 in train_e        │
+│                                                                              │
+│   187 │   assert R8_ENV["DREV"] and R8_ENV["MAX_STEPS"], "set R8_DREV and R8 │
+│ ❱ 188 │   print("rc", run_e.remote(R8_ENV))                                  │
+│   189                                                                        │
+│                                                                              │
+│ /Users/alpha/lfm3-android/.venv/lib/python3.13/site-packages/modal/_object.p │
+│ y:49 in wrapped                                                              │
+│                                                                              │
+│    48 │   │   await self.hydrate()                                           │
+│ ❱  49 │   │   return await method(self, *args, **kwargs)                     │
+│    50                                                                        │
+│                                                                              │
+│ /Users/alpha/lfm3-android/.venv/lib/python3.13/site-packages/modal/_function │
+│ s.py:2115 in remote                                                          │
+│                                                                              │
+│   2114 │   │                                                                 │
+│ ❱ 2115 │   │   return await self._call_function(args, kwargs)                │
+│   2116                                                                       │
+│                                                                              │
+│ /Users/alpha/lfm3-android/.venv/lib/python3.13/site-packages/modal/_function │
+│ s.py:2050 in _call_function                                                  │
+│                                                                              │
+│   2049 │   │                                                                 │
+│ ❱ 2050 │   │   return await invocation.run_function()                        │
+│   2051                                                                       │
+│                                                                              │
+│ /Users/alpha/lfm3-android/.venv/lib/python3.13/site-packages/modal/_function │
+│ s.py:518 in run_function                                                     │
+│                                                                              │
+│    517 │   │   │   │   │   # We immediately retry internal failures and the  │
+│ ❱  518 │   │   │   │   │   self.attempt_token = await self._retry_input(meta │
+│    519 │   │   │   │   │   continue                                          │
+│                                                                              │
+│ /Users/alpha/lfm3-android/.venv/lib/python3.13/site-packages/modal/_function │
+│ s.py:538 in _retry_input                                                     │
+│                                                                              │
+│    537 │   │   )                                                             │
+│ ❱  538 │   │   retry_response = await self.stub.AttemptRetry(retry_request,  │
+│    539 │   │   return retry_response.attempt_token                           │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ConflictError: workspace ac-Hzrnu2uOnNeWbSaZGKTCYd is disabled

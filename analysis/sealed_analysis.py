@@ -1,4 +1,4 @@
-"""Pre-registered held-out analysis (docs/PREREG_v4.md, "Analysis") for the sealed AndroidWorld arms.
+"""Pre-registered held-out analysis (docs/preregistrations/heldout-main-vs-gui-owl.md, "Analysis") for the sealed AndroidWorld arms.
 
 Arms: v4 (LFM3 final), guiowl (GUI-Owl matched), v1 (reference). Only the seeds given with --seeds are opened; run it
 only for seeds whose arms have ALL finished (it refuses otherwise). Score = full success (is_successful >= 1, exception =
@@ -12,7 +12,7 @@ the test's breakpoints), reported rounded outward to 0.1 pp; the non-inferiority
 Sensitivity: successes disputed by the per-success trajectory review (results/aw_checker_disputes.json) counted as
 failures; the primary score is never rewritten.
 Usage: python analysis/sealed_analysis.py --seeds 7 --out results/sealed_analysis_seed7
-E (v4.6-E) arm, added post hoc (docs/PREREG_v46.md 2026-11-25 20:33): --arms v4,guiowl,v1,e adds E - v4 (E's rule: lower
+E (v4.6-E) arm, added post hoc (docs/preregistrations/round-08-done-from-the-screen.md 2026-11-25 20:33): --arms v4,guiowl,v1,e adds E - v4 (E's rule: lower
 95% bound > -6.9 pp) and E - GUI-Owl, and false `complete` counts (definition of analysis/aw_false_complete.py) after the
 re-runs, for E against v4's 71. Without --arms the output is the preregistered v4 analysis, unchanged.
 """
@@ -161,7 +161,7 @@ for s in SEEDS:
         data[(arm, s)] = load(f"results/androidworld_sealed/{arm}_seed{s}", agent)
 # preregistered single re-run of infrastructure crashes before step 1: results/androidworld_sealed/<arm>_seed<s>_rerun
 # replaces an original episode only if that episode was an exception and the re-run's goal text is identical.
-# Exception (2026-11-19 16:20 entry in docs/PREREG_v4.md): information-retrieval templates reword their date parameter
+# Exception (2026-11-19 16:20 entry in docs/preregistrations/heldout-main-vs-gui-owl.md): information-retrieval templates reword their date parameter
 # ("October 22 2023" -> "this Sunday") inside initialize_task AFTER the device setup (android_world/.../information_retrieval
 # .py:85), so an episode that crashed in setup records the raw date. Such a re-run is accepted only if its goal equals
 # the goal of EVERY other arm on the same seed and template (i.e. it is the same paired instance).
@@ -209,7 +209,7 @@ res = {"seeds": SEEDS, "arms": {}, "comparisons": {}, "notes": [], "goal_can_var
 pending = [f"{arm} seed {s}: {sorted(t for t in data[(arm, s)][1] if data[(arm, s)][1][t])}" for s in SEEDS for arm in ARMS
            if any(data[(arm, s)][1].values()) and not os.path.isdir(f"results/androidworld_sealed/{arm}_seed{s}_rerun")]
 if pending:
-    res["notes"].append("Exceptions with no re-run (counted as failures; eligibility per docs/PREREG_v4.md, e.g. the 13:40 entry): " + "; ".join(pending))
+    res["notes"].append("Exceptions with no re-run (counted as failures; eligibility per docs/preregistrations/heldout-main-vs-gui-owl.md, e.g. the 13:40 entry): " + "; ".join(pending))
 if len(SEEDS) == 1:
     res["notes"].append("One held-out seed only: PRELIMINARY (preregistered label; detectable gap ~14 tasks).")
 for arm in ARMS:
@@ -332,7 +332,7 @@ L += ["", f"Non-inferiority (lower 95% bound > {NI_MARGIN} pp): **{'yes' if pc['
       f"(lower bound {pc['ci95_pp_exact_endpoints'][0] if pc['ci95_pp_exact_endpoints'] else 'n/a'} pp)."]
 if "e" in ARMS:
     er = res["e_rule"]
-    L += ["", "E's rule (docs/PREREG_v46.md 2026-11-25 20:33, post hoc):",
+    L += ["", "E's rule (docs/preregistrations/round-08-done-from-the-screen.md 2026-11-25 20:33, post hoc):",
           f"* (a) E - v4 lower 95% bound > {NI_MARGIN} pp: **{'yes' if er['a_non_inferior'] else 'no'}** (lower bound {er['a_lower_bound_pp']} pp)",
           f"* (b) false `complete`s after re-runs, E <= v4: **{'yes' if er['b_holds'] else 'no'}** (E {er['b_e_false_completes']}, "
           f"v4 {er['b_v4_false_completes']}; per seed: " + "; ".join(f"{arm} " + "/".join(str(v) for v in er['false_completes_after_reruns'][arm].values()) for arm in ARMS) + ")",

@@ -1,5 +1,5 @@
 """Semi-online performance (SOP; UI-S1, arXiv 2509.11543) on AndroidControl test episodes, with a model served by
-llama-server (the same 4-bit GGUF and harness options as its AndroidWorld runs). Round 13 step 1 (docs/PREREG_v411.md).
+llama-server (the same 4-bit GGUF and harness options as its AndroidWorld runs). Round 13 step 1 (docs/preregistrations/round-13-yardstick-own-history.md).
 
 Per episode, step by step: the model sees the dataset screenshot, the goal, the installed-app line and ITS OWN history
 (its intents and actions, as the AndroidWorld agent builds it: af.user_text with the model's history window and, for

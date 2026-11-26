@@ -1,0 +1,11 @@
+0.00.117.951 I srv  llama_server: initializing ...
+0.00.117.956 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.120.685 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.123.541 I srv    load_model: loading model 'models/lfm3vl2b_v46e-GGUF/LFM3-VL-2B-MobileAgent-v4.6-E-Q4_K_M.gguf'
+0.00.532.746 I cmn          init: llama threadpool init, n_threads = 4
+0.00.714.008 I srv    load_model: loaded multimodal model, 'models/LFM3-VL-2B-GGUF/mmproj-LFM3-VL-2B-Q8_0.gguf'
+0.00.726.756 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.00.730.745 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.00.730.755 I srv  server_run_i: model loaded
+0.00.730.756 I srv  server_on_li: listening on http://127.0.0.1:8120
+1.18.606.341 I srv    operator(): operator(): cleaning up before exit...

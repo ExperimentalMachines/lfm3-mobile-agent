@@ -1,9 +1,9 @@
 #!/bin/bash
-# Round 10 / E-DPO on an AWS SageMaker training job (ml.g6e.2xlarge, 1x L40S 48 GB). docs/PREREG_v48.md (2026-11-25 14:20).
+# Round 10 / E-DPO on an AWS SageMaker training job (ml.g6e.2xlarge, 1x L40S 48 GB). docs/preregistrations/round-10-multi-part-false-completes.md (2026-11-25 14:20).
 # Channels: code; e (E's merged weights); cand (candidate rows, mode pairs) or pairs (job A's pairs, mode dpo).
 # Everything under /opt/ml/checkpoints is synced to S3 while the job runs; a restarted job resumes (greedy.jsonl, receipt).
 #   R10_MODE=pairs : E decodes greedily on the candidates -> balanced early/missed-stop pairs in $CK/pairs
-#                    (data/r10_stop_pairs.py); then a 2-step DPO smoke on 16 pairs (memory, rendering, end tokens)
+#                    (data/stopdpo_pairs.py); then a 2-step DPO smoke on 16 pairs (memory, rendering, end tokens)
 #   R10_MODE=dpo   : DPO on the pairs (one pass, train/dpo_vlm.py), merge, then E's round-8 gate (vm_r8_eval.sh)
 set -uo pipefail
 C=/opt/ml/input/data/code; CK=/opt/ml/checkpoints; ME=/opt/ml/input/data/e
@@ -23,7 +23,7 @@ if [ ! -f $CK/.pip_ok ] || ! python -c "import trl" 2>/dev/null; then
 fi
 DPO="--beta 0.1 --sft_weight 1.0 --lr 1e-5 --bs $BS --grad_accum $GA"
 if [ "$MODE" = pairs ]; then
-  [ -f $CK/pairs/dataset_info.json ] || python r10_stop_pairs.py --cand /opt/ml/input/data/cand --model $ME --out $CK/pairs --bs 48 --max_new_tokens 96 \
+  [ -f $CK/pairs/dataset_info.json ] || python stopdpo_pairs.py --cand /opt/ml/input/data/cand --model $ME --out $CK/pairs --bs 48 --max_new_tokens 96 \
       --work $CK/gen ${R10_LIMIT:+--limit $R10_LIMIT} > $CK/pairs.log 2>&1 || { log "PAIRS FAILED"; tail -20 $CK/pairs.log | tee -a $CK/r10dpo.log; exit 1; }
   log "$(grep R10_PAIRS_DONE $CK/pairs.log | cut -c1-900)"
   python dpo_vlm.py --model $ME --pairs $CK/pairs --out /content/runs/dposmoke --smoke 16 $DPO > $CK/dposmoke.log 2>&1 \

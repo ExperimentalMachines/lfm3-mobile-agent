@@ -21,7 +21,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data"))
 import agent_format as af  # noqa: E402
-from v4_answer_check import exact_answer  # noqa: E402
+from sft_main_answer_check import exact_answer  # noqa: E402
 
 SIGMA = 0.05
 

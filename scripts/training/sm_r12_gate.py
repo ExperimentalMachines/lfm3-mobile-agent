@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Round 12 / E-V offline gate (docs/PREREG_v410.md). Inputs: the candidate's round-8 gate result (sm_r8_gate.py,
+"""Round 12 / E-V offline gate (docs/preregistrations/round-12-done-check.md). Inputs: the candidate's round-8 gate result (sm_r8_gate.py,
 <eval>/<name>_offline_gate.json) and E's and the candidate's outputs on the four probes
 (<eval>/{e,<name>}_probe_{M_done,M_notdone,V_done,V_notdone}.jsonl; the V probes are the M screens asked the done question).
   * round 11's first 10 checks: E's round-8 bars, with early status <= 3.80% and C1 <= 22%

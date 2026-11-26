@@ -1,0 +1,33 @@
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-SmMWKeulwZfnQnIgnl4UbO
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+└── ✓ Created Function run_smoke.
+[08:42:28] r7smoke: pass 1: train 4 steps, push checkpoints
+[08:48:19] r7smoke: pass 1 ok: "peak_gpu_mem_gb": 30.438842368
+[08:48:20] r7smoke: pass 2: local folder deleted; must restore from the Hub
+[08:50:45] r7smoke: SMOKE FAILED: no hub restore
+WARNING: hub checkpoint repo has no run_config.json; only batch size / max_steps are checked
+restored /content/runs/r7smoke/checkpoint-6 from hub
+resuming from latest checkpoint
+rc 1
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/alpha-6533/main/ap-SmMWKeulwZfnQnIgnl4UbO
+exit 0

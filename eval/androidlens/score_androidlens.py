@@ -1,4 +1,4 @@
-"""Score model outputs on the AndroidLens English eval splits (data/v44_androidlens_eval.py). Pure python + pyarrow.
+"""Score model outputs on the AndroidLens English eval splits (data/eval_androidlens.py). Pure python + pyarrow.
 
 EVAL ONLY: the splits are never trained on (PREREG_v44 long-task gate).
 

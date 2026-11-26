@@ -1,6 +1,6 @@
 """AndroidWorld development seed 30: score and in-run speed of every model, from the saved episode files.
 
-Seed 30 was used to choose between versions (docs/PREREG_v4.md), so these are development numbers, not the held-out
+Seed 30 was used to choose between versions (docs/preregistrations/heldout-main-vs-gui-owl.md), so these are development numbers, not the held-out
 result (results/sealed_analysis_final.md). Per run: full successes (is_successful >= 1; exceptions count as failures),
 answer-task vs action-task successes (answer tasks: results/codex/v3_audit/answer_tasks.json), exceptions, median steps,
 and per-step model latency on the Apple M5 (llama.cpp Metal, measured inside the run while emulators and other servers

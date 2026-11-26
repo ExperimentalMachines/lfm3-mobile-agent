@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launch the round-7 SageMaker training job (docs/PREREG_v45.md). The data channel must already hold the mix
+# Launch the round-7 SageMaker training job (docs/preregistrations/round-07-full-mix-long-history.md). The data channel must already hold the mix
 # (s3://$R7_BUCKET/r7/data/: train, ac_val, gate splits, androidlens/), uploaded from the build instance.
 # usage: R7_BUCKET=<bucket> [R7_INSTANCE=ml.g7e.2xlarge] scripts/training/sm_launch_r7.sh <job-name> smoke|full [bs ga] [max_hours]
 # Account id and role ARN are read at run time (not stored in the repo).
@@ -17,7 +17,7 @@ CODE=$(mktemp -d)
 cp scripts/training/sm_r7.sh scripts/training/sm_r7_gate.py train/sft_vlm.py train/agent_format.py \
    eval/androidcontrol/generate.py eval/androidcontrol/score.py eval/androidcontrol/score_dev.py eval/androidlens/score_androidlens.py \
    data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json $CODE/
-cp scripts/training/v4_reference_r7.json $CODE/v4_reference.json
+cp scripts/training/main_reference_r7.json $CODE/v4_reference.json
 aws s3 sync --delete --only-show-errors $CODE s3://$B/r7/code/$JOB/
 rm -rf $CODE
 cat > /tmp/r7_job_$JOB.json <<EOF

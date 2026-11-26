@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launch a round-13 E-S job (docs/PREREG_v411.md): scripts/training/sm_r13.sh with channels code, e (E's merged weights,
+# Launch a round-13 E-S job (docs/preregistrations/round-13-yardstick-own-history.md): scripts/training/sm_r13.sh with channels code, e (E's merged weights,
 # s3://<bucket>/r10/e_merged/) and r13in (s3://<bucket>/r13/in/: ody_term2.parquet, the judge verdicts, the written actions, the AndroidControl
 # verdicts, the probe-episode exclusion list, the two ending probes; uploaded by this script).
 # Account id and role are read at run time (not stored in the repo).
@@ -14,7 +14,7 @@ CODE=$(mktemp -d); mkdir -p $CODE/meta
 cp scripts/training/sm_r13.sh scripts/training/vm_r8_eval.sh scripts/training/sm_r13_gate.py scripts/training/sm_r8_gate.py scripts/training/merge_adapter.py train/semi_online_rl.py \
    scripts/training/sm_r7_gate.py train/sft_vlm.py train/agent_format.py train/screen_change.py \
    eval/androidcontrol/generate.py eval/androidcontrol/score.py eval/androidcontrol/score_dev.py eval/androidlens/score_androidlens.py $CODE/
-cp scripts/training/v4_reference_r7.json $CODE/v4_reference.json
+cp scripts/training/main_reference_r7.json $CODE/v4_reference.json
 cp results/v46_dev/e_eval/r8e_offline_gate.json $CODE/e_gate.json
 cp data/meta/androidcontrol_test_gt.jsonl data/meta/androidcontrol_test_gt.manifest.json $CODE/meta/
 aws s3 sync --delete --only-show-errors $CODE s3://$B/r13/code/$JOB/

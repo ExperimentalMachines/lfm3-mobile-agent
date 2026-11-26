@@ -1,4 +1,4 @@
-"""Bulk completion labels with the calibrated Claude judge (docs/PREREG_v48.md 2026-11-25 16:25): every row in
+"""Bulk completion labels with the calibrated Claude judge (docs/preregistrations/round-10-multi-part-false-completes.md 2026-11-25 16:25): every row in
 ROWS_DIR/*.parquet (episode_id, step_idx, user, jpg; data/ac_complete_rows.py) through the Message Batches API, one batch
 per parquet file, several batches in flight while the budget guard allows.
 Same judge as claude_judge.py (PROMPT_V2, effort high, max 8,000 output tokens). Budget: nothing is submitted if the

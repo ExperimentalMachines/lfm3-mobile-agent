@@ -32,7 +32,7 @@ case $RUN in
           CMD=(sudo LFM3_PROMPT_VERSION=v4 LFM3_AGENT_FORMAT_DIR=/home/ubuntu/lfm3 /home/ubuntu/.local/bin/uv run mw eval
                --agent_type /home/ubuntu/lfm3/lfm3_mw_agent.py --model_name local --llm_base_url http://127.0.0.1:18094/v1
                --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix lfmenv --log_file_root /home/ubuntu/$LOG) ;;
-  v4g|v41|v41g|v42g|v42)   # v4.1 follow-up (docs/PREREG_v41.md): v4 + guards / v4.1 / v4.1 + guards / v4.2 + guards / v4.2;
+  v4g|v41|v41g|v42g|v42)   # v4.1 follow-up (docs/preregistrations/mobileworld-followup-waitrelabel.md): v4 + guards / v4.1 / v4.1 + guards / v4.2 + guards / v4.2;
           # MobileWorld-native typing;
           # otherwise identical to the v4 run (container lfmenv_0, model tunnel 18094, same flags). Run 3 log roots.
           LOG=traj_logs/${RUN}_gui_en_r3; G=1; case $RUN in v41|v42) G=0 ;; esac
@@ -40,7 +40,7 @@ case $RUN in
                /home/ubuntu/.local/bin/uv run mw eval
                --agent_type /home/ubuntu/lfm3/lfm3_mw_agent.py --model_name local --llm_base_url http://127.0.0.1:18094/v1
                --max_round 50 --step_wait_time 3 --auto_retry 3 --env_prefix lfmenv --log_file_root /home/ubuntu/$LOG) ;;
-  e)      # v4.6-E (docs/PREREG_v46.md 2026-11-25 20:40): v4's run-2 command (adapter typing `aw`, no guards) plus E's
+  e)      # v4.6-E (docs/preregistrations/round-08-done-from-the-screen.md 2026-11-25 20:40): v4's run-2 command (adapter typing `aw`, no guards) plus E's
           # history format (24 steps, notes with the fine rule); container lfmenv_0, model tunnel 18094. Run 4 log root.
           LOG=traj_logs/e_gui_en_r4
           CMD=(sudo LFM3_PROMPT_VERSION=v4 LFM3_AGENT_FORMAT_DIR=/home/ubuntu/lfm3 LFM3_HISTORY_STEPS=24 LFM3_NOCHANGE_NOTES=1

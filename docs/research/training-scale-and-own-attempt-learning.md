@@ -1,6 +1,6 @@
 # Train on own mistakes, not more epochs
 
-Written 2026-11-22, after the v4.1/v4.2 seed-30 runs ([PREREG_v41.md](../PREREG_v41.md)). The MobileWorld run of v4.2 finished after the report was drafted:
+Written 2026-11-22, after the v4.1/v4.2 seed-30 runs ([../preregistrations/mobileworld-followup-waitrelabel.md](../preregistrations/mobileworld-followup-waitrelabel.md)). The MobileWorld run of v4.2 finished after the report was drafted:
 
 | MobileWorld (105 tasks) | v4 | v4.2 |
 |---|---|---|
@@ -101,7 +101,7 @@ Computed from the 348 sealed-seed episodes per model ([ours](../../results/andro
 | Runtime loop guards on v4 | `wait` 0%; 34% more model calls | 18 → 18 |
 | v4, v4 + guards, v4.1, v4.2 | 53–55 episodes still run out of steps in each | — |
 
-Source: [PREREG_v41.md](../PREREG_v41.md) and seed-30 episode files ([ours](../../results/androidworld/)).
+Source: [../preregistrations/mobileworld-followup-waitrelabel.md](../preregistrations/mobileworld-followup-waitrelabel.md) and seed-30 episode files ([ours](../../results/androidworld/)).
 
 ### Process mistakes
 
@@ -110,7 +110,7 @@ Source: [PREREG_v41.md](../PREREG_v41.md) and seed-30 episode files ([ours](../.
   - Only 3 tasks were solved by all six v4-family runs ([ours](../../results/androidworld/)).
 - **Offline metrics have misled us.**
   - v4.1 looked better offline: `dev_complete` 0.850 vs 0.762, AC high-level 0.732 vs 0.728.
-  - Online it scored 12 vs 18 ([PREREG_v41.md](../PREREG_v41.md)).
+  - Online it scored 12 vs 18 ([../preregistrations/mobileworld-followup-waitrelabel.md](../preregistrations/mobileworld-followup-waitrelabel.md)).
   - Across six versions, AC step accuracy rank-correlates only 0.28 with AW success (ours, n = 6).
 - **The early-stop rate has never moved.**
   - On non-terminal AC test steps, v4 predicts `status` on 4.6% of steps. v2, v3 and Qwen3.5-2B all sit at 4.6–5.5%.
@@ -191,7 +191,7 @@ Source: [log_history.json](../../results/v4_dev/hub/training_logs/log_history.js
 
 ### Recipe for our step-level DPO
 
-- **States:** v4.2's replayed self-history states on AC, GUI-Odyssey and AMEX training episodes. The saved decisions ([selfhist_state.json.gz](../../results/v42/selfhist_state.json.gz), written by [v42_selfhist.py](../../data/v42_selfhist.py)) are enough to rebuild them.
+- **States:** v4.2's replayed self-history states on AC, GUI-Odyssey and AMEX training episodes. The saved decisions ([selfhist_state.json.gz](../../results/v42/selfhist_state.json.gz), written by [v42_selfhist.py](../../data/sft_ownhistory.py)) are enough to rebuild them.
 - **Samples:** 4 per state from v4.2 at temperature ~0.8.
 - **Pairs:** preferred = the human step; rejected = an own sample that differs. Over-sample three kinds:
   - `complete` or `answer` at a step that is not the last;
@@ -317,7 +317,7 @@ App count is not the gap: AC's training split alone covers 769 apps ([AndroidCon
 
 | Gap | Our mix ([stats.json](../../results/data_v2/stats.json), [v41_data_manifest.json](../../results/v42/v41_data_manifest.json)) | Failure it feeds | Clean fix |
 |---|---|---|---|
-| No recovery | 0 recovery rows in v4; 94% of AC `wait` rows copy the previous intent ([PREREG_v41.md](../PREREG_v41.md)) | Loops | Own-mistake DPO or recovery rows |
+| No recovery | 0 recovery rows in v4; 94% of AC `wait` rows copy the previous intent ([../preregistrations/mobileworld-followup-waitrelabel.md](../preregistrations/mobileworld-followup-waitrelabel.md)) | Loops | Own-mistake DPO or recovery rows |
 | No "stop is wrong here" | Every `status` row in the v3 base is `complete` (5,998); 0 `infeasible`; Odyssey's 3,244 and AMEX's 1,714 terminal markers dropped as unreliable | False `complete` | DPO pairs at premature stops |
 | Short histories | 1.41% of rows have ≥20 earlier steps. AC episodes average 5.5 steps ([AndroidControl](https://arxiv.org/abs/2406.03679)); MW tasks 27.8 ([MobileWorld](https://arxiv.org/abs/2512.19432)). Odyssey and AMEX are capped at ≤3 rows per episode | MW long tasks | Lift the caps: ~34k more Odyssey and ~15.6k more AMEX rows |
 | No gestures | Non-page swipes cut out (1,417 Odyssey, 975 AMEX episodes); no drag action | Slider tasks | New action plus data (next week) |
@@ -452,7 +452,7 @@ All decision rules go into a PREREG_v41 amendment **before** any new score. Seed
 
 ## Round 5 as executed (2026-11-22/23)
 
-The ranked plan was cut to what the credits allowed, then pre-registered ([PREREG_v41.md](../PREREG_v41.md), 17:00):
+The ranked plan was cut to what the credits allowed, then pre-registered ([../preregistrations/mobileworld-followup-waitrelabel.md](../preregistrations/mobileworld-followup-waitrelabel.md), 17:00):
 rank 1 used a **v4.2** replicate (not v4), rank 3 became P/P2, rank 5 became S (more SFT on the same mix, not fresh
 rows). Rank 2 ran only as pair sampling (one greedy decode per state, not 4 samples), and ranks 4 and 6 were
 not run.

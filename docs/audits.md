@@ -80,8 +80,8 @@ used. What these rounds rest on instead:
 
 | Safeguard | Where |
 |---|---|
-| Rules, gates and pass bars committed before each candidate existed; every change dated | [PREREG_v44](PREREG_v44.md) – [PREREG_v49](PREREG_v49.md) |
+| Rules, gates and pass bars committed before each candidate existed; every change dated | [PREREG_v44](preregistrations/round-06-long-trajectories.md) – [PREREG_v49](preregistrations/round-11-checked-endings.md) |
 | Data checked by eye before training (16–48 rows per kind), with stop rules that were applied (round 10 stopped at four of them) | the same files' logs |
-| The "done" judge calibrated on fresh by-eye labels made before any judge output, with a bar (90%) | [PREREG_v48](PREREG_v48.md), [`results/v48_dev/`](../results/v48_dev/) |
+| The "done" judge calibrated on fresh by-eye labels made before any judge output, with a bar (90%) | [PREREG_v48](preregistrations/round-10-multi-part-false-completes.md), [`results/v48_dev/`](../results/v48_dev/) |
 | Limitation | The by-eye labels were made by the coding assistant (a Claude model), and the judge is a Claude model: not independent |
 

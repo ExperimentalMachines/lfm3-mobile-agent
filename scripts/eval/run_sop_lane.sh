@@ -1,5 +1,5 @@
 #!/bin/bash
-# Round 13 step 1 (docs/PREREG_v411.md): SOP for a list of models on one llama-server port, one after the other.
+# Round 13 step 1 (docs/preregistrations/round-13-yardstick-own-history.md): SOP for a list of models on one llama-server port, one after the other.
 # Each entry: name:gguf_dir_suffix:history_steps:notes. Usage: bash scripts/eval/run_sop_lane.sh <port> name:dir:hist:notes ...
 set -u
 cd "$(dirname "$0")/../.." || exit 1

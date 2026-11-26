@@ -13,7 +13,8 @@ Where things live, what is kept unedited, and how the history was cleaned of sec
 |---|---|---|
 | `README.md`, `docs/*.md` | Documentation | Yes: kept current |
 | `LICENSE` | Apache-2.0, for the code and documentation (models and data keep their own licenses) | — |
-| `docs/PREREG_v4*.md` | Preregistrations of v4 and every later round, each with its dated log | **No**: append-only records |
+| `docs/preregistrations/` | Preregistrations of the held-out comparison and every later round, each with its dated log ([index](preregistrations/README.md)); renamed 2026-11-26, only link targets repaired | **No**: append-only records |
+| `docs/naming.md` | The naming scheme and the old-label → name map for models, datasets, code and preregistrations | Yes |
 | `docs/research/` | Literature reviews (deep-research reports + notes) | Only dead links repaired |
 | `analysis/` | Scripts that compute reported numbers | Yes |
 | `train/`, `data/`, `eval/` | Training code, dataset builders, benchmark harnesses | Yes |
@@ -30,17 +31,19 @@ MobileWorld, Android SDK shims), `android_world/` (AndroidWorld clone), `.venv*`
 
 ## Archived material
 
-Nothing a reported number depends on was removed. Older layouts and documents are kept in git at two tags, each at
+Nothing a reported number depends on was removed. Older layouts, documents and scripts are kept in git at three tags, each at
 its original path:
 
 | Tag | Snapshot of |
 |---|---|
-| `archive/pre-restructure-2026-11-20` | The repository before the 2026-11-20 restructure (old script and log paths, the run-log site). Paths in `docs/PREREG_v4.md`, Codex reports and logs refer to this layout |
+| `archive/pre-restructure-2026-11-20` | The repository before the 2026-11-20 restructure (old script and log paths, the run-log site). Paths in `docs/preregistrations/heldout-main-vs-gui-owl.md`, Codex reports and logs refer to this layout |
+| `archive/pre-naming-cleanup-2026-11-26` | Everything before the 2026-11-26 renaming and clean-up: the old model / dataset / script / preregistration names, and the ~180 scripts bound to finished cloud sessions (Colab, Modal, GCP and AWS-VM launchers, watchers, hand-offs, per-run job configs, the old Hugging Face publishers). A few records (preregistrations, research notes) link to those removed files; read them at this tag |
 | `archive/pre-docs-cleanup-2026-11-25` | The documentation before the 2026-11-25 cleanup (including this file's full list of every moved, removed and added path in the 2026-11-20 restructure) |
 
 ```bash
 git show archive/pre-restructure-2026-11-20:scripts/local_sealed_aw.sh       # one old file
 git show archive/pre-docs-cleanup-2026-11-25:docs/repository.md               # the old move tables
+git show archive/pre-naming-cleanup-2026-11-26:scripts/training/gpu_session.sh # a removed script
 ```
 
 ---
@@ -90,7 +93,7 @@ GitHub redirects the old name. Archived documents and audit reports quote the ol
 |---|---|
 | `main` | This repository. Force-pushed on 2026-11-21 (e-mail scrub; every hash changed) |
 | `lfm3-android` (deleted) | The branch name used while the project ran, kept at `main`'s commit until 2026-11-23; deleted then, identical to `main` (`0f5d50b`) |
-| `v41-followup` (deleted) | Follow-up rounds v4.1–v4.3 (2026-11-21 to 23). Merged into `main` by fast-forward on 2026-11-23 (last commit `1cc8a87`), then deleted |
+| `v41-followup` (deleted) | Follow-up rounds (WaitRelabel to ContinuedSFT, 2026-11-21 to 23). Merged into `main` by fast-forward on 2026-11-23 (last commit `1cc8a87`), then deleted |
 | tag `archive/pre-restructure-2026-11-20` | Snapshot before the restructure (after the token redaction; rewritten with the e-mail scrub) |
 | tag `archive/pre-docs-cleanup-2026-11-25` | Documentation before the 2026-11-25 cleanup |
 | `main` history before the merge | An auto-generated run-log site (2026-11-18 to 11-19), superseded by `docs/` |

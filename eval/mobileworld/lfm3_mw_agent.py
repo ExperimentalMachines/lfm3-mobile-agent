@@ -20,11 +20,11 @@ differently (Codex audit results/codex/session_1118_audit, C1/C2; fixed 2026-11-
 Installed apps for v4: the names MobileWorld's open_app resolves (runtime/utils/models.APP_DICT, English names).
 Load with: mw eval --agent_type <this file> ... (MobileWorld's registry loads agent classes from a .py path).
 Env: LFM3_PROMPT_VERSION (v4 default), LFM3_AGENT_FORMAT_DIR (dir holding agent_format.py and agent_guards.py).
-v4.1 follow-up (2026-11-21, docs/PREREG_v41.md), both opt-in; unset = the sealed v4 run's behaviour:
+v4.1 follow-up (2026-11-21, docs/preregistrations/mobileworld-followup-waitrelabel.md), both opt-in; unset = the sealed v4 run's behaviour:
   * LFM3_GUARDS=1          loop guards G1/G2 (train/agent_guards.py); a fired guard is noted in the prediction string.
   * LFM3_MW_TYPING=native  MobileWorld's own input_text semantics (type only, as its official agents use); Enter only
                            when the model outputs keyboard_enter. Default `aw` = the type + adapter-Enter step above.
-v4.6-E (2026-11-25, docs/PREREG_v46.md), opt-in; the same history format as E's AndroidWorld agent (lfm_agent.py,
+v4.6-E (2026-11-25, docs/preregistrations/round-08-done-from-the-screen.md), opt-in; the same history format as E's AndroidWorld agent (lfm_agent.py,
 variant U), so E sees the prompt it was trained on:
   * LFM3_HISTORY_STEPS=24  history window (default agent_format.HISTORY_STEPS = 8, as v1-v4.4 were trained)
   * LFM3_NOCHANGE_NOTES=1  append " [no visible change]" to the last history line when the screen did not change since

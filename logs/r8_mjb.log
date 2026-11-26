@@ -1,0 +1,152 @@
+✓ Initialized. View run at 
+https://modal.com/apps/alpha-6533/main/ap-aR1OXdmYU5SBSm1CFNSubk
+✓ Created objects.
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/modal_r7.py
+├── ✓ Uploaded 
+│   /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.manifest.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/data/meta/androidcontrol_test_gt.jsonl
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/cards/v4.5-D.md
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r8_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r8_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/publish/vm_publish_public.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/analysis/done_audit/judge_terminal.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_smoke.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_eval.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/vm_r7_train.sh
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/v4_reference_r7.json
+├── ✓ Uploaded /Users/alpha/lfm3-android/scripts/training/sm_r7_gate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidlens/score_androidlens.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score_dev.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/score.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/eval/androidcontrol/generate.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/agent_format.py
+├── ✓ Uploaded /Users/alpha/lfm3-android/train/sft_vlm.py
+├── ✓ Created Function run_d.
+├── ✓ Created Function run_smoke.
+├── ✓ Created Function publish_d.
+├── ✓ Created Function probe_fn.
+├── ✓ Created Function judge_fn.
+├── ✓ Created Function run_e.
+├── ✓ Created Function run_smoke_e.
+└── ✓ Created Function mjb_fn.
+
+[1AFetching 19 files:   0%|          | 0/19 [00:00<?, ?it/s]
+[1AFetching 19 files:   5%|▌         | 1/19 [00:00<00:02,  8.03it/s]
+[1AFetching 19 files:  32%|███▏      | 6/19 [00:00<00:00, 29.04it/s]
+[1AFetching 19 files:  68%|██████▊   | 13/19 [00:00<00:00, 43.53it/s]
+[1AFetching 19 files:  95%|█████████▍| 18/19 [00:00<00:00, 16.77it/s]W1124 14:13:23.073000 4 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 14:13:23.139000 4 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]
+[1ALoading weights:   4%|▎         | 15/424 [00:00<00:11, 35.83it/s]
+[1ALoading weights:   4%|▍         | 19/424 [00:00<00:11, 34.05it/s]
+[1ALoading weights:   7%|▋         | 28/424 [00:00<00:09, 43.43it/s]
+[1AFetching 19 files: 100%|██████████| 19/19 [00:17<00:00,  1.09it/s]
+
+[1ALoading weights:  12%|█▎        | 53/424 [00:02<00:20, 17.98it/s]
+[1ALoading weights:  15%|█▍        | 63/424 [00:04<00:31, 11.53it/s]
+[1ALoading weights:  21%|██        | 88/424 [00:04<00:15, 21.42it/s]
+[1ALoading weights:  32%|███▏      | 134/424 [00:04<00:06, 45.41it/s]
+[1ALoading weights:  41%|████▏     | 175/424 [00:04<00:03, 71.79it/s]
+[1ALoading weights:  50%|█████     | 213/424 [00:04<00:02, 99.77it/s]
+[1ALoading weights:  59%|█████▉    | 251/424 [00:04<00:01, 131.13it/s]
+[1ALoading weights: 100%|██████████| 424/424 [00:04<00:00, 86.40it/s] 
+to generate: 648 / 648
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+W1124 14:13:40.930000 69 site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1124 14:13:40.989000 69 site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+
+[1ALoading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 9835.98it/s]
+32/648 9s avg_prompt_tok=1664
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+to generate: 648 / 648
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/648 12s avg_prompt_tok=1635
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/648 16s avg_prompt_tok=1590
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+32/648 8s avg_prompt_tok=1408
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/648 20s avg_prompt_tok=1563
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+64/648 11s avg_prompt_tok=1402
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/648 22s avg_prompt_tok=1583
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+96/648 14s avg_prompt_tok=1389
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/648 26s avg_prompt_tok=1593
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+128/648 17s avg_prompt_tok=1373
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+160/648 18s avg_prompt_tok=1379
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/648 29s avg_prompt_tok=1586
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+192/648 20s avg_prompt_tok=1385
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+224/648 24s avg_prompt_tok=1383
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/648 34s avg_prompt_tok=1585
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/648 38s avg_prompt_tok=1565
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+256/648 29s avg_prompt_tok=1389
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+320/648 41s avg_prompt_tok=1544
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+288/648 32s avg_prompt_tok=1383
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+352/648 44s avg_prompt_tok=1530
+320/648 35s avg_prompt_tok=1376
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+352/648 37s avg_prompt_tok=1371
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+384/648 49s avg_prompt_tok=1519
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+416/648 51s avg_prompt_tok=1512
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+384/648 42s avg_prompt_tok=1368
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+448/648 53s avg_prompt_tok=1500
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+416/648 44s avg_prompt_tok=1366
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+448/648 45s avg_prompt_tok=1361
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+480/648 56s avg_prompt_tok=1495
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+480/648 47s avg_prompt_tok=1359
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+512/648 48s avg_prompt_tok=1356
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+512/648 59s avg_prompt_tok=1490
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+544/648 50s avg_prompt_tok=1354
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+576/648 52s avg_prompt_tok=1350
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+544/648 62s avg_prompt_tok=1481
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+608/648 54s avg_prompt_tok=1346
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+640/648 55s avg_prompt_tok=1344
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+576/648 65s avg_prompt_tok=1475
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+648/648 57s avg_prompt_tok=1343
+DONE 57.07879304885864
+608/648 68s avg_prompt_tok=1467
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+640/648 70s avg_prompt_tok=1461
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+648/648 73s avg_prompt_tok=1459
+DONE 72.82052040100098
+rc [0, 0]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/alpha-6533/main/ap-aR1OXdmYU5SBSm1CFNSubk
+exit 0

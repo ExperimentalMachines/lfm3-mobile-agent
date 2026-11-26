@@ -1,4 +1,4 @@
-"""Completion judge on AWS Bedrock (round 10, docs/PREREG_v48.md 2026-11-25 15:40): Qwen3-VL-235B-A22B, temperature 0.
+"""Completion judge on AWS Bedrock (round 10, docs/preregistrations/round-10-multi-part-false-completes.md 2026-11-25 15:40): Qwen3-VL-235B-A22B, temperature 0.
 Input per case: the goal, the step history and the screenshot; output COMPLETE / NOT_COMPLETE + one reason.
 
   calibrate  python bedrock_judge.py calibrate --pairs PAIRS_DISK --ody calib_ody.json --out results.jsonl
@@ -26,7 +26,7 @@ PROMPT = ("Goal: {goal}\nSteps already taken by the assistant:\n{hist}\n\n"
           "step that commits it (save, send, apply, confirm, book, add, post), as shown by the screen or by the steps when "
           "the result cannot be seen on this screen. NOT_COMPLETE means some part is still missing or not committed.\n"
           "Answer with COMPLETE or NOT_COMPLETE on the first line, then one short reason.")
-# by-eye labels on the E-DPO review sheets (analysis/done_audit/r10_pair_sheets.py order): is the task complete on the screen?
+# by-eye labels on the E-DPO review sheets (analysis/done_audit/stopdpo_pair_sheets.py order): is the task complete on the screen?
 EARLY_DONE = {1, 4, 9, 12, 15}      # early-stop pairs whose screen already met the goal
 MISSED_NOT = {1, 5, 10, 14}         # missed-stop pairs whose screen was not done
 

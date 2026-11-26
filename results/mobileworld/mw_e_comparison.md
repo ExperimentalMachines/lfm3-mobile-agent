@@ -1,6 +1,6 @@
 # MobileWorld: LFM3-VL-2B-MobileAgent-v4.6-E (24-step history, change notes; no guards, MobileWorld-native typing) (105 English GUI-only tasks)
 
-Owner decision, descriptive ([PREREG_v46.md](../../docs/PREREG_v46.md), 2026-11-25 20:40). E was developed on AndroidWorld seed 30 only; MobileWorld's trajectories were read for earlier rounds, so this is not a sealed test.
+Owner decision, descriptive ([PREREG_v46.md](../../docs/preregistrations/round-08-done-from-the-screen.md), 2026-11-25 20:40). E was developed on AndroidWorld seed 30 only; MobileWorld's trajectories were read for earlier rounds, so this is not a sealed test.
 
 | Model | Successes / 105 | Both | E only | Baseline only | Difference | Exact McNemar p |
 |---|---|---|---|---|---|---|

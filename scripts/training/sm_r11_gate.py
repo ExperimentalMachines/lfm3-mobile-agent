@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Round 11 / E-T offline gate (docs/PREREG_v49.md). Inputs: the candidate's round-8 gate result (sm_r8_gate.py,
+"""Round 11 / E-T offline gate (docs/preregistrations/round-11-checked-endings.md). Inputs: the candidate's round-8 gate result (sm_r8_gate.py,
 <eval>/<name>_offline_gate.json), E's (results/v46_dev/e_eval/r8e_offline_gate.json, shipped as e_gate.json) and both
 models' outputs on the two multi-part probes (<eval>/{e,<name>}_probe_M_{done,notdone}.jsonl).
   * the eight round-8 bars E passes: unchanged

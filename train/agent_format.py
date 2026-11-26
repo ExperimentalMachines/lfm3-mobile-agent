@@ -57,7 +57,7 @@ Actions:
 {"action_type":"status","goal_status":"complete|infeasible"}  (finish a goal that asks for no information; never use it instead of answering a question)"""
 
 PROMPTS = {"v1": SYSTEM_PROMPT, "v4": SYSTEM_PROMPT_V4}
-# Round 12 (docs/PREREG_v410.md): the done check replaces the user text's last line "What is the next action?" with
+# Round 12 (docs/preregistrations/round-12-done-check.md): the done check replaces the user text's last line "What is the next action?" with
 # this question; the model replies <think>reason</think>yes|no.
 DONE_CHECK_Q = ("\nCheck before finishing: is the goal fully accomplished on this screen (every part done and confirmed)? "
                 "Answer yes or no.")

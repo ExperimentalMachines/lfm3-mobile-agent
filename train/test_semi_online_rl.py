@@ -1,4 +1,4 @@
-"""Unit tests of train/semi_online_rl.py's corrected credit assignment (round 14; docs/PREREG_v412.md), with mocked
+"""Unit tests of train/semi_online_rl.py's corrected credit assignment (round 14; docs/preregistrations/round-14-own-history-vs-control.md), with mocked
 generations (no model, no GPU). Usage: .venv-rl/bin/python -I train/test_semi_online_rl.py"""
 import io
 import os

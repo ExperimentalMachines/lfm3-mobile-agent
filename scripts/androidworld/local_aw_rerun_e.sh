@@ -1,5 +1,5 @@
 #!/bin/bash
-# E (v4.6-E) held-out re-runs (docs/PREREG_v46.md 2026-11-26 03:49): cold-boot one emulator as
+# E (v4.6-E) held-out re-runs (docs/preregistrations/round-08-done-from-the-screen.md 2026-11-26 03:49): cold-boot one emulator as
 # scripts/androidworld/local_sealed_aw_e.sh does, then scripts/androidworld/local_aw_rerun.sh with arm e. Only that emulator
 # is stopped; the shared adb server is never touched.
 # Usage: bash scripts/androidworld/local_aw_rerun_e.sh <seed> 5556|5558 <task1,task2,...> > logs/e_rerun_seed<seed>.log 2>&1

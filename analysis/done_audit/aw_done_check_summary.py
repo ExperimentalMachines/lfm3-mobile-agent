@@ -1,4 +1,4 @@
-"""What the round-12 done check did in AndroidWorld runs (docs/PREREG_v410.md, "Reported"): checks asked, answers,
+"""What the round-12 done check did in AndroidWorld runs (docs/preregistrations/round-12-done-check.md, "Reported"): checks asked, answers,
 blocks, blocks in episodes that still ended in success, episodes that hit the block cap, and false completes the check
 let through (definition of analysis/aw_false_complete.py). Read-only.
 Usage: .venv-aw/bin/python -I analysis/done_audit/aw_done_check_summary.py results/androidworld/<run> [...]
