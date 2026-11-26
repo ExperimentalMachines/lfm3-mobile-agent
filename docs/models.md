@@ -191,6 +191,13 @@ Everything is **public** in the [experimentalmachines](https://huggingface.co/ex
   identical tensors. The five GGUFs added on 2026-11-27 (`-Dev-DPOAllMistakes`, `-Dev-MemGUI`, `-Dev-MemGUIChangeNotes`,
   `-Dev-MemGUIContinuedSFT`, `-Dev-FullMix`) were converted from the published weights; where an earlier local GGUF of the same weights
   existed, every tensor is identical to it (their cards say which).
+- Conversion receipts record the source commit, source weight hashes and output hash. New Hub exports pin the source before downloading;
+  publication checks both that commit and the current source weights. The five receipts added on 2026-11-27 were recorded **after**
+  conversion: they identify the current published source weights but cannot independently prove which inputs were converted.
+  Publishing with these retrospective receipts requires `--accept_after_the_fact`. Tensor comparisons provide additional evidence
+  where an earlier GGUF exists; they do not establish provenance for files without an earlier comparison.
+  [Verification record](../results/hf_migration/verification_2026-11-27.json): all five local output hashes match their receipts
+  and the Hub's LFS hashes, and each receipt's source hashes match its recorded source commit.
 
 ### Integrity records
 

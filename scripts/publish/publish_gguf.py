@@ -14,6 +14,7 @@ Policy: only final weights and their GGUFs are published, never partially traine
 import argparse
 import hashlib
 import os
+import re
 import subprocess
 import sys
 
@@ -58,11 +59,18 @@ def main():
     import json
     rp = a.gguf + ".receipt.json"
     assert os.path.exists(rp), f"no conversion receipt {rp} (build the GGUF with scripts/publish/local_export_gguf.sh)"
-    rc = json.load(open(rp))
+    with open(rp) as f:
+        rc = json.load(f)
     assert rc["output_sha256"] == g_sha and rc["source_repo"] == f"{naming.ORG}/{base}" and rc["quantization"] == "Q4_K_M", rc
     if rc.get("after_the_fact"):
         assert a.accept_after_the_fact, "this receipt was written after the conversion; pass --accept_after_the_fact to accept the weaker guarantee"
-    info = HfApi().model_info(f"{naming.ORG}/{base}", files_metadata=True)
+    revision = rc.get("source_revision", "")
+    assert re.fullmatch(r"[0-9a-f]{40}", revision), "receipt must pin an immutable Hub commit SHA"
+    api = HfApi()
+    pinned = api.model_info(rc["source_repo"], revision=revision, files_metadata=True)
+    source_hashes = {s.rfilename: s.lfs.sha256 for s in pinned.siblings if s.lfs and s.rfilename.endswith(".safetensors") and "/" not in s.rfilename}
+    assert pinned.sha == revision and source_hashes and rc["source_files_sha256"] == source_hashes, "receipt does not match its pinned source revision"
+    info = api.model_info(f"{naming.ORG}/{base}", files_metadata=True)
     hub = {s.rfilename: s.lfs.sha256 for s in info.siblings if s.lfs and s.rfilename.endswith(".safetensors") and "/" not in s.rfilename}
     assert hub and rc["source_files_sha256"] and rc["source_files_sha256"] == hub, "the receipt's source weights are not the weights currently on the Hub"
     sys.path.insert(0, os.path.join(ROOT, "tools", "llama.cpp", "gguf-py"))
@@ -73,9 +81,10 @@ def main():
     assert len(rd.tensors) == 287, len(rd.tensors)
     parity = ""
     if a.parity:
-        out = subprocess.run([os.path.join(ROOT, ".venv-convert/bin/python"), os.path.join(HERE, "compare_gguf.py"), a.gguf, a.parity],
-                             capture_output=True, text=True, cwd=ROOT).stdout
-        assert "names equal True" in out and "tensors differing: 0" in out, out
+        comparison = subprocess.run([os.path.join(ROOT, ".venv-convert/bin/python"), os.path.join(HERE, "compare_gguf.py"), a.gguf, a.parity],
+                                    capture_output=True, text=True, cwd=ROOT)
+        out = comparison.stdout
+        assert comparison.returncode == 0 and "names equal True" in out and "tensors differing: 0" in out, out + comparison.stderr
         parity = (f"Every tensor is identical to the GGUF built earlier from the same weights ({os.path.basename(a.parity)}); "
                   "descriptive metadata such as the model name differs.")
     ran = a.ran or "No evaluation was run with this exact file; the offline results on the model card come from the bf16 weights."
@@ -136,7 +145,8 @@ Code, data builders, benchmark harnesses and every result with its source: [expe
 LFM Open License v1.0, inherited from [LiquidAI/LFM3-VL-2B](https://huggingface.co/LiquidAI/LFM3-VL-2B) ([LICENSE](LICENSE)).
 """
     card_path = os.path.join(HERE, "cards", "models", repo + ".md")
-    open(card_path, "w").write(card)
+    with open(card_path, "w") as f:
+        f.write(card)
     print("card written:", card_path, "| gguf sha256", g_sha)
     if not a.apply:
         return

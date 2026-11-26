@@ -13,6 +13,7 @@ import glob
 import hashlib
 import json
 import os
+import re
 import subprocess
 
 from huggingface_hub import HfApi
@@ -47,12 +48,15 @@ info = HfApi().model_info(a.repo, revision=a.revision, files_metadata=True)
 hub = {s.rfilename: s.lfs.sha256 for s in info.siblings if s.lfs and s.rfilename.endswith(".safetensors") and "/" not in s.rfilename}
 assert hub, "the Hub repo has no root-level *.safetensors"
 if mine is None:
-    mine, a.revision = hub, info.sha   # weaker: binds the file to the Hub's current weights, not to the weights that were converted
+    mine = hub   # weaker: binds the file to the Hub's current weights, not to the weights that were converted
 assert mine == hub, "the converted files do not match the pinned Hub revision"
+a.revision = info.sha  # store the immutable commit, even if --revision was a branch or tag
+assert re.fullmatch(r"[0-9a-f]{40}", a.revision), "Hub did not return a commit SHA"
 rev = subprocess.run(["git", "-C", "tools/llama.cpp", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
 rc = {"source_repo": a.repo, "source_revision": a.revision, "source_files_sha256": mine, "llama_cpp_commit": rev,
       "quantization": a.quant, "output_sha256": sha(a.gguf)}
 if a.after_the_fact:
     rc["after_the_fact"] = True
-json.dump(rc, open(a.gguf + ".receipt.json", "w"), indent=1)
+with open(a.gguf + ".receipt.json", "w") as f:
+    json.dump(rc, f, indent=1)
 print("receipt written:", a.gguf + ".receipt.json")

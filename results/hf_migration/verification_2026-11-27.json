@@ -1,0 +1,64 @@
+{
+  "ggufs": [
+    {
+      "repo": "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes-GGUF",
+      "revision": "8c7041a90f55165006ed421a8d7fae64dcc98094",
+      "file": "LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes-Q4_K_M.gguf",
+      "sha256": "06c8ffa4dec56dc0d2868f331d9d2930f70ec23865743aac459b2ba0a58cc1d4",
+      "source_revision": "e19cc08ac8d258ce1bd76b2b30204a159196b576",
+      "receipt_after_the_fact": true,
+      "checks": "local GGUF SHA-256 equals receipt and Hub LFS SHA-256; pinned source weight hashes equal receipt"
+    },
+    {
+      "repo": "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix-GGUF",
+      "revision": "3a605def16e620430a61fc5df01308193ae7a4bd",
+      "file": "LFM3-VL-2B-MobileAgent-Dev-FullMix-Q4_K_M.gguf",
+      "sha256": "94d4c7ad9dd58da39bad15f9b76234ffc188858cefdf38c480c6061bf6c3e7da",
+      "source_revision": "a3dcb05ab86c9e0f9c7b28a0ad1f13d2d23ae1ce",
+      "receipt_after_the_fact": true,
+      "checks": "local GGUF SHA-256 equals receipt and Hub LFS SHA-256; pinned source weight hashes equal receipt"
+    },
+    {
+      "repo": "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUI-GGUF",
+      "revision": "76308fe5463cc80460ecb61ef201dde35b696429",
+      "file": "LFM3-VL-2B-MobileAgent-Dev-MemGUI-Q4_K_M.gguf",
+      "sha256": "766a0015e30e05f3de1a69ddb7e9b76b09e19e8ea51e78bb03c2dcf290d77f8b",
+      "source_revision": "55a052c71ad2cafd7d07dcccf17e11ec5c4b5f14",
+      "receipt_after_the_fact": true,
+      "checks": "local GGUF SHA-256 equals receipt and Hub LFS SHA-256; pinned source weight hashes equal receipt"
+    },
+    {
+      "repo": "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes-GGUF",
+      "revision": "ed64a9cd58633ec32a5c59e801a4812ff779bb45",
+      "file": "LFM3-VL-2B-MobileAgent-Dev-MemGUIChangeNotes-Q4_K_M.gguf",
+      "sha256": "f4b21f665da25ad5e0cf8a3d6aa31a7d9ce66e71a59100459d63a5d9035c2e8b",
+      "source_revision": "eb0d4f57a2748a9215c0fc06b14ca08368722c5e",
+      "receipt_after_the_fact": true,
+      "checks": "local GGUF SHA-256 equals receipt and Hub LFS SHA-256; pinned source weight hashes equal receipt"
+    },
+    {
+      "repo": "experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-GGUF",
+      "revision": "8649d246b0e643e6e8f41b2add2557ecc4c62465",
+      "file": "LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-Q4_K_M.gguf",
+      "sha256": "0f73dcca06e68fe3d628277fe3289964e4aaa8b4b8bcf28b6d8dc714c1ccd721",
+      "source_revision": "9202bc9aa2995f4465cdc5c6bfd5082a216af14c",
+      "receipt_after_the_fact": true,
+      "checks": "local GGUF SHA-256 equals receipt and Hub LFS SHA-256; pinned source weight hashes equal receipt"
+    }
+  ],
+  "verified_at_utc": "2026-11-26T18:11:26.577972+00:00",
+  "hub_audit": {
+    "command": "python3 scripts/publish/check_hub.py",
+    "model_repos": 39,
+    "datasets": 9,
+    "findings": 0,
+    "scope": "Current files on every branch; older git history is not inspected. File names and allowed weight paths cannot independently establish whether weights are final."
+  },
+  "cards_match_live": true,
+  "validation": {
+    "offline_receipt_regression_tests": 6,
+    "hub_name_rule_selftest": "passed",
+    "five_actual_gguf_publisher_dry_runs": "passed; regenerated cards unchanged",
+    "naming_check": "passed"
+  }
+}
