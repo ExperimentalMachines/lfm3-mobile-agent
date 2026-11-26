@@ -15,7 +15,8 @@ def load(p):
     meta = {}
     for k, f in r.fields.items():
         try:
-            meta[k] = str(f.contents())
+            v = str(f.contents())
+            meta[k] = v if len(v) <= 60 else f"<{len(v)} chars sha256 {hashlib.sha256(v.encode()).hexdigest()[:12]}>"
         except Exception:
             meta[k] = "?"
     return t, meta
@@ -28,5 +29,7 @@ diff = sorted(k for k in a if k in b and a[k] != b[k])
 print("tensors", len(a), len(b), "names equal", names_equal)
 print("tensors differing:", len(diff), diff[:3])
 mdiff = sorted(k for k in set(ma) | set(mb) if ma.get(k) != mb.get(k))
-print("metadata keys that differ:", [(k, ma.get(k, "-")[:40], mb.get(k, "-")[:40]) for k in mdiff if not k.startswith("tokenizer.")][:12])
+print("metadata keys that differ:")
+for k in mdiff:
+    print("  ", k, "|", ma.get(k, "-"), "|", mb.get(k, "-"))
 sys.exit(0 if names_equal and not diff else 1)

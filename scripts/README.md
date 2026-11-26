@@ -68,7 +68,8 @@ The SageMaker job pattern used for rounds 9–14 (round 7's SageMaker job was ne
 | `publish_cards.py` | Uploads / compares the cards in `cards/` against the Hugging Face repos (`--apply`, `--check`) |
 | `cards/models/`, `cards/datasets/` | Every Hugging Face card, one file per repo (`<repo name>.md`) |
 | `local_export_gguf.sh` | Published merged model → phone GGUF (4-bit); the download folder's name becomes the GGUF's `general.name` |
+| `make_receipt.py` | Writes the conversion receipt next to a GGUF (source repo + pinned revision, SHA-256 of the converted weights, llama.cpp commit, quantization, output hash); `local_export_gguf.sh` calls it, `publish_gguf.py` refuses a GGUF without one |
 | `publish_gguf.py` | Uploads a GGUF as the model's `-GGUF` repo (with the unchanged vision projector and LICENSE) and writes its card; `--parity` first checks it against an earlier GGUF of the same weights |
 | `compare_gguf.py` | Compares two GGUFs tensor by tensor (names, types, shapes, hashes of the data) |
-| `check_hub.py` | Audits the Hugging Face repos: **no partially trained checkpoints**, every model and dataset in `naming.py` present, every model with a GGUF repo (Q4_K_M + vision projector) |
+| `check_hub.py` | Audits the Hugging Face repos on every branch: **no partially trained checkpoints** (training-state names plus a weight-file allowlist; `--selftest` runs the rules offline), every model and dataset in `naming.py` present, every model with a GGUF repo (Q4_K_M + vision projector), all repos public |
 | `check_local_merge.py` | Verifies merged weights = base + LoRA, tensor by tensor |

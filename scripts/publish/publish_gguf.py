@@ -46,6 +46,7 @@ def main():
     ap.add_argument("--parity", help="an earlier GGUF of the same weights; every tensor must be identical (compare_gguf.py)")
     ap.add_argument("--ran", default="", help="what was evaluated with this exact file, if anything")
     ap.add_argument("--serve_note", default="", help="extra run-time requirement (e.g. history window)")
+    ap.add_argument("--accept_after_the_fact", action="store_true", help="accept a receipt written after the conversion (weaker: binds the file to the Hub's current weights only)")
     a = ap.parse_args()
     base = f"{naming.LFM3}-MobileAgent-Dev-{a.tag}"
     assert base in naming.model_map().values(), base
@@ -59,9 +60,11 @@ def main():
     assert os.path.exists(rp), f"no conversion receipt {rp} (build the GGUF with scripts/publish/local_export_gguf.sh)"
     rc = json.load(open(rp))
     assert rc["output_sha256"] == g_sha and rc["source_repo"] == f"{naming.ORG}/{base}" and rc["quantization"] == "Q4_K_M", rc
+    if rc.get("after_the_fact"):
+        assert a.accept_after_the_fact, "this receipt was written after the conversion; pass --accept_after_the_fact to accept the weaker guarantee"
     info = HfApi().model_info(f"{naming.ORG}/{base}", files_metadata=True)
-    w = {s.rfilename: s.lfs.sha256 for s in info.siblings if s.lfs}
-    assert rc["source_weights_sha256"] == w.get("model.safetensors"), "the receipt's source weights are not the weights currently on the Hub"
+    hub = {s.rfilename: s.lfs.sha256 for s in info.siblings if s.lfs and s.rfilename.endswith(".safetensors") and "/" not in s.rfilename}
+    assert hub and rc["source_files_sha256"] and rc["source_files_sha256"] == hub, "the receipt's source weights are not the weights currently on the Hub"
     sys.path.insert(0, os.path.join(ROOT, "tools", "llama.cpp", "gguf-py"))
     from gguf import GGUFReader
     rd = GGUFReader(a.gguf)
@@ -107,7 +110,7 @@ Phone format of [{base}]({HF}{naming.ORG}/{base}) for llama.cpp. {ran}
 | `{gname}` | Language model, 4-bit (Q4_K_M) | `{g_sha[:8]}…{g_sha[-6:]}` |
 | `mmproj-LFM3-VL-2B-Q8_0.gguf` | Vision projector, unchanged from [LiquidAI/LFM3-VL-2B-GGUF](https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF) (the fine-tune did not touch the vision tower) | `{MMPROJ_SHA[:8]}…{MMPROJ_SHA[-6:]}` |
 
-Made with llama.cpp `cd959bae9` (`convert_hf_to_gguf.py` → F16 → `llama-quantize Q4_K_M`) from the published weights; the same procedure reproduces Main's GGUF byte for byte. {parity}
+Made with llama.cpp `{rc['llama_cpp_commit']}` (`convert_hf_to_gguf.py` → F16 → `llama-quantize Q4_K_M`) from the published weights; the same procedure reproduces Main's GGUF byte for byte. {parity}
 
 ## Serving
 

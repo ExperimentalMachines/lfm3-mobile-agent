@@ -1,27 +1,58 @@
 """Write the conversion receipt <file>.receipt.json that publish_gguf.py checks.
-Usage: .venv-convert/bin/python scripts/publish/make_receipt.py <source repo id> <file.gguf> <quantization> [--after-the-fact]
-Run from the repository root. The receipt records the source repo, the SHA-256 of its model.safetensors on the Hub, the llama.cpp commit,
-the quantization and the SHA-256 of the output. local_export_gguf.sh calls it right after quantizing; --after-the-fact marks a receipt
-written later for a file that was already converted (it then only binds the file to the Hub's current weights, it does not prove the conversion).
+
+Usage (from the repository root):
+  .venv-convert/bin/python scripts/publish/make_receipt.py <hub repo id> <file.gguf> <quantization> --input-dir <downloaded folder> --revision <sha>
+  ... [--after-the-fact]   a receipt written later for a file that was already converted (publish_gguf.py then needs --accept_after_the_fact)
+
+local_export_gguf.sh pins the Hub revision before it downloads, hashes the downloaded weights it converts, and calls this right after quantizing.
+The receipt binds: the source repo and revision, the SHA-256 of every `*.safetensors` file that was converted, the llama.cpp commit, the
+quantization and the SHA-256 of the output. A folder that is not a Hub download (a local export) cannot get a receipt, so it cannot be published.
 """
+import argparse
+import glob
 import hashlib
 import json
+import os
 import subprocess
-import sys
 
 from huggingface_hub import HfApi
 
-src, out, q = sys.argv[1:4]
-h = hashlib.sha256()
-with open(out, "rb") as f:
-    for b in iter(lambda: f.read(1 << 24), b""):
-        h.update(b)
-w = None
-if "/" in src and not src.startswith(("/", ".")):
-    w = {s.rfilename: s.lfs.sha256 for s in HfApi().model_info(src, files_metadata=True).siblings if s.lfs}.get("model.safetensors")
+
+def sha(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for b in iter(lambda: f.read(1 << 24), b""):
+            h.update(b)
+    return h.hexdigest()
+
+
+ap = argparse.ArgumentParser()
+ap.add_argument("repo")
+ap.add_argument("gguf")
+ap.add_argument("quant")
+ap.add_argument("--input-dir")
+ap.add_argument("--revision")
+ap.add_argument("--after-the-fact", action="store_true", help="receipt written later; without --input-dir it only binds the file to the Hub's current weights")
+a = ap.parse_args()
+assert "/" in a.repo and not a.repo.startswith(("/", ".")), "the source must be a Hub repo id"
+if a.input_dir:
+    assert a.revision, "--revision is required with --input-dir"
+    files = sorted(glob.glob(os.path.join(a.input_dir, "*.safetensors")))
+    assert files, f"no *.safetensors in {a.input_dir}"
+    mine = {os.path.basename(f): sha(f) for f in files}
+else:
+    assert a.after_the_fact, "without --input-dir only an --after-the-fact receipt can be written"
+    mine = None
+info = HfApi().model_info(a.repo, revision=a.revision, files_metadata=True)
+hub = {s.rfilename: s.lfs.sha256 for s in info.siblings if s.lfs and s.rfilename.endswith(".safetensors") and "/" not in s.rfilename}
+assert hub, "the Hub repo has no root-level *.safetensors"
+if mine is None:
+    mine, a.revision = hub, info.sha   # weaker: binds the file to the Hub's current weights, not to the weights that were converted
+assert mine == hub, "the converted files do not match the pinned Hub revision"
 rev = subprocess.run(["git", "-C", "tools/llama.cpp", "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
-rc = {"source_repo": src, "source_weights_sha256": w, "llama_cpp_commit": rev, "quantization": q, "output_sha256": h.hexdigest()}
-if "--after-the-fact" in sys.argv:
+rc = {"source_repo": a.repo, "source_revision": a.revision, "source_files_sha256": mine, "llama_cpp_commit": rev,
+      "quantization": a.quant, "output_sha256": sha(a.gguf)}
+if a.after_the_fact:
     rc["after_the_fact"] = True
-json.dump(rc, open(out + ".receipt.json", "w"), indent=1)
-print("receipt written:", out + ".receipt.json")
+json.dump(rc, open(a.gguf + ".receipt.json", "w"), indent=1)
+print("receipt written:", a.gguf + ".receipt.json")
