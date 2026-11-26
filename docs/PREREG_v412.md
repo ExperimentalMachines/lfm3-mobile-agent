@@ -123,3 +123,30 @@ as registered. The levers are judging the current screen against the goal and tr
   merge done, evals and gate running on the A10G job.
 - Control `lfm3-r14-sft` (full; collect → mix → 100×32 SFT → evals) launched on ml.g6e.2xlarge, us-west-2, 6 h cap (the
   smoke ran there). Round 12's E-V job is still evaluating on the L4.
+
+### 2026-11-26 21:43 Asia/Manila — E-S2 (RL) and E-D (control) both fail the offline gate; no online test
+
+Gate: round 11's checks (early `status` ≤ 3.80%, C1 ≤ 22%, the rest no worse than E) plus the ending probes. Raw logs:
+`results/r14_dev/r14_rl.log`, `r14_sft.log`.
+
+| Check | E | E-S2 (RL) | E-D (control) | Bar |
+|---|---|---|---|---|
+| AndroidControl high step accuracy | 0.758 | 0.743 | 0.753 | no worse than E (round 8 bar) |
+| Early `status` (2+ steps before the end) | 3.55% | **4.20%** ✗ | 3.70% | ≤ 3.80% |
+| Probe C1 (done on a finished-looking history) | 20.0% | **22.3%** ✗ | **25.3%** ✗ | ≤ 22% |
+| Probe C3 stale (repeats a stale tap) | 16.7% | **22.0%** ✗ | **24.7%** ✗ | round 8 bar (E passes at 16.7%) |
+| M_done (says done on judged-finished final screens) | 0% | **1.0%** ✗ | 83.5% ✓ | ≥ 50% |
+| M_notdone (says done on judged-unfinished final screens) | 0% | 0% ✓ | **56.5%** ✗ | ≤ 25% |
+| Other checks (answer, complete, AndroidLens, T_term, C2, C3n) | pass | pass | pass | |
+
+- **Both arms fail; per the registered gate and round 11's precedent there is no online test and nothing is published.**
+  E stays the newest model, v4 the main model.
+- **RL (100 batches, 400 episodes) barely moved the model**: M_done 1%, and it is slightly worse than E on repeated taps
+  (C3 22% vs 17%) and early `status`. Training showed strict step accuracy at temperature 1.0 flat at about 0.6–0.7.
+  At this scale the update was too small to help and large enough to cost a little.
+- **The control did change behaviour, in the wrong way**: it learned "done" (83.5% on finished screens) but also says
+  done on 56.5% of unfinished final screens: the same failure as E-T in round 11 (95% / 65%). Training on E's own
+  mistakes with the human's labels pushes toward "end here", whatever the screen shows.
+- The registered tie-break (RL kept only if it beats the control by ≥ 2 points on the strict multi-step test) is moot:
+  neither arm is a candidate. Not run.
+- Round 12's E-V is still training on the L4 (step ≳ 900 of 1000) and its evals follow.
