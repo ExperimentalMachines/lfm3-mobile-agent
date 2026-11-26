@@ -222,6 +222,19 @@ These are small pilot measurements of each model's full pipeline (agent code + s
 Main sends far fewer prompt tokens per step (a smaller image) and showed higher prompt throughput in these runs; the
 tests do not isolate why.
 
+**Summary** (median seconds for one model step; details, token counts and caveats in the sections below):
+
+| Where it ran | Main | GUI-Owl-1.5-2B | MAI-UI-2B |
+|---|---|---|---|
+| Apple M5 Mac, GPU (inside real AndroidWorld runs) | **2.96** | 7.00 | 9.35 (8-bit) |
+| Phone CPU (Snapdragon 8 Elite Extreme Gen 6), all three at the same 1,024-token image ceiling | **~39** | ~198 | ~183 (8-bit) |
+| Phone CPU, each model as evaluated (GUI-Owl and MAI-UI at a 2,600-token ceiling) | **~39** | ~1,100 | ~1,063 (8-bit) |
+| Phone GPU (LiteRT-LM, in the Mobile Agent app), per model call | 2.5 (int4, cold) to 3.5 (int8, warm) | not measured | not measured |
+| Cloud CPU (Xeon, 8 threads, idle) | **6.4** | 58.0 | 58.2 |
+
+The phone-GPU row is a per-call time for Main only ([below](#phone-gpu-litert-lm)); GUI-Owl and MAI-UI have no LiteRT build, so
+there is no GPU comparison.
+
 ### CPU (Intel Xeon 2.8 GHz, 8 threads, idle GCP n2-standard-16)
 
 Same 5 screenshots and goals for every model, through each model's own evaluation agent; all three at 4-bit
@@ -267,6 +280,25 @@ Model runs on the phone (llama.cpp b12110). Rows are matched on the same median 
 - **Pixel 9 attempt:** a partial earlier run (Firebase device streaming) timed Main only, at 74.4 s/step over 11
   calls. GUI-Owl and MAI-UI did not complete, and the cause of the slowdown was not isolated
   ([`results/devstream/`](../results/devstream/)).
+
+### Phone GPU (LiteRT-LM)
+
+Main's int8 file ([`LFM3-VL-2B-MobileAgent-LiteRT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-LiteRT)) on the GPU
+of a Qualcomm Device Cloud reference phone (SM8975, Snapdragon 8 Elite Extreme Gen 6, Android 17), 10 calls with the agent's real
+prompt (1,310 tokens) on a 1440 × 3200 screenshot. Source: the Mobile Agent app repository's
+[`android/README.md`](https://github.com/ExperimentalMachines/mobile-agent/blob/main/android/README.md#measured) and `results/phone/` there.
+
+| File, phone state | Model call (median) | First token | Prefill | Decode |
+|---|---|---|---|---|
+| int4, cold | **2.46 s** | 1.10 s | 1,213 tok/s | 43.3 tok/s |
+| int8 (the published file), warm and throttled | **3.53 s** | 1.37 s | 986 tok/s | 23.9 tok/s |
+
+- **Per model call, not per step:** on top of it the app spends roughly 0.4–0.9 s on screenshot, resize and the action, then waits 1 s for the screen to settle.
+- **int8 and int4 are not compared cleanly:** the int8 session was already throttled (CPU clusters capped near 2.3–2.65 GHz,
+  skin 48 °C), so file and heat effects are not separated.
+- **CPU vs CPU on the same phone:** LiteRT-LM took 10.8–14.0 s per model call; llama.cpp took 25.6–36.9 s on the phone per call
+  (27.7–39.2 s end to end per step, the tables above). The runtimes and prompts differ, so this is indicative only.
+- No GUI-Owl or MAI-UI LiteRT build exists, so the GPU row has no comparison.
 
 ---
 

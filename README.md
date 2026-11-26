@@ -46,7 +46,7 @@ runs; the phone numbers on the same few fixed screenshots (2 to 5, depending on 
 | **Mac** (Apple M5, GPU), median seconds per step | **3.0** | 7.0 | 9.4 (8-bit) |
 | **Phone CPU** (Snapdragon 8 Elite Extreme Gen 6), seconds per step, all three capped at the same image size | **~39** | ~198 | ~183 (8-bit) |
 | **Phone CPU**, each model as we evaluated it (the others use bigger images) | **~39** | ~1,100 | ~1,063 (8-bit) |
-| **Phone GPU** (the LiteRT file in the app), seconds per model call | ~3.5 | not measured | not measured |
+| **Phone GPU** (the LiteRT file in the app), seconds per model call | 2.5–3.5 | not measured | not measured |
 
 - Main is faster mainly because it sends fewer prompt tokens per step (a smaller image); these tests compare whole pipelines
   and do not isolate the cause.
