@@ -24,7 +24,9 @@ Where each part of the project ran, how costs were kept in check, and what went 
 | Round 6 (v4.4, 2026-11-23) | Colab A100 (64.5 compute units) |
 | Rounds 7–8 (D, E, 2026-11-24 to 25) | Data built on an AWS EC2 CPU instance; training on Modal H100 (E: Colab A100 to step 3,100, then Modal); evaluations on the same GPUs |
 | Round 9 (v4.7 data, 2026-11-25) | Data built on the AWS EC2 CPU instance; a SageMaker smoke job on `ml.g6.2xlarge` (L4) for F, which was never trained |
-| Rounds 10–11 (2026-11-25) | AWS SageMaker `ml.g6e.2xlarge` (1× L40S 48 GB): pair generation, DPO, SFT and every gate eval in one job each; the AWS EC2 CPU instance for data building and GGUF export, started and stopped per use |
+| Round 10 (2026-11-25) | AWS SageMaker `ml.g6e.2xlarge` (1× L40S 48 GB): pair generation, DPO and every gate eval in one job each; the AWS EC2 CPU instance for data building and GGUF export, started and stopped per use |
+| Round 11 (2026-11-25 to 26) | AWS SageMaker `ml.g6.2xlarge` (1× L4 24 GB; the L40S never got capacity in 4 h 40 min): mix, SFT and every gate eval in one job, 7.1 h |
+| E on MobileWorld (2026-11-25 to 26) | AWS EC2 `c8i.4xlarge` (nested virtualisation) with the run-2 image pinned by digest; model on the Mac's GPU through a reverse SSH tunnel restricted to one port |
 | "Done" judges (round 10) | Qwen3-VL-235B on AWS Bedrock (calibration only); Claude Opus 5.5 via the Anthropic API (Batch API for bulk labels) |
 | AndroidWorld runs after v4 (v4.1–v4.3, D, E; E's held-out seeds) | The same Apple M5 Mac, 2 emulators, Q4_K_M GGUF on llama.cpp |
 
@@ -34,7 +36,8 @@ Colab VMs have no KVM, so Android emulators could not run there. That is why Mob
 
 ## Cost controls
 
-- Every cloud VM powers itself off after 12 h (AWS `shutdown -h`, GCP `--max-run-duration`).
+- Every cloud VM powers itself off after 12 h (16 h for E's MobileWorld VM; AWS `shutdown -h`, GCP `--max-run-duration`).
+  AWS VMs stop, never terminate, so their disks are kept.
 - Colab sessions were stopped by a watchdog once their jobs finished.
 - Teardown (2026-11-23): the GCP project was deleted (VM, disk, static IP, firewall rules, network), after checking
   that every MobileWorld result, screenshot and log was saved locally. Its storage bucket (copies of the phone-test
@@ -65,6 +68,8 @@ Colab VMs have no KVM, so Android emulators could not run there. That is why Mob
 | 11-19 12:40 | First Colab model session hit its 24-h limit | Failover session with identical files (SHA-256), build and flags took over in 1 s |
 | 11-19 12:42, 14:29 | Two spot-VM preemptions during MAI-UI's run | Watcher restarted the VM, recreated containers, re-ran interrupted tasks |
 | 11-19 (MAI-UI run) | Emulators died 17 times with a fatal KVM error | Disclosed; affected tasks reported as a sensitivity analysis |
+| 11-25 20:12 | Round 11's L40S job waited 4 h 40 min for capacity | Stopped unbilled; moved to an L4, logged before any training |
+| 11-26 06:03–11:03 | The Mac's AWS login expired; the MobileWorld watcher could no longer read the VM's state and sat idle with one task left | The watcher's step (container restart, resume script) run by hand over SSH; result unchanged (that task's setup is broken in MobileWorld itself) |
 
 Full details and timing: dated entries in [PREREG_v4.md](PREREG_v4.md).
 
@@ -78,3 +83,4 @@ Full details and timing: dated entries in [PREREG_v4.md](PREREG_v4.md).
 | `--rm` containers vanish on VM stop | Recreate containers from the original command; stop emulators gracefully |
 | Prompt caches distort speed and memory | Disable or exclude cached calls in benchmarks |
 | Paid runs fail late | Smoke-test the full pipeline first; persist outputs as you go |
+| Watchers that need a cloud login stall silently when it expires | Check run state over SSH where possible; treat a failed status call as an alert, not as "nothing to do" |
