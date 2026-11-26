@@ -37,7 +37,7 @@ Not run by `reproduce.sh`. The AndroidWorld scripts print JSON lines; run them w
 | `sop_validation.py` | Does the multi-step own-history test (SOP) rank the models like AndroidWorld? Spearman ρ over seven models (round 13) | `--out` prefix (`.json`, `.md`) |
 | `mw_summarize_counterfactual.py` | MobileWorld run of `-Counterfactual` vs run 2's models | `results/mobileworld/mw_e_comparison.{json,md}` |
 | `mw_summarize_r3.py`, `mw_summarize_r2.py` | See above | |
-| [`done_audit/`](done_audit/) | Round 8–12 label audits: the "done" judges, wait audits, history probes, review sheets | Files in `results/v46_dev/`, `v47_dev/`, `v48_dev/`, `r1*_dev/` |
-| [`diagnosis_20261123/`](diagnosis_20261123/) | The 2026-11-23 step-count diagnosis | `results/diagnosis_20261123/` |
+| [`done_audit/`](done_audit/README.md) | Round 8–12 label audits: the "done" judges, wait audits, history probes, review sheets | Files in `results/v46_dev/`, `v47_dev/`, `v48_dev/`, `r1*_dev/` |
+| [`diagnosis_20261123/`](diagnosis_20261123/README.md) | The 2026-11-23 step-count diagnosis | `results/diagnosis_20261123/` |
 
 Names in the output files are the labels in use when they were written; see [docs/naming.md](../docs/naming.md#records-keep-the-old-names).

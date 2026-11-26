@@ -52,6 +52,7 @@ def make():
 
 
 shots = sorted(glob.glob(os.path.join(os.path.expanduser(a.shots), "*.png")))
+assert shots, f"no screenshots in {a.shots}"
 cases = []
 for f in shots:
     task = os.path.basename(f).split("-")[0]

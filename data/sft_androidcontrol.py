@@ -35,6 +35,7 @@ from PIL import Image
 from datasets import Dataset, Features, Image as DImage, Sequence, Value, concatenate_datasets, load_from_disk
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "train"))  # agent_format lives in train/
 import agent_format as af  # copied next to this file on the VM
 
 AW_APP_PATTERNS = [

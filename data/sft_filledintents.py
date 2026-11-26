@@ -154,7 +154,7 @@ configs:
   - split: dev_screenqa
     path: data/dev_screenqa-*.parquet
 ---
-# AndroidAgent-SFT v3
+# MobileAgent-SFT-FilledIntents
 
 v2 (`{a.src}` @ `{a.rev}`) with every blank training intent filled; actions, images and dev splits unchanged.
 {st['teacher_filled']} tap/long-press intents written by `{saved.get('teacher')}` (red ring at the recorded point),

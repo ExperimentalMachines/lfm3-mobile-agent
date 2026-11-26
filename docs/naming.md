@@ -95,6 +95,10 @@ Phone formats: append `-GGUF` or `-LiteRT` to the model name (GGUF repos exist f
 | [`MobileAgent-SFT-Counterfactual`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-Counterfactual) | MobileAgent-SFT-v4.6 | `-Counterfactual` |
 | [`MobileAgent-SFT-Counterfactual-WaitFix`](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-Counterfactual-WaitFix) | MobileAgent-SFT-v4.7 | nothing yet |
 
+## Deleted repositories
+
+Two intermediate training-checkpoint repos were deleted on 2026-11-26 (`LFM3-VL-2B-MobileAgent-v4.5-D-ckpt`, `LFM3-VL-2B-MobileAgent-v4.6-E-ckpt`, i.e. the checkpoints of `-Dev-FullMix` and `-Counterfactual`): their final adapters are byte-identical to `lora_adapter/` of the final repos; only optimizer states were lost.
+
 ## Candidates that were never published
 
 Round candidates that failed their gates before upload. They exist only in the documentation and the preregistration logs.

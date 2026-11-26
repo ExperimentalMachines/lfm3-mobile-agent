@@ -53,7 +53,7 @@ t0 = time.time()
 CONNECT = ["{g}, then answer: {q} {f}", "{g}. After that, tell me: {q} {f}", "{g} and answer this question: {q} {f}"]
 
 labels = json.load(open(a.labels))
-assert labels["src"] == f"{V3}@{V3_REV}", labels["src"]
+assert labels["src"] in (f"{V3}@{V3_REV}", f"experimentalmachines/MobileAgent-SFT-FilledIntents@{V3_REV}"), labels["src"]  # recorded id or its current name
 cands = {c["key"]: c for c in json.load(open(a.candidates))["candidates"]}
 pool = json.load(open(a.pool))
 qa_raw = labels["qa"]
@@ -334,7 +334,7 @@ configs:
   - split: dev_complete
     path: data/dev_complete-*.parquet
 ---
-# AndroidAgent-SFT v4
+# MobileAgent-SFT
 
 v3 (`{V3}` @ `{V3_REV[:10]}`) rewritten to the v4 prompt (answer-vs-complete rules + installed-app list) plus
 {len(used_train_qa)} navigate-then-answer copies of AndroidControl train episodes ({st['qa_rows']} rows; question and answer

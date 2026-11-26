@@ -1,6 +1,6 @@
 """v4 teacher labels (runs ON a Colab GPU): navigate-then-answer questions + short ScreenQA answers.
 
-Inputs (uploaded next to this script): v4_candidates.json (data/sft_main_select.py), screenqa_rows.json (data/v4_prep.py).
+Inputs (uploaded next to this script): v4_candidates.json (data/sft_main_select.py), screenqa_rows.json (ScreenQA rows prepared by a one-off script that was not kept; see tag archive/pre-restructure-2026-11-20).
 For each candidate AndroidControl episode, the teacher (Qwen3-VL-8B-Instruct) sees the FINAL screen (the screenshot of the
 episode's `status complete` row) and the original goal, and writes a question whose answer is readable on that screen,
 a reply-format instruction, the answer copied from the screen, and a one-sentence evidence note. A second, independent

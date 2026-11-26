@@ -42,6 +42,7 @@ from collections import Counter, defaultdict
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "train"))  # agent_format lives in train/
 import agent_format as af  # copied next to this file
 
 TERMINAL_INTENT = "The goal has been completed."  # identical to v1

@@ -28,7 +28,7 @@ A() { adb -P "$ADB_PORT" -s "$SER" "$@"; }
 log() { echo "[$(date +%T)] dev$IDX $*" | tee -a "$OUT/worker.log"; }
 B=$(cat logs/devstream_bucket.txt); SA=lfm3-devstream-signer@voltaic-psyche-514908-s2.iam.gserviceaccount.com
 D=/data/local/tmp/lfm3bench
-SHOTS=/private/tmp/claude-501/-Users-alpha-lfm3-android/4efa3977-532d-411f-ad28-f4737438aa00/scratchpad/bench_shots
+SHOTS=${SHOTS:?set SHOTS to a folder of AndroidWorld task screenshots named <Task>-<n>.png}; ls "$SHOTS"/*.png > /dev/null || { echo "no screenshots in $SHOTS"; exit 1; }
 AGENTS=eval/devicestream/agents
 PY=tools/MobileWorld/.venv/bin/python
 declare -a ORDER=(${ORDER_OVERRIDE:-v4 guiowl maiui})
