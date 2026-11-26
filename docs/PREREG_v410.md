@@ -150,3 +150,12 @@ nothing is published.
 ---
 
 ## Log
+
+### 2026-11-26 12:03 Asia/Manila — split fixed; next-action smoke passed
+
+- Held-out M_notdone: 200 of the 819 judged-unfinished endings (Random(12) over the sorted case ids;
+  `results/r12_dev/notdone_split.json`); 619 to write.
+- Smoke, 6 direct calls ($0.08, ~1.3 cents each): 6 / 6 parsed and valid (3 taps, 1 long press, 1 home, 1 wait). By eye
+  with each tap drawn: Save icon, PayPal option at checkout, the document's edit button — all on target; the long press
+  on pasted URL text is defensible (the judge named the extra text), though saving would be more direct; going home to
+  play the missing podcast and waiting for the network are sensible. Batch for the remaining 613 next (about $4).
