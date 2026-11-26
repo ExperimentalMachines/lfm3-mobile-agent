@@ -81,3 +81,14 @@ advantage; one update with A = +1 raises the sampled completion's mean log-proba
    superiority test reported.
 
 If any gate fails: reported, nothing published, and the next step is decided from the data (no new single-symptom patch).
+
+### 2026-11-26 14:24 Asia/Manila — RL smoke passed; full E-S run launched (100 batches, as registered)
+
+- Smoke job `lfm3-r13-es-smoke` (A10G, ~18 billed minutes): episode build on the full split (13,006 AndroidControl and
+  1,047 GUI-Odyssey episodes usable; 450 of the latter end in a written next action; 317 probe episodes excluded; 110
+  judged-unfinished AndroidControl completes dropped), 2 RL batches (16–32 samples with non-zero advantage each, peak
+  6.5 GB), merge, every round-8 eval, both ending probes and the round-13 gate ran ("R13 smoke DONE"; 16-row numbers
+  meaningless).
+- Smoke timing (B 2, ≤ 6 steps): 30–45 s per batch, so the full setting (B 4, ≤ 12 steps) is estimated at ~3 min per
+  batch: **100 batches ≈ 5 h**, plus merge and evals. Size unchanged from the registration.
+- Full job `lfm3-r13-es` launched (`R13_BATCHES=100`, lr 3e-5, 12 h limit, resumable).
