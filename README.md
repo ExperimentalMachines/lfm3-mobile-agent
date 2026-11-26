@@ -33,10 +33,26 @@ agent, GUI-Owl-1.5-2B, solves 47. Each model sees one screenshot per step and ge
   thin: it relies on re-running 113 episodes where the emulator crashed before the first step, and on the tasks whose
   wording changes with the seed, the two are level (32 vs 33). [All caveats](docs/results.md).
 - **Clearly behind GUI-Owl on MobileWorld**, a second benchmark (6 of 105 tasks, against 22; MAI-UI gets 11).
-- **Fast.** On an Apple M5 Mac the median model step took about 3 seconds, against 7–9 for the other two (whole
-  pipelines with different image sizes; MAI-UI at 8-bit). The phone-GPU version takes about 3.5 seconds per model call on one
-  Snapdragon reference phone.
+- **Fast** (table below).
 - **Its main weakness is stopping.** It often says "done" when the task isn't, or repeats the same action in a loop.
+
+### Speed
+
+Time for the model to produce one step (read the screenshot, answer). The Mac numbers were measured during real AndroidWorld
+runs; the phone numbers on the same five screenshots for every model.
+
+| Where it ran | Main | GUI-Owl-1.5-2B | MAI-UI-2B |
+|---|---|---|---|
+| **Mac** (Apple M5, GPU), median seconds per step | **3.0** | 7.0 | 9.4 (8-bit) |
+| **Phone CPU** (Snapdragon 8 Elite Extreme Gen 6), seconds per step, all three capped at the same image size | **~39** | ~198 | ~183 (8-bit) |
+| **Phone CPU**, each model as we evaluated it (the others use bigger images) | **~39** | ~1,100 | ~1,063 (8-bit) |
+| **Phone GPU** (the LiteRT file in the app), seconds per model call | ~3.5 | not measured | not measured |
+
+- Main is faster mainly because it sends fewer prompt tokens per step (a smaller image); these tests compare whole pipelines
+  and do not isolate the cause.
+- These are small pilot measurements, not controlled benchmarks. The phone CPU rows are matched on the processor's measured
+  clock speed, and we did not measure how accurate GUI-Owl and MAI-UI are with the smaller image. Details, token counts and
+  more settings (a cloud CPU, a Pixel 9 attempt): [docs/results.md](docs/results.md#speed).
 
 ---
 
