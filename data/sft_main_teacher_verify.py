@@ -20,7 +20,7 @@ from transformers import AutoModelForImageTextToText, AutoProcessor
 
 from sft_main_answer_check import norm, preferred, same_answer
 
-REPO, V3, V3_REV = "experimentalmachines/MobileAgent-SFT", "experimentalmachines/MobileAgent-SFT-FilledIntents", "565ba76c4b10b6733549151f0fece1f70bc33b9c"
+REPO, V3, V3_REV = "experimentalmachines/MobileAgent-SFT", "alpharomercoma/AndroidAgent-SFT-v3", "565ba76c4b10b6733549151f0fece1f70bc33b9c"  # recorded id of FilledIntents; redirects on the Hub
 t0 = time.time()
 labels = json.load(open(hf_hub_download(REPO, "stats/v4_teacher_labels.json", repo_type="dataset")))
 cands = {c["key"]: c for c in json.load(open("/content/work/v4_candidates.json"))["candidates"]}

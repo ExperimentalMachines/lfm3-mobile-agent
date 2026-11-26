@@ -204,7 +204,7 @@ written under.
 | `data/v46_build.py` | `data/sft_counterfactual.py` |
 | `data/v47_build.py` | `data/sft_counterfactual_waitfix.py` |
 | `data/v47_cont_mix.py` | `data/sft_counterfactual_waitfix_mix.py` |
-| `data/v48_build.py` | `data/sft_endings.py` |
+| `data/v48_build.py` | *(renamed `sft_endings.py`, then removed 2026-11-26: the never-built `Endings` builder)* |
 | `data/v48_odyssey_filter.py` | `data/odyssey_endings_filter.py` |
 | `data/v48_odyssey_terminals.py` | `data/odyssey_endings_terminals.py` |
 | `data/r10_candidates.py` | `data/stopdpo_candidates.py` |
@@ -214,7 +214,7 @@ written under.
 | `data/r12_mix.py` | `data/donecheck_mix.py` |
 | `data/r14_sft_mix.py` | `data/ownhistory_sft_mix.py` |
 | `data/meta/v4_heldout_episodes.json` | `data/meta/main_heldout_episodes.json` |
-| `scripts/training/make_v4_train_job.py` | `scripts/training/make_main_train_job.py` |
+| `scripts/training/make_v4_train_job.py` | *(removed 2026-11-26 with the job configs it wrote)* |
 | `scripts/training/v4_reference_r7.json` | `scripts/training/main_reference_r7.json` |
 | `analysis/v2_compare.py` | `analysis/multisource_vs_androidcontrolonly.py` |
 | `analysis/v4_gate.py` | `analysis/main_gate.py` |

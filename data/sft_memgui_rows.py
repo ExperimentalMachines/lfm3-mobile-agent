@@ -24,12 +24,12 @@ Rules (counts for every rule are in data/v44work/memgui_stats.json)
     * AndroidLab apps: Bluecoins, Cantook, Maps.me, PiMusic, Zoom (as an app), and calendar apps;
     * MobileWorld apps: Mastodon, Mattermost, Taodian, Mail (Gmail clone), Gallery app, Calendar (Fossify);
     * calendar variants: any "calendar" in the instruction; "N Calendar"/"calendar app"/opening a calendar in step
-      text (MemGUI' "N calendar" is a calendar app; AndroidLab and MobileWorld have calendar apps, AndroidWorld has
+      text (MemGUI's "N calendar" is a calendar app; AndroidLab and MobileWorld have calendar apps, AndroidWorld has
       Simple Calendar Pro);
-    * Messages / SMS (change 2026-11-23): MobileWorld's "SMS" app is Google Messages, MemGUI' "messages" app; any
+    * Messages / SMS (change 2026-11-23): MobileWorld's "SMS" app is Google Messages, MemGUI's "messages" app; any
       trajectory naming the Messages app, SMS or sending a text/message is dropped (MESSAGES_RE);
     * kept on purpose (generic system apps, our documented list): Settings, Clock, Chrome, Contacts, Files.
- 2. Success only: MemGUI' `evaluation.decision` is 1 for every released trajectory, so it filters nothing. Kept =
+ 2. Success only: MemGUI's `evaluation.decision` is 1 for every released trajectory, so it filters nothing. Kept =
     tasks the judge marks feasible (`task_feasible` true) that end in `terminate(success)` or an `answer`. Infeasible
     tasks (correct `terminate(failure)` refusals) are dropped: AndroidWorld has no infeasible tasks and giving up early
     is a v4 failure.
@@ -42,7 +42,7 @@ Rules (counts for every rule are in data/v44work/memgui_stats.json)
     * `answer` -> the trajectory ends at its first answer (our answer ends the task; MemGUI keeps the episode open:
       repeated answers, then terminate, all cut). Dropped if that first answer is unreasonable or if a reasonable GUI
       step (not wait) follows it (answer given mid-task). The answer row itself is NOT emitted (change 2026-11-23):
-      MemGUI' answers are full sentences ("The price of ... is $99.99 in USD.") while v4 and AndroidWorld expect the
+      MemGUI's answers are full sentences ("The price of ... is $99.99 in USD.") while v4 and AndroidWorld expect the
       shortest answer; the earlier rows of these question trajectories are kept unchanged (they end before the
       answer). Counted as answer_rows_removed_long_format; ANSWER_INTENT is therefore unused in the output;
     * no answer/terminate -> dropped; the terminal step must itself be reasonable;
@@ -326,7 +326,7 @@ def tool_args(resp):
 
 
 def grid_point(p):
-    """[x, y] on MemGUI' 0-1000 grid -> [int, int] or None."""
+    """[x, y] on MemGUI's 0-1000 grid -> [int, int] or None."""
     try:
         x, y = p
     except Exception:  # noqa: BLE001
@@ -489,7 +489,7 @@ def _candidates(raw):
     return out
 
 
-# MemGUI' Calculator (one fixed portrait keypad on the 1080x2400 device; key centres on the 0-1000 grid, measured from
+# MemGUI's Calculator (one fixed portrait keypad on the 1080x2400 device; key centres on the 0-1000 grid, measured from
 # screenshots). In key-by-key number entry the agent's <action_intent> often names the NEXT key ("Press the equals
 # button" while clicking "7"); the clicks are right (the judged results are), the text is not. On a calculator screen
 # the pressed key is therefore read from the click position instead.
@@ -922,7 +922,7 @@ def _read_entry(ent):
     import struct
     import zlib
     meth, csz, usz, crc, dsk, off = ent
-    assert meth == 0 and csz == usz, "MemGUI' zip stores entries uncompressed"
+    assert meth == 0 and csz == usz, "MemGUI's zip stores entries uncompressed"
 
     def read(k, pos, n):
         buf = b""

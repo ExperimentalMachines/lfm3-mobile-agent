@@ -37,7 +37,7 @@ themselves are built from these rows plus Main's at training time by `data/sft_m
 
 - **Source:** MemGUI-3K @ `003822b5aa3d5450232b8e6305d3094f564a1cf1` (Apache-2.0).
 - **Kept trajectories:** only successful, feasible ones.
-- **Targets:** the steps MemGUI' judge rated reasonable.
+- **Targets:** the steps MemGUI's judge rated reasonable.
 - **Recovery:** unreasonable steps stay in the history, so many rows show a mistake followed by the right next step.
 - **Removed:** memory ("ConAct") actions; and answer rows, because their answers are full sentences.
 - **Contamination filter:** no AndroidWorld, MobileWorld or AndroidLab tasks, apps or trajectories.

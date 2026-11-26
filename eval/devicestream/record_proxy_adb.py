@@ -2,7 +2,7 @@
 
 `adb forward` would open its listener on the remote adb server's host, not on this Mac, so each HTTP request is instead
 carried through `adb shell` into curl on the phone (`curl http://127.0.0.1:8080...`, request body on stdin, response
-on stdout). Same JSONL record as record_proxy.py (fsync per request): wall-clock latency (includes the tunnel), the
+on stdout). Same JSONL record as the (removed) direct-HTTP record_proxy.py (fsync per request): wall-clock latency (includes the tunnel), the
 request summary and the full response JSON with llama.cpp's on-phone `timings` (the primary speed numbers).
 Usage: python record_proxy_adb.py --listen 18301 --adb "adb -P 15037 -s SERIAL" --log out.jsonl --device D --model M
 """

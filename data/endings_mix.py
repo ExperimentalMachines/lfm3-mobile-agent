@@ -11,7 +11,7 @@ Inputs
 Rows
   * judged COMPLETE (947): 200 random -> probe M_done (never trained); the rest -> training rows `status complete`
     (terminal screen + the episode's full history, rebuilt from E's own last training row of the episode, exactly as
-    odyssey_endings_terminals.py did) + their counterfactual rows, sft_endings.py's rules:
+    odyssey_endings_terminals.py did) + their counterfactual rows, sft_endings.py's rules (removed; see tag archive/pre-naming-cleanup-2026-11-26):
         stale1  the screen before the last action, that action noted "[no visible change]"   -> redo it
         ahead2/3 (half) a screen 2-3 actions before the end, the full history                 -> that screen's action
         short1/2 (half) the terminal screen, history without its last 1-2 lines               -> `status complete`
@@ -130,7 +130,7 @@ def main():
     term_train = [r for i, r in enumerate(done) if i not in held]
     ST["probe_M_done"], ST["probe_M_notdone"], ST["terminal_train"] = len(probe_done), len(rows["NOT_COMPLETE"]), len(term_train)
 
-    # ---- counterfactual rows (sft_endings.py's rules) and E's real rows before the end
+    # ---- counterfactual rows (the rules of sft_endings.py (removed; see tag archive/pre-naming-cleanup-2026-11-26)) and E's real rows before the end
     cf, must = [], []
     for tr in term_train:
         e, d = tr["episode_id"], tr["_last"]

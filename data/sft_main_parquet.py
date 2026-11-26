@@ -34,7 +34,7 @@ import agent_format as af  # noqa: E402
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sft_main_answer_check import norm, preferred, safe_short, same_answer  # noqa: E402
 
-V3, V3_REV = "experimentalmachines/MobileAgent-SFT-FilledIntents", "565ba76c4b10b6733549151f0fece1f70bc33b9c"
+V3, V3_REV = "alpharomercoma/AndroidAgent-SFT-v3", "565ba76c4b10b6733549151f0fece1f70bc33b9c"  # the id recorded in the teacher labels (`labels["src"]`); Hugging Face redirects it to experimentalmachines/MobileAgent-SFT-FilledIntents
 OUT_REPO = "experimentalmachines/MobileAgent-SFT"
 p = argparse.ArgumentParser()
 p.add_argument("--labels", required=True)

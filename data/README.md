@@ -17,7 +17,7 @@ mixes built inside training jobs, and the fixed split files in [`meta/`](meta/RE
 | `sft_fullmix.py` | `MobileAgent-SFT-FullMix` |
 | `sft_counterfactual.py` | `MobileAgent-SFT-Counterfactual` |
 | `sft_counterfactual_waitfix.py`, `sft_counterfactual_waitfix_mix.py` | `MobileAgent-SFT-Counterfactual-WaitFix` and its continuation mix |
-| `sft_endings.py`, `odyssey_endings_terminals.py`, `odyssey_endings_filter.py` | Round 10 "multi-part endings": the never-built `Endings` data rules and the GUI-Odyssey ending candidates (their rules are reused by `endings_mix.py`) |
+| `odyssey_endings_terminals.py`, `odyssey_endings_filter.py` | Round 10 "multi-part endings": the GUI-Odyssey ending candidates and their first by-eye filter (the never-built `Endings` full builder, `sft_endings.py`, was removed; its rules live on in `endings_mix.py`) |
 | `stopdpo_candidates.py`, `stopdpo_pairs.py`, `stopdpo_filter_pairs.py` | Round 10 stop-DPO: candidate rows, preference pairs from the model's own stop decisions, judge-checked filtering |
 | `ac_complete_rows.py` | Every real AndroidControl `complete` row of `MobileAgent-SFT-Counterfactual`'s training split (for the judge's labels) |
 | `endings_mix.py`, `donecheck_mix.py`, `ownhistory_sft_mix.py` | Mixes built inside the round 11 / 12 / 14 SageMaker jobs |

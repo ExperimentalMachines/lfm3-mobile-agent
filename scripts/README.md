@@ -46,17 +46,17 @@ Orchestration: how the runs were launched, watched and published. Scripts that *
 
 ## training/ — GPU jobs on AWS SageMaker
 
-The SageMaker job pattern used for rounds 7–14: `sm_launch_rN.sh` uploads the code and inputs and creates the training job;
+The SageMaker job pattern used for rounds 9–14 (round 7's SageMaker job was never placed; `-Dev-FullMix` trained on Modal): `sm_launch_rN.sh` uploads the code and inputs and creates the training job;
 `sm_rN.sh` runs inside it (train, merge, evaluate, gate). Rounds 1–6 ran on Colab and Modal with scripts that were removed
-(see above); `train/sft_vlm.py` is the trainer every run used, and each run's configuration is in its
+(see above, and round 7's unused SageMaker job); `train/sft_vlm.py` is the trainer every run used, and each run's configuration is in its
 `run_config.json` under [`results/training/`](../results/training/) and the round's `results/*_dev/` folder.
 
 | Script | Does |
 |---|---|
-| `sm_launch_r7.sh` … `sm_launch_r14.sh` | Launch the round-N job (`R9_BUCKET=<bucket> sm_launch_rN.sh <job> smoke\|full [hours] [KEY=VALUE ...]`) |
-| `sm_r7.sh` … `sm_r14.sh` | Run inside the job: round 7 (FullMix), 9, 10, 10dpo (stop-DPO), 11, 12, 13, 14 |
-| `sm_r7_gate.py`, `sm_r8_gate.py`, `sm_r10_gate.py` … `sm_r13_gate.py` | The offline gates, as registered for each round |
-| `vm_r8_eval.sh`, `vm_r9_eval.sh`, `vm_r10_eval.sh` | The round-8 evaluation suite (and its round-9 / round-10 variants), run inside a job after training |
+| `sm_launch_r9.sh`, `sm_launch_r10dpo.sh`, `sm_launch_r11.sh` … `sm_launch_r14.sh` | Launch the round-N job (the usage line is in each script's header; most take `R9_BUCKET=<bucket> <script> <job> smoke\|full [hours] [KEY=VALUE ...]`) |
+| `sm_r9.sh`, `sm_r10dpo.sh`, `sm_r11.sh` … `sm_r14.sh` | Run inside the job: round 9, 10 (stop-DPO), 11, 12, 13, 14 |
+| `sm_r7_gate.py`, `sm_r8_gate.py`, `sm_r11_gate.py` … `sm_r13_gate.py` | The offline gates, as registered for each round (the round-8 gate builds on the round-7 one) |
+| `vm_r8_eval.sh`, `vm_r9_eval.sh` | The round-8 evaluation suite (and its round-9 variant), run inside a job after training |
 | `merge_adapter.py` | Merge a LoRA adapter into its base model |
 | `main_reference_r7.json` | Main's offline reference numbers the gates compare against |
 

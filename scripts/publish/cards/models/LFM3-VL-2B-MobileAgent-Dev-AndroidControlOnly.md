@@ -1,0 +1,100 @@
+---
+license: other
+license_name: lfm1.0
+license_link: LICENSE
+base_model: LiquidAI/LFM3-VL-2B
+pipeline_tag: image-text-to-text
+library_name: transformers
+language:
+- en
+datasets:
+- experimentalmachines/MobileAgent-SFT-AndroidControl
+tags:
+- android
+- gui-agent
+- mobile-agent
+- screenshot
+- lora
+---
+
+# LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly
+
+- **Name:** `LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly` (formerly `LFM3-VL-2B-MobileAgent-v1`; see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
+- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Initialised from:** the base model
+- **What was added:** SFT on AndroidControl only (official train episodes)
+
+The first LFM3 Mobile Agent: [LiquidAI/LFM3-VL-2B](https://huggingface.co/LiquidAI/LFM3-VL-2B) fine-tuned on AndroidControl only to operate an Android phone from one screenshot per step.
+
+| | |
+|---|---|
+| Base | LiquidAI/LFM3-VL-2B |
+| Method | LoRA SFT (rank 64, alpha 128) on the language model, vision tower frozen; merged into the weights (adapter in `lora_adapter/`) |
+| Training | 1,250 steps × 32 rows, lr 2e-4 (Modal GPU) |
+| Data | [MobileAgent-SFT-AndroidControl](https://huggingface.co/datasets/experimentalmachines/MobileAgent-SFT-AndroidControl): AndroidControl's official train split, 99,216 rows |
+| Phone format | 4-bit GGUF: [LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly-GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-AndroidControlOnly-GGUF) |
+| Status | **Superseded** by Main. Kept as the baseline in the held-out comparison |
+
+## Evaluation
+
+One run each, temperature 0, 4-bit GGUF; exceptions count as failures.
+
+| Benchmark | AndroidControlOnly | Main (later) |
+|---|---|---|
+| AndroidWorld held-out seeds 7 / 1234 / 2026 (348 tasks) | 32 (11 / 10 / 11) | 54 |
+| AndroidWorld seed 30 (116 tasks, development) | 15 (base model: 1) | 18 |
+| AndroidControl test, high- / low-level step accuracy | 0.715 / **0.948** | 0.728 / 0.908 |
+| Terminal `complete` accuracy | 0.792 | 0.716 |
+| Dev splits: GUI-Odyssey / AMEX / ScreenQA answers | 0.269 / 0.306 / 0.000 | — |
+| MMStar / MMLU (base 52.1% / 48.9%) | 57.1% / 49.5% | 52.9% / 50.4% |
+| Apple M5 GPU, median seconds per step | 2.66 | 2.96 |
+
+- **Strong at single actions, never answers:** AndroidControl has no answer supervision, so AndroidControlOnly never emits `answer`
+  and fails every question task.
+- **Loops:** a third of its AndroidWorld steps are `wait` under an intent that is not about waiting, a pattern
+  copied from AndroidControl's labels (fixed later, in WaitRelabel).
+- Main − AndroidControlOnly on the held-out seeds: +6.3 points (95% CI +1.1 to +11.5, p = 0.02).
+
+## Input and output
+
+| Part | Format |
+|---|---|
+| Image | One screenshot per step, resized to at most 880 × 880 px of area (about 720 image tokens) |
+| User text | `Goal: …` / `Previous steps:` (last 8 steps as `n. <intent> -> <action JSON>`, or `None`) / `What is the next action?` |
+| Output | `<think>short intent</think>` followed by one compact JSON action; coordinates are integers on a 0–1000 grid |
+| Decoding | Thinking on, temperature 0 |
+
+<details><summary>System prompt (the earlier Dev models (AndroidControlOnly, MultiSource, FilledIntents) format)</summary>
+
+```
+You are a phone-use agent operating an Android phone to complete the user's goal.
+Each turn you see the goal, your previous steps, and the current screenshot. Reply with ONE next action as JSON.
+Coordinates are integers normalized to 0-1000 (x from left, y from top) of the screenshot.
+Actions:
+{"action_type":"click","point_2d":[x,y]}
+{"action_type":"long_press","point_2d":[x,y]}
+{"action_type":"input_text","text":"..."}  (types into the focused field)
+{"action_type":"scroll","direction":"up|down|left|right"}  (down = reveal content below)
+{"action_type":"open_app","app_name":"..."}
+{"action_type":"navigate_back"}
+{"action_type":"navigate_home"}
+{"action_type":"keyboard_enter"}
+{"action_type":"wait"}
+{"action_type":"answer","text":"..."}  (reply to a question about the screen)
+{"action_type":"status","goal_status":"complete|infeasible"}  (finish the task)
+```
+</details>
+
+## Limitations
+
+- Research model. Do not let it act unattended on a phone with real accounts, messages or payments.
+- English goals, one screenshot per step, no memory beyond the 8-step text history.
+- Trained only on recorded demonstrations; it has never interacted with a live phone during training.
+
+## Project
+
+Code, data builders, benchmark harnesses and every result with its source: [experimentalmachines/lfm3-mobile-agent](https://github.com/experimentalmachines/lfm3-mobile-agent) (see [models](https://github.com/experimentalmachines/lfm3-mobile-agent/blob/main/docs/models.md) and [results](https://github.com/experimentalmachines/lfm3-mobile-agent/blob/main/docs/results.md)).
+
+## License
+
+LFM Open License v1.0, inherited from [LiquidAI/LFM3-VL-2B](https://huggingface.co/LiquidAI/LFM3-VL-2B) ([LICENSE](LICENSE)).

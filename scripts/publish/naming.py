@@ -5,7 +5,7 @@ Grammar
   dataset  MobileAgent-<Kind>[-<Recipe>]
 
   Base     the upstream model name, unchanged (LFM3-VL-2B, Qwen3.5-2B, ...)
-  none     the recommended model (the only one evaluated on the held-out benchmark)
+  none     the recommended model (the main model; its held-out comparison is the project's primary result)
   Variant  an evaluated alternative that is NOT a recommendation
   Dev      a development checkpoint, kept for reproducibility
   Recipe   CamelCase tag for what was ADDED to the training recipe of its parent (the parent is in `PARENT`)
