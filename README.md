@@ -2,7 +2,10 @@
 
 A small AI that operates an Android phone by looking at the screen. You give it a goal ("set an alarm for 7:30"); it taps,
 types and scrolls until it thinks the goal is done. It is [LiquidAI's LFM3-VL-2B](https://huggingface.co/LiquidAI/LFM3-VL-2B)
-fine-tuned on public phone-use data, small enough to run on the phone itself (a 1.3 GB file).
+fine-tuned on public phone-use data, small enough to run on the phone itself (about 1.3 GB, including its image part).
+
+**Want to see it on a phone?** The [Mobile Agent app](https://github.com/ExperimentalMachines/mobile-agent) runs it on the
+phone's GPU. **Want to run it on a computer?** See [Try it](#try-it).
 
 This repository is the whole project: training code, dataset builders, benchmark harnesses, every result, and the
 rules we wrote down before looking at results. The models and datasets are on
@@ -14,8 +17,9 @@ rules we wrote down before looking at results. The models and datasets are on
 
 ## How good is it?
 
-On AndroidWorld's held-out tasks the main model solves **about 15%** of tasks (54 of 348). The closest comparable agent,
-GUI-Owl-1.5-2B, finishes 47. Each model sees one screenshot per step and the same tasks and step limit.
+[AndroidWorld](https://github.com/google-research/android_world) is a benchmark of tasks in an Android emulator. On three
+sets of held-out tasks (116 tasks each, 348 in all) the main model solves **about 15%** (54 of 348). The closest comparable
+agent, GUI-Owl-1.5-2B, solves 47. Each model sees one screenshot per step and gets the same tasks and step limit.
 
 | Model | Tasks solved (of 348) |
 |---|---|
@@ -24,11 +28,14 @@ GUI-Owl-1.5-2B, finishes 47. Each model sees one screenshot per step and the sam
 | GUI-Owl-1.5-2B | 47 (13.5%) |
 | `-Dev-AndroidControlOnly` (our first model) | 32 (9.2%) |
 
-- **A tie, not a win.** We agreed in advance that "not worse than GUI-Owl by more than 6.9 points" counts as success; the
-  result meets that, but we could not show it is *better*. The margin is thin: it depends on re-running some episodes where the
-  emulator crashed ([details and caveats](docs/results.md)).
-- **Clearly behind on MobileWorld** (6 of 105 tasks, against 22 for GUI-Owl and 11 for MAI-UI).
-- **Fast.** About 3 seconds per step on a Mac, against 7–9 for the others, and about 3.5 seconds per step on a phone's GPU.
+- **Within our agreed margin, not shown better.** Before testing we decided that "not worse than GUI-Owl by more than
+  6.9 percentage points" counts as success. The result meets that, but we could not show the model is *better*. The margin is
+  thin: it relies on re-running 113 episodes where the emulator crashed before the first step, and on the tasks whose
+  wording changes with the seed, the two are level (32 vs 33). [All caveats](docs/results.md).
+- **Clearly behind GUI-Owl on MobileWorld**, a second benchmark (6 of 105 tasks, against 22; MAI-UI gets 11).
+- **Fast.** On an Apple M5 Mac the median model step took about 3 seconds, against 7–9 for the other two (whole
+  pipelines with different image sizes; MAI-UI at 8-bit). The phone-GPU version takes about 3.5 seconds per model call on one
+  Snapdragon reference phone.
 - **Its main weakness is stopping.** It often says "done" when the task isn't, or repeats the same action in a loop.
 
 ---
@@ -36,19 +43,28 @@ GUI-Owl-1.5-2B, finishes 47. Each model sees one screenshot per step and the sam
 ## Try it
 
 ```bash
-# needs llama.cpp (https://github.com/ggml-org/llama.cpp) and the Hugging Face CLI
+# needs llama.cpp (https://github.com/ggml-org/llama.cpp) and the Hugging Face CLI.
+# GGUF is llama.cpp's model format; this one is 4-bit quantised.
 hf download experimentalmachines/LFM3-VL-2B-MobileAgent-GGUF --local-dir lfm3-mobile-agent
 llama-server -m lfm3-mobile-agent/LFM3-VL-2B-MobileAgent-Q4_K_M.gguf \
   --mmproj lfm3-mobile-agent/mmproj-LFM3-VL-2B-Q8_0.gguf \
   -c 8192 --image-max-tokens 1024 --reasoning-format deepseek
 ```
 
-That starts a server. To drive a phone or emulator you also need the agent loop, which sends a screenshot and the goal and
-carries out the model's answer:
+That only starts a model server. A phone or emulator also needs an **agent loop**: it sends the model a screenshot and the goal,
+then carries out the answer. Pick one:
 
-- **AndroidWorld emulator:** [`eval/androidworld/run_aw.py`](eval/androidworld/run_aw.py) with the agent in [`lfm_agent.py`](eval/androidworld/lfm_agent.py).
-- **On a real phone, on its GPU:** the [`-LiteRT` file](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-LiteRT) in the [Mobile Agent app](https://github.com/ExperimentalMachines/mobile-agent).
-- **Writing your own loop:** the exact prompt and answer format is in [`train/agent_format.py`](train/agent_format.py) and on the [model card](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent).
+- **On a real phone, on its GPU:** install the [Mobile Agent app](https://github.com/ExperimentalMachines/mobile-agent) and use the
+  [`-LiteRT` file](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-LiteRT).
+- **On the AndroidWorld emulator (what we benchmark with):** set up the emulator as described in
+  [docs/evaluation.md](docs/evaluation.md#setup-all-models), keep the server above running, then
+  ```bash
+  python eval/androidworld/run_aw.py --console_port=5556 --grpc_port=8556 --server_url=http://127.0.0.1:8080 \
+    --agent=lfm --enable_thinking=true --prompt_version=v4 --agent_label=main --output_path=runs/
+  ```
+  (`--prompt_version=v4` is required for this model; the default is the older prompt.)
+- **Writing your own loop:** the exact prompt and answer format is in [`train/agent_format.py`](train/agent_format.py) and on the
+  [model card](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent).
 
 ---
 
@@ -57,7 +73,7 @@ carries out the model's answer:
 | Name (on Hugging Face) | What it is |
 |---|---|
 | `LFM3-VL-2B-MobileAgent` | **Start here.** The main model. Add `-GGUF` for the llama.cpp file, `-LiteRT` for the phone-GPU file |
-| `LFM3-VL-2B-MobileAgent-Counterfactual` | An alternative that wastes fewer steps waiting but scores the same, so it is not recommended over the main model. It needs a loop that shows it the last 24 steps and marks steps that changed nothing; its card explains how |
+| [`LFM3-VL-2B-MobileAgent-Counterfactual`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Counterfactual) | Waits less, but showed no clear gain in solved tasks and made more false "done" calls than the main model, so it is not recommended over it. It needs an agent loop that gives it the last 24 steps and marks steps that changed nothing; its card explains how |
 | `…-Dev-<something>` | Older experiments, kept so results can be reproduced. Not recommended |
 
 The names are explained in [docs/naming.md](docs/naming.md), which also maps the old names (v4, v4.6-E, …) to these.
@@ -66,13 +82,13 @@ The names are explained in [docs/naming.md](docs/naming.md), which also maps the
 
 ## What we tried after the main model
 
-After the main model was frozen we ran ten rounds of ideas to fix its weakness: better "done" labels, training on its own
-mistakes, a "are you really done?" check, reinforcement learning. Every idea failed its pre-agreed test, so **none replaced the
-main model**. The short version of what we learned:
+After fixing the main model as our reference, we ran ten rounds (5 to 14) of ideas to fix its weakness: better "done" labels,
+training on its own mistakes, an "are you really done?" check, reinforcement learning. Under the rules set in advance, no
+candidate earned promotion, so **none replaced the main model**. The short version of what we learned:
 
 - Stopping at the right moment is the hard part, and human "done" labels in public data are noisy.
 - Gains on offline tests often did not show up when the agent ran on a real emulator.
-- A single run on AndroidWorld cannot detect differences smaller than about 9 tasks, so small improvements are invisible.
+- In our 116-task development runs, differences smaller than about nine tasks were hard to tell apart from run-to-run noise.
 - Running out of steps is mostly looping, not a step limit that is too short.
 
 Every round with its numbers and decision: [docs/rounds.md](docs/rounds.md).
@@ -103,7 +119,7 @@ outputs, kept as evidence).
 
 - **No benchmark data in training.** Nothing from AndroidWorld, MobileWorld or AndroidLab (tasks, recordings, checkers or their special apps).
 - **Rules before results.** Each round's plan and pass/fail bars were committed before training. Later changes are dated.
-- **Sealed held-out runs, and crashes count as failures** (unlike AndroidWorld's default), so the numbers are not flattered.
+- **Held-out results kept unopened** until every model had finished that test seed, and **crashes count as failures** (unlike AndroidWorld's default), so the numbers are not flattered.
 
 ---
 
