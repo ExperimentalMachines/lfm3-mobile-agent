@@ -52,6 +52,8 @@ flags.DEFINE_integer("guiowl_images", 5, "GUI-Owl screenshots kept in context")
 flags.DEFINE_integer("history_steps", 8, "LFM agent: text-history window (round 7 / v4.5 models: 24)")
 flags.DEFINE_boolean("nochange_notes", False, "LFM agent: only the ' [no visible change]' history note (round 7 / v4.5 models), without the rest of --runtime_feedback")
 flags.DEFINE_boolean("note_waits", False, "LFM agent: also note `wait` steps that changed nothing (round 9 / v4.7 models; needs --nochange_notes)")
+flags.DEFINE_boolean("done_check", False, "LFM agent: ask the done question before accepting `status complete`; 'no' blocks it (round 12, PREREG_v410)")
+flags.DEFINE_integer("done_check_max_blocks", 3, "LFM agent: at most this many blocked completes per episode (--done_check)")
 flags.DEFINE_string("change_rule", "coarse", "LFM agent: no-visible-change rule for --nochange_notes: coarse (round 6/7 models) | fine (round 8, train/screen_change.py)")
 flags.DEFINE_string("prompt_version", "v1", "LFM agent: v1 (models v1-v3) | v4 (answer/complete rules + installed-app list)")
 flags.DEFINE_boolean("installed_apps", False, "GUI-Owl agent: append the device's installed-app list (mirrors LFM3 v4)")
@@ -87,7 +89,8 @@ def main(argv):
                                enable_thinking=F.enable_thinking, max_pixels=F.max_pixels,
                                runtime_feedback=F.runtime_feedback, force_think=F.force_think, guards=F.guards,
                                prompt_version=F.prompt_version, history_steps=F.history_steps,
-                               nochange_notes=F.nochange_notes, change_rule=F.change_rule, note_waits=F.note_waits)
+                               nochange_notes=F.nochange_notes, change_rule=F.change_rule, note_waits=F.note_waits,
+                               done_check=F.done_check, done_check_max_blocks=F.done_check_max_blocks)
     agent.transition_pause = None
     ckpt = F.checkpoint_dir or checkpointer_lib.create_run_directory(F.output_path)
     print(f"Writing to {ckpt}", flush=True)

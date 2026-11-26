@@ -40,7 +40,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                  temperature: float = 0.0, wait_after_action: float = 1.0,
                  max_parse_retries: int = 1, runtime_feedback: bool = False, force_think: bool = False,
                  prompt_version: str = "v1", guards: bool = False, history_steps: int = af.HISTORY_STEPS,
-                 nochange_notes: bool = False, change_rule: str = "coarse", note_waits: bool = False):
+                 nochange_notes: bool = False, change_rule: str = "coarse", note_waits: bool = False,
+                 done_check: bool = False, done_check_max_blocks: int = 3):
         super().__init__(env, name)
         self.server_url = server_url.rstrip("/")
         self.model = model
@@ -64,6 +65,12 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self.change_rule = change_rule
         # round 9 (PREREG_v47): also note `wait` steps that left the screen unchanged, as the v4.7 data does
         self.note_waits = note_waits
+        # round 12 (PREREG_v410, opt-in): before a `status complete` is accepted, ask the model the done question on the
+        # same screenshot and history; "no" blocks it (status removed from the allowed actions, the check's reason as
+        # the reasoning prefill) at most done_check_max_blocks times per episode; yes / unparsed accept it.
+        self.done_check = done_check
+        self.done_check_max_blocks = done_check_max_blocks
+        self._blocks = 0
         self._labels = None
         self._prev_small = None
         self._prev_type = None
@@ -87,15 +94,19 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         self.env.hide_automation_ui()
         self.history = []
         self._prev_small, self._prev_type = None, None
+        self._blocks = 0
         if self.guard is not None:
             self.guard.reset()
         if self.prompt_version == "v4":
             self.apps = app_resolver.device_app_names(self.env.controller)
             assert self.apps, "installed-app list is empty"
 
-    def _query(self, goal: str, img: Image.Image, extra_messages=None, **overrides) -> dict:
+    def _query(self, goal: str, img: Image.Image, extra_messages=None, question: str | None = None, **overrides) -> dict:
         text = af.user_text(goal, self.history, apps=self.apps if self.prompt_version == "v4" else None,
                             history_steps=self.history_steps)
+        if question is not None:  # the done check: same text, last line replaced
+            assert text.endswith(af.NEXT_Q), text[-60:]
+            text = text[: -len(af.NEXT_Q)] + question
         payload = {
             "model": self.model,
             "messages": [
@@ -194,6 +205,42 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                     resp = {**resp, "content": txt}
             self.guard.record(action, small)
 
+        check_info = None
+        if (self.done_check and action is not None and action.get("action_type") == "status"
+                and action.get("goal_status", "complete") == "complete"):
+            if self._blocks >= self.done_check_max_blocks:
+                check_info = {"asked": False, "why": "block cap reached", "blocks": self._blocks}
+            else:
+                rc = self._query(goal, img, question=af.DONE_CHECK_Q, max_tokens=256)
+                ans = af.done_check_answer(rc["content"])
+                reason = (rc["reasoning"] or "").strip()
+                if not reason and "</think>" in rc["content"]:
+                    reason = rc["content"].split("</think>", 1)[0].replace("<think>", "").strip()
+                check_info = {"asked": True, "answer": ans, "reason": reason[:300], "content": rc["content"][:80],
+                              "latency_s": rc["latency_s"], "blocked": False}
+                attempts.append({"content": rc["content"], "reasoning": rc["reasoning"], "latency_s": rc["latency_s"],
+                                 "usage": rc["usage"], "lenient_ok": ans != "unparsed", "strict_ok": ans != "unparsed",
+                                 "done_check": True})
+                if ans == "no":
+                    self._blocks += 1
+                    pre = reason.splitlines()[0][:200] if reason else "The goal is not accomplished yet."
+                    rq = self._query(goal, img, extra_messages=[{"role": "assistant", "content": "", "reasoning_content": pre}],
+                                     max_tokens=128, grammar=ag.grammar({"status"}))
+                    txt = ag.LoopGuard.forced_text(rq["content"], rq["reasoning"], pre)
+                    a2 = af.parse_action(txt)
+                    ok = a2 is not None and a2["action_type"] != "status"
+                    attempts.append({"content": txt, "reasoning": pre, "latency_s": rq["latency_s"], "usage": rq["usage"],
+                                     "lenient_ok": a2 is not None, "strict_ok": af.parse_action(txt, strict=True) is not None,
+                                     "done_check_replacement": True})
+                    if not ok:  # grammar output unparseable (not expected): do nothing this step rather than end
+                        a2, txt = {"action_type": "wait"}, af.action_to_str({"action_type": "wait"})
+                    check_info.update(blocked=True, blocks=self._blocks, original=af.action_to_str(action),
+                                      replacement=af.action_to_str(a2), replacement_ok=ok)
+                    action = a2
+                    resp = {**resp, "content": txt, "reasoning": pre}
+                else:
+                    check_info["blocks"] = self._blocks
+
         thumb = io.BytesIO()
         Image.fromarray(pixels).convert("RGB").resize((360, 800)).save(thumb, format="JPEG", quality=70)
         data = {
@@ -209,6 +256,7 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
             "parsed_action": action,
             "forced_intent": forced,
             "guard": guard_info,
+            "done_check": check_info,
         }
         if action is None:
             self.history.append(("(invalid output)", resp["content"][:80]))

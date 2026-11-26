@@ -39,9 +39,7 @@ from huggingface_hub import HfApi  # noqa: E402
 
 REPO, REV = "experimentalmachines/MobileAgent-SFT-v4.6", "0ace5559e6c0b808a5ddf4e4ce9831d1d3614471"
 SEED, HIST = 12, 24
-NEXT_Q = "\nWhat is the next action?"
-CHECK_Q = ("\nCheck before finishing: is the goal fully accomplished on this screen (every part done and confirmed)? "
-           "Answer yes or no.")
+NEXT_Q, CHECK_Q = af.NEXT_Q, af.DONE_CHECK_Q  # the harness asks the same question (eval/androidworld/lfm_agent.py)
 DONE_ACT = {"action_type": "status", "goal_status": "complete"}
 DONE = {"role": "assistant", "content": af.action_to_str(DONE_ACT), "reasoning_content": "The goal has been completed."}
 PRE_END_TYPES = {"click", "long_press", "input_text", "keyboard_enter", "open_app"}
