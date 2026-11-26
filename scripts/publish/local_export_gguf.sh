@@ -15,5 +15,7 @@ fi
 .venv-convert/bin/python tools/llama.cpp/convert_hf_to_gguf.py "$M" --outtype f16 --outfile "$OUT/$NAME-F16.gguf" 2>&1 | tail -2
 llama-quantize "$OUT/$NAME-F16.gguf" "$OUT/$NAME-$Q.gguf" "$Q" 2>&1 | tail -1
 rm -f "$OUT/$NAME-F16.gguf"
+# conversion receipt (checked by publish_gguf.py): which weights, which converter, which quantization, which output
+.venv-convert/bin/python scripts/publish/make_receipt.py "$SRC" "$OUT/$NAME-$Q.gguf" "$Q"
 [ -d "$SRC" ] || rm -rf "$M"   # keep disk lean
 ls -la "$OUT"/*.gguf

@@ -21,7 +21,7 @@ Dataset  MobileAgent-<Kind>[-<Recipe>]
 | `<Base>` | The upstream model, unchanged: `LFM3-VL-2B`, `Qwen3.5-2B`, `Qwen3.5-0.8B`, `LFM2.5-VL-450M` |
 | *(nothing)* | **The recommended model.** Only `LFM3-VL-2B-MobileAgent` has this form (called *Main* in the docs): the model evaluated on the held-out AndroidWorld seeds |
 | `-<Variant>` | An **evaluated alternative**, documented and benchmarked, **not** a recommendation over Main. Today: `-Counterfactual` |
-| `-Dev-<Recipe>` | A **development checkpoint**, kept so results can be reproduced. Not recommended |
+| `-Dev-<Recipe>` | A **development model**, kept so results can be reproduced. Not recommended |
 | `<Recipe>` | A CamelCase tag for **what was added** to its parent's recipe (initialisation and recipe parent are in [Models](#models)). Same tag on a model and its dataset |
 | `<Format>` | `GGUF` (4-bit, llama.cpp) or `LiteRT` (int8, phone GPU). Safetensors repos carry no format suffix |
 | `<Kind>` | `SFT` (supervised rows) or `RL` (states for reinforcement learning) |

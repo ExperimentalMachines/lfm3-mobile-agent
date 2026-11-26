@@ -20,7 +20,7 @@ tags:
 # LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly
 
 - **Name:** `LFM2.5-VL-450M-MobileAgent-Dev-AndroidControlOnly` (formerly `LFM2.5-VL-450M-MobileAgent-v1`; see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 - **Initialised from:** the base model
 - **What was added:** SFT on AndroidControl, same recipe family as the LFM3 model of this name
 

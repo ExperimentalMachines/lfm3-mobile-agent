@@ -7,7 +7,7 @@ Grammar
   Base     the upstream model name, unchanged (LFM3-VL-2B, Qwen3.5-2B, ...)
   none     the recommended model (the main model; its held-out comparison is the project's primary result)
   Variant  an evaluated alternative that is NOT a recommendation
-  Dev      a development checkpoint, kept for reproducibility
+  Dev      a development model, kept for reproducibility
   Recipe   CamelCase tag for what was ADDED to the training recipe of its parent (the parent is in `PARENT`)
   Format   GGUF | LiteRT (safetensors repos carry no format suffix)
   Kind     SFT | RL

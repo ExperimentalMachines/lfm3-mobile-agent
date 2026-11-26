@@ -20,7 +20,7 @@ tags:
 
 - **Format:** GGUF build of [`LFM3-VL-2B-MobileAgent-Dev-FullMix`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix)
 - **Name:** `LFM3-VL-2B-MobileAgent-Dev-FullMix-GGUF` (see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 
 Phone format of [LFM3-VL-2B-MobileAgent-Dev-FullMix](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FullMix) for llama.cpp. Its exploratory AndroidWorld run (21 of 116 tasks on development seed 30) used the GGUF built on 2026-11-24 from the same weights; every tensor of this file is identical to it.
 
@@ -29,7 +29,7 @@ Phone format of [LFM3-VL-2B-MobileAgent-Dev-FullMix](https://huggingface.co/expe
 | `LFM3-VL-2B-MobileAgent-Dev-FullMix-Q4_K_M.gguf` | Language model, 4-bit (Q4_K_M) | `94d4c7ad…c3e7da` |
 | `mmproj-LFM3-VL-2B-Q8_0.gguf` | Vision projector, unchanged from [LiquidAI/LFM3-VL-2B-GGUF](https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF) (the fine-tune did not touch the vision tower) | `c5c5b58d…5918ab` |
 
-Made with llama.cpp `cd959bae9` (`convert_hf_to_gguf.py` → F16 → `llama-quantize Q4_K_M`) from the published weights; the same procedure reproduces Main's GGUF byte for byte. Every tensor is identical to the GGUF built earlier from the same weights (LFM3-VL-2B-MobileAgent-v4.5-D-Q4_K_M.gguf); only the `general.name` metadata differs.
+Made with llama.cpp `cd959bae9` (`convert_hf_to_gguf.py` → F16 → `llama-quantize Q4_K_M`) from the published weights; the same procedure reproduces Main's GGUF byte for byte. Every tensor is identical to the GGUF built earlier from the same weights (LFM3-VL-2B-MobileAgent-v4.5-D-Q4_K_M.gguf); descriptive metadata such as the model name differs.
 
 ## Serving
 

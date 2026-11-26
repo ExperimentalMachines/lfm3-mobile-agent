@@ -20,7 +20,7 @@ tags:
 # LFM3-VL-2B-MobileAgent-Dev-FilledIntents
 
 - **Name:** `LFM3-VL-2B-MobileAgent-Dev-FilledIntents` (formerly `LFM3-VL-2B-MobileAgent-v3`; see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 - **Initialised from:** the base model
 - **Recipe builds on:** [`LFM3-VL-2B-MobileAgent-Dev-MultiSource`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MultiSource)
 - **What was added:** the blank intents filled (templates + a teacher model)

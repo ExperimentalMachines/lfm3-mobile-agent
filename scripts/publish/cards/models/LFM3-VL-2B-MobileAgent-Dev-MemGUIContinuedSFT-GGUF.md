@@ -20,7 +20,7 @@ tags:
 
 - **Format:** GGUF build of [`LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT)
 - **Name:** `LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT-GGUF` (see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 
 Phone format of [LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT) for llama.cpp. It failed its offline gate and was not run on AndroidWorld; the offline numbers on the model card come from the bf16 weights.
 

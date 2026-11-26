@@ -17,7 +17,7 @@ tags:
 # LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT
 
 - **Name:** `LFM3-VL-2B-MobileAgent-Dev-MemGUIContinuedSFT` (formerly `LFM3-VL-2B-MobileAgent-v4.4-C`; see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 - **Initialised from:** [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent)
 - **Recipe builds on:** [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent)
 - **What was added:** 500 more steps on 50% MemGUI / 50% main-model rows

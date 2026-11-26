@@ -20,7 +20,7 @@ tags:
 
 - **Format:** GGUF build of [`LFM3-VL-2B-MobileAgent-Dev-FilledIntents`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FilledIntents)
 - **Name:** `LFM3-VL-2B-MobileAgent-Dev-FilledIntents-GGUF` (formerly `LFM3-VL-2B-MobileAgent-v3-GGUF`; see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 
 Phone format of [LFM3-VL-2B-MobileAgent-Dev-FilledIntents](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-FilledIntents) for llama.cpp: the files our evaluations ran on.
 

@@ -17,7 +17,7 @@ tags:
 # LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes
 
 - **Name:** `LFM3-VL-2B-MobileAgent-Dev-DPOAllMistakes` (formerly `LFM3-VL-2B-MobileAgent-v4.3-dpo`; see the [naming guide](https://github.com/ExperimentalMachines/lfm3-mobile-agent/blob/main/docs/naming.md))
-- **Status:** **Development checkpoint**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
+- **Status:** **Development model**: kept so results can be reproduced, **not recommended**. Use [`LFM3-VL-2B-MobileAgent`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent) instead
 - **Initialised from:** [`LFM3-VL-2B-MobileAgent-Dev-OwnHistory`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-OwnHistory)
 - **Recipe builds on:** [`LFM3-VL-2B-MobileAgent-Dev-OwnHistory`](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-Dev-OwnHistory)
 - **What was added:** DPO on all 4,163 of its own mistakes
