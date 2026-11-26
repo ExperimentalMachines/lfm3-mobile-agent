@@ -169,7 +169,8 @@ This compares agent pipelines, not model weights alone. Source:
 | MAI-UI-2B (official agent, 8-bit) | 11 (10.5%) | 98 | 7 |
 | LFM3-VL-2B v4 | 6 (5.7%) | 104 | 1 |
 
-Later, v4.2 scored 8 / 105 (development run, [rounds.md](rounds.md#mobileworld-v42-post-hoc-2026-11-22)).
+Later, v4.2 scored 8 / 105 (development run, [rounds.md](rounds.md#mobileworld-v42-post-hoc-2026-11-22)) and v4.6-E 5 / 105
+(post-hoc, [`mw_e_comparison.md`](../results/mobileworld/mw_e_comparison.md)).
 
 ### Paired comparisons (exact McNemar)
 

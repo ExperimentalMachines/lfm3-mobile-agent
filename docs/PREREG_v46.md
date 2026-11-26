@@ -296,3 +296,23 @@ E's last step (the known fork-warning adb defect) count as failures, as for v4.
 - **E does not replace v4. v4 stays the main model.** E's held-out numbers go on its card and in the docs.
 - Not done: the by-eye review of every success against its trajectory (done for v4, GUI-Owl and v1) is not part of
   this rule and was not run for E.
+
+### 2026-11-26 11:04 Asia/Manila — E on MobileWorld: result (descriptive, rule of 2026-11-25 20:40)
+
+- First pass finished 06:03: 104 / 105 tasks with a result. The watcher could not start the one remaining attempt
+  because the Mac's AWS login had expired (its VM-state check failed); the same step (restart `lfmenv_0`, then
+  `mw_resume.sh e`) was run by hand at 11:03. ThanksgivingPrepTask failed setup again (MobileWorld's task code:
+  `name 'reset_chrome' is not defined`; it failed setup for v4, v4.2, GUI-Owl and MAI-UI too) → final failure; run
+  complete. VM shut down (stopped, not terminated); Mac model server and tunnel stopped.
+- `analysis/mw_summarize_e.py` → `results/mobileworld/mw_e_comparison.md`.
+
+| | E | v4 (run 2) | v4.2 (run 3) | MAI-UI-2B | GUI-Owl-1.5-2B |
+|---|---|---|---|---|---|
+| Successes / 105 | **5** | 6 | 8 | 11 | 22 |
+| E − model (exact McNemar p) | | −1.0 pts (1.0) | −2.9 pts (0.45) | −5.7 pts (0.03) | −16.2 pts (< 0.001) |
+| `wait` under a non-wait intent | **0** | 931 | 18 | | |
+| Steps repeating the previous intent | **30%** | 67% | 33% | | |
+| Tasks ending at the 50-step limit | 76 | 85 | 69 | | |
+
+- E is level with v4 and v4.2 and behind both comparison models. The loop signature is gone (no waits under
+  non-wait intents), but 76 tasks still run out of steps: E no longer stalls, yet does not finish.

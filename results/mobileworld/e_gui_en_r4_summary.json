@@ -1,0 +1,769 @@
+{
+ "model": "LFM3-VL-2B-MobileAgent-v4.6-E (24-step history, change notes; no guards, MobileWorld-native typing)",
+ "run": "e",
+ "complete": true,
+ "n_tasks": 105,
+ "with_result": 104,
+ "successes": 5,
+ "no_result_counted_as_failure": {
+  "ThanksgivingPrepTask": "setup_failed"
+ },
+ "loop_metrics": {
+  "steps": 4095,
+  "wait_steps": 365,
+  "wait_under_non_wait_intent": 0,
+  "wait_share": 0.089,
+  "repeated_intent_share": 0.303,
+  "tasks_at_50_steps": 76
+ },
+ "tasks": {
+  "TakeSelfieTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "OpenFlightModeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 4,
+   "earlier_folders": []
+  },
+  "CloseFlightModeTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 4,
+   "earlier_folders": []
+  },
+  "AdjustBrightnessMaximumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "AdjustBrightnessMinimumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 6,
+   "earlier_folders": []
+  },
+  "MastodonFavoriteTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonChangeLanguageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 12,
+   "earlier_folders": []
+  },
+  "AdjustFontIconMaximumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "AdjustFontIconMinimumTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonManageHashtagsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ChangeWallpaperTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 4,
+   "earlier_folders": []
+  },
+  "MastodonRemoveBookmarkTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 9,
+   "earlier_folders": []
+  },
+  "MastodonAddBookmarkTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonExportFollowsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonNewPostTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 7,
+   "earlier_folders": []
+  },
+  "MastodonFollowTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "SetAlarmTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 16,
+   "earlier_folders": []
+  },
+  "MastodonChangeHeaderTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 7,
+   "earlier_folders": []
+  },
+  "MastodonPinTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 5,
+   "earlier_folders": []
+  },
+  "MastodonAdjustTootsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 11,
+   "earlier_folders": []
+  },
+  "MattermostReadingGroupTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckDeduplicatedEventsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 8,
+   "earlier_folders": []
+  },
+  "AcceptMeetingTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 13,
+   "earlier_folders": []
+  },
+  "MastodonFilterLanguageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckEventTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonSavePhotosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "SendWaiverTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonUnfollowTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 16,
+   "earlier_folders": []
+  },
+  "CancelMeetingTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 10,
+   "earlier_folders": []
+  },
+  "MastodonImportMutedUsersTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ChromeSearchBeijingWeatherTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonCreateListTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 11,
+   "earlier_folders": []
+  },
+  "MastodonInviteTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckConferenceDurationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 1,
+   "earlier_folders": []
+  },
+  "SendInterviewEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckSetMeetTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 16,
+   "earlier_folders": []
+  },
+  "MastodonReplyTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ScheduleLunchViaSmsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostReplyToMessageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonAddFeaturedHashtagsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 20,
+   "earlier_folders": []
+  },
+  "SendInterviewInvitationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonPostEditedPhotoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "SharePhotosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostSendFileTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonRevisePollTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ReadQwen3PaperTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "TextArrivalTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": [
+    "setup_failed"
+   ]
+  },
+  "MattermostCreateChannelTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonConditionalFavoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 10,
+   "earlier_folders": []
+  },
+  "MastodonShareLocationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonGetServerInfoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 21,
+   "earlier_folders": []
+  },
+  "CartInfoNotificationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "GoogleMapsAlibabaPhoneContactTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "GoogleMapsAlibabaSouthNeighborTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 8,
+   "earlier_folders": []
+  },
+  "MastodonReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 6,
+   "earlier_folders": []
+  },
+  "PhotoManagementTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckInvoiceTask3": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckDepartTimeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckRegistrationTask": {
+   "score": 1.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 16,
+   "earlier_folders": []
+  },
+  "ReadQwen3PaperTask4": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonOpenAutomatedDeletionTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": [
+    "setup_failed"
+   ]
+  },
+  "CheckInterviewTimesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckCartPriceTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "RequestCarpoolingTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "LocalFileManagementTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 6,
+   "earlier_folders": []
+  },
+  "MattermostEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonRevisePhotoAltTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "SMSManagement": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonNewFilterTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonCreateMemoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckConferenceAndSendSmsTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckConferenceAndSendSmsTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ReadQwen3PaperTask5": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ReadQwen3PaperTask3": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": [
+    "setup_failed"
+   ]
+  },
+  "SuggestPaperTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 14,
+   "earlier_folders": []
+  },
+  "CountFileLinesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "DownloadSendReceiptTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "SumFileLinesTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonPostPollTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ReadQwen3PaperTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonMattermostPostNoticeTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "SendFormsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonMultiInviteTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ScheduleCoffeeTimeViaSmsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 23,
+   "earlier_folders": []
+  },
+  "CheckInvoiceTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckConferenceLocationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "LocalFileManagementTask2": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "CheckInvoiceTask1": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonServerInfoReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonUpdateContactsTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 11,
+   "earlier_folders": []
+  },
+  "MattermostProjectHandoverTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonCalendarMultiMemosTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "ThanksgivingPrepTask": {
+   "score": 0.0,
+   "has_result": false,
+   "final_category": "setup_failed",
+   "steps": 0,
+   "earlier_folders": [
+    "setup_failed",
+    "setup_failed",
+    "setup_failed",
+    "setup_failed",
+    "setup_failed",
+    "setup_failed"
+   ]
+  },
+  "CheckGithubInfoTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MastodonManageMultiListTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostCustomerFeedbackAnalysisTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostShiftCoverageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostVisualInstructionResponseTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostIncidentEscalationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "GraduationMassEmailTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostResourceConflictResolutionTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostBudgetApprovalPipelineTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostTechnicalDebtTriageTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostDeadlineReconciliationTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  },
+  "MattermostProjectStatusReportTask": {
+   "score": 0.0,
+   "has_result": true,
+   "final_category": null,
+   "steps": 50,
+   "earlier_folders": []
+  }
+ }
+}

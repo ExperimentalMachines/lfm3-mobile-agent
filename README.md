@@ -11,7 +11,7 @@ files, and the preregistered rules each decision followed.
 |---|---|
 | **Main model** | **v4**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF) (1.30 GB with its image projector). The version tested on the sealed held-out benchmark |
 | **Newest model** | **v4.6-E**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E-GGUF). Barely waits and is sharper offline, but repeats taps more. Held-out AndroidWorld: 52 / 348 vs v4's 54 (not worse, not better), with more false "done" calls (75 vs 71), so it did not replace v4 |
-| **Now** | E on MobileWorld ([rule](docs/PREREG_v46.md)); round 11, E trained further on multi-part tasks it should finish, training on an L4 ([plan](docs/PREREG_v49.md)) |
+| **Now** | Round 11: E trained further on multi-part tasks it should finish, training on an L4 ([plan](docs/PREREG_v49.md)) |
 | Everything published | [LFM3 Mobile Agent collection](https://huggingface.co/collections/experimentalmachines/lfm3-mobile-agent-6b03a79f8e23b8dde16e8326): every model, GGUF and training dataset, public |
 | License | Code: Apache-2.0. Models and data: their sources' licenses ([below](#license)) |
 
@@ -64,7 +64,8 @@ llama-server -m lfm3-mobile-agent-v4/LFM3-VL-2B-MobileAgent-v4-Q4_K_M.gguf \
 | Speed, Apple M5, median s/step | **2.96** | 7.00 | 9.35 (8-bit) |
 | Speed, phone CPU (Snapdragon 8 Elite Extreme Gen 6), s/step as evaluated | **~39** | ~1,100 | ~1,063 (8-bit) |
 
-- **On MobileWorld v4 is clearly behind** GUI-Owl (−15 points, p < 0.001).
+- **On MobileWorld v4 is clearly behind** GUI-Owl (−15 points, p < 0.001). Later versions did not close the gap: v4.2 8,
+  v4.6-E 5 (E no longer loops on waits, but still runs out of steps).
 - **v4 is the fastest by far.** It sends fewer prompt tokens per step (a smaller image): about a third as many on CPU
   and phone, about 60% on the M5. The tests compare whole pipelines and do not isolate the cause.
 

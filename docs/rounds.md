@@ -274,6 +274,10 @@ replaces v4 as the main model if it is non-inferior to v4 (lower bound above −
 - Non-inferior to v4 (lower bound −5.3 > −6.9), but more false "done" calls: **E does not replace v4.**
 - Fewer waits did not turn into more successes; false "done" is still the failure that matters.
 - Source: [`results/sealed_analysis_e.md`](../results/sealed_analysis_e.md).
+
+**MobileWorld (owner's decision, descriptive, 2026-11-26):** E 5 / 105 (v4 6, v4.2 8, MAI-UI 11, GUI-Owl 22).
+Waits under a non-wait intent 931 (v4) → 0; steps repeating the previous intent 67% → 30%; but 76 of 105 tasks still
+end at the 50-step limit. Source: [`mw_e_comparison.md`](../results/mobileworld/mw_e_comparison.md).
 Files: [`results/v46_dev/`](../results/v46_dev/).
 
 ---

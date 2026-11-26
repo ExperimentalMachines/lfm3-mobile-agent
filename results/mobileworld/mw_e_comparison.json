@@ -1,0 +1,106 @@
+{
+ "run": "e",
+ "successes": 5,
+ "complete": true,
+ "pairs": {
+  "v4": {
+   "baseline_successes": 6,
+   "both": 3,
+   "e_only": [
+    "AcceptMeetingTask",
+    "MastodonNewPostTask"
+   ],
+   "v4_only": [
+    "AdjustFontIconMinimumTask",
+    "SendWaiverTask",
+    "TakeSelfieTask"
+   ],
+   "difference_pp": -1.0,
+   "mcnemar_exact_p": 1.0
+  },
+  "v42": {
+   "baseline_successes": 8,
+   "both": 3,
+   "e_only": [
+    "AcceptMeetingTask",
+    "CloseFlightModeTask"
+   ],
+   "v42_only": [
+    "AdjustFontIconMinimumTask",
+    "MastodonChangeHeaderTask",
+    "MastodonFollowTask",
+    "SendWaiverTask",
+    "TakeSelfieTask"
+   ],
+   "difference_pp": -2.9,
+   "mcnemar_exact_p": 0.4531
+  },
+  "guiowl": {
+   "baseline_successes": 22,
+   "both": 5,
+   "e_only": [],
+   "guiowl_only": [
+    "AdjustBrightnessMaximumTask",
+    "AdjustBrightnessMinimumTask",
+    "AdjustFontIconMinimumTask",
+    "CancelMeetingTask",
+    "ChangeWallpaperTask",
+    "CheckConferenceAndSendSmsTask1",
+    "CheckConferenceLocationTask",
+    "CheckDepartTimeTask",
+    "MastodonChangeHeaderTask",
+    "MastodonChangeLanguageTask",
+    "MastodonInviteTask",
+    "MastodonRevisePhotoAltTask",
+    "MastodonRevisePollTask",
+    "RequestCarpoolingTask",
+    "SendWaiverTask",
+    "SetAlarmTask",
+    "TakeSelfieTask"
+   ],
+   "difference_pp": -16.2,
+   "mcnemar_exact_p": 0.0
+  },
+  "maiui": {
+   "baseline_successes": 11,
+   "both": 5,
+   "e_only": [],
+   "maiui_only": [
+    "CancelMeetingTask",
+    "ChangeWallpaperTask",
+    "CheckEventTimeTask",
+    "GoogleMapsAlibabaSouthNeighborTask",
+    "MastodonChangeHeaderTask",
+    "SendWaiverTask"
+   ],
+   "difference_pp": -5.7,
+   "mcnemar_exact_p": 0.0312
+  }
+ },
+ "loop_metrics": {
+  "e": {
+   "steps": 4095,
+   "wait_steps": 365,
+   "wait_under_non_wait_intent": 0,
+   "wait_share": 0.089,
+   "repeated_intent_share": 0.303,
+   "tasks_at_50_steps": 76
+  },
+  "v4": {
+   "steps": 4461,
+   "wait_steps": 931,
+   "wait_under_non_wait_intent": 931,
+   "wait_share": 0.209,
+   "repeated_intent_share": 0.669,
+   "tasks_at_50_steps": 85
+  },
+  "v42": {
+   "steps": 3835,
+   "wait_steps": 198,
+   "wait_under_non_wait_intent": 18,
+   "wait_share": 0.052,
+   "repeated_intent_share": 0.329,
+   "tasks_at_50_steps": 69
+  }
+ }
+}
