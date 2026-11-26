@@ -110,3 +110,16 @@ screen visibly shows the goal unmet in **11** (stopwatch started instead of paus
 folder, wrong contact fields, a running timer), parts of a multi-part goal remain in **8**, the evidence is only on the
 screen before the last action in **2**, unclear in **3**. A before/after input would address about 2 in 24: **dropped**
 as registered. The levers are judging the current screen against the goal and tracking which parts remain.
+
+### 2026-11-26 18:19 Asia/Manila — SOP validation finished (bar not met); E-S2 training done; control launched
+
+- **SOP validation over all seven models** (`analysis/sop_validation.py`, 400 episodes each): ρ(SOP, AndroidWorld successes)
+  = **0.33** (exact one-sided p 0.25; bar 0.70 **not met**); TSR 0.63 (p 0.07); premature `status` vs false completes 0.43.
+  Leave-one-out ρ(SOP) 0.00–0.53. The multi-step test stays a provisional regression check only, as registered; it cannot
+  select a model. Consequence for the arm decision: the "≥ 2 points on the strict multi-step test" rule picks between two
+  arms on a measure that does not rank models; any arm that passes the offline gate must therefore be compared on paired
+  AndroidWorld runs (step 4) before it is kept.
+- E-S2 (RL): 100 batches finished at 18:05 (last batch: strict step accuracy 0.62, premature terminal 1.2% per step);
+  merge done, evals and gate running on the A10G job.
+- Control `lfm3-r14-sft` (full; collect → mix → 100×32 SFT → evals) launched on ml.g6e.2xlarge, us-west-2, 6 h cap (the
+  smoke ran there). Round 12's E-V job is still evaluating on the L4.
