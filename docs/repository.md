@@ -87,6 +87,8 @@ git config filter.redact-env.smudge cat
 
 GitHub redirects the old name. Archived documents and audit reports quote the old name; they are left as written.
 
+**2026-11-26:** every model, dataset, script and preregistration was renamed to the scheme in [naming.md](naming.md) (no version numbers or letter codes); the Hugging Face repos were renamed in place (redirects keep the old names working), about 190 scripts bound to finished cloud sessions were removed (tag `archive/pre-naming-cleanup-2026-11-26`), and git history was **not** rewritten.
+
 ## Branches and tags
 
 | Ref | What |
