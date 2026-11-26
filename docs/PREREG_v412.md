@@ -159,3 +159,26 @@ steps (maximum 7 for v4, 11 for E), so the step budget is not what binds: a long
 previous action exactly). Loop guards were already tried (round 5: v4 + guards 18 vs 18, v4.1 + guards worse) and gave no
 gain. So the largest failure is a model that does not find the right action and then repeats a wrong one, not an
 interface or budget problem. That is a capability / training-signal limit, not something a cheap harness change fixes.
+
+### 2026-11-26 22:02 Asia/Manila — round 12's E-V fails its offline gate; round 14 closed
+
+E-V (`lfm3-r12-ev`, 1,000 × 32, done-check rows included) finished; log `results/r12_dev/r12_ev.log`. Round-11 checks:
+all 10 pass (AndroidControl high 0.760, early `status` 3.49%, C1 22.0%, C3 stale 17.7%). Ending probes: M_done 91% ✓,
+M_notdone 34.5% (bar ≤ 25%; round 12's registered bar is on the system, below). Done-check probes (registered bars):
+
+| Check | E-V | Bar |
+|---|---|---|
+| V_done: check answers yes on finished screens | 82.0% | ≥ 75% ✓ |
+| **V_notdone: check answers no on unfinished screens** | **74.5%** | ≥ 75% ✗ (one screen short of 150/200) |
+| Model + check on M_done: `status` and not blocked | 79.0% | ≥ 50% ✓ |
+| **Model + check on M_notdone: `status` and not blocked** | **19.5%** | ≤ 15% ✗ |
+
+**Fails (2 of 16 checks); no replay run, no online run, nothing published.** The first miss is by one screen and I do not
+round it up after the fact; the second is 4.5 points over and is not borderline. E-V's AndroidControl done-check rows
+come from the label source that failed its audit (noted in PREREG_v411), so the result is confounded either way.
+
+**Round 14 conclusion.** No candidate this round: E-S2 (RL) and E-D (control) fail round 11's gate, E-V fails round 12's.
+Paired AndroidWorld runs (step 4) are therefore not run (there is nothing to pair against E), and the fresh seeds 101,
+202 and 303 stay unopened. v4 remains the main model; E the newest. The reset fix (step 4) and the outcome accounting
+(step 3) stay in the harness for any later run. Compute this round: RL job ~2.2 h on A10G, control ~1.3 h on L40S, E-V
+~9 h on L4 (all SageMaker, us-west-2).

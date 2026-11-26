@@ -11,7 +11,7 @@ files, and the preregistered rules each decision followed.
 |---|---|
 | **Main model** | **v4**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF) (1.30 GB with its image projector). The version tested on the sealed held-out benchmark |
 | **Newest model** | **v4.6-E**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E-GGUF). Barely waits and is sharper offline, but repeats taps more. Held-out AndroidWorld: 52 / 348 vs v4's 54 (not worse, not better), with more false "done" calls (75 vs 71), so it did not replace v4 |
-| **Now** | Nothing running. Round 11 failed its offline gate ([result](docs/PREREG_v49.md)) |
+| **Now** | Nothing running. Rounds 11–14 (checked endings, a done check, RL and a matched control) all failed their offline gates; no new model ([summary](docs/rounds.md#rounds-12-to-14-the-done-check-and-training-on-its-own-mistakes-2026-11-26)) |
 | Everything published | [LFM3 Mobile Agent collection](https://huggingface.co/collections/experimentalmachines/lfm3-mobile-agent-6b03a79f8e23b8dde16e8326): every model, GGUF and training dataset, public |
 | License | Code: Apache-2.0. Models and data: their sources' licenses ([below](#license)) |
 

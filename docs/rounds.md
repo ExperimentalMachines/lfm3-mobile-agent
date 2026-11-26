@@ -7,7 +7,8 @@ still the main model; everything here is development work.
 [v4.1–v4.2](#v41-and-v42-2026-11-21-to-22) · [5](#round-5-learning-from-own-mistakes-vs-more-training-2026-11-22) ·
 [6](#round-6-long-and-self-correcting-trajectories-2026-11-23) · [7](#round-7-all-the-data-once-with-a-longer-memory-2026-11-24) ·
 [8](#round-8-judge-done-from-the-screen-not-the-history-2026-11-25) · [9](#round-9-useless-waits-2026-11-25) ·
-[10](#round-10-finishing-multi-part-tasks-2026-11-25) · [11](#round-11-e-trained-on-checked-multi-part-endings-2026-11-25)
+[10](#round-10-finishing-multi-part-tasks-2026-11-25) · [11](#round-11-e-trained-on-checked-multi-part-endings-2026-11-25) ·
+[12–14](#rounds-12-to-14-the-done-check-and-training-on-its-own-mistakes-2026-11-26)
 
 ---
 
@@ -339,3 +340,24 @@ Plan: [PREREG_v49.md](PREREG_v49.md), registered 2026-11-25 20:12.
 - Likely cause: every unfinished final screen was held out for the M_notdone probe, so training never showed one;
   its "not done" examples were all earlier screens. A next try needs judged-unfinished final screens in training.
 - No online test; nothing published. E stays the newest model.
+
+---
+
+## Rounds 12 to 14: the done check and training on its own mistakes (2026-11-26)
+
+Plans: [PREREG_v410.md](PREREG_v410.md) (E-V), [PREREG_v411.md](PREREG_v411.md) and [PREREG_v412.md](PREREG_v412.md) (RL, control, test-phone fix). An external review (Codex, read-only) found four real bugs in round 13's RL; it was stopped and rebuilt.
+
+| Candidate | What it is | Offline gate |
+|---|---|---|
+| E-V (round 12) | E + rows teaching a "is the task done?" question, asked before accepting `complete` | **Fails** 2 of 16: the check says "no" on 74.5% of unfinished screens (bar 75%); model + check still ends on 19.5% of them (bar 15%) |
+| E-S2 (round 14) | Semi-online RL from E on 400 own-history episodes, 100 batches | **Fails**: barely moved (M_done 1%); a little worse on repeated taps (22% vs 17%) and early `status` (4.2%) |
+| E-D (round 14) | Matched control: supervised rows from E's own strict misses, same episodes | **Fails**: says done on 83.5% of finished and **56.5% of unfinished** final screens (the round-11 failure again) |
+
+What changed in how we measure: AndroidWorld's per-task app reset had never run on our emulators (no snapshots), so every
+earlier run, for every model, carried app data between tasks; fixed and verified. The multi-step own-history test (SOP)
+does not rank our seven models like AndroidWorld does (ρ = 0.33, bar 0.70), so it is a regression check only.
+**Running out of steps is the largest failure** (v4 55, E 59 of 116) and it is looping, not budget: successes finish in a
+median 5 steps, and 36 of 55 (v4) / 43 of 59 (E) exhausted episodes repeat their own actions.
+
+**Decision:** no new candidate; v4 stays the main model, E the newest. Further gains most likely need much more data or RL
+signal than this project's budget; this is a budget limit on this recipe, not a measured ceiling of the 2B model.
