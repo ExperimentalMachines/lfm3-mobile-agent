@@ -233,7 +233,7 @@ tests do not isolate why.
 | Cloud CPU (Xeon, 8 threads, idle): `agent.predict()` wall time incl. prompt building and HTTP | **6.4** | 58.0 | 58.2 |
 
 The phone-GPU row is a per-call time for Main only ([below](#phone-gpu-litert-lm)); GUI-Owl and MAI-UI were not measured on the
-GPU, so there is no GPU comparison. On the phone CPU GUI-Owl and MAI-UI reused 460–990 cached prompt tokens per call and Main
+GPU, so there is no GPU comparison. On the phone CPU GUI-Owl and MAI-UI reused about 450–1,000 cached prompt tokens per call and Main
 reused none, which favours them; the phone slowed under sustained load, so the rows are matched on sampled (not controlled) clocks.
 
 ### CPU (Intel Xeon 2.8 GHz, 8 threads, idle GCP n2-standard-16)
@@ -277,7 +277,7 @@ Model runs on the phone (llama.cpp b12110). Rows are matched on the same median 
   own earlier "as evaluated" run (27.7 s) ran at a higher sampled frequency, so it is not used.
 - **Equal-ceiling accuracy is unknown.** GUI-Owl's and MAI-UI's accuracy at a 1,024-token ceiling was not measured,
   and equal image-token counts were not verified.
-- **Prompt caching favours GUI-Owl and MAI-UI.** They reused 460–990 cached prompt tokens per call; Main reused none.
+- **Prompt caching favours GUI-Owl and MAI-UI.** They reused about 450–1,000 cached prompt tokens per call; Main reused none.
 - **Run order:** the sampled fastest-core frequency fell under sustained load (4.03 → 2.65 GHz), so the
   equal-ceiling runs used both model orders.
 - **Pixel 9 attempt:** a partial earlier run (Firebase device streaming) timed Main only, at 74.4 s/step over 11

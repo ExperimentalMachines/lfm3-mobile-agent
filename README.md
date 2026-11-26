@@ -47,8 +47,8 @@ How long the model takes to answer one step. What exactly is timed differs by ro
 | **Phone CPU**, each model as we evaluated it (GUI-Owl and MAI-UI use bigger images), seconds | **~39** | ~1,100 | ~1,063 (8-bit) |
 | **Phone GPU** (the app's LiteRT file): one model call only, seconds | 2.5 (int4, cold) to 3.5 (int8, warm; the file we publish) | not measured | not measured |
 
-- Main is faster mainly because it sends fewer prompt tokens per step (a smaller image); these tests compare whole pipelines
-  and do not isolate the cause.
+- Main sends far fewer prompt tokens per step (a smaller image) and was faster in these runs; the tests compare whole
+  pipelines and do not isolate why.
 - **They are small pilot measurements, not controlled benchmarks.** On the phone CPU, GUI-Owl and MAI-UI reused cached prompt
   tokens and Main did not (which favours them); the phone slowed under sustained load, so rows are matched on the processor's
   sampled clock speed; and we did not measure GUI-Owl's and MAI-UI's accuracy at the smaller image. The phone CPU numbers use
