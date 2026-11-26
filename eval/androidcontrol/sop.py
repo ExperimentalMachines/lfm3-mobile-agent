@@ -37,7 +37,7 @@ sys.path.insert(0, str(ROOT / "train"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import agent_format as af  # noqa: E402
 import screen_change as sc  # noqa: E402
-from score import match  # noqa: E402
+from score import match, strict_match  # noqa: E402
 
 DATA = ROOT / "data/r13work/acv46/data"   # MobileAgent-SFT-v4.6 @ 0ace5559, test_ac_high
 SEED = 13
@@ -104,7 +104,7 @@ def run_episode(rows, a):
         pred = af.parse_action(content)
         gt = json.loads(r["gt_action"])
         bbox = json.loads(r["gt_bbox"]) if r.get("gt_bbox") else None
-        ok = match(pred, gt, bbox)[1] if pred else False
+        ok = (strict_match if a.strict else match)(pred, gt, bbox)[1] if pred else False
         steps.append({"k": k, "gt_type": gt["action_type"], "pred_type": (pred or {}).get("action_type"), "ok": bool(ok)})
         if not ok:
             break
@@ -126,7 +126,9 @@ def summary(res):
             "TSR": round(sum(r["success"] for r in res) / n, 4),
             "premature_status": round(sum(r["premature_status"] for r in res) / n, 4),
             "missed_status": round(sum(r["missed_status"] for r in res) / n, 4),
-            "steps_ok_mean": round(sum(r["n_ok"] for r in res) / n, 3)}
+            "steps_ok_mean": round(sum(r["n_ok"] for r in res) / n, 3),
+            "SOP": round((sum(r["n_ok"] / r["n_steps"] for r in res) / n + sum(r["success"] for r in res) / n) / 2, 4),
+            "ended_on_human_wait": round(sum((r["first_fail"] or {}).get("gt") == "wait" for r in res) / n, 4)}
 
 
 def main():
@@ -137,6 +139,7 @@ def main():
     ap.add_argument("--notes", choices=["none", "coarse", "fine"], default="none")
     ap.add_argument("--episodes", type=int, default=400)
     ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--strict", action="store_true", help="score.strict_match (round 14) instead of the permissive UI-S1 matcher")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     eps = load_episodes()
@@ -157,7 +160,7 @@ def main():
                 print(f"  {i + 1}/{len(todo)} {time.time() - t0:.0f}s", flush=True)
     res = [json.loads(l) for l in open(a.out)]
     res = [r for r in res if r["episode"] in set(pick)]
-    s = {"name": a.name, "history_steps": a.history_steps, "notes": a.notes, **summary(res)}
+    s = {"name": a.name, "history_steps": a.history_steps, "notes": a.notes, "matcher": "strict" if a.strict else "permissive", **summary(res)}
     json.dump(s, open(a.out.replace(".jsonl", "_summary.json"), "w"), indent=1)
     print("SOP", json.dumps(s), flush=True)
 

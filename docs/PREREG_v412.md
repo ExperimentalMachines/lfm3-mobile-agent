@@ -1,0 +1,78 @@
+# Preregistration: round 14 (v4.12), the review's six steps
+
+Registered 2026-11-26 15:20 Asia/Manila, before any round-14 training or measurement.
+
+Owner, after the external review ([`docs/reviews/codex-adversarial-review-2026-11-26.md`](reviews/codex-adversarial-review-2026-11-26.md))
+and its verification ([PREREG_v411](PREREG_v411.md), 15:00): "Proceed to do them all."
+
+Round 13's E-S was stopped and is not evaluated (its returns crossed the human patch, its 12-step cap dropped most
+endings, it used labels that had failed their audit). This round replaces it.
+
+---
+
+## Step 1 and 2: corrected RL against a matched control
+
+Both arms start from E, use the **same 400 training episodes** (seed 14: 280 AndroidControl, 120 GUI-Odyssey, at most
+12 steps each), the same history format (24 steps, fine notes) and a new LoRA r64 / α128.
+
+| What changed from round 13 (review finding) | Now |
+|---|---|
+| Returns crossed the human patch (C1) | A step's return sums rewards only to the end of its own natural segment (UI-S1's t_end); the episode term uses the first segment only |
+| A premature `complete` could be patched and continue (C1) | A premature `status` or `answer` ends that attempt, as in deployment |
+| Wrong actions could earn full reward (M1) | `score.strict_match`: inside the element box when known (no distance fallback), else within 5% of the screen; exact text up to case and spaces. Fixtures: the review's three wrong-but-accepted cases are now rejected |
+| The 12-step cap dropped the endings (M2) | Longer episodes become **suffix windows** (the last 12 steps, the human's earlier steps as history), so every window holds the real ending. This is a different condition from starting at step 0, said here |
+| Labels that failed their audit (M4) | AndroidControl's judge verdicts are not used: its human `complete` labels stay as they are |
+| "Completed" counted truncated prefixes | Counted only when the window reaches the true end with no patch and every step right |
+
+Tests: `train/test_semi_online_rl.py` (the review's counter-example: a premature `complete` now gets return 0.1 and a
+negative advantage; a near miss scores 0.5 and its segment ends; continuations are new segments; collection rows) and
+the strict-matcher fixtures. Both pass.
+
+| Arm | Training |
+|---|---|
+| **E-S2** (RL) | Semi-online RL: 100 batches × 4 episodes × 4 rollouts, temperature 1.0, patch budget 1, γ 0.5, ω 1.0, lr 3e-5, one AdamW step per batch. SageMaker A10G (us-west-2) |
+| **E-D** (matched control) | E's **greedy** own-history rollouts on the same episodes; every step where its action fails the strict matcher becomes an SFT row (screen + own history → the human's action and intent); premature endings are kept as rows and patched. Mixed with uniform replay of E's training split to 3,200 rows; 100 steps × 32, lr 1e-4 cosine. SageMaker L4 (us-east-1) |
+
+**Decision between the arms:** RL is kept only if it beats the control on the strict multi-step test (below) by
+≥ 2 points; otherwise the simpler control is the candidate.
+
+**Offline gate (both arms, same job):** round 11's first 10 checks (no regression vs E) and the ending probes
+(M_done `status` ≥ 50%, M_notdone `status` ≤ 25%), as round 13.
+
+## Step 3: full outcome accounting (reporting, every AndroidWorld run from now on)
+
+`analysis/aw_outcomes.py`: success; unsuccessful completion claims (`complete` on any task not fully met, **partial
+credit included**); wrong answers; infeasible declarations; budget exhaustion; exceptions. For the done check: blocks,
+**recovered successes** (blocked, then succeeded) and **lost successes** (succeeded without the check on the paired run,
+failed with it). A lower false-complete count is a secondary result; the primary is additional successes.
+
+## Step 4: reliable test phones, then contemporaneous paired runs
+
+- Diagnose why AndroidWorld's app snapshots are missing ("Snapshot not found" about 270 times per pass) and restore a
+  per-task reset; verify it with sentinel checks (state written in one task must be gone at the next task's start).
+- Until the reset is verified, every comparison runs **E and the candidate in the same session**, one on each emulator,
+  with the emulator assignment **swapped halfway** (by task-list halves), cold-booted.
+- No cloud emulator machines until this works locally (review recommendation 2).
+
+## Step 5: does the agent need to see the screen before its last action? (diagnostic)
+
+On the 164 seed-30 false completes of the replay set: classify the last step (screen unchanged and noted; changed in the
+wrong way; changed as intended but more was needed). If a before/after view could distinguish a meaningful share that
+the current note cannot, a before/after input is designed as its own round; otherwise it is dropped.
+
+## Step 6: fresh confirmation seeds and one frozen candidate
+
+- **AndroidWorld seeds 101, 202 and 303** are reserved now. They have never been run by any model in this project. They
+  are opened once, for one frozen final candidate against v4 and E, after steps 1–5.
+- Seeds 7 / 1234 / 2026 and AndroidControl test are labelled reused from now on.
+
+## The multi-step test as a provisional measure (review M6)
+
+The SOP validation registered in round 13 finishes as registered and is reported with leave-one-model-out sensitivity,
+the per-depth premature-stop hazard, and the share of episodes ending on a human `wait`. Whatever ρ it gives, SOP stays
+a provisional regression measure; candidates are judged on it with a strict-matcher variant added
+(`eval/androidcontrol/sop.py --strict`), and only AndroidWorld decides.
+
+---
+
+## Log

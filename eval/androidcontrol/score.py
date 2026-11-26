@@ -73,6 +73,41 @@ def match(pred, gt, gt_bbox=None):
     return True, True
 
 
+STRICT_DIST = 0.05
+
+
+def _strict_text(s):
+    return re.sub(r"\s+", " ", (s or "").strip().lower())
+
+
+def strict_match(pred, gt, gt_bbox=None):
+    """Transition-validity matcher for RL rewards and own-history replay (round 14, docs/PREREG_v412.md; the external
+    review's M1). Unlike `match` (kept unchanged for comparability): a tap must land inside the element box when one is
+    known (no distance fallback), else within 5% of the screen; typed text and answers must match exactly up to case and
+    whitespace (a wrong digit fails); app names must be equal up to case and spaces. Returns (type_match, full_match)."""
+    if pred is None:
+        return False, False
+    t = gt["action_type"]
+    if pred["action_type"] != t:
+        return False, False
+    if t in af.POINT_TYPES:
+        px, py = pred["point_2d"]
+        if gt_bbox is not None and len(gt_bbox) == 4:
+            return True, gt_bbox[0] <= px <= gt_bbox[2] and gt_bbox[1] <= py <= gt_bbox[3]
+        gx, gy = gt["point_2d"]
+        return True, math.hypot((px - gx) / 1000, (py - gy) / 1000) <= STRICT_DIST
+    if t in ("input_text", "answer"):
+        return True, _strict_text(pred.get("text")) == _strict_text(gt.get("text"))
+    if t == "scroll":
+        return True, pred.get("direction") == gt.get("direction")
+    if t == "open_app":
+        n = lambda s: re.sub(r"\s+", "", (s or "").lower())
+        return True, bool(n(pred.get("app_name"))) and n(pred.get("app_name")) == n(gt.get("app_name"))
+    if t == "status":
+        return True, pred.get("goal_status", "complete") == gt.get("goal_status", "complete")
+    return True, True
+
+
 def score_rows(rows, strict=False):
     n = len(rows)
     tm = sr = parse_ok = 0

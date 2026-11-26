@@ -1,26 +1,32 @@
 #!/usr/bin/env python3
-"""Semi-online RL (UI-S1, arXiv 2509.11543) for the LFM3 agent on static trajectories. Round 13 step 2
-(docs/PREREG_v411.md). No environment, no teacher: the human trajectories supply the screens.
+"""Semi-online RL (UI-S1, arXiv 2509.11543) for the LFM3 agent on static trajectories, corrected after the external
+review (round 14, docs/PREREG_v412.md; round 13's version had the defects C1, M1, M2, M4 of
+docs/reviews/codex-adversarial-review-2026-11-26.md). No environment, no teacher: the human trajectories supply the screens.
 
-Per batch: B training episodes (AndroidControl + GUI-Odyssey from E's training split), G rollouts each, in lockstep.
-At step t every live rollout sees the dataset screenshot of step t, the goal, the installed apps and ITS OWN history
-(its intents and actions; 24 steps; " [no visible change]" notes on the dataset screens, as E's harness) and samples an
-action. Step reward (UI-S1 Eq. 8): 0.1 parseable + 0.4 right type + 0.5 right action (eval/androidcontrol/score.match).
-A wrong action is patched with the human's (intent, action) in the history once per rollout (patch budget 1, as UI-S1's
-final setting); a second wrong action ends the rollout (no later rewards). Return R_t = sum_k gamma^(k-t) r_k.
-Advantage A = A_episode + omega * A_step (episode return normalised across the G rollouts; step return normalised across
-the rollouts that reached step t). Loss = - sum A * mean token log-prob of the sampled completion; one optimizer step per
-batch (on-policy, no clipping needed). LoRA on the language model (as every round since v4).
-Episode endings: AndroidControl episodes end with the human's `status complete`; the 113 AndroidControl completes the
-judge found unfinished lose that last step. GUI-Odyssey episodes get their judged ending: done -> `status complete`,
-unfinished -> the next action Claude wrote (round 12); unjudged endings and the round-11/12 probe episodes are excluded.
-Usage (inside the training job): python semi_online_rl.py --model_id E --out OUT --term ody_term2.parquet
-  --verdicts V.jsonl --written W.jsonl --acv ACV.jsonl --probe_ids P.json [--batches 150 --B 4 --G 4]
+Episodes: AndroidControl + GUI-Odyssey from E's training split, contiguous steps. AndroidControl keeps the human labels
+as they are (the judge's AndroidControl verdicts failed their audit and are not used). GUI-Odyssey gets its judged ending
+(done -> `status complete`; unfinished -> Claude's reviewed next action); the probe episodes are excluded. Episodes longer
+than --max_steps become a SUFFIX window: the last max_steps steps, with the human's earlier steps as history (intent ->
+action, notes on the dataset screens). So every window contains the episode's real ending (review M2).
+
+Rollouts: B episodes x G rollouts in lockstep, own history (24 steps, fine notes), temperature 1.0.
+  * reward per step (UI-S1 Eq. 8) with the STRICT matcher (score.strict_match: inside the element box, exact text; M1):
+    0.1 parseable + 0.4 right type + 0.5 right action
+  * a premature terminal action (`status` or `answer` where the human acted on) ENDS that rollout (as in deployment)
+  * another wrong action is patched once with the human's (intent, action) and the rollout continues in a NEW segment;
+    a second wrong action ends the rollout
+  * return R_t = sum of gamma^(k-t) r_k only up to the end of the step's own NATURAL segment (the step where it went
+    wrong, inclusive): no action is credited with reward earned after a human patch (review C1; UI-S1's t_end)
+  * advantage A = A_episode + omega * A_step; A_episode = first-segment reward normalised across the G rollouts (applied
+    to first-segment steps only); A_step = segment return normalised across the rollouts at the same step
+  * loss = - sum A * mean token log-prob of the sampled completion; one AdamW step per batch (on-policy)
+--collect OUT (matched control, review recommendation 5): greedy (temperature 0), G = 1, the same episodes and windows;
+  at EVERY step where the model's action fails the strict matcher, save (screen, own history) -> the human's action as an
+  SFT row, then patch and go on. No training.
 """
 import argparse
 import io
 import json
-import math
 import os
 import random
 import re
@@ -36,11 +42,12 @@ for p in (HERE, os.path.join(HERE, "..", "eval", "androidcontrol")):
     sys.path.insert(0, p)
 import agent_format as af  # noqa: E402
 import screen_change as sc  # noqa: E402
-from score import match  # noqa: E402
+from score import strict_match  # noqa: E402
 
 REPO, REV = "experimentalmachines/MobileAgent-SFT-v4.6", "0ace5559e6c0b808a5ddf4e4ce9831d1d3614471"
 HB = re.compile(r"\nPrevious steps:\n(.*?)\nWhat is the next action\?$", re.S)
 LINE = re.compile(r"^(\d+)\. (.*)$")
+TERMINAL = ("status", "answer")
 
 
 def position(user):
@@ -51,6 +58,15 @@ def position(user):
 
 def log(*a):
     print(f"[{time.strftime('%H:%M:%S')}]", *a, flush=True)
+
+
+def note_if_unchanged(hist, prev_step, cur_jpg):
+    """Append the no-visible-change note to the last history line (E's harness rule, on dataset screens)."""
+    if hist and prev_step["gt"]["action_type"] not in ("wait", "status", "answer") \
+            and not sc.changed(sc.prep(prev_step["jpg"]), sc.prep(cur_jpg)):
+        i, s = hist[-1]
+        if not s.endswith("]"):
+            hist[-1] = (i, s + sc.NOTE)
 
 
 # ------------------------------------------------------------------ episodes
@@ -71,19 +87,14 @@ def build_episodes(a):
         key = int(k) if s == "androidcontrol" else position(m[1]["content"])
         by[(s, e)].append((key, i))
     raw = ds.cast_column("images", Sequence(HFImage(decode=False)))
-    acv = {}
-    for l in open(a.acv):
-        j = json.loads(l)
-        acv[(j["episode_id"], int(j["step_idx"]))] = j["verdict"]
     verd = {json.loads(l)["case"]: json.loads(l)["verdict"] for l in open(a.verdicts)}
     written = {json.loads(l)["case"]: json.loads(l) for l in open(a.written)}
     probe = set(json.load(open(a.probe_ids))["episodes"])
     term = {str(t["episode_id"]): t for t in pq.read_table(a.term).to_pylist()}
     st = Counter()
     out = []
-    rnd = random.Random(a.seed)
     keys = sorted(by)
-    rnd.shuffle(keys)
+    random.Random(a.seed).shuffle(keys)
     for s, e in keys:
         rows = sorted(by[(s, e)])
         if [k for k, _ in rows] != list(range(len(rows))):
@@ -100,12 +111,7 @@ def build_episodes(a):
                           "bbox": json.loads(r["gt_bbox"]) if r.get("gt_bbox") else None,
                           "intent": (m[2].get("reasoning_content") or "").strip()})
         user0 = raw[rows[0][1]]["messages"][1]["content"]
-        if s == "androidcontrol":
-            last = steps[-1]["gt"]
-            if last["action_type"] == "status" and acv.get((e, len(steps) - 1)) == "NOT_COMPLETE":
-                steps = steps[:-1]
-                st["ac_unfinished_complete_dropped"] += 1
-        else:
+        if s == "odyssey":
             t = term.get(e)
             case = f"ody_{e}_{t['step_idx']}" if t else None
             if not t or case not in verd:
@@ -114,27 +120,37 @@ def build_episodes(a):
             if verd[case] == "COMPLETE":
                 steps.append({"jpg": t["jpg"], "gt": {"action_type": "status", "goal_status": "complete"}, "bbox": None,
                               "intent": "The goal has been completed."})
+                st["odyssey_done_ending"] += 1
             else:
                 w = written.get(case)
                 if not w or w["status"] != "ok":
                     st["odyssey_unfinished_no_action"] += 1
                     continue
                 steps.append({"jpg": t["jpg"], "gt": w["action"], "bbox": None, "intent": w["intent"]})
-                st["odyssey_unfinished_with_written_action"] += 1
-        if not steps:
-            continue
+                st["odyssey_unfinished_ending"] += 1
+        elif steps[-1]["gt"]["action_type"] == "status":
+            st["androidcontrol_status_ending"] += 1
+        # suffix window: the ending is always inside (review M2); earlier human steps become history
+        w0 = max(0, len(steps) - a.max_steps)
+        prefix = []
+        for k in range(w0):
+            if k > 0:
+                note_if_unchanged(prefix, steps[k - 1], steps[k]["jpg"])
+            prefix.append((steps[k]["intent"], af.action_to_str(steps[k]["gt"])))
+        if w0 > 0:
+            note_if_unchanged(prefix, steps[w0 - 1], steps[w0]["jpg"])
+            st[f"{s}_suffix_windows"] += 1
         goal = user0.split("\n", 1)[0][len("Goal: "):]
         al = next((l for l in user0.split("\n") if l.startswith("Installed apps: ")), None)
-        out.append({"source": s, "episode": e, "goal": goal,
-                    "apps": al[len("Installed apps: "):].split(", ") if al else None, "steps": steps[: a.max_steps]})
+        out.append({"source": s, "episode": e, "goal": goal, "apps": al[len("Installed apps: "):].split(", ") if al else None,
+                    "prefix": prefix, "w0": w0, "steps": steps[w0:]})
         st[f"{s}_episodes"] += 1
     log("episodes", json.dumps(st))
     return out, st
 
 
 # ------------------------------------------------------------------ model
-def load(a):
-    from peft import LoraConfig, get_peft_model
+def load(a, lora=True):
     from transformers import AutoModelForImageTextToText, AutoProcessor
     pk = {"size": {"shortest_edge": 65536, "longest_edge": a.max_pixels}}
     proc = AutoProcessor.from_pretrained(a.model_id, trust_remote_code=True, **pk)
@@ -142,6 +158,10 @@ def load(a):
     dev = "cuda" if torch.cuda.is_available() else "mps"
     model = AutoModelForImageTextToText.from_pretrained(a.model_id, dtype=torch.bfloat16, trust_remote_code=True,
                                                         attn_implementation="sdpa").to(dev)
+    if not lora:
+        model.eval()
+        return proc, model, dev
+    from peft import LoraConfig, get_peft_model
     cfg = LoraConfig(r=a.lora_r, lora_alpha=a.lora_alpha, lora_dropout=0.0, task_type="CAUSAL_LM",
                      target_modules=r".*language_model.*\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)")
     model = get_peft_model(model, cfg)
@@ -174,11 +194,12 @@ def stop_ids(proc):
 
 
 @torch.no_grad()
-def sample(proc, model, dev, convs, a, stops):
+def sample(proc, model, dev, convs, a, stops, greedy=False):
     model.eval()
     inp = proc.apply_chat_template(convs, add_generation_prompt=True, tokenize=True, return_dict=True, return_tensors="pt",
                                    padding=True, processor_kwargs={"padding": True}, enable_thinking=True).to(dev)
-    out = model.generate(**inp, max_new_tokens=a.max_new_tokens, do_sample=True, temperature=a.temperature, top_p=1.0)
+    kw = {"do_sample": False} if greedy else {"do_sample": True, "temperature": a.temperature, "top_p": 1.0}
+    out = model.generate(**inp, max_new_tokens=a.max_new_tokens, **kw)
     gen = out[:, inp["input_ids"].shape[1]:].tolist()
     tail = proc.tokenizer.decode(inp["input_ids"][0][-4:], skip_special_tokens=False)
     res = []
@@ -202,69 +223,92 @@ def split_think(txt):
 def reward(pred, gt, bbox):
     if pred is None:
         return 0.0, False
-    tm, full = match(pred, gt, bbox)
+    tm, full = strict_match(pred, gt, bbox)
     return 0.1 + 0.4 * tm + 0.5 * (tm and full), bool(full)
 
 
+def intent_of(think):
+    return af.strip_progress(think.splitlines()[0])[:200] if think else ""
+
+
 # ------------------------------------------------------------------ rollouts
-def rollouts(proc, model, dev, eps, a, stops):
-    """-> list of samples {conv, ids, A}, stats. All B x G rollouts of the batch advance in lockstep (one generate call
-    per step index, up to a.gen_bs sequences at a time)."""
-    G, recs, st = a.G, [], Counter()
-    RR = [[{"hist": [], "alive": True, "patches": 0, "steps": []} for _ in range(G)] for _ in eps]
+def advance(eps, RR, t, a, outs_by_job, jobs, st, collect=None):
+    """Apply one lockstep step's outputs to the rollouts (shared by RL and --collect)."""
+    for (e, g, c), (ids, txt, ended) in zip(jobs, outs_by_job):
+        R, stp = RR[e][g], eps[e]["steps"][t]
+        think, act = split_think(txt)
+        pred = af.parse_action(act) if ended else None
+        r, ok = reward(pred, stp["gt"], stp["bbox"])
+        R["steps"].append({"t": t, "conv": c, "ids": ids, "r": r, "seg": R["seg"]})
+        st["steps"] += 1
+        st["steps_ok"] += ok
+        premature = bool(pred) and pred["action_type"] in TERMINAL and stp["gt"]["action_type"] not in TERMINAL
+        st["premature_terminal"] += premature
+        if stp["gt"]["action_type"] == "status":
+            st["final_steps"] += 1
+            st["final_ok"] += ok
+        if collect is not None and not ok:
+            collect.append({"images": [{"bytes": stp["jpg"], "path": None}],
+                            "messages": [{"role": "system", "content": af.PROMPTS["v4"]},
+                                         {"role": "user", "content": af.user_text(eps[e]["goal"], list(R["hist"]), apps=eps[e]["apps"],
+                                                                                  history_steps=a.history_steps)},
+                                         {"role": "assistant", "content": af.action_to_str(stp["gt"]), "reasoning_content": stp["intent"]}],
+                            "kind": "premature_terminal" if premature else "divergence", "source": eps[e]["source"]})
+        if ok:
+            R["hist"].append((intent_of(think), af.action_to_str(pred)))
+        elif premature and collect is None:
+            R["alive"] = False                      # a premature `status` / `answer` ends the attempt, as in deployment
+            R["ended_premature"] = True
+        elif R["patches"] < a.patch:
+            R["patches"] += 1
+            R["seg"] += 1                           # the continuation is a separate segment (review C1)
+            R["hist"].append((stp["intent"], af.action_to_str(stp["gt"])))
+        else:
+            R["alive"] = False
+
+
+def run_lockstep(proc, model, dev, eps, a, stops, G, greedy=False, collect=None):
+    st = Counter()
+    RR = [[{"hist": list(ep["prefix"]), "alive": True, "patches": 0, "seg": 0, "steps": [], "ended_premature": False}
+           for _ in range(G)] for ep in eps]
     for t in range(max(len(ep["steps"]) for ep in eps)):
         jobs = []
         for e, ep in enumerate(eps):
             if t >= len(ep["steps"]):
                 continue
-            R, stp = RR[e], ep["steps"][t]
-            live = [g for g in range(G) if R[g]["alive"]]
-            if t > 0 and a.notes and live:
-                prev = ep["steps"][t - 1]
-                if prev["gt"]["action_type"] not in ("wait", "status", "answer") and not sc.changed(sc.prep(prev["jpg"]), sc.prep(stp["jpg"])):
-                    for g in live:
-                        i, s = R[g]["hist"][-1]
-                        if not s.endswith("]"):
-                            R[g]["hist"][-1] = (i, s + sc.NOTE)
-            jobs += [(e, g, conv(ep["goal"], ep["apps"], list(R[g]["hist"]), stp["jpg"], a.history_steps)) for g in live]
+            live = [g for g in range(G) if RR[e][g]["alive"]]
+            if t > 0 and a.notes:
+                for g in live:
+                    note_if_unchanged(RR[e][g]["hist"], ep["steps"][t - 1], ep["steps"][t]["jpg"])
+            jobs += [(e, g, conv(ep["goal"], ep["apps"], list(RR[e][g]["hist"]), ep["steps"][t]["jpg"], a.history_steps))
+                     for g in live]
         if not jobs:
             break
         outs = []
         for j in range(0, len(jobs), a.gen_bs):
-            outs += sample(proc, model, dev, [c for _, _, c in jobs[j:j + a.gen_bs]], a, stops)
-        for (e, g, c), (ids, txt, ended) in zip(jobs, outs):
-            R, stp = RR[e], eps[e]["steps"][t]
-            think, act = split_think(txt)
-            pred = af.parse_action(act) if ended else None
-            r, ok = reward(pred, stp["gt"], stp["bbox"])
-            R[g]["steps"].append({"t": t, "conv": c, "ids": ids, "r": r})
-            st["steps"] += 1
-            st["steps_ok"] += ok
-            if pred and pred["action_type"] == "status" and stp["gt"]["action_type"] != "status":
-                st["premature_status"] += 1
-            if stp["gt"]["action_type"] == "status":
-                st["final_steps"] += 1
-                st["final_ok"] += ok
-            if ok:
-                intent = af.strip_progress(think.splitlines()[0])[:200] if think else ""
-                R[g]["hist"].append((intent, af.action_to_str(pred)))
-            elif R[g]["patches"] < a.patch:
-                R[g]["patches"] += 1
-                R[g]["hist"].append((stp["intent"], af.action_to_str(stp["gt"])))
-            else:
-                R[g]["alive"] = False
+            outs += sample(proc, model, dev, [c for _, _, c in jobs[j:j + a.gen_bs]], a, stops, greedy=greedy)
+        advance(eps, RR, t, a, outs, jobs, st, collect)
+    return RR, st
+
+
+def rollouts(proc, model, dev, eps, a, stops):
+    """-> samples {conv, ids, A} with non-zero advantage, stats"""
+    G, recs = a.G, []
+    RR, st = run_lockstep(proc, model, dev, eps, a, stops, G)
     for e, ep in enumerate(eps):
         R, T = RR[e], len(ep["steps"])
-        # returns and advantages
         for g in range(G):
-            rs = [s["r"] for s in R[g]["steps"]]
-            for j, s in enumerate(R[g]["steps"]):
-                s["ret"] = sum(a.gamma ** (k - j) * rs[k] for k in range(j, len(rs)))
-            R[g]["total"] = sum(rs)
-            st["episode_return"] += R[g]["total"] / G
-            st["completed"] += (not R[g]["patches"]) and len(R[g]["steps"]) == T and all(s["r"] >= 0.999 for s in R[g]["steps"])
-        tot = [R[g]["total"] for g in range(G)]
-        mu, sd = sum(tot) / G, (sum((x - sum(tot) / G) ** 2 for x in tot) / G) ** 0.5
+            S = R[g]["steps"]
+            for j, s in enumerate(S):              # natural-segment return: nothing after this step's segment ends
+                s["ret"] = sum(a.gamma ** (k - j) * S[k]["r"] for k in range(j, len(S)) if S[k]["seg"] == s["seg"])
+            R[g]["first_seg"] = sum(s["r"] for s in S if s["seg"] == 0)
+            st["episode_return"] += R[g]["first_seg"] / G
+            st["completed"] += (not R[g]["patches"]) and not R[g]["ended_premature"] and len(S) == T \
+                and all(s["r"] >= 0.999 for s in S)
+            st["ended_premature"] += R[g]["ended_premature"]
+        tot = [R[g]["first_seg"] for g in range(G)]
+        mu = sum(tot) / G
+        sd = (sum((x - mu) ** 2 for x in tot) / G) ** 0.5
         for t in range(T):
             here = [s for g in range(G) for s in R[g]["steps"] if s["t"] == t]
             if not here:
@@ -273,10 +317,11 @@ def rollouts(proc, model, dev, eps, a, stops):
             v = (sum((s["ret"] - m) ** 2 for s in here) / len(here)) ** 0.5
             for g in range(G):
                 for s in R[g]["steps"]:
-                    if s["t"] == t:
-                        ae = (R[g]["total"] - mu) / (sd + 1e-6) if sd > 1e-6 else 0.0
-                        as_ = (s["ret"] - m) / (v + 1e-6) if v > 1e-6 and len(here) > 1 else 0.0
-                        s["A"] = ae + a.omega * as_
+                    if s["t"] != t:
+                        continue
+                    ae = (R[g]["first_seg"] - mu) / sd if (sd > 1e-6 and s["seg"] == 0) else 0.0
+                    as_ = (s["ret"] - m) / v if (v > 1e-6 and len(here) > 1) else 0.0
+                    s["A"] = ae + a.omega * as_
         for g in range(G):
             recs += [s for s in R[g]["steps"] if abs(s["A"]) > 1e-6]
         st["episodes"] += 1
@@ -297,22 +342,32 @@ def policy_loss(proc, model, dev, rec):
     return -rec["A"] * lp.mean()
 
 
+def make_plan(eps, a):
+    ac = [e for e in eps if e["source"] == "androidcontrol"]
+    od = [e for e in eps if e["source"] == "odyssey"]
+    n = a.batches * a.B
+    n_ac = min(len(ac), round(n * a.ac_share))
+    plan = ac[:n_ac] + od[: n - n_ac]
+    random.Random(a.seed).shuffle(plan)
+    return plan, n_ac
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model_id", required=True)
     ap.add_argument("--out", required=True)
-    for k in ("term", "verdicts", "written", "acv", "probe_ids"):
+    for k in ("term", "verdicts", "written", "probe_ids"):
         ap.add_argument(f"--{k}", required=True)
-    ap.add_argument("--batches", type=int, default=150)
+    ap.add_argument("--batches", type=int, default=100)
     ap.add_argument("--B", type=int, default=4)
     ap.add_argument("--G", type=int, default=4)
-    ap.add_argument("--lr", type=float, default=1e-5)
+    ap.add_argument("--lr", type=float, default=3e-5)
     ap.add_argument("--gamma", type=float, default=0.5)
     ap.add_argument("--omega", type=float, default=1.0)
     ap.add_argument("--patch", type=int, default=1)
     ap.add_argument("--temperature", type=float, default=1.0)
     ap.add_argument("--max_new_tokens", type=int, default=160)
-    ap.add_argument("--gen_bs", type=int, default=16, help="sequences per generate call")
+    ap.add_argument("--gen_bs", type=int, default=16)
     ap.add_argument("--max_steps", type=int, default=12)
     ap.add_argument("--history_steps", type=int, default=24)
     ap.add_argument("--notes", type=int, default=1)
@@ -320,24 +375,44 @@ def main():
     ap.add_argument("--lora_r", type=int, default=64)
     ap.add_argument("--lora_alpha", type=int, default=128)
     ap.add_argument("--ac_share", type=float, default=0.7)
-    ap.add_argument("--save_every", type=int, default=10)
+    ap.add_argument("--save_every", type=int, default=5)
     ap.add_argument("--shards", type=int, default=0)
-    ap.add_argument("--seed", type=int, default=13)
+    ap.add_argument("--seed", type=int, default=14)
     ap.add_argument("--resume", default="")
+    ap.add_argument("--collect", default="", help="matched control: save divergence rows here (save_to_disk), no training")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     random.seed(a.seed)
     torch.manual_seed(a.seed)
     eps, st0 = build_episodes(a)
-    ac = [e for e in eps if e["source"] == "androidcontrol"]
-    od = [e for e in eps if e["source"] == "odyssey"]
-    n = a.batches * a.B
-    n_ac = min(len(ac), round(n * a.ac_share))
-    plan = ac[:n_ac] + od[: n - n_ac]
-    random.Random(a.seed).shuffle(plan)
-    json.dump({"episodes": [(e["source"], e["episode"]) for e in plan], "build": st0},
+    plan, n_ac = make_plan(eps, a)
+    json.dump({"episodes": [(e["source"], e["episode"], e["w0"], len(e["steps"])) for e in plan], "build": st0},
               open(os.path.join(a.out, "plan.json"), "w"))
-    log(f"plan: {len(plan)} episodes ({n_ac} AndroidControl, {len(plan) - n_ac} GUI-Odyssey)")
+    log(f"plan: {len(plan)} episodes ({n_ac} AndroidControl, {len(plan) - n_ac} GUI-Odyssey); "
+        f"suffix windows {sum(e['w0'] > 0 for e in plan)}; endings: status {sum(e['steps'][-1]['gt']['action_type'] == 'status' for e in plan)}")
+
+    if a.collect:
+        proc, model, dev = load(a, lora=False)
+        stops = stop_ids(proc)
+        rows, stc = [], Counter()
+        a.patch = 10 ** 6                           # collection patches every miss
+        for b in range(0, len(plan), a.B * a.G):
+            _, st = run_lockstep(proc, model, dev, plan[b:b + a.B * a.G], a, stops, 1, greedy=True, collect=rows)
+            stc.update(st)
+            log(f"collect {min(b + a.B * a.G, len(plan))}/{len(plan)} episodes, rows {len(rows)}, {json.dumps(st)}")
+        from datasets import Dataset, Features, Image as HFImage, Sequence, Value
+        feat = Features({"images": Sequence(HFImage()),
+                         "messages": [{"role": Value("string"), "content": Value("string"), "reasoning_content": Value("string")}],
+                         "kind": Value("string"), "source": Value("string")})
+        for r in rows:
+            for m in r["messages"]:
+                m.setdefault("reasoning_content", None)
+        Dataset.from_list(rows, features=feat).save_to_disk(a.collect)
+        json.dump({"rows": len(rows), "kinds": dict(Counter(r["kind"] for r in rows)), "stats": stc},
+                  open(os.path.join(a.out, "collect_stats.json"), "w"), indent=1)
+        log("COLLECT DONE", len(rows))
+        return
+
     proc, model, dev = load(a)
     stops = stop_ids(proc)
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=a.lr, weight_decay=0.0)
@@ -367,9 +442,10 @@ def main():
             opt.step()
         tl = time.time() - tl
         row = {"batch": b + 1, "samples": len(recs), "loss": round(loss_sum, 5),
-               "step_acc": round(st["steps_ok"] / max(1, st["steps"]), 4),
-               "premature_status_per_step": round(st["premature_status"] / max(1, st["steps"]), 4),
-               "final_ok": f"{st['final_ok']}/{st['final_steps']}", "episode_return": round(st["episode_return"] / max(1, st["episodes"]), 3),
+               "step_acc_strict": round(st["steps_ok"] / max(1, st["steps"]), 4),
+               "premature_terminal_per_step": round(st["premature_terminal"] / max(1, st["steps"]), 4),
+               "rollouts_ended_premature": st["ended_premature"], "final_ok": f"{st['final_ok']}/{st['final_steps']}",
+               "first_segment_return": round(st["episode_return"] / max(1, st["episodes"]), 3),
                "completed_rollouts": st["completed"], "rollout_s": round(tr), "update_s": round(tl),
                "elapsed_h": round((time.time() - t0) / 3600, 2)}
         if dev == "cuda":
