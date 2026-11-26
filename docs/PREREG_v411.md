@@ -49,3 +49,35 @@ GUI-Odyssey endings decide when `complete` earns reward. Feasibility first (UI-S
 ---
 
 ## Log
+
+### 2026-11-26 13:56 Asia/Manila — step 2 registered in full (before any training)
+
+**Feasibility.** UI-S1's public code is a fork of verl pinned to vLLM 0.8.2 and Qwen2.5-VL; running LFM3-VL on it would
+mean porting that stack. Instead the method is implemented on our own Transformers + LoRA code
+(`train/semi_online_rl.py`, no new dependencies). Local checks on the Mac GPU: the loop runs end to end; on two complete
+AndroidControl episodes the 4 rollouts per episode sample different actions and 37 of 37 samples get a non-zero
+advantage; one update with A = +1 raises the sampled completion's mean log-probability (−1.25 → −0.56).
+
+**Candidate E-S** (the only one)
+
+| Item | Value |
+|---|---|
+| Start | E's merged weights; new LoRA r64 / α128 on the language model |
+| Episodes | E's training split: AndroidControl (70%) and GUI-Odyssey (30%) episodes with contiguous steps, first 12 steps; AndroidControl's 113 judged-unfinished `complete` steps dropped; GUI-Odyssey endings as judged (done → `complete`, unfinished → Claude's written action); the 400 probe episodes excluded |
+| Rollouts | B = 4 episodes × G = 4 rollouts per batch, temperature 1.0, own history (24 steps, fine notes), patch budget 1 |
+| Reward / advantage | UI-S1 Eq. 8 step reward (0.1 parseable + 0.4 type + 0.5 action); γ = 0.5 discounted return; A = A_episode + 1.0 × A_step |
+| Update | one AdamW step per batch on −A × mean token log-prob (on-policy), lr 3e-5, grad-norm clip 1.0 |
+| Size | 100 batches = 400 episodes (set after the smoke's s/batch if needed, logged before the full run) |
+| Hardware | SageMaker `ml.g5.2xlarge` (A10G 24 GB, us-west-2; the L4 quota is in use by round 12) |
+
+**Gates, in order (all must hold to go on):**
+
+1. **Offline, same job** (`scripts/training/sm_r13_gate.py`): round 11's first 10 checks (no regression vs E) and the
+   GUI-Odyssey ending probes: M_done `status` ≥ 50%, M_notdone `status` ≤ 25%.
+2. **Multi-step test on the 4-bit GGUF (Mac):** SOP ≥ E's + 3 points and premature `status` ≤ E's. Applies whatever
+   step 1 concludes about AndroidWorld: it is what the training optimises; failing it means the training did not work.
+3. **AndroidWorld seed 30** (E's harness): **successes ≥ 22 (E 19), false completes ≤ 23 (E's), useless waits ≤ 5%.**
+   Passing sends E-S to the three held-out seeds under E's rule (non-inferior to v4, false completes ≤ 71) with the
+   superiority test reported.
+
+If any gate fails: reported, nothing published, and the next step is decided from the data (no new single-symptom patch).
