@@ -171,3 +171,21 @@ nothing is published.
 - **Review: 39 / 40 right (bar ≥ 34)**, `results/r12_dev/next_action_review.json`. The one wrong: it repeats a tap
   the history shows had no effect. One weak (a back press meant to reach another app) counted right. Taps were on
   target in every case. Fix 2's rows are used.
+
+### 2026-11-26 12:57 Asia/Manila — harness built and tested; smoke passed; full run launched with a safer micro-batch
+
+- Harness `--done_check` (`eval/androidworld/lfm_agent.py`, flag in `run_aw.py`; the question is defined once in
+  `train/agent_format.py` and used by the data builder too). Unit test against a stub model server
+  (`eval/androidworld/test_done_check.py`): a "no" blocks the `complete`, the re-ask carries the check's reason and a
+  grammar without `status`, the replacement is executed and recorded; 3 blocks then the 4th `complete` is accepted
+  unasked; yes and unparseable accept; flag off asks nothing; reset clears the count. **Passed.**
+- Replay gate script (`eval/androidworld/replay_done_check.py`): finds exactly **164 false completes and 94 real
+  successes** in the six seed-30 runs; plumbing tested on E's server (E answers the question with an action: unparsed).
+  The installed-app list for the prompt was read from the AndroidWorld emulator (`results/r12_dev/aw_installed_apps.json`).
+- Smoke job `lfm3-r12-ev-smoke` (L4, ~25 billed minutes): mix (80 / 80 rebuilt texts identical), training, all four
+  probes for E and the smoke model, every round-8 eval and the round-12 gate ran ("SMOKE OK"; numbers on 9–16 rows are
+  meaningless). After 30 steps the smoke model already answers the question in the trained form (0 unparsed).
+- **Micro-batch changed before the full run:** 2 × 16 without checkpointing peaked at 22.0 GB of the L4's 22.5 GB on
+  the smoke mix (round 11: 20.95 GB), too close for 1,000 steps over 32,000 rows. The full run uses **1 × 32 with
+  gradient checkpointing** (round 9's measurement on L4: 24.5 s/step, 6.3 GB): same 32 rows per step, about 6.8 h.
+- Full job `lfm3-r12-ev` launched (12 h limit, checkpoints to S3).
