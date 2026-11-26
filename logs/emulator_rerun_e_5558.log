@@ -158,3 +158,19 @@ INFO         | Created VkInstance:0x7810168800 for application:'Chromium' engine
 INFO         | Created VkDevice:0x780ce80010 for application:'Chromium' instance:0x7810168800. ASTC emulation:on CPU decoding:off. Protected memory:off
 INFO         | Destroyed VkDevice:0x780ce80010
 INFO         | Destroyed VkInstance:0x7810168800 for application:'Chromium' engine:''.
+WARNING      | Ignorig closure of unused (closed) slot: 0
+INFO         | Created VkInstance:0x7810621000 for application:'Chromium' engine:''.
+../../third_party/SwiftShader/src/Vulkan/VkPhysicalDevice.cpp:649 WARNING: UNSUPPORTED: curExtension->sType: 1000163000
+../../third_party/SwiftShader/src/Vulkan/libVulkan.cpp:1129 WARNING: UNSUPPORTED: pCreateInfo->pNext sType = 1000163000
+INFO         | Created VkDevice:0x7803fa4010 for application:'Chromium' instance:0x7810621000. ASTC emulation:on CPU decoding:off. Protected memory:off
+INFO         | Destroyed VkDevice:0x7803fa4010
+INFO         | Destroyed VkInstance:0x7810621000 for application:'Chromium' engine:''.
+INFO         | ColorBufferGl::readPixels NOT supported for tex(internal:0x8051 fmt:0x1907 type:0x1401) read(fmt:0x1907 type:0x1401) error: 0x502
+ERROR        | UNIMPLEMENTED: GLES driver doesn't support readback for (components=0x1908 type=0x1401) and no software conversion implemented.
+WARNING      | Ignorig closure of unused (closed) slot: 0
+INFO         | Created VkInstance:0x7810622800 for application:'Chromium' engine:''.
+../../third_party/SwiftShader/src/Vulkan/VkPhysicalDevice.cpp:649 WARNING: UNSUPPORTED: curExtension->sType: 1000163000
+../../third_party/SwiftShader/src/Vulkan/libVulkan.cpp:1129 WARNING: UNSUPPORTED: pCreateInfo->pNext sType = 1000163000
+INFO         | Created VkDevice:0x7807800010 for application:'Chromium' instance:0x7810622800. ASTC emulation:on CPU decoding:off. Protected memory:off
+INFO         | Destroyed VkDevice:0x7807800010
+INFO         | Destroyed VkInstance:0x7810622800 for application:'Chromium' engine:''.

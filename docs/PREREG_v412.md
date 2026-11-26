@@ -142,7 +142,7 @@ Gate: round 11's checks (early `status` ≤ 3.80%, C1 ≤ 22%, the rest no worse
 - **Both arms fail; per the registered gate and round 11's precedent there is no online test and nothing is published.**
   E stays the newest model, v4 the main model.
 - **RL (100 batches, 400 episodes) barely moved the model**: M_done 1%, and it is slightly worse than E on repeated taps
-  (C3 22% vs 17%) and early `status`. Training showed strict step accuracy at temperature 1.0 flat at about 0.6–0.7.
+  (C3 22% vs 17%) and early `status`. Training curve (20-batch means): strict step accuracy at temperature 1.0 0.68, 0.63, 0.65, 0.67, 0.69 and first-segment return 2.2, 2.0, 2.2, 2.3, 2.5: flat to slightly rising, on different episodes each batch, so not distinguishable from noise.
   At this scale the update was too small to help and large enough to cost a little.
 - **The control did change behaviour, in the wrong way**: it learned "done" (83.5% on finished screens) but also says
   done on 56.5% of unfinished final screens: the same failure as E-T in round 11 (95% / 65%). Training on E's own
