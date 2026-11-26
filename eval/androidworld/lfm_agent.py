@@ -66,7 +66,8 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
         # round 9 (PREREG_v47): also note `wait` steps that left the screen unchanged, as the v4.7 data does
         self.note_waits = note_waits
         # round 12 (PREREG_v410, opt-in): before a `status complete` is accepted, ask the model the done question on the
-        # same screenshot and history; "no" blocks it (status removed from the allowed actions, the check's reason as
+        # same screenshot and history; "no" blocks it (status and answer removed from the allowed actions, so a blocked
+        # `complete` cannot turn into an unchecked ending - external review M10; the check's reason as
         # the reasoning prefill) at most done_check_max_blocks times per episode; yes / unparsed accept it.
         self.done_check = done_check
         self.done_check_max_blocks = done_check_max_blocks
@@ -225,10 +226,10 @@ class LFMScreenAgent(base_agent.EnvironmentInteractingAgent):
                     self._blocks += 1
                     pre = reason.splitlines()[0][:200] if reason else "The goal is not accomplished yet."
                     rq = self._query(goal, img, extra_messages=[{"role": "assistant", "content": "", "reasoning_content": pre}],
-                                     max_tokens=128, grammar=ag.grammar({"status"}))
+                                     max_tokens=128, grammar=ag.grammar({"status", "answer"}))
                     txt = ag.LoopGuard.forced_text(rq["content"], rq["reasoning"], pre)
                     a2 = af.parse_action(txt)
-                    ok = a2 is not None and a2["action_type"] != "status"
+                    ok = a2 is not None and a2["action_type"] not in ("status", "answer")
                     attempts.append({"content": txt, "reasoning": pre, "latency_s": rq["latency_s"], "usage": rq["usage"],
                                      "lenient_ok": a2 is not None, "strict_ok": af.parse_action(txt, strict=True) is not None,
                                      "done_check_replacement": True})

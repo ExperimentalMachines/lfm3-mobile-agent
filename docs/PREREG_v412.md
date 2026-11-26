@@ -76,3 +76,17 @@ a provisional regression measure; candidates are judged on it with a strict-matc
 ---
 
 ## Log
+
+### 2026-11-26 16:01 Asia/Manila — RL smoke passed; full E-S2 launched; harness and accounting done
+
+- RL smoke `lfm3-r14-rl-smoke` (A10G, ~21 billed minutes): episode build with suffix windows (850 AndroidControl and 510
+  GUI-Odyssey episodes become windows that keep their ending; GUI-Odyssey endings 597 done / 450 unfinished), 2 RL
+  batches (71 samples with non-zero advantage; strict step accuracy 0.69; 2 rollouts ended by a premature terminal
+  action), merge, all evals and the gate ran ("R14 rl smoke DONE"). Full run `lfm3-r14-rl` launched (100 batches).
+- The control's smoke (`lfm3-r14-sft-smoke`) waits for an L40S (the us-east-1 L4 could not be used: the SageMaker role has
+  no access to that bucket, and IAM is not changed without the owner). If no capacity by 17:30, the control runs on the
+  us-west-2 L4 after round 12's job.
+- Harness: after a blocked `complete`, `answer` is excluded too (review M10); unit test updated and passing.
+- Step 3: `analysis/aw_outcomes.py`. On existing runs it shows that **running out of steps is the largest failure**
+  (v4 seed 30: 55 of 116; E: 59; held-out seed 7: v4 62, E 55), ahead of unfinished `complete` claims (20–37) and wrong
+  answers (12–17). Rounds 8–12 targeted the second.

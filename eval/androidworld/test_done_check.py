@@ -81,7 +81,7 @@ def main():
         t_act, t_chk = REQS[0]["messages"][1]["content"][1]["text"], chk["messages"][1]["content"][1]["text"]
         assert t_chk == t_act[: -len(af.NEXT_Q)] + af.DONE_CHECK_Q                # 6
         assert re_ask["messages"][-1]["reasoning_content"] == "The note is not saved yet."
-        assert "status" not in re_ask["grammar"] and "click" in re_ask["grammar"]
+        assert "status" not in re_ask["grammar"] and "answer" not in re_ask["grammar"] and "click" in re_ask["grammar"]
         assert ex[-1].action_type == "click" and r.data["parsed_action"]["action_type"] == "click"
         assert ag.history[-1][1] == '{"action_type":"click","point_2d":[500,90]}', ag.history[-1]
         assert ag.history[-1][0] == "The note is not saved yet."
