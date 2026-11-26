@@ -33,7 +33,7 @@ AndroidWorld = development seed 30, successes out of 116 ([results.md](results.m
 | v4.5-D | All the data once (173,430 rows), 24-step history, change notes ([round 7](rounds.md#round-7-all-the-data-once-with-a-longer-memory-2026-11-24)) | 21 (exploratory) | Failed the offline gate on early stops. Offline gains (AndroidControl 0.753, long tasks 0.471) did not show online |
 | **v4.6-E** | Counterfactual rows where history and screen disagree; judge-filtered "done" labels ([round 8](rounds.md#round-8-judge-done-from-the-screen-not-the-history-2026-11-25)) | 19 (exploratory) | Failed the offline gate narrowly (2 of 10). Waits 29% → 3.5% of steps; false "done" unchanged (24). Held-out 52 / 348 (v4 54; 75 false "done" vs 71): not promoted. Newest published model |
 | E-DPO | E + DPO on 342 judge-checked stop pairs ([round 10](rounds.md#round-10-finishing-multi-part-tasks-2026-11-25)) | not run | Failed the offline gate: one pass (11 steps) left E unchanged. Not published |
-| E-T | E + 747 checked GUI-Odyssey "done" endings, 1,000 steps ([round 11](rounds.md#round-11-e-trained-on-checked-multi-part-endings-queued)) | — | Registered 2026-11-25; smoke job queued for a GPU |
+| E-T | E + 747 checked GUI-Odyssey "done" endings, 1,000 steps ([round 11](rounds.md#round-11-e-trained-on-checked-multi-part-endings-2026-11-25)) | — | Failed the offline gate (M_notdone 65% vs ≤ 5%): says "done" on most final screens, finished or not. Not published |
 
 Other base models on v1's data: Qwen3.5-2B with the same recipe (16); Qwen3.5-0.8B and LFM2.5-VL-450M with a
 smaller one (LoRA r16, 1 epoch): 12 and 2.

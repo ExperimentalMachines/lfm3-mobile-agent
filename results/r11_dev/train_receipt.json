@@ -1,0 +1,54 @@
+{
+  "args": {
+    "model_id": "/opt/ml/input/data/e",
+    "model_revision": null,
+    "allow_unpinned": false,
+    "train": [
+      "/content/data/r11/mix"
+    ],
+    "val": null,
+    "out": "/content/runs/r11et",
+    "max_pixels": 774400,
+    "min_pixels": 65536,
+    "epochs": 1.0,
+    "max_steps": 1000,
+    "lr": 0.0001,
+    "bs": 2,
+    "grad_accum": 16,
+    "lora_r": 64,
+    "lora_alpha": 128,
+    "target_regex": ".*language_model.*\\.(q_proj|k_proj|v_proj|o_proj|gate_proj|in_proj|out_proj|w1|w2|w3)",
+    "modules_to_save": [],
+    "save_steps": 100,
+    "eval_steps": 100000,
+    "hub_repo": null,
+    "hub_public": false,
+    "workers": 6,
+    "seed": 42,
+    "no_gc": true,
+    "chat_template_path": null,
+    "max_agent_rows": 0,
+    "replay": [],
+    "inline_think": false,
+    "trust_remote_code": true,
+    "scheduler": "cosine",
+    "decay_frac": 0.15,
+    "warmup": 0.03
+  },
+  "global_step": 1000,
+  "max_steps": 1000,
+  "weights": {
+    "model.safetensors": 3836417920
+  },
+  "summary": {
+    "train_runtime": 18350.4248,
+    "train_samples_per_second": 1.744,
+    "train_steps_per_second": 0.054,
+    "total_flos": 4.6431887134782874e+17,
+    "train_loss": 0.24757031416893005,
+    "epoch": 1.0,
+    "wall_s": 18350.716498851776,
+    "peak_gpu_mem_gb": 21.911485952,
+    "train_rows": 32000
+  }
+}

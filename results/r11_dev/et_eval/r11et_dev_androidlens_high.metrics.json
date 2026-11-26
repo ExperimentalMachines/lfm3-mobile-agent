@@ -1,0 +1,183 @@
+{
+ "high": {
+  "n_rows": 4987,
+  "n_scored": 4847,
+  "n_unmappable": 140,
+  "parse_rate": 0.9998,
+  "strict_parse_rate": 0.9998,
+  "nonterminal": {
+   "n": 4675,
+   "step_acc": 0.4909,
+   "type_match": 0.7906,
+   "early_status": 0.0199,
+   "early_status_count": 93,
+   "early_end": 0.0201,
+   "wait_rate": 0.0036
+  },
+  "by_bucket": {
+   "0-4": {
+    "n": 852,
+    "step_acc": 0.6256,
+    "type_match": 0.8333,
+    "early_status": 0.0,
+    "early_status_count": 0,
+    "early_end": 0.0,
+    "wait_rate": 0.0012
+   },
+   "5-9": {
+    "n": 844,
+    "step_acc": 0.519,
+    "type_match": 0.8258,
+    "early_status": 0.0024,
+    "early_status_count": 2,
+    "early_end": 0.0024,
+    "wait_rate": 0.0047
+   },
+   "10-19": {
+    "n": 1480,
+    "step_acc": 0.4486,
+    "type_match": 0.7912,
+    "early_status": 0.0189,
+    "early_status_count": 28,
+    "early_end": 0.0196,
+    "wait_rate": 0.0034
+   },
+   "20+": {
+    "n": 1499,
+    "step_acc": 0.4403,
+    "type_match": 0.7458,
+    "early_status": 0.042,
+    "early_status_count": 63,
+    "early_end": 0.042,
+    "wait_rate": 0.0047
+   }
+  },
+  "gt_wait_rate": 0.043,
+  "step_acc_dataset_alts": 0.4881,
+  "right_only_via_derived_alternative": {
+   "open_app_listed": 9,
+   "open_app_named": 4
+  },
+  "per_gt_type": {
+   "click": {
+    "n": 3429,
+    "type_match": 0.8976,
+    "step_acc": 0.5369
+   },
+   "input_text": {
+    "n": 391,
+    "type_match": 0.6215,
+    "step_acc": 0.5166
+   },
+   "long_press": {
+    "n": 61,
+    "type_match": 0.1967,
+    "step_acc": 0.0656
+   },
+   "navigate_back": {
+    "n": 3,
+    "type_match": 0.0,
+    "step_acc": 0.0
+   },
+   "navigate_home": {
+    "n": 67,
+    "type_match": 0.4776,
+    "step_acc": 0.4776
+   },
+   "scroll": {
+    "n": 523,
+    "type_match": 0.6138,
+    "step_acc": 0.3939
+   },
+   "wait": {
+    "n": 201,
+    "type_match": 0.0498,
+    "step_acc": 0.0498
+   }
+  },
+  "pred_type_hist_nonterminal": {
+   "click": 3583,
+   "scroll": 527,
+   "input_text": 284,
+   "navigate_home": 97,
+   "status": 93,
+   "open_app": 39,
+   "long_press": 25,
+   "wait": 17,
+   "navigate_back": 8,
+   "answer": 1,
+   "unparsed": 1
+  },
+  "terminal": {
+   "n": 172,
+   "acc": 0.5814,
+   "acc_status_only": 0.5814,
+   "pred_type_hist": {
+    "status": 100,
+    "click": 54,
+    "scroll": 8,
+    "long_press": 3,
+    "navigate_home": 3,
+    "wait": 3,
+    "input_text": 1
+   }
+  },
+  "all_scored_step_acc": 0.4941,
+  "unmappable_rows_pred_status": 3,
+  "ci95_episode_bootstrap": {
+   "step_acc": [
+    0.4692,
+    0.5122
+   ],
+   "early_status": [
+    0.0146,
+    0.026
+   ],
+   "episodes": 172,
+   "resamples": 2000
+  },
+  "hint_suspect": {
+   "n": 118,
+   "step_acc": 0.8051
+  },
+  "step_acc_no_suspect": 0.4828,
+  "episodes": {
+   "n_complete": 172,
+   "n_seen": 172,
+   "all_right": 0.0,
+   "prefix_progress": 0.0792,
+   "milestone_prefix": 0.0705,
+   "milestone_segment": 0.2221,
+   "median_first_wrong_step": 1,
+   "with_early_status": 0.3198,
+   "median_first_early_status_step": 22,
+   "median_first_early_status_frac": 0.8
+  },
+  "complete": true
+ },
+ "integrity": {
+  "preds": [
+   "/content/eval/r11et_dev_androidlens_high.ids.jsonl"
+  ],
+  "data": "/content/data/v46/androidlens",
+  "source": {
+   "repo": "yuecao0119/AndroidLens",
+   "revision": "984576f3eb733f27cd18479b7b20e18565e98dda",
+   "license": "apache-2.0",
+   "subset": "test/en"
+  },
+  "files": {
+   "dev_androidlens_high": {
+    "path": "dev_androidlens_high.parquet",
+    "rows": 4987,
+    "sha256": "32004ffed6275422272a88bbf5918a4ab493aebac1f30f8138ec76ae641a5b3c"
+   },
+   "dev_androidlens_low": {
+    "path": "dev_androidlens_low.parquet",
+    "rows": 4987,
+    "sha256": "b23f75dcd33a4f4a3ca509027b72b6f3ffd00ff87dc4ca3f39f9eee23c378814"
+   }
+  },
+  "problems": []
+ }
+}

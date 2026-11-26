@@ -1,0 +1,77 @@
+{
+ "name": "r11et",
+ "candidate": {
+  "ac_high": 0.7539081004263383,
+  "terminal_complete": 0.7751134154244977,
+  "dev_answer": 0.875,
+  "dev_complete": 0.775,
+  "dev_memgui": 0.6775244299674267,
+  "ac_early_status_2plus": 0.03782060570931749,
+  "ac_status_1_before_end": 0.15554115359688916,
+  "ac_late_status": 0.1122715404699739,
+  "androidlens_step": 0.4909,
+  "androidlens_step_10plus": 0.44442353138637125,
+  "androidlens_early_status": 0.0199,
+  "androidlens_terminal": {
+   "n": 172,
+   "acc": 0.5814,
+   "acc_status_only": 0.5814,
+   "pred_type_hist": {
+    "status": 100,
+    "click": 54,
+    "scroll": 8,
+    "long_press": 3,
+    "navigate_home": 3,
+    "wait": 3,
+    "input_text": 1
+   }
+  },
+  "probes": {
+   "T_term": 0.79,
+   "C2_hist_cut": 0.6966666666666667,
+   "C0_base": 0.03666666666666667,
+   "C1_hist_done": 0.20333333333333334,
+   "C3_stale": 0.18666666666666668,
+   "C3n_stale_note": 0.0
+  }
+ },
+ "e": {
+  "ac_high": 0.7580530554239697,
+  "ac_early_status_2plus": 0.03550210114476163,
+  "probes": {
+   "T_term": 0.78,
+   "C2_hist_cut": 0.71,
+   "C0_base": 0.03,
+   "C1_hist_done": 0.2,
+   "C3_stale": 0.16666666666666666,
+   "C3n_stale_note": 0.0033333333333333335
+  }
+ },
+ "multi_part": {
+  "M_done": {
+   "e": 0.0,
+   "candidate": 0.95,
+   "n": 200
+  },
+  "M_notdone": {
+   "e": 0.0,
+   "candidate": 0.6459,
+   "n": 819
+  }
+ },
+ "checks": {
+  "ac_high": true,
+  "dev_answer": true,
+  "dev_complete": true,
+  "ac_early_status_2plus": true,
+  "androidlens_step_10plus": true,
+  "probe_C1_hist_done": true,
+  "probe_C3n_stale_note": true,
+  "probe_C3_stale": true,
+  "probe_T_term": true,
+  "probe_C2_hist_cut": true,
+  "M_done": true,
+  "M_notdone": false
+ },
+ "pass": false
+}

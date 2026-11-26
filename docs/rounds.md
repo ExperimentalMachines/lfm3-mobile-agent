@@ -7,7 +7,7 @@ still the main model; everything here is development work.
 [v4.1–v4.2](#v41-and-v42-2026-11-21-to-22) · [5](#round-5-learning-from-own-mistakes-vs-more-training-2026-11-22) ·
 [6](#round-6-long-and-self-correcting-trajectories-2026-11-23) · [7](#round-7-all-the-data-once-with-a-longer-memory-2026-11-24) ·
 [8](#round-8-judge-done-from-the-screen-not-the-history-2026-11-25) · [9](#round-9-useless-waits-2026-11-25) ·
-[10](#round-10-finishing-multi-part-tasks-2026-11-25) · [11](#round-11-e-trained-on-checked-multi-part-endings-queued)
+[10](#round-10-finishing-multi-part-tasks-2026-11-25) · [11](#round-11-e-trained-on-checked-multi-part-endings-2026-11-25)
 
 ---
 
@@ -55,7 +55,7 @@ Seed 30 = successes out of 116; false "done" = episodes the model ended as done 
 | 8 | 11-25 | **v4.6-E** | Rows where history and screen disagree | failed (2 of 10) | 19* | 24 | Negative; newest published model; held-out 52 / 348 (v4 54), not promoted | [PREREG_v46](PREREG_v46.md) |
 | 9 | 11-25 | (v4.7 data) | Rows against useless waits | — | — | — | Candidate not trained: E already met its wait bars | [PREREG_v47](PREREG_v47.md) |
 | 10 | 11-25 | E-DPO | Penalise E's premature stops and reward its missed stops, on judge-checked pairs | failed | — | — | Negative | [PREREG_v48](PREREG_v48.md) |
-| 11 | 11-25 | E-T | E + 747 checked multi-part endings | queued | | | | [PREREG_v49](PREREG_v49.md) |
+| 11 | 11-26 | E-T | E + 747 checked multi-part endings | failed (M_notdone) | — | — | Negative; learned "last screen → done" | [PREREG_v49](PREREG_v49.md) |
 
 \* Exploratory: run after a failed offline gate, by the owner's decision.
 
@@ -314,7 +314,7 @@ Claude API spend: $24.53 (owner's cap $95). Files: [`results/v48_dev/`](../resul
 
 ---
 
-## Round 11: E trained on checked multi-part endings (queued)
+## Round 11: E trained on checked multi-part endings (2026-11-25)
 
 Plan: [PREREG_v49.md](PREREG_v49.md), registered 2026-11-25 20:12.
 
@@ -325,4 +325,17 @@ Plan: [PREREG_v49.md](PREREG_v49.md), registered 2026-11-25 20:12.
 | Held out | 200 judged-done endings (**M_done**: should say done) and 819 judged-not-done endings (**M_notdone**: should not) |
 | Offline gate | E's round-8 bars; early `status` ≤ 3.80% and C1 ≤ 22% (no worse than E); M_done ≥ E + 10 points and ≥ 50%; M_notdone ≤ E + 5 points |
 | Online (only on a pass) | Seed 30: false "done" ≤ 15 (E 24), successes ≥ 19, useless waits ≤ 5% |
-| Hardware and cost | SageMaker L40S; about $12 |
+| Hardware and cost | SageMaker L4 (the L40S never got capacity), 7.1 h, about $9 |
+
+**Result (2026-11-26): fails the offline gate.** Files: [`results/r11_dev/`](../results/r11_dev/).
+
+| Check | E | E-T | Bar |
+|---|---|---|---|
+| Round-8 bars, the two E failed relaxed to "no worse than E" | 8 of 10 (original bars) | **10 of 10** | all |
+| M_done: says done on judged-finished final screens | 0% | **95%** | ≥ 50% ✓ |
+| M_notdone: says done on judged-unfinished final screens | 0% | **65%** | ≤ 5% ✗ |
+
+- E-T learned "last screen of a GUI-Odyssey episode → done", only weakly tied to whether the task is finished.
+- Likely cause: every unfinished final screen was held out for the M_notdone probe, so training never showed one;
+  its "not done" examples were all earlier screens. A next try needs judged-unfinished final screens in training.
+- No online test; nothing published. E stays the newest model.

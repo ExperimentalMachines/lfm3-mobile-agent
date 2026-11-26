@@ -1,0 +1,57 @@
+{
+ "n_steps": 921,
+ "n_episodes": 60,
+ "parse_rate": 1.0,
+ "type_match": 0.8621064060803475,
+ "step_sr": 0.6775244299674267,
+ "episode_sr": 0.06666666666666667,
+ "per_type": {
+  "click": {
+   "n": 575,
+   "type_match": 0.9147826086956522,
+   "step_sr": 0.6556521739130434
+  },
+  "input_text": {
+   "n": 106,
+   "type_match": 0.9245283018867925,
+   "step_sr": 0.7735849056603774
+  },
+  "long_press": {
+   "n": 1,
+   "type_match": 0.0,
+   "step_sr": 0.0
+  },
+  "navigate_back": {
+   "n": 7,
+   "type_match": 0.14285714285714285,
+   "step_sr": 0.14285714285714285
+  },
+  "navigate_home": {
+   "n": 26,
+   "type_match": 0.6153846153846154,
+   "step_sr": 0.6153846153846154
+  },
+  "scroll": {
+   "n": 95,
+   "type_match": 0.8,
+   "step_sr": 0.7473684210526316
+  },
+  "status": {
+   "n": 49,
+   "type_match": 0.42857142857142855,
+   "step_sr": 0.42857142857142855
+  },
+  "wait": {
+   "n": 62,
+   "type_match": 0.9032258064516129,
+   "step_sr": 0.9032258064516129
+  }
+ },
+ "answer_mean_f1": null,
+ "integrity": {
+  "complete": true,
+  "n_rows": 921,
+  "expected": 921,
+  "model": "/content/runs/r11et/merged"
+ }
+}

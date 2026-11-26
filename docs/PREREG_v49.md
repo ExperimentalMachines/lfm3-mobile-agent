@@ -116,3 +116,25 @@ experimentalmachines. **If not:** results are reported and nothing is published.
 - Smoke mix (40 rows per class): 80 / 80 rebuilt histories identical to the judged text; `status` share 7.4% (E's
   training split 7.2%).
 - Full job `lfm3-r11-et` launched with `R11_BS=2 R11_GA=16 R11_GC=nogc`, 10 h limit, checkpoints to S3 (resumable).
+
+### 2026-11-26 11:45 Asia/Manila — result: E-T fails the offline gate (M_notdone); no online test, nothing published
+
+Full job `lfm3-r11-et` (L4, 7.1 billed hours ≈ $8.70): 1,000 steps in 5.1 h, then both M probes and every round-8
+eval. Files: `results/r11_dev/` (gate JSONs, predictions, mix stats, training receipt).
+
+| Check | Bar | E | **E-T** | |
+|---|---|---|---|---|
+| 8 round-8 bars E passes | unchanged | pass | pass | ✓ |
+| AndroidControl `status` ≥ 2 steps before the end | ≤ 3.80% | 3.55% | 3.78% | ✓ |
+| Probe C1 (unfinished screen, history claims every step) | ≤ 22% | 20.0% | 20.3% | ✓ |
+| **M_done**: `status` on judged-complete final screens (200) | ≥ E + 10 and ≥ 50% | 0.0% | **95.0%** | ✓ |
+| **M_notdone**: `status` on judged-not-complete final screens (819) | ≤ E + 5 | 0.0% | **64.6%** | **✗** |
+
+- **Fails.** E-T says `complete` on 95% of the GUI-Odyssey final screens the judge found finished, but also on 65% of
+  those it found unfinished. It learned "last screen of a GUI-Odyssey episode → done", only weakly separated by
+  whether the task is actually done. (E says `status` on none of either set: it navigates home or taps.)
+- Likely cause, from the design: every "not done" final screen was held out for the M_notdone probe, so training had
+  no unfinished *final* screens; its "not done" examples were all earlier screens (counterfactual and real
+  pre-end steps). A next attempt would need judged-unfinished final screens in training (with a separate probe).
+- Everything else held: AndroidControl 0.754 (E 0.758), no new early stops, history probes as E.
+- As registered: no online test; E-T and the round-11 rows are not published. E stays the newest model.

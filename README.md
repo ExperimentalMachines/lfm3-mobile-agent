@@ -11,7 +11,7 @@ files, and the preregistered rules each decision followed.
 |---|---|
 | **Main model** | **v4**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4-GGUF) (1.30 GB with its image projector). The version tested on the sealed held-out benchmark |
 | **Newest model** | **v4.6-E**: [weights](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E), [phone GGUF](https://huggingface.co/experimentalmachines/LFM3-VL-2B-MobileAgent-v4.6-E-GGUF). Barely waits and is sharper offline, but repeats taps more. Held-out AndroidWorld: 52 / 348 vs v4's 54 (not worse, not better), with more false "done" calls (75 vs 71), so it did not replace v4 |
-| **Now** | Round 11: E trained further on multi-part tasks it should finish, training on an L4 ([plan](docs/PREREG_v49.md)) |
+| **Now** | Nothing running. Round 11 failed its offline gate ([result](docs/PREREG_v49.md)) |
 | Everything published | [LFM3 Mobile Agent collection](https://huggingface.co/collections/experimentalmachines/lfm3-mobile-agent-6b03a79f8e23b8dde16e8326): every model, GGUF and training dataset, public |
 | License | Code: Apache-2.0. Models and data: their sources' licenses ([below](#license)) |
 
@@ -90,7 +90,7 @@ v4 by that margin, so v4 remains the main model.**
 | 11-25 | 8 | **v4.6-E** | Teach it to judge "done" from the screen, not its history | 19* | 24 | Failed offline gate narrowly; waits 29% → 3.5% of steps. Held-out: 52 / 348 (v4 54), not promoted |
 | 11-25 | 9 | (v4.7 data) | Remove useless waits | — | — | Not trained: E already met the wait bars set for it |
 | 11-25 | 10 | E-DPO | Penalise E's premature stops and reward its missed stops, on judge-checked examples | — | — | Failed offline gate (unchanged from E) |
-| 11-25 | 11 | E-T | E + 747 checked "multi-part task finished" examples | training | | |
+| 11-26 | 11 | E-T | E + 747 checked "multi-part task finished" examples | — | — | Failed offline gate: says "done" on 95% of finished final screens but also 65% of unfinished ones |
 
 \* Exploratory run by the owner's decision after a failed offline gate.
 
@@ -106,6 +106,8 @@ v4 by that margin, so v4 remains the main model.**
   reviews, and about half under the owner's strict definition of done. Round 10 calibrated a judge to that definition
   (the by-eye labels it was checked against were made by the coding assistant, itself a Claude model).
 - **Penalising own mistakes did not help** at our scale (rounds 5 and 10).
+- **Teaching "done" needs unfinished final screens too.** Round 11 trained only on finished endings and learned
+  "last screen → done" rather than "finished → done".
 
 Every round in detail: **[docs/rounds.md](docs/rounds.md)**.
 
