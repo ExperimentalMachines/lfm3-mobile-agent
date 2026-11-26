@@ -150,3 +150,12 @@ Gate: round 11's checks (early `status` ≤ 3.80%, C1 ≤ 22%, the rest no worse
 - The registered tie-break (RL kept only if it beats the control by ≥ 2 points on the strict multi-step test) is moot:
   neither arm is a candidate. Not run.
 - Round 12's E-V is still training on the L4 (step ≳ 900 of 1000) and its evals follow.
+
+### 2026-11-26 21:44 Asia/Manila — what "running out of steps" is (read from the seed-30 episodes of v4 and E)
+
+Budget-exhausted episodes (no `status`/`answer`, no exception): v4 55, E 59 of 116. Successes finish in a median of 5–5.5
+steps (maximum 7 for v4, 11 for E), so the step budget is not what binds: a longer budget would not rescue these. **36 of
+55 (v4) and 43 of 59 (E) are loops** (fewer than half of the episode's actions are distinct; for E, 39% of steps repeat the
+previous action exactly). Loop guards were already tried (round 5: v4 + guards 18 vs 18, v4.1 + guards worse) and gave no
+gain. So the largest failure is a model that does not find the right action and then repeats a wrong one, not an
+interface or budget problem. That is a capability / training-signal limit, not something a cheap harness change fixes.
