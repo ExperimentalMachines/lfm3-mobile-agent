@@ -90,3 +90,23 @@ a provisional regression measure; candidates are judged on it with a strict-matc
 - Step 3: `analysis/aw_outcomes.py`. On existing runs it shows that **running out of steps is the largest failure**
   (v4 seed 30: 55 of 116; E: 59; held-out seed 7: v4 62, E 55), ahead of unfinished `complete` claims (20–37) and wrong
   answers (12–17). Rounds 8–12 targeted the second.
+
+### 2026-11-26 16:12 Asia/Manila — step 4: the per-task reset fixed and verified; step 5: before/after input dropped
+
+**Step 4.** Root cause of the carryover: `/data/data/android_world/snapshots` did not exist on either emulator, so
+AndroidWorld's per-task restore (`TaskEval.initialize_task` → `app_snapshot.restore_snapshot`) skipped every app
+("Snapshot not found"); app data carried over between tasks in **every earlier run of every model** (ours and the
+baselines alike). Fix: AndroidWorld's own app setup (clear data, configure, save the snapshot) on both emulators
+(`scripts/androidworld/setup_snapshots.py` app by app on 5556, 24 / 24 ok; the stock `--perform_emulator_setup` on 5558,
+completed): 24 snapshots each. Verified with `scripts/androidworld/verify_reset.py`: a marker written into each app's
+data is removed by AndroidWorld's own restore for **23 / 23 apps on both emulators** (clipper is never restored by
+design). Not covered: data held by Android's system providers (contacts, SMS, call log, shared storage), which each
+task's own setup handles. Consequence, as registered: every comparison from now on runs E and the candidate in the same
+session on the reset emulators; earlier numbers are not mixed with new ones.
+
+**Step 5.** All 164 seed-30 false completes: the last action changed the screen in 134, left it unchanged in 30 (the
+note already flags those). By eye, 24 random changed cases (`results/r13_dev/fc_last_step_review.json`): the current
+screen visibly shows the goal unmet in **11** (stopwatch started instead of paused, Wi-Fi turned on, a file instead of a
+folder, wrong contact fields, a running timer), parts of a multi-part goal remain in **8**, the evidence is only on the
+screen before the last action in **2**, unclear in **3**. A before/after input would address about 2 in 24: **dropped**
+as registered. The levers are judging the current screen against the goal and tracking which parts remain.
